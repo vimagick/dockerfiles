@@ -1,0 +1,21 @@
+--allow-all-external
+--allow-unverified jsonpath
+
+# parser
+jsonpath
+jsonschema
+pyquery
+pyparsing
+git+https://github.com/scrapy/scrapely
+
+# database
+redis
+pymongo
+psycopg2
+
+# others
+requests
+chardet
+toolz
+supervisor
+
