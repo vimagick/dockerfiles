@@ -2,20 +2,21 @@
 --allow-unverified jsonpath
 
 # parser
+git+https://github.com/scrapy/scrapely
 jsonpath
 jsonschema
-pyquery
 pyparsing
-git+https://github.com/scrapy/scrapely
+pyquery
+pyyaml
 
 # database
-redis
-pymongo
 psycopg2
+pymongo
+redis
 
 # others
-requests
 chardet
-toolz
+requests
 supervisor
+toolz
 
