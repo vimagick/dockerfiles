@@ -1,5 +1,5 @@
 #
-# Dockerfile for scraypd
+# Dockerfile for scrapyd
 #
 # References:
 # - http://docs.docker.com/reference/builder/
