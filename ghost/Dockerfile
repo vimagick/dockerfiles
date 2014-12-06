@@ -1,9 +1,9 @@
 FROM ubuntu:14.04
 MAINTAINER kev
 
-RUN add-apt-repository -y ppa:chris-lea/node.js
-RUN apt-get update
-RUN apt-get install -y nodejs npm wget unzip
+ADD https://deb.nodesource.com/setup /
+RUN bash setup
+RUN apt-get install -y build-essential nodejs wget unzip
 
 WORKDIR /tmp
 RUN wget https://ghost.org/zip/ghost-latest.zip
