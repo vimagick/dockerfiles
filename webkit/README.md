@@ -1,4 +1,4 @@
-A simple web-service for rendering javascript-enabled website.
+A simple web-service based on PhantomJS for rendering javascript-enabled website.
 
 ## server
 
