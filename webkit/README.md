@@ -1,4 +1,7 @@
-A simple web-service based on PhantomJS for rendering javascript-enabled website.
+WebKit/PhantomJS
+================
+
+> A simple web-service based on PhantomJS for rendering javascript-enabled website.
 
 ## server
 
@@ -7,8 +10,18 @@ A simple web-service based on PhantomJS for rendering javascript-enabled website
 ## client
 
     http :1024 targetUrl=https://github.com/
+    http :1024 targetUrl=https://github.com/ loadImages:=true requestType=png
 
 ## admin
 
-    firefox localhost:2812
-    firefox localhost:9001
+    # monit
+    firefox http://localhost:2812/
+    # supervisor
+    firefox http://localhost:9001/
+    # haproxy
+    firefox http://localhost:1024/haproxy?stats
+
+## issues
+
+- setup nginx to serving out images files
+
