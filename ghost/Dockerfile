@@ -12,7 +12,8 @@ WORKDIR /ghost
 RUN sed -e 's@127.0.0.1@0.0.0.0@' config.example.js > config.js
 RUN npm install --production
 
+ENV NODE_ENV production
 VOLUME /ghost
 EXPOSE 2368
 
-CMD NODE_ENV=production npm start
+CMD npm start
