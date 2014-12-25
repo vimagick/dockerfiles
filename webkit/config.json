@@ -1,6 +1,0 @@
-{
-    "diskCacheEnabled": true,
-    "autoLoadImages": true,
-    "offlineStoragePath": "/tmp/phantomjs",
-    "offlineStorageDefaultQuota": 1000000000
-}
