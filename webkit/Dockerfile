@@ -15,6 +15,8 @@ ADD ./supervisor/supervisord.conf /etc/supervisor/
 ADD ./supervisor/conf.d/* /etc/supervisor/conf.d/
 ADD ./monit/ /etc/monit/
 
+RUN chmod 600 /etc/monit/monitrc
+
 EXPOSE 1024 2812 9001
 
 CMD /usr/bin/supervisord -n -c /etc/supervisor/supervisord.conf
