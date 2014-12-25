@@ -5,5 +5,5 @@
 
 set -e
 cd /usr/local/lib/webkit
-phantomjs server.js "$@"
+exec phantomjs server.js "$@"
 

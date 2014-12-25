@@ -40,7 +40,7 @@ var ok = server.listen(port, function(request, response) {
 
 
 if(ok) {
-    var pidfile = '/tmp/webkit-' + port.toString() + '.pid';
+    var pidfile = '/var/run/webkit-' + port.toString() + '.pid';
     utils.info('service started (listen %d)', port);
     utils.info('write pidfile: %s (pid %d)', pidfile, sys.pid);
     fs.write(pidfile, sys.pid.toString(), 'w');
