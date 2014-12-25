@@ -1,6 +1,7 @@
 #!/usr/bin/env phantomjs
 
-var system = require('system');
+var fs = require('fs');
+var sys = require('system');
 var server = require('webserver').create();
 var parser = require('./parser');
 var client = require('./client');
@@ -8,15 +9,14 @@ var utils = require('./utils');
 
 
 var port;
-if(system.args.length > 1) {
-    port = parseInt(system.args[1]);
+if(sys.args.length > 1) {
+    port = parseInt(sys.args[1]);
 } else {
     port = 1024;
 }
 
 
 var ok = server.listen(port, function(request, response) {
-    var req;
     if(request.method === 'POST') {
         try {
             var raw = request.postRaw || request.post || '{}',
@@ -40,7 +40,10 @@ var ok = server.listen(port, function(request, response) {
 
 
 if(ok) {
+    var pidfile = '/tmp/webkit-' + port.toString() + '.pid';
     utils.info('service started (listen %d)', port);
+    utils.info('write pidfile: %s (pid %d)', pidfile, sys.pid);
+    fs.write(pidfile, sys.pid.toString(), 'w');
 } else {
     utils.error('service failed to start');
     phantom.exit(1);
