@@ -11,11 +11,11 @@ RUN mkdir -p /data/ /webkit/includes/
 ADD ./*.js /webkit/
 ADD ./includes/ /webkit/includes/
 ADD ./bin/ /usr/local/bin/
-ADD ./haproxy.cfg /etc/haproxy/
-ADD ./supervisor/supervisord.conf /etc/supervisor/
-ADD ./supervisor/conf.d/ /etc/supervisor/conf.d/
-ADD ./monit/conf.d/ /etc/monit/conf.d/
-ADD ./nginx.cfg /etc/nginx/sites-enabled/default
+ADD ./etc/haproxy.cfg /etc/haproxy/
+ADD ./etc/supervisor/supervisord.conf /etc/supervisor/
+ADD ./etc/supervisor/conf.d/ /etc/supervisor/conf.d/
+ADD ./etc/monit/conf.d/ /etc/monit/conf.d/
+ADD ./etc/nginx.cfg /etc/nginx/sites-enabled/default
 
 VOLUME /data/
 EXPOSE 80 1024 2812 9001
