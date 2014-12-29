@@ -7,8 +7,8 @@ MAINTAINER kev
 
 RUN echo "Asia/Shanghai" > /etc/timezone
 RUN ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
-RUN apt-get update && apt-get install -y supervisor haproxy libfontconfig1 libfreetype6 monit nginx
-RUN mkdir -p /data/ /webkit/includes/
+RUN apt-get update && apt-get install -y supervisor haproxy libfontconfig1 libfreetype6 nginx
+RUN mkdir -p /data/ /webkit/includes/ /var/lib/monit/events/
 
 ADD ./*.js /webkit/
 ADD ./includes/ /webkit/includes/
