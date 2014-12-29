@@ -5,7 +5,7 @@ WebKit/PhantomJS
 
 ## server
 
-    docker run -d --restart=always -p 1024:1024 -p 2812:2812 -p 9001:9001 --name=webkit vimagick/webkit
+    docker run -d --restart=always -p 80:80 -p 1024:1024 -p 2812:2812 -p 9001:9001 --name=webkit vimagick/webkit
 
 ## client
 
@@ -23,5 +23,5 @@ WebKit/PhantomJS
 
 ## issues
 
-- setup nginx to serving out images files
+- send back html+image at the same time
 
