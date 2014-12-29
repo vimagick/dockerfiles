@@ -188,7 +188,6 @@ function urlopen(req, callback) {
             case 'jpg':
             case 'png':
             case 'gif':
-                //TODO: setup a fileserver
                 data = '/data/' + req.requestId;
                 page.render(data, {format: req.requestType});
                 break;
