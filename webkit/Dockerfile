@@ -19,6 +19,8 @@ ADD ./etc/supervisor/conf.d/ /etc/supervisor/conf.d/
 ADD ./etc/monitrc /etc/
 ADD ./etc/nginx.cfg /etc/nginx/sites-enabled/default
 
+RUN chmod 600 /etc/monitrc
+
 VOLUME /data/
 EXPOSE 80 1024 2812 9001
 

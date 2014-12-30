@@ -7,7 +7,7 @@
 ###############################################################################
 
 set daemon  60
-    with start delay 240
+    with start delay 30
 
 set httpd port 2812 and
     use address 0.0.0.0
