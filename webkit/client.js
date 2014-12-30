@@ -188,9 +188,11 @@ function urlopen(req, callback) {
             case 'jpg':
             case 'png':
             case 'gif':
-                data = '/data/' + req.requestId;
-                page.render(data, {format: req.requestType});
-                break;
+                var name = req.requestId + '.' + req.requestType;
+                page.render('/data/' + name, {format: req.requestType});
+                result.pageCapture = name;
+                data = page.content;
+                break
             case 'script':
                 data = page.evaluate(function() {
                     return window.pjsc_output;
