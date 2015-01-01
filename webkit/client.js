@@ -40,6 +40,22 @@ function execScripts(page, scripts, arr) {
 }
 
 
+function frameData(page, data) {
+    data.url = page.frameUrl;
+    data.name = page.frameName;
+    data.content = page.frameContent;
+    data.childCount = page.framesCount;
+    data.childFrames = [];
+    for(var i=0; i<data.childCount; i++) {
+        var node = {};
+        data.childFrames.push(node);
+        page.switchToFrame(i);
+        frameData(page, node);
+        page.switchToParentFrame();
+    }
+}
+
+
 function urlopen(req, callback) {
 
     var page = webpage.create();
@@ -183,7 +199,14 @@ function urlopen(req, callback) {
         execScripts(page, req.execScripts.preInjected, result.execScriptsOutput.preInjected);
         injectScripts(page, req.injectedScripts, result.injectedScriptOutput);
         execScripts(page, req.execScripts.postInjected, result.execScriptsOutput.postInjected);
-        var data = null;
+
+        var fdata = {};
+        frameData(page, fdata);
+        fdata.content = null;
+        result.frameData = fdata;
+        page.switchToMainFrame();
+
+        var pdata = null;
         switch(req.requestType) {
             case 'jpg':
             case 'png':
@@ -191,23 +214,23 @@ function urlopen(req, callback) {
                 var name = req.requestId + '.' + req.requestType;
                 page.render('/data/' + name, {format: req.requestType});
                 result.pageCapture = name;
-                data = page.content;
+                pdata = page.content;
                 break
             case 'script':
-                data = page.evaluate(function() {
+                pdata = page.evaluate(function() {
                     return window.pjsc_output;
                 });
                 break;
             case 'plain':
-                data = page.plainText;
+                pdata = page.plainText;
                 break;
             case 'text':
             default:
-                data = page.content;
+                pdata = page.content;
                 break;
         }
         result.resultUrl = page.url;
-        result.pageContent = data;
+        result.pageContent = pdata;
         result.totalTime = new Date().getTime() - startTime;
         result.responseCategory = 'OK';
         callback(null, result);
