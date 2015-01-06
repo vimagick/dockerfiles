@@ -33,7 +33,13 @@ var ok = server.listen(port, function(request, response) {
         } catch(ex) {
             send(response, 400, ex);
         }
-    } else {
+    } else if (request.method === 'GET') {
+        response.statusCode = 200;
+        response.setHeader('X-Powered-By', 'PhantomJS')
+        response.setHeader('Content-Type', 'text/plain')
+        response.write('Powered by PhantomJS 1.9.8');
+        response.close();
+    } else{
         send(response, 405);
     }
 });
