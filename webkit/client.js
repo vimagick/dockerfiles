@@ -212,7 +212,7 @@ function urlopen(req, callback) {
             case 'png':
             case 'gif':
                 var name = req.requestId + '.' + req.requestType;
-                page.render('/data/' + name, {format: req.requestType});
+                page.render('/data/' + name, {format: req.requestType, quality: 50});
                 result.pageCapture = name;
                 pdata = page.content;
                 break
