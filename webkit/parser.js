@@ -24,6 +24,7 @@ var setDefaults = function(req) {
     req.timeout = checkNumber('timeout', req.timeout, 1000, 300000, 60000);
     req.userAgent = checkString('userAgent', req.userAgent, 'Mozilla/5.0 PhantomJS/1.9.8');
     req.viewportSize = checkObject('viewportSize', req.viewportSize, {width: 800, height: 600, zoomFactor: 1});
+    req.renderQuality = checkNumber('renderQuality', req.renderQuality, 0, 100, 50);
     return req;
 }
 
@@ -38,7 +39,7 @@ function checkNumber(name, value, min, max, defaultValue) {
     } else if(!_.isNumber(value)) {
         throw _s.sprintf('TypeError: `%s` is not a number', name);
     } else if(value < min || value > max) {
-        throw _s.sprintf('ValueError: `%s` is out of range []', name);
+        throw _s.sprintf('ValueError: `%s` is out of range [%d, %d]', name, min, max);
     } else {
         return value;
     }
