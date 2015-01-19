@@ -1,5 +1,6 @@
 
 var webpage = require('webpage');
+var frame = require('./frame');
 
 
 function setCookies(page, cookies) {
@@ -36,22 +37,6 @@ function execScripts(page, scripts, arr) {
             return eval(code);
         }, code);
         arr.push(out);
-    }
-}
-
-
-function frameData(page, data) {
-    data.url = page.frameUrl;
-    data.name = page.frameName;
-    data.content = page.frameContent;
-    data.childCount = page.framesCount;
-    data.childFrames = [];
-    for(var i=0; i<data.childCount; i++) {
-        var node = {};
-        data.childFrames.push(node);
-        page.switchToFrame(i);
-        frameData(page, node);
-        page.switchToParentFrame();
     }
 }
 
@@ -201,7 +186,7 @@ function urlopen(req, callback) {
         execScripts(page, req.execScripts.postInjected, result.execScriptsOutput.postInjected);
 
         var fdata = {};
-        frameData(page, fdata);
+        frame.frameData(page, fdata);
         fdata.content = null;
         result.frameData = fdata;
         page.switchToMainFrame();
