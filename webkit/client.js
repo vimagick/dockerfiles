@@ -198,7 +198,7 @@ function urlopen(req, callback) {
             case 'gif':
                 var name = req.requestId + '.' + req.requestType;
                 page.render('/data/' + name, {format: req.requestType, quality: req.renderQuality});
-                result.pageCapture = name;
+                result.pageRender = name;
                 pdata = page.content;
                 break
             case 'script':
