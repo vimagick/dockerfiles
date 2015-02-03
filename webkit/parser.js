@@ -22,7 +22,7 @@ var setDefaults = function(req) {
     req.targetContent = checkString('targetContent', req.targetContent, '');
     req.targetUrl = checkString('targetUrl', req.targetUrl); // required
     req.timeout = checkNumber('timeout', req.timeout, 1000, 300000, 60000);
-    req.userAgent = checkString('userAgent', req.userAgent, 'Mozilla/5.0 PhantomJS/1.9.8');
+    req.userAgent = checkString('userAgent', req.userAgent, 'Mozilla/5.0 WebKit');
     req.viewportSize = checkObject('viewportSize', req.viewportSize, {width: 800, height: 600, zoomFactor: 1});
     req.renderQuality = checkNumber('renderQuality', req.renderQuality, 0, 100, 50);
     return req;
