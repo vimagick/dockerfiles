@@ -37,7 +37,7 @@ var ok = server.listen(port, function(request, response) {
         response.statusCode = 200;
         response.setHeader('X-Powered-By', 'PhantomJS')
         response.setHeader('Content-Type', 'text/plain')
-        response.write('Powered by PhantomJS 1.9.8');
+        response.write('Powered by PhantomJS 2.0.0');
         response.close();
     } else{
         send(response, 405);
