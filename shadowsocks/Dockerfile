@@ -2,9 +2,11 @@
 # Dockerfile for Shadowsocks
 #
 
-FROM python:latest
+FROM ubuntu:latest
 MAINTAINER noreply@datageek.info
 
+RUN apt-get update
+RUN apt-get install -y python python-pip
 RUN pip install shadowsocks
 
 ENV PASSWORD secret
