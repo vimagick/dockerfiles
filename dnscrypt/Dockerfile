@@ -34,4 +34,4 @@ WORKDIR /
 
 RUN rm -r /tmp/pkgs/
 
-CMD supervisor -n -c /etc/supervisor/supervisord.conf
+CMD supervisord -n -c /etc/supervisor/supervisord.conf
