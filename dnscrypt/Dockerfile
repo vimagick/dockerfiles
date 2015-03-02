@@ -1,15 +1,20 @@
+#
+# Dockerfile for dnscrypt
+#
+
 FROM ubuntu:14.04
-MAINTAINER kev
+MAINTAINER kev <noreply@datageek.info>
 
 RUN apt-get update
 RUN apt-get install -y build-essential supervisor dnsmasq
+RUN apt-get clean
 
 ADD ./services.conf /etc/supervisor/conf.d/
 ADD ./dnsmasq.conf /etc/
-ADD https://download.libsodium.org/libsodium/releases/libsodium-1.0.2.tar.gz /tmp/
-ADD http://download.dnscrypt.org/dnscrypt-proxy/dnscrypt-proxy-1.4.3.tar.gz /tmp/
+ADD https://download.libsodium.org/libsodium/releases/libsodium-1.0.2.tar.gz /tmp/pkgs/
+ADD http://download.dnscrypt.org/dnscrypt-proxy/dnscrypt-proxy-1.4.3.tar.gz /tmp/pkgs/
 
-WORKDIR /tmp
+WORKDIR /tmp/pkgs/
 
 RUN tar xzf libsodium-1.0.2.tar.gz && \
     cd libsodium-1.0.2 && \
@@ -24,5 +29,9 @@ RUN tar xzf dnscrypt-proxy-1.4.3.tar.gz && \
     ./configure && \
     make && \
     make install
+
+WORKDIR /
+
+RUN rm -r /tmp/pkgs/
 
 CMD supervisor -n -c /etc/supervisor/supervisord.conf
