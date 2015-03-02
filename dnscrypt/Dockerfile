@@ -6,11 +6,11 @@ FROM ubuntu:14.04
 MAINTAINER kev <noreply@datageek.info>
 
 RUN apt-get update
-RUN apt-get install -y build-essential supervisor dnsmasq
+RUN apt-get install -y build-essential supervisor pdnsd
 RUN apt-get clean
 
 ADD ./services.conf /etc/supervisor/conf.d/
-ADD ./dnsmasq.conf /etc/
+ADD ./pdnsd.conf /etc/
 ADD https://download.libsodium.org/libsodium/releases/libsodium-1.0.2.tar.gz /tmp/pkgs/
 ADD http://download.dnscrypt.org/dnscrypt-proxy/dnscrypt-proxy-1.4.3.tar.gz /tmp/pkgs/
 
