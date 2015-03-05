@@ -1,5 +1,6 @@
-dnscrypt:
-  image: vimagick/dnscrypt
+chinadns:
+  image: vimagick/chinadns
   ports:
     - "53:53/udp"
     - "53:53/tcp"
+  restart: always
