@@ -20,6 +20,7 @@ ADD http://download.dnscrypt.org/dnscrypt-proxy/dnscrypt-proxy-1.4.3.tar.gz /tmp
 ADD https://bootstrap.pypa.io/get-pip.py /tmp/pkgs/
 
 WORKDIR /tmp/pkgs/
+RUN python get-pip.py
 RUN pip install supervisor shadowsocks
 RUN tar xzf libsodium-1.0.2.tar.gz && \
     cd libsodium-1.0.2 && \
