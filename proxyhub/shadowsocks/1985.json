@@ -1,0 +1,8 @@
+{
+  "server": "104.238.180.87",
+  "server_port": 1789,
+  "local_address": "127.0.0.1",
+  "local_port": 1985,
+  "password": "123_FUCK_gfw",
+  "method": "aes-192-cfb"
+}

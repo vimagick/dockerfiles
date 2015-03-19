@@ -1,0 +1,9 @@
+{
+  "server": "192.243.118.108",
+  "server_port": 8989,
+  "local_address": "127.0.0.1",
+  "local_port": 1982,
+  "password": "dht.me",
+  "method": "aes-256-cfb",
+  "timeout": 600
+}

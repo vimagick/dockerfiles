@@ -1,0 +1,7 @@
+dnscrypt:
+  image: vimagick/dnscrypt
+  ports:
+    - "1080:1080"
+  dns:
+    - 127.0.0.1
+  restart: always
