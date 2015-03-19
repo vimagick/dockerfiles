@@ -6,7 +6,7 @@ FROM ubuntu:14.04
 MAINTAINER kev <noreply@datageek.info>
 
 RUN apt-get update
-RUN apt-get install -y build-essential pdnsd haproxy nginx python
+RUN apt-get install -y build-essential pdnsd haproxy polipo nginx python
 RUN apt-get clean
 
 ADD ./supervisord.conf /etc/supervisor/
@@ -14,6 +14,7 @@ ADD ./services.conf /etc/supervisor/conf.d/
 ADD ./pdnsd.conf /etc/
 ADD ./shadowsocks /etc/shadowsocks
 ADD ./haproxy.cfg /etc/haproxy/
+ADD ./polipo.conf /etc/polipo/config
 
 ADD https://download.libsodium.org/libsodium/releases/libsodium-1.0.2.tar.gz /tmp/pkgs/
 ADD http://download.dnscrypt.org/dnscrypt-proxy/dnscrypt-proxy-1.4.3.tar.gz /tmp/pkgs/
@@ -36,6 +37,6 @@ RUN tar xzf dnscrypt-proxy-1.4.3.tar.gz && \
 
 WORKDIR /
 RUN rm -r /tmp/pkgs/
-EXPOSE 80 1080 9001
+EXPOSE 80 1080 8123 9001
 
 CMD supervisord -n -c /etc/supervisor/supervisord.conf
