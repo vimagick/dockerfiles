@@ -10,7 +10,7 @@ RUN apt-get install -y build-essential pdnsd haproxy polipo nginx python
 RUN apt-get clean
 
 ADD ./supervisord.conf /etc/supervisor/
-ADD ./services.conf /etc/supervisor/conf.d/
+ADD ./services.ini /etc/supervisor/conf.d/
 ADD ./pdnsd.conf /etc/
 ADD ./shadowsocks /etc/shadowsocks
 ADD ./haproxy.cfg /etc/haproxy/
