@@ -37,6 +37,6 @@ RUN tar xzf dnscrypt-proxy-1.4.3.tar.gz && \
 
 WORKDIR /
 RUN rm -r /tmp/pkgs/
-EXPOSE 80 1080 8123 9001
+EXPOSE 53/udp 53/tcp 80 1080 8123 9001
 
 CMD supervisord -n -c /etc/supervisor/supervisord.conf
