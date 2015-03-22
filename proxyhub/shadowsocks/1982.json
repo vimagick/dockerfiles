@@ -1,9 +1,9 @@
 {
-  "server": "192.243.118.108",
-  "server_port": 8989,
+  "server": "free1.5z3.pw",
+  "server_port": 443,
   "local_address": "127.0.0.1",
   "local_port": 1982,
-  "password": "dht.me",
-  "method": "aes-256-cfb",
+  "password": "fogss.com",
+  "method": "rc4-md5",
   "timeout": 600
 }

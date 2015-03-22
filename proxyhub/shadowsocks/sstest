@@ -1,0 +1,111 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+#
+# sstest - shadowsocks tester
+#
+#   # Long Form
+#   sstest ss://aes-256-cfb:secret@datageek.info:8388
+#   # Short Form
+#   sstest password@datageek.info
+#   # Hash Form
+#   sstest c3M6Ly9hZXMtMjU2LWNmYjpzZWNyZXRAZGF0YWdlZWsuaW5mbzo4Mzg4
+#   # File Form
+#   sstest /etc/sslocal.json
+#
+
+
+from base64 import decodestring
+from sh import sslocal, curl
+from urlparse import urlparse
+import argparse
+import json
+import os.path
+import socket
+import time
+
+ 
+def random_port():
+
+    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    s.bind(('localhost', 0))
+    addr, port = s.getsockname()
+    s.close()
+    return port
+
+
+def parse_uri(uri):
+
+    obj = urlparse(uri)
+    assert obj.scheme == 'ss'
+    if '@' not in uri:
+        b64 = obj.netloc
+        b64 += "=" * ((4 - len(b64) % 4) % 4)
+        uri = decodestring(b64)
+        obj = urlparse('ss://' + uri)
+    param = dict(
+        method = obj.username or 'aes-256-cfb',
+        passwd = obj.password,
+        server = obj.hostname,
+        port = obj.port or 8388,
+    )
+    if not param['passwd']:
+        param['method'], param['passwd'] = 'aes-256-cfb', param['method']
+    return param
+
+
+def run_sslocal(args):
+
+    lport = random_port()
+    proc = sslocal(l=lport, m=args['method'], s=args['server'], p=args['port'], k=args['passwd'],  _bg=True)
+    return proc, lport
+
+
+def run_curl(lport, timeout=5):
+
+    try:
+        proc = curl('-sSI', '-m', timeout, '-x', 'socks5h://localhost:%d' % lport, 'https://www.youtube.com/')
+        return True
+    except:
+        return False
+
+
+def gen_config(args, bind, port):
+
+    print json.dumps({
+        'local_address': bind,
+        'local_port': port or random_port(),
+        'server': args['server'],
+        'server_port': args['port'],
+        'method': args['method'],
+        'password': args['passwd'],
+    }, indent=2)
+
+
+if __name__ == '__main__':
+
+    parser = argparse.ArgumentParser()
+    parser.add_argument('-t', '--timeout', type=int, default=5)
+    parser.add_argument('-w', '--wait', type=int, default=1)
+    parser.add_argument('-b', '--bind', type=str, default='127.0.0.1')
+    parser.add_argument('-p', '--port', type=int, default=0)
+    parser.add_argument('uri')
+    args = parser.parse_args()
+
+    uri = args.uri
+    if os.path.exists(uri):
+        obj = json.load(open(uri))
+        uri = 'ss://{0[method]}:{0[password]}@{0[server]}:{0[server_port]}'.format(obj)
+        args.bind = obj.get('local_address', '127.0.0.1')
+        args.port = obj.get('local_port', 0)
+    if not uri.startswith('ss://'):
+        uri = 'ss://' + uri
+
+    param = parse_uri(uri)
+    proc, lport = run_sslocal(param)
+    time.sleep(args.wait)
+    ok = run_curl(lport, args.timeout)
+    if ok:
+        gen_config(param, args.bind, args.port)
+    proc.process.kill()
+    exit(0 if ok else 1)
+
