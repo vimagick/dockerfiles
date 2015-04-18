@@ -14,10 +14,10 @@
 #
 
 
-from base64 import decodestring
 from sh import sslocal, curl
 from urlparse import urlparse
 import argparse
+import base64
 import json
 import os.path
 import socket
@@ -40,23 +40,23 @@ def parse_uri(uri):
     if '@' not in uri:
         b64 = obj.netloc
         b64 += "=" * ((4 - len(b64) % 4) % 4)
-        uri = decodestring(b64)
+        uri = base64.decodestring(b64)
         obj = urlparse('ss://' + uri)
     param = dict(
         method = obj.username or 'aes-256-cfb',
-        passwd = obj.password,
+        password = obj.password,
         server = obj.hostname,
-        port = obj.port or 8388,
+        server_port = obj.port or 8388,
     )
-    if not param['passwd']:
-        param['method'], param['passwd'] = 'aes-256-cfb', param['method']
+    if not param['password']:
+        param['method'], param['password'] = 'aes-256-cfb', param['method']
     return param
 
 
 def run_sslocal(args):
 
     lport = random_port()
-    proc = sslocal(l=lport, m=args['method'], s=args['server'], p=args['port'], k=args['passwd'],  _bg=True)
+    proc = sslocal(l=lport, m=args['method'], s=args['server'], p=args['server_port'], k=args['password'],  _bg=True)
     return proc, lport
 
 
@@ -69,16 +69,20 @@ def run_curl(lport, timeout=5):
         return False
 
 
-def gen_config(args, bind, port):
+def gen_config(args, bind, port, enc):
 
-    print json.dumps({
-        'local_address': bind,
-        'local_port': port or random_port(),
-        'server': args['server'],
-        'server_port': args['port'],
-        'method': args['method'],
-        'password': args['passwd'],
-    }, indent=2)
+    if enc:
+        uri = '{0[method]}:{0[password]}@{0[server]}:{0[server_port]}'.format(args)
+        print 'ss://' + base64.encodestring(uri).rstrip('=\n')
+    else:
+        print json.dumps({
+            'local_address': bind,
+            'local_port': port or random_port(),
+            'server': args['server'],
+            'server_port': args['server_port'],
+            'method': args['method'],
+            'password': args['password'],
+        }, indent=2)
 
 
 if __name__ == '__main__':
@@ -86,6 +90,8 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('-t', '--timeout', type=int, default=5)
     parser.add_argument('-w', '--wait', type=int, default=1)
+    parser.add_argument('-e', '--encode', action='store_true', default=False)
+    parser.add_argument('-n', '--dryrun', action='store_true', default=False)
     parser.add_argument('-b', '--bind', type=str, default='127.0.0.1')
     parser.add_argument('-p', '--port', type=int, default=0)
     parser.add_argument('uri')
@@ -101,11 +107,16 @@ if __name__ == '__main__':
         uri = 'ss://' + uri
 
     param = parse_uri(uri)
-    proc, lport = run_sslocal(param)
-    time.sleep(args.wait)
-    ok = run_curl(lport, args.timeout)
+
+    if args.dryrun:
+        ok = True
+    else:
+        proc, lport = run_sslocal(param)
+        time.sleep(args.wait)
+        ok = run_curl(lport, args.timeout)
+        proc.process.kill()
+
     if ok:
-        gen_config(param, args.bind, args.port)
-    proc.process.kill()
+        gen_config(param, args.bind, args.port, args.encode)
     exit(0 if ok else 1)
 
