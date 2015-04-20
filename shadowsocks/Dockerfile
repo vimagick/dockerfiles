@@ -6,7 +6,11 @@ FROM ubuntu:latest
 MAINTAINER noreply@datageek.info
 
 RUN apt-get update
-RUN apt-get install -y python python-pip
+RUN apt-get install -y python
+
+ADD https://bootstrap.pypa.io/get-pip.py /tmp/
+
+RUN python /tmp/get-pip.py
 RUN pip install shadowsocks
 
 ENV PASSWORD secret
