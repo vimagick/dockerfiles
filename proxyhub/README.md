@@ -35,3 +35,8 @@ ProxyHub
     # http(s) proxy
     curl -x http://localhost:8123 https://www.youtube.com
 
+## Todo
+
+- add proxy.pac via nginx
+- add transparent socks5 proxy via redsocks
+

@@ -9,16 +9,17 @@ RUN apt-get update
 RUN apt-get install -y build-essential pdnsd haproxy polipo nginx python
 RUN apt-get clean
 
+ADD ./haproxy.cfg /etc/haproxy/
+ADD ./pdnsd.conf /etc/
+ADD ./polipo.conf /etc/polipo/config
+ADD ./shadowsocks.json /etc/
 ADD ./supervisord.conf /etc/supervisor/
 ADD ./services.ini /etc/supervisor/conf.d/
-ADD ./pdnsd.conf /etc/
-ADD ./shadowsocks /etc/shadowsocks
-ADD ./haproxy.cfg /etc/haproxy/
-ADD ./polipo.conf /etc/polipo/config
 
+ADD http://stedolan.github.io/jq/download/linux64/jq /usr/local/bin/
+ADD https://bootstrap.pypa.io/get-pip.py /tmp/pkgs/
 ADD https://download.libsodium.org/libsodium/releases/libsodium-1.0.2.tar.gz /tmp/pkgs/
 ADD http://download.dnscrypt.org/dnscrypt-proxy/dnscrypt-proxy-1.4.3.tar.gz /tmp/pkgs/
-ADD https://bootstrap.pypa.io/get-pip.py /tmp/pkgs/
 
 WORKDIR /tmp/pkgs/
 RUN python get-pip.py

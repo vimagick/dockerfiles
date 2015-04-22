@@ -1,0 +1,40 @@
+{
+  "local_address": "127.0.0.1",
+  "local_port": 1981,
+  "server": "107.191.53.58",
+  "server_port": 1789,
+  "password": "123_FUCK_gfw",
+  "method": "aes-192-cfb"
+}
+{
+  "local_address": "127.0.0.1",
+  "local_port": 1982,
+  "server": "104.238.180.87",
+  "server_port": 1789,
+  "password": "123_FUCK_gfw",
+  "method": "aes-192-cfb"
+}
+{
+  "local_address": "127.0.0.1",
+  "local_port": 1983,
+  "server": "74.82.164.182",
+  "server_port": 11150,
+  "password": "17112730",
+  "method": "aes-256-cfb"
+}
+{
+  "local_address": "127.0.0.1",
+  "local_port": 1984,
+  "server": "104.143.15.84",
+  "server_port": 30500,
+  "password": "123456",
+  "method": "aes-256-cfb"
+}
+{
+  "local_address": "127.0.0.1",
+  "local_port": 1985,
+  "server": "167.160.165.189",
+  "server_port": 8883,
+  "password": "whoisyourbitch",
+  "method": "table"
+}

@@ -1,9 +1,0 @@
-{
-  "server": "free1.5z3.pw",
-  "server_port": 443,
-  "local_address": "127.0.0.1",
-  "local_port": 1982,
-  "password": "fogss.com",
-  "method": "rc4-md5",
-  "timeout": 600
-}
