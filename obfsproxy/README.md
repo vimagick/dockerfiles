@@ -1,6 +1,11 @@
 OpenVPN over Obfsproxy
 ======================
 
+Obfsproxy is a pluggable transport proxy written in python.  
+We can transport OpenVPN over Obfsproxy, so that firewall cannot detect it.  
+
+To use the example bellow, you should run `kylemanna/openvpn` with tcp first.
+
 ## docker-compose.yml
 
 ```

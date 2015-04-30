@@ -2,7 +2,7 @@ obfsproxy:
   image: vimagick/obfsproxy:latest
   ports:
     - "4911:4911"
-  links:
+  external_links:
     - openvpn_server_1:openvpn
   environment:
     - PASSWORD=J23TNHPJPAOQJLTCPLFD4CQYVFY6MEVP
