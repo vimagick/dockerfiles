@@ -16,16 +16,16 @@ Don't forget to edit `/etc/openvpn/openvpn.conf` to use `proto tcp`.
 data:
   image: busybox:latest
   volumes:
-  - /etc/openvpn
+    - /etc/openvpn
 
 server:
   image: kylemanna/openvpn:latest
   ports:
-  - "1194:1194/tcp"
+    - "1194:1194/tcp"
   volumes_from:
-  - data
+    - data
   cap_add:
-  - NET_ADMIN
+    - NET_ADMIN
   restart: always
 
 obfsproxy:
