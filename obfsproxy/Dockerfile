@@ -5,7 +5,7 @@
 FROM ubuntu:14.04
 MAINTAINER kev<noreply@datageek.info>
 
-RUN apt-get update && apt-get install build-essential curl python python-dev
+RUN apt-get update && apt-get install -y build-essential curl python python-dev
 RUN curl https://bootstrap.pypi.org/get-pip.py | python
 RUN pip install obfsproxy
 
