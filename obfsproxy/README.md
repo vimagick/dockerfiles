@@ -45,7 +45,7 @@ obfsproxy:
 
 To link a existing `openvpn` container, please use `external_links` instead of `links`.
 
-```yaml
+```
 obfsproxy:
   image: vimagick/obfsproxy:latest
   ports:
@@ -64,6 +64,6 @@ obfsproxy:
 The password should be encoded by Base32 with fixed length.  
 You can generate one via this command:
 
-```bash
+```
 python -c 'import base64, os; print base64.b32encode(os.urandom(20))'
 ```
