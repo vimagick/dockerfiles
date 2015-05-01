@@ -61,6 +61,16 @@ obfsproxy:
   restart: always
 ```
 
+The default run mode is `server`. You can also run container in `client` mode:
+
+```
+obfsproxy:
+  ...
+  environment:
+    - RUN_MODE=client
+  ...
+```
+
 The password should be encoded by Base32 with fixed length.  
 You can generate one via this command:
 

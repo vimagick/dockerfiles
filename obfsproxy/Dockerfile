@@ -14,6 +14,7 @@ ENV DATA_DIR /var/lib/obfsproxy
 ENV PASSWORD XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 ENV DEST_ADDR openvpn
 ENV DEST_PORT 1194
+ENV RUN_MODE server
 ENV LISTEN_ADDR 0.0.0.0
 ENV LISTEN_PORT 4911
 
@@ -21,5 +22,5 @@ EXPOSE $LISTEN_PORT
 
 CMD obfsproxy --log-min-severity=$LOG_MIN_SEVERITY --data-dir=$DATA_DIR \
               scramblesuit --password=$PASSWORD --dest=$DEST_ADDR:$DEST_PORT \
-              server $LISTEN_ADDR:$LISTEN_PORT
+              $RUN_MODE $LISTEN_ADDR:$LISTEN_PORT
 
