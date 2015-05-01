@@ -68,14 +68,14 @@ The following example shows us how to make a OpenVPN relay:
 obfsproxy:
   image: vimagick/obfsproxy:latest
   ports:
-    - "1149:1149/tcp"
+    - "1194:1194/tcp"
   environment:
     - PASSWORD=J23TNHPJPAOQJLTCPLFD4CQYVFY6MEVP
     - DEST_HOST=vpn.datageek.info
     - DEST_PORT=4911
     - RUN_MODE=client
     - LISTEN_ADDR=0.0.0.0
-    - LISTEN_PORT=1149
+    - LISTEN_PORT=1194
   restart: always
 ```
 
