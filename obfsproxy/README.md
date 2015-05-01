@@ -61,14 +61,22 @@ obfsproxy:
   restart: always
 ```
 
-The default run mode is `server`. You can also run container in `client` mode:
+The default run mode is `server`. You can also run container in `client` mode.  
+The following example shows us how to make a OpenVPN relay:
 
 ```
 obfsproxy:
-  ...
+  image: vimagick/obfsproxy:latest
+  ports:
+    - "1149:1149/tcp"
   environment:
+    - PASSWORD=J23TNHPJPAOQJLTCPLFD4CQYVFY6MEVP
+    - DEST_HOST=vpn.datageek.info
+    - DEST_PORT=4911
     - RUN_MODE=client
-  ...
+    - LISTEN_ADDR=0.0.0.0
+    - LISTEN_PORT=1149
+  restart: always
 ```
 
 The password should be encoded by Base32 with fixed length.  
