@@ -36,7 +36,7 @@ obfsproxy:
     - server:openvpn
   environment:
     - PASSWORD=J23TNHPJPAOQJLTCPLFD4CQYVFY6MEVP
-    - DEST_HOST=openvpn
+    - DEST_ADDR=openvpn
     - DEST_PORT=1194
     - LISTEN_ADDR=0.0.0.0
     - LISTEN_PORT=4911
@@ -54,7 +54,7 @@ obfsproxy:
     - openvpn_server_1:openvpn
   environment:
     - PASSWORD=J23TNHPJPAOQJLTCPLFD4CQYVFY6MEVP
-    - DEST_HOST=openvpn
+    - DEST_ADDR=openvpn
     - DEST_PORT=1194
     - LISTEN_ADDR=0.0.0.0
     - LISTEN_PORT=4911
@@ -71,7 +71,7 @@ obfsproxy:
     - "1194:1194/tcp"
   environment:
     - PASSWORD=J23TNHPJPAOQJLTCPLFD4CQYVFY6MEVP
-    - DEST_HOST=vpn.datageek.info
+    - DEST_ADDR=vpn.datageek.info
     - DEST_PORT=4911
     - RUN_MODE=client
     - LISTEN_ADDR=0.0.0.0
