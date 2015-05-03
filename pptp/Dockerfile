@@ -2,7 +2,7 @@
 # Dockerfile for VPN (PPTP)
 #
 
-FROM debian:jessie
+FROM ubuntu:14.04
 MAINTAINER kev<noreply@datageek.info>
 
 RUN apt-get update && \
@@ -10,8 +10,9 @@ RUN apt-get update && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-RUN echo "localip 192.168.128.1" >> /etc/pptpd.conf && \
-    echo "remoteip 192.168.128.100-200" >> /etc/pptpd.conf
+RUN echo "localip 10.99.99.1" >> /etc/pptpd.conf && \
+    echo "remoteip 10.99.99.100-200" >> /etc/pptpd.conf && \
+    echo "ms-dns 8.8.8.8" >> /etc/ppp/pptpd-options
 
 EXPOSE 1723
 
