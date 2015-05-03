@@ -4,4 +4,5 @@ pptp:
     - "1723:1723"
   volumes:
     - ./chap-secrets:/etc/ppp/chap-secrets
+  cap_add: NET_ADMIN
   restart: always
