@@ -85,3 +85,5 @@ You can generate one via this command:
 ```
 python -c 'import base64, os; print base64.b32encode(os.urandom(20))'
 ```
+
+Note: There's no ports exposed in Dockerfile. You need to expose port explicitly.

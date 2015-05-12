@@ -18,8 +18,6 @@ ENV RUN_MODE server
 ENV LISTEN_ADDR 0.0.0.0
 ENV LISTEN_PORT 4911
 
-EXPOSE $LISTEN_PORT
-
 CMD obfsproxy --log-min-severity=$LOG_MIN_SEVERITY --data-dir=$DATA_DIR \
               scramblesuit --password=$PASSWORD --dest=$DEST_ADDR:$DEST_PORT \
               $RUN_MODE $LISTEN_ADDR:$LISTEN_PORT
