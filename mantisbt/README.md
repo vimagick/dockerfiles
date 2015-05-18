@@ -20,12 +20,30 @@ mysql:
   restart: always
 ```
 
+> You can use `mariadb` instead of `mysql`.
+
 ## setup
 
 ```
 $ firefox http://localhost:8989/admin/install.php
 >>> username: administrator
 >>> password: root
+```
+
+```
+==================================================================================
+Installation Options
+==================================================================================
+Type of Database                                        MySQL/MySQLi
+Hostname (for Database Server)                          mysql
+Username (for Database)                                 root
+Password (for Database)                                 root
+Database name (for Database)                            bugtracker
+Admin Username (to create Database if required)         root
+Admin Password (to create Database if required)         root
+Print SQL Queries instead of Writing to the Database    [ ]
+Attempt Installation                                    [Install/Upgrade Database]
+==================================================================================
 ```
 
 ## todo
