@@ -1,7 +1,5 @@
-MantisBT is an open source issue tracker that provides a delicate balance between simplicity and power.
-
-WARNING: This is still a work in progress, a successful connection has not been made.
-
+`MantisBT` is an open source issue tracker that provides
+a delicate balance between simplicity and power.
 
 ## docker-compose.yml
 
@@ -9,7 +7,7 @@ WARNING: This is still a work in progress, a successful connection has not been 
 mantisbt:
   image: vimagick/mantisbt
   ports:
-    - "80:80"
+    - "8989:80"
   links:
     - db:mysql
   restart: always
@@ -28,7 +26,7 @@ db:
 $ docker exec -it mantisbt_mantisbt_1 bash
 >>> echo 'date.timezone = "Asia/Shanghai"' > /usr/local/etc/php/php.ini
 >>> exit
-$ firefox http://localhost/admin/install.php
+$ firefox http://localhost:8989/admin/install.php
 >>> username: administrator
 >>> password: root
 ```

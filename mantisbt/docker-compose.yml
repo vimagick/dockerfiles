@@ -1,0 +1,15 @@
+mantisbt:
+  image: vimagick/mantisbt
+  ports:
+    - "8989:80"
+  links:
+    - db:mysql
+  restart: always
+
+db:
+  image: mysql
+  ports:
+    - "3306:3306"
+  environment:
+    - MYSQL_ROOT_PASSWORD=root
+    - MYSQL_DATABASE=bugtracker
