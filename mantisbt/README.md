@@ -27,3 +27,9 @@ $ firefox http://localhost:8989/admin/install.php
 >>> username: administrator
 >>> password: root
 ```
+
+## todo
+
+- support `curl`
+- config `smtp`
+- ...
