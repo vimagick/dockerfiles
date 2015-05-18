@@ -2,7 +2,7 @@
 # Dockerfile for mantisbt
 #
 
-FROM php:5.5-apache
+FROM php:5.6-apache
 MAINTAINER kev<noreply@datageek.info>
 
 RUN a2enmod rewrite
@@ -10,7 +10,7 @@ RUN a2enmod rewrite
 RUN apt-get update && apt-get install -y libpng12-dev libjpeg-dev libpq-dev \
         && rm -rf /var/lib/apt/lists/* \
         && docker-php-ext-configure gd --with-png-dir=/usr --with-jpeg-dir=/usr \
-        && docker-php-ext-install gd mbstring pdo pdo_mysql pdo_pgsql
+        && docker-php-ext-install gd mysqli mbstring
 
 WORKDIR /var/www/html
 
@@ -26,6 +26,6 @@ RUN curl -fSL ${MANTIS_URL} -o ${MANTIS_FILE} \
         && sed -e "/g_hostname/s/'localhost'/'mysql'/" \
                -e "/g_db_username/s/'mantisdbuser'/'root'/" \
                -e "/g_db_password/s/''/'root'/" \
-               config_inc.php.sample > config_inc.php
+               config_inc.php.sample > config_inc.php \
         && chown -R www-data:www-data .
 
