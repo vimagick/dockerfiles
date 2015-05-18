@@ -5,15 +5,15 @@ a delicate balance between simplicity and power.
 
 ```
 mantisbt:
-  image: vimagick/mantisbt
+  image: vimagick/mantisbt:latest
   ports:
     - "8989:80"
   links:
-    - db:mysql
+    - mysql
   restart: always
 
-db:
-  image: mysql
+mysql:
+  image: mysql:latest
   environment:
     - MYSQL_ROOT_PASSWORD=root
     - MYSQL_DATABASE=bugtracker
