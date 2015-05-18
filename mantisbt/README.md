@@ -23,9 +23,6 @@ db:
 ## setup
 
 ```
-$ docker exec -it mantisbt_mantisbt_1 bash
->>> echo 'date.timezone = "Asia/Shanghai"' > /usr/local/etc/php/php.ini
->>> exit
 $ firefox http://localhost:8989/admin/install.php
 >>> username: administrator
 >>> password: root

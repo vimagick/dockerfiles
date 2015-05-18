@@ -7,10 +7,10 @@ MAINTAINER kev<noreply@datageek.info>
 
 RUN a2enmod rewrite
 
-RUN apt-get update && apt-get install -y libpng12-dev libjpeg-dev libpq-dev libcurl3 \
+RUN apt-get update && apt-get install -y libpng12-dev libjpeg-dev libpq-dev \
         && rm -rf /var/lib/apt/lists/* \
         && docker-php-ext-configure gd --with-png-dir=/usr --with-jpeg-dir=/usr \
-        && docker-php-ext-install curl fileinfo gd mbstring mysql mysqli pgsql
+        && docker-php-ext-install fileinfo gd mbstring mysql mysqli pgsql
 
 WORKDIR /var/www/html
 
@@ -25,3 +25,5 @@ RUN curl -fSL ${MANTIS_URL} -o ${MANTIS_FILE} \
         && rm ${MANTIS_FILE} \
         && chown -R www-data:www-data .
 
+RUN ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
+        && echo 'date.timezone = "Asia/Shanghai"' > /usr/local/etc/php/php.ini
