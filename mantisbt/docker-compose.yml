@@ -11,4 +11,13 @@ mysql:
   environment:
     - MYSQL_ROOT_PASSWORD=root
     - MYSQL_DATABASE=bugtracker
+    - MYSQL_USER=mantis
+    - MYSQL_PASSWORD=mantis
+  restart: always
+
+postgres:
+  image: postgres:latest
+  environment:
+    - POSTGRES_USER=root
+    - POSTGRES_PASSWORD=root
   restart: always
