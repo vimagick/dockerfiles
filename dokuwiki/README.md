@@ -1,7 +1,7 @@
 docker-dokuwiki
 ===============
 
-Docker container image with [DokuWiki](https://www.dokuwiki.org/dokuwiki) and nginx
+Docker container image with [DokuWiki](https://www.dokuwiki.org/dokuwiki) and apache+php.
 
 ###How to run
 
@@ -9,7 +9,7 @@ Assume your docker host is localhost and HTTP public port is 8000 (change these 
 
 First, run new dokuwiki container:
 
-    docker run -d -p 8000:80 --name dokuwiki istepanov/dokuwiki
+    docker run -d -p 8000:80 --name dokuwiki vimagick/dokuwiki
 
 Then setup dokuwiki using installer at URL `http://localhost:8000/install.php`
 
@@ -24,7 +24,7 @@ To make sure data won't be deleted if container is removed, create an empty cont
     docker stop dokuwiki && docker rm dokuwiki
     
     # to restore dokuwiki, create new dokuwiki container and attach dokuwiki-data volume to it
-    docker run -d -p 8000:80 --volumes-from dokuwiki-data --name dokuwiki istepanov/dokuwiki
+    docker run -d -p 8000:80 --volumes-from dokuwiki-data --name dokuwiki vimagick/dokuwiki
 
 ###How to backup data
 
@@ -34,7 +34,7 @@ To make sure data won't be deleted if container is removed, create an empty cont
 ###How to restore from backup
 
     #create new dokuwiki container, but don't start it yet
-    docker create -p 8000:80 --name dokuwiki istepanov/dokuwiki
+    docker create -p 8000:80 --name dokuwiki vimagick/dokuwiki
     
     # create data container for persistency (optional)
     docker run --volumes-from dokuwiki --name dokuwiki-data busybox

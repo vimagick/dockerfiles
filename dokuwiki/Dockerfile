@@ -1,29 +1,25 @@
-FROM ubuntu:14.04
-MAINTAINER Ilya Stepanov <dev@ilyastepanov.com>
+#
+# Dockerfile for DokuWiki
+#
+# References
+# - https://github.com/docker-library/drupal/blob/master/8/Dockerfile
+# - https://www.dokuwiki.org/faq:backup
+#
 
-RUN apt-get update && \
-    apt-get install -y nginx php5-fpm php5-gd curl && \
-    rm -rf /var/lib/apt/lists/*
+FROM php:5.6-apache
+MAINTAINER kev <noreply@datageek.info>
 
-RUN mkdir -p /var/www
-RUN cd /var/www && curl http://download.dokuwiki.org/src/dokuwiki/dokuwiki-stable.tgz | tar xz --strip 1
-RUN chown -R www-data:www-data /var/www
+WORKDIR /var/www/html
 
-RUN echo "cgi.fix_pathinfo = 0;" >> /etc/php5/fpm/php.ini
-RUN echo "daemon off;" >> /etc/nginx/nginx.conf
-RUN rm /etc/nginx/sites-enabled/*
-ADD dokuwiki.conf /etc/nginx/sites-enabled/
+RUN a2enmod rewrite
+RUN curl "http://download.dokuwiki.org/src/dokuwiki/dokuwiki-stable.tgz" | tar xz --strip 1
+RUN chown -R www-data:www-data .
 
-EXPOSE 80
-VOLUME [ \
-    "/var/www/data/pages", \
-    "/var/www/data/meta", \
-    "/var/www/data/media", \
-    "/var/www/data/media_attic", \
-    "/var/www/data/media_meta", \
-    "/var/www/data/attic", \
-    "/var/www/conf", \
-    "/var/log" \
-]
+VOLUME /var/www/html/data/pages \
+       /var/www/html/data/meta \
+       /var/www/html/data/media \
+       /var/www/html/data/media_attic \
+       /var/www/html/data/media_meta \
+       /var/www/html/data/attic \
+       /var/www/html/conf
 
-CMD /usr/sbin/php5-fpm && /usr/sbin/nginx
