@@ -1,0 +1,5 @@
+ghost:
+    image: ghost:latest
+    ports:
+        - "9000:2368"
+    restart: always
