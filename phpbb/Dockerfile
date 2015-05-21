@@ -5,7 +5,8 @@
 FROM php:5.6-apache
 MAINTAINER kev<noreply@datageek.info>
 
-RUN apt-get update && apt-get install -y unzip bzip2 && rm -rf /var/lib/apt/lists/* \
+RUN apt-get update && apt-get install -y curl unzip bzip2 libpq-dev \
+        && rm -rf /var/lib/apt/lists/* \
         && docker-php-ext-install mysqli pgsql
 
 WORKDIR /var/www/html
