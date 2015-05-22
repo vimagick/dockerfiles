@@ -19,7 +19,7 @@ ENV JOOMLA_FILE Joomla.tar.gz
 
 RUN curl -fSL ${JOOMLA_URL} -o ${JOOMLA_FILE} \
         && echo "${JOOMLA_MD5} ${JOOMLA_FILE}" | md5sum -c - \
-        && tar -xjf ${JOOMLA_FILE} --strip-components=1 \
+        && tar -xzf ${JOOMLA_FILE} --strip-components=1 \
         && rm ${JOOMLA_FILE} \
         && chown -R www-data:www-data .
 
