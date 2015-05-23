@@ -22,7 +22,7 @@ RUN apt-get update \
     && make \
     && make install \
     && cd .. \
-    && rm -rf ${DNS_DIR}
+    && rm -rf ${DNS_DIR} \
     && apt-get remove -y build-essential \
     && apt-get autoremove \
     && apt-get clean -y \
