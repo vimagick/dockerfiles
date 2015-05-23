@@ -5,6 +5,7 @@
 FROM ubuntu:14.04
 MAINTAINER kev <noreply@datageek.info>
 
+ENV DEBIAN_FRONTEND noninteractive
 ENV DNS_VER 1.3.1
 ENV DNS_URL https://github.com/clowwindy/ChinaDNS/releases/download/${DNS_VER}/chinadns-${DNS_VER}.tar.gz
 ENV DNS_DIR /tmp/chinadns
@@ -24,7 +25,7 @@ RUN apt-get update \
     && cd .. \
     && rm -rf ${DNS_DIR} \
     && apt-get remove -y build-essential \
-    && apt-get autoremove \
+    && apt-get autoremove -y \
     && apt-get clean -y \
     && rm -rf /var/lib/apt/lists/*
 
