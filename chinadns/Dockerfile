@@ -2,7 +2,7 @@
 # Dockerfile for chinadns
 #
 
-FROM ubuntu:14.04
+FROM debian:jessie
 MAINTAINER kev <noreply@datageek.info>
 
 ENV DEBIAN_FRONTEND noninteractive
