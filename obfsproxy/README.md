@@ -1,14 +1,18 @@
 OpenVPN over Obfsproxy
 ======================
 
-Obfsproxy is a pluggable transport proxy written in python.  
-We can transport OpenVPN over Obfsproxy, so that firewall cannot detect it.  
-
-Obfsproxy provides several obfuscation method. I consider `scramblesuit` the best.  
+`Obfsproxy` is a pluggable transport proxy written in python.  
+It provides several obfuscation method. I consider `scramblesuit` the best.  
 I will update this image if there's better one.
 
-To use the example bellow, you should run `kylemanna/openvpn` container first.  
-Don't forget to edit `/etc/openvpn/openvpn.conf` to use `proto tcp`.
+![obfsproxy](http://www.cs.kau.se/philwint/scramblesuit/images/big_picture.png)
+
+`scramblesuit` can transport any application that supports SOCKS.  
+This includes `Tor`, `VPN`, `SSH`, and many other protocols. 
+
+We can transport `OpenVPN` over `Obfsproxy`, so that firewall cannot detect it.  
+In the following example, you should run `kylemanna/openvpn` container first.  
+Don't forget to edit `/etc/openvpn/openvpn.conf` to use `proto tcp`.  
 
 ## docker-compose.yml
 

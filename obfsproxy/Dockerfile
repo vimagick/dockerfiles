@@ -1,5 +1,5 @@
 #
-# Dockerfile for obfsproxy
+# Dockerfile for obfsproxy (scramblesuit)
 #
 
 FROM debian:jessie
@@ -9,9 +9,9 @@ RUN apt-get update \
     && apt-get install -y build-essential curl python python-dev \
     && curl https://bootstrap.pypa.io/get-pip.py | python \
     && pip install obfsproxy \
-    && apt-get remove -y build-essential python-dev \
+    && apt-get purge -y build-essential python-dev \
     && apt-get autoremove -y \
-    && apt-get clean \
+    && apt-get clean -y \
     && rm -rf /var/lib/apt/lists/*
 
 ENV LOG_MIN_SEVERITY info
@@ -23,7 +23,11 @@ ENV RUN_MODE server
 ENV LISTEN_ADDR 0.0.0.0
 ENV LISTEN_PORT 4911
 
-CMD obfsproxy --log-min-severity=$LOG_MIN_SEVERITY --data-dir=$DATA_DIR \
-              scramblesuit --password=$PASSWORD --dest=$DEST_ADDR:$DEST_PORT \
-              $RUN_MODE $LISTEN_ADDR:$LISTEN_PORT
+CMD obfsproxy --log-min-severity=$LOG_MIN_SEVERITY \
+              --data-dir=$DATA_DIR \
+              scramblesuit \
+              --password=$PASSWORD \
+              --dest=$DEST_ADDR:$DEST_PORT \
+              $RUN_MODE \
+              $LISTEN_ADDR:$LISTEN_PORT
 
