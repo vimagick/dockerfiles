@@ -2,12 +2,17 @@
 # Dockerfile for obfsproxy
 #
 
-FROM ubuntu:14.04
+FROM debian:jessie
 MAINTAINER kev<noreply@datageek.info>
 
-RUN apt-get update && apt-get install -y build-essential curl python python-dev
-RUN curl https://bootstrap.pypa.io/get-pip.py | python
-RUN pip install obfsproxy
+RUN apt-get update \
+    && apt-get install -y build-essential curl python python-dev \
+    && curl https://bootstrap.pypa.io/get-pip.py | python \
+    && pip install obfsproxy \
+    && apt-get remove -y build-essential python-dev \
+    && apt-get autoremove -y \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
 
 ENV LOG_MIN_SEVERITY info
 ENV DATA_DIR /var/lib/obfsproxy
