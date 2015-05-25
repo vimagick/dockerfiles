@@ -13,7 +13,7 @@ RUN apt-get update \
     && cd phantomjs \
     && git checkout 2.0 \
     && echo y | ./build.sh 2>/dev/null 1>&2 \
-    && cp bin/phantomjs /usr/local/bin/ \
+    && install -v -s -m 755 bin/phantomjs /usr/local/bin/ \
     && cd .. \
     && rm -rf phantomjs \
     && apt-get remove -y git build-essential g++ flex bison gperf ruby perl \
