@@ -6,7 +6,7 @@ FROM ubuntu:14.04
 MAINTAINER kev <noreply@datageek.info>
 
 RUN apt-get update \
-    && apt-get install git build-essential g++ flex bison gperf ruby perl \
+    && apt-get install -y git build-essential g++ flex bison gperf ruby perl \
        libsqlite3-dev libfontconfig1-dev libicu-dev libfreetype6 libssl-dev \
        libpng-dev libjpeg-dev python
 
