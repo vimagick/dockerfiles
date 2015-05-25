@@ -23,4 +23,4 @@ RUN apt-get update \
     && apt-get clean -y \
     && rm -rf /var/lib/apt/lists/*
 
-CMD ["/bin/bash"]
+CMD ["/usr/local/bin/phantomjs"]
