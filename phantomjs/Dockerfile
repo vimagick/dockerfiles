@@ -12,4 +12,14 @@ RUN apt-get update \
     && git clone git://github.com/ariya/phantomjs.git \
     && cd phantomjs \
     && git checkout 2.0 \
-    && echo y | ./build.sh
+    && echo y | ./build.sh > /dev/null \
+    && make install \
+    && cd .. \
+    && rm -rf phantomjs \
+    && apt-get remove -y git build-essential g++ flex bison gperf ruby perl \
+       libsqlite3-dev libfontconfig1-dev libicu-dev libfreetype6 libssl-dev \
+       libpng-dev libjpeg-dev python \
+    && apt-get autoremove -y \
+    && apt-get clean -y \
+    && rm -rf /var/lib/apt/lists/*
+
