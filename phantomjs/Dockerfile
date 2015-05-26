@@ -6,7 +6,6 @@ FROM ubuntu:14.04
 MAINTAINER kev <noreply@datageek.info>
 
 RUN apt-get update \
-    && apt-get install -y libfontconfig1 libicu52 libjpeg8 \
     && apt-get install -y git build-essential g++ flex bison gperf ruby perl \
        libsqlite3-dev libfontconfig1-dev libicu-dev libfreetype6 libssl-dev \
        libpng-dev libjpeg-dev python \
@@ -21,6 +20,7 @@ RUN apt-get update \
        libsqlite3-dev libfontconfig1-dev libicu-dev libfreetype6 libssl-dev \
        libpng-dev libjpeg-dev python \
     && apt-get autoremove -y \
+    && apt-get install -y libfontconfig1 libicu52 libjpeg8 \
     && apt-get clean -y \
     && rm -rf /var/lib/apt/lists/*
 
