@@ -24,7 +24,7 @@ mysql:
 
 > You can use `mariadb`/`postgres` instead of `mysql`.
 
-## setup
+## install
 
 ```
 $ firefox http://localhost:8989/admin/install.php
@@ -48,8 +48,20 @@ Attempt Installation                                    [Install/Upgrade Databas
 ==================================================================================
 ```
 
-## todo
+## email
 
-- support `curl`
-- config `smtp`
-- ...
+Append following to `/var/www/html/config_inc.php`
+
+```
+$g_phpMailer_method = PHPMAILER_METHOD_SMTP;
+$g_administrator_email = 'admin@example.org';
+$g_webmaster_email = 'webmaster@example.org';
+$g_return_path_email = 'mantisbt@example.org';
+$g_from_email = 'mantisbt@example.org';
+$g_smtp_host = 'smtp.example.org';
+$g_smtp_port = 25;
+$g_smtp_connection_mode = 'tls';
+$g_smtp_username = 'mantisbt';
+$g_smtp_password = '********';
+```
+
