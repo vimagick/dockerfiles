@@ -21,6 +21,7 @@ server:
     - "SERVER_PORT=80"
     - "PROXY_IP=www.google.com"
     - "PROXY_PORT=80"
+    - "KEY=CB2FBA2BC70490526E749E01BB050F6B555964290DFF58CF24785B4A093F7B18"
 
 client:
   image: vimagick/fteproxy
@@ -34,7 +35,11 @@ client:
     - "SERVER_PORT=80"
     - "CLIENT_IP=0.0.0.0"
     - "CLIENT_PORT=80"
+    - "KEY=CB2FBA2BC70490526E749E01BB050F6B555964290DFF58CF24785B4A093F7B18"
 ```
+
+> To generate random key:  
+> `xxd -u -p -c32 /dev/urandom | head -n1`
 
 ## Run fteproxy server/client
 
