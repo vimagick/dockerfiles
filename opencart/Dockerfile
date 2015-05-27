@@ -21,7 +21,7 @@ ENV OPENCART_FILE opencart.tar.gz
 
 RUN curl -sSL ${OPENCART_URL} -o ${OPENCART_FILE} \
     && echo "${OPENCART_MD5} ${OPENCART_FILE}" | md5sum -c \
-    && tar xzf ${OPENCART_FILE} --strip 2 '*/upload/' \
+    && tar xzf ${OPENCART_FILE} --strip 2 --wildcards '*/upload/' \
     && mv config-dist.php config.php \
     && mv admin/config-dist.php admin/config.php \
     && rm ${OPENCART_FILE} \
