@@ -1,7 +1,3 @@
-`OpenCart` is designed feature rich, easy to use, search engine
-friendly and with a visually appealing interface.
-
-```
 opencart:
   image: opencart
   ports:
@@ -16,4 +12,4 @@ mysql:
     - MYSQL_ROOT_PASSWORD=root
     - MYSQL_DATABASE=opencart
   restart: always
-```
+
