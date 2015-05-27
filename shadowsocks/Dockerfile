@@ -1,20 +1,28 @@
 #
-# Dockerfile for Shadowsocks
+# Dockerfile for shadowsocks
 #
 
-FROM ubuntu:latest
-MAINTAINER noreply@datageek.info
+FROM debian:jessie
+MAINTAINER kev <noreply@datageek.info>
 
-RUN apt-get update
-RUN apt-get install -y python
+RUN apt-get update \
+    && apt-get install -y curl python \
+    && curl -sSL https://bootstrap.pypa.io/get-pip.py | python \
+    && pip install shadowsocks \
+    && rm -rf /var/lib/apt/lists/*
 
-ADD https://bootstrap.pypa.io/get-pip.py /tmp/
-
-RUN python /tmp/get-pip.py
-RUN pip install shadowsocks
-
+ENV SERVER_ADDR 0.0.0.0
+ENV SERVER_PORT 8388
 ENV PASSWORD secret
 ENV METHOD aes-256-cfb
+ENV TIMEOUT 300
 ENV WORKERS 10
 
-CMD ssserver -k $PASSWORD -m $METHOD --workers $WORKERS
+CMD ssserver -s $SERVER_ADDR \
+             -p $SERVER_PORT \
+             -k $PASSWORD \
+             -m $METHOD \
+             -t $TIMEOUT \
+             --fast-open \
+             --workers $WORKERS
+
