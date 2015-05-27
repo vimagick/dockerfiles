@@ -14,7 +14,7 @@ In the following example, I will setup a server/client pair to connect www.googl
 
 ## Create a docker-compose.yml
 
-```
+```yaml
 server:
   image: vimagick/fteproxy
   ports:
@@ -47,7 +47,7 @@ client:
 
 ## Run fteproxy server/client
 
-```
+```bash
 $ docker-compose up -d
 Creating fteproxy_server_1...
 Creating fteproxy_client_1...
@@ -61,7 +61,7 @@ fteproxy_server_1   /bin/sh -c /fteproxy/ftepr ...   Up      0.0.0.0:32768->80/t
 
 ## Test with curl
 
-```
+```html
 $ curl http://localhost:9009/
 <HTML><HEAD><meta http-equiv="content-type" content="text/html;charset=utf-8">
 <TITLE>302 Moved</TITLE></HEAD><BODY>
