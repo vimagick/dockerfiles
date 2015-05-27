@@ -8,6 +8,10 @@ fteproxy is fast, free, open source, and cross platform.
 
 In the following example, I will setup a server/client pair to connect www.google.com:80.
 
+![before](https://fteproxy.org/images/withoutfte.png)
+
+![after](https://fteproxy.org/images/withfte.png)
+
 ## Create a docker-compose.yml
 
 ```
