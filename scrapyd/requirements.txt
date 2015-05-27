@@ -17,6 +17,5 @@ redis
 # others
 chardet
 requests
-supervisor
 toolz
 

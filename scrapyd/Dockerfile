@@ -10,33 +10,36 @@
 #
 
 FROM ubuntu:14.04
-MAINTAINER kev
+MAINTAINER kev <noreply@datageek.info>
 
-RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 627220E7
-RUN echo 'deb http://archive.scrapy.org/ubuntu scrapy main' >/etc/apt/sources.list.d/scrapy.list
-RUN apt-get update &&\
-    apt-get install -y\
-        git\
-        libpq-dev\
-        build-essential\
-        python-dev\
-        python-pip\
-        python-numpy\
-        python-txzmq\
-        scrapy-0.24\
-        scrapyd &&\
-    apt-get clean
-RUN rm -rf /var/lib/apt/lists/*
-RUN mkdir /var/log/supervisor/
+ADD ./requirements.txt /tmp/
+
+RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 627220E7 \
+    && echo 'deb http://archive.scrapy.org/ubuntu scrapy main' > /etc/apt/sources.list.d/scrapy.list \
+    && apt-get update \
+    && apt-get install -y git \
+                          libpq-dev \
+                          build-essential \
+                          python-dev \
+                          python-pip \
+                          python-numpy \
+                          python-txzmq \
+                          scrapy-0.24 \
+                          scrapyd \
+                          supervisor \
+    && pip install -r /tmp/requirements.txt \
+    && apt-get remove -y build-essential \
+    && apt-get autoremove -y \
+    && apt-get clean -y \
+    && rm -rf /var/lib/apt/lists/* \
+    && mkdir /var/log/supervisor/
 
 ADD ./001-scrapyd /etc/scrapyd/conf.d/
-ADD ./requirements.txt /tmp/
 ADD ./supervisord.conf /etc/supervisor/supervisord.conf
 
-WORKDIR /tmp
-RUN pip install -r requirements.txt
+VOLUME /var/lib/scrapyd
 
 EXPOSE 6800 9001
 
-CMD supervisord -c /etc/supervisor/supervisord.conf
+CMD supervisord -n -c /etc/supervisor/supervisord.conf
 
