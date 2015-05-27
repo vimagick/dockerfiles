@@ -31,8 +31,7 @@ RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 627220E7 \
     && apt-get remove -y build-essential \
     && apt-get autoremove -y \
     && apt-get clean -y \
-    && rm -rf /var/lib/apt/lists/* \
-    && mkdir /var/log/supervisor/
+    && rm -rf /var/lib/apt/lists/*
 
 ADD ./001-scrapyd /etc/scrapyd/conf.d/
 ADD ./supervisord.conf /etc/supervisor/supervisord.conf
