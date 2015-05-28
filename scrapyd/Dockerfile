@@ -5,6 +5,9 @@
 FROM debian:jessie
 MAINTAINER kev <noreply@datageek.info>
 
+ADD ./scrapyd.conf /etc/scrapyd/
+ADD ./requirements.txt /etc/scrapyd/
+
 RUN apt-get update \
     && apt-get install -y autoconf \
                           build-essential \
@@ -35,6 +38,7 @@ RUN apt-get update \
         && rm -rf libxslt \
     && curl -sSL https://bootstrap.pypa.io/get-pip.py | python \
     && pip install scrapy==0.24.6 scrapyd==1.0.1 \
+    && pip install -r /etc/scrapyd/requirements.txt \
     && curl -sSL https://github.com/scrapy/scrapy/raw/master/extras/scrapy_bash_completion -o /etc/bash_completion.d/scrapy_bash_completion \
     && echo 'source /etc/bash_completion.d/scrapy_bash_completion' >> /root/.bashrc \
     && apt-get remove -y autoconf \
@@ -46,8 +50,13 @@ RUN apt-get update \
     && apt-get autoremove -y \
     && rm -rf /var/lib/apt/lists/*
 
-CMD scrapyd -u scrapy \
-            -g nogroup \
-            --pidfile /var/run/scrapyd.pid \
-            -l /dev/stdout
+RUN mkdir -p /var/lib/scrapyd/dbs \
+             /var/lib/scrapyd/eggs \
+             /var/lib/scrapyd/items \
+             /var/lib/scrapyd/logs
 
+VOLUME /etc/scrapyd/ /var/lib/scrapyd/
+
+EXPOSE 6800
+
+CMD ["scrapyd"]
