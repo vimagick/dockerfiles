@@ -16,6 +16,7 @@ RUN apt-get update \
                           python-dev \
     && curl -sSL https://bootstrap.pypa.io/get-pip.py | python \
     && pip install scrapy==1.0.0rc1 \
+    && curl -sSL https://github.com/scrapy/scrapy/raw/master/extras/scrapy_bash_completion -o /etc/bash_completion.d/scrapy_bash_completion \
     && apt-get remove -y build-essential \
                          libffi-dev \
                          libssl-dev \
