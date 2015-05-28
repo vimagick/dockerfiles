@@ -50,11 +50,6 @@ RUN apt-get update \
     && apt-get autoremove -y \
     && rm -rf /var/lib/apt/lists/*
 
-RUN mkdir -p /var/lib/scrapyd/dbs \
-             /var/lib/scrapyd/eggs \
-             /var/lib/scrapyd/items \
-             /var/lib/scrapyd/logs
-
 VOLUME /etc/scrapyd/ /var/lib/scrapyd/
 
 EXPOSE 6800
