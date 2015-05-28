@@ -1,42 +1,53 @@
 #
-# Dockerfile for scrapyd
-#
-# References:
-# - http://docs.docker.com/reference/builder/
-# - http://doc.scrapy.org/en/latest/topics/ubuntu.html#topics-ubuntu
-# - https://github.com/scrapy/scrapyd/blob/master/debian/scrapyd.upstart#L9-L11
-# - http://pip.readthedocs.org/en/latest/installing.html
-# - http://supervisord.org/index.html
+# Dockerfile for scrapy
 #
 
-FROM ubuntu:14.04
+FROM debian:jessie
 MAINTAINER kev <noreply@datageek.info>
 
-ADD ./requirements.txt /tmp/
-
-RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 627220E7 \
-    && echo 'deb http://archive.scrapy.org/ubuntu scrapy main' > /etc/apt/sources.list.d/scrapy.list \
-    && apt-get update \
-    && apt-get install -y git \
-                          libpq-dev \
+RUN apt-get update \
+    && apt-get install -y autoconf \
                           build-essential \
+                          curl \
+                          libffi-dev \
+                          libssl-dev \
+                          libtool \
+                          python \
                           python-dev \
-                          python-pip \
-                          python-numpy \
-                          python-txzmq \
-                          scrapy-0.24 \
-                          scrapyd \
-                          supervisor \
-    && pip install -r /tmp/requirements.txt \
-    && apt-get remove -y build-essential \
+                          vim-tiny \
+    && mkdir libxml2 \
+        && curl -sSL ftp://xmlsoft.org/libxml2/libxml2-2.9.2.tar.gz | tar xz --strip 1 -C libxml2 \
+        && cd libxml2 \
+        && ./configure --prefix=/usr \
+        && make \
+        && make install \
+        && ldconfig \
+        && cd .. \
+        && rm -rf libxml2 \
+    && mkdir libxslt \
+        && curl -sSL https://git.gnome.org/browse/libxslt/snapshot/libxslt-1.1.28.tar.xz | tar xJ --strip 1 -C libxslt \
+        && cd libxslt \
+        && ./autogen.sh --prefix=/usr \
+        && make \
+        && make install \
+        && ldconfig \
+        && cd .. \
+        && rm -rf libxslt \
+    && curl -sSL https://bootstrap.pypa.io/get-pip.py | python \
+    && pip install scrapy==0.24.6 scrapyd==1.0.1 \
+    && curl -sSL https://github.com/scrapy/scrapy/raw/master/extras/scrapy_bash_completion -o /etc/bash_completion.d/scrapy_bash_completion \
+    && echo 'source /etc/bash_completion.d/scrapy_bash_completion' >> /root/.bashrc \
+    && apt-get remove -y autoconf \
+                         build-essential \
+                         libffi-dev \
+                         libssl-dev \
+                         libtool \
+                         python-dev \
     && apt-get autoremove -y \
-    && apt-get clean -y \
     && rm -rf /var/lib/apt/lists/*
 
-ADD ./001-scrapyd /etc/scrapyd/conf.d/
-ADD ./scrapyd.conf /etc/supervisor/conf.d/
-
-EXPOSE 6800 9001
-
-CMD supervisord -n -c /etc/supervisor/supervisord.conf
+CMD scrapyd -u scrapy
+            -g nogroup
+            --pidfile /var/run/scrapyd.pid
+            -l /dev/stdout
 
