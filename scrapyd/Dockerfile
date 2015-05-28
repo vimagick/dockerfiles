@@ -12,6 +12,7 @@ RUN apt-get update \
     && apt-get install -y autoconf \
                           build-essential \
                           curl \
+                          git \
                           libffi-dev \
                           libssl-dev \
                           libtool \
