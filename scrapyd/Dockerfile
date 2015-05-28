@@ -1,5 +1,5 @@
 #
-# Dockerfile for scrapy
+# Dockerfile for scrapyd
 #
 
 FROM debian:jessie
