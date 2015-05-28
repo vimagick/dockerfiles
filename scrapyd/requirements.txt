@@ -10,7 +10,6 @@ pyquery
 pyyaml
 
 # database
-psycopg2
 pymongo
 redis
 
