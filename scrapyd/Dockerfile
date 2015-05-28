@@ -46,8 +46,8 @@ RUN apt-get update \
     && apt-get autoremove -y \
     && rm -rf /var/lib/apt/lists/*
 
-CMD scrapyd -u scrapy
-            -g nogroup
-            --pidfile /var/run/scrapyd.pid
+CMD scrapyd -u scrapy \
+            -g nogroup \
+            --pidfile /var/run/scrapyd.pid \
             -l /dev/stdout
 
