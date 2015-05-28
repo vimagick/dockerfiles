@@ -14,6 +14,7 @@ RUN apt-get update \
                           libtool \
                           python \
                           python-dev \
+                          vim-tiny \
     && mkdir libxml2 \
         && curl -sSL ftp://xmlsoft.org/libxml2/libxml2-2.9.2.tar.gz | tar xz --strip 1 -C libxml2 \
         && cd libxml2 \
@@ -33,8 +34,9 @@ RUN apt-get update \
         && cd .. \
         && rm -rf libxslt \
     && curl -sSL https://bootstrap.pypa.io/get-pip.py | python \
-    && pip install scrapy==1.0.0rc1 \
+    && pip install scrapy==0.24.6 \
     && curl -sSL https://github.com/scrapy/scrapy/raw/master/extras/scrapy_bash_completion -o /etc/bash_completion.d/scrapy_bash_completion \
+    && echo 'source /etc/bash_completion.d/scrapy_bash_completion' >> /root/.bashrc \
     && apt-get remove -y autoconf \
                          build-essential \
                          libffi-dev \
