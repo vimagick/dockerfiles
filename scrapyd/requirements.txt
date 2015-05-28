@@ -16,5 +16,6 @@ redis
 # others
 chardet
 requests
+service_identity
 toolz
 
