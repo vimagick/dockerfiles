@@ -34,9 +34,7 @@ RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 627220E7 \
     && rm -rf /var/lib/apt/lists/*
 
 ADD ./001-scrapyd /etc/scrapyd/conf.d/
-ADD ./supervisord.conf /etc/supervisor/supervisord.conf
-
-VOLUME /var/lib/scrapyd
+ADD ./scrapyd.conf /etc/supervisor/conf.d/
 
 EXPOSE 6800 9001
 
