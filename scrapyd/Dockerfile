@@ -1,11 +1,11 @@
 #
-# Dockerfile for scrapyd
+# Dockerfile for scrapyd-onbuild
 #
 
 FROM debian:jessie
 MAINTAINER kev <noreply@datageek.info>
 
-ADD ./scrapyd.conf /etc/scrapyd/
+ADD ./packages.txt /etc/scrapyd/
 ADD ./requirements.txt /etc/scrapyd/
 
 RUN apt-get update \
@@ -39,7 +39,9 @@ RUN apt-get update \
         && rm -rf libxslt \
     && curl -sSL https://bootstrap.pypa.io/get-pip.py | python \
     && pip install scrapy==0.24.6 scrapyd==1.0.1 \
+    && xargs apt-get install -y < /etc/scrapyd/packages.txt \
     && pip install -r /etc/scrapyd/requirements.txt \
+    && xargs apt-get remove -y < /etc/scrapyd/packages.txt \
     && curl -sSL https://github.com/scrapy/scrapy/raw/master/extras/scrapy_bash_completion -o /etc/bash_completion.d/scrapy_bash_completion \
     && echo 'source /etc/bash_completion.d/scrapy_bash_completion' >> /root/.bashrc \
     && apt-get remove -y autoconf \
@@ -51,8 +53,8 @@ RUN apt-get update \
     && apt-get autoremove -y \
     && rm -rf /var/lib/apt/lists/*
 
+ADD ./scrapyd.conf /etc/scrapyd/
 VOLUME /etc/scrapyd/ /var/lib/scrapyd/
-
 EXPOSE 6800
 
 CMD ["scrapyd"]

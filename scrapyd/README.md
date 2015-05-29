@@ -1,15 +1,13 @@
-docker-scrapyd
-==============
+scrapyd
+=======
 
 Dockerfile for building an image that runs [scrapyd][1].  
 
-## Building
+Please use this image as base for your own project.
 
-    $ docker build -t scrapyd .
+You may edit these files:
 
-## Running
-
-    $ docker run -p 6800:6800 scrapyd
+- `packages.txt` - dependencies for python requirements
+- `requirements.txt` - additional python packages to be installed
 
 [1]: https://github.com/scrapy/scrapyd
-
