@@ -8,16 +8,16 @@ MAINTAINER kev <noreply@datageek.info>
 RUN apt-get update \
     && apt-get install -y build-essential curl \
     && mkdir libsodium \
-        && cd libsodium \
         && curl -sSL https://download.libsodium.org/libsodium/releases/libsodium-1.0.3.tar.gz | tar xz --strip 1 -C libsodium
+        && cd libsodium \
         && ./configure --prefix=/usr \
         && make install \
         && ldconfig \
         && cd .. \
         && rm -rf libsodium \
     && mkdir dnscrypt-proxy \
-        && cd dnscrypt-proxy \
         && curl -sSL http://download.dnscrypt.org/dnscrypt-proxy/dnscrypt-proxy-1.4.3.tar.gz | tar xz --strip 1 -C dnscrypt-proxy \
+        && cd dnscrypt-proxy \
         && ./configure --prefix=/usr \
         && make install \
         && cd .. \
