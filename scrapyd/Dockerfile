@@ -1,5 +1,5 @@
 #
-# Dockerfile for scrapyd-onbuild
+# Dockerfile for scrapyd
 #
 
 FROM debian:jessie
