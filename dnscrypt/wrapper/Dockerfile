@@ -3,7 +3,6 @@
 #
 
 FROM debian:jessie
-
 MAINTAINER kev <noreply@datageek.info>
 
 RUN apt-get update \
@@ -31,6 +30,7 @@ RUN apt-get update \
     && apt-get remove -y autoconf \
                          automake \
                          build-essential \
+                         curl \
                          git \
                          libevent-dev \
     && rm -rf /var/lib/apt/lists/*
@@ -45,20 +45,19 @@ RUN mkdir -p /var/lib/dnscrypt-wrapper \
                         --provider-secretkey-file=secret.key \
                         --gen-cert-file > cert_file.txt
 
-ENV RESOLVER_ADDR 8.8.8.8
-ENV RESOLVER_PORT 53
-ENV LISTEN_ADDR 0.0.0.0
-ENV LISTEN_PORT 443
-ENV PROVIDER_NAME 2.dnscrypt-cert.yourdomain.com
+ENV RESOLVER_ADDR 8.8.8.8:53
+ENV LISTEN_ADDR 0.0.0.0:443
+ENV PROVIDER_NAME 2.dnscrypt-cert.datageek.info
 
 WORKDIR /var/lib/dnscrypt-wrapper
 VOLUME /var/lib/dnscrypt-wrapper
+
 EXPOSE 443/tcp 443/udp
 
-CMD dnscrypt-wrapper -r ${RESOLVER_ADDR}:${RESOLVER_PORT} \
-                     -a ${LISTEN_ADDR}:${LISTEN_PORT} \
-                     --crypt-publickey-file=crypt_public.key \
+CMD dnscrypt-wrapper --crypt-publickey-file=crypt_public.key \
                      --crypt-secretkey-file=crypt_secret.key \
+                     --local-address ${LISTEN_ADDR} \
                      --provider-cert-file=dnscrypt.cert \
-                     --provider-name=${PROVIDER_NAME}
+                     --provider-name=${PROVIDER_NAME} \
+                     --resolver-address ${RESOLVER_ADDR}
 

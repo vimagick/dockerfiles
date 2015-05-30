@@ -1,6 +1,0 @@
-dnscrypt:
-  image: vimagick/dnscrypt
-  ports:
-    - "53:53/udp"
-    - "53:53/tcp"
-  restart: always

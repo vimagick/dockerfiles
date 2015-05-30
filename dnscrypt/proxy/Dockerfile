@@ -1,37 +1,38 @@
 #
-# Dockerfile for dnscrypt
+# Dockerfile for dnscrypt-proxy
 #
 
-FROM ubuntu:14.04
+FROM debian:jessie
 MAINTAINER kev <noreply@datageek.info>
 
-RUN apt-get update
-RUN apt-get install -y build-essential supervisor pdnsd
-RUN apt-get clean
+RUN apt-get update \
+    && apt-get install -y build-essential curl \
+    && mkdir libsodium \
+        && cd libsodium \
+        && curl -sSL https://download.libsodium.org/libsodium/releases/libsodium-1.0.3.tar.gz | tar xz --strip 1 -C libsodium
+        && ./configure --prefix=/usr \
+        && make install \
+        && ldconfig \
+        && cd .. \
+        && rm -rf libsodium \
+    && mkdir dnscrypt-proxy \
+        && cd dnscrypt-proxy \
+        && curl -sSL http://download.dnscrypt.org/dnscrypt-proxy/dnscrypt-proxy-1.4.3.tar.gz | tar xz --strip 1 -C dnscrypt-proxy \
+        && ./configure --prefix=/usr \
+        && make install \
+        && cd .. \
+        && rm -rf dnscrypt-proxy \
+    && rm -rf /usr/lib/apt/lists/*
 
-ADD ./services.conf /etc/supervisor/conf.d/
-ADD ./pdnsd.conf /etc/
-ADD https://download.libsodium.org/libsodium/releases/libsodium-1.0.2.tar.gz /tmp/pkgs/
-ADD http://download.dnscrypt.org/dnscrypt-proxy/dnscrypt-proxy-1.4.3.tar.gz /tmp/pkgs/
+ENV LISTEN_ADDR 0.0.0.0:53
+ENV RESOLVER_ADDR 208.67.220.220:443
+ENV PROVIDER_NAME 2.dnscrypt-cert.opendns.com
+ENV PROVIDER_KEY B735:1140:206F:225D:3E2B:D822:D7FD:691E:A1C3:3CC8:D666:8D0C:BE04:BFAB:CA43:FB79
 
-WORKDIR /tmp/pkgs/
+EXPOSE 53/tcp 53/udp
 
-RUN tar xzf libsodium-1.0.2.tar.gz && \
-    cd libsodium-1.0.2 && \
-    ./configure && \
-    make && \
-    make install
+CMD dnscrypt-proxy --local-address $LISTEN_ADDR \
+                   --provider-name $PROVIDER_NAME \
+                   --provider-key $PROVIDER_KEY \
+                   --resolver-address $RESOLVER_ADDR
 
-RUN echo /usr/local/lib > /etc/ld.so.conf.d/local.conf && ldconfig
-
-RUN tar xzf dnscrypt-proxy-1.4.3.tar.gz && \
-    cd dnscrypt-proxy-1.4.3 && \
-    ./configure && \
-    make && \
-    make install
-
-WORKDIR /
-RUN rm -r /tmp/pkgs/
-EXPOSE 53 53/udp
-
-CMD supervisord -n -c /etc/supervisor/supervisord.conf
