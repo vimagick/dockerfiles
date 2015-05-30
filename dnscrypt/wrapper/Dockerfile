@@ -7,7 +7,9 @@ FROM debian:jessie
 MAINTAINER kev <noreply@datageek.info>
 
 RUN apt-get update \
-    && apt-get install -y build-essential \
+    && apt-get install -y autoconf \
+                          automake \
+                          build-essential \
                           curl \
                           git \
                           libevent-dev \
@@ -26,7 +28,9 @@ RUN apt-get update \
         && make install \
         && cd .. \
         && rm -rf dnscrypt-wrapper \
-    && apt-get remove -y build-essential \
+    && apt-get remove -y autoconf \
+                         automake \
+                         build-essential \
                          git \
                          libevent-dev \
     && rm -rf /var/lib/apt/lists/*
@@ -56,6 +60,5 @@ CMD dnscrypt-wrapper -r ${RESOLVER_ADDR}:${RESOLVER_PORT} \
                      --crypt-publickey-file=crypt_public.key \
                      --crypt-secretkey-file=crypt_secret.key \
                      --provider-cert-file=dnscrypt.cert \
-                     --provider-name=${PROVIDER_NAME} \
-                     -VV
+                     --provider-name=${PROVIDER_NAME}
 
