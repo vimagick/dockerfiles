@@ -56,7 +56,7 @@ EXPOSE 443/tcp 443/udp
 
 CMD dnscrypt-wrapper --crypt-publickey-file=crypt_public.key \
                      --crypt-secretkey-file=crypt_secret.key \
-                     --local-address ${LISTEN_ADDR} \
+                     --listen-address ${LISTEN_ADDR} \
                      --provider-cert-file=dnscrypt.cert \
                      --provider-name=${PROVIDER_NAME} \
                      --resolver-address ${RESOLVER_ADDR}
