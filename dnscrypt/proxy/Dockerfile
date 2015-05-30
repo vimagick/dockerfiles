@@ -31,8 +31,8 @@ ENV PROVIDER_KEY B735:1140:206F:225D:3E2B:D822:D7FD:691E:A1C3:3CC8:D666:8D0C:BE0
 
 EXPOSE 53/tcp 53/udp
 
-CMD dnscrypt-proxy --local-address $LISTEN_ADDR \
-                   --provider-name $PROVIDER_NAME \
-                   --provider-key $PROVIDER_KEY \
-                   --resolver-address $RESOLVER_ADDR
+CMD dnscrypt-proxy --local-address=$LISTEN_ADDR \
+                   --provider-name=$PROVIDER_NAME \
+                   --provider-key=$PROVIDER_KEY \
+                   --resolver-address=$RESOLVER_ADDR
 
