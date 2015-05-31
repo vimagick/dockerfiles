@@ -8,25 +8,22 @@ MAINTAINER kev <noreply@datageek.info>
 ENV DEBIAN_FRONTEND noninteractive
 ENV DNS_VER 1.3.1
 ENV DNS_URL https://github.com/clowwindy/ChinaDNS/releases/download/${DNS_VER}/chinadns-${DNS_VER}.tar.gz
-ENV DNS_DIR /tmp/chinadns
 ENV DNS_FILE chinadns.tar.gz
 ENV DNS_MD5 9e2aca1a265aec7ca87f4d0377d9fa74
 
 RUN apt-get update \
     && apt-get install -y build-essential curl dnsmasq supervisor \
-    && mkdir -p ${DNS_DIR} \
-    && cd ${DNS_DIR} \
+    && mkdir -p chinadns \
+    && cd chinadns \
     && curl -sSL ${DNS_URL} -o ${DNS_FILE} \
     && echo "${DNS_MD5} ${DNS_FILE}" | md5sum -c \
     && tar xzf ${DNS_FILE} --strip 1 \
     && ./configure \
-    && make \
     && make install \
     && cd .. \
-    && rm -rf ${DNS_DIR} \
+    && rm -rf chinadns \
     && apt-get remove -y build-essential \
     && apt-get autoremove -y \
-    && apt-get clean -y \
     && rm -rf /var/lib/apt/lists/*
 
 RUN curl http://ftp.apnic.net/apnic/stats/apnic/delegated-apnic-latest \
