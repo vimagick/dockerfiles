@@ -5,7 +5,6 @@
 FROM debian:jessie
 MAINTAINER kev <noreply@datageek.info>
 
-ENV DEBIAN_FRONTEND noninteractive
 ENV DNS_VER 1.3.1
 ENV DNS_URL https://github.com/clowwindy/ChinaDNS/releases/download/${DNS_VER}/chinadns-${DNS_VER}.tar.gz
 ENV DNS_FILE chinadns.tar.gz
