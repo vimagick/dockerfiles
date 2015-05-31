@@ -12,15 +12,15 @@ ENV DNS_MD5 9e2aca1a265aec7ca87f4d0377d9fa74
 
 RUN apt-get update \
     && apt-get install -y build-essential curl dnsmasq supervisor \
-    && mkdir -p chinadns \
-    && cd chinadns \
-    && curl -sSL ${DNS_URL} -o ${DNS_FILE} \
-    && echo "${DNS_MD5} ${DNS_FILE}" | md5sum -c \
-    && tar xzf ${DNS_FILE} --strip 1 \
-    && ./configure \
-    && make install \
-    && cd .. \
-    && rm -rf chinadns \
+    && mkdir chinadns \
+        && cd chinadns \
+        && curl -sSL ${DNS_URL} -o ${DNS_FILE} \
+        && echo "${DNS_MD5} ${DNS_FILE}" | md5sum -c \
+        && tar xzf ${DNS_FILE} --strip 1 \
+        && ./configure \
+        && make install \
+        && cd .. \
+        && rm -rf chinadns \
     && apt-get remove -y build-essential \
     && apt-get autoremove -y \
     && rm -rf /var/lib/apt/lists/*
