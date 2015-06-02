@@ -1,8 +1,9 @@
 splash:
-  image: scrapinghub/splash
+  image: vimagick/splash
+  command: --maxrss 4000
   ports:
     - "8050:8050"
     - "8051:8051"
     - "5023:5023"
-  mem_limit: 4G
+  mem_limit: 4.5G
   restart: always
