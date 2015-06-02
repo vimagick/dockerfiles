@@ -1,0 +1,8 @@
+splash:
+  image: scrapinghub/splash
+  ports:
+    - "8050:8050"
+    - "8051:8051"
+    - "5023:5023"
+  mem_limit: 4G
+  restart: always
