@@ -1,9 +1,13 @@
 splash:
   image: vimagick/splash
-  command: --maxrss 4000
+  command: --maxrss 4096
   ports:
     - "8050:8050"
     - "8051:8051"
     - "5023:5023"
-  mem_limit: 4.5G
+  volumes:
+    - ./splash/proxy-profiles:/etc/splash/proxy-profiles
+    - ./splash/js-profiles:/etc/splash/js-profiles
+    - ./splash/filters:/etc/splash/filters
+  mem_limit: 4500M
   restart: always

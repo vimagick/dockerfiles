@@ -4,6 +4,8 @@ opencart:
     - "8000:80"
   links:
     - mysql
+  volumes:
+    - /var/www/html
   restart: always
 
 mysql:
