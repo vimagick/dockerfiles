@@ -14,7 +14,7 @@ ENV MAXCLIENTSPERIP 2
 ENV USERBANDWIDTH 1024:1024
 
 EXPOSE 21
-VOLUME /home/ftpuser
+VOLUME /home/ftpuser /etc/pure-ftpd
 
 CMD pure-ftpd --login puredb:$PURE_DBFILE \
               --maxclientsperip $MAXCLIENTSPERIP \
