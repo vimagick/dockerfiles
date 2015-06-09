@@ -4,7 +4,7 @@ efficiency and ease of use. It provides simple answers to common needs, plus
 unique useful features for personal users as well as hosting providers. 
 
 
-## docker-compose.yml
+## ~/fig/pureftpd/docker-compose.yml
 
 ```
 pureftpd:
@@ -16,4 +16,33 @@ pureftpd:
     - pure-ftpd:/etc/pure-ftpd
   privileged: true
   restart: always
+```
+
+## server
+
+```
+$ cd ~/fig/pureftpd/
+$ fig up -d
+$ fig ps
+$ docker exec -it pureftpd_pureftpd_1 bash
+>>> pure-pw useradd kev -u ftpuser -d /home/ftpuser/kev -m
+>>> pure-pw list
+>>> pure-pw show kev
+>>> pure-pw passwd kev -m
+>>> pure-pw userdel kev -m
+```
+
+## client
+
+```
+$ ftp remote-server
+Name: kev
+Password: ******
+ftp> !ls
+ftp> put file.txt
+ftp> !rm file.txt
+ftp> get file.txt
+ftp> del file.txt
+ftp> ls
+ftp> bye
 ```
