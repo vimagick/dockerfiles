@@ -25,11 +25,12 @@ $ cd ~/fig/pureftpd/
 $ fig up -d
 $ fig ps
 $ docker exec -it pureftpd_pureftpd_1 bash
->>> pure-pw useradd kev -u ftpuser -d /home/ftpuser/kev -m
+>>> pure-pw useradd kev -u ftpuser -d /home/ftpuser/kev -t 1024 -T 1024 -y 1 -m
 >>> pure-pw list
 >>> pure-pw show kev
 >>> pure-pw passwd kev -m
 >>> pure-pw userdel kev -m
+>>> pure-ftpwho -n
 ```
 
 ## client
