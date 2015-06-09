@@ -5,8 +5,8 @@
 FROM debian:jessie
 MAINTAINER kev <noreply@datageek.info>
 
-RUN apt-get update && apt-get install -y pure-ftpd vim-tiny && rm -rf /var/lib/apt/lists/*
-RUN groupadd ftpgroup && useradd -g ftpgroup -s /bin/bash -m ftpuser
+RUN apt-get update && apt-get install -y pure-ftpd && rm -rf /var/lib/apt/lists/*
+RUN groupadd ftpgroup && useradd -g ftpgroup -m ftpuser
 
 ENV PURE_PASSWDFILE /etc/pure-ftpd/pureftpd.passwd
 ENV PURE_DBFILE /etc/pure-ftpd/pureftpd.pdb
