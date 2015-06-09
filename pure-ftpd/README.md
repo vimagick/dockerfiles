@@ -38,6 +38,7 @@ $ docker exec -it pureftpd_pureftpd_1 bash
 $ ftp remote-server
 Name: kev
 Password: ******
+ftp> !touch file.txt
 ftp> !ls
 ftp> put file.txt
 ftp> !rm file.txt
