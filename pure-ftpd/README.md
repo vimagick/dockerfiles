@@ -18,6 +18,10 @@ pureftpd:
   restart: always
 ```
 
+> We only need to expose port 21 to accept client ftp connection.
+> Pure-FTPd will open random port to accept client ftp-data connection.
+> At this time, host machine is a router for DNAT.
+
 ## server
 
 ```
@@ -31,6 +35,16 @@ $ docker exec -it pureftpd_pureftpd_1 bash
 >>> pure-pw passwd kev -m
 >>> pure-pw userdel kev -m
 >>> pure-ftpwho -n
+>>> exit
+$ tree -F
+.
+├── docker-compose.yml
+├── ftpuser/
+│   └── kev/
+│       └── file.txt
+└── pure-ftpd/
+    ├── pureftpd.passwd
+    └── pureftpd.pdb
 ```
 
 ## client
