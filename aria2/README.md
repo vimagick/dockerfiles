@@ -1,5 +1,20 @@
 `aria2` is a utility for downloading files.
 
+## directory tree
+
+```
+~/fig/aria2/
+├── docker-compose.yml
+├── data/
+└── keys/
+    ├── server.crt
+    └── server.key
+```
+
+> You can generate `server.key` and `server.crt` via this command:
+>> `openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout server.key -out server.crt`
+
+
 ## docker-compose.yml
 
 ```
@@ -14,10 +29,6 @@ aria2:
     - TOKEN=e6c3778f-6361-4ed0-b126-f2cf8fca06db
   restart: always
 ```
-
-> If you mount volume `/etc/aria2`,
-> you need to generate `server-key.pem` and `server-cert.pem` via this command:
->> `openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout server-key.pem -out server-cert.pem`
 
 ## test
 
