@@ -23,7 +23,7 @@ VOLUME $DIR $ETC
 
 CMD aria2c --disable-ipv6            \
            --enable-rpc              \
-           --rpc-listen-all=false    \
+           --rpc-listen-all          \
            --rpc-listen-port=${PORT} \
            --rpc-allow-origin-all    \
            --rpc-secure              \
