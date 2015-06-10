@@ -11,10 +11,6 @@
     └── server.key
 ```
 
-> You can generate `server.key` and `server.crt` via this command:
->> `openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout server.key -out server.crt`
-
-
 ## docker-compose.yml
 
 ```
@@ -30,24 +26,49 @@ aria2:
   restart: always
 ```
 
-## test
+## server
 
 ```
-$ http --verify no https://localhost:6800/jsonrpc \
-       id=$(uuidgen) \
+$ mkdir -p ~/fig/aria2/{data,keys}/
+$ cd ~/fig/aria2/
+$ vim docker-compose.yml
+$ openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout keys/server.key -out keys/server.crt
+$ cp ./keys/server.crt /usr/local/share/ca-certificates/
+$ update-ca-certificates --fresh
+$ fig up -d
+```
+
+## client
+
+```
+$ uuidgen
+3c5323b8-79f7-49d4-8303-fcfe51488db5
+
+$ http --verify no https://datageek.info:6800/jsonrpc \
+       id=3c5323b8-79f7-49d4-8303-fcfe51488db5 \
        method=aria2.getGlobalStat \
        params:='["token:e6c3778f-6361-4ed0-b126-f2cf8fca06db"]'
 
+$ curl https://datageek.info:6800/jsonrpc --data '
+       {
+         "id": "3c5323b8-79f7-49d4-8303-fcfe51488db5",
+         "method": "aria2.getGlobalStat",
+         "params": ["token:e6c3778f-6361-4ed0-b126-f2cf8fca06db"]
+       }' | jq .
+
 {
-    "id": "3c5323b8-79f7-49d4-8303-fcfe51488db5",
-    "jsonrpc": "2.0",
-    "result": {
-        "downloadSpeed": "0",
-        "numActive": "0",
-        "numStopped": "0",
-        "numStoppedTotal": "0",
-        "numWaiting": "0",
-        "uploadSpeed": "0"
-    }
+  "id": "3c5323b8-79f7-49d4-8303-fcfe51488db5",
+  "jsonrpc": "2.0",
+  "result": {
+    "downloadSpeed": "0",
+    "numActive": "0",
+    "numStopped": "0",
+    "numStoppedTotal": "0",
+    "numWaiting": "0",
+    "uploadSpeed": "0"
+  }
 }
 ```
+
+> Please choose `CommonName` properly when generating keys.  
+> `httpie` will throw error without `--verify no` option, I don't know why!
