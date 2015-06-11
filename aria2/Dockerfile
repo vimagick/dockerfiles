@@ -5,9 +5,12 @@
 FROM debian:jessie
 MAINTAINER kev <noreply@datageek.info>
 
+ADD https://github.com/tianon/gosu/releases/download/1.4/gosu-amd64 /usr/local/bin/gosu
+
 RUN apt-get update \
-    && apt-get install -y aria2 sudo \
+    && apt-get install -y aria2 \
     && rm -rf /var/lib/apt/lists/* \
+    && chmod +x /usr/local/bin/gosu \
     && useradd -m aria2
 
 ENV CRT   /etc/aria2/server.crt
@@ -17,7 +20,8 @@ ENV TOKEN 00000000-0000-0000-0000-000000000000
 EXPOSE 6800
 VOLUME /home/aria2 /etc/aria2
 
-CMD sudo -u aria2 aria2c --disable-ipv6            \
+CMD chown -R aria2:aria2 /home/aria2 \
+    && gosu aria2 aria2c --disable-ipv6            \
                          --enable-rpc              \
                          --rpc-listen-all          \
                          --rpc-listen-port=6800    \
