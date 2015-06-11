@@ -10,7 +10,7 @@ RUN apt-get update \
                           build-essential \
                           gawk \
                           git \
-                          ifconfig \
+                          net-tools \
                           iptables \
                           libtool \
     && git clone --recursive https://github.com/clowwindy/ShadowVPN.git \
