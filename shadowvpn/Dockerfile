@@ -26,6 +26,7 @@ RUN apt-get update \
                                       git \
                                       libtool
 
+EXPOSE 1123/udp
 VOLUME /etc/shadowvpn
 
 CMD shadowvpn -c /etc/shadowvpn/server.conf
