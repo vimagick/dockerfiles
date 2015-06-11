@@ -1,0 +1,16 @@
+#
+# Dockerfile for ShadowVPN
+#
+
+FROM debian:jessie
+MAINTAINER kev <noreply@datageek.info>
+
+WORKDIR /
+RUN apt-get update
+RUN apt-get install build-essential automake libtool debhelper gawk git
+RUN git clone --recursive https://github.com/clowwindy/ShadowVPN.git
+
+WORKDIR /ShadowVPN
+RUN ./autogen.sh
+RUN dpkg-buildpackage
+RUN dpkg -i ../shadowvpn_*.deb
