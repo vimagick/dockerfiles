@@ -5,7 +5,7 @@
 FROM debian:jessie
 MAINTAINER kev <noreply@datageek.info>
 
-ENV DIR   /var/lib/aria2
+ENV DIR   /home/aria2
 ENV ETC   /etc/aria2
 ENV CRT   $ETC/server.crt
 ENV KEY   $ETC/server.key
@@ -14,12 +14,16 @@ ENV PORT  6800
 
 RUN apt-get update \
     && apt-get install -y aria2 \
-    && rm -rf /var/lib/apt/lists/* \
-    && mkdir -p $ETC $DIR
+    && rm -rf /var/lib/apt/lists/*
+
+RUN useradd aria2 \
+    && mkdir -p $ETC $DIR \
+    && chown aria2:aria2 $DIR
 
 EXPOSE $PORT
 VOLUME $DIR $ETC
 
+USER aria2
 CMD aria2c --disable-ipv6            \
            --enable-rpc              \
            --rpc-listen-all          \

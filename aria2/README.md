@@ -19,7 +19,7 @@ aria2:
   ports:
     - "6800:6800"
   volumes:
-    - "data:/var/lib/aria2"
+    - "data:/home/aria2"
     - "keys:/etc/aria2"
   environment:
     - TOKEN=e6c3778f-6361-4ed0-b126-f2cf8fca06db
@@ -33,14 +33,15 @@ $ mkdir -p ~/fig/aria2/{data,keys}/
 $ cd ~/fig/aria2/
 $ vim docker-compose.yml
 $ openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout keys/server.key -out keys/server.crt
-$ cp ./keys/server.crt /usr/local/share/ca-certificates/
-$ update-ca-certificates --fresh
 $ fig up -d
 ```
 
 ## client
 
 ```
+$ scp server:fig/aria2/keys/server.crt /usr/local/share/ca-certificates/
+$ update-ca-certificates --fresh
+
 $ uuidgen
 3c5323b8-79f7-49d4-8303-fcfe51488db5
 
