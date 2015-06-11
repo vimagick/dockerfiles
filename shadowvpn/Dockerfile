@@ -12,5 +12,7 @@ RUN git clone --recursive https://github.com/clowwindy/ShadowVPN.git
 
 WORKDIR /ShadowVPN
 RUN ./autogen.sh
-RUN dpkg-buildpackage
-RUN dpkg -i ../shadowvpn_*.deb
+RUN ./configure --enable-static --sysconfdir=/etc
+RUN make install
+
+CMD ["/bin/bash"]
