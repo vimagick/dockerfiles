@@ -5,33 +5,27 @@
 FROM debian:jessie
 MAINTAINER kev <noreply@datageek.info>
 
-ENV DIR   /home/aria2
-ENV ETC   /etc/aria2
-ENV CRT   $ETC/server.crt
-ENV KEY   $ETC/server.key
-ENV TOKEN 00000000-0000-0000-0000-000000000000
-ENV PORT  6800
-
 RUN apt-get update \
     && apt-get install -y aria2 \
-    && rm -rf /var/lib/apt/lists/*
+    && rm -rf /var/lib/apt/lists/* \
+    && useradd -m aria2
 
-RUN useradd aria2 \
-    && mkdir -p $ETC $DIR \
-    && chown aria2:aria2 $DIR
+ENV CRT   /etc/aria2/server.crt
+ENV KEY   /etc/aria2/server.key
+ENV TOKEN 00000000-0000-0000-0000-000000000000
 
-EXPOSE $PORT
-VOLUME $DIR $ETC
-
+EXPOSE 6800
+VOLUME /home/aria2 /etc/aria2
 USER aria2
+
 CMD aria2c --disable-ipv6            \
            --enable-rpc              \
            --rpc-listen-all          \
-           --rpc-listen-port=${PORT} \
+           --rpc-listen-port=6800    \
            --rpc-allow-origin-all    \
            --rpc-secure              \
            --rpc-certificate=${CRT}  \
            --rpc-private-key=${KEY}  \
            --rpc-secret=${TOKEN}     \
-           --dir=${DIR}
+           --dir=/home/aria2
 
