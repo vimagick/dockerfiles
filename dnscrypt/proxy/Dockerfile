@@ -25,7 +25,7 @@ RUN apt-get update \
     && mkdir dnscrypt-proxy \
         && curl -sSL http://download.dnscrypt.org/dnscrypt-proxy/dnscrypt-proxy-$DNSCRYPT_VERSION.tar.gz | tar xz --strip 1 -C dnscrypt-proxy \
         && cd dnscrypt-proxy \
-        && ./configure --prefix=/usr \
+        && ./configure --prefix=/usr --with-plugins \
         && make install \
         && cd .. \
         && rm -rf dnscrypt-proxy \
