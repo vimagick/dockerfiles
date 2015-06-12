@@ -17,7 +17,7 @@ RUN apt-get update \
     && mkdir libsodium \
         && curl -sSL https://download.libsodium.org/libsodium/releases/libsodium-$LIBSODIUM_VERSION.tar.gz | tar xz --strip 1 -C libsodium \
         && cd libsodium \
-        && ./configure --prefix=/usr \
+        && ./configure --prefix=/usr --enable-minimal=yes \
         && make install \
         && ldconfig \
         && cd .. \
