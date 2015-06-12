@@ -5,6 +5,11 @@
 FROM debian:jessie
 MAINTAINER kev <noreply@datageek.info>
 
+ENV LIBSODIUM_VERSION 1.0.3
+ENV RESOLVER_ADDR 8.8.8.8:53
+ENV LISTEN_ADDR 0.0.0.0:443
+ENV PROVIDER_NAME 2.dnscrypt-cert.datageek.info
+
 RUN apt-get update \
     && apt-get install -y autoconf \
                           automake \
@@ -13,7 +18,7 @@ RUN apt-get update \
                           git \
                           libevent-dev \
     && mkdir libsodium \
-        && curl -sSL https://download.libsodium.org/libsodium/releases/libsodium-1.0.3.tar.gz | tar xz --strip 1 -C libsodium \
+        && curl -sSL https://download.libsodium.org/libsodium/releases/libsodium-$LIBSODIUM_VERSION.tar.gz | tar xz --strip 1 -C libsodium \
         && cd libsodium \
         && ./configure --prefix=/usr \
         && make install \
@@ -44,10 +49,6 @@ RUN mkdir -p /var/lib/dnscrypt-wrapper \
                         --provider-publickey-file=public.key \
                         --provider-secretkey-file=secret.key \
                         --gen-cert-file > cert_file.txt
-
-ENV RESOLVER_ADDR 8.8.8.8:53
-ENV LISTEN_ADDR 0.0.0.0:443
-ENV PROVIDER_NAME 2.dnscrypt-cert.datageek.info
 
 WORKDIR /var/lib/dnscrypt-wrapper
 VOLUME /var/lib/dnscrypt-wrapper
