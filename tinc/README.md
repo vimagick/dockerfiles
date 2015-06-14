@@ -36,7 +36,7 @@ server:
     - "655:655/udp"
   volumes:
     - tinc:/etc/tinc
-  cat_add:
+  cap_add:
     - NET_ADMIN
   restart: always
 ```
