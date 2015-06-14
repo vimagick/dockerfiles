@@ -40,5 +40,14 @@ server:
   restart: always
 ```
 
+> TODO: I haven't figure out how to make `net: bridge` work yet!
+
+## server
+
+```
+$ fig up -d
+$ iptables -t nat -A POSTROUTING -s 10.0.0.0/24 -j MASQUERADE
+```
+
 [1]: http://tinc-vpn.org/
 [2]: https://www.digitalocean.com/community/tutorials/how-to-install-tinc-and-set-up-a-basic-vpn-on-ubuntu-14-04
