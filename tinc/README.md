@@ -4,7 +4,7 @@ encryption to create a secure private network between hosts on the Internet.
 To use this image, you need to:
 
 - Have baisc knowledges of tinc
-- Create a directory tree by hand [read this][2]
+- Create a directory tree by hand ([tutor][2])
 - Use `docker-compose` to manage
 
 ## directory tree
@@ -44,7 +44,24 @@ server:
 ## server
 
 ```
+# run
 $ fig up -d
+
+# monitor
+$ fig logs
+
+# stats
+$ watch docker exec tinc_server_1 ss -an
+```
+
+## client
+
+```
+# start
+$ tincd -D -d -n netname --pidfile /tmp/tinc.pid
+
+# stop
+$ tincd -k --pidfile /tmp/tinc.pid
 ```
 
 [1]: http://tinc-vpn.org/
