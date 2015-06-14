@@ -1,7 +1,8 @@
 server:
   image: vimagick/tinc
   ports:
-    - "655:655"
+    - "655:655/tcp"
+    - "655:655/udp"
   volumes:
     - tinc:/etc/tinc
   cat_add:

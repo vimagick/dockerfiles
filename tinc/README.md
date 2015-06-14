@@ -32,10 +32,11 @@ To use this image, you need to:
 server:
   image: vimagick/tinc
   ports:
-    - "655:655"
+    - "655:655/tcp"
+    - "655:655/udp"
   volumes:
     - tinc:/etc/tinc
-  cap_add:
+  cat_add:
     - NET_ADMIN
   restart: always
 ```
