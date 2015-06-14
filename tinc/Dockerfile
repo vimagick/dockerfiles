@@ -6,7 +6,7 @@ FROM debian:jessie
 MAINTAINER kev <noreply@datageek.inf>
 
 ENV NETNAME netname
-ENV PIDFILE /runt/tinc.$NETNAME.pid
+ENV PIDFILE /run/tinc.$NETNAME.pid
 ENV VERBOSE 2
 ENV ADDRESS 10.0.0.1
 ENV NETMASK 255.255.255.0
