@@ -8,9 +8,10 @@ MAINTAINER kev <noreply@datageek.inf>
 ENV NETNAME netname
 ENV PIDFILE /run/tinc.$NETNAME.pid
 ENV VERBOSE 2
+
 ENV ADDRESS 10.0.0.1
-ENV NETWORK 10.0.0.0/24
 ENV NETMASK 255.255.255.0
+ENV NETWORK 10.0.0.0/24
 
 RUN apt-get update \
     && apt-get install -y iptables net-tools tinc \
@@ -27,7 +28,7 @@ RUN /bin/echo -e "Name=server\\nAddressFamily=ipv4\\nInterface=tun0" > tinc.conf
     && chmod +x tinc-up tinc-down
 
 VOLUME /etc/tinc
-EXPOSE 655
+EXPOSE 655/tcp 655/udp
 
 CMD mkdir -p /dev/net \
     && [ -e /dev/net/tun ] || mknod /dev/net/tun c 10 200 \
