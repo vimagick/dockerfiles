@@ -8,7 +8,7 @@ designed to protect your Internet traffic.
 
 ```
 shadowsocks:
-  image: vimagick/shadowsocks:latest
+  image: vimagick/shadowsocks
   ports:
     - "8388:8388"
   environment:
@@ -19,7 +19,7 @@ shadowsocks:
 ## server
 
 ```
-$ docker-compose up
+$ docker-compose up -d
 ```
 
 ## client

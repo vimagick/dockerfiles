@@ -45,10 +45,10 @@ server:
 
 ```
 # run
-$ fig up -d
+$ docker-compose up -d
 
 # monitor
-$ fig logs
+$ docker-compose logs
 
 # stats
 $ watch docker exec tinc_server_1 ss -an
