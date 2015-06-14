@@ -1,9 +1,9 @@
 server:
   image: vimagick/tinc
   ports:
-    - "655:655/udp"
+    - "655:655"
   volumes:
     - tinc:/etc/tinc
-  net: host
-  privileged: true
+  cat_add:
+    - NET_ADMIN
   restart: always

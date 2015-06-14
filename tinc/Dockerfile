@@ -9,10 +9,11 @@ ENV NETNAME netname
 ENV PIDFILE /run/tinc.$NETNAME.pid
 ENV VERBOSE 2
 ENV ADDRESS 10.0.0.1
+ENV NETWORK 10.0.0.0/24
 ENV NETMASK 255.255.255.0
 
 RUN apt-get update \
-    && apt-get install -y net-tools tinc \
+    && apt-get install -y iptables net-tools tinc \
     && rm -rf /var/lib/apt/lists/* \
     && mkdir -p /etc/tinc/$NETNAME/hosts
 
@@ -26,10 +27,13 @@ RUN /bin/echo -e "Name=server\\nAddressFamily=ipv4\\nInterface=tun0" > tinc.conf
     && chmod +x tinc-up tinc-down
 
 VOLUME /etc/tinc
-EXPOSE 655/udp
+EXPOSE 655
 
-CMD tincd --no-detach \
-          --net $NETNAME \
-          --pidfile $PIDFILE \
-          --debug $VERBOSE
+CMD mkdir -p /dev/net \
+    && [ -e /dev/net/tun ] || mknod /dev/net/tun c 10 200 \
+    && iptables -t nat -A POSTROUTING -s $NETWORK -o eth0 -j MASQUERADE \
+    && tincd --no-detach \
+             --net $NETNAME \
+             --pidfile $PIDFILE \
+             --debug $VERBOSE
 

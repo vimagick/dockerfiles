@@ -32,21 +32,18 @@ To use this image, you need to:
 server:
   image: vimagick/tinc
   ports:
-    - "655:655/udp"
+    - "655:655"
   volumes:
     - tinc:/etc/tinc
-  net: host
-  privileged: true
+  cap_add:
+    - NET_ADMIN
   restart: always
 ```
-
-> TODO: I haven't figure out how to make `net: bridge` work yet!
 
 ## server
 
 ```
 $ fig up -d
-$ iptables -t nat -A POSTROUTING -s 10.0.0.0/24 -j MASQUERADE
 ```
 
 [1]: http://tinc-vpn.org/
