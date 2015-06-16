@@ -1,4 +1,4 @@
-[`Shadowsocks`][1] is a secure socks5 proxy,
+[`shadowsocks`][1] is a secure socks5 proxy,
 designed to protect your Internet traffic.
 
 > If you want to keep a secret,

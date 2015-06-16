@@ -5,7 +5,9 @@ shadowsocks-libev
 
 It is a port of shadowsocks created by @clowwindy maintained by @madeye and @linusyang.
 
-Compared to `vimagick/shadowsocks`, `vimagick/shadowsocks-libev` uses less memory.
+Compared to `vimagick/shadowsocks`, `vimagick/shadowsocks-libev` uses less cpu/memory/disk.
+
+## CPU/MEMORY
 
 ```
 $ docker stats shadowsocks_shadowsocks_1
@@ -16,5 +18,15 @@ shadowsocks_shadowsocks_1   0.05%               16.56 MiB/741 MiB   2.23%       
 
 # vimagick/shadowsocks-libev
 CONTAINER                   CPU %               MEM USAGE/LIMIT     MEM %               NET I/O
-shadowsocks_shadowsocks_1   0.00%               2.406 MiB/741 MiB   0.32%               6.475 MiB/6.425 MiB
+shadowsocks_shadowsocks_1   0.00%               476 KiB/741 MiB     0.06%               2.334 MiB/2.341 MiB
+```
+
+## DISK
+
+```
+$ docker images
+
+REPOSITORY                   TAG                 IMAGE ID            CREATED             VIRTUAL SIZE
+vimagick/shadowsocks-libev   latest              a36f480e696a        8 minutes ago       15.1 MB
+vimagick/shadowsocks         latest              35650c84852a        57 minutes ago      51.25 MB
 ```
