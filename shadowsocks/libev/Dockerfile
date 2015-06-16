@@ -20,7 +20,7 @@ ENV METHOD      aes-256-cfb
 ENV TIMEOUT     300
 ENV DNS_ADDR    8.8.8.8
 
-EXPOSE 8388
+EXPOSE $SERVER_PORT
 
 CMD ss-server -s $SERVER_ADDR \
               -p $SERVER_PORT \

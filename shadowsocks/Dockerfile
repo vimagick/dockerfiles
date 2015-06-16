@@ -18,7 +18,7 @@ ENV METHOD      aes-256-cfb
 ENV TIMEOUT     300
 ENV WORKERS     10
 
-EXPOSE 8388
+EXPOSE $SERVER_PORT
 
 CMD ssserver -s $SERVER_ADDR \
              -p $SERVER_PORT \
