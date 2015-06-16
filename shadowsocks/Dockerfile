@@ -2,14 +2,15 @@
 # Dockerfile for shadowsocks
 #
 
-FROM debian:jessie
+FROM alpine
 MAINTAINER kev <noreply@datageek.info>
 
-RUN apt-get update \
-    && apt-get install -y curl python \
+RUN apk update \
+    && apk add curl python \
     && curl -sSL https://bootstrap.pypa.io/get-pip.py | python \
     && pip install shadowsocks \
-    && rm -rf /var/lib/apt/lists/*
+    && apk del curl \
+    && rm -rf /var/cache/apk/*
 
 ENV SERVER_ADDR 0.0.0.0
 ENV SERVER_PORT 8388
