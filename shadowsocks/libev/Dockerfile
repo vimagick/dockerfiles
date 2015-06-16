@@ -10,15 +10,14 @@ ENV SS_URL https://github.com/shadowsocks/shadowsocks-libev/archive/v$SS_VER.tar
 ENV SS_DIR shadowsocks-libev-$SS_VER
 ENV SS_DEP curl linux-headers build-base autoconf libtool openssl-dev
 
-RUN apk update \
-    && apk add $SS_DEP \
+RUN apk add --update $SS_DEP \
     && curl -sSL $SS_URL | tar xz \
     && cd $SS_DIR \
         && ./configure \
         && make install \
         && cd .. \
         && rm -rf $SS_DIR \
-    && apk del $SS_DEP \
+    && apk del --purge $SS_DEP \
     && rm -rf /var/cache/apk/*
 
 ENV SERVER_ADDR 0.0.0.0

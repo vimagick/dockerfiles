@@ -5,11 +5,10 @@
 FROM alpine
 MAINTAINER kev <noreply@datageek.info>
 
-RUN apk update \
-    && apk add curl python \
+RUN apk add --update curl python \
     && curl -sSL https://bootstrap.pypa.io/get-pip.py | python \
     && pip install shadowsocks \
-    && apk del curl \
+    && apk del --purge curl \
     && rm -rf /var/cache/apk/*
 
 ENV SERVER_ADDR 0.0.0.0
