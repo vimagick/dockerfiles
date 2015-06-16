@@ -2,16 +2,24 @@
 # Dockerfile for shadowsocks-libev
 #
 
-FROM debian:jessie
+FROM alpine
 MAINTAINER kev <noreply@datageek.info>
 
-RUN apt-get update \
-    && apt-get install -y curl \
-    && curl http://shadowsocks.org/debian/1D27208A.gpg | apt-key add - \
-    && echo 'deb http://shadowsocks.org/debian wheezy main' > /etc/apt/sources.list.d/ss-libev.list \
-    && apt-get update \
-    && apt-get install -y shadowsocks-libev \
-    && rm -rf /var/lib/apt/lists/*
+ENV SS_VER 2.2.2
+ENV SS_URL https://github.com/shadowsocks/shadowsocks-libev/archive/v$SS_VER.tar.gz
+ENV SS_DIR shadowsocks-libev-$SS_VER
+ENV SS_DEP curl linux-headers build-base autoconf libtool openssl-dev
+
+RUN apk update \
+    && apk add $SS_DEP \
+    && curl -sSL $SS_URL | tar xz \
+    && cd $SS_DIR \
+        && ./configure \
+        && make install \
+        && cd .. \
+        && rm -rf $SS_DIR \
+    && apk del $SS_DEP \
+    && rm -rf /var/cache/apk/*
 
 ENV SERVER_ADDR 0.0.0.0
 ENV SERVER_PORT 8388
