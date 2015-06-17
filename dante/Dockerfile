@@ -5,15 +5,35 @@
 FROM debian:jessie
 MAINTAINER kev <noreply@datageek.info>
 
-RUN apt-get update \
-    && apt-get install -y curl \
-    && curl -o dante-server.deb http://ftp.us.debian.org/debian/pool/main/d/dante/dante-server_1.1.19.dfsg-3+b3_amd64.deb \
-    && dpkg -i dante-server.deb || apt-get install -f -y \
-    && apt-get purge -y --auto-remove curl \
-    && rm -rf dante-server.deb /var/lib/apt/lists/*
 
-ADD danted.conf /etc/danted.conf
+ENV DANTE_VER 1.4.1
+ENV DANTE_URL https://www.inet.no/dante/files/dante-$DANTE_VER.tar.gz
+ENV DANTE_MD5 68c2ce12119e12cea11a90c7a80efa8f
+ENV DANTE_FILE dante.tar.gz
+ENV DANTE_TEMP dante
+ENV DANTE_DEPS build-essential curl
+
+RUN apt-get update \
+    && apt-get install -y $DANTE_DEPS \
+    && mkdir $DANTE_TEMP \
+        && curl -sSL $DANTE_URL -o $DANTE_FILE \
+        && echo "$DANTE_MD5 $DANTE_FILE" | md5sum -c \
+        && tar xzf $DANTE_FILE --strip 1 \
+        && ./configure \
+        && make install \
+        && cd .. \
+        && rm -rf $DANTE_TEMP \
+    && apt-get purge -y --auto-remove $DANTE_DEPS \
+    && rm -rf /var/lib/apt/lists/*
+
+ADD sockd.conf /etc/sockd.conf
+
+ENV CFGFILE /etc/sockd.conf
+ENV PIDFILE /tmp/sockd.pid
+ENV WORKERS 10
+ENV VERBOSE 4
 
 EXPOSE 1080
 
-CMD danted -f /etc/danted.conf
+CMD sockd -f $CFGFILE -p $PIDFILE -N $WORKERS -d $VERBOSE
+
