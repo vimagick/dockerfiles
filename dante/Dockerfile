@@ -10,7 +10,7 @@ RUN apt-get update \
     && curl -o dante-server.deb http://ftp.us.debian.org/debian/pool/main/d/dante/dante-server_1.1.19.dfsg-3+b3_amd64.deb \
     && dpkg -i dante-server.deb || apt-get install -f -y \
     && apt-get purge -y --auto-remove curl \
-    && rm -rf /var/lib/apt/lists/*
+    && rm -rf dante-server.deb /var/lib/apt/lists/*
 
 ADD danted.conf /etc/danted.conf
 
