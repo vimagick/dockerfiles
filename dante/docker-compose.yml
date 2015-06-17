@@ -1,5 +1,5 @@
 dante:
-  image: dante
+  image: vimagick/dante
   ports:
     - "1080:1080"
   volumes:
