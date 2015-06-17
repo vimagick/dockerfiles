@@ -31,9 +31,8 @@ ADD sockd.conf /etc/sockd.conf
 ENV CFGFILE /etc/sockd.conf
 ENV PIDFILE /tmp/sockd.pid
 ENV WORKERS 10
-ENV VERBOSE 4
 
 EXPOSE 1080
 
-CMD sockd -f $CFGFILE -p $PIDFILE -N $WORKERS -d $VERBOSE
+CMD sockd -f $CFGFILE -p $PIDFILE -N $WORKERS
 
