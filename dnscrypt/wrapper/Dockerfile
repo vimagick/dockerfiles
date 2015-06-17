@@ -32,12 +32,12 @@ RUN apt-get update \
         && make install \
         && cd .. \
         && rm -rf dnscrypt-wrapper \
-    && apt-get remove -y autoconf \
-                         automake \
-                         build-essential \
-                         curl \
-                         git \
-                         libevent-dev \
+    && apt-get purge --auto-remove -y autoconf \
+                                      automake \
+                                      build-essential \
+                                      curl \
+                                      git \
+                                      libevent-dev \
     && rm -rf /var/lib/apt/lists/*
 
 RUN mkdir -p /var/lib/dnscrypt-wrapper \
