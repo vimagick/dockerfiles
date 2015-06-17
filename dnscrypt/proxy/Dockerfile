@@ -29,6 +29,7 @@ RUN apt-get update \
         && make install \
         && cd .. \
         && rm -rf dnscrypt-proxy \
+    && apt-get purge --auto-remove -y build-essential curl \
     && rm -rf /usr/lib/apt/lists/*
 
 EXPOSE 53/tcp 53/udp
