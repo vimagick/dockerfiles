@@ -49,6 +49,8 @@ Bridge obfs3 1.2.3.4:9001 F24BF4DE74649E205A8A3621C84F97FF623B2083
 ```
 $ docker-compose up -d
 $ docker-compose logs
+$ docker exec tor_tor_1 cat /root/.tor/fingerprint
+datageek F24BF4DE74649E205A8A3621C84F97FF623B2083
 ```
 
 ## client

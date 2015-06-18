@@ -39,7 +39,7 @@ RUN apk add -U build-base \
     && rm -rf /var/cache/apk/*
 
 COPY ./torrc /etc/tor/torrc
-VOLUME /etc/tor
+VOLUME /etc/tor /root/.tor
 EXPOSE 9001 9030 9050 9051
 
 CMD ["/usr/bin/tor", "-f", "/etc/tor/torrc"]
