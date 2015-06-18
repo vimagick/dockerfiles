@@ -1,11 +1,7 @@
-Log notice stdout
-RunAsDaemon 0
-SocksPort 0.0.0.0:9050
+SocksPort 0
 ORPort 9001
-DirPort 9030
 BridgeRelay 1
-ServerTransportPlugin obfs3 exec /usr/bin/obfsproxy
-ExtORPort auto
 Exitpolicy reject *:*
-ContactInfo noreply@datageek.info
 Nickname datageek
+ContactInfo noreply@datageek.info
+ServerTransportPlugin obfs3 exec /usr/bin/obfsproxy managed

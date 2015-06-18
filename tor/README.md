@@ -17,38 +17,47 @@ tor:
   image: vimagick/tor
   ports:
     - "9001:9001"
-    - "9030:9030"
-    - "9050:9050"
-    - "9051:9051"
   volumes:
     - ./torrc:/etc/tor/torrc
   restart: always
 ```
 
-## torrc
+## torrc (server)
 
 ```
-Log notice stdout
-RunAsDaemon 0
-SocksPort 0.0.0.0:9050
+SocksPort 0
 ORPort 9001
-DirPort 9030
 BridgeRelay 1
-ServerTransportPlugin obfs3 exec /usr/bin/obfsproxy
-ExtORPort auto
 Exitpolicy reject *:*
-ContactInfo noreply@datageek.info
 Nickname datageek
+ContactInfo noreply@datageek.info
+ServerTransportPlugin obfs3 exec /usr/bin/obfsproxy managed
 ```
 
-## up and running
+## torrc (client)
+
+```
+#Socks5Proxy 127.0.0.1:1080
+UseBridges 1
+Bridge obfs3 1.2.3.4:9001 F24BF4DE74649E205A8A3621C84F97FF623B2083
+```
+
+> Please connect via `Socks5Proxy` if you're blocked!
+
+## server
 
 ```
 $ docker-compose up -d
+$ docker-compose logs
+```
+
+## client
+
+```
+$ tor -f /etc/tor/torrc
 $ curl -x socks5h://127.0.0.1:9050 ifconfig.me
 ```
 
-## todo
+## references
 
-- support `obfs4proxy`
-
+- https://www.torproject.org/projects/obfsproxy-debian-instructions.html.en
