@@ -14,7 +14,7 @@ ENV TOR_DEPS build-base libevent-dev openssl-dev
 
 RUN apk add -U $TOR_DEPS \
     && wget -O $TOR_FILE $TOR_URL \
-    && echo "$TOR_MD5 $TOR_FILE" | md5sum -c \
+    && echo "$TOR_MD5  $TOR_FILE" | md5sum -c \
     && tar xzf $TOR_FILE \
         && cd $TOR_TEMP \
         && ./configure --prefix=/ --exec-prefix=/usr \
