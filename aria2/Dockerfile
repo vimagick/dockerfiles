@@ -2,16 +2,14 @@
 # Dockerfile for aria2
 #
 
-FROM debian:jessie
+FROM alpine
 MAINTAINER kev <noreply@datageek.info>
 
-ADD https://github.com/tianon/gosu/releases/download/1.4/gosu-amd64 /usr/local/bin/gosu
-
-RUN apt-get update \
-    && apt-get install -y aria2 \
-    && rm -rf /var/lib/apt/lists/* \
+RUN apk add --update aria2 \
+    && rm -rf /var/cache/apk/* \
+    && aria2 https://github.com/tianon/gosu/releases/download/1.4/gosu-amd64 -o /usr/local/bin/gosu \
     && chmod +x /usr/local/bin/gosu \
-    && useradd -m aria2
+    && adduser -D aria2
 
 ENV CRT   /etc/aria2/server.crt
 ENV KEY   /etc/aria2/server.key
