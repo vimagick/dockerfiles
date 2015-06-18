@@ -29,7 +29,8 @@ RUN apk add -U build-base \
         && cd .. \
         && rm -rf $TOR_FILE $TOR_TEMP \
     && wget -O- https://bootstrap.pypa.io/get-pip.py | python \
-        && pip install obfsproxy \
+        && pip install fteproxy \
+                       obfsproxy \
     && apk del build-base \
                gmp-dev \
                libevent-dev \
