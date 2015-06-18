@@ -28,18 +28,18 @@ tor:
 ## torrc
 
 ```
+Log notice stdout
 RunAsDaemon 0
 SocksPort 0.0.0.0:9050
 ORPort 9001
+DirPort 9030
 BridgeRelay 1
-#ServerTransportPlugin obfs4 exec /usr/bin/obfs4proxy
+ServerTransportPlugin obfs3 exec /usr/bin/obfsproxy
 ExtORPort auto
 Exitpolicy reject *:*
 ContactInfo noreply@datageek.info
 Nickname datageek
 ```
-
-> Try to install `obfs4proxy` into container.
 
 ## up and running
 
@@ -47,4 +47,8 @@ Nickname datageek
 $ docker-compose up -d
 $ curl -x socks5h://127.0.0.1:9050 ifconfig.me
 ```
+
+## todo
+
+- support `obfs4proxy`
 

@@ -1,0 +1,10 @@
+tor:
+  image: vimagick/tor
+  ports:
+    - "9001:9001"
+    - "9030:9030"
+    - "9050:9050"
+    - "9051:9051"
+  volumes:
+    - ./torrc:/etc/tor/torrc
+  restart: always
