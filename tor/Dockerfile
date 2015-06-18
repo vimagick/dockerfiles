@@ -12,7 +12,7 @@ ENV TOR_FILE tor.tar.gz
 ENV TOR_TEMP tor-$TOR_VER
 ENV TOR_DEPS build-base libevent-dev openssl-dev
 
-RUN apk add -U $TOR_DEPS \
+RUN apk add -U libevent $TOR_DEPS \
     && wget -O $TOR_FILE $TOR_URL \
     && echo "$TOR_MD5  $TOR_FILE" | md5sum -c \
     && tar xzf $TOR_FILE \
