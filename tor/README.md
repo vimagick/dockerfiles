@@ -29,7 +29,7 @@ tor:
 
 ```
 RunAsDaemon 0
-SocksPort 0
+SocksPort 0.0.0.0:9050
 ORPort 9001
 BridgeRelay 1
 #ServerTransportPlugin obfs4 exec /usr/bin/obfs4proxy
