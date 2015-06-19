@@ -22,7 +22,7 @@ EXPOSE $SERVER_PORT
 
 CMD ssserver -s $SERVER_ADDR \
              -p $SERVER_PORT \
-             -k ${PASSWORD:-$(head -c 6 /dev/urandom | base64)} \
+             -k ${PASSWORD:-$(hostname)} \
              -m $METHOD \
              -t $TIMEOUT \
              --fast-open \
