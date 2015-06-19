@@ -22,7 +22,7 @@ RUN apk add --update $SS_DEP \
 
 ENV SERVER_ADDR 0.0.0.0
 ENV SERVER_PORT 8388
-ENV PASSWORD    secret
+ENV PASSWORD=
 ENV METHOD      aes-256-cfb
 ENV TIMEOUT     300
 ENV DNS_ADDR    8.8.8.8
@@ -31,7 +31,7 @@ EXPOSE $SERVER_PORT
 
 CMD ss-server -s $SERVER_ADDR \
               -p $SERVER_PORT \
-              -k $PASSWORD \
+              -k ${PASSWORD:-$(head -c 6 /dev/urandom | base64)} \
               -m $METHOD \
               -t $TIMEOUT \
               --fast-open \
