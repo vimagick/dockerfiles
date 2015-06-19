@@ -16,7 +16,7 @@ RUN apt-get update \
                           build-essential \
                           curl \
                           git \
-                          libevent \
+                          libevent-2.0 \
                           libevent-dev \
     && mkdir libsodium \
         && curl -sSL https://download.libsodium.org/libsodium/releases/libsodium-$LIBSODIUM_VERSION.tar.gz | tar xz --strip 1 -C libsodium \
