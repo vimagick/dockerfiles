@@ -16,6 +16,7 @@ ENV DANTE_DEPS build-essential curl
 RUN apt-get update \
     && apt-get install -y $DANTE_DEPS \
     && mkdir $DANTE_TEMP \
+        && cd $DANTE_TEMP \
         && curl -sSL $DANTE_URL -o $DANTE_FILE \
         && echo "$DANTE_MD5 $DANTE_FILE" | md5sum -c \
         && tar xzf $DANTE_FILE --strip 1 \
