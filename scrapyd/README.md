@@ -1,8 +1,13 @@
 scrapyd
 =======
 
-Dockerfile for building an image that runs [scrapy][1] and [scrapyd][2].  
+[Scrapy][1] is an open source and collaborative framework for extracting the
+data you need from websites. In a fast, simple, yet extensible way.
 
+[Scrapyd][2] is a service for running Scrapy spiders.  It allows you to deploy
+your Scrapy projects and control their spiders using a HTTP JSON API.
+
+This image is based on `debian:jessie` without any useless packages installed.
 Only two latest python packages are installed:
 
 - `scrapy`: git+https://github.com/scrapy/scrapy.git
@@ -10,14 +15,14 @@ Only two latest python packages are installed:
 
 Please use this image as base for your own project.
 
-## run as background-daemon for scrapyd
+## Run it as background-daemon for scrapyd
 
 ```
 $ docker run -d --restart always --name scrapyd -p 6800:6800 vimagick/scrapyd
 $ firefox http://localhost:6800
 ```
 
-## run as interactive-shell for scrapy
+## Run it as interactive-shell for scrapy
 
 ```
 $ cat > stackoverflow_spider.py << _EOF_
