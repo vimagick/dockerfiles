@@ -47,7 +47,7 @@ class StackOverflowSpider(scrapy.Spider):
         }
 _EOF_
 
-$ docker run --rm --name scrapy -v `pwd`:/code -w /code vimagick/scrapyd bash
+$ docker run -it --rm -v `pwd`:/code -w /code vimagick/scrapyd bash
 >>> scrapy runspider stackoverflow_spider.py -o top-stackoverflow-questions.json
 >>> cat top-stackoverflow-questions.json
 >>> exit
