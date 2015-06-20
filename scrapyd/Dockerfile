@@ -37,6 +37,7 @@ RUN apt-get update \
     && curl -sSL https://bootstrap.pypa.io/get-pip.py | python \
     && pip install git+https://github.com/scrapy/scrapy.git \
                    git+https://github.com/scrapy/scrapyd.git \
+                   git+https://github.com/scrapy/scrapyd-client.git \
     && curl -sSL https://github.com/scrapy/scrapy/raw/master/extras/scrapy_bash_completion -o /etc/bash_completion.d/scrapy_bash_completion \
     && echo 'source /etc/bash_completion.d/scrapy_bash_completion' >> /root/.bashrc \
     && apt-get purge -y --auto-remove autoconf \
