@@ -39,13 +39,12 @@ RUN apt-get update \
                    git+https://github.com/scrapy/scrapyd.git \
     && curl -sSL https://github.com/scrapy/scrapy/raw/master/extras/scrapy_bash_completion -o /etc/bash_completion.d/scrapy_bash_completion \
     && echo 'source /etc/bash_completion.d/scrapy_bash_completion' >> /root/.bashrc \
-    && apt-get remove -y autoconf \
-                         build-essential \
-                         libffi-dev \
-                         libssl-dev \
-                         libtool \
-                         python-dev \
-    && apt-get autoremove -y \
+    && apt-get purge -y --auto-remove autoconf \
+                                      build-essential \
+                                      libffi-dev \
+                                      libssl-dev \
+                                      libtool \
+                                      python-dev \
     && rm -rf /var/lib/apt/lists/*
 
 ADD ./scrapyd.conf /etc/scrapyd/
