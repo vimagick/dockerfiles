@@ -14,6 +14,8 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/*
 RUN echo 'export PATH=/opt/bro/bin:$PATH' >> /root/.bashrc
 
+VOLUME /opt/bro/logs
 WORKDIR /opt/bro/logs
+ENV PATH /opt/bro/bin:$PATH
 
-CMD ["/opt/bro/bin/bro", "-i", "eth0"]
+CMD ["bro", "-i", "eth0"]
