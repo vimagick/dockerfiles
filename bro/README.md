@@ -1,8 +1,15 @@
-`Bro` is a powerful system that on top of the functionality it provides out of
-the box, also offers the flexibility to customize analysis pretty much
-arbitrarily. We provide a range of documentation material ranging from
-introductory material to get you started, to full references of Bro’s various
-frameworks.
+`Bro` is a powerful network analysis framework that is much different from the
+typical IDS you may know.
+
+- Adaptable
+- Efficient
+- Flexible
+- Forensics
+- Commercially Supported
+- In-depth Analysis
+- Highly Stateful
+- Open Interfaces
+- Open Source
 
 ## docker-compose.yml
 
