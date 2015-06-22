@@ -12,8 +12,10 @@ bro:
   command: bro -i eth0
   volumes:
     - ./logs:/opt/bro/logs
-  net: host
+  net: container:shadowsocks_shadowsocks_1
 ```
+
+> We are going to monitor `shadowsocks` which is a socks5 server.
 
 ## up and running
 
@@ -23,6 +25,13 @@ $ cd ~/fig/bro/
 $ docker-compose up -d
 
 $ docker exec -it bro_bro_1 bash
->>> tail -n +1 -f http.log | bro-cut -d ts user_agent
+>>> cat dns.log | bro-cut query | sort | uniq -c | sort -nr | head -5
+    10 www.youtube.com
+    3 twitter.com
+    2 www.google.com
+    1 www.baidu.com
+    1 www.facebook.com
 >>> exit
 ```
+
+> Don't be evil!
