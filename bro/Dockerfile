@@ -16,5 +16,4 @@ RUN echo 'export PATH=/opt/bro/bin:$PATH' >> /root/.bashrc
 
 WORKDIR /opt/bro/logs
 
-ENTRYPOINT bro -i
-CMD ${DEVICE:-eth0}
+CMD ["/opt/bro/bin/bro", "-i", "eth0"]

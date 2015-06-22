@@ -9,10 +9,9 @@ frameworks.
 ```
 bro:
   image: vimagick/bro
+  command: bro -i eth0
   volumes:
     - ./logs:/opt/bro/logs
-  environment:
-    - DEVICE=eth0
   net: host
 ```
 
