@@ -7,7 +7,7 @@ MAINTAINER kev <noreply@datageek.info>
 
 RUN apt-get update \
     && apt-get install -y curl \
-    && curl http://download.opensuse.org/repositories/network:bro/Debian_8.0/Release.key | apt-key add - \
+    && curl -sSL http://download.opensuse.org/repositories/network:bro/Debian_8.0/Release.key | apt-key add - \
     && echo 'deb http://download.opensuse.org/repositories/network:/bro/Debian_8.0/ /' > /etc/apt/sources.list.d/bro.list \
     && apt-get update \
     && apt-get install -y bro \
