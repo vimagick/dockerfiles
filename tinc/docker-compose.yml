@@ -1,10 +1,12 @@
-server:
+tinc:
   image: vimagick/tinc
   ports:
     - "655:655/tcp"
     - "655:655/udp"
   volumes:
     - tinc:/etc/tinc
+  environment:
+    - VERBOSE=2
   cap_add:
     - NET_ADMIN
   restart: always
