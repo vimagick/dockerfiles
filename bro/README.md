@@ -1,6 +1,8 @@
 The Bro Network Security Monitor
 ================================
 
+[![](https://badge.imagelayers.io/vimagick/bro:latest.svg)](https://imagelayers.io/?images=vimagick/bro:latest 'Get your own badge on imagelayers.io')
+
 `Bro` is a powerful network analysis framework that is much different from the
 typical IDS you may know.
 

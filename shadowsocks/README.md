@@ -1,3 +1,8 @@
+shadowsocks
+===========
+
+[![](https://badge.imagelayers.io/vimagick/shadowsocks:latest.svg)](https://imagelayers.io/?images=vimagick/shadowsocks:latest 'Get your own badge on imagelayers.io')
+
 [`shadowsocks`][1] is a secure socks5 proxy,
 designed to protect your Internet traffic.
 

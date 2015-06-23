@@ -1,6 +1,8 @@
 shadowsocks-libev
 =================
 
+[![](https://badge.imagelayers.io/vimagick/shadowsocks-libev:latest.svg)](https://imagelayers.io/?images=vimagick/shadowsocks-libev:latest 'Get your own badge on imagelayers.io')
+
 `shadowsocks-libev` is a lightweight secured socks5 proxy for embedded devices and low end boxes.
 
 It is a port of shadowsocks created by @clowwindy maintained by @madeye and @linusyang.
