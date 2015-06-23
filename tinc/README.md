@@ -66,7 +66,7 @@ $ watch docker exec tinc_tinc_1 netstat -an
 
 ```
 # start
-$ tincd -D -d -n netname --pidfile /tmp/tinc.pid
+$ tincd -d -D -n netname --pidfile /tmp/tinc.pid
 
 # stop
 $ tincd -k --pidfile /tmp/tinc.pid
