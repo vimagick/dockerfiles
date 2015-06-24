@@ -5,9 +5,9 @@
 FROM alpine
 MAINTAINER kev <noreply@datageek.info>
 
-RUN apk add -U collectd \
+RUN apk add -U collectd collectd-dev \
     && rm -rf /var/cache/apk/*
 
 COPY ./collectd /etc/collectd
 
-CMD ["collectd", "-f", "-C", "/etc/collectd/collectd.conf"]
+CMD ["collectd", "-f"]
