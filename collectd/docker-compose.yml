@@ -2,4 +2,5 @@ collectd:
   image: vimagick/collectd
   volumes:
     - ./collectd:/etc/collectd
+  pid: host
   restart: always
