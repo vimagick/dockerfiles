@@ -11,6 +11,6 @@ in RRD files.
 collectd:
   image: vimagick/collectd
   volumes:
-    - /proc:/proc:ro
+    - ./collectd:/etc/collectd
   restart: always
 ```
