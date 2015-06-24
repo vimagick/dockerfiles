@@ -43,7 +43,7 @@ network.conf
 LoadPlugin network
 
 <Plugin "network">
-  Server "influxdb" "8096"
+  Server "influxdb" "25826"
 </Plugin>
 ```
 
