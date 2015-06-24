@@ -1,0 +1,5 @@
+collectd:
+  image: vimagick/collectd
+  volumes:
+    - /proc:/proc:ro
+  restart: always
