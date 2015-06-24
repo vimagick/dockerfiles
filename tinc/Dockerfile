@@ -19,7 +19,7 @@ RUN apk add -U iptables tinc \
 
 WORKDIR /etc/tinc/$NETNAME
 
-RUN echo -e "Name=server" > tinc.conf \
+RUN echo -e "Name=server\\nInterface=tun0" > tinc.conf \
     && echo -e "Subnet=$ADDRESS\\nSubnet=0.0.0.0/0" > hosts/server \
     && echo -e "\\n" | tincd -n $NETNAME -K4096 \
     && echo -e "ifconfig \$INTERFACE $ADDRESS netmask $NETMASK" > tinc-up \

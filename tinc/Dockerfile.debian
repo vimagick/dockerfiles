@@ -20,7 +20,7 @@ RUN apt-get update \
 
 WORKDIR /etc/tinc/$NETNAME
 
-RUN /bin/echo -e "Name=server\\nAddressFamily=ipv4\\nInterface=tun0" > tinc.conf \
+RUN /bin/echo -e "Name=server\\nInterface=tun0" > tinc.conf \
     && /bin/echo -e "Subnet=$ADDRESS\\nSubnet=0.0.0.0/0" > hosts/server \
     && /bin/echo -e "\\n" | tincd -n $NETNAME -K4096 \
     && /bin/echo -e "ifconfig \$INTERFACE $ADDRESS netmask $NETMASK" > tinc-up \
