@@ -55,5 +55,6 @@ collectd:
   volumes:
     - ./collectd:/etc/collectd
   pid: host
+  net: host
   restart: always
 ```
