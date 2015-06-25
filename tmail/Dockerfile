@@ -22,9 +22,10 @@ ENV MAIL_USER admin
 ENV MAIL_PASS admin
 
 VOLUME /var/mail
-EXPOSE 25
+EXPOSE 25 110
 
 CMD twistd -n mail --smtp=tcp:25 \
+                   --pop3=tcp:110 \
                    --maildirdbmdomain=$MAIL_NAME=$MAIL_PATH \
                    --user $MAIL_USER=$MAIL_PASS \
                    --bounce-to-postmaster
