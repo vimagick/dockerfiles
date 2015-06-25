@@ -26,6 +26,7 @@ EXPOSE 25 110
 
 CMD twistd -n mail --smtp=tcp:25 \
                    --pop3=tcp:110 \
+                   --relay=$MAIL_PATH/queue \
                    --maildirdbmdomain=$MAIL_NAME=$MAIL_PATH \
                    --user $MAIL_USER=$MAIL_PASS \
                    --bounce-to-postmaster
