@@ -29,4 +29,5 @@ CMD twistd -n mail --smtp=tcp:25 \
                    --relay=$MAIL_PATH/queue \
                    --maildirdbmdomain=$MAIL_NAME=$MAIL_PATH \
                    --user $MAIL_USER=$MAIL_PASS \
+                   --disable-anonymous \
                    --bounce-to-postmaster
