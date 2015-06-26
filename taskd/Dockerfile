@@ -40,8 +40,8 @@ RUN taskd init \
     && taskd config --force server.key $TASKDDATA/server.key.pem \
     && taskd config --force server.crl $TASKDDATA/server.crl.pem \
     && taskd config --force ca.cert $TASKDDATA/ca.cert.pem \
-    && taskd config --force log $TASKDDATA/taskd.log \
-    && taskd config --force pid.file $TASKDDATA/taskd.pid \
+    && taskd config --force log /dev/stdout \
+    && taskd config --force pid.file /run/taskd.pid \
     && taskd config --force server 0.0.0.0:53589
 
 VOLUME $TASKDDATA
