@@ -21,6 +21,9 @@ tmail:
   restart: always
 ```
 
+> You can pass additional arguments via environment variable `MAIL_OPTS`:
+>> `MAIL_OPTS=--user=admin=admin`
+
 ## server
 
 ```
