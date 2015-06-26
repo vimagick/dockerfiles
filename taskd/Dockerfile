@@ -47,5 +47,5 @@ RUN taskd init \
 VOLUME $TASKDDATA
 EXPOSE 53589
 
-CMD taskd server
+CMD ["taskd", "server"]
 
