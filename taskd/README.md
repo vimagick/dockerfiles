@@ -112,7 +112,7 @@ $ tree -F
 ```
 $ brew install task --with-gnutls
 $ cd ~/.task
-$ scp jp:fig/taskd/taskd/{ca.cert,users/kev.*.key}.pem .
+$ scp jp:fig/taskd/taskd/{ca.cert,users/kev.*}.pem .
 $ task config taskd.certificate -- ~/.task/kev.cert.pem
 $ task config taskd.key         -- ~/.task/kev.key.pem
 $ task config taskd.ca          -- ~/.task/ca.cert.pem
