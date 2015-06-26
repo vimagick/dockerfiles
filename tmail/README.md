@@ -1,6 +1,8 @@
 twistd-mail
 ===========
 
+An SMTP / POP3 email server plugin for twistd.
+
 ## docker-compose.yml
 
 ```
@@ -18,3 +20,21 @@ tmail:
     - MAIL_PASS=pass
   restart: always
 ```
+
+## server
+
+```
+$ docker-compose up -d
+```
+
+## client
+
+- POP3: domain.org:110
+- USER: user@domain.org
+- PASS: pass
+
+## todo
+
+- [x] receive email via pop3
+- [ ] send email via smtp
+
