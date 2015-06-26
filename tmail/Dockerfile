@@ -26,8 +26,6 @@ VOLUME /var/mail
 EXPOSE 25 110
 
 CMD twistd -n mail --bounce-to-postmaster \
-                   --esmtp \
-                   --hostname=$MAIL_NAME \
                    --maildirdbmdomain=$MAIL_NAME=$MAIL_PATH \
                    --pop3=tcp:110 \
                    --smtp=tcp:25 \
