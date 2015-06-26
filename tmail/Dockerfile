@@ -20,6 +20,7 @@ ENV MAIL_NAME datageek.info
 ENV MAIL_PATH /var/mail
 ENV MAIL_USER admin
 ENV MAIL_PASS admin
+ENV MAIL_OPTS=
 
 VOLUME /var/mail
 EXPOSE 25 110
@@ -29,4 +30,6 @@ CMD twistd -n mail --esmtp \
                    --pop3=tcp:110 \
                    --maildirdbmdomain=$MAIL_NAME=$MAIL_PATH \
                    --user=$MAIL_USER=$MAIL_PASS \
-                   --bounce-to-postmaster
+                   --bounce-to-postmaster \
+                   $MAIL_OPTS
+
