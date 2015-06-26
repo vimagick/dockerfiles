@@ -25,10 +25,10 @@ ENV MAIL_OPTS=
 VOLUME /var/mail
 EXPOSE 25 110
 
-CMD twistd -n mail --bounce-to-postmaster \
-                   --maildirdbmdomain=$MAIL_NAME=$MAIL_PATH \
+CMD twistd -n mail --smtp=tcp:25 \
                    --pop3=tcp:110 \
-                   --smtp=tcp:25 \
+                   --maildirdbmdomain=$MAIL_NAME=$MAIL_PATH \
                    --user=$MAIL_USER=$MAIL_PASS \
+                   --bounce-to-postmaster \
                    $MAIL_OPTS
 
