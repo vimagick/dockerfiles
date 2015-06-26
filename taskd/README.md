@@ -1,3 +1,8 @@
+taskd
+=====
+
+[![](https://badge.imagelayers.io/vimagick/taskd:latest.svg)](https://imagelayers.io/?images=vimagick/taskd:latest 'Get your own badge on imagelayers.io')
+
 `Taskwarrior` is Free and Open Source Software that manages your TODO list from
 your command line. It is flexible, fast, efficient, and unobtrusive. It does
 its job then gets out of your way.
