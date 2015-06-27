@@ -1,7 +1,7 @@
 taskd
 =====
 
-[![](https://badge.imagelayers.io/vimagick/taskd:latest.svg)](https://imagelayers.io/?images=vimagick/taskd:latest 'Get your own badge on imagelayers.io')
+[![](https://badge.imagelayers.io/vimagick/taskd:latest.svg)](https://imagelayers.io/?images=vimagick/taskd:latest)
 
 `Taskwarrior` is Free and Open Source Software that manages your TODO list from
 your command line. It is flexible, fast, efficient, and unobtrusive. It does
@@ -52,8 +52,8 @@ its job then gets out of your way.
 mkdir -p ~/fig/taskd/taskd/{orgs,users}
 cd ~/fig/taskd/taskd/
 
-wget http://taskwarrior.org/download/taskd-1.1.0.tar.gz
-tar xvzf taskd-1.1.0.tar.gz --strip 1 taskd-1.1.0/pki
+wget -O- http://taskwarrior.org/download/taskd-1.1.0.tar.gz |
+    tar xvz --strip 1 taskd-1.1.0/pki
 
 cd pki
 vim vars
