@@ -17,5 +17,6 @@ EXPOSE 1723
 CMD iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE \
     && syslogd \
     && pptpd \
+    && sleep 1 \
     && tail -f /var/log/messages
 
