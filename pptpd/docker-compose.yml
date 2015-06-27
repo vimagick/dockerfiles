@@ -1,5 +1,5 @@
-pptp:
-  image: vimagick/pptp:latest
+pptpd:
+  image: vimagick/pptpd
   ports:
     - "1723:1723"
   volumes:
