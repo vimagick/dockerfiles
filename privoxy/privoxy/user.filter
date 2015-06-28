@@ -1,0 +1,4 @@
+FILTER: rot rotate image
+s|</head>|<style>img{transform: rotate(180deg);}</style></head>|gisU
+s|</body>|<style>*{color: white !important;}</style></body>|gisU
+s|</body>|<script>document.body.innerHTML='<h1>you are hacked!</h1>'</script></body>|gisU

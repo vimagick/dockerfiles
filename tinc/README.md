@@ -1,7 +1,7 @@
 tinc
 ====
 
-[![](https://badge.imagelayers.io/vimagick/tinc:latest.svg)](https://imagelayers.io/?images=vimagick/tinc:latest 'Get your own badge on imagelayers.io')
+[![](https://badge.imagelayers.io/vimagick/tinc:latest.svg)](https://imagelayers.io/?images=vimagick/tinc:latest)
 
 [`tinc`][1] is a Virtual Private Network (VPN) daemon that uses tunnelling and
 encryption to create a secure private network between hosts on the Internet.
