@@ -76,6 +76,7 @@ username    *       password        *
 $ modprobe nf_conntrack_pptp nf_nat_pptp
 $ cd ~/fig/pptpd/
 $ docker-compose up -d
+$ docker-compose logs
 ```
 
 You need to config firewall:
