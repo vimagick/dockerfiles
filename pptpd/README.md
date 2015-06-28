@@ -1,6 +1,9 @@
 pptpd
 =====
 
+The Point-to-Point Tunneling Protocol is a method for implementing virtual private networks.
+PPTP uses a control channel over TCP and a GRE tunnel operating to encapsulate PPP packets.
+
 ## docker-compose.yml
 
 ```
@@ -12,31 +15,18 @@ pptpd:
     - ./chap-secrets:/etc/ppp/chap-secrets
   privileged: true
   restart: always
-  #net: host
 ```
 
 ## server
 
 ```
+$ modprobe nf_conntrack_pptp nf_nat_pptp
 $ docker-compose up -d
 ```
 
-> WARNING: YOU NEED TO REBOOT IF CONTAINER RESTARTED.
+You need to config firewall:
 
-You must open the following ports:
-
-- To allow PPTP tunnel maintenance traffic, open `1723/tcp`.
-- To allow PPTP tunneled data to pass through router, open `Protocol 47`.
-
-
-## firewall
-
-If you use `net: host` for networking:
-
-```
-$ vim /etc/defautl/ufw
-# DEFAULT_FORWARD_POLICY="ACCEPT"
-$ ufw reload
-$ ufw allow 1723
-$ iptables -t nat -A POSTROUTING -s 192.168.127.0/24 -j MASQUERADE
-```
+- To let PPTP tunnel maintenance traffic, `allow port 1723/tcp`.
+- To let PPTP tunneled data to pass through router, `allow proto gre`.
+- Set `net.ipv4.ip_forward=1`
+- Set `DEFAULT_FORWARD_POLICY=ACCEPT`
