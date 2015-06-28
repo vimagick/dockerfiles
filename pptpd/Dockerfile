@@ -16,7 +16,5 @@ COPY pptpd-options /etc/ppp/
 EXPOSE 1723
 
 CMD iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE \
-    && syslogd \
     && pptpd \
-    && sleep 0.1 \
-    && tail -f /var/log/messages
+    && syslogd -n -O /dev/stdout

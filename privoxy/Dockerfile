@@ -18,5 +18,22 @@ RUN sed -i -e '/^listen-address/s/127.0.0.1/0.0.0.0/' \
 VOLUME /etc/privoxy
 EXPOSE 8118
 
-CMD iptables -t nat -A OUTPUT -p tcp --dport 80 -m owner ! --uid-owner privoxy -j REDIRECT --to-ports 8118 \
+CMD iptables -t filter -P OUTPUT DROP \
+    && iptables -t filter -A OUTPUT -p udp --dport 53 -j ACCEPT \
+    && iptables -t filter -A OUTPUT -p tcp \
+                -m multiport --dports 53,80,443,8118 \
+                -j ACCEPT \
+    && iptables -t filter -A OUTPUT -p tcp \
+                -m state --state ESTABLISHED,RELATED \
+                -j ACCEPT \
+    && iptables -t filter -A OUTPUT -p udp \
+                -m state --state ESTABLISHED,RELATED \
+                -j ACCEPT \
+    && iptables -t filter -A OUTPUT -p tcp \
+                -m owner --uid-owner privoxy \
+                -j ACCEPT \
+    && iptables -t nat -A OUTPUT -p tcp \
+                -m multiport --dports 80,443 \
+                -m owner ! --uid-owner privoxy \
+                -j REDIRECT --to-ports 8118 \
     && gosu privoxy privoxy --no-daemon /etc/privoxy/config
