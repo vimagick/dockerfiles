@@ -20,6 +20,8 @@ pptpd:
 $ docker-compose up -d
 ```
 
+> WARNING: YOU NEED TO REBOOT IF CONTAINER RESTARTED.
+
 You must open the following ports:
 
 - To allow PPTP tunnel maintenance traffic, open `1723/tcp`.
