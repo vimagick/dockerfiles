@@ -2,11 +2,11 @@
 # Dockerfile for pptpd
 #
 
-FROM alpine
+FROM debian:jessie
 MAINTAINER kev<noreply@datageek.info>
 
-RUN apk add -U iptables ppp pptpd \
-    && rm -rf /var/cache/apk/*
+RUN apk add -U iptables pptpd \
+    && rm -rf /var/lib/apt/lists/*
 
 COPY pptpd.conf   /etc/
 COPY chap-secrets /etc/ppp/
@@ -15,8 +15,5 @@ COPY options.pptp /etc/ppp/
 EXPOSE 1723
 
 CMD iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE \
-    && syslogd \
-    && pptpd \
-    && sleep 1 \
-    && tail -f /var/log/messages
+    && pptpd --fg
 
