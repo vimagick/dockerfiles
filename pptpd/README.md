@@ -13,7 +13,6 @@ pptpd:
     - ./pptpd.conf:/etc/pptpd.conf
     - ./pptpd-options:/etc/ppp/pptpd-options
     - ./chap-secrets:/etc/ppp/chap-secrets
-  net: host
   privileged: true
   restart: always
 ```
@@ -22,9 +21,6 @@ pptpd:
 
 ```
 $ docker-compose up -d
-$ iptables -t filter -I INPUT -p tcp --dport 1723 -j ACCEPT
-$ iptables -t filter -I INPUT -p 47 -j ACCEPT
-$ iptables -t nat -I POSTROUTING -s 192.168.127.0/24 -j MASQUERADE
 ```
 
 You must open the following ports:

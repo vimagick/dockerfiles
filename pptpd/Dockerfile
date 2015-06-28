@@ -1,8 +1,6 @@
 #
 # Dockerfile for pptpd
 #
-# WARNING: I ONLY WORKS IN NET:HOST MODE
-#
 
 FROM debian:jessie
 MAINTAINER kev<noreply@datageek.info>
@@ -15,4 +13,5 @@ COPY pptpd.conf    /etc/
 COPY chap-secrets  /etc/ppp/
 COPY pptpd-options /etc/ppp/
 
-CMD ["pptpd", "--fg"]
+CMD iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE \
+    && pptpd --fg
