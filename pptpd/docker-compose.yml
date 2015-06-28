@@ -2,7 +2,7 @@ pptpd:
   image: vimagick/pptpd
   volumes:
     - ./pptpd.conf:/etc/pptpd.conf
-    - ./options.pptp:/etc/ppp/options.pptp
+    - ./pptpd-options:/etc/ppp/pptpd-options
     - ./chap-secrets:/etc/ppp/chap-secrets
   net: host
   privileged: true
