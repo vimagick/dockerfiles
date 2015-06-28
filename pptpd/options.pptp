@@ -1,7 +1,0 @@
-lock
-auth
-+chap
-name datageek
-proxyarp
-ms-dns 8.8.8.8
-ms-dns 8.8.4.4

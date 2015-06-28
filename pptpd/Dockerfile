@@ -1,20 +1,18 @@
 #
 # Dockerfile for pptpd
 #
+# WARNING: I ONLY WORKS IN NET:HOST MODE
+#
 
 FROM debian:jessie
 MAINTAINER kev<noreply@datageek.info>
 
 RUN apt-get update \
-    && apt-get install -y iptables pptpd \
+    && apt-get install -y pptpd \
     && rm -rf /var/lib/apt/lists/*
 
 COPY pptpd.conf   /etc/
 COPY chap-secrets /etc/ppp/
-COPY options.pptp /etc/ppp/
+COPY pptpd-options /etc/ppp/
 
-EXPOSE 1723
-
-CMD iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE \
-    && pptpd --fg
-
+CMD ["pptpd", "--fg"]
