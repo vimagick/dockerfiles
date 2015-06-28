@@ -9,10 +9,11 @@ This is still a work in progress, a successful connection has not been made.
 ```
 pptpd:
   image: vimagick/pptpd
-  ports:
-    - "1723:1723"
   volumes:
+    - ./pptpd.conf:/etc/pptpd.conf
+    - ./options.pptp:/etc/ppp/options.pptp
     - ./chap-secrets:/etc/ppp/chap-secrets
+  net: host
   privileged: true
   restart: always
 ```
