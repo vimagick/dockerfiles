@@ -5,7 +5,8 @@
 FROM debian:jessie
 MAINTAINER kev<noreply@datageek.info>
 
-RUN apk add -U iptables pptpd \
+RUN apt-get update \
+    && apt-get install -y iptables pptpd \
     && rm -rf /var/lib/apt/lists/*
 
 COPY pptpd.conf   /etc/
