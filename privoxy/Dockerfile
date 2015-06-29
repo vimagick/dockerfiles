@@ -18,7 +18,8 @@ RUN sed -i -e '/^listen-address/s/127.0.0.1/0.0.0.0/' \
 VOLUME /etc/privoxy
 EXPOSE 8118
 
-CMD iptables -t filter -P OUTPUT DROP \
+CMD iptables -A INPUT -s 127.0.0.1 -d 127.0.0.1 -j REJECT \
+    && iptables -t filter -P OUTPUT DROP \
     && iptables -t filter -A OUTPUT -p udp --dport 53 -j ACCEPT \
     && iptables -t filter -A OUTPUT -p tcp \
                 -m multiport --dports 53,80,443,8118 \
