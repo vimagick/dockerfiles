@@ -35,8 +35,7 @@ CMD echo "{+block}" >> /etc/privoxy/user.action \
     && iptables -t filter -A OUTPUT -p tcp \
                 -m owner --uid-owner privoxy \
                 -j ACCEPT \
-    && iptables -t nat -A OUTPUT -p tcp \
-                -m multiport --dports 80,443 \
+    && iptables -t nat -A OUTPUT -p tcp --dport 80 \
                 -m owner ! --uid-owner privoxy \
                 -j REDIRECT --to-ports 8118 \
     && gosu privoxy privoxy --no-daemon /etc/privoxy/config
