@@ -19,6 +19,9 @@ VOLUME /etc/privoxy
 EXPOSE 8118
 
 CMD iptables -A INPUT -s 127.0.0.1 -d 127.0.0.1 -j REJECT \
+    && iptables -A INPUT -s $(ip route | grep default | awk '{print $3}') \
+                         -d $(ip route | grep default | awk '{print $3}') \
+                         -j REJECT \
     && iptables -t filter -P OUTPUT DROP \
     && iptables -t filter -A OUTPUT -p udp --dport 53 -j ACCEPT \
     && iptables -t filter -A OUTPUT -p tcp \
