@@ -48,6 +48,8 @@ file: user.action
 
 ```
 
+> Make sure you block ip/domain which point to server itself.
+
 file: user.filter
 
 ```
