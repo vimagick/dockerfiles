@@ -40,6 +40,12 @@ file: user.action
 ```
 {+filter{rot}}
 /
+
+{+block}
+127.0.0.1
+104.156.239.190
+.datageek.info
+
 ```
 
 file: user.filter

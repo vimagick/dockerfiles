@@ -18,10 +18,9 @@ RUN sed -i -e '/^listen-address/s/127.0.0.1/0.0.0.0/' \
 VOLUME /etc/privoxy
 EXPOSE 8118
 
-CMD iptables -A INPUT -s 127.0.0.1 -d 127.0.0.1 -j REJECT \
-    && iptables -A INPUT -s $(ip a s eth0 | grep -w inet | awk '{print $2}' | cut -d/ -f1) \
-                         -d $(ip a s eth0 | grep -w inet | awk '{print $2}' | cut -d/ -f1) \
-                         -j REJECT \
+CMD echo "{+block}" >> /etc/privoxy/user.action \
+    && ip a s eth0 | grep -w inet | awk '{print $2}' | cut -d/ -f1 >> /etc/privoxy/user.action \
+    && ip r s | grep default | awk '{print $3}' >> /etc/privoxy/user.action \
     && iptables -t filter -P OUTPUT DROP \
     && iptables -t filter -A OUTPUT -p udp --dport 53 -j ACCEPT \
     && iptables -t filter -A OUTPUT -p tcp \
