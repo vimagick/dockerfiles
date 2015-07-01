@@ -18,4 +18,4 @@ VOLUME /opt/bro/logs
 WORKDIR /opt/bro/logs
 ENV PATH /opt/bro/bin:$PATH
 
-CMD ["bro", "-i", "eth0"]
+CMD ["bro", "--no-checksums", "--iface", "eth0"]

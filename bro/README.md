@@ -21,7 +21,7 @@ typical IDS you may know.
 ```
 bro:
   image: vimagick/bro
-  command: bro -i eth0
+  command: bro -C -i eth0
   volumes:
     - ./logs:/opt/bro/logs
   net: container:shadowsocks_shadowsocks_1
