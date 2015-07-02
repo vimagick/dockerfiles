@@ -16,6 +16,9 @@ monit:
   restart: always
 ```
 
+> The control file `/etc/monit/monitrc` must have permissions no more than
+> `-rwx------ (0700)`
+
 ## server
 
 ```
