@@ -1,6 +1,8 @@
 scrapyd
 =======
 
+![](http://dockeri.co/image/vimagick/scrapyd)
+
 [Scrapy][1] is an open source and collaborative framework for extracting the
 data you need from websites. In a fast, simple, yet extensible way.
 
