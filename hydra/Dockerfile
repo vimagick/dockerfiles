@@ -28,6 +28,7 @@ RUN apk add -U apr-dev \
                pcre-dev \
                postgresql-dev \
                subversion-dev \
+               subversion-libs \
     && echo 'will cite' | parallel --bibtex \
     && mkdir src \
         && cd src \
