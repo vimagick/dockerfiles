@@ -7,4 +7,5 @@ set logfile /dev/stdout
 set pidfile /var/run/monit.pid
 set idfile /var/lib/monit/monit.id
 set statefile /var/lib/monit/monit.state
+set eventqueue basedir /var/lib/monit slots 5000
 include /etc/monit/conf.d/*
