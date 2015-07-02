@@ -8,14 +8,14 @@ A very fast network logon cracker which support many different services.
 - [x] curses
 - [x] pcre
 - [x] Postgres
-- [ ] SVN
+- [x] SVN
 - [ ] firebird
 - [x] MYSQL client
 - [ ] AFP
 - [ ] NCP
 - [ ] SAP/R3
-- [ ] libssh
+- [x] libssh
 - [ ] Oracle
 - [ ] GUI req's
-- [ ] Android specialities
-- [ ] secure compile option support in gcc
+- [x] Android specialities
+- [x] secure compile option support in gcc

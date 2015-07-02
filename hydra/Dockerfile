@@ -5,7 +5,9 @@
 FROM alpine
 MAINTAINER kev <noreply@datageek.info>
 
-RUN apk add -U bash \
+RUN apk add -U apr-dev \
+               apr-util-dev \
+               bash \
                build-base \
                curl \
                git \
@@ -25,6 +27,7 @@ RUN apk add -U bash \
                pcre \
                pcre-dev \
                postgresql-dev \
+               subversion-dev \
     && echo 'will cite' | parallel --bibtex \
     && mkdir src \
         && cd src \
@@ -33,7 +36,9 @@ RUN apk add -U bash \
         && make install \
         && cd .. \
         && rm -rf src \
-    && apk del --purge build-base \
+    && apk del --purge apr-dev \
+                       apr-util-dev \
+                       build-base \
                        libidn-dev \
                        libssh-dev \
                        ncurses-dev \
@@ -41,6 +46,7 @@ RUN apk add -U bash \
                        openssl-dev \
                        pcre-dev \
                        postgresql-dev \
+                       subversion-dev \
     && rm -rf /var/cache/apk/*
 
 VOLUME /work
