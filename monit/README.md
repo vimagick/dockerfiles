@@ -1,8 +1,23 @@
 monit
 =====
 
+[![](https://badge.imagelayers.io/vimagick/monit:latest.svg)](https://imagelayers.io/?images=vimagick/monit:latest)
+
 `Monit` is a utility for managing and monitoring processes, programs, files,
 directories and filesystems on a Unix system.
+
+## directory tree
+
+```
+~/fig/monit/
+├── docker-compose.yml
+└── monit/
+    ├── conf.d/
+    │   ├── network.cfg
+    │   ├── setting.cfg
+    │   └── system.cfg
+    └── monitrc
+```
 
 ## docker-compose.yml
 
