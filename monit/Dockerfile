@@ -10,9 +10,12 @@ RUN apk add -U monit \
     && mkdir -p /var/lib/monit/events
 
 COPY monit /etc/monit
-RUN chmod 600 /etc/monit/monitrc
+
+RUN chmod 600 /etc/monit/monitrc \
+    && ln -sf /etc/monit/monitrc /etc/monitrc
 
 VOLUME /etc/monit /var/lib/monit
+
 EXPOSE 2812
 
-CMD ["monit", "-I", "-c", "/etc/monit/monitrc"]
+CMD ["monit", "-Ic", "/etc/monitrc"]
