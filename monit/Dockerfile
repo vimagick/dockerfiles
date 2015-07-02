@@ -9,6 +9,7 @@ RUN apk add -U monit \
     && rm -rf /var/cache/apk/*
 
 COPY monit /etc/monit
+RUN chmod 600 /etc/monit/monitrc
 
 VOLUME /etc/monit /var/lib/monit
 EXPOSE 2812
