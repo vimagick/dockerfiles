@@ -1,0 +1,10 @@
+###############################################################################
+## Monit control file
+###############################################################################
+
+set daemon  30
+set logfile /dev/stdout
+set pidfile /var/run/monit.pid
+set idfile /var/lib/monit/monit.id
+set statefile /var/lib/monit/monit.state
+include /etc/monit/conf.d/*
