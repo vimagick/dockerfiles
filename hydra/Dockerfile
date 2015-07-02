@@ -12,7 +12,7 @@ RUN apk add -U bash \
                parallel \
     && echo 'will cite' | parallel --bibtex \
     && mkdir src \
-        && cd src
+        && cd src \
         && git clone https://github.com/vanhauser-thc/thc-hydra.git . \
         && ./configure --prefix=/usr \
         && make install \
