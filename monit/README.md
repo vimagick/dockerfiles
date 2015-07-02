@@ -44,5 +44,5 @@ $ docker-compose up -d
 ## client
 
 ```
-$ firefox http://server:2812
+$ firefox http://admin:monit@server:2812
 ```
