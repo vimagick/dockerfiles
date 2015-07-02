@@ -39,6 +39,7 @@ monit:
 ```
 $ cd ~/fig/monit/
 $ docker-compose up -d
+$ docker exec monit_monit_1 monit status
 ```
 
 ## client
