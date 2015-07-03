@@ -92,8 +92,11 @@ $ curl https://server:6800/jsonrpc --data '
 }
 
 $ firefox http://server:8080/
+# Aria2 1.18.10
+# ↓0 KB/s / ↑0 KB/s
 ```
 
 > Please choose `CommonName` properly when generating keys.  
 > `httpie` will throw error without `--verify no` option, I don't know why!  
 > Open `https://server:6800` in your browser, and accept security certificate.  
+
