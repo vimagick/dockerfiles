@@ -19,7 +19,7 @@ RUN sed -i -e '/^listen-address/s/127.0.0.1/0.0.0.0/' \
 VOLUME /etc/privoxy
 EXPOSE 8118
 
-CMD echo "{+block}" >> /etc/privoxy/user.action \
+CMD echo "{+block{self}}" >> /etc/privoxy/user.action \
     && ip a s eth0 | grep -w inet | awk '{print $2}' | cut -d/ -f1 >> /etc/privoxy/user.action \
     && ip r s | grep default | awk '{print $3}' >> /etc/privoxy/user.action \
     && iptables -t filter -P OUTPUT DROP \
