@@ -1,10 +1,22 @@
-`aria2` is a utility for downloading files.
+aria2
+=====
+
+- `aria2` is a utility for downloading files.
+- `yaaw` is yet another aria2 web frontend.
 
 ## directory tree
 
 ```
 ~/fig/aria2/
 ├── docker-compose.yml
+├── html/
+│   ├── README.md
+│   ├── TODO.md
+│   ├── css/...
+│   ├── img/...
+│   ├── index.html
+│   ├── js/...
+│   └── offline.appcache
 ├── data/
 └── keys/
     ├── server.crt
@@ -24,15 +36,24 @@ aria2:
   environment:
     - TOKEN=e6c3778f-6361-4ed0-b126-f2cf8fca06db
   restart: always
+
+yaaw:
+  image: vimagick/nginx
+  ports:
+    - "8080:80"
+  volumes:
+    - html:/usr/share/nginx/html
+  restart: always
 ```
 
 ## server
 
 ```
-$ mkdir -p ~/fig/aria2/{data,keys}/
+$ mkdir -p ~/fig/aria2/{html,data,keys}/
 $ cd ~/fig/aria2/
-$ vim docker-compose.yml
+$ curl -sSL https://github.com/binux/yaaw/archive/master.tar.gz | tar xz --strip 1 -C html
 $ openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout keys/server.key -out keys/server.crt
+$ vim docker-compose.yml
 $ fig up -d
 ```
 
@@ -45,12 +66,12 @@ $ update-ca-certificates --fresh
 $ uuidgen
 3c5323b8-79f7-49d4-8303-fcfe51488db5
 
-$ http --verify no https://datageek.info:6800/jsonrpc \
+$ http --verify no https://server:6800/jsonrpc \
        id=3c5323b8-79f7-49d4-8303-fcfe51488db5 \
        method=aria2.getGlobalStat \
        params:='["token:e6c3778f-6361-4ed0-b126-f2cf8fca06db"]'
 
-$ curl https://datageek.info:6800/jsonrpc --data '
+$ curl https://server:6800/jsonrpc --data '
        {
          "id": "3c5323b8-79f7-49d4-8303-fcfe51488db5",
          "method": "aria2.getGlobalStat",
@@ -69,7 +90,10 @@ $ curl https://datageek.info:6800/jsonrpc --data '
     "uploadSpeed": "0"
   }
 }
+
+$ firefox http://server:8080/
 ```
 
 > Please choose `CommonName` properly when generating keys.  
-> `httpie` will throw error without `--verify no` option, I don't know why!
+> `httpie` will throw error without `--verify no` option, I don't know why!  
+> Open `https://server:6800` in your browser, and accept security certificate.  
