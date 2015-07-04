@@ -92,8 +92,14 @@ $ curl https://server:6800/jsonrpc --data '
 }
 
 $ firefox http://server:8080/
-# Aria2 1.18.10
-# ↓0 KB/s / ↑0 KB/s
+#
+# Settings » JSON-RPC Path:
+#   wss://token:e6c3778f-6361-4ed0-b126-f2cf8fca06db@server:6800/jsonrpc
+#
+# Firefox » Top-Right Corner:
+#   Aria2 1.18.10
+#   ↓0 KB/s / ↑0 KB/s
+#
 ```
 
 > Please choose `CommonName` properly when generating keys.  
