@@ -17,11 +17,13 @@ aria2
 │   ├── index.html
 │   ├── js/...
 │   └── offline.appcache
-├── data/
+├── data -> /home/aria2/
 └── keys/
     ├── server.crt
     └── server.key
 ```
+
+> You may make `data` a symbolic link to `/home/aria2` or somewhere else.
 
 ## docker-compose.yml
 
@@ -49,8 +51,9 @@ yaaw:
 ## server
 
 ```
-$ mkdir -p ~/fig/aria2/{html,data,keys}/
+$ mkdir -p ~/fig/aria2/{html,keys}/
 $ cd ~/fig/aria2/
+$ ln -s /home/aria2 data
 $ curl -sSL https://github.com/binux/yaaw/archive/master.tar.gz | tar xz --strip 1 -C html
 $ openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout keys/server.key -out keys/server.crt
 $ vim docker-compose.yml
