@@ -23,7 +23,8 @@ aria2
     └── server.key
 ```
 
-> You may make `data` a symbolic link to `/home/aria2` or somewhere else.
+> You may make `data` a symbolic link to `/home/aria2` or somewhere else.  
+> To implement disk quota, you can even create a [virtual disk][1].
 
 ## docker-compose.yml
 
@@ -109,3 +110,4 @@ $ firefox http://server:8080/
 > `httpie` will throw error without `--verify no` option, I don't know why!  
 > Open `https://server:6800` in your browser, and accept security certificate.  
 
+[1]: http://souptonuts.sourceforge.net/quota_tutorial.html
