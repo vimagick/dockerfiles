@@ -1,7 +1,8 @@
 youtube-dl
 ==========
 
-[`youtube-dl`][1] is a small command-line program to download videos from YouTube.com and a few more sites.
+[`youtube-dl`][1] is a small command-line program to download videos from
+<https://www.youtube.com/> and a few more sites.
 
 ## Tutorial
 
@@ -9,7 +10,10 @@ youtube-dl
 # create a alias
 $ alias yt='docker run --rm -v `pwd`:/data vimagick/youtube-dl'
 
-# download a video
+# list all formats
+$ yt -F nVjsGKrE6E8
+
+# download it
 $ yt nVjsGKrE6E8
 
 # play it
