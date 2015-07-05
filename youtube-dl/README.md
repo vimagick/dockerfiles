@@ -11,6 +11,9 @@ $ alias yt='docker run --rm -v `pwd`:/data vimagick/youtube-dl'
 
 # download a video
 $ yt nVjsGKrE6E8
+
+# play it
+$ vlc *-nVjsGKrE6E8.mp4
 ```
 
 [1]: https://rg3.github.io/youtube-dl/
