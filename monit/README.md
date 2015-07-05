@@ -19,6 +19,8 @@ directories and filesystems on a Unix system.
     └── monitrc
 ```
 
+> Make sure config file endswith `.cfg`.
+
 ## docker-compose.yml
 
 ```
