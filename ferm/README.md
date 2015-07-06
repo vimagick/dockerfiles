@@ -33,7 +33,7 @@ Options:
                        This implies --noexec and --lines.
      -V, --version     Show current version number
      -h, --help        Look at this text
-     --slow            Slow mode, don't use iptables-restore
+     --slow            Slow mode, do not use iptables-restore
      --shell           Generate a shell script which calls iptables-restore
      --domain {ip|ip6} Handle only the specified domain
      --def '$name=v'   Override a variable
