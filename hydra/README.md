@@ -3,8 +3,6 @@ hydra
 
 A very fast network logon cracker which support many different services.
 
-
-
 - [x] openssl
 - [x] idn
 - [x] curses
