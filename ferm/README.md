@@ -1,7 +1,7 @@
 ferm - for Easy Rule Making
 ===========================
 
-![](https://badge.imagelayers.io/vimagick/ferm:latest.svg)]
+![](https://badge.imagelayers.io/vimagick/ferm:latest.svg)
 
 [`ferm`][1] is a frontend for iptables, providing a way to write manageable
 rulesets without sacrificing flexibility.
