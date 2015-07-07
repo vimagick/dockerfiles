@@ -5,16 +5,16 @@ urlwatch
 
 ```
 cron: triggered every 15 minutes
-     -> make: generate urls.txt from urls.yml
-             -> urlwatch: fetch webpages
-                         -> hooks.py: extract info
-                                     -> email: send via smtp
-                                              -> (^_^)
+    -> make: generate urls.txt from urls.yml
+        -> urlwatch: fetch webpages
+            -> hooks.py: extract info
+                -> email: send via smtp
+                    -> (^_^)
 ```
 
 ## docker-compose.yml
 
-```yaml
+```
 urlwatch:
   image: vimagick/urlwatch
   volumes:
@@ -48,7 +48,7 @@ setup:
 
 ## urls.yml
 
-```yaml
+```
 python:
   url: https://www.python.org/downloads/
   exp: //div[@class="download-unknown"]/p[@class]/a[1]/text()
