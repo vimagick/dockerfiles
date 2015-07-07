@@ -27,5 +27,7 @@ RUN apk add -U ca-certificates \
     && echo '*/15 * * * * cd ~/.urlwatch && make' | crontab -
 
 COPY urlwatch /root/.urlwatch
+VOLUME /root/.urlwatch
+WORKDIR /root/.urlwatch
 
 CMD ["crond", "-f", "-L", "/dev/stdout"]
