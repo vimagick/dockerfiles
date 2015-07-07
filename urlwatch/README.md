@@ -1,7 +1,16 @@
 urlwatch
 ========
 
-[urlwatch][1] - a tool for monitoring webpages for updates
+[urlwatch][1] is a tool for monitoring webpages for updates.
+
+```
+cron: triggered every 15 minutes
+     -> make: generate urls.txt from urls.yml
+             -> urlwatch: fetch webpages
+                         -> hooks.py: extract info
+                                     -> email: send via smtp
+                                              -> (^_^)
+```
 
 ## docker-compose.yml
 
@@ -35,8 +44,7 @@ setup:
 	python -c 'import keyring; keyring.set_password("$(SMTP)", "$(FROM)", "$(PASS)")'
 ```
 
-> Please change `STMP`/`FROM`/`PASS`/`TO`
-
+> Please change `STMP`/`FROM`/`PASS`/`TO` to correct value.
 
 ## urls.yml
 

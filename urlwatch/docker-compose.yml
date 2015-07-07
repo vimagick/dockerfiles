@@ -1,0 +1,6 @@
+urlwatch:
+  image: vimagick/urlwatch
+  volumes:
+    - urlwatch/Makefile:/root/.urlwatch/Makefile
+    - urlwatch/urls.yml:/root/.urlwatch/urls.yml
+  restart: always

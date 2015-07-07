@@ -14,7 +14,8 @@ RUN apk add -U ca-certificates \
                make \
                python-dev \
                py-pip \
-    && pip install keyring \
+    && pip install futures \
+                   keyring \
                    lxml \
                    urlwatch \
                    pyyaml \
