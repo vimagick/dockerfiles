@@ -23,7 +23,7 @@ RUN apk add -U ca-certificates \
                libxslt-dev \
                python-dev \
     && rm -rf /var/cache/apk/* \
-    && echo '*/15 * * * * cd ~/.urlwatch && make' | crontab
+    && echo '*/15 * * * * cd ~/.urlwatch && make' | crontab -
 
 COPY urlwatch /root/.urlwatch
 
