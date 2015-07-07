@@ -3,6 +3,20 @@ dockerfiles
 
 https://hub.docker.com/u/vimagick/
 
+## TODO
+
+- [ ] freegeoip
+- [ ] hashcat
+- [ ] hubot
+- [ ] iptables
+- [ ] irc
+- [ ] openvpn
+- [ ] polipo
+- [ ] snort
+- [ ] tshark
+
+## DONE
+
 - [x] aria2
 - [x] bro
 - [x] chinadns
@@ -19,7 +33,6 @@ https://hub.docker.com/u/vimagick/
 - [x] nginx
 - [x] obfsproxy
 - [x] opencart
-- [x] openvpn
 - [x] pdnsd
 - [x] phantomjs
 - [x] phpbb
@@ -36,5 +49,7 @@ https://hub.docker.com/u/vimagick/
 - [x] tmail
 - [x] tor
 - [x] ubuntu
+- [x] urlwatch
 - [x] webkit
 - [x] youtube-dl :+1:
+
