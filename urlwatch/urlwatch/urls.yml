@@ -1,0 +1,68 @@
+vagrant:
+  url: https://www.vagrantup.com/downloads.html
+  exp: //h2[@class="os-name" and .="Mac OS X"]/following-sibling::ul/li/a/@href
+
+coreos:
+  url: https://coreos.com
+  exp: //div[@class="co-p-homepage-release-text"]/text()
+
+git:
+  url: http://git-scm.com
+  exp: //span[@class="version"]/text()
+
+phantomjs:
+  url: http://phantomjs.org
+  exp: //span[@class="version"]/text()
+
+firefox:
+  url: https://www.mozilla.org/en-US/firefox/new/
+  exp: //li[@class="os_osx"]/a[@class="download-link"]/@href
+
+python:
+  url: https://www.python.org/downloads/
+  exp: //div[@class="download-unknown"]/p[@class]/a[1]/text()
+
+ubuntu:
+  url: http://www.ubuntu.com/download/server
+  exp: //div[contains(@class, "row-hero")]//h2/text()
+
+mongodb:
+  url: https://www.mongodb.org/downloads
+  exp: //h2[@class="release-version" and contains(., "Production")]/text()
+
+jquery:
+  url: http://jquery.com
+  exp: //span[@class="download"]/following-sibling::span/text()
+
+vim:
+  url: http://en.wikipedia.org/wiki/Vim_%28text_editor%29
+  exp: //th[a="Stable release"]/following-sibling::td/text()
+
+redis:
+  url: http://redis.io
+  exp: //a[contains(@href, "/releases/")]/text()
+
+scrapy:
+  url: https://github.com/scrapy/scrapy/releases
+  exp: //ul[@class="release-timeline-tags"]/li[1]//span[@class="tag-name"]/text()
+
+scrapyd:
+  url: https://github.com/scrapy/scrapyd/releases
+  exp: //div[contains(@class, "label-latest")]//h1[@class="release-title"]/a/text()
+
+shadowsocks:
+  url: https://github.com/shadowsocks/shadowsocks/releases
+  exp: //ul[@class="release-timeline-tags"]/li[1]//span[@class="tag-name"]/text()
+
+urlwatch:
+  url: https://github.com/thp/urlwatch/releases
+  exp: //ul[@class="release-timeline-tags"]/li[1]//span[@class="tag-name"]/text()
+
+influxdb:
+  url: http://influxdb.com/download/
+  exp: //h1[.="Download"]/following-sibling::h3[contains(., "Stable")][1]/text()
+
+monit:
+  url: http://mmonit.com/monit/changes/
+  exp: //div[@class="container"]/div[@class="row"][1]//h3/a/text()
+
