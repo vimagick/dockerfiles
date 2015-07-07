@@ -25,8 +25,8 @@ urlwatch:
 
 ## Makefile
 
-```Makefile
-SHELL = /bin/bash
+```
+SHELL = /bin/sh
 PATH := /usr/local/bin:$(PATH)
 
 SMTP = smtp.datageek.info:587
