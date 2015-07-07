@@ -17,7 +17,7 @@ RUN apk add -U ca-certificates \
     && pip install keyring \
                    lxml \
                    urlwatch \
-                   yaml \
+                   pyyaml \
     && apk del build-base \
                libxml2-dev \
                libxslt-dev \
