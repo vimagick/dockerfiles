@@ -10,6 +10,8 @@ RUN apt-get update \
     && curl -sSL https://bootstrap.saltstack.com | bash -s -- -M -N -X \
     && rm -rf /var/lib/apt/lists/*
 
+VOLUME /etc/salt /srv/salt
 EXPOSE 4505 4506
+WORKDIR /srv/salt
 
 CMD salt-master --log-level warning --log-file /dev/stdout
