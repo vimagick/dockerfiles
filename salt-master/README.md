@@ -30,14 +30,12 @@ master:
   restart: always
 ```
 
-> Please backup volumes regularly!
-
 ## salt-master
 
 ```
 $ cd ~/fig/salt/
 $ docker-compose up -d
-$ docker exec -it salt_master_1 bash
+$ alias salt='docker exec -it salt_master_1 bash'
 ```
 
 ## salt-minion
@@ -49,12 +47,10 @@ arch:
     host: 192.168.1.100
     user: root
     passwd: XcAreP36
-
 debian:
     host: 192.168.1.101
     user: root
     passwd: 0Q4yEQw7
-
 ubuntu:
     host: 192.168.1.102
     user: root
@@ -73,3 +69,12 @@ $ salt-key -L
 # accept minion keys
 $ salt-key -y -A
 ```
+
+## backup volumes
+
+```
+$ docker run --rm --volumes-from salt_master_1 -v `pwd`:/backup debian tar cvzf /backup/salt-$(date +%F).tgz /etc/salt/ /srv/salt/
+$ ls -l
+-rw-r--r-- 1 root root 14243 Jul  8 21:37 salt-2015-07-08.tgz
+```
+
