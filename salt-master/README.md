@@ -68,6 +68,9 @@ $ salt-key -L
 
 # accept minion keys
 $ salt-key -y -A
+
+# ping minions
+$ salt '*' test.ping
 ```
 
 ## backup volumes
