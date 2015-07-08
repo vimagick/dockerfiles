@@ -57,13 +57,28 @@ ubuntu:
   url: http://www.ubuntu.com/download/server
   exp: //div[contains(@class, "row-hero")]//h2/text()
 
-scrapy:
-  url: https://github.com/scrapy/scrapy/releases
-  exp: //ul[@class="release-timeline-tags"]/li[1]//span[@class="tag-name"]/text()
+coreos:
+  url: https://coreos.com
+  exp: //div[@class="co-p-homepage-release-text"]/text()
 
 urlwatch:
   url: https://github.com/thp/urlwatch/releases
   exp: //ul[@class="release-timeline-tags"]/li[1]//span[@class="tag-name"]/text()
+```
+
+## Email alert
+
+```
+***************************************************************************
+CHANGED: https://coreos.com#coreos
+***************************************************************************
+--- @   Tue, 07 Jul 2015 17:15:01 +0000
++++ @   Tue, 07 Jul 2015 20:00:01 +0000
+@@ -1 +1 @@
+-coreos: 723.1.0
++coreos: 735.0.0
+
+***************************************************************************
 ```
 
 [1]: thp.io/2008/urlwatch/

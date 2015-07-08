@@ -6,6 +6,7 @@ https://hub.docker.com/u/vimagick/
 ## TODO
 
 - [ ] freegeoip
+- [ ] gitolite
 - [ ] hashcat
 - [ ] hubot
 - [ ] iptables
