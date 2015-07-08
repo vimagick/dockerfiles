@@ -8,6 +8,7 @@ MAINTAINER kev <noreply@datageek.info>
 RUN apt-get update \
     && apt-get install -y curl \
     && curl -sSL https://bootstrap.saltstack.com | bash -s -- -M -N -X \
+    && apt-get install -y salt-ssh \
     && rm -rf /var/lib/apt/lists/*
 
 VOLUME /etc/salt /srv/salt
