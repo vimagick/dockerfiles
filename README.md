@@ -5,6 +5,7 @@ https://hub.docker.com/u/vimagick/
 
 ## TODO
 
+- [ ] ffmpeg
 - [ ] freegeoip
 - [ ] gitolite
 - [ ] hashcat
@@ -19,6 +20,7 @@ https://hub.docker.com/u/vimagick/
 ## DONE
 
 - [x] aria2
+- [x] builder
 - [x] bro
 - [x] chinadns
 - [x] collectd
@@ -49,7 +51,6 @@ https://hub.docker.com/u/vimagick/
 - [x] tinc
 - [x] tmail
 - [x] tor
-- [x] ubuntu
 - [x] urlwatch
 - [x] webkit
 - [x] youtube-dl :+1:
