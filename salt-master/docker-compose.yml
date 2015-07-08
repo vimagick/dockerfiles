@@ -1,0 +1,6 @@
+master:
+  image: vimagick/salt-master
+  ports:
+    - "4505:4505"
+    - "4506:4506"
+  restart: always
