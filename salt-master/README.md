@@ -10,6 +10,14 @@ enough to communicate with them in seconds.
 Salt delivers a dynamic communication bus for infrastructures that can be used
 for orchestration, remote execution, configuration management and much more.
 
+This image contains `salt-master`/`salt-ssh` and other power tools:
+
+- curl
+- httpie
+- ipython
+- jq
+- vim-tiny
+
 ## network topology
 
 - master
