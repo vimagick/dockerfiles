@@ -34,7 +34,7 @@ $ docker-compose up -d
 $ docker-compose logs
 Attaching to youtube_worker_1
 worker_1 | 2015-07-12T16:07:07 [INFO] connect redis
-worker_1 | 2015-07-12T16:07:26 [INFO] process: %s
+worker_1 | 2015-07-12T16:07:26 [INFO] process: https://www.youtube.com/watch?v=os6U77Hhm_s
 worker_1 | [youtube] os6U77Hhm_s: Downloading webpage
 worker_1 | [youtube] os6U77Hhm_s: Downloading video info webpage
 worker_1 | [youtube] os6U77Hhm_s: Extracting video information
