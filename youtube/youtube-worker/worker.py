@@ -27,6 +27,7 @@ def download(url):
             rdb.zadd('finished', now, url)
 
     if rdb.zrank('finished', url) != None:
+        logging.warn('This video already exists.')
         return False
 
     try:
