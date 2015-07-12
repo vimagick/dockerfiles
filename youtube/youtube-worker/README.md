@@ -33,23 +33,23 @@ $ docker-compose up -d
 
 $ docker-compose logs
 Attaching to youtube_worker_1
-worker_1 | 2015-07-12T16:07:07 [INFO] connect redis
-worker_1 | 2015-07-12T16:07:26 [INFO] process: os6U77Hhm_s
+worker_1 | 2015-07-12T17:50:02 [INFO] connect redis
+worker_1 | 2015-07-12T17:50:06 [INFO] process: os6U77Hhm_s
 worker_1 | [youtube] os6U77Hhm_s: Downloading webpage
 worker_1 | [youtube] os6U77Hhm_s: Downloading video info webpage
 worker_1 | [youtube] os6U77Hhm_s: Extracting video information
 worker_1 | [youtube] os6U77Hhm_s: Downloading DASH manifest
 worker_1 | [youtube] os6U77Hhm_s: Downloading DASH manifest
 worker_1 | [download] Destination: Shia LaBeouf TED Talk-os6U77Hhm_s.mp4
-[download] 100% of 11.03MiB in 00:0297MiB/s ETA 00:00known ETA
-worker_1 | 2015-07-12T16:07:28 [INFO] success: True
+[download] 100% of 11.03MiB in 00:0014MiB/s ETA 00:001nown ETA
+worker_1 | 2015-07-12T17:50:07 [INFO] success: True
 ```
 
 ## client
 
 ```
 $ redis-cli -h server -a 'secret-passwd'
-server> lpush urls os6U77Hhm_s
+server> lpush pending os6U77Hhm_s
 server> keys *
 1) "pending"
 server> keys *
@@ -61,9 +61,9 @@ server> quit
 $ rsync -ahP user@server:fig/youtube/data
 receiving file list ...
 2 files to consider
-drwxr-xr-x          74 2015/07/13 00:52:25 data
--rw-r--r--           0 2015/07/13 01:04:40 data/Shia LaBeouf TED Talk-os6U77Hhm_s.mp4
+drwxr-xr-x          74 2015/07/13 01:50:07 data
+-rw-r--r--    11569834 2015/06/15 17:19:16 data/Shia LaBeouf TED Talk-os6U77Hhm_s.mp4
 
 sent 16 bytes  received 116 bytes  29.33 bytes/sec
-total size is 0  speedup is 0.00
+total size is 11.57M  speedup is 87650.26
 ```

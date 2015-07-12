@@ -19,7 +19,7 @@ def download(url):
 
         if status == 'downloading':
             rdb.zadd('running', now, url)
-        elif info['status'] == 'error':
+        elif status == 'error':
             rdb.zrem('running', url)
             rdb.zadd('error', now, url)
         elif status == 'finished':
@@ -29,13 +29,18 @@ def download(url):
     if rdb.zrank('finished', url) != None:
         return False
 
-    opts = {
-        'format': os.getenv('FORMAT', 'best'),
-        'progress_hooks': [hook],
-    }
-
-    with youtube_dl.YoutubeDL(opts) as ydl:
-        ydl.download([url])
+    try:
+        opts = {
+            'format': os.getenv('FORMAT', 'best'),
+            'progress_hooks': [hook],
+        }
+        with youtube_dl.YoutubeDL(opts) as ydl:
+            ydl.download([url])
+    except Exception as ex:
+        logging.error('error: %s', ex)
+        rdb.zrem('running', url)
+        rdb.zadd('error', int(time.time()), url)
+        return False
 
     return True
 
