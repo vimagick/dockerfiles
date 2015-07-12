@@ -17,7 +17,7 @@ def download(url):
 
 if __name__ == '__main__':
 
-    logging.basicConfig(format='%(asctime)s [%(levelname)s] %(msg)s', datefmt='%FT%T', level='INFO')
+    logging.basicConfig(format='%(asctime)s [%(levelname)s] %(message)s', datefmt='%FT%T', level='INFO')
     logging.info('connect redis')
     rdb = redis.StrictRedis(host='redis', password=os.getenv('PASSWORD'))
     rdb.ping()
