@@ -12,7 +12,6 @@ https://hub.docker.com/u/vimagick/
 - [ ] hubot
 - [ ] iptables
 - [ ] irc
-- [ ] openvpn
 - [ ] polipo
 - [ ] snort
 - [ ] tshark
@@ -20,7 +19,6 @@ https://hub.docker.com/u/vimagick/
 ## DONE
 
 - [x] aria2
-- [x] builder
 - [x] bro
 - [x] chinadns
 - [x] collectd
@@ -54,4 +52,10 @@ https://hub.docker.com/u/vimagick/
 - [x] urlwatch
 - [x] webkit
 - [x] youtube-dl :+1:
+
+## 3rd-party
+
+- [x] builder
+- [x] registrator
+- [x] openvpn
 
