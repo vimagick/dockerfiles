@@ -14,17 +14,17 @@ def download(url):
 
     def hook(info):
 
-        time = int(time.time())
+        now = int(time.time())
         status = info['status']
 
         if status == 'downloading':
-            rdb.zadd('running', time, url)
+            rdb.zadd('running', now, url)
         elif info['status'] == 'error':
             rdb.zrem('running', url)
-            rdb.zadd('error', time, url)
+            rdb.zadd('error', now, url)
         elif status == 'finished':
             rdb.zrem('running', url)
-            rdb.zadd('finished', time, url)
+            rdb.zadd('finished', now, url)
 
     if rdb.zrank('finished', url) != None:
         return False
