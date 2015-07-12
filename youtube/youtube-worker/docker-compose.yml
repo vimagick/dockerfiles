@@ -1,0 +1,16 @@
+worker:
+  image: vimagick/youtube-worker
+  links:
+    - redis
+  volumes:
+    - data:/data
+  environment:
+    - PASSWORD=secret-passwd
+  restart: always
+
+redis:
+  image: redis
+  command: redis-server --requirepass 'secret-passwd'
+  ports:
+    - "6379:6379"
+  restart: always

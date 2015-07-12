@@ -24,6 +24,8 @@ https://hub.docker.com/u/vimagick/
 - [x] collectd
 - [x] dante
 - [x] dnscrypt
+    - [x] dnscrypt-proxy
+    - [x] dnscrypt-wrapper
 - [x] dokuwiki
 - [x] ferm
 - [x] fteproxy
@@ -43,6 +45,8 @@ https://hub.docker.com/u/vimagick/
 - [x] pure-ftpd
 - [x] scrapyd
 - [x] shadowsocks
+    - [x] shadowsocks
+    - [x] shadowsocks-libev
 - [x] shadowvpn
 - [x] splash
 - [x] taskd
@@ -51,7 +55,9 @@ https://hub.docker.com/u/vimagick/
 - [x] tor
 - [x] urlwatch
 - [x] webkit
-- [x] youtube-dl :+1:
+- [x] youtube
+    - [x] youtube-dl
+    - [x] youtube-worker
 
 ## 3rd-party
 
