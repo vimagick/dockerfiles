@@ -5,7 +5,10 @@ worker:
   volumes:
     - data:/data
   environment:
+    - DATABASE=1
     - PASSWORD=secret-passwd
+    - FORMAT=worst
+    - OUTTMPL=%(id)s.%(ext)s
   restart: always
 
 redis:
