@@ -12,7 +12,6 @@ https://hub.docker.com/u/vimagick/
 - [ ] hubot
 - [ ] iptables
 - [ ] irc
-- [ ] polipo
 - [ ] snort
 - [ ] tshark
 
@@ -39,10 +38,12 @@ https://hub.docker.com/u/vimagick/
 - [x] pdnsd
 - [x] phantomjs
 - [x] phpbb
+- [x] polipo
 - [x] pptpd
 - [x] privoxy
 - [x] proxyhub
 - [x] pure-ftpd
+- [x] rsyncd
 - [x] scrapyd
 - [x] shadowsocks
     - [x] shadowsocks
@@ -62,6 +63,7 @@ https://hub.docker.com/u/vimagick/
 ## 3rd-party
 
 - [x] builder
-- [x] registrator
+- [x] logspout
 - [x] openvpn
+- [x] registrator
 
