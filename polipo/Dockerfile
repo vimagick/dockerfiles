@@ -1,0 +1,22 @@
+#
+# Dockerfile for polipo
+#
+
+FROM alpine
+MAINTAINER kev <noreply@datageek.info>
+
+RUN apk add -U build-base openssl \
+    && wget https://github.com/jech/polipo/archive/master.zip -O polipo.zip \
+    && unzip polipo.zip \
+    && cd polipo-master \
+    && make \
+    && install polipo /usr/local/bin/ \
+    && cd .. \
+    && rm -rf polipo.zip polipo-master \
+    && mkdir -p /usr/share/polipo/www /var/cache/polipo \
+    && apk del build-base openssl \
+    && rm -rf /var/cache/apk/*
+
+EXPOSE 8123
+
+entrypoint ["polipo"]

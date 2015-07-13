@@ -1,0 +1,5 @@
+polipo:
+  image: vimagick/polipo
+  ports:
+    - "8123:8123"
+  restart: always
