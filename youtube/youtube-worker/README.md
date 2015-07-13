@@ -26,6 +26,8 @@ redis:
   restart: always
 ```
 
+> [format-selection](https://github.com/rg3/youtube-dl#format-selection).
+
 ## server
 
 ```
