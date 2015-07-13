@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+#-*- coding: utf-8 -*-
 #
 # youtube_dl worker
 #
@@ -33,7 +34,7 @@ def download(url):
     try:
         opts = {
             'format': os.getenv('FORMAT', 'best'),
-            'outtmpl': os.getenv('OUTTMPL', '%(title)s-%(id)s.%(ext)s'),
+            'outtmpl': unicode(os.getenv('OUTTMPL', '%(title)s-%(id)s.%(ext)s'), 'utf-8'),
             'progress_hooks': [hook],
             'writeinfojson': True,
         }
