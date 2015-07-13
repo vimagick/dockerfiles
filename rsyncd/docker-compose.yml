@@ -1,0 +1,7 @@
+rsyncd:
+  image: vimagick/rsyncd
+  ports:
+    - "873:873"
+  volumes:
+    - data:/data
+  restart: always
