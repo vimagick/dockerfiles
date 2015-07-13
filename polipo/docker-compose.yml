@@ -1,5 +1,6 @@
 polipo:
   image: vimagick/polipo
+  command: proxyAddress=0.0.0.0 authCredentials=username:password
   ports:
     - "8123:8123"
   restart: always
