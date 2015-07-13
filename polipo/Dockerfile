@@ -19,4 +19,4 @@ RUN apk add -U build-base openssl \
 
 EXPOSE 8123
 
-entrypoint ["polipo"]
+ENTRYPOINT ["polipo", "proxyAddress=0.0.0.0", "proxyPort=8123"]
