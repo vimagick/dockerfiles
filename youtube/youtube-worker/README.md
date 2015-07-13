@@ -14,6 +14,8 @@ worker:
     - data:/data
   environment:
     - PASSWORD=secret-passwd
+    - FORMAT=worst
+    - OUTTMPL=%(id)s.%(ext)s
   restart: always
 
 redis:

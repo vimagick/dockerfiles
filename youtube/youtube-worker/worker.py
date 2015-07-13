@@ -33,7 +33,9 @@ def download(url):
     try:
         opts = {
             'format': os.getenv('FORMAT', 'best'),
+            'outtmpl': os.getenv('OUTTMPL', '%(title)s-%(id)s.%(ext)s'),
             'progress_hooks': [hook],
+            'writeinfojson': True,
         }
         with youtube_dl.YoutubeDL(opts) as ydl:
             ydl.download([url])
