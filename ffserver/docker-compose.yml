@@ -1,0 +1,8 @@
+ffserver:
+  image: vimagick/ffserver
+  ports:
+    - "8090:8090"
+  volumes:
+    - ffserver.conf:/etc/ffserver.conf
+    - data:/data
+  restart: always

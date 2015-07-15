@@ -27,6 +27,7 @@ dockerfiles
     - [x] dnscrypt-wrapper
 - [x] dokuwiki
 - [x] ferm
+- [x] ffserver
 - [x] fteproxy
 - [x] hydra
 - [x] joomla
