@@ -28,7 +28,7 @@ def filter(url, data):
     try:
         dom = lxml.html.fromstring(data.encode('utf-8'))
         txt = dom.xpath(exp)[0]
-        ver = re.search(r'([0-9]+\.)*[0-9]+', txt).group(0)
+        ver = re.search(r'(?i)([0-9]+\.)*[0-9]+(-?(alpha|beta|rc)[0-9]+)?', txt).group(0).lower()
         return '{}: {}\n'.format(key, ver)
     except:
         return '{}: {}\n'.format(key, 'unknown')
