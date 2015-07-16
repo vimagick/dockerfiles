@@ -12,10 +12,10 @@ ENV SS_DEP autoconf build-base curl libtool linux-headers openssl-dev
 
 RUN apk add --update $SS_DEP \
     && curl -sSL $SS_URL | tar xz \
-    && pushd $SS_DIR \
+    && cd $SS_DIR \
         && ./configure \
         && make install \
-        && popd \
+        && cd .. \
         && rm -rf $SS_DIR \
     && apk del --purge $SS_DEP \
     && rm -rf /var/cache/apk/*
