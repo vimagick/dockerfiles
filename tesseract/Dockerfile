@@ -20,7 +20,7 @@ RUN apt-get update \
         && cd .. \
     && git clone https://github.com/tesseract-ocr/tessdata.git \
         && cd tessdata \
-        && mv * /usr/local/lib/tessdata/ \
+        && mv * /usr/local/share/tessdata/ \
         && cd .. \
     && apt-get purge --auto-remove -y autoconf \
                                       build-essential \
