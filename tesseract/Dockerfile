@@ -9,8 +9,8 @@ RUN apt-get update \
     && apt-get install -y autoconf \
                           build-essential \
                           git \
-                          leptonica \
-                          leptonica-dev \
+                          liblept4 \
+                          libleptonica-dev \
                           libtool \
     && git clone https://github.com/tesseract-ocr/tesseract.git \
     && cd tesseract \
@@ -22,7 +22,7 @@ RUN apt-get update \
     && apt-get purge --auto-remove -y autoconf \
                                       build-essential \
                                       git \
-                                      leptonica-dev \
+                                      libleptonica-dev \
                                       libtool
 
 ENTRYPOINT ["tesseract"]
