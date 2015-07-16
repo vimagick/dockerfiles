@@ -14,7 +14,7 @@ RUN apt-get update \
                           libtool \
     && git clone https://github.com/tesseract-ocr/tesseract.git \
     && git clone https://github.com/tesseract-ocr/tessdata.git \
-    && mv tessdata/*.traineddata tesseract/tessdata/ \
+    && mv -v tessdata/*.traineddata tesseract/tessdata/ \
     && cd tesseract \
     && ./autogen.sh \
     && ./configure \
