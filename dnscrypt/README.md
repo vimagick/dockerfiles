@@ -37,7 +37,7 @@ dnscrypt
 
     $ cd dnscrypt
     $ fig up -d wrapper
-    $ docker exec -it dnscrypt_wrapper_1 cat provider_keypair.txt
+    $ docker exec -it dnscrypt_wrapper_1 cat README.txt
     Public key fingerprint: 4C29:9CEB:CF8D:4612:48A8:B2F2:3B6F:A046:EBF5:2F2B:6433:27C6:5F3A:88F5:495E:3075
 
 ## Client

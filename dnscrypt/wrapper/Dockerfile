@@ -46,7 +46,7 @@ RUN apt-get update \
 
 RUN mkdir -p /var/lib/dnscrypt-wrapper \
     && cd /var/lib/dnscrypt-wrapper \
-    && dnscrypt-wrapper --gen-provider-keypair \
+    && dnscrypt-wrapper --gen-provider-keypair > README.txt \
     && dnscrypt-wrapper --gen-crypt-keypair --crypt-secretkey-file=1.key \
     && dnscrypt-wrapper --gen-cert-file --crypt-secretkey-file=1.key --provider-cert-file=1.cert
 
