@@ -46,24 +46,18 @@ RUN apt-get update \
 
 RUN mkdir -p /var/lib/dnscrypt-wrapper \
     && cd /var/lib/dnscrypt-wrapper \
-    && dnscrypt-wrapper --gen-provider-keypair > provider_keypair.txt \
-    && dnscrypt-wrapper --gen-crypt-keypair > crypt_keypair.txt \
-    && dnscrypt-wrapper --crypt-publickey-file=crypt_public.key \
-                        --crypt-secretkey-file=crypt_secret.key \
-                        --provider-publickey-file=public.key \
-                        --provider-secretkey-file=secret.key \
-                        --gen-cert-file > cert_file.txt
+    && dnscrypt-wrapper --gen-provider-keypair \
+    && dnscrypt-wrapper --gen-crypt-keypair --crypt-secretkey-file=1.key \
+    && dnscrypt-wrapper --gen-cert-file --crypt-secretkey-file=1.key --provider-cert-file=1.cert
 
 WORKDIR /var/lib/dnscrypt-wrapper
 VOLUME /var/lib/dnscrypt-wrapper
 
 EXPOSE 443/tcp 443/udp
 
-CMD dnscrypt-wrapper --crypt-publickey-file=crypt_public.key \
-                     --crypt-secretkey-file=crypt_secret.key \
+CMD dnscrypt-wrapper --resolver-address=${RESOLVER_ADDR} \
                      --listen-address=${LISTEN_ADDR} \
-                     --provider-cert-file=dnscrypt.cert \
                      --provider-name=${PROVIDER_NAME} \
-                     --resolver-address=${RESOLVER_ADDR} \
+                     --crypt-secretkey-file=1.key \
+                     --provider-cert-file=1.cert \
                      --verbose
-
