@@ -7,7 +7,6 @@ MAINTAINER kev <noreply@datageek.info>
 
 ENV LIBSODIUM_VERSION 1.0.3
 ENV DNSCRYPT_VERSION 0.1.17
-https://github.com/Cofyc/dnscrypt-wrapper/releases/download/v0.1.17/dnscrypt-wrapper-v0.1.17.tar.bz2
 ENV RESOLVER_ADDR 8.8.8.8:53
 ENV LISTEN_ADDR 0.0.0.0:443
 ENV PROVIDER_NAME 2.dnscrypt-cert.datageek.info
