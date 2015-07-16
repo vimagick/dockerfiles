@@ -14,11 +14,11 @@ RUN apt-get update \
                           libtool \
     && git clone https://github.com/tesseract-ocr/tesseract.git \
     && git clone https://github.com/tesseract-ocr/tessdata.git \
-    && mv -v tessdata/*.traineddata tesseract/tessdata/ \
+    && mv -v tessdata/* tesseract/tessdata/ \
     && cd tesseract \
     && ./autogen.sh \
     && ./configure \
-    && make install \
+    && make install install-langs \
     && cd .. \
     && rm -rf tesseract tessdata /var/cache/apk/* \
     && apt-get purge --auto-remove -y autoconf \
