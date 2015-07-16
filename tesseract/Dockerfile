@@ -13,19 +13,21 @@ RUN apt-get update \
                           libleptonica-dev \
                           libtool \
     && git clone https://github.com/tesseract-ocr/tesseract.git \
+        && cd tesseract \
+        && ./autogen.sh \
+        && ./configure \
+        && make install \
+        && cd .. \
     && git clone https://github.com/tesseract-ocr/tessdata.git \
-    && mv -v tessdata/* tesseract/tessdata/ \
-    && cd tesseract \
-    && ./autogen.sh \
-    && ./configure \
-    && make install install-langs \
-    && cd .. \
-    && rm -rf tesseract tessdata /var/cache/apk/* \
+        && cd tessdata \
+        && mv * /usr/local/lib/tessdata/ \
+        && cd .. \
     && apt-get purge --auto-remove -y autoconf \
                                       build-essential \
                                       git \
                                       libleptonica-dev \
-                                      libtool
+                                      libtool \
+    && rm -rf tesseract tessdata /var/cache/apk/*
 
 ENTRYPOINT ["tesseract"]
 CMD ["-h"]
