@@ -58,7 +58,7 @@ $ cd ~/fig/ffserver
 $ tree
 .
 ├── data
-│   └── feed.mp4
+│   └── feed.mp3
 ├── docker-compose.yml
 └── ffserver.conf
 
@@ -72,5 +72,5 @@ $ docker exec ffserver_ffserver_1 ffmpeg -i /data/feed.mp3 http://localhost:8090
 ```
 $ firefox http://server:8090/status.html
 
-$ firefox http://server:8090/feed.mp4
+$ firefox http://server:8090/feed.mp3
 ```
