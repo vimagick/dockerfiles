@@ -15,16 +15,16 @@ ENV PROVIDER_KEY B735:1140:206F:225D:3E2B:D822:D7FD:691E:A1C3:3CC8:D666:8D0C:BE0
 RUN apt-get update \
     && apt-get install -y build-essential curl \
     && mkdir libsodium \
-        && curl -sSL https://download.libsodium.org/libsodium/releases/libsodium-$LIBSODIUM_VERSION.tar.gz | tar xz --strip 1 -C libsodium \
         && cd libsodium \
+        && curl -sSL https://download.libsodium.org/libsodium/releases/libsodium-$LIBSODIUM_VERSION.tar.gz | tar xz --strip 1 \
         && ./configure --prefix=/usr --enable-minimal \
         && make install \
         && ldconfig \
         && cd .. \
         && rm -rf libsodium \
     && mkdir dnscrypt-proxy \
-        && curl -sSL http://download.dnscrypt.org/dnscrypt-proxy/dnscrypt-proxy-$DNSCRYPT_VERSION.tar.gz | tar xz --strip 1 -C dnscrypt-proxy \
         && cd dnscrypt-proxy \
+        && curl -sSL http://download.dnscrypt.org/dnscrypt-proxy/dnscrypt-proxy-$DNSCRYPT_VERSION.tar.gz | tar xz --strip 1 \
         && ./configure --prefix=/usr --with-plugins \
         && make install \
         && cd .. \

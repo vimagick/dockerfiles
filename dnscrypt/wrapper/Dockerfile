@@ -6,6 +6,8 @@ FROM debian:jessie
 MAINTAINER kev <noreply@datageek.info>
 
 ENV LIBSODIUM_VERSION 1.0.3
+ENV DNSCRYPT_VERSION 0.1.17
+https://github.com/Cofyc/dnscrypt-wrapper/releases/download/v0.1.17/dnscrypt-wrapper-v0.1.17.tar.bz2
 ENV RESOLVER_ADDR 8.8.8.8:53
 ENV LISTEN_ADDR 0.0.0.0:443
 ENV PROVIDER_NAME 2.dnscrypt-cert.datageek.info
@@ -19,15 +21,17 @@ RUN apt-get update \
                           libevent-2.0 \
                           libevent-dev \
     && mkdir libsodium \
-        && curl -sSL https://download.libsodium.org/libsodium/releases/libsodium-$LIBSODIUM_VERSION.tar.gz | tar xz --strip 1 -C libsodium \
         && cd libsodium \
+        && curl -sSL https://download.libsodium.org/libsodium/releases/libsodium-$LIBSODIUM_VERSION.tar.gz | tar xz --strip 1 \
         && ./configure --prefix=/usr \
         && make install \
         && ldconfig \
         && cd .. \
         && rm -rf libsodium \
-    && git clone --recursive git://github.com/Cofyc/dnscrypt-wrapper.git \
+    && mkdir dnscrypt-wrapper \
         && cd dnscrypt-wrapper \
+        && curl -sSL https://github.com/Cofyc/dnscrypt-wrapper/archive/v$DNSCRYPT_VERSION.tar.gz | tar xz --strip 1 \
+        && curl -sSL https://github.com/Cofyc/argparse/archive/master.tar.gz | tar xz --strip 1 -C argparse \
         && make configure \
         && ./configure --prefix=/usr \
         && make install \
