@@ -1,13 +1,27 @@
 shadowsocks-libev
 =================
 
-[![](https://badge.imagelayers.io/vimagick/shadowsocks-libev:latest.svg)](https://imagelayers.io/?images=vimagick/shadowsocks-libev:latest 'Get your own badge on imagelayers.io')
+![](https://badge.imagelayers.io/vimagick/shadowsocks-libev:latest.svg)
 
 `shadowsocks-libev` is a lightweight secured socks5 proxy for embedded devices and low end boxes.
 
 It is a port of shadowsocks created by @clowwindy maintained by @madeye and @linusyang.
 
 Compared to `vimagick/shadowsocks`, `vimagick/shadowsocks-libev` uses less cpu/memory/disk.
+
+## docker-compose.yml
+
+```
+shadowsocks:
+  image: vimagick/shadowsocks-libev
+  ports:
+    - "8388:8388"
+  environment:
+    - PASSWORD=9MLSpPmNt
+  restart: always
+```
+
+> Please choose a strong password to protect your server.
 
 ## CPU/MEMORY
 

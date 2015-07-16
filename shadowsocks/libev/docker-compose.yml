@@ -1,0 +1,7 @@
+shadowsocks:
+  image: vimagick/shadowsocks-libev
+  ports:
+    - "8388:8388"
+  environment:
+    - PASSWORD=9MLSpPmNt
+  restart: always
