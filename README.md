@@ -12,6 +12,7 @@ dockerfiles
 - [ ] hubot
 - [ ] iptables
 - [ ] irc
+- [ ] samba
 - [ ] snort
 - [ ] tshark
 
@@ -39,6 +40,7 @@ dockerfiles
 - [x] pdnsd
 - [x] phantomjs
 - [x] phpbb
+- [x] piwik
 - [x] polipo
 - [x] pptpd
 - [x] privoxy
