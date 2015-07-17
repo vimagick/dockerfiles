@@ -5,8 +5,10 @@
 FROM php:5.6-apache
 MAINTAINER kev <noreply@datageek.info>
 
-RUN a2enmod rewrite
-RUN docker-php-ext-install mysqli
+RUN apt-get update \
+    && apt-get install -y git \
+    && rm -rf /var/lib/apt/lists/* \
+    && docker-php-ext-install mysqli zip
 
 WORKDIR /var/www/html
 
@@ -20,5 +22,6 @@ RUN curl -sSL ${PIWIK_URL} -o ${PIWIK_FILE} \
     && tar xzf ${PIWIK_FILE} --strip 1 \
     && rm ${PIWIK_FILE} \
     && curl -sS https://getcomposer.org/installer | php \
+    && php composer.phar install \
     && chown -R www-data:www-data .
 
