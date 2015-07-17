@@ -19,5 +19,6 @@ RUN curl -sSL ${PIWIK_URL} -o ${PIWIK_FILE} \
     && echo "${PIWIK_MD5} ${PIWIK_FILE}" | md5sum -c \
     && tar xzf ${PIWIK_FILE} --strip 1 \
     && rm ${PIWIK_FILE} \
+    && curl -sS https://getcomposer.org/installer | php \
     && chown -R www-data:www-data .
 
