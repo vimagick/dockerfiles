@@ -17,7 +17,7 @@ ENV PIWIK_FILE piwik.tar.gz
 
 RUN curl -sSL ${PIWIK_URL} -o ${PIWIK_FILE} \
     && echo "${PIWIK_MD5} ${PIWIK_FILE}" | md5sum -c \
-    && tar xzf ${OPENCART_FILE} --strip 1 \
-    && rm ${OPENCART_FILE} \
+    && tar xzf ${PIWIK_FILE} --strip 1 \
+    && rm ${PIWIK_FILE} \
     && chown -R www-data:www-data .
 
