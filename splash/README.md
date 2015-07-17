@@ -54,7 +54,7 @@ $ docker-compose up -d
 ## client
 
 ```
-$ http --proxy http:http://server:8051 http://www.baidu.com x-splash-render:json x-splash-html:1 x-splash-png:1 x-splash-iframes:1 > so.json
+$ http --proxy http:http://server:8051 http://stackoverflow.com x-splash-render:json x-splash-html:1 x-splash-png:1 x-splash-iframes:1 > so.json
 $ jq . so.json
 
 $ http --proxy http:http://server:8051 http://stackoverflow.com x-splash-render:png > so.png
