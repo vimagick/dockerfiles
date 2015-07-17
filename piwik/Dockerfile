@@ -7,19 +7,24 @@ MAINTAINER kev <noreply@datageek.info>
 
 RUN apt-get update \
     && apt-get install -y git \
-                          libpng12-0 \
-                          libpng12-dev \
+                          libfreetype6 \
+                          libfreetype6-dev \
                           libjpeg62-turbo \
                           libjpeg-dev \
+                          libpng12-0 \
+                          libpng12-dev \
                           libzip2 \
                           libzip-dev \
-    && docker-php-ext-configure gd --with-png-dir=/usr --with-jpeg-dir=/usr \
+    && docker-php-ext-configure gd --with-freetype-dir=/usr \
+                                   --with-jpeg-dir=/usr \
+                                   --with-png-dir=/usr \
     && docker-php-ext-install gd \
                               mbstring \
                               mysqli \
                               zip \
-    && apt-get purge --auto-remove -y libpng12-dev \
+    && apt-get purge --auto-remove -y libfreetype6-dev \
                                       libjpeg-dev \
+                                      libpng12-dev \
                                       libzip-dev \
     && rm -rf /var/lib/apt/lists/*
 
