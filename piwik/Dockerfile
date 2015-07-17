@@ -6,9 +6,21 @@ FROM php:5.6-apache
 MAINTAINER kev <noreply@datageek.info>
 
 RUN apt-get update \
-    && apt-get install -y git libzip-dev \
-    && docker-php-ext-install mysqli zip \
-    && apt-get remove -y libzip-dev \
+    && apt-get install -y git \
+                          libpng12-0 \
+                          libpng12-dev \
+                          libjpeg8 \
+                          libjpeg-dev \
+                          libzip2 \
+                          libzip-dev \
+    && docker-php-ext-configure gd --with-png-dir=/usr --with-jpeg-dir=/usr \
+    && docker-php-ext-install gd \
+                              mbstring \
+                              mysqli \
+                              zip \
+    && apt-get remove -y libpng12-dev \
+                         libjpeg-dev \
+                         libzip-dev \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /var/www/html
