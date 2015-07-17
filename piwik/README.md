@@ -8,7 +8,7 @@ apps & IoT and visualise this data and extract insights. Privacy is built-in.
 ## docker-compose.yml
 
 ```
-dokuwiki:
+piwik:
   image: vimagick/piwik
   ports:
     - "8000:80"

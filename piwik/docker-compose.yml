@@ -1,4 +1,4 @@
-dokuwiki:
+piwik:
   image: vimagick/piwik
   ports:
     - "8000:80"
