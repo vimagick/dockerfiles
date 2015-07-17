@@ -10,8 +10,6 @@ RUN apk add -U samba-common-tools samba-server \
 
 COPY smb.conf /etc/samba/
 
-VOLUME /etc/samba
-
 EXPOSE 137/udp 138/udp 139/tcp 445/tcp
 
 CMD smbd --foreground --log-stdout
