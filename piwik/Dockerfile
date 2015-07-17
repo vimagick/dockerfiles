@@ -36,5 +36,6 @@ RUN curl -sSL ${PIWIK_URL} -o ${PIWIK_FILE} \
     && rm ${PIWIK_FILE} \
     && curl -sS https://getcomposer.org/installer | php \
     && php composer.phar install \
+    && echo "always_populate_raw_post_data=-1" >> /usr/local/etc/php/php.ini \
     && chown -R www-data:www-data .
 
