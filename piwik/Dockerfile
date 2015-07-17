@@ -6,9 +6,10 @@ FROM php:5.6-apache
 MAINTAINER kev <noreply@datageek.info>
 
 RUN apt-get update \
-    && apt-get install -y git \
-    && rm -rf /var/lib/apt/lists/* \
-    && docker-php-ext-install mysqli zip
+    && apt-get install -y git libzip-dev \
+    && docker-php-ext-install mysqli zip \
+    && apt-get remove -y libzip-dev \
+    && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /var/www/html
 
