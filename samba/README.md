@@ -40,11 +40,14 @@ guest ok = yes
 
 ```
 $ cd ~/fig/samba
+$ mkdir share
+$ chmod 777 share
+$ touch share/README.txt
 $ docker-compose up -d
 $ docker exec -it samba_samba_1 sh
->>> chmod 777 /share
->>> adduser kev
->>> smbpasswd -a kev
+>>> smbpasswd -a root
+New SMB password:******
+Retype new SMB password:******
 >>> exit
 ```
 
