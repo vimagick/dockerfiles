@@ -9,7 +9,7 @@ RUN apt-get update \
     && apt-get install -y git \
                           libpng12-0 \
                           libpng12-dev \
-                          libjpeg8 \
+                          libjpeg62-turbo \
                           libjpeg-dev \
                           libzip2 \
                           libzip-dev \
@@ -18,9 +18,9 @@ RUN apt-get update \
                               mbstring \
                               mysqli \
                               zip \
-    && apt-get remove -y libpng12-dev \
-                         libjpeg-dev \
-                         libzip-dev \
+    && apt-get purge --auto-remove -y libpng12-dev \
+                                      libjpeg-dev \
+                                      libzip-dev \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /var/www/html
