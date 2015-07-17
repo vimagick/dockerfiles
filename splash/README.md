@@ -54,8 +54,9 @@ $ docker-compose up -d
 ## client
 
 ```
-$ http --proxy http:http://server:8051 http://stackoverflow.com x-splash-render:json x-splash-html:1 x-splash-png:1 x-splash-iframes:1 > so.json
-$ jq . so.json
+$ http --proxy http:http://server:8051 http://stackoverflow.com x-splash-render:json x-splash-html:1 x-splash-png:1 x-splash-iframes:1 x-splash-har:1 > so.json
+$ jq .har so.json | pbcopy
+$ open http://www.softwareishard.com/har/viewer/
 
 $ http --proxy http:http://server:8051 http://stackoverflow.com x-splash-render:png > so.png
 $ open so.png
