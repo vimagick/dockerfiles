@@ -7,6 +7,9 @@ vault:
   image: vimagick/vault
   ports:
     - "8200:8200"
+  volumes:
+    - vault/vault.crt:/etc/vault/vault.crt
+    - vault/vault.key:/etc/vault/vault.key
   volumes_from:
     - data
   privileged: true

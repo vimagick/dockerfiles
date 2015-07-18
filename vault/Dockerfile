@@ -17,10 +17,10 @@ RUN wget -O $VAULT_FILE $VAULT_URL \
     && chmod +x /usr/bin/vault \
     && rm $VAULT_FILE
 
-COPY vault.hcl /etc/
+COPY vault /etc/vault
 
 VOLUME /var/lib/vault
 
 EXPOSE 8200
 
-CMD ["vault", "server", "-config", "/etc/vault.hcl"]
+CMD ["vault", "server", "-config", "/etc/vault/vault.hcl"]

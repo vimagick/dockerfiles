@@ -20,16 +20,23 @@ vault:
   image: vimagick/vault
   ports:
     - "8200:8200"
+  volumes:
+    - vault/vault.crt:/etc/vault/vault.crt
+    - vault/vault.key:/etc/vault/vault.key
   volumes_from:
     - data
   privileged: true
   restart: always
 ```
 
+> You can also mount customized `vault.hcl`.
+
 ## server
 
 ```
 $ cd ~/fig/vault
+$ mkdir vault
+$ openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout vault/vault.key -out vault/vault.crt
 $ docker-compose up -d
 $ docker cp vault_vault_1:/usr/bin/vault /usr/local/bin/
 ```
@@ -39,7 +46,7 @@ $ docker cp vault_vault_1:/usr/bin/vault /usr/local/bin/
 ```
 $ export VAULT_ADDR='https://127.0.0.1:8200'
 $ vault status
-$ vault init | tee vault.key
+$ vault init | tee vault.secret
 $ vault unseal
 $ vault auth
 $ vault write secret/name key=value
@@ -47,7 +54,7 @@ $ vault read secret/name
 $ vault seal
 ```
 
-- Split `vault.key`, keep them a secret.
+- Split `vault.secret`, keep them a secret.
 - Run `vault unseal` 3 times to unseal.
 - Use `key=@value` to read secret from file.
 
