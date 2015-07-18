@@ -19,7 +19,7 @@ RUN wget -O $VAULT_FILE $VAULT_URL \
 
 COPY vault /etc/vault
 
-VOLUME /var/lib/vault
+VOLUME /etc/vault /var/lib/vault
 
 EXPOSE 8200
 
