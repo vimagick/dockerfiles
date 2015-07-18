@@ -23,4 +23,4 @@ VOLUME /var/lib/vault
 
 EXPOSE 8200
 
-CMD ["vault", "server", "-config", "/etc/vault/vault.hcl"]
+CMD ["vault", "server", "-config=/etc/vault/vault.hcl"]

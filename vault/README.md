@@ -29,7 +29,7 @@ vault:
   restart: always
 ```
 
-> You can also mount customized `vault.hcl`.
+> Please distribute `vault.crt` to clients.
 
 ## server
 
