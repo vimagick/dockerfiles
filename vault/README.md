@@ -39,23 +39,26 @@ $ mkdir vault
 $ openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout vault/vault.key -out vault/vault.crt
 $ docker-compose up -d
 $ docker cp vault_vault_1:/usr/bin/vault /usr/local/bin/
+$ docker exec -it vault_vault_1 sh
+>>> cd /etc/vault
+>>> vault init -tls-skip-verify -key-shares=5 -key-threshold=3 | tee vault.secret
+>>> exit
 ```
+
+> Split `vault.secret`, keep them a secret.
 
 ## client
 
 ```
-$ export VAULT_ADDR='https://127.0.0.1:8200'
+$ export VAULT_ADDR='https://server:8200'
+$ cp ~/fig/vault/vault/vault.crt /etc/ssl/certs/vault.pem
+$ update-ca-certificates
 $ vault status
-$ vault init | tee vault.secret
-$ vault unseal
+$ vault unseal && vault unseal && vault unseal
 $ vault auth
 $ vault write secret/name key=value
 $ vault read secret/name
 $ vault seal
 ```
-
-- Split `vault.secret`, keep them a secret.
-- Run `vault unseal` 3 times to unseal.
-- Use `key=@value` to read secret from file.
 
 [1]: https://www.vaultproject.io/
