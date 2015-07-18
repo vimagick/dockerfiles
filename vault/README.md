@@ -11,11 +11,6 @@ providing tight access control and recording a detailed audit log.
 ## docker-compose.yml
 
 ```
-data:
-  image: busybox
-  volumes:
-    - /var/lib/vault
-
 vault:
   image: vimagick/vault
   ports:
@@ -23,8 +18,6 @@ vault:
   volumes:
     - vault/vault.crt:/etc/vault/vault.crt
     - vault/vault.key:/etc/vault/vault.key
-  volumes_from:
-    - data
   privileged: true
   restart: always
 ```
@@ -43,6 +36,7 @@ $ docker exec -it vault_vault_1 sh
 >>> cd /etc/vault
 >>> vault init -tls-skip-verify -key-shares=5 -key-threshold=3 | tee vault.secret
 >>> exit
+$ docker run --rm --volumes-from vault_vault_1 -v `pwd`:/backup alpine tar cvzf /backup/vault.tgz /etc/vault /var/lib/vault
 ```
 
 > Split `vault.secret`, keep them a secret.

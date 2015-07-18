@@ -1,8 +1,3 @@
-data:
-  image: busybox
-  volumes:
-    - /var/lib/vault
-
 vault:
   image: vimagick/vault
   ports:
@@ -10,7 +5,5 @@ vault:
   volumes:
     - vault/vault.crt:/etc/vault/vault.crt
     - vault/vault.key:/etc/vault/vault.key
-  volumes_from:
-    - data
   privileged: true
   restart: always
