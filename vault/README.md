@@ -20,8 +20,9 @@ vault:
   image: vimagick/vault
   ports:
     - "8200:8200"
-  volumes-from:
+  volumes_from:
     - data
+  privileged: true
   restart: always
 ```
 
@@ -36,17 +37,18 @@ $ docker cp vault_vault_1:/usr/bin/vault /usr/local/bin/
 ## client
 
 ```
-$ export VAULT_ADDR='http://127.0.0.1:8200'
+$ export VAULT_ADDR='https://127.0.0.1:8200'
 $ vault status
 $ vault init | tee vault.key
 $ vault unseal
-$ vault auth xxxxxx
-$ vault write secret/hello value=world
-$ vault read secret/hello
+$ vault auth
+$ vault write secret/name key=value
+$ vault read secret/name
 $ vault seal
 ```
 
-- Keep `vault.key` a secret.
-- Run `vault unseal` 3 times.
+- Split `vault.key`, keep them a secret.
+- Run `vault unseal` 3 times to unseal.
+- Use `key=@value` to read secret from file.
 
 [1]: https://www.vaultproject.io/
