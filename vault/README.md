@@ -18,7 +18,8 @@ vault:
   volumes:
     - vault/vault.crt:/etc/vault/vault.crt
     - vault/vault.key:/etc/vault/vault.key
-  privileged: true
+  cap_add:
+    - IPC_LOCK
   restart: always
 ```
 
