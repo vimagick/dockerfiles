@@ -2,7 +2,7 @@
 # Dockerfile for vault
 #
 
-FROM apline
+FROM alpine
 MAINTAINER kev <noreply@datageek.info>
 
 ENV VAULT_VER 0.2.0
