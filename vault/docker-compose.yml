@@ -1,0 +1,12 @@
+data:
+  image: busybox
+  volumes:
+    - /var/lib/vault
+
+vault:
+  image: vimagick/vault
+  ports:
+    - "8200:8200"
+  volumes-from:
+    - data
+  restart: always
