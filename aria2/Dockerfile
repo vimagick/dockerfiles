@@ -5,7 +5,7 @@
 FROM alpine
 MAINTAINER kev <noreply@datageek.info>
 
-RUN apk add -u aria2 \
+RUN apk add -U aria2 \
     && rm -rf /var/cache/apk/* \
     && aria2c https://github.com/tianon/gosu/releases/download/1.4/gosu-amd64 -o /usr/local/bin/gosu \
     && chmod +x /usr/local/bin/gosu \
