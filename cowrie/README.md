@@ -14,6 +14,7 @@ cowrie:
   ports:
     - "2222:2222"
   volumes:
+    - dl:/home/cowrie/dl
     - log:/home/cowrie/log
   restart: always
 ```
@@ -22,11 +23,12 @@ cowrie:
 
 ```
 $ cd ~/fig/cowrie
-$ mkdir -p log/tty
-$ chmod -R 777 log
+$ mkdir -p dl log/tty
+$ chmod -R 777 dl log
 $ tree -F
 .
 ├── docker-compose.yml
+├── dl/
 └── log/
     └── tty/
 $ docker-compose up -d
@@ -39,7 +41,7 @@ $ tail -f log/cowrie.log
 $ ssh -p 2222 root@server
 ```
 
-> You can login as `root` without password.
+> You can login as `root` with any password except `root` or `123456`.
 
 [1]: https://github.com/micheloosterhof/cowrie
 [2]: http://github.com/desaster/kippo/

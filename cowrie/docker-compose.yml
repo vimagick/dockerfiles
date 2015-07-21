@@ -3,5 +3,6 @@ cowrie:
   ports:
     - "2222:2222"
   volumes:
+    - dl:/home/cowrie/dl
     - log:/home/cowrie/log
   restart: always
