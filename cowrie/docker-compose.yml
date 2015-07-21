@@ -1,0 +1,7 @@
+cowrie:
+  image: vimagick/cowrie
+  ports:
+    - "2222:2222"
+  volumes:
+    - log:/home/cowrie/log
+  restart: always
