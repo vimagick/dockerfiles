@@ -1,9 +1,12 @@
+opencart
+========
+
 `OpenCart` is designed feature rich, easy to use, search engine
 friendly and with a visually appealing interface.
 
 ```
 opencart:
-  image: opencart
+  image: vimagick/opencart
   ports:
     - "8000:80"
   links:
