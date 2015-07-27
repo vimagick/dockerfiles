@@ -1,7 +1,7 @@
 monit
 =====
 
-[![](https://badge.imagelayers.io/vimagick/monit:latest.svg)](https://imagelayers.io/?images=vimagick/monit:latest)
+![](https://badge.imagelayers.io/vimagick/monit:latest.svg)
 
 `Monit` is a utility for managing and monitoring processes, programs, files,
 directories and filesystems on a Unix system.
