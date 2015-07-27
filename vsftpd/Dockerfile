@@ -9,6 +9,5 @@ RUN apk add -U vsftpd \
     && rm -rf /var/cache/apk/*
 
 EXPOSE 21
-USER vsftp
 
 CMD ["vsftpd"]
