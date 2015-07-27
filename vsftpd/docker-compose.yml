@@ -1,0 +1,6 @@
+vsftpd:
+  image: vimagick/vsftpd
+  ports:
+    - "21:21"
+  privileged: true
+  restart: always

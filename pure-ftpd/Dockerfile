@@ -11,4 +11,4 @@ RUN groupadd ftpgroup && useradd -g ftpgroup -m ftpuser
 EXPOSE 21
 VOLUME /home/ftpuser /etc/pure-ftpd
 
-CMD pure-ftpd --login puredb:/etc/pure-ftpd/pureftpd.pdb --createhomedir
+CMD ["pure-ftpd", "--login", "puredb:/etc/pure-ftpd/pureftpd.pdb", "--createhomedir"]
