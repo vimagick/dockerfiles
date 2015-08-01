@@ -6,7 +6,7 @@ FROM debian:jessie
 MAINTAINER kev <noreply@datageek.info>
 
 ENV LIBSODIUM_VERSION 1.0.3
-ENV DNSCRYPT_VERSION 0.1.17
+ENV DNSCRYPT_VERSION 0.2
 ENV RESOLVER_ADDR 8.8.8.8:53
 ENV LISTEN_ADDR 0.0.0.0:443
 ENV PROVIDER_NAME 2.dnscrypt-cert.datageek.info
@@ -30,7 +30,6 @@ RUN apt-get update \
     && mkdir dnscrypt-wrapper \
         && cd dnscrypt-wrapper \
         && curl -sSL https://github.com/Cofyc/dnscrypt-wrapper/archive/v$DNSCRYPT_VERSION.tar.gz | tar xz --strip 1 \
-        && curl -sSL https://github.com/Cofyc/argparse/archive/master.tar.gz | tar xz --strip 1 -C argparse \
         && make configure \
         && ./configure --prefix=/usr \
         && make install \
