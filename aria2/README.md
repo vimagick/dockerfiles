@@ -35,7 +35,8 @@ aria2:
     - "6800:6800"
   volumes:
     - "data:/home/aria2"
-    - "keys:/etc/aria2"
+    - "keys:/etc/aria2/keys"
+#   - "aria2.conf:/etc/aria2.conf"
   environment:
     - TOKEN=e6c3778f-6361-4ed0-b126-f2cf8fca06db
   restart: always
@@ -47,6 +48,25 @@ yaaw:
   volumes:
     - html:/usr/share/nginx/html
   restart: always
+```
+
+## aria2.conf
+
+```
+dir=/home/aria2
+disable-ipv6=true
+enable-rpc=true
+max-download-limit=0
+max-upload-limit=0
+rpc-allow-origin-all=true
+rpc-certificate=/etc/aria2/keys/server.crt
+rpc-listen-all=true
+rpc-listen-port=6800
+rpc-private-key=/etc/aria2/keys/server.key
+rpc-secret=00000000-0000-0000-0000-000000000000
+rpc-secure=true
+seed-ratio=0
+seed-time=0
 ```
 
 ## server
