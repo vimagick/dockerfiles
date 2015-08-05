@@ -5,10 +5,10 @@
 FROM debian:jessie
 MAINTAINER kev <noreply@datageek.info>
 
-ENV DNS_VER 1.3.1
+ENV DNS_VER 1.3.2
 ENV DNS_URL https://github.com/clowwindy/ChinaDNS/releases/download/${DNS_VER}/chinadns-${DNS_VER}.tar.gz
 ENV DNS_FILE chinadns.tar.gz
-ENV DNS_MD5 9e2aca1a265aec7ca87f4d0377d9fa74
+ENV DNS_MD5 f3ece30f2a453d25cc22ef6e1ef579b0
 
 RUN apt-get update \
     && apt-get install -y build-essential curl dnsmasq supervisor \
