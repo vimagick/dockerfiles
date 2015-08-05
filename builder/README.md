@@ -10,7 +10,6 @@ builder:
   image: tutum/builder
   volumes:
     - ~/.dockercfg:/.dockercfg:ro
-    - /var/run/docker.sock:/var/run/docker.sock:rw
   environment:
     - GIT_REPO=https://github.com/vimagick/dockerfiles.git
     - DOCKERFILE_PATH=/test
