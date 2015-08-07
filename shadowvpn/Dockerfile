@@ -12,6 +12,7 @@ RUN apk add -U autoconf \
                git \
                iptables \
                libtool \
+               linux-headers \
     && git clone --recursive https://github.com/clowwindy/ShadowVPN.git \
     && cd ShadowVPN \
     && ./autogen.sh \
@@ -24,7 +25,8 @@ RUN apk add -U autoconf \
                build-base \
                gawk \
                git \
-               libtool
+               libtool \
+               linux-headers
 
 EXPOSE 1123/udp
 
