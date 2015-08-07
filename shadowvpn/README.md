@@ -1,16 +1,19 @@
+ShadowVPN
+=========
+
+![](https://badge.imagelayers.io/vimagick/shadowvpn:latest.svg)
+
 [`ShadowVPN`][1] is a fast, safe VPN based on libsodium.
 
 ## directory tree
 
 ```
 ~/fig/shadowvpn/
-.
 ├── docker-compose.yml
-└── shadowvpn/
-    ├── server.conf
-    ├── server_down.sh
-    └── server_up.sh
+└── server.conf
 ```
+
+> Please change password in [server.conf][2] to protect your server.
 
 ## docker-compose.yml
 
@@ -20,7 +23,7 @@ shadowvpn:
   ports:
     - "1123:1123/udp"
   volumes:
-    - "shadowvpn:/etc/shadowvpn"
+    - "server.conf:/etc/shadowvpn/server.conf"
   privileged: true
   restart: always
 ```
@@ -37,4 +40,8 @@ $ docker-compose up -d
 $ shadowvpn -c /etc/shadowvpn/client.conf -v
 ```
 
+> Change settings in [client.conf][3].
+
 [1]: https://shadowvpn.org/
+[2]: https://github.com/clowwindy/ShadowVPN/blob/master/samples/server.conf
+[2]: https://github.com/clowwindy/ShadowVPN/blob/master/samples/client.conf

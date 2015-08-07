@@ -2,17 +2,16 @@
 # Dockerfile for ShadowVPN
 #
 
-FROM debian:jessie
+FROM alpine
 MAINTAINER kev <noreply@datageek.info>
 
-RUN apt-get update \
-    && apt-get install -y automake \
-                          build-essential \
-                          gawk \
-                          git \
-                          net-tools \
-                          iptables \
-                          libtool \
+RUN apk add -U autoconf \
+               automake \
+               build-base \
+               gawk \
+               git \
+               iptables \
+               libtool \
     && git clone --recursive https://github.com/clowwindy/ShadowVPN.git \
     && cd ShadowVPN \
     && ./autogen.sh \
@@ -20,14 +19,13 @@ RUN apt-get update \
     && make install \
     && cd .. \
     && rm -rf ShadowVPN \
-    && apt-get purge -y --auto-remove automake \
-                                      build-essential \
-                                      gawk \
-                                      git \
-                                      libtool
+    && apk del autoconf \
+               automake \
+               build-base \
+               gawk \
+               git \
+               libtool
 
 EXPOSE 1123/udp
-VOLUME /etc/shadowvpn
 
 CMD shadowvpn -c /etc/shadowvpn/server.conf
-
