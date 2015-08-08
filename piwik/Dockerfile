@@ -30,8 +30,8 @@ RUN apt-get update \
 
 WORKDIR /var/www/html
 
-ENV PIWIK_VER 2.14.1
-ENV PIWIK_MD5 f299515138d99c46eda737761c73c2e6
+ENV PIWIK_VER 2.14.3
+ENV PIWIK_MD5 1a613d36723ca5ccd52a9a9121d09a83
 ENV PIWIK_URL https://github.com/piwik/piwik/archive/$PIWIK_VER.tar.gz
 ENV PIWIK_FILE piwik.tar.gz
 
