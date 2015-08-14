@@ -1,68 +1,145 @@
-vagrant:
-  url: https://www.vagrantup.com/downloads.html
-  exp: //h2[@class="os-name" and .="Mac OS X"]/following-sibling::ul/li/a/@href
+###### OS ######
+
+alpine:
+  url: http://alpinelinux.org/
+  xpath: //span[@class="icon-download"]/following-sibling::p/a/text()
+
+archlinux:
+  url: https://www.archlinux.org/download/
+  xpath: //li[strong="Current Release:"]/text()
+
+centos:
+  url: http://www.centos.org/download/
+  xpath: //div[@class="downloadbutton"]/a[.="DVD ISO"]/@href
 
 coreos:
   url: https://coreos.com
-  exp: //div[@class="co-p-homepage-release-text"]/text()
+  xpath: //div[@class="co-p-homepage-release-text"]/text()
 
-git:
-  url: http://git-scm.com
-  exp: //span[@class="version"]/text()
+debian:
+  url: https://www.debian.org/releases/
+  xpath: //li[contains(., "current stable release")]/a/text()
 
-phantomjs:
-  url: http://phantomjs.org
-  exp: //span[@class="version"]/text()
+fedora:
+  url: https://getfedora.org/en/server/download/
+  xpath: //h2[starts-with(., "Download")]/text()
 
-firefox:
-  url: https://www.mozilla.org/en-US/firefox/new/
-  exp: //li[@class="os_osx"]/a[@class="download-link"]/@href
+freebsd:
+  url: http://www.freebsd.org/releases/
+  xpath: //div[@id="sidenav"]//li[contains(text(), "Production Release:")][1]/a/text()
 
-python:
-  url: https://www.python.org/downloads/
-  exp: //div[@class="download-unknown"]/p[@class]/a[1]/text()
+kali:
+  url: https://www.kali.org/kali-linux-releases/
+  xpath: //h2[.="Kali Linux Release History"]/following-sibling::ul/li[1]/strong/text()
+
+raspbian:
+  url: https://www.raspberrypi.org/downloads/
+  xpath: //div[h3="Raspbian"]//span[.="Kernel version:"]/following-sibling::strong/text()
+
+redhat:
+  url: https://access.redhat.com/products/red-hat-enterprise-linux/evaluation
+  xpath: //a[contains(@class, "btn-download")]/small/text()
+
+smartos:
+  url: https://github.com/joyent/smartos-live/releases
+  xpath: //ul[@class="release-timeline-tags"]/li[1]//span[@class="tag-name"]/text()
 
 ubuntu:
   url: http://www.ubuntu.com/download/server
-  exp: //div[contains(@class, "row-hero")]//h2/text()
+  xpath: //div[contains(@class, "row-hero")]//h2/text()
+
+###### LANG ######
+
+go:
+  url: https://golang.org/dl/
+  xpath: //h3[.="Stable versions"]/following-sibling::div[1]/@id
+
+nodejs:
+  url: https://nodejs.org/
+  xpath: //div[@id="intro"]/p[@class="version"]/text()
+
+python:
+  url: https://www.python.org/downloads/
+  xpath: //div[@class="download-unknown"]/p[@class]/a[1]/text()
+
+###### DB ######
 
 mongodb:
   url: https://www.mongodb.org/downloads
-  exp: //h2[@class="release-version" and contains(., "Production")]/text()
-
-jquery:
-  url: http://jquery.com
-  exp: //span[@class="download"]/following-sibling::span/text()
-
-vim:
-  url: http://en.wikipedia.org/wiki/Vim_%28text_editor%29
-  exp: //th[a="Stable release"]/following-sibling::td/text()
+  xpath: //div[@id="production-release-header"]/h2/@data-production-version
 
 redis:
   url: http://redis.io
-  exp: //a[contains(@href, "/releases/")]/text()
+  xpath: //a[contains(@href, "/releases/")]/text()
+
+influxdb:
+  url: https://influxdb.com/download/index.html
+  xpath: //h2[contains(., "Stable")]/text()
+
+###### TOOL ######
+
+vagrant:
+  url: https://www.vagrantup.com/downloads.html
+  xpath: //h2[@class="os-name" and .="Mac OS X"]/following-sibling::ul/li/a/@href
+
+git:
+  url: http://git-scm.com
+  xpath: //span[@class="version"]/text()
+
+docker:
+  url: https://github.com/docker/docker/releases
+  xpath: //ul[@class="release-timeline-tags"]/li[1]//span[@class="tag-name"]/text()
+
+phantomjs:
+  url: http://phantomjs.org
+  xpath: //span[@class="version"]/text()
+
+firefox:
+  url: https://www.mozilla.org/en-US/firefox/new/
+  xpath: //li[@class="os_osx"]/a[@class="download-link"]/@href
+
+jquery:
+  url: http://jquery.com
+  xpath: //span[@class="download"]/following-sibling::span/text()
+
+vim:
+  url: http://en.wikipedia.org/wiki/Vim_%28text_editor%29
+  xpath: //th[a="Stable release"]/following-sibling::td/text()
 
 scrapy:
   url: https://github.com/scrapy/scrapy/releases
-  exp: //ul[@class="release-timeline-tags"]/li[1]//span[@class="tag-name"]/text()
+  xpath: //ul[@class="release-timeline-tags"]/li[1]//span[@class="tag-name"]/text()
 
 scrapyd:
   url: https://github.com/scrapy/scrapyd/releases
-  exp: //div[contains(@class, "label-latest")]//h1[@class="release-title"]/a/text()
-
-shadowsocks:
-  url: https://github.com/shadowsocks/shadowsocks/releases
-  exp: //ul[@class="release-timeline-tags"]/li[1]//span[@class="tag-name"]/text()
+  xpath: //div[contains(@class, "label-latest")]//h1[@class="release-title"]/a/text()
 
 urlwatch:
   url: https://github.com/thp/urlwatch/releases
-  exp: //ul[@class="release-timeline-tags"]/li[1]//span[@class="tag-name"]/text()
-
-influxdb:
-  url: http://influxdb.com/download/
-  exp: //h1[.="Download"]/following-sibling::h3[contains(., "Stable")][1]/text()
+  xpath: //ul[@class="release-timeline-tags"]/li[1]//span[@class="tag-name"]/text()
 
 monit:
   url: http://mmonit.com/monit/changes/
-  exp: //div[@class="container"]/div[@class="row"][1]//h3/a/text()
+  xpath: //div[@class="container"]/div[@class="row"][1]//h3/a/text()
 
+virtualbox:
+  url: https://www.virtualbox.org/wiki/Downloads
+  xpath: //strong/following-sibling::a[@class="ext-link" and contains(@href, "dmg")]/@href
+
+###### VPN ######
+
+openvpn:
+  url: https://openvpn.net/index.php/open-source/downloads.html
+  xpath: //h2[contains(., "released on")]/text()
+
+tinc:
+  url: http://tinc-vpn.org/
+  xpath: //h3/a[contains(@href, "download")]/text()
+
+shadowsocks:
+  url: https://github.com/shadowsocks/shadowsocks/releases
+  xpath: //ul[@class="release-timeline-tags"]/li[1]//span[@class="tag-name"]/text()
+
+shadowsocks-libev:
+  url: https://github.com/shadowsocks/shadowsocks-libev/releases
+  xpath: //div[contains(@class, "label-latest")]//h1[@class="release-title"]/a/text()
