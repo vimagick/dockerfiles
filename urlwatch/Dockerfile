@@ -14,7 +14,8 @@ RUN apk add -U ca-certificates \
                make \
                python-dev \
                py-pip \
-    && pip install futures \
+    && pip install cssselect \
+                   futures \
                    keyring \
                    lxml \
                    urlwatch \
