@@ -12,13 +12,13 @@ dockerfiles
 - [ ] hubot
 - [ ] iptables
 - [ ] irc
-- [ ] samba
 - [ ] snort
 - [ ] tshark
 
 ## DONE
 
 - [x] aria2
+- [x] audiowaveform
 - [x] bro
 - [x] chinadns
 - [x] collectd
@@ -30,7 +30,9 @@ dockerfiles
 - [x] ferm
 - [x] ffserver
 - [x] fteproxy
+- [x] grafana
 - [x] hydra
+- [x] influxdb
 - [x] joomla
 - [x] mantisbt
 - [x] monit
@@ -47,6 +49,7 @@ dockerfiles
 - [x] proxyhub
 - [x] pure-ftpd
 - [x] rsyncd
+- [x] samba
 - [x] scrapyd
 - [x] shadowsocks
     - [x] shadowsocks
