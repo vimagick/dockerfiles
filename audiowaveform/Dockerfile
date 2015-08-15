@@ -5,7 +5,7 @@
 FROM ubuntu
 MAINTAINER kev <noreply@datageek.info>
 
-RUN apt-update \
+RUN apt-get update \
     && apt install -y cmake \
                       g++ \
                       gcc \
