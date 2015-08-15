@@ -18,8 +18,8 @@ RUN apt-get update \
                       libsndfile1-dev \
                       make \
                       wget \
-    && cd audiowaveform \
-        && git clone https://github.com/bbcrd/audiowaveform.git . \
+    && git clone https://github.com/bbcrd/audiowaveform.git \
+        && cd audiowaveform \
         && wget https://googlemock.googlecode.com/files/gmock-1.7.0.zip \
         && unzip gmock-1.7.0.zip \
         && ln -s gmock-1.7.0 gmock \
