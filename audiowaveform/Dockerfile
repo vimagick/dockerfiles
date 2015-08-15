@@ -17,6 +17,7 @@ RUN apt-get update \
                       libmad0-dev \
                       libsndfile1-dev \
                       make \
+                      unzip \
                       wget \
     && git clone https://github.com/bbcrd/audiowaveform.git \
         && cd audiowaveform \
@@ -40,6 +41,7 @@ RUN apt-get update \
                                       libmad0-dev \
                                       libsndfile1-dev \
                                       make \
+                                      unzip \
                                       wget \
     && rm -rf /var/lib/apt/lists/*
 
