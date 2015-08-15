@@ -10,11 +10,17 @@ RUN apt-get update \
                       g++ \
                       gcc \
                       git-core \
+                      libboost-filesystem1.54.0 \
                       libboost-filesystem-dev \
+                      libboost-program-options1.54.0 \
                       libboost-program-options-dev \
+                      libboost-regex1.54.0 \
                       libboost-regex-dev \
                       libgd2-xpm-dev \
+                      libgd3 \
+                      libmad0 \
                       libmad0-dev \
+                      libsndfile1 \
                       libsndfile1-dev \
                       make \
                       unzip \
