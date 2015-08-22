@@ -13,7 +13,7 @@ RUN apk add -U autoconf \
                iptables \
                libtool \
                linux-headers \
-    && git clone --recursive https://github.com/clowwindy/ShadowVPN.git \
+    && git clone --recursive https://github.com/vimagick/ShadowVPN.git \
     && cd ShadowVPN \
     && ./autogen.sh \
     && ./configure --enable-static --sysconfdir=/etc \
