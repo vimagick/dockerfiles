@@ -1,0 +1,12 @@
+gitlab:
+  image: gitlab/gitlab-ce
+  ports:
+    - "8443:443"
+    - "8080:80"
+    - "2222:22"
+  volumes:
+    - /srv/gitlab/config:/etc/gitlab
+    - /srv/gitlab/logs:/var/log/gitlab
+    - /srv/gitlab/data:/var/opt/gitlab
+  privileged: true
+  restart: always
