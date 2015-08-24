@@ -1,19 +1,18 @@
 #
-# Dockerfile for DokuWiki
-#
-# References
-# - https://github.com/docker-library/drupal/blob/master/8/Dockerfile
-# - https://www.dokuwiki.org/faq:backup
+# Dockerfile for dokuwiki
 #
 
-FROM php:5.6-apache
+FROM alpine
 MAINTAINER kev <noreply@datageek.info>
 
 WORKDIR /var/www/html
 
-RUN a2enmod rewrite
-RUN curl "http://download.dokuwiki.org/src/dokuwiki/dokuwiki-stable.tgz" | tar xz --strip 1
-RUN chown -R www-data:www-data .
+RUN apk add -U nginx php-fpm tar \
+    && wget -O- http://download.dokuwiki.org/src/dokuwiki/dokuwiki-stable.tgz | tar xz --strip 1 \
+    && chown -R nobody:nobody . \
+    && rm -rf /var/cache/apk/*
+
+COPY nginx.conf /etc/nginx/nginx.conf
 
 VOLUME /var/www/html/data/pages \
        /var/www/html/data/meta \
@@ -23,3 +22,6 @@ VOLUME /var/www/html/data/pages \
        /var/www/html/data/attic \
        /var/www/html/conf
 
+EXPOSE 80
+
+CMD php-fpm && nginx -g 'daemon off;'
