@@ -23,4 +23,20 @@ $ docker run --volumes-from dokuwiki -v `pwd`:/backup alpine tar czf /backup/dw-
 $ docker run --volumes-from dokuwiki -v `pwd`:/backup alpine tar xzf /backup/dw-backup.tgz
 ```
 
+## Issues
+
+Currently, **Extension Manager** doesn't work. Pull requests are welcome!
+
+You can install plugins manually.
+
+```
+$ docker exec -it dokuwiki_dokuwiki_1 sh
+>>> cd /var/www/html/lib/plugins/
+>>> mkdir backup emoji wrap
+>>> wget -O- https://github.com/tatewake/dokuwiki-plugin-backup/archive/master.tar.gz | tar xz --strip 1 -C backup
+>>> wget -O- https://github.com/ptbrown/dokuwiki-plugin-emoji/archive/master.tar.gz | tar xz --strip 1 -C emoji
+>>> wget -O- https://github.com/selfthinker/dokuwiki_plugin_wrap/archive/stable.tar.gz | tar xz --strip 1 -C wrap
+>>> chown -R nobody:nobody backup emoji wrap
+```
+
 [1]: https://www.dokuwiki.org/dokuwiki
