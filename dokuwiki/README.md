@@ -23,11 +23,15 @@ $ docker run --rm --volumes-from dokuwiki -v `pwd`:/backup alpine tar czf /backu
 $ docker run --rm --volumes-from dokuwiki -v `pwd`:/backup alpine tar xzf /backup/dw-backup.tgz
 ```
 
-## Issues
+## Plugin
 
-Currently, **Extension Manager** doesn't work. Pull requests are welcome!
+You can install [plugins][2] via **Extension Manager**.
 
-You can install plugins manually.
+- [backup](https://www.dokuwiki.org/plugin:backup)
+- [emoji](https://www.dokuwiki.org/plugin:emoji)
+- [wrap](https://www.dokuwiki.org/plugin:wrap)
+
+You can also install them manually.
 
 ```
 $ docker exec -it dokuwiki sh
@@ -40,3 +44,4 @@ $ docker exec -it dokuwiki sh
 ```
 
 [1]: https://www.dokuwiki.org/dokuwiki
+[2]: https://www.dokuwiki.org/plugins

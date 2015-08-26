@@ -8,11 +8,10 @@ MAINTAINER kev <noreply@datageek.info>
 WORKDIR /var/www/html
 
 RUN apk add -U nginx \
-               php-curl \
                php-fpm \
                php-openssl \
                php-xml \
-               php-zip \
+               php-zlib \
                tar \
     && wget -O- http://download.dokuwiki.org/src/dokuwiki/dokuwiki-stable.tgz | tar xz --strip 1 \
     && chown -R nobody:nobody . \
