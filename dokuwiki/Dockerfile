@@ -8,6 +8,7 @@ MAINTAINER kev <noreply@datageek.info>
 WORKDIR /var/www/html
 
 RUN apk add -U nginx \
+               openssl \
                php-fpm \
                php-openssl \
                php-xml \
