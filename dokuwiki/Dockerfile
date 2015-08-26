@@ -7,7 +7,10 @@ MAINTAINER kev <noreply@datageek.info>
 
 WORKDIR /var/www/html
 
-RUN apk add -U nginx php-fpm tar \
+RUN apk add -U nginx \
+               php-fpm \
+               php-xml \
+               tar \
     && wget -O- http://download.dokuwiki.org/src/dokuwiki/dokuwiki-stable.tgz | tar xz --strip 1 \
     && chown -R nobody:nobody . \
     && rm -rf /var/cache/apk/*
