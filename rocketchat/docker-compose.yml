@@ -1,0 +1,15 @@
+rocketchat:
+  image: rocket.chat
+  ports:
+    - "3000:3000"
+  links:
+    - mongo:db
+  environment:
+    - ROOT_URL=http://chat.foobar.site
+  restart: always
+
+mongo:
+  image: mongo
+  ports:
+    - "27017:27017"
+  restart: always

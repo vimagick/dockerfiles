@@ -74,4 +74,5 @@ dockerfiles
 - [x] openvpn
 - [x] owncloud
 - [x] registrator
+- [x] rocket.chat
 
