@@ -14,13 +14,13 @@ $ docker run -d -p 8000:80 --restart always --name dokuwiki vimagick/dokuwiki
 ## Backup
 
 ```
-$ docker run --volumes-from dokuwiki -v `pwd`:/backup alpine tar czf /backup/dw-backup.tgz /var/www/html
+$ docker run --rm --volumes-from dokuwiki -v `pwd`:/backup alpine tar czf /backup/dw-backup.tgz /var/www/html
 ```
 
 ## Restore
 
 ```
-$ docker run --volumes-from dokuwiki -v `pwd`:/backup alpine tar xzf /backup/dw-backup.tgz
+$ docker run --rm --volumes-from dokuwiki -v `pwd`:/backup alpine tar xzf /backup/dw-backup.tgz
 ```
 
 ## Issues
@@ -30,7 +30,7 @@ Currently, **Extension Manager** doesn't work. Pull requests are welcome!
 You can install plugins manually.
 
 ```
-$ docker exec -it dokuwiki_dokuwiki_1 sh
+$ docker exec -it dokuwiki sh
 >>> cd /var/www/html/lib/plugins/
 >>> mkdir backup emoji wrap
 >>> wget -O- https://github.com/tatewake/dokuwiki-plugin-backup/archive/master.tar.gz | tar xz --strip 1 -C backup
