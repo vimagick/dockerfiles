@@ -6,7 +6,6 @@ tinc
 [`tinc`][1] is a Virtual Private Network (VPN) daemon that uses tunnelling and
 encryption to create a secure private network between hosts on the Internet.
 
-This tiny image (6.74 MB) is based on `alpine` (5.254 MB).
 To use this image, you need to:
 
 - Have baisc knowledges of tinc
@@ -19,17 +18,16 @@ To use this image, you need to:
 ~/fig/tinc/
 ├── docker-compose.yml
 └── tinc/
-    ├── netname/
-    │   ├── hosts/
-    │   │   ├── client
-    │   │   ├── client-down
-    │   │   ├── client-up
-    │   │   └── server
-    │   ├── rsa_key.priv
-    │   ├── tinc.conf
-    │   ├── tinc-down
-    │   └── tinc-up
-    └── nets.boot
+    └── netname/
+        ├── hosts/
+        │   ├── client
+        │   ├── client-down*
+        │   ├── client-up*
+        │   └── server
+        ├── rsa_key.priv
+        ├── tinc.conf
+        ├── tinc-down*
+        └── tinc-up*
 ```
 
 ## docker-compose.yml
@@ -41,7 +39,7 @@ tinc:
     - "655:655/tcp"
     - "655:655/udp"
   volumes:
-    - tinc:/etc/tinc
+    - ./tinc:/etc/tinc
   environment:
     - VERBOSE=2
   cap_add:
