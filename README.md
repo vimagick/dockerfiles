@@ -26,7 +26,7 @@ dockerfiles
 - [x] dnscrypt
     - [x] dnscrypt-proxy
     - [x] dnscrypt-wrapper
-- [x] dokuwiki
+- [x] dokuwiki :+1:
 - [x] ferm
 - [x] ffserver
 - [x] fteproxy
@@ -53,11 +53,11 @@ dockerfiles
 - [x] scrapyd
 - [x] shadowsocks
     - [x] shadowsocks
-    - [x] shadowsocks-libev
+    - [x] shadowsocks-libev :+1:
 - [x] shadowvpn
 - [x] splash
 - [x] taskd
-- [x] tinc
+- [x] tinc :+1:
 - [x] tmail
 - [x] tor
 - [x] urlwatch
@@ -72,5 +72,6 @@ dockerfiles
 - [x] gitlab
 - [x] logspout
 - [x] openvpn
+- [x] owncloud
 - [x] registrator
 
