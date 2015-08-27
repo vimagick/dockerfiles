@@ -11,7 +11,7 @@ compared to older generation of web servers.
 ```
 $ mkdir html
 $ echo 'hello world' > html/index.html
-$ docker run -d -p 8080:80 -v html:/var/www/html vimagick/h2o
+$ docker run -d -p 8080:80 -v `pwd`/html:/var/www/html vimagick/h2o
 $ curl localhost:8080
 ```
 
