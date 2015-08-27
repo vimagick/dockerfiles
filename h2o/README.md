@@ -1,6 +1,8 @@
 h2o
 ===
 
+![](https://badge.imagelayers.io/vimagick/h2o:latest.svg)
+
 [H2O][1] is a new generation HTTP server providing quicker response to users when
 compared to older generation of web servers.
 
