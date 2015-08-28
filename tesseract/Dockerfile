@@ -11,6 +11,7 @@ RUN apt-get update \
                           git \
                           liblept4 \
                           libleptonica-dev \
+                          libgomp1 \
                           libtool \
     && git clone https://github.com/tesseract-ocr/tesseract.git \
         && cd tesseract \
