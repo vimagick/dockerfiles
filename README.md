@@ -31,6 +31,7 @@ dockerfiles
 - [x] ffserver
 - [x] fteproxy
 - [x] grafana
+- [x] h2o
 - [x] hydra
 - [x] influxdb
 - [x] joomla

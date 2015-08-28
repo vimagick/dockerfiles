@@ -43,5 +43,5 @@ $ shadowvpn -c /etc/shadowvpn/client.conf -v
 > Change settings in [client.conf][3].
 
 [1]: https://shadowvpn.org/
-[2]: https://github.com/clowwindy/ShadowVPN/blob/master/samples/server.conf
-[2]: https://github.com/clowwindy/ShadowVPN/blob/master/samples/client.conf
+[2]: https://github.com/vimagick/ShadowVPN/blob/master/samples/server.conf
+[3]: https://github.com/vimagick/ShadowVPN/blob/master/samples/client.conf
