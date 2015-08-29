@@ -1,0 +1,48 @@
+---
+
+- hosts: all
+
+  vars:
+    dns_addr: 8.8.8.8
+    method: chacha20
+    password: '******'
+    port: 8388
+
+  tasks:
+
+    - name: ensure docker is installed
+      apt:
+        pkg: docker.io
+        default_release: jessie-backports
+        update_cache: yes
+        state: latest
+
+    - name: ensure pip is installed
+      shell: 'curl -sSL https://bootstrap.pypa.io/get-pip.py | python2'
+      args:
+        creates: /usr/local/bin/pip2
+
+    - name: ensure docker-py is installed
+      pip:
+        name: docker-py
+        version: 1.2.3
+        executable: pip2
+        state: present
+
+    - name: ensure docker is running
+      service:
+        name: docker
+        state: started
+
+    - name: ensure shadowsocks is started
+      docker:
+        name: shadowsocks
+        image: vimagick/shadowsocks-libev
+        ports:
+          - "{{port}}:8388"
+        env:
+          DNS_ADDR: "{{dns_addr}}"
+          METHOD: "{{method}}"
+          PASSWORD: "{{password}}"
+        restart_policy: always
+        state: started
