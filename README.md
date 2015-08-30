@@ -70,6 +70,7 @@ dockerfiles
 ## 3rd-party
 
 - [x] builder
+- [x] ghost
 - [x] gitlab
 - [x] logspout
 - [x] openvpn

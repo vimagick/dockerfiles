@@ -12,7 +12,7 @@
 
     - name: ensure docker is installed
       apt:
-        pkg: docker.io
+        name: docker.io
         default_release: jessie-backports
         update_cache: yes
         state: latest
