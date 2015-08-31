@@ -17,6 +17,11 @@
         update_cache: yes
         state: latest
 
+    - name: ensure docker is running
+      service:
+        name: docker
+        state: started
+
     - name: ensure pip is installed
       shell: 'curl -sSL https://bootstrap.pypa.io/get-pip.py | python2'
       args:
@@ -28,11 +33,6 @@
         version: 1.2.3
         executable: pip2
         state: present
-
-    - name: ensure docker is running
-      service:
-        name: docker
-        state: started
 
     - name: ensure shadowsocks is started
       docker:
@@ -46,3 +46,10 @@
           PASSWORD: "{{password}}"
         restart_policy: always
         state: started
+
+    - name: wait for shadowsocks
+      wait_for:
+        host: "{{ansible_eth0.ipv4.address}}"
+        port: "{{port}}"
+        delay: 5
+
