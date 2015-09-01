@@ -11,19 +11,24 @@ OVPN_SERVER=tcp://vpn.datageek.info
 
 mkdir -p $OVPN_DIR
 
-select opt in server client backup restore quit
+select opt in server client revoke backup restore quit
 do
   if [[ $opt == "server" ]]
   then
     echo "setup server ..."
-    docker run --volumes-from $OVPN_DATA --rm $OVPN_IMG ovpn_genconfig -u $OVPN_SERVER
-    docker run --volumes-from $OVPN_DATA --rm -it $OVPN_IMG ovpn_initpki
+    docker run --rm --volumes-from $OVPN_DATA $OVPN_IMG ovpn_genconfig -u $OVPN_SERVER
+    docker run -it --rm --volumes-from $OVPN_DATA $OVPN_IMG ovpn_initpki
   elif [[ $opt == "client" ]]
   then
     echo "setup client ..."
     read -p '>>> ' OVPN_CLIENT
-    docker run --volumes-from $OVPN_DATA --rm -it $OVPN_IMG easyrsa build-client-full ${OVPN_CLIENT:?client is empty} nopass
-    docker run --volumes-from $OVPN_DATA --rm $OVPN_IMG ovpn_getclient $OVPN_CLIENT > $OVPN_DIR/$OVPN_CLIENT.ovpn
+    docker run -it --rm --volumes-from $OVPN_DATA $OVPN_IMG easyrsa build-client-full ${OVPN_CLIENT:?client is empty} nopass
+    docker run --rm --volumes-from $OVPN_DATA $OVPN_IMG ovpn_getclient $OVPN_CLIENT > $OVPN_DIR/$OVPN_CLIENT.ovpn
+  elif [[ $opt == "revoke" ]]
+  then
+    read -p '>>> ' OVPN_CLIENT
+    docker run -it --rm --volumes-from $OVPN_DATA $OVPN_IMG easyrsa revoke ${OVPN_CLIENT:?client is empty}
+    docker run -it --rm --volumes-from $OVPN_DATA $OVPN_IMG easyrsa gen-crl
   elif [[ $opt == "backup" ]]
   then
     echo "backup volume ..."

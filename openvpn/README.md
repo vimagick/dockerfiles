@@ -68,8 +68,10 @@ $ fig up -d data
 $ ./setup.sh
 1) server
 2) client
-3) backup
-4) quit
+3) revoke
+4) backup
+5) restore
+6) quit
 
 $ fig up -d
 ```
