@@ -4,44 +4,26 @@ data:
     - /etc/openvpn
 
 server:
-  image: kylemanna/openvpn
-  ports:
-    - "1194:1194/tcp"
+  image: vimagick/openvpn
+  expose:
+    - "1194/tcp"
   volumes_from:
     - data
   cap_add:
     - NET_ADMIN
   restart: always
 
-################################### SERVER ###################################
-#
-#fteproxy:
-#  image: vimagick/fteproxy
-#  ports:
-#    - "4911:4911"
-#  links:
-#    - "server"
-#  environment:
-#    - "MODE=server"
-#    - "SERVER_IP=0.0.0.0"
-#    - "SERVER_PORT=4911"
-#    - "PROXY_IP=server"
-#    - "PROXY_PORT=1194"
-#    - "KEY=0000000000000000000000000000000000000000000000000000000000000000"
-#
-
-################################### CLIENT ###################################
-#
-#fteproxy:
-#  image: vimagick/fteproxy
-#  ports:
-#    - "1194:1194"
-#  environment:
-#    - "MODE=client"
-#    - "SERVER_IP=vpn.datageek.info"
-#    - "SERVER_PORT=4911"
-#    - "CLIENT_IP=0.0.0.0"
-#    - "CLIENT_PORT=1194"
-#    - "KEY=0000000000000000000000000000000000000000000000000000000000000000"
-#  restart: always
-#
+fteproxy:
+  image: vimagick/fteproxy
+  ports:
+    - "4911:4911"
+  links:
+    - "server"
+  environment:
+    - "MODE=server"
+    - "SERVER_IP=0.0.0.0"
+    - "SERVER_PORT=4911"
+    - "PROXY_IP=server"
+    - "PROXY_PORT=1194"
+    - "KEY=66754b8113ea7a218b7613f73f7e13b1e91790216f659b5f78b903b34c654741"
+  restart: always

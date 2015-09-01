@@ -40,6 +40,7 @@ dockerfiles
 - [x] nginx
 - [x] obfsproxy
 - [x] opencart
+- [x] openvpn :+1:
 - [x] pdnsd
 - [x] phantomjs
 - [x] phpbb
@@ -73,7 +74,6 @@ dockerfiles
 - [x] ghost
 - [x] gitlab
 - [x] logspout
-- [x] openvpn
 - [x] owncloud
 - [x] registrator
 - [x] rocket.chat

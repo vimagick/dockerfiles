@@ -1,10 +1,10 @@
 #!/bin/bash
 #
-# setup script for kylemanna/openvpn
+# setup script for vimagick/openvpn
 #
 
 OVPN_DIR=./ovpn
-OVPN_IMG=kylemanna/openvpn
+OVPN_IMG=vimagick/openvpn
 OVPN_DATA=openvpn_data_1
 OVPN_SERVER=tcp://vpn.datageek.info
 
@@ -35,4 +35,3 @@ do
     echo "invalid"
   fi
 done
-
