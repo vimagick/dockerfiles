@@ -6,11 +6,12 @@
 OVPN_DIR=./ovpn
 OVPN_IMG=vimagick/openvpn
 OVPN_DATA=openvpn_data_1
+OVPN_BACKUP=openvpn.tgz
 OVPN_SERVER=tcp://vpn.datageek.info
 
 mkdir -p $OVPN_DIR
 
-select opt in server client backup quit
+select opt in server client backup restore quit
 do
   if [[ $opt == "server" ]]
   then
@@ -26,7 +27,16 @@ do
   elif [[ $opt == "backup" ]]
   then
     echo "backup volume ..."
-    docker run --rm --volumes-from openvpn_data_1 -v `pwd`/$OVPN_DIR:/backup alpine tar czf /backup/openvpn.tgz /etc/openvpn
+    docker run --rm --volumes-from $OVPN_DATA alpine tar cvzf - -C /etc openvpn > $OVPN_DIR/$OVPN_BACKUP
+  elif [[ $opt == "restore" ]]
+  then
+    echo "restore volume ..."
+    if docker inspect $OVPN_DATA >& /dev/null
+    then
+        docker run --rm --volumes-from $OVPN_DATA -i alpine tar xvzf - -C /etc < $OVPN_DIR/$OVPN_BACKUP
+    else
+        docker run --name $OVPN_DATA -v /etc/openvpn -i alpine tar xvzf - -C /etc < $OVPN_DIR/$OVPN_BACKUP
+    fi
   elif [[ $opt == "quit" ]]
   then
     echo "bye"
