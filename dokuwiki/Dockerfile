@@ -8,6 +8,7 @@ MAINTAINER kev <noreply@datageek.info>
 WORKDIR /var/www/html
 
 RUN apk add -U ca-certificates \
+               gzip \
                nginx \
                php-fpm \
                php-openssl \
