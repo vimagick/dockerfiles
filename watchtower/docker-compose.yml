@@ -1,0 +1,10 @@
+watchtower:
+  image: centurylink/watchtower
+  command: >
+    mysql
+    mongo
+    nginx
+    redis
+  volumes:
+    - /var/run/docker.sock:/var/run/docker.sock
+  restart: always

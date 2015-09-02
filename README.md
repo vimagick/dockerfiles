@@ -77,4 +77,5 @@ dockerfiles
 - [x] owncloud
 - [x] registrator
 - [x] rocket.chat
+- [x] watchtower
 
