@@ -2,7 +2,7 @@
 # Dockerfile for snort
 #
 
-FROM debian
+FROM debian:jessie
 MAINTAINER kev <noreply@datageek.info>
 
 RUN apt-get update \
@@ -46,6 +46,6 @@ RUN apt-get update \
                                       libdnet-dev \
                                       libpcap-dev \
                                       libpcre3-dev \
-                                      zlib1g-dev \
+                                      zlib1g-dev
 
 CMD ["snort", "--help"]
