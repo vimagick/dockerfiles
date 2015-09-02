@@ -4,7 +4,7 @@ tinc:
     - "655:655/tcp"
     - "655:655/udp"
   volumes:
-    - tinc:/etc/tinc
+    - ./tinc:/etc/tinc
   environment:
     - VERBOSE=2
   cap_add:

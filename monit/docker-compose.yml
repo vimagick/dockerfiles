@@ -1,7 +1,7 @@
 monit:
   image: vimagick/monit
   volumes:
-    - monit:/etc/monit
+    - ./monit:/etc/monit
   pid: host
   net: host
   restart: always

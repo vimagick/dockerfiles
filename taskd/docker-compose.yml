@@ -3,5 +3,5 @@ taskd:
   ports:
     - "53589:53589"
   volumes:
-    - taskd:/var/taskd
+    - ./taskd:/var/taskd
   restart: always

@@ -3,7 +3,7 @@ ftpd:
   ports:
     - "21:21"
   volumes:
-    - ftpuser:/home/ftpuser
-    - pure-ftpd:/etc/pure-ftpd
+    - ./ftpuser:/home/ftpuser
+    - ./pure-ftpd:/etc/pure-ftpd
   privileged: true
   restart: always

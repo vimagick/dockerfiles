@@ -6,6 +6,6 @@ samba:
     - "139:139/tcp"
     - "445:445/tcp"
   volumes:
-    - smb.conf:/etc/samba/smb.conf
-    - share:/share
+    - ./smb.conf:/etc/samba/smb.conf
+    - ./share:/share
   restart: always

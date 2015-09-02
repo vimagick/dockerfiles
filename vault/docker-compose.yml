@@ -3,8 +3,8 @@ vault:
   ports:
     - "8200:8200"
   volumes:
-    - vault/vault.crt:/etc/vault/vault.crt
-    - vault/vault.key:/etc/vault/vault.key
+    - ./vault/vault.crt:/etc/vault/vault.crt
+    - ./vault/vault.key:/etc/vault/vault.key
   cap_add:
     - IPC_LOCK
   restart: always
