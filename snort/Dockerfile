@@ -40,6 +40,8 @@ RUN apt-get update \
         && make install \
         && cd .. \
         && rm -rf snort \
+    && mkdir -p /etc/snort/rules \
+        && curl -sSL https://snort.org/rules/community | tar xz -C /etc/snort/rules \
     && apt-get purge -y --auto-remove build-essential \
                                       bison \
                                       flex \
@@ -48,4 +50,6 @@ RUN apt-get update \
                                       libpcre3-dev \
                                       zlib1g-dev
 
-CMD ["snort", "--help"]
+ENTRYPOINT ["snort"]
+CMD ["--help"]
+
