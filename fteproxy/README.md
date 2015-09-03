@@ -1,14 +1,26 @@
-`fteproxy` provides transport-layer protection to resist keyword filtering,
+fteproxy
+========
+
+![](https://badge.imagelayers.io/vimagick/fteproxy:latest.svg)
+
+[fteproxy][1] provides transport-layer protection to resist keyword filtering,
 censorship and discriminatory routing policies.
 
 Its job is to relay datastreams, such as web browsing traffic,
 by encoding streams as messages that match a user-specified regular expression.
 
 fteproxy is fast, free, open source, and cross platform. 
+It works very well with [vimagick/openvpn][2](TCP mode).
 
 In the following example, I will setup a server/client pair to connect www.google.com:80.
 
+## Internet Censorship
+
+### The problem
+
 ![before](https://fteproxy.org/images/withoutfte.png)
+
+### The solution
 
 ![after](https://fteproxy.org/images/withfte.png)
 
@@ -70,3 +82,6 @@ The document has moved
 <A HREF="http://www.google.com/">here</A>.
 </BODY></HTML>
 ```
+
+[1]: https://fteproxy.org/
+[2]: https://hub.docker.com/r/vimagick/openvpn/

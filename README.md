@@ -12,12 +12,11 @@ dockerfiles
 - [ ] hubot
 - [ ] iptables
 - [ ] irc
-- [ ] snort
 - [ ] tshark
 
 ## DONE
 
-- [x] aria2
+- [x] aria2 :+1:
 - [x] audiowaveform
 - [x] bro
 - [x] chinadns
@@ -29,7 +28,7 @@ dockerfiles
 - [x] dokuwiki :+1:
 - [x] ferm
 - [x] ffserver
-- [x] fteproxy
+- [x] fteproxy :+1:
 - [x] grafana
 - [x] h2o
 - [x] hydra
@@ -52,11 +51,12 @@ dockerfiles
 - [x] pure-ftpd
 - [x] rsyncd
 - [x] samba
-- [x] scrapyd
+- [x] scrapyd :+1:
 - [x] shadowsocks
     - [x] shadowsocks
     - [x] shadowsocks-libev :+1:
 - [x] shadowvpn
+- [x] snort
 - [x] splash
 - [x] taskd
 - [x] tinc :+1:
