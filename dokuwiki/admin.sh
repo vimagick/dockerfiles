@@ -1,0 +1,41 @@
+#!/bin/bash
+#
+# dokuwiki backup/restore script
+#
+
+ACTION=${1:?action is required}
+FILENAME=${2:-dw-backup-$(date +%Y%m%d-%H%M%S).tar.gz}
+CONTAINER=${3:-dokuwiki_dokuwiki_1}
+
+do_help() {
+    echo 'USAGE: ./admin.sh ACTION [FILENAME] [CONTAINER]'
+}
+
+do_backup() {
+    echo "backup to $FILENAME"
+    docker run --rm --volumes-from $CONTAINER -v `pwd`:/backup alpine \
+           tar czf /backup/$FILENAME /var/www/html
+}
+
+do_restore() {
+    echo "restore from $FILENAME"
+    docker run --rm --volumes-from $CONTAINER -v `pwd`:/backup alpine \
+           tar xzf /backup/$FILENAME -C /
+}
+
+main() {
+    case "$ACTION" in
+        backup)
+            do_backup
+            ;;
+        restore)
+            do_restore
+            ;;
+        *)
+            do_help
+            exit 1;
+            ;;
+    esac
+}
+
+main
