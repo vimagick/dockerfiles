@@ -1,6 +1,10 @@
 ---
 
-- hosts: all
+- name: shadowsocks-libev deployment for ubuntu/debian
+  
+  hosts: vps
+
+  gather_facts: yes
 
   vars:
     dns_addr: 8.8.8.8
@@ -10,12 +14,13 @@
 
   tasks:
 
+    - fail: msg='ensure os is debian/ubuntu'
+      when: 'ansible_distribution not in ["Debian", "Ubuntu"]'
+
     - name: ensure docker is installed
-      apt:
-        name: docker.io
-        default_release: jessie-backports
-        update_cache: yes
-        state: latest
+      shell: 'curl -sSL https://get.docker.com | sh'
+      args:
+        creates: /usr/bin/docker
 
     - name: ensure docker is running
       service:
@@ -30,13 +35,12 @@
     - name: ensure docker-py is installed
       pip:
         name: docker-py
-        version: 1.2.3
         executable: pip2
         state: present
 
     - name: ensure shadowsocks is started
       docker:
-        name: shadowsocks
+        name: shadowsocks_shadowsocks_1
         image: vimagick/shadowsocks-libev
         ports:
           - "{{port}}:8388"
@@ -49,7 +53,7 @@
 
     - name: wait for shadowsocks
       wait_for:
-        host: "{{ansible_eth0.ipv4.address}}"
+        host: "{{ansible_ssh_host|d(inventory_hostname)}}"
         port: "{{port}}"
         delay: 5
 
