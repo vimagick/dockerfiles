@@ -19,6 +19,7 @@ dockerfiles
 - [x] aria2 :+1:
 - [x] audiowaveform
 - [x] bro
+- [x] casperjs :+1:
 - [x] chinadns
 - [x] collectd
 - [x] dante
