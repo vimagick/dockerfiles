@@ -5,7 +5,7 @@ shadowsocks
 ![](https://badge.imagelayers.io/vimagick/shadowsocks-libev:latest.svg)
 ![](https://badge.imagelayers.io/vimagick/shadowsocks-arm:latest.svg)
 
-[`shadowsocks`][1] is a secure socks5 proxy,
+[shadowsocks][1] is a secure socks5 proxy,
 designed to protect your Internet traffic.
 
 > If you want to keep a secret,
@@ -24,7 +24,7 @@ server:
   restart: always
 
 client:
-  image: vimagick/shadowsocks
+  image: vimagick/shadowsocks-arm
   ports:
     - "1080:1080"
   environment:
@@ -36,11 +36,15 @@ client:
 
 ## server
 
+I'm running shadowsocks server on Debian (jessie).
+
 ```
 $ docker-compose up -d server
 ```
 
 ## client
+
+I'm running shadowsocks client on Raspberry Pi 2.
 
 ```
 $ docker-compose up -d client
