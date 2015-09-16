@@ -5,26 +5,27 @@
 FROM alpine
 MAINTAINER kev <noreply@datageek.info>
 
-RUN apk add --update curl python \
+RUN echo 'http://nl.alpinelinux.org/alpine/edge/main' >> /etc/apk/repositories \
+    && apk add -U curl libsodium python \
     && curl -sSL https://bootstrap.pypa.io/get-pip.py | python \
     && pip install shadowsocks \
-    && apk del --purge curl \
+    && apk del curl \
     && rm -rf /var/cache/apk/*
 
 ENV SERVER_ADDR 0.0.0.0
 ENV SERVER_PORT 8388
-ENV PASSWORD=
 ENV METHOD      aes-256-cfb
+ENV PASSWORD=
 ENV TIMEOUT     300
 ENV WORKERS     10
 
 EXPOSE $SERVER_PORT
 
-CMD ssserver -s $SERVER_ADDR \
-             -p $SERVER_PORT \
-             -k ${PASSWORD:-$(hostname)} \
-             -m $METHOD \
-             -t $TIMEOUT \
-             --fast-open \
-             --workers $WORKERS
+CMD ssserver -s "$SERVER_ADDR"              \
+             -p "$SERVER_PORT"              \
+             -k "${PASSWORD:-$(hostname)}"  \
+             -m "$METHOD"                   \
+             -t "$TIMEOUT"                  \
+             --workers "$WORKERS"           \
+             --fast-open
 

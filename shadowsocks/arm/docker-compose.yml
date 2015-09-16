@@ -1,8 +1,9 @@
 shadowsocks:
-  image: vimagick/shadowsocks-libev
+  image: vimagick/shadowsocks-arm
   ports:
-    - "8388:8388"
+    - "1080:1080"
   environment:
+    - SERVER_ADDR=datageek.info
     - METHOD=chacha20
     - PASSWORD=9MLSpPmNt
   restart: always
