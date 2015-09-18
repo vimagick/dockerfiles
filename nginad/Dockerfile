@@ -15,6 +15,7 @@ RUN apk add -U ca-certificates \
                php-json \
                php-openssl \
                php-pdo \
+               php-pdo_mysql \
                php-phar \
                php-xml \
                php-zlib \
@@ -31,6 +32,7 @@ RUN apk add -U ca-certificates \
     && sed -i -e "s/'pass'   => ''/'pass'   => 'root'/" \
               -e "s/'host'   => 'localhost'/'host'   => 'mysql'/" database.local.php \
     && chown -R nobody:nobody . \
+    && apk del git \
     && rm -rf /var/cache/apk/*
 
 COPY nginx.conf /etc/nginx/nginx.conf
