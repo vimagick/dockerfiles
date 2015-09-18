@@ -1,6 +1,8 @@
 nginad
 ======
 
+[NginAd][1] open source ad server & exchange with OpenRTB.
+
 ## docker-compose.yml
 
 ```
@@ -29,3 +31,5 @@ $ docker exec -i nginad_mysql_1 mysql -u root -proot nginad < nginad-1.6.sql
 $ docker exec nginad_nginad_1 sed -i "/adserver_domain/s/'.*'/'nginad.foobar.site'/" upload/public/ad/nginad.js
 $ fig restart nginad
 ```
+
+[1]: https://nginad.atlassian.net/wiki/display/NGIN/nginad+Home
