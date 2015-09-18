@@ -1,10 +1,12 @@
 shadowsocks
 ===========
 
-- shadowsocks: ![](https://badge.imagelayers.io/vimagick/shadowsocks:latest.svg)
-- shadowsocks-libev: ![](https://badge.imagelayers.io/vimagick/shadowsocks-libev:latest.svg)
-- shadowsocks-arm: ![](https://badge.imagelayers.io/vimagick/shadowsocks-arm:latest.svg)
-- shadowsocks-libev-arm: ![](https://badge.imagelayers.io/vimagick/shadowsocks-libev-arm:latest.svg)
+name                  | size
+--------------------- | ---------------------------------------------------------------------------
+shadowsocks           | ![](https://badge.imagelayers.io/vimagick/shadowsocks:latest.svg)
+shadowsocks-libev     | ![](https://badge.imagelayers.io/vimagick/shadowsocks-libev:latest.svg)
+shadowsocks-arm       | ![](https://badge.imagelayers.io/vimagick/shadowsocks-arm:latest.svg)
+shadowsocks-libev-arm | ![](https://badge.imagelayers.io/vimagick/shadowsocks-libev-arm:latest.svg)
 
 [shadowsocks][1] is a secure socks5 proxy,
 designed to protect your Internet traffic.
