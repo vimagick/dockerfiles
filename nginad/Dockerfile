@@ -24,6 +24,7 @@ RUN apk add -U ca-certificates \
     && cd upload \
     && php composer.phar self-update \
     && php composer.phar install \
+    && chown -R nobody:nobody public \
     && cd config/autoload \
     && cp database.local.php.dist database.local.php \
     && cp delivery.local.php.dist delivery.local.php \
@@ -31,7 +32,6 @@ RUN apk add -U ca-certificates \
     && cp rtb.config.local.php.dist rtb.config.local.php \
     && sed -i -e "s/'pass'   => ''/'pass'   => 'root'/" \
               -e "s/'host'   => 'localhost'/'host'   => 'mysql'/" database.local.php \
-    && chown -R nobody:nobody . \
     && apk del git \
     && rm -rf /var/cache/apk/*
 
