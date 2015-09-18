@@ -12,6 +12,8 @@ RUN apk add -U ca-certificates \
                nginx \
                php-fpm \
                php-openssl \
+               php-pdo_sqlite \
+               php-sqlite3 \
                php-xml \
                php-zlib \
                tar \
