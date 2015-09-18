@@ -2,7 +2,7 @@
 # Dockerfile for shadowsocks-libev
 #
 
-FROM alpine
+FROM hypriot/rpi-alpine-scratch
 MAINTAINER kev <noreply@datageek.info>
 
 ENV SS_VER 2.3.3
@@ -20,20 +20,21 @@ RUN apk add --update $SS_DEP \
     && apk del --purge $SS_DEP \
     && rm -rf /var/cache/apk/*
 
-ENV SERVER_ADDR 0.0.0.0
+ENV SERVER_ADDR=
 ENV SERVER_PORT 8388
-ENV PASSWORD=
 ENV METHOD      aes-256-cfb
+ENV PASSWORD=
+ENV LOCAL_ADDR  0.0.0.0
+ENV LOCAL_PORT  1080
 ENV TIMEOUT     300
-ENV DNS_ADDR    8.8.8.8
 
-EXPOSE $SERVER_PORT
+EXPOSE $LOCAL_PORT
 
-CMD ss-server -s $SERVER_ADDR \
-              -p $SERVER_PORT \
-              -k ${PASSWORD:-$(hostname)} \
-              -m $METHOD \
-              -t $TIMEOUT \
-              --fast-open \
-              -d $DNS_ADDR \
-              -u
+CMD ss-local -s "$SERVER_ADDR" \
+             -p "$SERVER_PORT" \
+             -m "$METHOD"      \
+             -k "$PASSWORD"    \
+             -b "$LOCAL_ADDR"  \
+             -l "$LOCAL_PORT"  \
+             -t "$TIMEOUT"     \
+             --fast-open
