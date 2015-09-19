@@ -1,8 +1,8 @@
 #
-# Dockerfile for shadowsocks-libev
+# Dockerfile for shadowsocks-libev-arm
 #
 
-FROM hypriot/rpi-alpine-scratch
+FROM vimagick/alpine-arm
 MAINTAINER kev <noreply@datageek.info>
 
 ENV SS_VER 2.3.3
