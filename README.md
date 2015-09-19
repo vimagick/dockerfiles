@@ -16,6 +16,7 @@ dockerfiles
 
 ## DONE
 
+- [x] alpine-arm :+1:
 - [x] aria2 :+1:
 - [x] audiowaveform
 - [x] bro
@@ -37,6 +38,7 @@ dockerfiles
 - [x] joomla
 - [x] mantisbt
 - [x] monit
+- [x] nginad
 - [x] nginx
 - [x] obfsproxy
 - [x] opencart
