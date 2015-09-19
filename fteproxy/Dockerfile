@@ -6,27 +6,16 @@ FROM alpine
 MAINTAINER kev <norelpy@datageek.info>
 
 RUN apk add -U build-base \
-               curl \
+               gmp \
+               gmp-dev \
                libstdc++ \
-               m4 \
                python \
                python-dev \
                py-pip \
-               py-twisted \
-               tar \
-    && mkdir gmp \
-        && curl -sSL https://gmplib.org/download/gmp/gmp-6.0.0a.tar.bz2 | tar xj --strip 1 -C gmp \
-        && cd gmp \
-        && ./configure --prefix=/usr --enable-cxx \
-        && make install \
-        && cd .. \
-        && rm -rf gmp \
     && pip install fteproxy \
     && apk del build-base \
-               curl \
-               m4 \
+               gmp-dev \
                python-dev \
-               tar \
     && rm -rf /root/.cache /var/cache/apk/*
 
 ENV MODE server
