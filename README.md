@@ -1,6 +1,8 @@
 dockerfiles
 ===========
 
+[![](https://travis-ci.org/vimagick/dockerfiles.svg)](https://travis-ci.org/vimagick/dockerfiles)
+
 <https://hub.docker.com/u/vimagick/>
 
 ## TODO
@@ -31,6 +33,7 @@ dockerfiles
 - [x] ferm
 - [x] ffserver
 - [x] fteproxy :+1:
+- [x] fteproxy-arm :+1:
 - [x] grafana
 - [x] h2o
 - [x] hydra
@@ -58,6 +61,8 @@ dockerfiles
 - [x] shadowsocks
     - [x] shadowsocks
     - [x] shadowsocks-libev :+1:
+    - [x] shadowsocks-arm
+    - [x] shadowsocks-libev-arm :+1:
 - [x] shadowvpn
 - [x] snort
 - [x] splash
