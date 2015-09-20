@@ -31,7 +31,7 @@ dockerfiles
     - [x] dnscrypt-wrapper
 - [x] dokuwiki :+1:
 - [x] ferm
-- [x] ffserver
+- [x] ffserver :beetle:
 - [x] fteproxy :+1:
 - [x] fteproxy-arm :+1:
 - [x] grafana
@@ -56,7 +56,7 @@ dockerfiles
 - [x] proxyhub
 - [x] pure-ftpd
 - [x] rsyncd
-- [x] samba
+- [x] samba :beetle:
 - [x] scrapyd :+1:
 - [x] shadowsocks
     - [x] shadowsocks
@@ -64,15 +64,14 @@ dockerfiles
     - [x] shadowsocks-arm
     - [x] shadowsocks-libev-arm :+1:
 - [x] shadowvpn
-- [x] snort
-- [x] splash
+- [x] snort :beetle:
 - [x] taskd
 - [x] tinc :+1:
-- [x] tmail
+- [x] tmail :beetle:
 - [x] tor
-- [x] urlwatch
-- [x] webkit
-- [x] youtube
+- [x] urlwatch :beetle:
+- [x] webkit :beetle:
+- [x] youtube :beetle:
     - [x] youtube-dl
     - [x] youtube-worker
 
