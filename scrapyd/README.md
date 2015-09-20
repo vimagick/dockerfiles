@@ -12,12 +12,15 @@ your Scrapy projects and control their spiders using a HTTP JSON API.
 [Scrapyd-client][3] is a client for scrapyd. It provides the scrapyd-deploy
 utility which allows you to deploy your project to a Scrapyd server.
 
+[ScrapyJS][4] provides Scrapy+JavaScript integration using Splash.
+
 This image is based on `debian:jessie` without any useless packages installed.
-Only 3 latest python packages are installed:
+Only 4 latest python packages are installed:
 
 - `scrapy`: git+https://github.com/scrapy/scrapy.git
 - `scrapyd`: git+https://github.com/scrapy/scrapyd.git
 - `scrapyd-client`: git+https://github.com/scrapy/scrapyd-client.git
+- `scrapyjs`: git+https://github.com/scrapinghub/scrapy-splash.git
 
 Please use this image as base for your own project.
 
@@ -62,3 +65,4 @@ $ docker run -it --rm -v `pwd`:/code -w /code vimagick/scrapyd bash
 [1]: https://github.com/scrapy/scrapy
 [2]: https://github.com/scrapy/scrapyd
 [3]: https://github.com/scrapy/scrapyd-client
+[4]: https://github.com/scrapinghub/scrapy-splash
