@@ -7,7 +7,8 @@ MAINTAINER kev <noreply@datageek.info>
 
 WORKDIR /var/www/html
 
-RUN apk add -U gzip \
+RUN apk add -U git \
+               gzip \
                nginx \
                php-apcu \
                php-curl \
@@ -33,6 +34,7 @@ RUN apk add -U gzip \
     && cp rtb.config.local.php.dist rtb.config.local.php \
     && sed -i -e "s/'pass'   => ''/'pass'   => 'root'/" \
               -e "s/'host'   => 'localhost'/'host'   => 'mysql'/" database.local.php \
+    && apk del git \
     && rm -rf /var/cache/apk/*
 
 COPY nginx.conf /etc/nginx/nginx.conf
