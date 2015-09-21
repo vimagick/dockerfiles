@@ -9,7 +9,7 @@ nginad
 nginad:
   image: vimagick/nginad
   ports:
-    - "8080:80"
+    - "80:80"
   links:
     - mysql
   restart: always
@@ -32,4 +32,23 @@ $ docker exec nginad_nginad_1 sed -i "/adserver_domain/s/'.*'/'nginad.foobar.sit
 $ fig restart nginad
 ```
 
+## admin
+
+Now log into the Demand Customer and Publisher [dashboards][2] as admin and
+start adding and configuring RTB campaigns.
+
+- username: admin@localhost
+- password: password
+
+Log in as the default publisher account:
+
+- username: sergey.page@blowmedianow.com
+- password: password
+
+Log in as the default demand customer account:
+
+- username: larry.brin@suckmedianow.com
+- password: password
+
 [1]: https://nginad.atlassian.net/wiki/display/NGIN/nginad+Home
+[2]: http://nginad.foobar.site/auth/login
