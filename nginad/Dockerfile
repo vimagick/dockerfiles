@@ -11,6 +11,8 @@ RUN apk add -U ca-certificates \
                git \
                gzip \
                nginx \
+               php-apcu \
+               php-curl \
                php-fpm \
                php-json \
                php-openssl \
@@ -24,7 +26,7 @@ RUN apk add -U ca-certificates \
     && cd upload \
     && php composer.phar self-update \
     && php composer.phar install \
-    && chown -R nobody:nobody public \
+    && chown -R nobody:nobody . \
     && cd config/autoload \
     && cp database.local.php.dist database.local.php \
     && cp delivery.local.php.dist delivery.local.php \
