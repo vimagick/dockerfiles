@@ -7,15 +7,15 @@ MAINTAINER kev <noreply@datageek.info>
 
 WORKDIR /var/www/html
 
-RUN apk add -U git \
-               gzip \
+RUN apk add -U gzip \
                nginx \
-               php-apcu \
                php-curl \
                php-fpm \
                php-gd \
                php-mysql \
+               php-opcache \
                php-openssl \
+               php-pgsql \
                php-phar \
                php-xml \
                php-zlib \
