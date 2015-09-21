@@ -77,12 +77,14 @@ dockerfiles
 
 ## 3rd-party
 
-- [x] builder
+- [x] centurylink/watchtower
 - [x] ghost
-- [x] gitlab
-- [x] logspout
+- [x] gitlab/gitlab-ce
+- [ ] gliderlabs/logspout
+- [x] gliderlabs/registrator
+- [ ] jenkins
 - [x] owncloud
-- [x] registrator
 - [x] rocket.chat
-- [x] watchtower
+- [x] scrapinghub/splash
+- [x] tutum/builder
 

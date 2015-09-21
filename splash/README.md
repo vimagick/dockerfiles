@@ -11,7 +11,7 @@ It's fast, lightweight and state-less which makes it easy to distribute.
 
 ```
 splash:
-  image: vimagick/splash
+  image: scrapinghub/splash
   command: --maxrss 4096
   ports:
     - "8050:8050"
