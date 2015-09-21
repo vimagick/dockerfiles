@@ -7,13 +7,13 @@ MAINTAINER kev <noreply@datageek.info>
 
 WORKDIR /var/www/html
 
-RUN apk add -U ca-certificates \
-               git \
+RUN apk add -U git \
                gzip \
                nginx \
                php-apcu \
                php-curl \
                php-fpm \
+               php-iconv \
                php-json \
                php-openssl \
                php-pdo \
