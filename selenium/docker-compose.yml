@@ -1,0 +1,7 @@
+firefox:
+  image: selenium/standalone-firefox
+  ports:
+    - "4444:4444"
+  environment:
+    - JAVA_OPTS=-Xmx512m
+  restart: always

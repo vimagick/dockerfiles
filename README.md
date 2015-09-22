@@ -55,6 +55,7 @@ dockerfiles
 - [x] privoxy
 - [x] proxyhub
 - [x] pure-ftpd
+- [x] revive
 - [x] rsyncd
 - [x] samba :beetle:
 - [x] scrapyd :+1:
@@ -86,5 +87,9 @@ dockerfiles
 - [x] owncloud
 - [x] rocket.chat
 - [x] scrapinghub/splash
+- [ ] selenium
+    - [ ] hub
+    - [ ] node-firefox
+    - [x] standalone-firefox
 - [x] tutum/builder
 
