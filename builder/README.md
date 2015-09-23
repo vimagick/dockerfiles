@@ -9,7 +9,7 @@ A docker image that builds, tests and pushes docker images from code repositorie
 builder:
   image: tutum/builder
   volumes:
-    - ~/.dockercfg:/.dockercfg:ro
+    - ~/.docker:/.docker:ro
   environment:
     - GIT_REPO=https://github.com/vimagick/dockerfiles.git
     - DOCKERFILE_PATH=/test
