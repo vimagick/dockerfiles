@@ -4,6 +4,8 @@ revive:
     - "8080:80"
   links:
     - mysql
+  volumes:
+    - /var/www/html/var
   restart: always
 
 mysql:
