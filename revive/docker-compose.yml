@@ -6,6 +6,7 @@ revive:
     - mysql
   volumes:
     - /var/www/html/var
+    - /var/www/html/www/images
   restart: always
 
 mysql:
