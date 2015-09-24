@@ -12,6 +12,7 @@ RUN apk add -U gzip \
                php-curl \
                php-fpm \
                php-gd \
+               php-json \
                php-mysql \
                php-opcache \
                php-openssl \
