@@ -11,6 +11,7 @@ alpine-arm
 #
 
 RELEASE = edge
+IMAGE = vimagick/alpine-arm
 
 rootfs.tar.xz: mkimage-alpine.sh
 	ARCH=armhf ./mkimage-alpine.sh -r $(RELEASE) -s
@@ -22,8 +23,14 @@ mkimage-alpine.sh:
 	          -e '/docker (tag|run)/d' mkimage-alpine.sh
 	chmod +x mkimage-alpine.sh
 
+latest:
+	docker tag $(IMAGE):$(RELEASE:v%=%) vimagick/alpine-arm:latest
+
 push:
-	docker push vimagick/alpine-arm:$(RELEASE:v%=%)
+	docker push $(IMAGE):$(RELEASE:v%=%)
+
+test:
+	docker run --rm $(IMAGE):$(RELEASE:v%=%) uname -a
 
 clean:
 	rm -f mkimage-alpine.sh rootfs.tar.xz
@@ -33,12 +40,16 @@ clean:
 
 ```
 $ make RELEASE=edge
-$ make clean
-$ make RELEASE=v3.2
-$ docker tag vimagick/alpine-arm:3.2 vimagick/alpine-arm:latest
-$ docker run --rm vimagick/alpine-arm:edge uname -a
-$ docker run --rm vimagick/alpine-arm:3.2 uname -a
+$ make test RELEASE=edge
 $ make push RELEASE=edge
+$ make clean
+
+$ make RELEASE=v3.2
+$ make test RELEASE=v3.2
 $ make push RELEASE=v3.2
+$ make clean
+
+$ make latest RELEASE=v3.2
+$ make test RELEASE=latest
 $ make push RELEASE=latest
 ```
