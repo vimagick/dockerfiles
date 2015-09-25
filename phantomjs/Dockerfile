@@ -11,7 +11,6 @@ RUN apt-get update \
        libpng-dev libjpeg-dev python \
     && git clone git://github.com/ariya/phantomjs.git \
     && cd phantomjs \
-    && git checkout 2.0 \
     && echo y | ./build.sh 2>/dev/null 1>&2 \
     && install -v -s -m 755 bin/phantomjs /usr/local/bin/ \
     && cd .. \
