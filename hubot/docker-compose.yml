@@ -1,0 +1,5 @@
+hubot:
+  image: vimagick/hubot
+  environment:
+    - HUBOT_SLACK_TOKEN=xoxb-xxxxxxxxxxx-xxxxxxxxxxxxxxxxxxxxxxxx
+  restart: always

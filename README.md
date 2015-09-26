@@ -11,7 +11,6 @@ dockerfiles
 - [ ] freegeoip
 - [ ] gitolite
 - [ ] hashcat
-- [ ] hubot
 - [ ] iptables
 - [ ] irc
 - [ ] tshark
@@ -36,6 +35,7 @@ dockerfiles
 - [x] fteproxy-arm :+1:
 - [x] grafana
 - [x] h2o
+- [x] hubot
 - [x] hydra
 - [x] influxdb
 - [x] joomla
