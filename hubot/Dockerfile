@@ -2,7 +2,7 @@
 # Dockerfile for hubot
 #
 
-FROM node
+FROM node:slim
 MAINTAINER kev <noreply@datageek.info>
 
 ENV HUBOT_NAME=hubot
