@@ -11,7 +11,6 @@ dockerfiles
 - [ ] freegeoip
 - [ ] gitolite
 - [ ] hashcat
-- [ ] iptables
 - [ ] irc
 - [ ] tshark
 
@@ -38,6 +37,7 @@ dockerfiles
 - [x] hubot
 - [x] hydra
 - [x] influxdb
+- [x] iptables
 - [x] joomla
 - [x] mantisbt
 - [x] monit
