@@ -25,10 +25,12 @@ tor:
   image: vimagick/tor
   ports:
     - "9001:9001"
-  volumes:
-    - ./torrc:/etc/tor/torrc
+# volumes:
+#   - ./torrc:/etc/tor/torrc
   restart: always
 ```
+
+> Uncomment `volumes` section to use customized torrc.
 
 ## torrc (server)
 
@@ -62,7 +64,7 @@ Bridge obfs4 1.2.3.4:9001 F24BF4DE74649E205A8A3621C84F97FF623B2083
 $ docker-compose up -d
 $ docker-compose logs
 $ docker exec -it tor_tor_1 tor --quiet --list-fingerprint
-datageek F24BF4DE74649E205A8A3621C84F97FF623B2083
+datageek F24B F4DE 7464 9E20 5A8A 3621 C84F 97FF 623B 2083
 ```
 
 ## client

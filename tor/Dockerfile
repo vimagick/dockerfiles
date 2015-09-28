@@ -7,8 +7,8 @@ MAINTAINER kev <noreply@datageek.info>
 
 RUN echo 'http://dl-4.alpinelinux.org/alpine/edge/testing' >> /etc/apk/repositories \
     && apk add -U build-base \
-                  gmp-dev \
                   git \
+                  gmp-dev \
                   go \
                   libgmpxx \
                   py-pip \
@@ -22,12 +22,12 @@ RUN echo 'http://dl-4.alpinelinux.org/alpine/edge/testing' >> /etc/apk/repositor
         && rm -rf /tmp/obfs4 \
     && apk del build-base \
                git \
-               go \
                gmp-dev \
+               go \
                python-dev \
     && rm -rf /var/cache/apk/* \
     && mkdir -p /home/tor/.tor \
-    && chown -R tor:nogroup /home/tor \
+    && chown -R tor:nogroup /home/tor
 
 COPY ./torrc /etc/tor/torrc
 
