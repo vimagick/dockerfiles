@@ -25,15 +25,13 @@ RUN echo 'http://dl-4.alpinelinux.org/alpine/edge/testing' >> /etc/apk/repositor
                gmp-dev \
                go \
                python-dev \
-    && rm -rf /var/cache/apk/* \
-    && mkdir -p /home/tor/.tor \
-    && chown -R tor:nogroup /home/tor
+    && rm -rf /var/cache/apk/*
 
 COPY ./torrc /etc/tor/torrc
 
 USER tor
-WORKDIR /home/tor
-VOLUME /etc/tor /home/tor/.tor
+WORKDIR /var/lib/tor
+VOLUME /etc/tor /var/lib/tor
 EXPOSE 9001 9030 9050 9051
 
 CMD ["/usr/bin/tor", "-f", "/etc/tor/torrc"]

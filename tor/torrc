@@ -4,6 +4,7 @@ BridgeRelay 1
 Exitpolicy reject *:*
 Nickname datageek
 ContactInfo noreply@datageek.info
+DataDirectory /var/lib/tor
 #ServerTransportPlugin fte exec /usr/bin/fteproxy --mode server --managed
 #ServerTransportPlugin obfs3 exec /usr/bin/obfsproxy managed
 ServerTransportPlugin obfs4 exec /usr/bin/obfs4proxy
