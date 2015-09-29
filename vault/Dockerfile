@@ -5,9 +5,9 @@
 FROM alpine
 MAINTAINER kev <noreply@datageek.info>
 
-ENV VAULT_VER 0.2.0
+ENV VAULT_VER 0.3.0
 ENV VAULT_URL http://dl.bintray.com/mitchellh/vault/vault_${VAULT_VER}_linux_amd64.zip
-ENV VAULT_MD5 0ba0029ddccb737cd2dbb1f018136535
+ENV VAULT_MD5 4fb2da2ffd7733a1cfeb6a97023e45d5
 ENV VAULT_FILE vault.zip
 ENV VAULT_ADDR https://127.0.0.1:8200
 
