@@ -1,8 +1,10 @@
 etcd-arm
 ========
 
+## Cross compilation for Raspberry Pi
+
 ```
 git clone https://github.com/coreos/etcd.git
 cd etcd
-GOARCH=arm ./build
+GOOS=linux GOARCH=arm ./build
 ```
