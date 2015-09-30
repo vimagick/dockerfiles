@@ -1,0 +1,11 @@
+[Unit]
+Description=Etcd Daemon
+After=network.target
+
+[Service]
+EnvironmentFile=/etc/default/etcd
+ExecStartPre=/usr/bin/mkdir -p $ETCD_DATA_DIR
+ExecStart=/usr/local/bin/etcd
+
+[Install]
+WantedBy=multi-user.target
