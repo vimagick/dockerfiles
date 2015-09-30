@@ -1,0 +1,10 @@
+[Unit]
+Description=Fleet Daemon
+After=etcd.service
+
+[Service]
+EnvironmentFile=-/etc/default/fleet
+ExecStart=/usr/local/bin/fleetd
+
+[Install]
+WantedBy=multi-user.target
