@@ -1,6 +1,8 @@
 etcd-arm
 ========
 
+![](https://coreos.com/assets/images/media/Fleet-Scheduling.png)
+
 ## Cross compilation for Raspberry Pi
 
 ```
