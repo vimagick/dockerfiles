@@ -4,4 +4,5 @@ dest = "/etc/shadowsocks/client.json"
 keys = [
     "/services/shadowsocks"
 ]
+check_cmd = "jq . {{.src}}"
 #reload_cmd = "supervisorctl update"

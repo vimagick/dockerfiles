@@ -3,11 +3,6 @@
 #
 
 FROM scratch
-MAINTAINER kev <noreply@datageek.info>
-
-ADD ca-certificates.crt /etc/ssl/certs/
-ADD etcd /usr/local/bin/
-
+ADD etcd /
 EXPOSE 2379 2380 4001 7001
-
-ENTRYPOINT ["etcd"]
+ENTRYPOINT ["/etcd"]
