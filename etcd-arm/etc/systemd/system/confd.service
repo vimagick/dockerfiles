@@ -1,0 +1,9 @@
+[Unit]
+Description=Confd Daemon
+After=etcd.service
+
+[Service]
+ExecStart=/usr/local/bin/confd --config-file /etc/confd/confd.toml
+
+[Install]
+WantedBy=multi-user.target

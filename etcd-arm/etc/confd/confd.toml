@@ -1,0 +1,6 @@
+backend = "etcd"
+nodes = ["http://127.0.0.1:2379"]
+confdir = "/etc/confd"
+log-level = "info"
+interval = 60
+watch = true

@@ -1,0 +1,7 @@
+[template]
+src = "shadowsocks.json.tmpl"
+dest = "/etc/shadowsocks/client.json"
+keys = [
+    "/services/shadowsocks"
+]
+#reload_cmd = "supervisorctl update"

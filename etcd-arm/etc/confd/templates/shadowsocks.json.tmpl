@@ -1,0 +1,16 @@
+{{ $base := "/services/shadowsocks" }}
+{{ $name := index (ls $base) 2 }}
+{{ with printf "%s/%s" $base $name | getv | json }}
+
+{
+    "server": "{{ .server }}",
+    "server_port": {{ .server_port }},
+    "local_address": "{{ .local_address }}",
+    "local_port": {{ .local_port }},
+    "password": "{{ .password }}",
+    "method": "{{ .method }}",
+    "timeout": {{ .timeout }},
+    "fast_open": {{ .fast_open }}
+}
+
+{{ end }}
