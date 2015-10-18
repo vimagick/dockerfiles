@@ -1,0 +1,12 @@
+hugo:
+  image: vimagick/hugo-arm
+  command: >
+    server --bind=0.0.0.0
+           --port=80
+           --baseUrl=http://192.168.1.230/
+           --watch
+  ports:
+    - "80:80"
+  volumes:
+    - ./www:/www
+  restart: always
