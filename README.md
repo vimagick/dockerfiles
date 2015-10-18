@@ -35,6 +35,7 @@ dockerfiles
 - [x] grafana
 - [x] h2o
 - [x] hubot
+- [x] hugo-arm :+1:
 - [x] hydra
 - [x] influxdb
 - [x] iptables
