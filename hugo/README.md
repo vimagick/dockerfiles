@@ -42,6 +42,7 @@ hugo:
 
 ```
 $ alias hugo='docker run --rm -v `pwd`:/www vimagick/hugo'
+
 $ cd ~/fig/hugo/www
 $ curl -L https://github.com/spf13/hyde/archive/master.tar.gz | tar xz --strip 1 -C ./themes/hyde/
 

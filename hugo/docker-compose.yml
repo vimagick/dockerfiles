@@ -3,7 +3,7 @@ hugo:
   command: >
     server --bind=0.0.0.0
            --port=80
-           --baseUrl=http://192.168.1.230/
+           --baseUrl=http://blog.datageek.info/
            --watch
   ports:
     - "80:80"
