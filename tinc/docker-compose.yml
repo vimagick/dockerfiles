@@ -9,4 +9,5 @@ tinc:
     - VERBOSE=2
   cap_add:
     - NET_ADMIN
+  dns: 8.8.8.8
   restart: always
