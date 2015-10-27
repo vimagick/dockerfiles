@@ -15,6 +15,7 @@ state security.
 ServerTransportPlugin:
 
 - [x] fte
+- [x] meek
 - [x] obfs3
 - [x] obfs4
 
@@ -43,6 +44,7 @@ Nickname datageek
 ContactInfo noreply@datageek.info
 DataDirectory /var/lib/tor
 #ServerTransportPlugin fte exec /usr/bin/fteproxy --mode server --managed
+#ServerTransportPlugin meek exec /usr/bin/meek-server --log /var/log/meek-server.log --port 7002 --cert cert.pem --key key.pem
 #ServerTransportPlugin obfs3 exec /usr/bin/obfsproxy managed
 ServerTransportPlugin obfs4 exec /usr/bin/obfs4proxy
 ```
@@ -52,7 +54,8 @@ ServerTransportPlugin obfs4 exec /usr/bin/obfs4proxy
 ```
 #Socks5Proxy 127.0.0.1:1080
 UseBridges 1
-#Bridge fte 104.238.161.174:9001 F24BF4DE74649E205A8A3621C84F97FF623B2083
+#Bridge fte 1.2.3.4:9001 F24BF4DE74649E205A8A3621C84F97FF623B2083
+#Bridge meek 1.2.3.4:9001 url=https://meek.datageek.info:7002/
 #Bridge obfs3 1.2.3.4:9001 F24BF4DE74649E205A8A3621C84F97FF623B2083
 Bridge obfs4 1.2.3.4:9001 F24BF4DE74649E205A8A3621C84F97FF623B2083
 ```

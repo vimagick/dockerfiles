@@ -20,6 +20,9 @@ RUN echo 'http://dl-4.alpinelinux.org/alpine/edge/testing' >> /etc/apk/repositor
     && GOPATH=/tmp/obfs4 go get git.torproject.org/pluggable-transports/obfs4.git/obfs4proxy \
         && mv /tmp/obfs4/bin/obfs4proxy /usr/bin \
         && rm -rf /tmp/obfs4 \
+    && GOPATH=/tmp/meek go get git.torproject.org/pluggable-transports/meek.git/meek-server \
+        && mv /tmp/meek/bin/meek-server /usr/bin \
+        && rm -rf /tmp/meek \
     && apk del build-base \
                git \
                gmp-dev \
@@ -32,6 +35,6 @@ COPY ./torrc /etc/tor/torrc
 USER tor
 WORKDIR /var/lib/tor
 VOLUME /etc/tor /var/lib/tor
-EXPOSE 9001 9030 9050 9051
+EXPOSE 7002 9001 9030 9050 9051
 
 CMD ["/usr/bin/tor", "-f", "/etc/tor/torrc"]
