@@ -5,7 +5,8 @@
 FROM alpine:edge
 MAINTAINER kev <noreply@datageek.info>
 
-RUN echo 'http://dl-4.alpinelinux.org/alpine/edge/testing' >> /etc/apk/repositories \
+RUN echo 'http://dl-4.alpinelinux.org/alpine/v3.2/main' >> /etc/apk/repositories \
+    && echo 'http://dl-4.alpinelinux.org/alpine/edge/testing' >> /etc/apk/repositories \
     && apk add -U build-base \
                   git \
                   gmp-dev \
