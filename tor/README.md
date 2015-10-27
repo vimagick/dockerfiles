@@ -25,13 +25,17 @@ ServerTransportPlugin:
 tor:
   image: vimagick/tor
   ports:
+#   - "7002:7002"
     - "9001:9001"
 # volumes:
 #   - ./torrc:/etc/tor/torrc
+#   - ./cert.pem:/var/lib/tor/cert.pem
+#   - ./key.pem:/var/lib/tor/key.pem
   restart: always
 ```
 
-> Uncomment `volumes` section to use customized torrc.
+> Default `torrc` is for `obfs4`.
+> Uncomment lines to use `meek`.
 
 ## torrc (server)
 
@@ -82,6 +86,7 @@ $ curl -x socks5h://127.0.0.1:9050 ifconfig.ovh
 ## references
 
 - https://www.torproject.org/projects/obfsproxy-debian-instructions.html.en
+- https://blog.torproject.org/blog/how-use-%E2%80%9Cmeek%E2%80%9D-pluggable-transport
 - https://fteproxy.org/help-server-with-tor
 - https://github.com/Yawning/obfs4
 
