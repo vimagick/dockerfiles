@@ -63,6 +63,10 @@ UseBridges 1
 #Bridge meek 1.2.3.4:9001 url=https://meek.datageek.info:7002/
 #Bridge obfs3 1.2.3.4:9001 F24BF4DE74649E205A8A3621C84F97FF623B2083
 Bridge obfs4 1.2.3.4:9001 F24BF4DE74649E205A8A3621C84F97FF623B2083
+#ClientTransportPlugin fte exec /usr/local/bin/fteproxy
+#ClientTransportPlugin meek exec /usr/local/bin/meek-client
+#ClientTransportPlugin obfs3 exec /usr/local/bin/obfsproxy
+ClientTransportPlugin obfs4 exec /usr/local/bin/obfs4proxy
 ```
 
 > Please connect via `Socks5Proxy` if you're blocked!
