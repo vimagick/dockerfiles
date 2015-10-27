@@ -70,6 +70,7 @@ Bridge obfs4 1.2.3.4:9001 F24BF4DE74649E205A8A3621C84F97FF623B2083
 ## server
 
 ```
+$ openssl req -x509 -newkey rsa:2048 -keyout key.pem -out cert.pem -days 365 -nodes -subj "/C=JP/ST=Tokyo/L=Heiwajima/O=DataGeek/OU=Org/CN=meek.datageek.info"
 $ docker-compose up -d
 $ docker-compose logs
 $ docker exec -it tor_tor_1 tor --quiet --list-fingerprint
