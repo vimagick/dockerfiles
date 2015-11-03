@@ -1,7 +1,7 @@
 opencart
 ========
 
-`OpenCart` is designed feature rich, easy to use, search engine
+[OpenCart][1] is designed feature rich, easy to use, search engine
 friendly and with a visually appealing interface.
 
 ```
@@ -20,3 +20,5 @@ mysql:
     - MYSQL_DATABASE=opencart
   restart: always
 ```
+
+[1]: http://www.opencart.com/index.php

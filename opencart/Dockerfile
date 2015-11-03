@@ -14,8 +14,8 @@ RUN apt-get update && apt-get install -y libpng12-dev libjpeg-dev libmcrypt-dev 
 
 WORKDIR /var/www/html
 
-ENV OPENCART_VER 2.0.3.1
-ENV OPENCART_MD5 222c20ee61a4ff280f55fb0ea688c746
+ENV OPENCART_VER 2.1.0.1
+ENV OPENCART_MD5 f9b6d51576f55557859c732773c37dee
 ENV OPENCART_URL https://github.com/opencart/opencart/archive/${OPENCART_VER}.tar.gz
 ENV OPENCART_FILE opencart.tar.gz
 
