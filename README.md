@@ -73,6 +73,7 @@ dockerfiles
 - [x] tmail :beetle:
 - [x] tor
 - [x] urlwatch :beetle:
+- [x] webhook
 - [x] webkit :beetle:
 - [x] youtube :beetle:
     - [x] youtube-dl
