@@ -7,7 +7,7 @@ MAINTAINER kev <noreply@datageek.info>
 
 RUN apk add -U bash
 
-COPY webhook /usr/local/bin
+COPY ./webhook /usr/local/bin/
 
 WORKDIR /scripts
 VOLUME /scripts
