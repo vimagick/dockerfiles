@@ -5,3 +5,4 @@ webhook:
     - "9000:9000"
   volumes:
     - "./scripts:/scripts"
+  restart: always

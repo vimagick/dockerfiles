@@ -1,6 +1,8 @@
 webhook
 =======
 
+![](https://badge.imagelayers.io/vimagick/webhook:latest.svg)
+
 [webhook][1] is a lightweight configurable tool written in Go, that allows you
 to easily create HTTP endpoints (hooks) on your server, which you can use to
 execute configured commands.
@@ -12,7 +14,7 @@ execute configured commands.
 ├── docker-compose.yml
 └── scripts/
     ├── hooks.json
-    └── test.sh*
+    └── test.sh* (executable)
 ```
 
 docker-compose.yml
@@ -25,7 +27,7 @@ webhook:
     - "9000:9000"
   volumes:
     - "./scripts:/scripts"
-
+  restart: always
 ```
 
 hooks.json
@@ -50,9 +52,30 @@ echo 'hello world'
 ## Up and Running
 
 ```
+$ cd ~/fig/webhook/
+
 $ docker-compose up -d
+Creating webhook_webhook_1...
+
+$ curl http://localhost:9000/hooks/test
+
 $ docker-compose logs
-$ curl localhost:9000/hooks/test
+Attaching to webhook_webhook_1
+webhook_1 | [webhook] 2015/11/05 04:26:52 version 2.3.5 starting
+webhook_1 | [webhook] 2015/11/05 04:26:52 setting up os signal watcher
+webhook_1 | [webhook] 2015/11/05 04:26:52 attempting to load hooks from hooks.json
+webhook_1 | [webhook] 2015/11/05 04:26:52 loaded 1 hook(s) from file
+webhook_1 | [webhook] 2015/11/05 04:26:52       > test
+webhook_1 | [webhook] 2015/11/05 04:26:52 starting insecure (http) webhook on :9000
+webhook_1 | [webhook] 2015/11/05 04:26:52 os signal watcher ready
+webhook_1 | [webhook] 2015/11/05 04:27:11 Started GET /hooks/test
+webhook_1 | [webhook] 2015/11/05 04:27:11 Completed 200 OK in 390.207µs
+webhook_1 | [webhook] 2015/11/05 04:27:11 test got matched (1 time(s))
+webhook_1 | [webhook] 2015/11/05 04:27:11 test hook triggered successfully
+webhook_1 | [webhook] 2015/11/05 04:27:11 executing /scripts/test.sh (/scripts/test.sh) with arguments [/scripts/test.sh] using /scripts as cwd
+webhook_1 | [webhook] 2015/11/05 04:27:11 command output: hello world
+webhook_1 |
+webhook_1 | [webhook] 2015/11/05 04:27:11 finished handling test
 ```
 
 [1]: https://github.com/adnanh/webhook
