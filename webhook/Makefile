@@ -1,5 +1,6 @@
 .PHONY: webhook
 
+export CGO_ENABLED=0
 export GOPATH = /tmp/go
 export GOOS = linux
 export GOARCH = amd64
