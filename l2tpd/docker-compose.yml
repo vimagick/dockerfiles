@@ -1,0 +1,7 @@
+l2tpd:
+  image: vimagick/l2tpd
+  ports:
+    - "500:500/udp"
+    - "1701:1701/udp"
+    - "4500:4500/udp"
+  privileged: true
