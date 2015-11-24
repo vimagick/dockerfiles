@@ -7,7 +7,7 @@ MAINTAINER kev <noreply@datageek.info>
 
 ENV PHANTOM_URL https://github.com/vimagick/dockerfiles/raw/master/webkit/bin/phantomjs
 ENV CASPER_URL https://github.com/n1k0/casperjs/archive/master.tar.gz
-ENV CASPER_DIR /usr/local/lib/casperjs/
+ENV CASPER_DIR /usr/local/casperjs/
 
 RUN apt-get update \
     && apt-get install -y curl \
