@@ -1,6 +1,8 @@
 cowrie
 ======
 
+![](https://badge.imagelayers.io/vimagick/cowrie:latest.svg)
+
 [`Cowrie`][1] is a medium interaction SSH honeypot designed to log brute force attacks
 and, most importantly, the entire shell interaction performed by the attacker.
 
@@ -14,8 +16,8 @@ cowrie:
   ports:
     - "2222:2222"
   volumes:
-    - dl:/home/cowrie/dl
-    - log:/home/cowrie/log
+    - ./dl:/home/cowrie/dl
+    - ./log:/home/cowrie/log
   restart: always
 ```
 

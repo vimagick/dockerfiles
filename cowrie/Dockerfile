@@ -1,22 +1,32 @@
+#
+# Dockerfile for cowrie
+#
+
 FROM alpine
 MAINTAINER kev <noreply@datageek.info>
 
-RUN apk add -U curl \
-               py-pip \
-               py-twisted \
-               tar \
-               gcc \
-               python-dev \
-               musl-dev \
+RUN apk add -U build-base \
+               libffi \
                libffi-dev \
+               openssl \
                openssl-dev \
-    && pip install pyasn1 pyOpenSSL service_identity \
+               python \
+               python-dev \
+               tar \
+    && wget -qO- https://bootstrap.pypa.io/get-pip.py | python \
+    && pip install pyasn1 \
+                   pyOpenSSL \
+                   service_identity \
+                   twisted \
     && adduser -D cowrie \
     && cd /home/cowrie \
-    && curl -sSL https://github.com/micheloosterhof/cowrie/archive/master.tar.gz | tar xz --strip 1 \
+    && wget -qO- https://github.com/micheloosterhof/cowrie/archive/master.tar.gz | tar xz --strip 1 \
     && mv cowrie.cfg.dist cowrie.cfg \
     && chown -R cowrie:cowrie . \
-    && apk del curl \
+    && apk del build-base \
+               libffi-dev \
+               openssl-dev \
+               python-dev \
                tar \
     && rm -rf /var/cache/apk/*
 
