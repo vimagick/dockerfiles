@@ -13,12 +13,12 @@ RUN apt-get update \
     && apt-get install -y wget \
     && wget ${INFLUXDB_URL} \
     && dpkg -i ${INFLUXDB_FILE} \
-    && sed -i '/^reporting-disabled/s/false/true/' /etc/opt/influxdb/influxdb.conf \
+    && sed -i '/^reporting-disabled/s/false/true/' /etc/influxdb/influxdb.conf \
     && apt-get purge --auto-remove -y wget \
     && rm -rf ${INFLUXDB_FILE} \
               /var/lib/apt/lists/*
 
-VOLUME /var/opt/influxdb/
+VOLUME /var/lib/influxdb/
 EXPOSE 8083 8086 8088
 
-CMD ["/opt/influxdb/influxd", "-config", "/etc/opt/influxdb/influxdb.conf"]
+CMD ["influxd", "-config", "/etc/influxdb/influxdb.conf"]
