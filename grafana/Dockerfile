@@ -5,12 +5,16 @@
 FROM debian:jessie
 MAINTAINER kev <noreply@datageek.info>
 
+ENV GRAFANA_VER 2.5.0
+ENV GRAFANA_FILE grafana_${GRAFANA_VER}_amd64.deb
+ENV GRAFANA_URL https://grafanarel.s3.amazonaws.com/builds/${GRAFANA_FILE}
+
 RUN apt-get update \
     && apt-get install -y libfontconfig wget \
-    && wget https://grafanarel.s3.amazonaws.com/builds/grafana_2.1.1_amd64.deb \
-    && dpkg -i grafana_2.1.1_amd64.deb \
+    && wget ${GRAFANA_URL} \
+    && dpkg -i ${GRAFANA_FILE} \
     && apt-get purge --auto-remove -y wget \
-    && rm -rf grafana_2.1.1_amd64.deb \
+    && rm -rf ${GRAFANA_FILE} \
               /var/lib/apt/lists/*
 
 ENV GRAFANA_HOME=/usr/share/grafana

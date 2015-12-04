@@ -23,6 +23,6 @@ EXPOSE 500/udp 1701/udp 4500/udp
 
 CMD iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE \
     && ipsec _stackmanager start \
-    && ipsec pluto --config /etc/ipsec.conf \
+    && ipsec pluto \
     && xl2tpd -D
 
