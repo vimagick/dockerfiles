@@ -1,4 +1,4 @@
-nodered:
+node-red:
   image: vimagick/nodered-arm
   ports:
     - "1880:1880"
