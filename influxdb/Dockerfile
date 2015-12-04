@@ -5,13 +5,17 @@
 FROM debian:jessie
 MAINTAINER kev <noreply@datageek.info>
 
+ENV INFLUXDB_VER 0.9.5.1
+ENV INFLUXDB_FILE influxdb_${INFLUXDB_VER}_amd64.deb
+ENV INFLUXDB_URL https://s3.amazonaws.com/influxdb/${INFLUXDB_FILE}
+
 RUN apt-get update \
     && apt-get install -y wget \
-    && wget https://s3.amazonaws.com/influxdb/influxdb_0.9.2_amd64.deb \
-    && dpkg -i influxdb_0.9.2_amd64.deb \
+    && wget ${INFLUXDB_URL} \
+    && dpkg -i ${INFLUXDB_FILE} \
     && sed -i '/^reporting-disabled/s/false/true/' /etc/opt/influxdb/influxdb.conf \
     && apt-get purge --auto-remove -y wget \
-    && rm -rf influxdb_0.9.2_amd64.deb \
+    && rm -rf ${INFLUXDB_FILE} \
               /var/lib/apt/lists/*
 
 VOLUME /var/opt/influxdb/
