@@ -12,6 +12,7 @@ dockerfiles
 - [ ] gitolite
 - [ ] hashcat
 - [ ] irc
+- [ ] mosquitto
 - [ ] tshark
 
 ## DONE

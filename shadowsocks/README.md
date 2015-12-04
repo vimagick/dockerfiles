@@ -16,6 +16,8 @@ designed to protect your Internet traffic.
 
 ## docker-compose.yml
 
+For Linux Server
+
 ```
 server:
   image: vimagick/shadowsocks-libev
@@ -26,6 +28,17 @@ server:
     - PASSWORD=secret
   restart: always
 
+client:
+  image: vimagick/shadowsocks-libev
+  command: ss-local -s foobar.site -p 8388 -b 0.0.0.0 -l 1080 -k secret -m chacha20
+  ports:
+    - "1080:1080"
+  restart: always
+```
+
+For Raspberry Pi
+
+```
 client:
   image: vimagick/shadowsocks-libev-arm
   ports:
