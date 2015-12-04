@@ -6,4 +6,65 @@ nodered
 [Node-RED][1] is a tool for wiring together hardware devices, APIs and online
 services in new and interesting ways.
 
+## directory tree
+
+```
+~/fig/nodered/
+├── docker-compose.yml
+└── node-red/
+    ├── flows_cred.json
+    ├── flows.json
+    ├── lib/
+    │   └── flows
+    └── settings.js
+```
+
+> The `node-red` directory will be created after first running.
+
+## docker-compose.yml
+
+```
+nodered:
+  image: vimagick/nodered
+  ports:
+    - "1880:1880"
+  volumes:
+    - ./node-red:/root/.node-red
+  restart: always
+```
+
+## settings.js
+
+```
+module.exports = {
+
+    //...
+
+    flowFile: 'flows.json',
+
+    //...
+
+    adminAuth: {
+        type: "credentials",
+        users: [{
+            username: "admin",
+            password: "$2a$08$zZWtXTja0fB1pzD4sHCMyOCMYz2Z6dNbM6tl8sJogENOMcxWV9DN.",
+            permissions: "*"
+        }]
+    },
+
+    //...
+
+}
+```
+
+## up and running
+
+```
+$ cd ~/fig/nodered/
+$ docker-compose up -d
+$ vi node-red/settings.js
+$ docker-compose restart
+```
+
 [1]: http://nodered.org/
