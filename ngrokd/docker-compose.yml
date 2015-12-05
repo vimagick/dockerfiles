@@ -1,6 +1,11 @@
-ngrokd:
-  image: vimagick/ngrokd
+data:
+  build: .
+  entrypoint: /bin/true
+
+service:
+  image: debian:jessie
   command: >
+    ./ngrokd
     -domain=ngrok.foobar.site
     -httpAddr=:2080
     -httpsAddr=:2443
@@ -12,4 +17,7 @@ ngrokd:
     - "2080:2080"
     - "2443:2443"
     - "4443:4443"
+  volumes_from:
+    - data
+  working_dir: /ngrok
   restart: always
