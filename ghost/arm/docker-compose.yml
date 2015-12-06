@@ -1,0 +1,5 @@
+ghost:
+  image: vimagick/ghost-arm
+  ports:
+    - "2368:2368"
+  restart: always

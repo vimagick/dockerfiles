@@ -48,6 +48,7 @@ $ docker-compose build data
 $ docker-compose up -d data
 $ docker cp ngrokd_data_1:/ngrok .
 $ docker-compose rm -v data
+$ docker rmi ngrokd_data
 
 $ docker-compose up -d service
 $ docker-compose logs service
