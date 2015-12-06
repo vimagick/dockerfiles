@@ -6,7 +6,7 @@ FROM vimagick/alpine-arm:edge
 MAINTAINER kev <noreply@datageek.info>
 
 ENV GHOST_VER 0.7.2
-ENV GHOST_URL https://github.com/TryGhost/Ghost/archive/$GHOST_VER.tar.gz
+ENV GHOST_URL https://ghost.org/archives/ghost-$GHOST_VER.zip
 ENV GHOST_SOURCE /usr/src/ghost
 ENV GHOST_CONTENT /var/lib/ghost
 
@@ -19,11 +19,14 @@ RUN set -ex \
     && apk add -t TMP build-base \
                       curl \
                       python \
-                      tar \
-    && curl -sSL $GHOST_URL | tar xz --strip 1 \
+    && curl -sSL $GHOST_URL -o ghost.zip \
+    && unzip ghost.zip \
     && npm install --production \
+    && npm cache clean \
     && apk del TMP \
-    && rm -rf /var/cache/apk/*
+    && rm -rf ghost.zip \
+              /tmp/npm* \
+              /var/cache/apk/*
 
 COPY docker-entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
