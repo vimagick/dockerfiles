@@ -12,7 +12,6 @@ dockerfiles
 - [ ] gitolite
 - [ ] hashcat
 - [ ] irc
-- [ ] mosquitto
 - [ ] tshark
 
 ## DONE
@@ -44,6 +43,7 @@ dockerfiles
 - [x] joomla
 - [x] mantisbt
 - [x] monit
+- [x] mosquitto
 - [x] nginad
 - [x] nginx
 - [x] ngrok :+1:
