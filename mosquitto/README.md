@@ -14,4 +14,14 @@ monitoring and automation with his twittering house and twittering ferry. Andy
 gave a talk on this at OggCamp that explains a bit about MQTT and how he uses
 it. The slides and audio are available online at slideshare.
 
+## docker-compose.yml
+
+```
+mosquitto:
+  image: vimagick/mosquitto
+  ports:
+    - "1883:1883"
+  restart: always
+```
+
 [1]: http://mosquitto.org/
