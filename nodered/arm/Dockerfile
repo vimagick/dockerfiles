@@ -15,6 +15,7 @@ RUN apk add -U bash \
                python-dev \
     && rm -rf /var/cache/apk/*
 
+WORKDIR /root/.node-red
 VOLUME /root/.node-red
 EXPOSE 1880
 
