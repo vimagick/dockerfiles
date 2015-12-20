@@ -23,7 +23,7 @@ shadowvpn:
   ports:
     - "1123:1123/udp"
   volumes:
-    - "server.conf:/etc/shadowvpn/server.conf"
+    - "./server.conf:/etc/shadowvpn/server.conf"
   privileged: true
   restart: always
 ```
