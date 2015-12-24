@@ -5,17 +5,21 @@
 FROM alpine
 MAINTAINER kev <noreply@datageek.info>
 
+ENV H2O_VER 1.6.1
+ENV H2O_URL https://github.com/h2o/h2o/archive/v${H2O_VER}.tar.gz
+ENV H2O_DIR h2o-${H2O_VER}
+
 RUN apk add -U build-base \
                cmake \
                curl \
                linux-headers \
                zlib-dev \
-    && curl -sSL https://github.com/h2o/h2o/archive/master.tar.gz | tar xz \
-        && cd h2o-master \
+    && curl -sSL ${H2O_URL} | tar xz \
+        && cd ${H2O_DIR} \
         && cmake -DWITH_BUNDLED_SSL=on . \
         && make install \
         && cd .. \
-        && rm -rf h2o-master \
+        && rm -rf ${H2O_DIR} \
     && apk del build-base \
                cmake \
                curl \
