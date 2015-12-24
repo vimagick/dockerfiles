@@ -5,7 +5,8 @@
 FROM alpine
 MAINTAINER kev <noreply@datageek.info>
 
-RUN echo 'http://nl.alpinelinux.org/alpine/edge/main' >> /etc/apk/repositories \
+RUN set -ex \
+    && echo 'http://nl.alpinelinux.org/alpine/edge/main' >> /etc/apk/repositories \
     && apk add -U curl libsodium python \
     && curl -sSL https://bootstrap.pypa.io/get-pip.py | python \
     && pip install shadowsocks \

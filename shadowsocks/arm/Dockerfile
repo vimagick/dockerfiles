@@ -5,7 +5,8 @@
 FROM vimagick/alpine-arm:edge
 MAINTAINER kev <noreply@datageek.info>
 
-RUN apk add -U curl libsodium python \
+RUN set -ex \
+    && apk add -U curl libsodium python \
     && curl -sSL https://bootstrap.pypa.io/get-pip.py | python \
     && pip install shadowsocks \
     && apk del curl \
