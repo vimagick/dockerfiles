@@ -2,7 +2,7 @@
 # Dockerfile for h2o-arm
 #
 
-FROM vimagick/alpine-arm
+FROM vimagick/alpine-arm:3.2
 MAINTAINER kev <noreply@datageek.info>
 
 ENV H2O_VER 1.6.1
