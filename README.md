@@ -43,6 +43,7 @@ dockerfiles
 - [x] joomla
 - [x] mantisbt
 - [x] monit
+- [x] moodle :beetle:
 - [x] mosquitto
 - [x] nginad
 - [x] nginx
