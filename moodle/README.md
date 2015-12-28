@@ -5,6 +5,8 @@ moodle
 administrators and learners with a single robust, secure and integrated system
 to create personalised learning environments.
 
+## docker-compose.yml
+
 ```
 moodle:
   image: vimagick/moodle
@@ -13,7 +15,7 @@ moodle:
   links:
     - mysql
   volumes:
-    - ./moodledata:/var/moodledata
+    - ./moodledata:/var/www/moodledata
   restart: always
 
 mysql:
@@ -22,6 +24,15 @@ mysql:
     - MYSQL_ROOT_PASSWORD=root
     - MYSQL_DATABASE=moodle
   restart: always
+```
+
+## up and running
+
+```
+$ cd ~/fig/moodle/
+$ mkdir -p moodledata
+$ chmod 777 moodledata
+$ docker-compose up -d
 ```
 
 [1]: https://moodle.org/

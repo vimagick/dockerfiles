@@ -11,16 +11,23 @@ RUN a2enmod rewrite
 
 RUN set -xe \
     && apt-get update \
-    && apt-get install -y aspell \
-                          clamav \
+    && apt-get install -y clamav \
                           graphviz \
-                          libpng12-0 \
-                          libpng12-dev \
+                          libicu52 \
+                          libicu-dev \
                           libjpeg62-turbo \
                           libjpeg-dev \
+                          libldap-2.4-2 \
+                          libldap2-dev \
                           libmcrypt4 \
                           libmcrypt-dev \
+                          libpng12-0 \
+                          libpng12-dev \
+                          libpspell-dev \
+                          libxml2 \
+                          libxml2-dev \
     && docker-php-ext-configure gd --with-png-dir=/usr --with-jpeg-dir=/usr \
+    && docker-php-ext-configure ldap --with-libdir=lib/x86_64-linux-gnu \
     && docker-php-ext-install gd \
                               intl \
                               ldap \
@@ -31,9 +38,13 @@ RUN set -xe \
                               pspell \
                               xmlrpc \
                               zip \
-    && apt-get remove -y libpng12-dev \
+    && apt-get remove -y libicu-dev \
                          libjpeg-dev \
+                         libldap2-dev \
                          libmcrypt-dev \
+                         libpng12-dev \
+                         libpspell-dev \
+                         libxml2-dev \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /var/www/html

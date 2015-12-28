@@ -1,0 +1,16 @@
+moodle:
+  image: vimagick/moodle
+  ports:
+    - "8000:80"
+  links:
+    - mysql
+  volumes:
+    - ./moodledata:/var/www/moodledata
+  restart: always
+
+mysql:
+  image: mysql
+  environment:
+    - MYSQL_ROOT_PASSWORD=root
+    - MYSQL_DATABASE=moodle
+  restart: always
