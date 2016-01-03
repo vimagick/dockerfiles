@@ -1,0 +1,10 @@
+motion:
+  image: vimagick/motion-arm
+  ports:
+    - "8080:8080"
+    - "8081:8081"
+  volumes:
+    - ./motion:/var/lib/motion
+  devices:
+    - /dev/video0:/dev/video0
+  restart: always
