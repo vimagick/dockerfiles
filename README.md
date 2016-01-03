@@ -45,6 +45,7 @@ dockerfiles
 - [x] monit
 - [x] moodle :beetle:
 - [x] mosquitto
+- [x] motion-arm :+1:
 - [x] nginad
 - [x] nginx
 - [x] ngrok :+1:
