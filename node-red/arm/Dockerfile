@@ -1,5 +1,5 @@
 #
-# Dockerfile for nodered-arm
+# Dockerfile for node-red-arm
 #
 
 FROM vimagick/alpine-arm:edge

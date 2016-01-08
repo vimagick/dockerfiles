@@ -1,7 +1,7 @@
-nodered
-=======
+node-red
+========
 
-![](https://badge.imagelayers.io/vimagick/nodered:latest.svg)
+![](https://badge.imagelayers.io/vimagick/node-red:latest.svg)
 
 [Node-RED][1] is a tool for wiring together hardware devices, APIs and online
 services in new and interesting ways.
@@ -9,7 +9,7 @@ services in new and interesting ways.
 ## directory tree
 
 ```
-~/fig/nodered/
+~/fig/node-red/
 ├── docker-compose.yml
 └── node-red/
     ├── flows_cred.json
@@ -24,8 +24,8 @@ services in new and interesting ways.
 ## docker-compose.yml
 
 ```
-nodered:
-  image: vimagick/nodered
+node-red:
+  image: vimagick/node-red
   ports:
     - "1880:1880"
   volumes:
@@ -64,7 +64,7 @@ module.exports = {
 ## up and running
 
 ```
-$ cd ~/fig/nodered/
+$ cd ~/fig/node-red/
 $ docker-compose up -d
 $ vi node-red/settings.js
 $ docker-compose restart

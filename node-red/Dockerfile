@@ -1,5 +1,5 @@
 #
-# Dockerfile for nodered
+# Dockerfile for node-red
 #
 
 FROM alpine:edge

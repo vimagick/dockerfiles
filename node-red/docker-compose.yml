@@ -1,5 +1,5 @@
-nodered:
-  image: vimagick/nodered
+node-red:
+  image: vimagick/node-red
   ports:
     - "1880:1880"
   volumes:

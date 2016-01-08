@@ -49,8 +49,8 @@ dockerfiles
 - [x] nginad
 - [x] nginx
 - [x] ngrok :+1:
-- [x] nodered :+1:
-- [x] nodered-arm :+1:
+- [x] node-red :+1:
+- [x] node-red-arm :+1:
 - [x] obfsproxy
 - [x] opencart
 - [x] openvpn :+1:
