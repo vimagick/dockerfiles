@@ -18,8 +18,7 @@ rootfs.tar.xz: mkimage-alpine.sh
 
 mkimage-alpine.sh:
 	curl -sSLO https://github.com/docker/docker/raw/master/contrib/mkimage-alpine.sh
-	sed -i -r -e 's/-Oxz/& APKINDEX/' \
-	          -e '/docker import/s@alpine:\$$REL@vimagick/alpine-arm:$${REL#v}@' \
+	sed -i -r -e '/docker import/s@alpine:\$$REL@vimagick/alpine-arm:$${REL#v}@' \
 	          -e '/docker (tag|run)/d' mkimage-alpine.sh
 	chmod +x mkimage-alpine.sh
 
@@ -44,12 +43,12 @@ $ make test RELEASE=edge
 $ make push RELEASE=edge
 $ make clean
 
-$ make RELEASE=v3.2
-$ make test RELEASE=v3.2
-$ make push RELEASE=v3.2
+$ make RELEASE=v3.3
+$ make test RELEASE=v3.3
+$ make push RELEASE=v3.3
 $ make clean
 
-$ make latest RELEASE=v3.2
+$ make latest RELEASE=v3.3
 $ make test RELEASE=latest
 $ make push RELEASE=latest
 ```
