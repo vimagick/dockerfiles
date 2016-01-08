@@ -2,7 +2,7 @@
 # Dockerfile for node-red-arm
 #
 
-FROM vimagick/alpine-arm:edge
+FROM vimagick/alpine-arm
 MAINTAINER kev <noreply@datageek.info>
 
 RUN apk add -U bash \

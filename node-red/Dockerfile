@@ -2,7 +2,7 @@
 # Dockerfile for node-red
 #
 
-FROM alpine:edge
+FROM alpine
 MAINTAINER kev <noreply@datageek.info>
 
 RUN apk add -U bash \
