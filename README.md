@@ -12,6 +12,7 @@ dockerfiles
 - [ ] gitolite
 - [ ] hashcat
 - [ ] irc
+- [ ] nodebb
 - [ ] tshark
 
 ## DONE
@@ -88,6 +89,7 @@ dockerfiles
 ## 3rd-party
 
 - [x] centurylink/watchtower
+- [x] drone/drone
 - [x] ghost
 - [x] gitlab/gitlab-ce
 - [ ] gliderlabs/logspout

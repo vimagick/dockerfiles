@@ -1,0 +1,9 @@
+drone:
+  image: drone/drone:0.4
+  ports:
+    - "8000:8000"
+  volumes:
+    - ./drone:/var/lib/drone
+    - /var/run/docker.sock:/var/run/docker.sock
+  env_file: ./dronerc
+  restart: always
