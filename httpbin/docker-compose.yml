@@ -1,0 +1,5 @@
+httpbin:
+  image: vimagick/httpbin
+  ports:
+    - "27815:80"
+  restart: always

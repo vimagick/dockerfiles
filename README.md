@@ -35,6 +35,7 @@ dockerfiles
 - [x] fteproxy-arm :+1:
 - [x] grafana
 - [x] h2o
+- [x] httpbin :+1:
 - [x] hubot
 - [x] hugo
 - [x] hugo-arm
