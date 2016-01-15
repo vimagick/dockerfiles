@@ -5,7 +5,7 @@
 FROM vimagick/alpine-arm:edge
 MAINTAINER kev <noreply@datageek.info>
 
-ENV GHOST_VER 0.7.4
+ENV GHOST_VER 0.7.5
 ENV GHOST_URL https://ghost.org/archives/ghost-$GHOST_VER.zip
 ENV GHOST_SOURCE /usr/src/ghost
 ENV GHOST_CONTENT /var/lib/ghost
