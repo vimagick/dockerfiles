@@ -67,6 +67,7 @@ dockerfiles
 - [x] privoxy
 - [x] proxyhub
 - [x] pure-ftpd
+- [x] redis-arm
 - [x] revive
 - [x] rsyncd
 - [x] samba :beetle:
