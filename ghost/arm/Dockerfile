@@ -2,7 +2,7 @@
 # Dockerfile for ghost-arm
 #
 
-FROM vimagick/alpine-arm:edge
+FROM vimagick/alpine-arm
 MAINTAINER kev <noreply@datageek.info>
 
 ENV GHOST_VER 0.7.5

@@ -14,7 +14,6 @@ dockerfiles
 - [ ] gitolite
 - [ ] hashcat
 - [ ] irc
-- [ ] nodebb
 - [ ] tshark
 
 ## DONE
@@ -53,6 +52,7 @@ dockerfiles
 - [x] nginad
 - [x] nginx
 - [x] ngrok :+1:
+- [x] nodebb
 - [x] node-red :+1:
 - [x] node-red-arm :+1:
 - [x] obfsproxy

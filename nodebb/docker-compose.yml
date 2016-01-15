@@ -1,0 +1,13 @@
+nodebb:
+  image: vimagick/nodebb
+  ports:
+    - "4567:4567"
+  links:
+    - redis
+  restart: always
+
+redis:
+  image: redis
+  ports:
+    - "127.0.0.1:6379:6379"
+  restart: always
