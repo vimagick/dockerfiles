@@ -10,8 +10,9 @@ RUN set -ex \
     && sed -i 's/^daemonize yes/daemonize no/' /etc/redis.conf \
     && rm -rf /var/cache/apk/*
 
+WORKDIR /var/lib/redis/
 VOLUME /var/lib/redis/
 
 EXPOSE 6379
 
-CMD ["redis-server"]
+CMD ["redis-server", "/etc/redis.conf"]
