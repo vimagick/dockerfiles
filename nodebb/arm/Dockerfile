@@ -5,8 +5,8 @@
 FROM vimagick/alpine-arm
 MAINTAINER kev <noreply@datageek.info>
 
-ENV BB_VER 0.9.3
-ENV BB_URL https://github.com/NodeBB/NodeBB/archive/v$BB_VER.tar.gz
+ENV BB_VER master
+ENV BB_URL https://github.com/NodeBB/NodeBB/archive/$BB_VER.tar.gz
 ENV BB_SOURCE /usr/src/nodebb
 ENV BB_CONTENT /var/lib/nodebb
 
@@ -16,16 +16,17 @@ VOLUME $BB_CONTENT
 RUN set -ex \
     && apk add -U bash \
                   imagemagick \
+                  krb5-libs \
                   nodejs \
                   openssl \
     && apk add -t TMP build-base \
                       curl \
                       git \
+                      krb5-dev \
                       openssl-dev \
                       python \
                       tar \
     && curl -sSL $BB_URL | tar xz --strip 1 \
-    && sed -i '/"bufferutil": {/,/},/d; /"utf-8-validate": {/,/},/d' npm-shrinkwrap.json \
     && npm install --production \
     && npm cache clean \
     && apk del TMP \
