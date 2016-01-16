@@ -27,12 +27,12 @@ RUN set -ex \
     && curl -sSL $BB_URL | tar xz --strip 1 \
     && sed -i '/"bufferutil": {/,/},/d; /"utf-8-validate": {/,/},/d' npm-shrinkwrap.json \
     && npm install --production \
+    && npm install connect-redis \
     && npm cache clean \
     && apk del TMP \
     && rm -rf /tmp/npm* \
               /var/cache/apk/*
 
-COPY config.example.json $BB_SOURCE
 COPY docker-entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
 

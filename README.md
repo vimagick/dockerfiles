@@ -52,7 +52,7 @@ dockerfiles
 - [x] nginad
 - [x] nginx
 - [x] ngrok :+1:
-- [x] nodebb
+- [x] nodebb :+1:
 - [x] node-red :+1:
 - [x] node-red-arm :+1:
 - [x] obfsproxy

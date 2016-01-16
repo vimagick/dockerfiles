@@ -30,4 +30,10 @@ $ docker-compose up -d
 $ firefox http://localhost:4567
 ```
 
+## todo
+
+- Next release: install
+  - alpine: krb5-libs krb5-dev
+  - debian: libkrb5-3 libkrb5-dev
+
 [1]: https://nodebb.org/

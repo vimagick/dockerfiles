@@ -32,7 +32,6 @@ RUN set -ex \
     && rm -rf /tmp/npm* \
               /var/cache/apk/*
 
-COPY config.example.json $BB_SOURCE
 COPY docker-entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
 
