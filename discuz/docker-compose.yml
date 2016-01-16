@@ -1,0 +1,16 @@
+discuz:
+  image: vimagick/discuz
+  ports:
+    - "8000:80"
+  links:
+    - mysql
+  restart: always
+
+mysql:
+  image: mysql
+  environment:
+    - MYSQL_ROOT_PASSWORD=root
+    - MYSQL_DATABASE=discuz
+    - MYSQL_USER=discuz
+    - MYSQL_PASSWORD=discuz
+  restart: always
