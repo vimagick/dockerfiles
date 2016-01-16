@@ -26,6 +26,7 @@ dockerfiles
 - [x] chinadns
 - [x] collectd
 - [x] dante
+- [x] discuz :cn:
 - [x] dnscrypt
     - [x] dnscrypt-proxy
     - [x] dnscrypt-wrapper
