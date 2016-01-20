@@ -4,16 +4,19 @@ dockerfiles
 [![](https://travis-ci.org/vimagick/dockerfiles.svg)](https://travis-ci.org/vimagick/dockerfiles)
 
 - :octocat: <https://github.com/vimagick/dockerfiles>
+- :beetle: <https://github.com/vimagick/dockerfiles/issues>
 - :book: <https://github.com/vimagick/dockerfiles/wiki>
 - :whale: <https://hub.docker.com/u/vimagick/>
 
 ## TODO
 
+- [ ] cloudtunes
 - [ ] ffmpeg
 - [ ] freegeoip
 - [ ] gitolite
 - [ ] hashcat
 - [ ] irc
+- [ ] plex
 - [ ] tshark
 
 ## DONE

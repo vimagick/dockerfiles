@@ -5,23 +5,47 @@
 FROM ubuntu:14.04
 MAINTAINER kev <noreply@datageek.info>
 
-RUN apt-get update \
-    && apt-get install -y git build-essential g++ flex bison gperf ruby perl \
-       libsqlite3-dev libfontconfig1-dev libicu-dev libfreetype6 libssl-dev \
-       libpng-dev libjpeg-dev python \
-    && git clone git://github.com/ariya/phantomjs.git \
+RUN set -xe \
+    && apt-get update \
+    && apt-get install -y bison \
+                          build-essential \
+                          flex \
+                          g++ \
+                          git \
+                          gperf \
+                          libfontconfig1 \
+                          libfontconfig1-dev \
+                          libicu52 \
+                          libicu-dev \
+                          libjpeg8 \
+                          libjpeg-dev \
+                          libpng-dev \
+                          libsqlite3-dev \
+                          libssl-dev \
+                          perl \
+                          python \
+                          ruby \
+    && git clone -b 2.0 --single-branch git://github.com/ariya/phantomjs.git \
     && cd phantomjs \
-    && git checkout 2.0 \
     && echo y | ./build.sh 2>/dev/null 1>&2 \
     && install -v -s -m 755 bin/phantomjs /usr/local/bin/ \
     && cd .. \
     && rm -rf phantomjs \
-    && apt-get remove -y git build-essential g++ flex bison gperf ruby perl \
-       libsqlite3-dev libfontconfig1-dev libicu-dev libfreetype6 libssl-dev \
-       libpng-dev libjpeg-dev python \
-    && apt-get autoremove -y \
-    && apt-get install -y libfontconfig1 libicu52 libjpeg8 \
-    && apt-get clean -y \
+    && apt-get purge -y --auto-remove bison \
+                                      build-essential \
+                                      flex \
+                                      g++ \
+                                      git \
+                                      gperf \
+                                      libfontconfig1-dev \
+                                      libicu-dev \
+                                      libjpeg-dev \
+                                      libpng-dev \
+                                      libsqlite3-dev \
+                                      libssl-dev \
+                                      perl \
+                                      python \
+                                      ruby \
     && rm -rf /var/lib/apt/lists/*
 
 CMD ["/usr/local/bin/phantomjs"]
