@@ -5,7 +5,7 @@
 FROM debian:jessie
 MAINTAINER kev <noreply@datageek.info>
 
-ENV INFLUXDB_VER 0.9.5.1
+ENV INFLUXDB_VER 0.9.6.1
 ENV INFLUXDB_FILE influxdb_${INFLUXDB_VER}_amd64.deb
 ENV INFLUXDB_URL https://s3.amazonaws.com/influxdb/${INFLUXDB_FILE}
 

@@ -17,6 +17,7 @@ dockerfiles
 - [ ] hashcat
 - [ ] irc
 - [ ] plex
+- [ ] sensu
 - [ ] tshark
 
 ## DONE

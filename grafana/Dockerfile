@@ -5,7 +5,7 @@
 FROM debian:jessie
 MAINTAINER kev <noreply@datageek.info>
 
-ENV GRAFANA_VER 2.5.0
+ENV GRAFANA_VER 2.6.0
 ENV GRAFANA_FILE grafana_${GRAFANA_VER}_amd64.deb
 ENV GRAFANA_URL https://grafanarel.s3.amazonaws.com/builds/${GRAFANA_FILE}
 
