@@ -7,6 +7,16 @@ webhook
 to easily create HTTP endpoints (hooks) on your server, which you can use to
 execute configured commands.
 
+## Build Binary
+
+To build a docker image from scratch, we need to build static linked binary.
+
+```bash
+$ go get -d github.com/adnanh/webhook
+$ CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -installsuffix cgo -ldflags '-s -extld ld -extldflags -static' -a -x -o webhook github.com/adnanh/webhook
+$ file webhook
+```
+
 ## Directory Tree
 
 ```

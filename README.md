@@ -13,6 +13,7 @@ dockerfiles
 - [ ] cloudtunes
 - [ ] ffmpeg
 - [ ] freegeoip
+- [ ] gitlab
 - [ ] gitolite
 - [ ] hashcat
 - [ ] irc
