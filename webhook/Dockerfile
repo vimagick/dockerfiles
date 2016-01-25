@@ -5,7 +5,12 @@
 FROM alpine
 MAINTAINER kev <noreply@datageek.info>
 
-RUN apk add -U bash
+RUN set -xe \
+    && apk add -U bash \
+                  coreutils \
+                  curl \
+                  jq \
+    && rm -rf /var/cache/apk/*
 
 COPY ./webhook /usr/local/bin/
 
