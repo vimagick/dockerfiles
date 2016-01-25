@@ -54,6 +54,8 @@ echo 'hello world'
 ```
 $ cd ~/fig/webhook/
 
+$ chmod +x scripts/test.sh
+
 $ docker-compose up -d
 Creating webhook_webhook_1...
 
