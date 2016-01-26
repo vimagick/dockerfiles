@@ -7,7 +7,8 @@ MAINTAINER kev<noreply@datageek.info>
 
 RUN a2enmod rewrite
 
-RUN apt-get update \
+RUN set -xe \
+    && apt-get update \
     && apt-get install -y libcurl3-dev \
                           libfreetype6 \
                           libfreetype6-dev \
@@ -29,13 +30,13 @@ RUN apt-get update \
 
 WORKDIR /var/www/html
 
-ENV MAGENTO_VER 1.9.1.1
-ENV MAGENTO_MD5 0066442dbdfc70bf1385e42c1bff1559
-ENV MAGENTO_URL http://www.magentocommerce.com/downloads/assets/$MAGENTO_VER/magento-$MAGENTO_VER.tar.gz
+ENV MAGENTO_VER 2.0.1
+ENV MAGENTO_MD5 a3e35a6581cab5ce31d7bbc3a43ed70a
+ENV MAGENTO_URL https://github.com/magento/magento2/archive/$MAGENTO_VER.tar.gz
 ENV MAGENTO_FILE magento.tar.gz
 
 RUN curl -sSL ${MAGENTO_URL} -o ${MAGENTO_FILE} \
-    && echo "${MAGENTO_MD5} ${MAGENTO_FILE}" | md5sum -c \
+    && echo "${MAGENTO_MD5}  ${MAGENTO_FILE}" | md5sum -c \
     && tar xzf ${MAGENTO_FILE} --strip 1 \
     && rm ${MAGENTO_FILE} \
     && chown -R www-data:www-data .
