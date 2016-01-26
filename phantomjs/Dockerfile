@@ -25,9 +25,9 @@ RUN set -xe \
                           perl \
                           python \
                           ruby \
-    && git clone -b 2.0 --single-branch git://github.com/ariya/phantomjs.git \
+    && git clone -b 2.1 --depth 1 --single-branch git://github.com/ariya/phantomjs.git \
     && cd phantomjs \
-    && echo y | ./build.sh 2>/dev/null 1>&2 \
+    && echo y | ./build.py 2>/dev/null 1>&2 \
     && install -v -s -m 755 bin/phantomjs /usr/local/bin/ \
     && cd .. \
     && rm -rf phantomjs \
