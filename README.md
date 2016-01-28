@@ -86,6 +86,7 @@ dockerfiles
     - [x] shadowsocks-libev-arm :+1:
 - [x] shadowvpn
 - [x] snort :beetle:
+- [x] swarm-arm
 - [x] taskd
 - [x] tinc :+1:
 - [x] tmail :beetle:
