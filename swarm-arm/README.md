@@ -22,6 +22,7 @@ $ docker run -d --restart always vimagick/swarm-arm join --addr=192.168.1.204:23
 $ docker run -d --restart always vimagick/swarm-arm join --addr=192.168.1.204:2375 token://f9723931d522b39b756bb0b24a7cfc04
 
 # on master
+$ curl https://discovery.hub.docker.com/v1/clusters/f9723931d522b39b756bb0b24a7cfc04
 $ docker run --rm vimagick/swarm-arm list token://f9723931d522b39b756bb0b24a7cfc04
 $ docker run -d --restart always -p 2375:2375 vimagick/swarm-arm manage token://f9723931d522b39b756bb0b24a7cfc04
 $ export DOCKER_HOST=tcp://127.0.0.1:2375

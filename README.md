@@ -50,6 +50,7 @@ dockerfiles
 - [x] hydra
 - [x] influxdb
 - [x] iptables
+- [x] jenkins
 - [x] joomla
 - [x] mantisbt
 - [x] monit
