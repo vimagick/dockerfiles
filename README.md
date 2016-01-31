@@ -95,6 +95,7 @@ dockerfiles
 - [x] tmail :beetle:
 - [x] tor
 - [x] urlwatch :beetle:
+- [x] vsftpd
 - [x] webhook
 - [x] webkit :beetle:
 - [x] youtube :beetle:
