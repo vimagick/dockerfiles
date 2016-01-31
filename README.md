@@ -64,6 +64,7 @@ dockerfiles
 - [x] node-red :+1:
 - [x] node-red-arm :+1:
 - [x] nullmailer
+- [x] nullmailer-arm
 - [x] obfsproxy
 - [x] opencart
 - [x] openvpn :+1:

@@ -36,9 +36,9 @@ nullmailer:
 $ cd ~/fig/nullmailer
 $ docker-compose up -d
 
-# send test email
-$ alias sendmail='docker exec -i nullmailer sendmail'
-$ echo -e 'Subject: hello\r\n\r\nworld' | sendmail username@gmail.com
+# send email (from gmail to yahoo)
+$ alias sendmail='docker exec -i nullmailer sendmail -f username@gmail.com'
+$ echo -e 'Subject: hello\r\n\r\nworld' | sendmail username@yahoo.com
 ```
 
 [1]: http://untroubled.org/nullmailer/
