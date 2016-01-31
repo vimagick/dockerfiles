@@ -5,7 +5,8 @@
 FROM php:5.6-apache
 MAINTAINER kev <noreply@datageek.info>
 
-RUN apt-get update \
+RUN set -xe \
+    && apt-get update \
     && apt-get install -y git \
                           libfreetype6 \
                           libfreetype6-dev \
@@ -30,13 +31,14 @@ RUN apt-get update \
 
 WORKDIR /var/www/html
 
-ENV PIWIK_VER 2.14.3
-ENV PIWIK_MD5 1a613d36723ca5ccd52a9a9121d09a83
+ENV PIWIK_VER 2.15.0
+ENV PIWIK_MD5 a57398f53384879aaf459748329ff614
 ENV PIWIK_URL https://github.com/piwik/piwik/archive/$PIWIK_VER.tar.gz
 ENV PIWIK_FILE piwik.tar.gz
 
-RUN curl -sSL ${PIWIK_URL} -o ${PIWIK_FILE} \
-    && echo "${PIWIK_MD5} ${PIWIK_FILE}" | md5sum -c \
+RUN set -xe \
+    && curl -sSL ${PIWIK_URL} -o ${PIWIK_FILE} \
+    && echo "${PIWIK_MD5}  ${PIWIK_FILE}" | md5sum -c \
     && tar xzf ${PIWIK_FILE} --strip 1 \
     && rm ${PIWIK_FILE} \
     && curl -sS https://getcomposer.org/installer | php \
