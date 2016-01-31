@@ -1,0 +1,6 @@
+nullmailer:
+  image: vimagick/nullmailer
+  container_name: nullmailer
+  volumes:
+    - ./nullmailer:/etc/nullmailer
+  restart: always
