@@ -29,6 +29,7 @@ force_local_logins_ssl=YES
 ftpd_banner=Welcome to VSFTPD service.
 listen=YES
 local_enable=YES
+no_anon_password=YES
 pasv_addr_resolve=YES
 pasv_address=my-ftp-server
 pasv_enable=YES
@@ -105,8 +106,6 @@ $ ftp my-ftp-server
 Connected to my-ftp-server.
 220 Welcome to VSFTPD service.
 Name (my-ftp-server:kev): ftp
-331 Please specify the password.
-Password: 
 230 Login successful.
 Remote system type is UNIX.
 Using binary mode to transfer files.

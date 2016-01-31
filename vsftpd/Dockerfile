@@ -14,6 +14,7 @@ RUN { \
         echo "chroot_local_user=YES"; \
         echo "ftpd_banner=Welcome to VSFTPD service."; \
         echo "local_enable=YES"; \
+        echo "no_anon_password=YES"; \
         echo "pasv_addr_resolve=YES"; \
         echo "pasv_address=my-ftp-server"; \
         echo "pasv_enable=YES"; \
