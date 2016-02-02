@@ -6,7 +6,21 @@ FROM alpine
 MAINTAINER kev <noreply@datageek.info>
 
 RUN set -xe \
-    && apk add -U vsftpd \
+    && apk add -U build-base \
+                  curl \
+                  linux-pam-dev \
+                  tar \
+                  vsftpd \
+    && mkdir pam_pwdfile \
+        && cd pam_pwdfile \
+        && curl -sSL https://github.com/tiwe-de/libpam-pwdfile/archive/v1.0.tar.gz | tar xz --strip 1 \
+        && make install \
+        && cd .. \
+        && rm -rf pam_pwdfile \
+    && apk del build-base \
+               curl \
+               linux-pam-dev \
+               tar \
     && passwd -l root \
     && adduser -D virtual \
     && rm -rf /var/cache/apk/*

@@ -14,12 +14,12 @@ It is secure and extremely fast. It is stable. Don't take my word for it, though
 ├── pam.d/
 │   └── vsftpd          => For Virutal User
 └── vsftpd/
-    ├── ftpusers        => For Virtual User
+    ├── passwd          => For Virtual User
     ├── vsftpd.conf
     └── vsftpd.pem      => For SSL
 ```
 
-## vsftpd.conf
+## vsftpd/vsftpd.conf
 
 ```bash
 # DEFAULT SETTINGS
@@ -33,7 +33,7 @@ listen=YES
 local_enable=YES
 no_anon_password=YES
 pasv_addr_resolve=YES
-pasv_address=datageek.info
+pasv_address=my-ftp-server # <== PLEASE CHANGE THIS
 pasv_enable=YES
 pasv_max_port=30010
 pasv_min_port=30000
@@ -59,6 +59,13 @@ xferlog_enable=YES
 ```
 
 > Please set `pasv_address` to your ftp server.
+
+## pam.d/vsftpd
+
+```
+auth required pam_pwdfile.so pwdfile=/etc/vsftpd/passwd
+account required pam_permit.so
+```
 
 ## docker-compose.yml
 
@@ -87,8 +94,9 @@ vsftpd:
 ```bash
 $ cd ~/fig/vsftpd/
 $ openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout vsftpd/vsftpd.pem -out vsftpd/vsftpd.pem
-$ docker-compose up -d
+$ echo "username:$(openssl passwd -1 password)" >> vsftpd/passwd
 $ touch ./ftp/README.md
+$ docker-compose up -d
 $ docker exec -it vsftpd_vsftpd_1 sh
 >>>
 >>> adduser kev
@@ -99,13 +107,14 @@ Password for kev changed by root
 >>>
 >>> adduser -D virtual
 >>> mkdir /home/virtual/tom
+>>> echo tom >> /etc/ftpusers
 >>> echo "tom's home" > /home/virtual/tom/README.md
 >>> chown -R virutal:virtual /home/virtual
 >>>
 >>> exit
 ```
 
-> I added a local user called `kev`, a virtual user called `tom` here.
+> I added a local user called `kev`, a virtual user called `tom` here.  
 > You can edit [/etc/vsftpd/vsftpd.conf][2] to enable more [functions][3].
 
 ## Client
@@ -143,7 +152,7 @@ Only local user or virtual user can upload file.
 ```bash
 $ lftp
 lftp :~> set ssl:verify-certificate no
-lftp :~> open root@my-ftp-server
+lftp :~> open tom@my-ftp-server
 Password: ******
 lftp root@my-ftp-server:~> put README.md
 lftp root@my-ftp-server:~> ls
@@ -154,3 +163,5 @@ lftp root@my-ftp-server:~> bye
 [1]: https://security.appspot.com/vsftpd.html
 [2]: http://vsftpd.beasts.org/vsftpd_conf.html
 [3]: https://wiki.archlinux.org/index.php/Very_Secure_FTP_Daemon
+[4]: https://github.com/tiwe-de/libpam-pwdfile
+[5]: http://linux.die.net/man/8/pam_listfile

@@ -1,2 +1,2 @@
-auth required pam_listfile.so onerr=fail item=user sense=allow file=/etc/vsftpd/ftpusers
+auth required pam_pwdfile.so pwdfile=/etc/vsftpd/passwd
 account required pam_permit.so
