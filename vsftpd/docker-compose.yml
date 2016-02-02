@@ -1,9 +1,6 @@
 vsftpd:
   image: vimagick/vsftpd
-  ports:
-    - "20:20"
-    - "21:21"
-    - "30000-30010:30000-30010"
+  net: host
   volumes:
     - ./vsftpd:/etc/vsftpd
     - ./ftp:/var/lib/ftp
