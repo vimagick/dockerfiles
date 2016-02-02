@@ -47,7 +47,8 @@ $ mongo mongodb://myuser:Aedahwa7@localhost:27017/mydb
 > exit
 ```
 
-Read [this][2] for more help.
+Read [this][2] and [this][3] for more help.
 
 [1]: https://www.mongodb.org/
 [2]: https://docs.mongodb.org/manual/tutorial/enable-authentication/
+[3]: https://docs.mongodb.org/manual/reference/built-in-roles/
