@@ -1,0 +1,7 @@
+mongo:
+  image: mongo
+  command: --auth
+  container_name: mongo
+  ports:
+    - "27017:27017"
+  restart: always

@@ -112,6 +112,7 @@ dockerfiles
 - [x] gliderlabs/registrator
 - [ ] jenkins
 - [x] letsencrypt
+- [x] mongo
 - [x] owncloud
 - [x] rocket.chat
 - [x] scrapinghub/splash
