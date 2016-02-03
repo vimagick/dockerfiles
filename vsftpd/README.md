@@ -10,7 +10,7 @@ It is secure and extremely fast. It is stable. Don't take my word for it, though
 ~/fig/vsftpd/
 ├── docker-compose.yml
 ├── ftp/
-│   └── README.md
+│   └── README
 ├── pam.d/
 │   └── vsftpd          => For Virutal User
 └── vsftpd/
@@ -94,8 +94,8 @@ vsftpd:
 ```bash
 $ cd ~/fig/vsftpd/
 $ openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout vsftpd/vsftpd.pem -out vsftpd/vsftpd.pem
-$ echo "username:$(openssl passwd -1 password)" >> vsftpd/passwd
-$ touch ./ftp/README.md
+$ echo "tom:$(openssl passwd -1 uzia9Tu6)" >> vsftpd/passwd
+$ echo "ftp's home" > ./ftp/README
 $ docker-compose up -d
 $ docker exec -it vsftpd_vsftpd_1 sh
 >>>
@@ -104,12 +104,11 @@ Changing password for kev
 New password: ******
 Retype password: ******
 Password for kev changed by root
+>>> echo "kev's home" > ~kev/README
 >>>
->>> adduser -D virtual
->>> mkdir /home/virtual/tom
->>> echo tom >> /etc/ftpusers
->>> echo "tom's home" > /home/virtual/tom/README.md
->>> chown -R virutal:virtual /home/virtual
+>>> mkdir ~virtual/tom
+>>> echo "tom's home" > ~virtual/tom/README
+>>> chown -R virutal:virtual ~virtual
 >>>
 >>> exit
 ```
