@@ -73,6 +73,7 @@ dockerfiles
 - [x] phpbb
 - [x] piwik
 - [x] polipo
+- [x] portia
 - [x] pptpd
 - [x] privoxy
 - [x] proxyhub
