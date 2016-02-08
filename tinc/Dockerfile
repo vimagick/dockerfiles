@@ -5,31 +5,36 @@
 FROM alpine
 MAINTAINER kev <noreply@datageek.inf>
 
-ENV NETNAME netname
-ENV PIDFILE /run/tinc.$NETNAME.pid
-ENV VERBOSE 2
+ENV NETNAME=netname \
+    PIDFILE=/run/tinc.$NETNAME.pid \
+    KEYSIZE=4096 \
+    VERBOSE=2
 
-ENV ADDRESS 10.0.0.1
-ENV NETMASK 255.255.255.0
-ENV NETWORK 10.0.0.0/24
+ENV ADDRESS=10.0.0.1 \
+    NETMASK=255.255.255.0 \
+    NETWORK=10.0.0.0/24
 
-RUN apk add -U iptables tinc \
+RUN set -xe \
+    && apk add -U iptables tinc \
     && rm -rf /var/cache/apk/* \
     && mkdir -p /etc/tinc/$NETNAME/hosts
 
 WORKDIR /etc/tinc/$NETNAME
 
-RUN echo -e "Name=server\\nInterface=tun0" > tinc.conf \
+RUN set -xe \
+    && echo -e "Name=server\\nInterface=tun0" > tinc.conf \
     && echo -e "Subnet=$ADDRESS\\nSubnet=0.0.0.0/0" > hosts/server \
-    && echo -e "\\n" | tincd -n $NETNAME -K4096 \
+    && tincd -n $NETNAME -K$KEYSIZE < /dev/null \
     && echo -e "ifconfig \$INTERFACE $ADDRESS netmask $NETMASK" > tinc-up \
     && echo -e "ifconfig \$INTERFACE down" > tinc-down \
     && chmod +x tinc-up tinc-down
 
 VOLUME /etc/tinc
+
 EXPOSE 655/tcp 655/udp
 
-CMD mkdir -p /dev/net \
+CMD set -xe \
+    && mkdir -p /dev/net \
     && [ -e /dev/net/tun ] || mknod /dev/net/tun c 10 200 \
     && iptables -t nat -A POSTROUTING -s $NETWORK -o eth0 -j MASQUERADE \
     && tincd --no-detach \
