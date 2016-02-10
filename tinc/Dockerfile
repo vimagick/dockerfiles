@@ -3,7 +3,7 @@
 #
 
 FROM alpine
-MAINTAINER kev <noreply@datageek.inf>
+MAINTAINER kev <noreply@datageek.info>
 
 ENV NETNAME=netname \
     PIDFILE=/run/tinc.$NETNAME.pid \
