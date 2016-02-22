@@ -27,10 +27,10 @@ You can edit `/etc/motion/motion.conf` to customize motion.
 
 ```
 # set image width
-width 800
+width 640
 
 # set image height
-height 600
+height 480
 
 # set frame rate
 framerate 5
