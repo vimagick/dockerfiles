@@ -45,4 +45,19 @@ ffmpeg_output_movies off
 ffmpeg_timelapse 60
 ```
 
+Please read [this][2] to enable raspberry pi camera module.
+
+```
+####################
+# /boot/config.txt #
+####################
+
+##Camera
+gpu_mem=128
+start_file=start_x.elf
+fixup_file=fixup_x.dat
+disable_camera_led=1
+```
+
 [1]: http://lavrsen.dk/foswiki/bin/view/Motion/WebHome
+[2]: https://wiki.archlinux.org/index.php/Raspberry_Pi#Raspberry_Pi_camera_module
