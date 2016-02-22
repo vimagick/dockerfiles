@@ -51,7 +51,7 @@ dockerfiles
 - [x] influxdb
 - [x] iptables
 - [x] jenkins
-- [x] jenkins-arm
+- [x] jenkins-arm :beetle:
 - [x] joomla
 - [x] mantisbt
 - [x] monit
