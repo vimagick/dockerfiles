@@ -1,0 +1,8 @@
+server:
+  image: vimagick/nginx
+  ports:
+    - "1935:1935"
+  volumes:
+    - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+    - ./data:/data
+  restart: always

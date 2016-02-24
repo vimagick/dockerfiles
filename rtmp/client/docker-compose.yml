@@ -1,0 +1,7 @@
+client:
+  image: vimagick/rtmp-client-arm
+  devices:
+    - /dev/video0:/dev/video0
+  environment:
+    - RTMP_URI=rtmp://boss.datageek.info/live/webcam
+  restart: always
