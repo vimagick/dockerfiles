@@ -32,6 +32,7 @@ client:
   devices:
     - /dev/video0:/dev/video0
   environment:
+    - RTMP_RATE=10
     - RTMP_URI=rtmp://datageek.info/live/webcam
   restart: always
 ```

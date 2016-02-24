@@ -9,4 +9,4 @@ RUN set -xe \
     && apk add -U ffmpeg \
     && rm -rf /var/cache/apk/*
 
-CMD ffmpeg -f video4linux2 -r 24 -i /dev/video0 -f flv $RTMP_URI
+CMD ffmpeg -f video4linux2 -r ${RTMP_RATE:-24} -i /dev/video0 -f flv ${RTMP_URI}
