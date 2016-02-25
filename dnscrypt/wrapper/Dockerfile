@@ -5,13 +5,14 @@
 FROM debian:jessie
 MAINTAINER kev <noreply@datageek.info>
 
-ENV LIBSODIUM_VERSION 1.0.3
+ENV LIBSODIUM_VERSION 1.0.8
 ENV DNSCRYPT_VERSION 0.2
 ENV RESOLVER_ADDR 8.8.8.8:53
 ENV LISTEN_ADDR 0.0.0.0:443
 ENV PROVIDER_NAME 2.dnscrypt-cert.datageek.info
 
-RUN apt-get update \
+RUN set -xe \
+    && apt-get update \
     && apt-get install -y autoconf \
                           automake \
                           build-essential \
@@ -43,7 +44,8 @@ RUN apt-get update \
                                       libevent-dev \
     && rm -rf /var/lib/apt/lists/*
 
-RUN mkdir -p /var/lib/dnscrypt-wrapper \
+RUN set -xe \
+    && mkdir -p /var/lib/dnscrypt-wrapper \
     && cd /var/lib/dnscrypt-wrapper \
     && dnscrypt-wrapper --gen-provider-keypair > README.txt \
     && dnscrypt-wrapper --gen-crypt-keypair --crypt-secretkey-file=1.key \

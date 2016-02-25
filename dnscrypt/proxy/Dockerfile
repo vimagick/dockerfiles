@@ -12,7 +12,8 @@ ENV RESOLVER_ADDR 208.67.220.220:443
 ENV PROVIDER_NAME 2.dnscrypt-cert.opendns.com
 ENV PROVIDER_KEY B735:1140:206F:225D:3E2B:D822:D7FD:691E:A1C3:3CC8:D666:8D0C:BE04:BFAB:CA43:FB79
 
-RUN apt-get update \
+RUN set -xe \
+    && apt-get update \
     && apt-get install -y build-essential curl \
     && mkdir libsodium \
         && cd libsodium \
