@@ -1,0 +1,20 @@
+<html>
+  <head>
+    <title>CCTV</title>
+  </head>
+  <body>
+    <h1>CCTV</h1>
+    <div id="player"></div>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/jwplayer.js"></script>
+    <script>
+      var playerInstance = jwplayer("player");
+      playerInstance.setup({
+        file: "rtmp://boss.datageek.info/live/webcam",
+        image: "img/cctv.jpg",
+        height: 360,
+        width: 640
+      });
+    </script>
+  </body>
+</html>

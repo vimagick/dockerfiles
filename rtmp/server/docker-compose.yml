@@ -2,7 +2,9 @@ server:
   image: vimagick/nginx
   ports:
     - "1935:1935"
+    - "9999:80"
   volumes:
     - ./nginx/nginx.conf:/etc/nginx/nginx.conf
     - ./data:/data
+    - ./html:/usr/share/nginx/html
   restart: always

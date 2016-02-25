@@ -11,6 +11,14 @@ rtmp
 ├── data/
 │   └── video.mp4
 ├── docker-compose.yml
+├── html
+│   ├── img
+│   │   └── cctv.jpg
+│   ├── index.html
+│   └── js
+│       ├── jquery.min.js
+│       ├── jwplayer.flash.swf
+│       └── jwplayer.js
 └── nginx/
     └── nginx.conf
 ```
@@ -22,6 +30,7 @@ server:
   image: vimagick/nginx
   ports:
     - "1935:1935"
+    - "9999:80"
   volumes:
     - ./nginx/nginx.conf:/etc/nginx/nginx.conf
     - ./data:/data
@@ -83,3 +92,4 @@ $ docker-compose up -d client
 - https://github.com/arut/nginx-rtmp-module/wiki/Directives
 - https://trac.ffmpeg.org/wiki/StreamingGuide
 - https://trac.ffmpeg.org/wiki/Capture/Webcam
+- http://apk-dl.com/vlc-for-android/org.videolan.vlc/
