@@ -3,6 +3,7 @@ client:
   devices:
     - /dev/video0:/dev/video0
   environment:
-    - RTMP_RATE=10
-    - RTMP_URI=rtmp://boss.datageek.info/live/webcam
+#   - RTMP_DEV=rtsp://192.168.42.1/live
+    - RTMP_URI=rtmp://cctv.datageek.info/live/webcam
+# net: host
   restart: always
