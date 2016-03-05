@@ -1,0 +1,7 @@
+drupal:
+  image: drupal
+  ports:
+    - "8888:80"
+  volumes:
+    - /var/www/html/sites
+  restart: always

@@ -109,6 +109,7 @@ dockerfiles
 
 - [x] centurylink/watchtower
 - [x] drone/drone
+- [x] drupal
 - [x] ghost
 - [x] gitlab/gitlab-ce
 - [ ] gliderlabs/logspout

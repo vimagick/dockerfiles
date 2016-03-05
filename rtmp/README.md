@@ -38,12 +38,15 @@ server:
 
 client:
   image: vimagick/rtmp-client-arm
+# command: ffmpeg -i /dev/video0 -vf "hflip,vflip" -f flv rtmp://cctv.datageek.info/live/webcam
   devices:
     - /dev/video0:/dev/video0
   environment:
     - RTMP_URI=rtmp://datageek.info/live/webcam
   restart: always
 ```
+
+> You can run customized `ffmpeg` command.
 
 ## Server
 
