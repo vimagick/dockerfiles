@@ -10,9 +10,9 @@ aria2:
   restart: always
 
 yaaw:
-  image: vimagick/nginx
+  image: vimagick/h2o
   ports:
     - "8080:80"
   volumes:
-    - ./html:/usr/share/nginx/html
+    - ./html:/var/www/html
   restart: always
