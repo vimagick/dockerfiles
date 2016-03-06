@@ -3,7 +3,7 @@ samba
 
 ![](https://badge.imagelayers.io/vimagick/samba:latest.svg)
 
-[`Samba`][1] is the standard Windows interoperability suite of programs for
+[Samba][1] is the standard Windows interoperability suite of programs for
 Linux and Unix.
 
 ## docker-compose.yml
@@ -17,8 +17,8 @@ samba:
     - "139:139/tcp"
     - "445:445/tcp"
   volumes:
-    - smb.conf:/etc/samba/smb.conf
-    - share:/share
+    - ./smb.conf:/etc/samba/smb.conf
+    - ./share:/share
   restart: always
 ```
 
@@ -28,11 +28,12 @@ samba:
 [global]
 workgroup = WORKGROUP
 server string = %h server (Samba, Apline)
+map to guest = bad user
 
 [share]
 path = /share
 browseable = yes
-read only = yes
+read only = no
 guest ok = yes
 ```
 
@@ -54,7 +55,16 @@ Retype new SMB password:******
 ## client
 
 ```
-$ smbutil view smb://server
+$ smbutil view -NG smb://server
+Share                                           Type    Comments
+-------------------------------
+share                                           Disk
+IPC$                                            Pipe    IPC Service (52e5ac2d2d7c server (Samba, Apline))
+2 shares listed
+
+$ mkdir -p /Volumes/share
+$ mount_smbfs //guest@server/share /Volumes/share
+$ umount /Volumes/share
 ```
 
 [1]: https://www.samba.org/
