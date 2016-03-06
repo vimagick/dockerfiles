@@ -54,6 +54,7 @@ dockerfiles
 - [x] jenkins-arm :beetle:
 - [x] joomla
 - [x] mantisbt
+- [x] mariadb
 - [x] monit
 - [x] moodle :beetle:
 - [x] mosquitto
