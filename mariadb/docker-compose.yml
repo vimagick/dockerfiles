@@ -5,3 +5,4 @@ mariadb:
   environment:
     - MYSQL_ROOT_PASSWORD=root
     - MYSQL_DATABASE=wordpress
+  restart: always
