@@ -1,0 +1,16 @@
+[Unit]
+Description=High speed download utility
+After=network.target
+ 
+[Service]
+User=pi
+Environment=DIR=/home/pi/Downloads
+ExecStartPre=/bin/mkdir -p ${DIR}
+ExecStart=/usr/bin/aria2c --enable-rpc \
+                          --rpc-listen-all=true \
+                          --rpc-allow-origin-all \
+                          --dir ${DIR}
+Restart=on-failure
+ 
+[Install]
+WantedBy=multi-user.target
