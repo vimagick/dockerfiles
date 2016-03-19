@@ -1,0 +1,98 @@
+---
+
+- name: deploy aria2/yaaw to raspbian
+
+  hosts: pi
+
+  vars:
+    ansible_become: yes
+
+  tasks:
+
+  - name: ensure aria2 is installed
+    apt:
+      name: aria2
+      state: present
+
+  - name: create aria2 service file
+    copy:
+      content: |
+        [Unit]
+        Description=High speed download utility
+        After=network.target
+         
+        [Service]
+        User=pi
+        Environment=DIR=/home/pi/Downloads
+        ExecStartPre=/bin/mkdir -p ${DIR}
+        ExecStart=/usr/bin/aria2c --enable-rpc \
+                                  --rpc-listen-all=true \
+                                  --rpc-allow-origin-all \
+                                  --dir ${DIR}
+        Restart=on-failure
+         
+        [Install]
+        WantedBy=multi-user.target
+      dest: /etc/systemd/system/aria2.service
+
+  - name: ensure aria2 is running
+    service:
+      name: aria2
+      state: started
+      enabled: yes
+
+  - name: ensure nginx is installed
+    apt:
+      name: nginx
+      state: present
+
+  - name: ensure nginx is running
+    service:
+      name: nginx
+      state: started
+      enabled: yes
+
+  - name: create nginx yaaw site
+    copy:
+      content: |
+        server {
+            listen 80;
+            server_name _;
+         
+            location / {
+                index index.html;
+                root /var/www/yaaw-master;
+            }
+         
+            location /dl {
+                autoindex on;
+                alias /home/pi/Downloads;
+            }
+        }
+      dest: /etc/nginx/sites-available/yaaw
+
+  - name: download yaaw archive
+    unarchive:
+      src: https://github.com/binux/yaaw/archive/master.zip
+      dest: /var/www
+      copy: no
+
+  - name: disable nginx default site
+    file:
+      dest: /etc/nginx/sites-enabled/default
+      state: absent
+
+  - name: enable nginx yaaw site
+    file:
+      src: /etc/nginx/sites-available/yaaw
+      dest: /etc/nginx/sites-enabled/yaaw
+      state: link
+    notify:
+    - restart nginx
+    changed_when: yes
+
+  handlers:
+    - name: restart nginx
+      service:
+        name: nginx
+        state: restarted
