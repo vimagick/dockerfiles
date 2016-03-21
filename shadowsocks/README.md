@@ -1,24 +1,22 @@
 shadowsocks
 ===========
 
-name                  | size
---------------------- | ---------------------------------------------------------------------------
-shadowsocks           | ![](https://badge.imagelayers.io/vimagick/shadowsocks:latest.svg)
-shadowsocks-libev     | ![](https://badge.imagelayers.io/vimagick/shadowsocks-libev:latest.svg)
-shadowsocks-arm       | ![](https://badge.imagelayers.io/vimagick/shadowsocks-arm:latest.svg)
-shadowsocks-libev-arm | ![](https://badge.imagelayers.io/vimagick/shadowsocks-libev-arm:latest.svg)
+name                       | size
+-------------------------- | ---------------------------------------------------------------------------
+[shadowsocks][1]           | ![](https://badge.imagelayers.io/vimagick/shadowsocks:latest.svg)
+[shadowsocks-libev][2]     | ![](https://badge.imagelayers.io/vimagick/shadowsocks-libev:latest.svg)
+[shadowsocks-arm][3]       | ![](https://badge.imagelayers.io/vimagick/shadowsocks-arm:latest.svg)
+[shadowsocks-libev-arm][4] | ![](https://badge.imagelayers.io/vimagick/shadowsocks-libev-arm:latest.svg)
 
-[shadowsocks][1] is a secure socks5 proxy,
-designed to protect your Internet traffic.
+[shadowsocks][5] is a secure socks5 proxy, designed to protect your Internet traffic.
 
-> If you want to keep a secret,
-> you must also hide it from yourself.
+> If you want to keep a secret, you must also hide it from yourself.
 
 ## docker-compose.yml
 
 For Linux Server
 
-```
+```yaml
 server:
   image: vimagick/shadowsocks-libev
   ports:
@@ -38,7 +36,7 @@ client:
 
 For Raspberry Pi
 
-```
+```yaml
 client:
   image: vimagick/shadowsocks-libev-arm
   ports:
@@ -68,5 +66,9 @@ $ docker-compose up -d client
 
 [read more][2]
 
-[1]: http://shadowsocks.org
-[2]: https://github.com/shadowsocks/shadowsocks/wiki/Configuration-via-Config-File
+[1]: https://hub.docker.com/r/vimagick/shadowsocks/
+[2]: https://hub.docker.com/r/vimagick/shadowsocks-libev/
+[3]: https://hub.docker.com/r/vimagick/shadowsocks-arm/
+[4]: https://hub.docker.com/r/vimagick/shadowsocks-libev-arm/
+[5]: http://shadowsocks.org
+[6]: https://github.com/shadowsocks/shadowsocks/wiki/Configuration-via-Config-File
