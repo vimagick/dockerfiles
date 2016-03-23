@@ -1,0 +1,95 @@
+---
+
+- name: install wordpress on raspbian
+
+  hosts: pi
+
+  vars:
+    ansible_become: yes
+
+  tasks:
+
+  - name: config mysql-server package
+    debconf:
+      name: mysql-server
+      question: '{{item}}'
+      vtype: password
+      value: root
+    with_items:
+      - mysql-server/root_password
+      - mysql-server/root_password_again
+
+  - name: ensure softwares are installed
+    apt:
+      name: '{{item}}'
+      state: present
+    with_items:
+      - mysql-server
+      - nginx
+      - php5
+      - php5-fpm
+      - php5-mysql
+
+  - name: ensure services are running
+    service:
+      name: '{{item}}'
+      state: started
+      enabled: yes
+    with_items:
+      - mysql
+      - nginx
+      - php5-fpm
+
+  - name: create wordpress database
+    shell: 'echo "CREATE DATABASE IF NOT EXISTS wordpress;" | mysql -uroot -proot'
+
+  - name: unarchive wordpress
+    unarchive:
+      src: https://wordpress.org/latest.zip
+      dest: /var/www
+      copy: no
+
+  - name: create nginx wordpress site
+    copy:
+      content: |
+        server {
+          listen 80 default_server;
+          server_name _;
+
+          root /var/www/wordpress;
+          index index.php index.html;
+
+          location / {
+            try_files $uri $uri/ /index.php?$args;
+          }
+
+          location ~ \.php$ {
+            try_files $uri /index.php;
+            include fastcgi_params;
+            fastcgi_pass unix:/var/run/php5-fpm.sock;
+            fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+            fastcgi_index index.php;
+          }
+        }
+      dest: /etc/nginx/sites-available/wordpress
+
+  - name: disable nginx default site
+    file:
+      path: /etc/nginx/sites-enabled/default
+      state: absent
+
+  - name: enable nginx wordpress site
+    file:
+      src: /etc/nginx/sites-available/wordpress
+      dest: /etc/nginx/sites-enabled/wordpress
+      state: link
+    notify:
+      - restart nginx
+    changed_when: yes
+
+  handlers:
+    
+    - name: restart nginx
+      service:
+        name: nginx
+        state: restarted
