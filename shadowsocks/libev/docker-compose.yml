@@ -1,7 +1,8 @@
 shadowsocks:
   image: vimagick/shadowsocks-libev
   ports:
-    - "8388:8388"
+    - "8388:8388/tcp"
+    - "8388:8388/udp"
   environment:
     - METHOD=chacha20
     - PASSWORD=9MLSpPmNt

@@ -3,7 +3,7 @@ shadowsocks:
   ports:
     - "1080:1080"
   environment:
-    - SERVER_ADDR=datageek.info
+    - SERVER_ADDR=1.2.3.4
     - METHOD=chacha20
     - PASSWORD=9MLSpPmNt
   restart: always

@@ -45,7 +45,10 @@
 
   - name: unarchive wordpress
     unarchive:
-      src: https://wordpress.org/latest.zip
+      # ENGLISH
+      #src: https://wordpress.org/latest.zip
+      # CHINESE
+      src: https://cn.wordpress.org/wordpress-4.4.2-zh_CN.zip
       dest: /var/www
       copy: no
 
