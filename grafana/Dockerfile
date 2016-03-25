@@ -5,11 +5,12 @@
 FROM debian:jessie
 MAINTAINER kev <noreply@datageek.info>
 
-ENV GRAFANA_VER 2.6.0
-ENV GRAFANA_FILE grafana_${GRAFANA_VER}_amd64.deb
-ENV GRAFANA_URL https://grafanarel.s3.amazonaws.com/builds/${GRAFANA_FILE}
+ENV GRAFANA_VERSION=2.6.0 \
+    GRAFANA_FILE=grafana_${GRAFANA_VERSION}_amd64.deb \
+    GRAFANA_URL=https://grafanarel.s3.amazonaws.com/builds/${GRAFANA_FILE}
 
-RUN apt-get update \
+RUN set -xe \
+    && apt-get update \
     && apt-get install -y libfontconfig wget \
     && wget ${GRAFANA_URL} \
     && dpkg -i ${GRAFANA_FILE} \
@@ -17,14 +18,16 @@ RUN apt-get update \
     && rm -rf ${GRAFANA_FILE} \
               /var/lib/apt/lists/*
 
-ENV GRAFANA_HOME=/usr/share/grafana
-ENV CONF_FILE=/etc/grafana/grafana.ini
-ENV DATA_DIR=/var/lib/grafana
-ENV LOG_DIR=/var/log/grafana
+ENV GF_PATHS_DATA=/var/lib/grafana \
+    GF_PATHS_LOGS=/var/log/grafana
 
-WORKDIR $GRAFANA_HOME
+VOLUME /etc/grafana \
+       $GF_PATHS_DATA \
+       $GF_PATHS_LOGS
 
-VOLUME $DATA_DIR $LOG_DIR
 EXPOSE 3000
 
-CMD grafana-server --config=$CONF_FILE cfg:default.paths.data=$DATA_DIR cfg:default.paths.logs=$LOG_DIR
+CMD grafana-server --homepath=/usr/share/grafana \
+                   --config=/etc/grafana/grafana.ini \
+                   cfg:default.paths.data="$GF_PATHS_DATA" \
+                   cfg:default.paths.logs="$GF_PATHS_LOGS"
