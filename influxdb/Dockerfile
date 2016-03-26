@@ -9,6 +9,7 @@ ENV INFLUXDB_VERSION=0.11.0
 ENV INFLUXDB_FILE=influxdb_${INFLUXDB_VERSION}-1_amd64.deb
 ENV INFLUXDB_MD5=917148cda9d88aad384475c236aaf81e
 ENV INFLUXDB_URL=https://s3.amazonaws.com/influxdb/${INFLUXDB_FILE}
+ENV COLLECTD_URL=https://github.com/collectd/collectd/raw/master/src/types.db
 
 RUN set -xe \
     && apt-get update \
@@ -17,11 +18,12 @@ RUN set -xe \
     && echo "${INFLUXDB_MD5}  ${INFLUXDB_FILE}" | md5sum -c \
     && dpkg -i ${INFLUXDB_FILE} \
     && sed -i '/^reporting-disabled/s/false/true/' /etc/influxdb/influxdb.conf \
+    && wget ${COLLECTD_URL} -O /usr/lib/influxdb/types.db \
     && apt-get purge --auto-remove -y wget \
     && rm -rf ${INFLUXDB_FILE} \
               /var/lib/apt/lists/*
 
-VOLUME /var/lib/influxdb/
+VOLUME /etc/influxdb /var/lib/influxdb
 EXPOSE 8083 8086 8088
 
 CMD ["influxd", "-config", "/etc/influxdb/influxdb.conf"]
