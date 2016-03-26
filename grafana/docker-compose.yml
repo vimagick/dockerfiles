@@ -1,0 +1,8 @@
+grafana:
+  image: vimagick/grafana
+  ports:
+    - "3000:3000"
+  environment:
+    - GF_SECURITY_ADMIN_USER=admin
+    - GF_SECURITY_ADMIN_PASSWORD=ag2Ahth2u
+  restart: always
