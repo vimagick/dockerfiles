@@ -7,16 +7,17 @@ MAINTAINER kev <noreply@datageek.info>
 
 WORKDIR /var/www/html
 
-RUN apk add -U ca-certificates \
-               gzip \
-               nginx \
-               php-fpm \
-               php-openssl \
-               php-pdo_sqlite \
-               php-sqlite3 \
-               php-xml \
-               php-zlib \
-               tar \
+RUN set -xe \
+    && apk add -U ca-certificates \
+                  gzip \
+                  nginx \
+                  php-fpm \
+                  php-openssl \
+                  php-pdo_sqlite \
+                  php-sqlite3 \
+                  php-xml \
+                  php-zlib \
+                  tar \
     && wget -O- http://download.dokuwiki.org/src/dokuwiki/dokuwiki-stable.tgz | tar xz --strip 1 \
     && chown -R nobody:nobody . \
     && rm -rf /var/cache/apk/*
