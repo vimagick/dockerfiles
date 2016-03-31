@@ -16,7 +16,7 @@ RUN set -xe \
     && rm -rf /var/cache/apk/*
 
 RUN set -xe \
-    && wget https://github.com/google/cadvisor/releases/download/v0.20.5/cadvisor -O /usr/bin/cadvisor \
+    && wget https://github.com/google/cadvisor/releases/download/v0.22.0/cadvisor -O /usr/bin/cadvisor \
     && chmod +x /usr/bin/cadvisor
 
 EXPOSE 8080
