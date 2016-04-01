@@ -14,8 +14,6 @@ if [[ "$*" == npm*start* ]]; then
 
     if [ -e "$BB_CONTENT/config.json" ]; then
         ln -sf "$BB_CONTENT/config.json" "$BB_SOURCE/config.json"
-        [ -d "$BB_SOURCE/node_modules/redis" ] || npm install redis
-        [ -d "$BB_SOURCE/node_modules/connect-redis" ] || npm install connect-redis
     fi
 
     exec "$@"

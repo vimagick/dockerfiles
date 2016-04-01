@@ -5,7 +5,7 @@
 FROM debian
 MAINTAINER kev <noreply@datageek.info>
 
-ENV BB_VER 0.9.3
+ENV BB_VER 1.0.2
 ENV BB_URL https://github.com/NodeBB/NodeBB/archive/v$BB_VER.tar.gz
 ENV BB_SOURCE /usr/src/nodebb
 ENV BB_CONTENT /var/lib/nodebb
@@ -25,7 +25,6 @@ RUN set -ex \
     && curl -sSL https://deb.nodesource.com/setup_4.x | bash - \
     && apt-get install -y nodejs \
     && curl -sSL $BB_URL | tar xz --strip 1 \
-    && sed -i '/"bufferutil": {/,/},/d; /"utf-8-validate": {/,/},/d' npm-shrinkwrap.json \
     && npm install --production \
     && npm cache clean \
     && apt-get remove -y build-essential \
