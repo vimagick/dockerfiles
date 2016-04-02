@@ -5,7 +5,8 @@
 FROM alpine
 MAINTAINER kev <noreply@datageek.info>
 
-RUN echo 'http://dl-4.alpinelinux.org/alpine/edge/main' >> /etc/apk/repositories \
+RUN set -xe \
+    && echo 'http://dl-4.alpinelinux.org/alpine/edge/main' >> /etc/apk/repositories \
     && echo 'http://dl-4.alpinelinux.org/alpine/edge/testing' >> /etc/apk/repositories \
     && apk add -U build-base \
                   git \
