@@ -5,7 +5,8 @@
 FROM debian:jessie
 MAINTAINER kev<noreply@datageek.info>
 
-RUN apt-get update \
+RUN set -xe \
+    && apt-get update \
     && apt-get install -y build-essential curl python python-dev \
     && curl https://bootstrap.pypa.io/get-pip.py | python \
     && pip install obfsproxy \

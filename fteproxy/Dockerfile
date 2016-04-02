@@ -5,13 +5,14 @@
 FROM alpine
 MAINTAINER kev <norelpy@datageek.info>
 
-RUN apk add -U build-base \
-               gmp \
-               gmp-dev \
-               libstdc++ \
-               python \
-               python-dev \
-               py-pip \
+RUN set -xe \
+    && apk add -U build-base \
+                  gmp \
+                  gmp-dev \
+                  libstdc++ \
+                  python \
+                  python-dev \
+                  py-pip \
     && pip install fteproxy \
     && apk del build-base \
                gmp-dev \

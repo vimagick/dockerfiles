@@ -11,19 +11,19 @@ I will update this image if there's better one.
 This includes `Tor`, `VPN`, `SSH`, and many other protocols. 
 
 We can transport `OpenVPN` over `Obfsproxy`, so that firewall cannot detect it.  
-In the following example, you should run `kylemanna/openvpn` container first.  
+In the following example, you should run `vimagick/openvpn` container first.  
 Don't forget to edit `/etc/openvpn/openvpn.conf` to use `proto tcp`.  
 
 ## docker-compose.yml
 
 ```
 data:
-  image: busybox:latest
+  image: busybox
   volumes:
     - /etc/openvpn
 
 server:
-  image: kylemanna/openvpn:latest
+  image: vimagick/openvpn
   ports:
     - "1194:1194/tcp"
   volumes_from:
@@ -33,7 +33,7 @@ server:
   restart: always
 
 obfsproxy:
-  image: vimagick/obfsproxy:latest
+  image: vimagick/obfsproxy
   ports:
     - "4911:4911"
   links:
@@ -51,7 +51,7 @@ To link a existing `openvpn` container, please use `external_links` instead of `
 
 ```
 obfsproxy:
-  image: vimagick/obfsproxy:latest
+  image: vimagick/obfsproxy
   ports:
     - "4911:4911"
   external_links:
@@ -70,7 +70,7 @@ The following example shows us how to make a OpenVPN relay:
 
 ```
 obfsproxy:
-  image: vimagick/obfsproxy:latest
+  image: vimagick/obfsproxy
   ports:
     - "1194:1194/tcp"
   environment:
