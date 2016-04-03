@@ -1,0 +1,10 @@
+squid:
+  image: vimagick/squid
+  ports:
+    - "3128:3128"
+    - "3130:3130"
+  ulimits:
+    nofile:
+      soft: 65535
+      hard: 65535
+  restart: always
