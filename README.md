@@ -37,6 +37,7 @@ dockerfiles
     - [x] dnscrypt-proxy
     - [x] dnscrypt-wrapper
 - [x] dokuwiki :+1:
+- [x] dokuwiki-arm :+1:
 - [x] ferm
 - [x] ffserver :beetle:
 - [x] fteproxy :+1:

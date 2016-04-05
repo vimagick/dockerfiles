@@ -1,0 +1,5 @@
+dokuwiki:
+  image: easypi/dokuwiki-arm
+  ports:
+      - "8000:80"
+  restart: always
