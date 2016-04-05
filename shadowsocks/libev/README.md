@@ -49,9 +49,14 @@ vimagick/shadowsocks-libev   latest              a36f480e696a        8 minutes a
 vimagick/shadowsocks         latest              35650c84852a        57 minutes ago      51.25 MB
 ```
 
+## Raspberry Pi
+
+To setup a shadowsocks client on Raspberry Pi, please use [easypi/shadowsocks-libev-arm][7].
+
 [1]: https://github.com/shadowsocks/shadowsocks-libev
 [2]: https://github.com/clowwindy
 [3]: https://github.com/madeye
 [4]: https://github.com/linusyang
 [5]: https://hub.docker.com/r/vimagick/shadowsocks/
 [6]: https://hub.docker.com/r/vimagick/shadowsocks-libev/
+[7]: https://hub.docker.com/r/easypi/shadowsocks-libev-arm/

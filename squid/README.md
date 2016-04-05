@@ -24,6 +24,8 @@ squid:
   restart: always
 ```
 
+> You can mount `squid.conf` file.
+
 ## Up and Running
 
 ```
