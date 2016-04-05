@@ -5,7 +5,8 @@
 FROM debian:jessie
 MAINTAINER kev <noreply@datageek.info>
 
-RUN apt-get update \
+RUN set -xe \
+    && apt-get update \
     && apt-get install -y pure-ftpd \
     && rm -rf /var/lib/apt/lists/* \
     && groupadd ftpgroup \
