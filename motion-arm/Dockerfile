@@ -3,7 +3,8 @@
 #
 
 FROM resin/rpi-raspbian
-MAINTAINER kev <noreply@datageek.info>
+
+MAINTAINER EasyPi Software Foundation
 
 RUN set -xe \
     && apt-get update \
@@ -18,4 +19,4 @@ VOLUME /var/lib/motion
 
 EXPOSE 8080 8081
 
-CMD ["/usr/bin/motion"]
+ENTRYPOINT ["/usr/bin/motion"]
