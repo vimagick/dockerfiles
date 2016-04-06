@@ -91,19 +91,29 @@
     - restart nginx
     changed_when: yes
 
-  - name: update samba config
-    blockinfile:
-      dest: /etc/samba/smb.conf
-      insertafter: EOF
-      content: |
-        [share]
-        path = /home/pi/share
-        browseable = yes
-        read only = yes
-        guest ok = yes
-    notify:
-      - restart samba
-    changed_when: yes
+  - block:
+
+    - name: update samba config
+      ini_file:
+        dest: /etc/samba/smb.conf
+        section: global
+        option: guest account
+        value: pi
+      notify:
+        - restart samba
+
+    - name: update samba config again
+      blockinfile:
+        dest: /etc/samba/smb.conf
+        insertafter: EOF
+        content: |
+          [share]
+          path = /home/pi/share
+          browseable = yes
+          read only = no
+          guest ok = yes
+      notify:
+        - restart samba
 
   handlers:
 
