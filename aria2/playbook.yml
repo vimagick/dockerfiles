@@ -93,16 +93,19 @@
 
   - block:
 
-    - name: update samba config
+    - name: update samba config for global
       ini_file:
         dest: /etc/samba/smb.conf
-        section: global
-        option: guest account
-        value: pi
+        section: "{{ item.section }}"
+        option: "{{ item.option }}"
+        value: "{{ item.value }}"
+      with_items:
+        - {section: global, option: guest account, value: pi}
+        - {section: global, option: netbios name, value: pi}
       notify:
         - restart samba
 
-    - name: update samba config again
+    - name: update samba config for share
       blockinfile:
         dest: /etc/samba/smb.conf
         insertafter: EOF
