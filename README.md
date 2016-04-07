@@ -85,7 +85,7 @@ dockerfiles
 - [x] revive
 - [x] rsyncd
 - [x] rtmp
-- [x] samba :beetle:
+- [x] samba :+1:
 - [x] scrapyd :+1:
 - [x] shadowsocks
     - [x] shadowsocks

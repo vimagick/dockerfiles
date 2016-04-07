@@ -27,13 +27,14 @@ samba:
 ```
 [global]
 workgroup = WORKGROUP
-server string = %h server (Samba, Apline)
+netbios name = EasyPi
+server string = Samba Server
 map to guest = bad user
 
 [share]
 path = /share
 browseable = yes
-read only = no
+read only = yes
 guest ok = yes
 ```
 
