@@ -34,8 +34,9 @@ map to guest = bad user
 [share]
 path = /share
 browseable = yes
-read only = yes
+read only = no
 guest ok = yes
+admin users = root
 ```
 
 ## server
@@ -43,7 +44,6 @@ guest ok = yes
 ```
 $ cd ~/fig/samba
 $ mkdir share
-$ chmod 777 share
 $ touch share/README.txt
 $ docker-compose up -d
 $ docker exec -it samba_samba_1 sh
@@ -60,12 +60,14 @@ $ smbutil view -NG smb://server
 Share                                           Type    Comments
 -------------------------------
 share                                           Disk
-IPC$                                            Pipe    IPC Service (52e5ac2d2d7c server (Samba, Apline))
+IPC$                                            Pipe    IPC Service (Samba Server)
 2 shares listed
 
 $ mkdir -p /Volumes/share
 $ mount_smbfs //guest@server/share /Volumes/share
 $ umount /Volumes/share
 ```
+
+> `root` user can read and write, `guest` user can read only.
 
 [1]: https://www.samba.org/
