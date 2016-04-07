@@ -1,11 +1,7 @@
 samba:
   image: vimagick/samba
-  ports:
-    - "137:137/udp"
-    - "138:138/udp"
-    - "139:139/tcp"
-    - "445:445/tcp"
   volumes:
     - ./smb.conf:/etc/samba/smb.conf
     - ./share:/share
+  net: host
   restart: always

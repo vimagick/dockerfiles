@@ -16,4 +16,4 @@ EXPOSE 137/udp \
        139/tcp \
        445/tcp
 
-CMD ["smbd", "--foreground", "--log-stdout"]
+CMD nmbd -D && smbd -FS

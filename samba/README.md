@@ -11,14 +11,10 @@ Linux and Unix.
 ```
 samba:
   image: vimagick/samba
-  ports:
-    - "137:137/udp"
-    - "138:138/udp"
-    - "139:139/tcp"
-    - "445:445/tcp"
   volumes:
     - ./smb.conf:/etc/samba/smb.conf
     - ./share:/share
+  net: host
   restart: always
 ```
 
@@ -56,7 +52,7 @@ Retype new SMB password:******
 ## client
 
 ```
-$ smbutil view -NG smb://server
+$ smbutil view -NG smb://easypi
 Share                                           Type    Comments
 -------------------------------
 share                                           Disk
@@ -64,7 +60,7 @@ IPC$                                            Pipe    IPC Service (Samba Serve
 2 shares listed
 
 $ mkdir -p /Volumes/share
-$ mount_smbfs //guest@server/share /Volumes/share
+$ mount_smbfs //guest@easypi/share /Volumes/share
 $ umount /Volumes/share
 ```
 
