@@ -30,6 +30,7 @@ dockerfiles
 - [x] cadvisor
 - [x] casperjs :+1:
 - [x] chinadns
+- [x] clamav
 - [x] collectd
 - [x] dante
 - [x] discuz :cn:
