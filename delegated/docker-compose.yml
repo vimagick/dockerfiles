@@ -1,0 +1,6 @@
+delegated:
+  image: vimagick/delegated
+  command: "-P1080 SERVER=socks"
+  ports:
+    - "1080:1080"
+  restart: always

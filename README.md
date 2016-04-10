@@ -33,6 +33,7 @@ dockerfiles
 - [x] clamav
 - [x] collectd
 - [x] dante
+- [x] delegated
 - [x] discuz :cn:
 - [x] dnscrypt
     - [x] dnscrypt-proxy
