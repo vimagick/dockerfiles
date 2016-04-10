@@ -1,0 +1,15 @@
+[Unit]
+Description=DNSCrypt client proxy
+Documentation=man:dnscrypt-proxy(8)
+After=network.target
+Before=nss-lookup.target
+
+[Service]
+Type=simple
+NonBlocking=true
+ExecStart=/usr/sbin/dnscrypt-proxy \
+          -a 0.0.0.0:53 \
+          -R cisco
+
+[Install]
+WantedBy=multi-user.target

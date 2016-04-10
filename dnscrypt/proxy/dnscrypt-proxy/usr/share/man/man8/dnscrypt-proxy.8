@@ -1,0 +1,120 @@
+.\" generated with Ronn/v0.7.3
+.\" http://github.com/rtomayko/ronn/tree/0.7.3
+.
+.TH "DNSCRYPT\-PROXY" "8" "February 2016" "" ""
+.
+.SH "NAME"
+\fBdnscrypt\-proxy\fR \- A DNSCrypt forwarder
+.
+.SH "SYNOPSIS"
+\fBdnscrypt\-proxy\fR [\fIoptions\fR]
+.
+.SH "DESCRIPTION"
+\fBdnscrypt\-proxy\fR accepts DNS requests, authenticates and encrypts them using dnscrypt and forwards them to a remote dnscrypt\-enabled resolver\.
+.
+.P
+Replies from the resolver are expected to be authenticated or else they will be discarded\.
+.
+.P
+The proxy verifies the replies, decrypts them, and transparently forwards them to the local stub resolver\.
+.
+.P
+\fBdnscrypt\-proxy\fR listens to \fB127\.0\.0\.1\fR / port \fB53\fR by default\.
+.
+.SH "WARNING"
+\fBdnscrypt\-proxy\fR is not a DNS cache\. Unless your operating system already provides a decent built\-in cache (and by default, most systems don\'t), clients shouldn\'t directly send requests to \fBdnscrypt\-proxy\fR\.
+.
+.P
+Intead, run a DNS cache like \fBUnbound\fR, and configure it to use \fBdnscrypt\-proxy\fR as a forwarder\. Both can safely run on the same machine as long as they use different IP addresses and/or different ports\.
+.
+.SH "OPTIONS"
+.
+.IP "\(bu" 4
+\fB\-a\fR, \fB\-\-local\-address=<ip>[:port]\fR: what local IP the daemon will listen to, with an optional port\. The default port is 53\.
+.
+.IP "\(bu" 4
+\fB\-d\fR, \fB\-\-daemonize\fR: detach from the current terminal and run the server in background\.
+.
+.IP "\(bu" 4
+\fB\-E\fR, \fB\-\-ephemeral\-keys\fR: By default, queries are always sent with the same public key, allowing providers to link this public key to the different IP addresses you are using\. This option requires extra CPU cycles, but mitigates this by computing an ephemeral key pair for every query\.
+.
+.IP "\(bu" 4
+\fB\-e\fR, \fB\-\-edns\-payload\-size=<bytes>\fR: transparently add an OPT pseudo\-RR to outgoing queries in order to enable the EDNS0 extension mechanism\. The payload size is the size of the largest response we accept from the resolver before retrying over TCP\. This feature is enabled by default, with a payload size of 1252 bytes\. Any value below 512 disables it\.
+.
+.IP "\(bu" 4
+\fB\-h\fR, \fB\-\-help\fR: show usage\.
+.
+.IP "\(bu" 4
+\fB\-k\fR, \fB\-\-provider\-key=<key>\fR: specify the provider public key (see below)\.
+.
+.IP "\(bu" 4
+\fB\-K\fR, \fB\-\-client\-key=<file>\fR: use a static client secret key stored in \fB<file>\fR\.
+.
+.IP "\(bu" 4
+\fB\-L\fR, \fB\-\-resolvers\-list=<file>\fR: path to the CSV file containing the list of available resolvers, and the parameters to use them\.
+.
+.IP "\(bu" 4
+\fB\-l\fR, \fB\-\-logfile=<file>\fR: log events to this file instead of the standard output\.
+.
+.IP "\(bu" 4
+\fB\-m\fR, \fB\-\-loglevel=<level>\fR: don\'t log events with priority above this level after the service has been started up\. Default is \fB6\fR, the value for \fBLOG_INFO\fR\. Valid values are \fB0\fR (system is unusable), \fB1\fR (action must be taken immediately), \fB2\fR (critical conditions), \fB3\fR (error conditions), \fB4\fR (warning conditions), \fB5\fR (normal but significant condition), \fB6\fR (informational) and \fB7\fR (debug\-level messages)\.
+.
+.IP "\(bu" 4
+\fB\-n\fR, \fB\-\-max\-active\-requests=<count>\fR: set the maximum number of simultaneous active requests\. The default value is 250\.
+.
+.IP "\(bu" 4
+\fB\-p\fR, \fB\-\-pidfile=<file>\fR: write the PID number to a file\.
+.
+.IP "\(bu" 4
+\fB\-R\fR, \fB\-\-resolver\-name=<name>\fR: name of the resolver to use, from the list of available resolvers (see \fB\-L\fR)\.
+.
+.IP "\(bu" 4
+\fB\-r\fR, \fB\-\-resolver\-address=<ip>[:port]\fR: a DNSCrypt\-capable resolver IP address with an optional port\. The default port is 443\.
+.
+.IP "\(bu" 4
+\-S, \-\-syslog: if a log file hasn\'t been set, log diagnostic messages to syslog instead of printing them\. \-\-daemonize implies \-\-syslog\.
+.
+.IP "\(bu" 4
+\fB\-t\fR, \fB\-\-test=<margin>\fR: don\'t actually start the proxy, but check that a valid certificate can be retrieved from the server and that it will remain valid for the next \fImargin\fR minutes\. The exit code is 0 if a valid certificate can be used, 2 if no valid certificates can be used, 3 if a timeout occurred, and 4 if a currently valid certificate is going to expire before \fImargin\fR\. The margin is always specificied in minutes\.
+.
+.IP "\(bu" 4
+\fB\-u\fR, \fB\-\-user=<user name>\fR: chroot(2) to this user\'s home directory and drop privileges\.
+.
+.IP "\(bu" 4
+\fB\-N\fR, \fB\-\-provider\-name=<FQDN>\fR: the fully\-qualified name of the dnscrypt certificate provider\.
+.
+.IP "\(bu" 4
+\fB\-T\fR, \fB\-\-tcp\-only\fR: always use TCP\. A connection made using UDP will get a truncated response, so that the (stub) resolver retries using TCP\.
+.
+.IP "\(bu" 4
+\fB\-V\fR, \fB\-\-version\fR: show version number\.
+.
+.IP "" 0
+.
+.P
+A public key is 256\-bit long, and it has to be specified as a hexadecimal string, with optional columns\.
+.
+.SH "COMMON USAGE EXAMPLE"
+.
+.nf
+
+$ dnscrypt\-proxy \-\-daemonize \-\-resolver\-name=\.\.\.
+.
+.fi
+.
+.P
+The resolver name is the first column (Name) in the CSV file\.
+.
+.SH "USAGE EXAMPLE WITH A PRIVATE SERVER"
+.
+.nf
+
+$ dnscrypt\-proxy \-\-daemonize \-\-provider\-key=\.\.\. \-\-provider\-name=\.\.\. \-\-resolver\-address=\.\.\.
+.
+.fi
+.
+.SH "BUGS AND SUPPORT"
+Please report issues with DNSCrypt itself to https://dnscrypt\.org/issues
+.
+.SH "SEE ALSO"
+hostip(8)

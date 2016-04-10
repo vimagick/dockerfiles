@@ -1,0 +1,5 @@
+#!/bin/bash
+
+ldconfig
+systemctl start dnscrypt-proxy
+systemctl enable dnscrypt-proxy

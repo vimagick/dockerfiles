@@ -1,0 +1,4 @@
+#!/bin/bash
+
+systemctl disable dnscrypt-proxy
+systemctl stop dnscrypt-proxy

@@ -1,0 +1,54 @@
+.\" generated with Ronn/v0.7.3
+.\" http://github.com/rtomayko/ronn/tree/0.7.3
+.
+.TH "HOSTIP" "8" "June 2015" "" ""
+.
+.SH "NAME"
+\fBhostip\fR \- Resolve a host name to an IP address
+.
+.SH "SYNOPSIS"
+\fBhostip\fR [\fIoptions\fR] host_name
+.
+.SH "DESCRIPTION"
+\fBhostip\fR sends a DNS query to a resolver, and prints the IP addresses for the given host name\.
+.
+.P
+It can be useful in order to retrieve IP addresses before dnscrypt\-proxy(8) is started\.
+.
+.SH "OPTIONS"
+.
+.IP "\(bu" 4
+\fB\-6\fR, \fB\-\-ipv6\fR: ask for AAAA records\.
+.
+.IP "\(bu" 4
+\fB\-h\fR, \fB\-\-help\fR: show usage\.
+.
+.IP "\(bu" 4
+\fB\-r\fR, \fB\-\-resolver\-address=<ip>[:port]\fR: the resolver IP address (default: 8\.8\.8\.8, Google DNS)\.
+.
+.IP "\(bu" 4
+\fB\-V\fR, \fB\-\-version\fR: show version number\.
+.
+.IP "" 0
+.
+.SH "SIMPLE USAGE EXAMPLE"
+.
+.nf
+
+$ hostip www\.example\.com
+.
+.fi
+.
+.SH "ADVANCED USAGE EXAMPLE"
+.
+.nf
+
+$ hostip \-6 \-r 4\.2\.2\.2 www\.google\.com
+.
+.fi
+.
+.SH "EXIT STATUS"
+The \fBhostip\fR utility exits 0 on success, and > 0 if an error occurs\.
+.
+.SH "SEE ALSO"
+dnscrypt\-proxy(8)
