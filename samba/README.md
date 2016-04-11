@@ -25,9 +25,17 @@ samba:
 workgroup = WORKGROUP
 netbios name = EasyPi
 server string = Samba Server
+server role = standalone
 map to guest = bad user
+usershare allow guests = yes
+
+[homes]
+comment = Home Directories
+browseable = no
+writable = yes
 
 [share]
+comment = Public File Sharing
 path = /share
 browseable = yes
 read only = no

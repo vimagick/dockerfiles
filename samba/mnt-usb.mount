@@ -1,0 +1,9 @@
+[Unit]
+Description=USB Storage Mount
+
+[Mount]
+What=/dev/disk/by-uuid/829B-2038
+Where=/mnt/usb
+
+[Install]
+WantedBy=local-fs.target
