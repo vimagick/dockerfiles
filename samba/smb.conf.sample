@@ -1,0 +1,20 @@
+[global]
+   netbios name = easypi
+   workgroup = WORKGROUP
+   server string = EasyPi Samba Server
+   server role = standalone
+   map to guest = Bad User
+   usershare allow guests = yes
+
+[homes]
+   comment = Home Directories
+   browseable = no
+   writable = yes
+
+[share]
+   comment = Public File Sharing
+   path = /share
+   browseable = yes
+   writable = yes
+   guest ok = yes
+   admin users = root

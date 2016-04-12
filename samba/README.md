@@ -13,18 +13,20 @@ samba:
   image: vimagick/samba
   volumes:
     - ./smb.conf:/etc/samba/smb.conf
-    - ./share:/share
+    - /mnt/usb:/share
   net: host
   restart: always
 ```
+
+> An USB flash drive is mounted at `/mnt/usb`.
 
 ## smb.conf
 
 ```
 [global]
+netbios name = easypi
 workgroup = WORKGROUP
-netbios name = EasyPi
-server string = Samba Server
+server string = EasyPi Samba Server
 server role = standalone
 map to guest = bad user
 usershare allow guests = yes

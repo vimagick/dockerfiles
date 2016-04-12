@@ -11,6 +11,9 @@ RUN set -xe \
 
 COPY smb.conf /etc/samba/
 
+VOLUME /etc/samba \
+       /var/lib/samba
+
 EXPOSE 137/udp \
        138/udp \
        139/tcp \

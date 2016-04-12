@@ -2,6 +2,6 @@ samba:
   image: vimagick/samba
   volumes:
     - ./smb.conf:/etc/samba/smb.conf
-    - ./share:/share
+    - /mnt/usb:/share
   net: host
   restart: always
