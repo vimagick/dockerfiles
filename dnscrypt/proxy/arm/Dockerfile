@@ -19,7 +19,7 @@ RUN set -xe \
                           curl \
     && mkdir libsodium \
         && cd libsodium \
-        && curl -sSL https://download.libsodium.org/libsodium/releases/libsodium-$LIBSODIUM_VERSION.tar.gz | tar xz --strip 1 \
+        && curl -sSL https://github.com/vimagick/dockerfiles/raw/master/dnscrypt/proxy/arm/libsodium-$LIBSODIUM_VERSION.tar.gz | tar xz --strip 1 \
         && ./configure --prefix=/usr --enable-minimal \
         && make install \
         && ldconfig \
@@ -27,7 +27,7 @@ RUN set -xe \
         && rm -rf libsodium \
     && mkdir dnscrypt-proxy \
         && cd dnscrypt-proxy \
-        && curl -sSL https://download.dnscrypt.org/dnscrypt-proxy/dnscrypt-proxy-$DNSCRYPT_VERSION.tar.gz | tar xz --strip 1 \
+        && curl -sSL https://github.com/vimagick/dockerfiles/raw/master/dnscrypt/proxy/arm/dnscrypt-proxy-$DNSCRYPT_VERSION.tar.gz | tar xz --strip 1 \
         && ./configure --prefix=/usr --with-plugins \
         && make install \
         && cd .. \

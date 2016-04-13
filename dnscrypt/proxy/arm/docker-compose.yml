@@ -1,0 +1,7 @@
+dnscrypt-proxy:
+  image: easypi/dnscrypt-proxy-arm
+  container_name: dnscrypt-proxy
+  ports:
+    - "2053:53/tcp"
+    - "2053:53/udp"
+  restart: always
