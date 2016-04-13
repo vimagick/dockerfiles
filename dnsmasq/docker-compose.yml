@@ -6,4 +6,6 @@ dnsmasq:
     - "67:67/udp"
   volumes:
     - ./dnsmasq.d:/etc/dnsmasq.d
+  cap_add:
+    - NET_ADMIN
   restart: always

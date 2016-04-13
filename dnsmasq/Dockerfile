@@ -15,4 +15,4 @@ VOLUME /etc/dnsmasq.d
 
 EXPOSE 53/tcp 53/udp 67/udp
 
-ENTRYPOINT ["/usr/sbin/dnsmasq", "--user=dnsmasq", "--group=dnsmasq"]
+ENTRYPOINT ["/usr/sbin/dnsmasq", "--no-daemon", "--user=dnsmasq", "--group=dnsmasq"]
