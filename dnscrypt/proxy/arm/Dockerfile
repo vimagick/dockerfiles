@@ -1,9 +1,9 @@
 #
-# Dockerfile for dnscrypt-proxy
+# Dockerfile for dnscrypt-proxy-arm
 #
 
-FROM debian:jessie
-MAINTAINER kev <noreply@datageek.info>
+FROM resin/rpi-raspbian
+MAINTAINER EasyPi Software Foundation
 
 ENV LIBSODIUM_VERSION 1.0.10
 ENV DNSCRYPT_VERSION 1.6.1
