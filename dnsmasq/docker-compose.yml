@@ -1,0 +1,9 @@
+dnsmasq:
+  image: vimagick/dnsmasq
+  ports:
+    - "53:53/tcp"
+    - "53:53/udp"
+    - "67:67/udp"
+  volumes:
+    - ./dnsmasq.d:/etc/dnsmasq.d
+  restart: always
