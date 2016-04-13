@@ -1,0 +1,4 @@
+# All files in this directory which end in .conf
+# will be read by dnsmasq as configuration files
+#
+# This can be changed by editing /etc/dnsmasq.conf
