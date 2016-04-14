@@ -1,0 +1,13 @@
+{
+  "device_name": "BitTorrent Sync Server",
+  "listening_port": 55555,
+  "storage_path": "/data/.syncsystem",
+  "pid_file": "/data/.syncsystem/btsync.pid",
+  "use_upnp": false,
+  "download_limit": 0,
+  "upload_limit": 0,
+  "webui": {
+    "listen": "0.0.0.0:8888",
+    "directory_root": "/data/syncaod"
+  }
+}

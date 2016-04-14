@@ -1,0 +1,8 @@
+btsync:
+  image: vimagick/btsync
+  ports:
+    - "8888:8888"
+    - "55555:55555"
+  volumes:
+    - ./data:/data
+  restart: always
