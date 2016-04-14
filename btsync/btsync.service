@@ -1,0 +1,14 @@
+[Unit]
+Description=BitTorrent Sync Daemon
+After=network.target
+AssertPathExists=/etc/btsync/config.json
+AssertPathIsDirectory=/data/.syncsystem
+AssertPathIsDirectory=/data/syncaod
+
+[Service]
+ExecStart=/usr/bin/btsync --nodaemon --config /etc/btsync/config.json
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
