@@ -11,11 +11,14 @@ ENV VAULT_MD5 7d0f546d19c8e7e1eb5f8856bfa4cc29
 ENV VAULT_FILE vault.zip
 ENV VAULT_ADDR https://127.0.0.1:8200
 
-RUN wget -O $VAULT_FILE $VAULT_URL \
+RUN set -xe \
+    && apk add -U ca-certificates \
+    && wget -O $VAULT_FILE $VAULT_URL \
     && echo "$VAULT_MD5  $VAULT_FILE" | md5sum -c \
     && unzip $VAULT_FILE -d /usr/bin/ \
     && chmod +x /usr/bin/vault \
-    && rm $VAULT_FILE
+    && apk del ca-certificates \
+    && rm $VAULT_FILE /var/cache/apk/*
 
 COPY vault /etc/vault
 
