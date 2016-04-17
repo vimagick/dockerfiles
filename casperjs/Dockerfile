@@ -5,9 +5,12 @@
 FROM debian:jessie
 MAINTAINER kev <noreply@datageek.info>
 
-ENV PHANTOM_URL https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-2.1.1-linux-x86_64.tar.bz2
+ENV PHANTOM_VER 2.1.1
+ENV PHANTOM_URL https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-${PHANTOM_VER}-linux-x86_64.tar.bz2
 ENV PHANTOM_DIR /usr/local/bin
-ENV CASPER_URL https://github.com/n1k0/casperjs/archive/master.tar.gz
+
+ENV CASPER_VER master
+ENV CASPER_URL https://github.com/n1k0/casperjs/archive/${CASPER_VER}.tar.gz
 ENV CASPER_DIR /usr/local/casperjs
 
 RUN set -xe \
