@@ -1,6 +1,8 @@
 shadowsocks-libev
 =================
 
+> :warning: This project has been moved to <https://github.com/EasyPi/docker-shadowsocks-libev>.
+
 ![](https://badge.imagelayers.io/vimagick/shadowsocks-libev:latest.svg)
 
 ![](http://dockeri.co/image/vimagick/shadowsocks-libev)
