@@ -1,0 +1,13 @@
+neo4j:
+  image: neo4j
+  ports:
+    - "7474:7474"
+  volumes:
+    - ./data:/data
+  environment:
+    - NEO4J_CACHE_MEMORY=4G
+  ulimits:
+    nofile:
+      soft: 65535
+      hard: 65535
+  restart: always

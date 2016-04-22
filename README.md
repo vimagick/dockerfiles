@@ -122,6 +122,7 @@ dockerfiles
 - [ ] jenkins
 - [x] letsencrypt
 - [x] mongo
+- [x] neo4j
 - [x] owncloud
 - [x] rocket.chat
 - [x] scrapinghub/splash
