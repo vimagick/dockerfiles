@@ -1,11 +1,13 @@
 hubot
 =====
 
+![](https://badge.imagelayers.io/vimagick/hubot:latest.svg)
+
 [hubot][1] is a customizable, life embetterment robot commissioned by github.
 
 ## docker-compse.yml
 
-```
+```yaml
 hubot:
   image: vimagick/hubot
   environment:

@@ -10,19 +10,24 @@ ENV HUBOT_ADAPTER=slack
 ENV HUBOT_DESCRIPTION=$HUBOT_NAME-$HUBOT_ADAPTER
 ENV HUBOT_SLACK_TOKEN=
 
-RUN npm install -g hubot coffee-script yo generator-hubot \
+RUN set -xe \
+    && npm install -g coffee-script \
+                      generator-hubot \
+                      hubot \
+                      yo \
     && useradd -m -s /bin/bash hubot
 
 USER hubot
 WORKDIR /home/hubot
 
-RUN yo hubot --name $HUBOT_NAME \
-             --description $HUBOT_DESCRIPTION \
-             --adapter $HUBOT_ADAPTER \
-             --defaults \
+RUN set -xe \
+    && yo hubot --name $HUBOT_NAME \
+                --description $HUBOT_DESCRIPTION \
+                --adapter $HUBOT_ADAPTER \
+                --defaults \
     && npm install hubot-$HUBOT_ADAPTER --save \
     && sed -i -r 's/^\s+#//' scripts/example.coffee
 
 VOLUME /home/hobot
 
-CMD ["bin/hubot", "--adapter", "slack"]
+CMD ["./bin/hubot", "--adapter", "slack"]
