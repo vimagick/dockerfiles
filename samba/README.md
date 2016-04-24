@@ -18,7 +18,22 @@ samba:
   restart: always
 ```
 
-> An USB flash drive is mounted at `/mnt/usb`.
+## mnt-usb.mount
+
+An USB flash drive is mounted at `/mnt/usb`.
+
+```
+# /etc/systemd/system/mnt-usb.mount
+[Unit]
+Description=USB Storage Mount
+
+[Mount]
+What=/dev/disk/by-uuid/829B-2038
+Where=/mnt/usb
+
+[Install]
+WantedBy=local-fs.target
+```
 
 ## smb.conf
 
@@ -53,6 +68,7 @@ $ mkdir share
 $ touch share/README.txt
 $ docker-compose up -d
 $ docker exec -it samba_samba_1 sh
+>>> testparm
 >>> smbpasswd -a root
 New SMB password:******
 Retype new SMB password:******
