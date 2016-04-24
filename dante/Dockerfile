@@ -13,7 +13,8 @@ ENV DANTE_FILE dante.tar.gz
 ENV DANTE_TEMP dante
 ENV DANTE_DEPS build-essential curl
 
-RUN apt-get update \
+RUN set -xe \
+    && apt-get update \
     && apt-get install -y $DANTE_DEPS \
     && mkdir $DANTE_TEMP \
         && cd $DANTE_TEMP \
