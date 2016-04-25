@@ -119,6 +119,7 @@ dockerfiles
 - [x] gitlab/gitlab-ce
 - [ ] gliderlabs/logspout
 - [x] gliderlabs/registrator
+- [x] gogs :cn:
 - [ ] jenkins
 - [x] letsencrypt
 - [x] mongo
