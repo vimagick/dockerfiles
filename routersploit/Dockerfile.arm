@@ -1,0 +1,31 @@
+#
+# Dockerfile for routersploit-arm
+#
+
+FROM easypi/alpine-arm
+MAINTAINER EasyPi Software Foundation
+
+WORKDIR /app
+
+RUN set -xe \
+    && apk add -U bash \
+                  build-base \
+                  curl \
+                  ncurses-dev \
+                  python \
+                  python-dev \
+                  readline-dev \
+                  tar \
+    && curl -sSL https://bootstrap.pypa.io/get-pip.py | python \
+    && curl -sSL https://github.com/reverse-shell/routersploit/archive/master.tar.gz | tar xz --strip 1 \
+    && pip install -r requirements.txt \
+    && apk del bash \
+               build-base \
+               curl \
+               ncurses-dev \
+               python3-dev \
+               readline-dev \
+               tar \
+    && rm -rf /var/cache/apk/*
+
+ENTRYPOINT ["/app/rsf.py"]

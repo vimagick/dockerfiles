@@ -85,6 +85,7 @@ dockerfiles
 - [x] pure-ftpd
 - [x] redis-arm
 - [x] revive
+- [x] routersploit
 - [x] rsyncd
 - [x] rtmp
 - [x] samba :+1:
