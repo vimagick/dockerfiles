@@ -1,5 +1,10 @@
 jenkins:
-  image: vimagick/jenkins
+  image: jenkins:alpine
   ports:
     - "8080:8080"
+    - "50000:50000"
+  volumes:
+    - ./data:/var/jenkins_home
+  environment:
+    - JAVA_OPTS=-Dhudson.footerURL=http://easypi.info/
   restart: always
