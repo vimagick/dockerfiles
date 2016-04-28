@@ -53,6 +53,7 @@ dockerfiles
 - [x] hydra
 - [x] influxdb
 - [x] iptables
+- [x] jamapi
 - [x] jenkins
 - [x] jenkins-arm :beetle:
 - [x] joomla
