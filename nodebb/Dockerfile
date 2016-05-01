@@ -3,7 +3,7 @@
 #
 
 FROM alpine
-MAINTAINER kev <noreply@datageek.info>
+MAINTAINER kev <noreply@easypi.info>
 
 ENV BB_VER 1.0.3
 ENV BB_URL https://github.com/NodeBB/NodeBB/archive/v$BB_VER.tar.gz

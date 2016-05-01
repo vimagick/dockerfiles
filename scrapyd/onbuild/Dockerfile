@@ -3,7 +3,7 @@
 #
 
 FROM vimagick/scrapyd
-MAINTAINER kev <noreply@datageek.info>
+MAINTAINER kev <noreply@easypi.info>
 
 ONBUILD ADD ./*.txt /etc/scrapyd/
 ONBUILD RUN cd /etc/scrapyd; \

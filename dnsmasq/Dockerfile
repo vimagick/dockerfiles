@@ -3,7 +3,7 @@
 #
 
 FROM alpine
-MAINTAINER kev <norelply@datageek.info>
+MAINTAINER kev <norelply@easypi.info>
 
 RUN set -xe \
     && apk add -U dnsmasq \

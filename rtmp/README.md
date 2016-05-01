@@ -38,11 +38,11 @@ server:
 
 client:
   image: vimagick/rtmp-client-arm
-# command: ffmpeg -i /dev/video0 -vf "hflip,vflip" -f flv rtmp://cctv.datageek.info/live/webcam
+# command: ffmpeg -i /dev/video0 -vf "hflip,vflip" -f flv rtmp://cctv.easypi.info/live/webcam
   devices:
     - /dev/video0:/dev/video0
   environment:
-    - RTMP_URI=rtmp://datageek.info/live/webcam
+    - RTMP_URI=rtmp://easypi.info/live/webcam
   restart: always
 ```
 
@@ -60,26 +60,26 @@ $ youtube-dl 'https://www.youtube.com/watch?v=lJZlz-WnXzU' -o data/video.mp4
 
 ```
 # play remote video (remote -> local)
-$ vlc rtmp://datageek.info/vod/video.mp4
+$ vlc rtmp://easypi.info/vod/video.mp4
 
 # play local video (local -> remote -> local)
-$ ffmpeg -re -i video.mp4 -f flv rtmp://datageek.info/live/video
-$ vlc rtmp://datageek.info/live/video.mp4
+$ ffmpeg -re -i video.mp4 -f flv rtmp://easypi.info/live/video
+$ vlc rtmp://easypi.info/live/video.mp4
 
 # capture desktop (local -> remote)
-$ ffmpeg -f avfoundation -pixel_format bgr0 -i 1:0 -f flv rtmp://datageek.info/live/webcam
+$ ffmpeg -f avfoundation -pixel_format bgr0 -i 1:0 -f flv rtmp://easypi.info/live/webcam
 
 # record webcam (local -> remote)
-$ ffmpeg -f qtkit -i 0 -f flv rtmp://datageek.info/live/webcam
+$ ffmpeg -f qtkit -i 0 -f flv rtmp://easypi.info/live/webcam
 
 # record pi camera (pi -> remote)
-$ ffmpeg -f video4linux2 -r 24 -i /dev/video0 -f flv rtmp://datageek.info/live/webcam
+$ ffmpeg -f video4linux2 -r 24 -i /dev/video0 -f flv rtmp://easypi.info/live/webcam
 
 # record pi camera (pi -> remote)
-$ /opt/vc/bin/raspivid -o - -t 0 -hf -w 640 -h 360 -fps 25 | ffmpeg -i - -f flv rtmp://datageek.info/live/webcam
+$ /opt/vc/bin/raspivid -o - -t 0 -hf -w 640 -h 360 -fps 25 | ffmpeg -i - -f flv rtmp://easypi.info/live/webcam
 
 # watch webcam (remote -> local)
-$ vlc rtmp://datageek.info/live/webcam
+$ vlc rtmp://easypi.info/live/webcam
 ```
 
 Optinally, you can run a docker container as RTMP client on raspberry pi.

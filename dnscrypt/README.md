@@ -16,7 +16,7 @@ dnscrypt
       environment:
         - LISTEN_ADDR=0.0.0.0:443
         - RESOLVER_ADDR=8.8.8.8:53
-        - PROVIDER_NAME=2.dnscrypt-cert.datageek.info
+        - PROVIDER_NAME=2.dnscrypt-cert.easypi.info
       restart: always
 
     proxy:
@@ -27,7 +27,7 @@ dnscrypt
       environment:
         - LISTEN_ADDR=0.0.0.0:443
         - RESOLVER_ADDR=1.2.3.4:443
-        - PROVIDER_NAME=2.dnscrypt-cert.datageek.info
+        - PROVIDER_NAME=2.dnscrypt-cert.easypi.info
         - PROVIDER_KEY=4C29:9CEB:CF8D:4612:48A8:B2F2:3B6F:A046:EBF5:2F2B:6433:27C6:5F3A:88F5:495E:3075
       restart: always
 

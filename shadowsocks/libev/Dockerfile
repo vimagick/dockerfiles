@@ -3,7 +3,7 @@
 #
 
 FROM alpine
-MAINTAINER kev <noreply@datageek.info>
+MAINTAINER kev <noreply@easypi.info>
 
 ENV SS_VER 2.4.6
 ENV SS_URL https://github.com/shadowsocks/shadowsocks-libev/archive/v$SS_VER.tar.gz

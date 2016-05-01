@@ -3,7 +3,7 @@
 #
 
 FROM scrapinghub/splash
-MAINTAINER kev <noreply@datageek.info>
+MAINTAINER kev <noreply@easypi.info>
 
 ADD ./fonts/Songti.ttc /usr/local/share/fonts/
 RUN fc-cache /usr/local/share/fonts/

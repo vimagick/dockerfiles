@@ -3,7 +3,7 @@
 #
 
 FROM alpine
-MAINTAINER kev <noreply@datageek.info>
+MAINTAINER kev <noreply@easypi.info>
 
 ADD https://github.com/tianon/gosu/releases/download/1.4/gosu-amd64 /usr/sbin/gosu
 

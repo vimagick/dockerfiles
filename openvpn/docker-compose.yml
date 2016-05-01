@@ -38,7 +38,7 @@ fteproxy:
 #    - "1194:1194"
 #  environment:
 #    - "MODE=client"
-#    - "SERVER_IP=vpn.datageek.info"
+#    - "SERVER_IP=vpn.easypi.info"
 #    - "SERVER_PORT=4911"
 #    - "CLIENT_IP=0.0.0.0"
 #    - "CLIENT_PORT=1194"

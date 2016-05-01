@@ -3,7 +3,7 @@
 #
 
 FROM vimagick/alpine-arm
-MAINTAINER kev <noreply@datageek.info>
+MAINTAINER kev <noreply@easypi.info>
 
 ENV JENKINS_HOME /var/jenkins_home
 

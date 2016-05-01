@@ -3,7 +3,7 @@
 #
 
 FROM alpine
-MAINTAINER kev <noreply@datageek.info>
+MAINTAINER kev <noreply@easypi.info>
 
 RUN set -xe \
     && apk add -U build-base \
@@ -36,7 +36,7 @@ RUN { \
         echo 'local_enable=YES'; \
         echo 'no_anon_password=YES'; \
         echo 'pasv_addr_resolve=YES'; \
-        echo 'pasv_address=datageek.info'; \
+        echo 'pasv_address=easypi.info'; \
         echo 'pasv_enable=YES'; \
         echo 'pasv_max_port=30010'; \
         echo 'pasv_min_port=30000'; \

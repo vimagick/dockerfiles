@@ -1,10 +1,10 @@
 SHELL = /bin/sh
 PATH := /usr/local/bin:$(PATH)
 
-SMTP = smtp.datageek.info:587
-FROM = urlwatch@datageek.info
+SMTP = smtp.easypi.info:587
+FROM = urlwatch@easypi.info
 PASS = password
-TO = noreply@datageek.info
+TO = noreply@easypi.info
 
 all: setup urls.txt
 	urlwatch -s $(SMTP) -f $(FROM) -t $(TO) -A -T

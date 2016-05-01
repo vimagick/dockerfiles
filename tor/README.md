@@ -41,7 +41,7 @@ tor:
 
 ```
 BridgeRelay 1
-ContactInfo noreply@datageek.info
+ContactInfo noreply@easypi.info
 DataDirectory /var/lib/tor
 Exitpolicy reject *:*
 Nickname datageek
@@ -60,7 +60,7 @@ ServerTransportPlugin obfs4 exec /usr/bin/obfs4proxy
 #Socks5Proxy 127.0.0.1:1080
 UseBridges 1
 #Bridge fte 1.2.3.4:9001 F24BF4DE74649E205A8A3621C84F97FF623B2083
-#Bridge meek 1.2.3.4:9001 url=https://meek.datageek.info:7002/
+#Bridge meek 1.2.3.4:9001 url=https://meek.easypi.info:7002/
 #Bridge obfs3 1.2.3.4:9001 F24BF4DE74649E205A8A3621C84F97FF623B2083
 Bridge obfs4 1.2.3.4:9001 F24BF4DE74649E205A8A3621C84F97FF623B2083
 #ClientTransportPlugin fte exec /usr/local/bin/fteproxy
@@ -74,7 +74,7 @@ ClientTransportPlugin obfs4 exec /usr/local/bin/obfs4proxy
 ## server
 
 ```
-$ openssl req -x509 -newkey rsa:2048 -keyout key.pem -out cert.pem -days 365 -nodes -subj "/C=JP/ST=Tokyo/L=Heiwajima/O=DataGeek/OU=Org/CN=meek.datageek.info"
+$ openssl req -x509 -newkey rsa:2048 -keyout key.pem -out cert.pem -days 365 -nodes -subj "/C=JP/ST=Tokyo/L=Heiwajima/O=DataGeek/OU=Org/CN=meek.easypi.info"
 $ docker-compose up -d
 $ docker-compose logs
 $ docker exec -it tor_tor_1 tor --quiet --list-fingerprint

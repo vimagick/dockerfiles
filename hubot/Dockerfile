@@ -3,7 +3,7 @@
 #
 
 FROM node:slim
-MAINTAINER kev <noreply@datageek.info>
+MAINTAINER kev <noreply@easypi.info>
 
 ENV HUBOT_NAME=hubot
 ENV HUBOT_ADAPTER=slack

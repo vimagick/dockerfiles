@@ -3,7 +3,7 @@
 #
 
 FROM debian:jessie
-MAINTAINER kev <noreply@datageek.info>
+MAINTAINER kev <noreply@easypi.info>
 
 ENV GRAFANA_VERSION=2.6.0
 ENV GRAFANA_FILE=grafana_${GRAFANA_VERSION}_amd64.deb

@@ -26,13 +26,13 @@ $ systemctl stop nginx
 
 # generate keys
 $ docker-compose run --rm --service-ports letsencrypt
->>> email: admin@datageek.info
->>> domains: datageek.info,bbs.datageek.info,blog.datageek.info,wiki.datageek.info
+>>> email: admin@easypi.info
+>>> domains: easypi.info,bbs.easypi.info,blog.easypi.info,wiki.easypi.info
 
 # copy keys
 $ mkdir -p /etc/nginx/ssl/
-$ cp ./etc/letsencrypt/live/datageek.info/fullchain.pem /etc/nginx/ssl/datageek.info.crt
-$ cp ./etc/letsencrypt/live/datageek.info/privkey.pem /etc/nginx/ssl/datageek.info.key
+$ cp ./etc/letsencrypt/live/easypi.info/fullchain.pem /etc/nginx/ssl/easypi.info.crt
+$ cp ./etc/letsencrypt/live/easypi.info/privkey.pem /etc/nginx/ssl/easypi.info.key
 
 # reconfig nginx
 $ vi /etc/nginx/sites-enabled/default
@@ -44,9 +44,9 @@ server {
 
 server {
     listen 443 ssl;
-    server_name datageek.info blog.datageek.info;
-    ssl_certificate ssl/datageek.info.crt;
-    ssl_certificate_key ssl/datageek.info.key;
+    server_name easypi.info blog.easypi.info;
+    ssl_certificate ssl/easypi.info.crt;
+    ssl_certificate_key ssl/easypi.info.key;
     location / {
         proxy_pass http://127.0.0.1:8000;
     }

@@ -3,7 +3,7 @@
 #
 
 FROM php:5.6-apache
-MAINTAINER kev<noreply@datageek.info>
+MAINTAINER kev<noreply@easypi.info>
 
 RUN apt-get update && apt-get install -y curl unzip bzip2 libpq-dev libpng12-dev libjpeg-dev \
         && rm -rf /var/lib/apt/lists/* \

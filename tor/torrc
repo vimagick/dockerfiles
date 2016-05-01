@@ -1,5 +1,5 @@
 BridgeRelay 1
-ContactInfo noreply@datageek.info
+ContactInfo noreply@easypi.info
 DataDirectory /var/lib/tor
 Exitpolicy reject *:*
 Nickname datageek

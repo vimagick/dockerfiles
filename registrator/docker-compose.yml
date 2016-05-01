@@ -1,7 +1,7 @@
 registrator:
   image: gliderlabs/registrator
   command: etcd://127.0.0.1:2379/services
-  hostname: datageek.info
+  hostname: easypi.info
   volumes:
     - /var/run/docker.sock:/tmp/docker.sock
   net: host

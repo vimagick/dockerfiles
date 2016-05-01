@@ -7,7 +7,7 @@ OVPN_DIR=./ovpn
 OVPN_IMG=vimagick/openvpn
 OVPN_DATA=openvpn_data_1
 OVPN_BACKUP=openvpn.tgz
-OVPN_SERVER=tcp://vpn.datageek.info
+OVPN_SERVER=tcp://vpn.easypi.info
 
 mkdir -p $OVPN_DIR
 

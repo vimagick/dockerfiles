@@ -1,6 +1,6 @@
 Package: dnscrypt-proxy
 Version: 1.6.1-1
-Maintainer: noreply@datageek.info
+Maintainer: noreply@easypi.info
 Depends:
 Homepage: https://dnscrypt.org/
 Architecture: armhf

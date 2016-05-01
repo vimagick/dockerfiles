@@ -3,7 +3,7 @@
 #
 
 FROM alpine
-MAINTAINER kev <noreplay@datageek.info>
+MAINTAINER kev <noreplay@easypi.info>
 
 RUN apk add -U ca-certificates py-pip \
     && rm -rf /var/cache/apk/* \

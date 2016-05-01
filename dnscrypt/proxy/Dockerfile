@@ -3,7 +3,7 @@
 #
 
 FROM debian:jessie
-MAINTAINER kev <noreply@datageek.info>
+MAINTAINER kev <noreply@easypi.info>
 
 ENV LIBSODIUM_VERSION 1.0.10
 ENV DNSCRYPT_VERSION 1.6.1

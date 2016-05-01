@@ -3,7 +3,7 @@
 #
 
 FROM vimagick/alpine-arm
-MAINTAINER kev <noreply@datageek.info>
+MAINTAINER kev <noreply@easypi.info>
 
 ENV H2O_VER 1.7.1
 ENV H2O_URL https://github.com/h2o/h2o/archive/v${H2O_VER}.tar.gz

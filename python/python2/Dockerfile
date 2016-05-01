@@ -3,7 +3,7 @@
 #
 
 FROM alpine
-MAINTAINER kev <noreply@datageek.info>
+MAINTAINER kev <noreply@easypi.info>
 
 RUN apk add -U curl python \
     && curl -sSL https://bootstrap.pypa.io/get-pip.py | python \

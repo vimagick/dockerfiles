@@ -3,7 +3,7 @@
 #
 
 FROM ubuntu:14.04
-MAINTAINER kev <noreply@datageek.info>
+MAINTAINER kev <noreply@easypi.info>
 
 RUN set -xe \
     && apt-get update \

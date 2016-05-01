@@ -23,7 +23,7 @@ hugo:
   command: >
     server --bind=0.0.0.0
            --port=80
-           --baseUrl=http://blog.datageek.info/
+           --baseUrl=http://blog.easypi.info/
            --theme=hyde
            --watch
   ports:
@@ -59,6 +59,6 @@ $ hugo
 
 > The last `hugo` command will use `baseurl` in `config.toml`.
 
-Open <http://blog.datageek.info/> in your browser!
+Open <http://blog.easypi.info/> in your browser!
 
 [1]: http://gohugo.io/

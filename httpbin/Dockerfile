@@ -3,7 +3,7 @@
 #
 
 FROM vimagick/python:3
-MAINTAINER kev <noreply@datageek.info>
+MAINTAINER kev <noreply@easypi.info>
 
 RUN pip install gunicorn httpbin
 

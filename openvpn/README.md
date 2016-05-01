@@ -5,8 +5,8 @@ openvpn
 
 OpenVPN is blocked in China. You need to connect vpn via secure tunnel.
 
-- server: vpn.datageek.info
-- bridge: bridge.datageek.info
+- server: vpn.easypi.info
+- bridge: bridge.easypi.info
 - client: localhost
 
 ## docker-compose.yml (server)
@@ -52,7 +52,7 @@ fteproxy:
     - "1194:1194"
   environment:
     - "MODE=client"
-    - "SERVER_IP=vpn.datageek.info"
+    - "SERVER_IP=vpn.easypi.info"
     - "SERVER_PORT=4911"
     - "CLIENT_IP=0.0.0.0"
     - "CLIENT_PORT=1194"
@@ -87,7 +87,7 @@ $ fig up -d
 ```
 $ cat /etc/openvpn/client.conf
 ...
-remote bridge.datageek.info 1194 tcp
+remote bridge.easypi.info 1194 tcp
 route 192.168.1.0 255.255.255.0 net_gateway
 ...
 $ systemctl start openvpn@client

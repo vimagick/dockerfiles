@@ -7,7 +7,7 @@
 #
 
 FROM alpine:edge
-MAINTAINER kev <noreply@datageek.info>
+MAINTAINER kev <noreply@easypi.info>
 
 RUN echo 'http://dl-4.alpinelinux.org/alpine/edge/testing' >> /etc/apk/repositories \
     && apk add -U libreswan xl2tpd ppp \

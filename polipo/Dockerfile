@@ -3,7 +3,7 @@
 #
 
 FROM alpine
-MAINTAINER kev <noreply@datageek.info>
+MAINTAINER kev <noreply@easypi.info>
 
 RUN apk add -U build-base openssl \
     && wget https://github.com/jech/polipo/archive/master.zip -O polipo.zip \

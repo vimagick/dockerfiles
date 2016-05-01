@@ -41,7 +41,7 @@ mysql:
 ```
 server {
     listen 80;
-    server_name discuz.datageek.info;
+    server_name discuz.easypi.info;
     location / {
         proxy_pass http://127.0.0.1:8000;
         proxy_set_header Host $host;

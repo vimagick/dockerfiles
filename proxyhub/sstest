@@ -4,9 +4,9 @@
 # sstest - shadowsocks tester
 #
 #   # Long Form
-#   sstest ss://aes-256-cfb:secret@datageek.info:8388
+#   sstest ss://aes-256-cfb:secret@easypi.info:8388
 #   # Short Form
-#   sstest password@datageek.info
+#   sstest password@easypi.info
 #   # Hash Form
 #   sstest c3M6Ly9hZXMtMjU2LWNmYjpzZWNyZXRAZGF0YWdlZWsuaW5mbzo4Mzg4
 #   # File Form

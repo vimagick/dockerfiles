@@ -3,7 +3,7 @@
 #
 
 FROM alpine
-MAINTAINER kev <norelpy@datageek.info>
+MAINTAINER kev <norelpy@easypi.info>
 
 RUN set -xe \
     && apk add -U build-base \

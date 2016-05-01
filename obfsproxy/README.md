@@ -75,7 +75,7 @@ obfsproxy:
     - "1194:1194/tcp"
   environment:
     - PASSWORD=J23TNHPJPAOQJLTCPLFD4CQYVFY6MEVP
-    - DEST_ADDR=vpn.datageek.info
+    - DEST_ADDR=vpn.easypi.info
     - DEST_PORT=4911
     - RUN_MODE=client
     - LISTEN_ADDR=0.0.0.0

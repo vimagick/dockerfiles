@@ -3,7 +3,7 @@
 #
 
 FROM vimagick/alpine-arm
-MAINTAINER kev <noreply@datageek.info>
+MAINTAINER kev <noreply@easypi.info>
 
 RUN set -ex \
     && apk add -U redis \

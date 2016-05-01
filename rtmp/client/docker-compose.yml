@@ -4,6 +4,6 @@ client:
     - /dev/video0:/dev/video0
   environment:
 #   - RTMP_DEV=rtsp://192.168.42.1/live
-    - RTMP_URI=rtmp://cctv.datageek.info/live/webcam
+    - RTMP_URI=rtmp://cctv.easypi.info/live/webcam
 # net: host
   restart: always

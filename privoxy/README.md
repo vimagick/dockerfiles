@@ -44,7 +44,7 @@ file: user.action
 {+block}
 127.0.0.1
 104.156.239.190
-.datageek.info
+.easypi.info
 
 ```
 

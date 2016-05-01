@@ -3,7 +3,7 @@
 #
 
 FROM ubuntu
-MAINTAINER kev <noreply@datageek.info>
+MAINTAINER kev <noreply@easypi.info>
 
 RUN apt-get update \
     && apt install -y cmake \

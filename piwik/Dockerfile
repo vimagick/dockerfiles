@@ -3,7 +3,7 @@
 #
 
 FROM php:5.6-apache
-MAINTAINER kev <noreply@datageek.info>
+MAINTAINER kev <noreply@easypi.info>
 
 RUN set -xe \
     && apt-get update \

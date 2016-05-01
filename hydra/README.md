@@ -32,9 +32,9 @@ $ docker run --rm -it -v `pwd`:/work vimagick/hydra
 >>> hydra -l admin -P passwd.txt -o hacked.txt http://www.target.com/login.php
     [DATA] max 1 task per 1 server, overall 64 tasks, 3 login try (l:1/p:1), ~0 tries per task
     [DATA] attacking service http-get on port 2812
-    [2812][http-get] host: ss.datageek.info   login: admin   password: admin
+    [2812][http-get] host: ss.easypi.info   login: admin   password: admin
     1 of 1 target successfully completed, 1 valid password found
 
 >>> cat hacked.txt
-    [2812][http-get] host: ss.datageek.info   login: admin   password: admin
+    [2812][http-get] host: ss.easypi.info   login: admin   password: admin
 ```

@@ -88,7 +88,7 @@ server {
 
 server {
     listen 80;
-    server_name blog.foobar.site blog.datageek.info;
+    server_name blog.foobar.site blog.easypi.info;
     location / {
         proxy_pass http://127.0.0.1:6109;
     }
@@ -96,7 +96,7 @@ server {
 
 server {
     listen 80;
-    server_name wiki.foobar.site wiki.datageek.info;
+    server_name wiki.foobar.site wiki.easypi.info;
     location / {
         auth_basic restricted;
         auth_basic_user_file /etc/nginx/htpasswd;
@@ -106,7 +106,7 @@ server {
 
 server {
     listen 80;
-    server_name iot.foobar.site iot.datageek.info;
+    server_name iot.foobar.site iot.easypi.info;
     location / {
         proxy_pass http://127.0.0.1:1880;
         proxy_http_version 1.1;

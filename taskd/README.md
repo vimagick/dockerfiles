@@ -121,7 +121,7 @@ $ scp jp:fig/taskd/taskd/{ca.cert,users/kev.*}.pem .
 $ task config taskd.certificate -- ~/.task/kev.cert.pem
 $ task config taskd.key         -- ~/.task/kev.key.pem
 $ task config taskd.ca          -- ~/.task/ca.cert.pem
-$ task config taskd.server      -- datageek.info:53589
+$ task config taskd.server      -- easypi.info:53589
 $ task config taskd.credentials -- datageek/kev/cf31f287-ee9e-43a8-843e-e8bbd5de4294
 $ task config taskd.trust       -- ignore hostname
 $ task sync init

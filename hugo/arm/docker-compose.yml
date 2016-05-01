@@ -3,7 +3,7 @@ hugo:
   command: >
     server --bind=0.0.0.0
            --port=80
-           --baseUrl=http://blog.datageek.info/
+           --baseUrl=http://blog.easypi.info/
            --watch
   ports:
     - "80:80"

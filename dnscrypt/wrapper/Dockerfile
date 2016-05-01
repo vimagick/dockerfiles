@@ -3,13 +3,13 @@
 #
 
 FROM debian:jessie
-MAINTAINER kev <noreply@datageek.info>
+MAINTAINER kev <noreply@easypi.info>
 
 ENV LIBSODIUM_VERSION 1.0.10
 ENV DNSCRYPT_VERSION 0.2
 ENV RESOLVER_ADDR 8.8.8.8:53
 ENV LISTEN_ADDR 0.0.0.0:443
-ENV PROVIDER_NAME 2.dnscrypt-cert.datageek.info
+ENV PROVIDER_NAME 2.dnscrypt-cert.easypi.info
 
 RUN set -xe \
     && apt-get update \

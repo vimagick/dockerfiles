@@ -3,7 +3,7 @@
 #
 
 FROM alpine
-MAINTAINER kev <noreply@datageek.info>
+MAINTAINER kev <noreply@easypi.info>
 
 RUN apk add --update build-base \
                      python     \
@@ -16,7 +16,7 @@ RUN apk add --update build-base \
                        openssl    \
     && rm -rf /var/cache/apk/*
 
-ENV MAIL_NAME datageek.info
+ENV MAIL_NAME easypi.info
 ENV MAIL_PATH /var/mail
 ENV MAIL_USER admin
 ENV MAIL_PASS admin
