@@ -54,7 +54,6 @@ dockerfiles
 - [x] influxdb
 - [x] iptables
 - [x] jamapi
-- [x] jenkins
 - [x] jenkins-arm :beetle:
 - [x] joomla
 - [x] mantisbt
@@ -122,7 +121,7 @@ dockerfiles
 - [ ] gliderlabs/logspout
 - [x] gliderlabs/registrator
 - [x] gogs :cn:
-- [ ] jenkins
+- [x] jenkins
 - [x] letsencrypt
 - [x] mongo
 - [x] neo4j

@@ -1,5 +1,7 @@
 jenkins:
-  image: vimagick/jenkins-arm
+  image: easypi/jenkins-arm
   ports:
     - "8080:8080"
+  volumes:
+    - ./data:/var/jenkins_home
   restart: always

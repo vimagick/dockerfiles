@@ -18,7 +18,7 @@ jenkins:
   volumes:
     - ./data:/var/jenkins_home
   environment:
-    - JAVA_OPTS=-Dhudson.footerURL=http://easypi.info/
+    - JAVA_OPTS=-Dhudson.footerURL=https://easypi.info/
   restart: always
 ```
 
