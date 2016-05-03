@@ -29,6 +29,7 @@ $ cd ~/fig/jenkins
 $ mkdir -p data
 $ sudo chown 1000 data
 $ docker-compose up -d
+$ docker-compose exec --user root jenkins apk add -U git
 $ docker-compose exec jenkins cat /var/jenkins_home/secrets/initialAdminPassword
 $ firefox http://localhost:8080/
 ```
