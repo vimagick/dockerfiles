@@ -17,7 +17,6 @@ dockerfiles
 - [ ] gitolite
 - [ ] hashcat
 - [ ] irc
-- [ ] plex
 - [ ] sensu
 - [ ] tshark
 
@@ -77,6 +76,7 @@ dockerfiles
 - [x] phantomjs
 - [x] phpbb
 - [x] piwik
+- [x] plex
 - [x] polipo
 - [x] portia
 - [x] pptpd
