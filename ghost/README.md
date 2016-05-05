@@ -1,24 +1,59 @@
 ghost
 =====
 
+[Ghost][1] is a free and open source blogging platform written in JavaScript.
+
 ## docker-compose.yml
 
-```
+```yaml
 ghost:
-    image: ghost
-    ports:
-        - "127.0.0.1:2368:2368"
-    restart: always
+  image: ghost
+  ports:
+    - "127.0.0.1:2368:2368"
+  restart: always
 ```
 
 ## Up and Running
 
-```
+```bash
 $ docker-compose up -d
-$ docker exec -it ghost_ghost_1 bash
+$ docker-compose exec ghost bash
 >>> cd /var/lib/ghost/
->>> sed -i 's/localhost:2368/blog.easypi.info/' config.js
+>>> sed -i 's@http://localhost:2368@https://blog.easypi.info@' config.js
 >>> sed -i '/google/d' themes/casper/default.hbs
 >>> exit
 $ docker-compose restart
 ```
+
+## Setup SSL
+
+> Read [this][2] to setup SSL.
+
+```
+server {
+    listen 80 default;
+    server_name _;
+    location / {
+        return 301 https://$host$request_uri;
+    }
+}
+
+server {
+    listen 443 ssl;
+    server_name easypi.info blog.easypi.info;
+    ssl_certificate ssl/easypi.info.crt;
+    ssl_certificate_key ssl/easypi.info.key;
+    location / {
+        if ($host = 'easypi.info') {
+            return 301 $scheme://blog.$host$request_uri;
+        }
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header Host $http_host;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_pass http://127.0.0.1:2368;
+    }
+}
+```
+
+[1]: https://ghost.org/
+[2]: http://support.ghost.org/setup-ssl-self-hosted-ghost/
