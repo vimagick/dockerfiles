@@ -8,6 +8,8 @@ dockerfiles
 - :book: <https://github.com/vimagick/dockerfiles/wiki>
 - :whale: <https://hub.docker.com/u/vimagick/>
 
+[![](https://www.vultr.com/media/badge_onwhite.png)](https://www.vultr.com/?ref=6821947)
+
 ## TODO
 
 - [ ] cloudtunes
