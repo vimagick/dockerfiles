@@ -22,6 +22,18 @@ gogs:
 
 ```
 $ docker-compose up -d
+
+$ firefox http://localhost/
+
+$ tree -FL 3 ./data/git/
+./data/git/
+├── git -> /data/git
+└── gogs-repositories/
+    ├── root/
+    ├── user1/
+    │   ├── project1.git/
+    │   └── project2.git/
+    └── user2/
 ```
 
 [1]: https://gogs.io/
