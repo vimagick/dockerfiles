@@ -55,5 +55,19 @@ server {
 }
 ```
 
+## Ghost Setup
+
+[Ghost][3] allows you to inject code into the top and bottom of your theme
+files without editing them.
+
+```css
+<style>
+  pre code, pre tt {
+    white-space: pre !important;
+  }
+</style>
+```
+
 [1]: https://ghost.org/
 [2]: http://support.ghost.org/setup-ssl-self-hosted-ghost/
+[3]: https://blog.easypi.info/ghost/settings/code-injection/
