@@ -38,17 +38,17 @@ aria2:
   volumes:
     - "./data:/home/aria2"
     - "./keys:/etc/aria2/keys"
-#   - "./aria2.conf:/etc/aria2.conf"
+#   - "./aria2.conf:/etc/aria2/aria2.conf"
   environment:
     - TOKEN=e6c3778f-6361-4ed0-b126-f2cf8fca06db
   restart: always
 
 yaaw:
-  image: vimagick/h2o
+  image: vimagick/nginx
   ports:
     - "8080:80"
   volumes:
-    - ./html:/var/www/html
+    - ./html:/usr/share/nginx/html
   restart: always
 ```
 
