@@ -1,7 +1,12 @@
 #!/bin/bash
 #
-# dokuwiki backup/restore script
+# DokuWiki backup/restore script
 #
+# WARNING: It will mount current directory as a volume.
+#          Related files should be in current directory.
+#
+
+cd "$(dirname "${BASH_SOURCE[0]}")"
 
 ACTION=${1:?action is required}
 FILENAME=${2:-dw-backup-$(date +%Y%m%d-%H%M%S).tar.gz}
