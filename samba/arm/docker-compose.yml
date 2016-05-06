@@ -1,8 +1,8 @@
 samba:
-  image: vimagick/samba
+  image: easypi/samba-arm
   volumes:
     - ./smb.conf:/etc/samba/smb.conf
-    - ./share:/share
+    - /mnt/usb:/share
   net: host
   tty: yes
   restart: always

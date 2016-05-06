@@ -90,6 +90,7 @@ dockerfiles
 - [x] rsyncd
 - [x] rtmp
 - [x] samba :+1:
+- [x] samba-arm :+1:
 - [x] scrapyd :+1:
 - [x] shadowsocks
     - [x] shadowsocks
