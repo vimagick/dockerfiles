@@ -27,9 +27,9 @@ $ systemctl stop nginx
 # generate keys
 $ docker-compose run --rm --service-ports letsencrypt
 >>> email: admin@easypi.info
->>> domains: easypi.info,bbs.easypi.info,blog.easypi.info,wiki.easypi.info
+>>> domains: easypi.info,blog.easypi.info,wiki.easypi.info
 
-# copy keys
+# deploy keys
 $ mkdir -p /etc/nginx/ssl/
 $ cp ./etc/letsencrypt/live/easypi.info/fullchain.pem /etc/nginx/ssl/easypi.info.crt
 $ cp ./etc/letsencrypt/live/easypi.info/privkey.pem /etc/nginx/ssl/easypi.info.key
@@ -56,10 +56,31 @@ server {
 $ systemctl start nginx
 ```
 
+You can also generate keys without docker.
+
+```bash
+# install
+apt install build-essential dialog libffi-dev libssl-dev python2.7-dev
+curl -sSL https://bootstrap.pypa.io/get-pip.py | python2
+pip2 install letsencrypt
+
+# generate
+letsencrypt certonly --standalone -d easypi.info -d blog.easypi.info -d wiki.easypi.info
+
+# deploy
+mkdir -p /etc/nginx/ssl
+cp /etc/letsencrypt/live/easypi.info/fullchain.pem /etc/nginx/ssl/easypi.info.crt
+cp /etc/letsencrypt/live/easypi.info/privkey.pem /etc/nginx/ssl/easypi.info.key
+
+# renew
+letsencrypt renew
+```
+
 ## references
 
-- https://letsencrypt.readthedocs.org/en/latest/using.html#running-with-docker
-- https://docs.docker.com/compose/reference/run/
-- http://nginx.org/en/docs/http/configuring_https_servers.html
+- <https://letsencrypt.readthedocs.org/en/latest/using.html#running-with-docker>
+- <https://docs.docker.com/compose/reference/run/>
+- <http://nginx.org/en/docs/http/configuring_https_servers.html>
+- <http://support.ghost.org/setup-ssl-self-hosted-ghost/>
 
 [1]: https://letsencrypt.org/
