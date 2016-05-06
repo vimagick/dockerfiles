@@ -15,6 +15,7 @@ samba:
     - ./smb.conf:/etc/samba/smb.conf
     - /mnt/usb:/share
   net: host
+  tty: yes
   restart: always
 ```
 
