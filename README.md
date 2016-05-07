@@ -1,6 +1,8 @@
 dockerfiles
 ===========
 
+A collection of delicious docker recipes.
+
 [![](https://travis-ci.org/vimagick/dockerfiles.svg)](https://travis-ci.org/vimagick/dockerfiles)
 
 - :octocat: <https://github.com/vimagick/dockerfiles>
@@ -77,7 +79,7 @@ dockerfiles
 - [x] phantomjs
 - [x] phpbb
 - [x] piwik
-- [x] plex
+- [x] plex :moneybag:
 - [x] polipo
 - [x] portia
 - [x] pptpd
