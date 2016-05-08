@@ -60,6 +60,7 @@ A collection of delicious docker recipes.
 - [x] joomla
 - [x] mantisbt
 - [x] mariadb
+- [x] minidlna
 - [x] monit
 - [x] moodle :beetle:
 - [x] mosquitto
