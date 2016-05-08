@@ -1,0 +1,8 @@
+minidlna:
+  image: easypi/minidlna-arm
+  ports:
+    - "1900:1900/udp"
+    - "8200:8200/tcp"
+  volumes:
+    - ./data:/opt
+  restart: always
