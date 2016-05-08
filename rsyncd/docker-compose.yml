@@ -3,5 +3,5 @@ rsyncd:
   ports:
     - "873:873"
   volumes:
-    - ./data:/data
+    - ./share:/share
   restart: always

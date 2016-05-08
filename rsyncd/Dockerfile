@@ -5,12 +5,13 @@
 FROM alpine
 MAINTAINER kev <noreply@easypi.info>
 
-RUN apk add -U rsync \
+RUN set -xe \
+    && apk add -U rsync \
     && rm -rf /var/cache/apk/*
 
 COPY rsyncd.* /etc/
 
-VOLUME /data
+VOLUME /share
 EXPOSE 873
 
 CMD rsync --daemon --no-detach --log-file /dev/stdout
