@@ -58,6 +58,7 @@ A collection of delicious docker recipes.
 - [x] jamapi
 - [x] jenkins-arm :beetle:
 - [x] joomla
+- [x] json-server
 - [x] mantisbt
 - [x] mariadb
 - [x] minidlna
