@@ -1,0 +1,11 @@
+mysql-proxy:
+  image: vimagick/mysql-proxy
+  command: >
+    --proxy-address=:4040
+    --proxy-backend-addresses=mysql-server:3306
+    --proxy-lua-script=/code.lua
+  ports:
+    - "3306:4040"
+  volumes:
+    - ./code.lua:/code.lua
+  restart: always
