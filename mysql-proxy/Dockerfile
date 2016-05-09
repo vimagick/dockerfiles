@@ -10,7 +10,7 @@ RUN set -xe \
     && apt-get install -y mysql-proxy \
     && rm -rf /var/lib/apt/lists/*
 
-EXPOSE 4040
+EXPOSE 4040 4041
 
 ENTRYPOINT ["mysql-proxy"]
-CMD ["--help"]
+CMD ["--help-all"]

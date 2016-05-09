@@ -1,11 +1,18 @@
 mysql-proxy:
   image: vimagick/mysql-proxy
+  container_name: mysql-proxy
   command: >
     --proxy-address=:4040
     --proxy-backend-addresses=mysql-server:3306
     --proxy-lua-script=/code.lua
+    --admin-address=:4041
+    --admin-username=root
+    --admin-password=root
+    --admin-lua-script=/usr/lib/mysql-proxy/lua/admin.lua
   ports:
-    - "3306:4040"
+    - "4040:4040"
+    - "4041:4041"
   volumes:
     - ./code.lua:/code.lua
+  log_driver: journald
   restart: always

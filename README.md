@@ -66,6 +66,7 @@ A collection of delicious docker recipes.
 - [x] moodle :beetle:
 - [x] mosquitto
 - [x] motion-arm :+1:
+- [x] mysql-proxy
 - [x] nginad
 - [x] nginx
 - [x] ngrok :+1:
