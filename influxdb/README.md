@@ -18,4 +18,13 @@ influxdb:
   restart: always
 ```
 
+## up and running
+
+- Open url: <http://localhost:8083>
+- Create user: `CREATE USER "username" WITH PASSWORD 'password'`
+- Create database: `CREATE DATABASE "db_name"`
+- Select database: `db_name`
+- Write data: `INSERT cpu,host=serverA,region=us_west value=0.64`
+- Query data: `SELECT * FROM cpu`
+
 [1]: https://influxdata.com/
