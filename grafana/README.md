@@ -29,3 +29,5 @@ $ docker-compose exec grafana bash
 >>> exit
 $ firefox http://localhost:3000
 ```
+
+[1]: http://grafana.org/

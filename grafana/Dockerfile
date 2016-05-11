@@ -5,13 +5,15 @@
 FROM debian:jessie
 MAINTAINER kev <noreply@easypi.info>
 
-ENV GRAFANA_VERSION=2.6.0
+ENV GRAFANA_VERSION=3.0.1
 ENV GRAFANA_FILE=grafana_${GRAFANA_VERSION}_amd64.deb
 ENV GRAFANA_URL=https://grafanarel.s3.amazonaws.com/builds/${GRAFANA_FILE}
 
 RUN set -xe \
     && apt-get update \
-    && apt-get install -y libfontconfig wget \
+    && apt-get install -y ca-certificates \
+                          libfontconfig \
+                          wget \
     && wget ${GRAFANA_URL} \
     && dpkg -i ${GRAFANA_FILE} \
     && apt-get purge --auto-remove -y wget \
