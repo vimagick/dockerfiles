@@ -89,6 +89,7 @@ A collection of delicious docker recipes.
 - [x] privoxy
 - [x] proxyhub
 - [x] pure-ftpd
+- [x] red5-server
 - [x] redis-arm
 - [x] revive
 - [x] routersploit
