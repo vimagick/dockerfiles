@@ -5,7 +5,8 @@
 FROM debian:jessie
 MAINTAINER kev <noreply@easypi.info>
 
-RUN apt-get update \
+RUN set -xe \
+    && apt-get update \
     && apt-get install -y autoconf \
                           build-essential \
                           git \
