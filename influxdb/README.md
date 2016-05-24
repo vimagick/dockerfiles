@@ -1,11 +1,24 @@
 influxdb
 ========
 
+> :warning: Please use the official image [influxdb](https://hub.docker.com/_/influxdb/)!
+
 [InfluxDB][1] is an open source distributed time series database with no external
 dependencies. It's useful for recording metrics, events, and performing
 analytics.
 
 ## docker-compose.yml
+
+```yaml
+influxdb:
+  image: influxdb:alpine
+  ports:
+    - "8083:8083"
+    - "8086:8086"
+  volumes:
+    - ./data:/var/lib/influxdb
+  restart: always
+```
 
 ```yaml
 influxdb:
