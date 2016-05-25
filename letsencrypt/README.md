@@ -81,6 +81,7 @@ letsencrypt renew
 - <https://letsencrypt.readthedocs.org/en/latest/using.html#running-with-docker>
 - <https://docs.docker.com/compose/reference/run/>
 - <http://nginx.org/en/docs/http/configuring_https_servers.html>
+- <https://www.digitalocean.com/community/tutorials/how-to-secure-nginx-with-let-s-encrypt-on-ubuntu-16-04>
 - <http://support.ghost.org/setup-ssl-self-hosted-ghost/>
 
 [1]: https://letsencrypt.org/
