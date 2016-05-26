@@ -14,6 +14,10 @@ RUN set -xe \
                           libffi-dev \
                           libssl-dev \
                           libtool \
+                          libxml2 \
+                          libxml2-dev \
+                          libxslt1.1 \
+                          libxslt1-dev \
                           python \
                           python-dev \
                           vim-tiny \
@@ -28,24 +32,6 @@ RUN set -xe \
                           libwebp-dev \
                           zlib1g \
                           zlib1g-dev \
-    && mkdir libxml2 \
-        && curl -sSL ftp://xmlsoft.org/libxml2/libxml2-2.9.2.tar.gz | tar xz --strip 1 -C libxml2 \
-        && cd libxml2 \
-        && ./configure --prefix=/usr \
-        && make \
-        && make install \
-        && ldconfig \
-        && cd .. \
-        && rm -rf libxml2 \
-    && mkdir libxslt \
-        && curl -sSL https://git.gnome.org/browse/libxslt/snapshot/libxslt-1.1.28.tar.xz | tar xJ --strip 1 -C libxslt \
-        && cd libxslt \
-        && ./autogen.sh --prefix=/usr \
-        && make \
-        && make install \
-        && ldconfig \
-        && cd .. \
-        && rm -rf libxslt \
     && curl -sSL https://bootstrap.pypa.io/get-pip.py | python \
     && pip install git+https://github.com/scrapy/scrapy.git \
                    git+https://github.com/scrapy/scrapyd.git \
@@ -59,6 +45,8 @@ RUN set -xe \
                                       libffi-dev \
                                       libssl-dev \
                                       libtool \
+                                      libxml2-dev \
+                                      libxslt1-dev \
                                       python-dev \
     && apt-get purge -y --auto-remove libtiff5-dev \
                                       libfreetype6-dev \
