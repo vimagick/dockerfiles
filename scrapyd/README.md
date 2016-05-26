@@ -14,6 +14,8 @@ utility which allows you to deploy your project to a Scrapyd server.
 
 [ScrapyJS][4] provides Scrapy+JavaScript integration using Splash.
 
+[Pillow][5] is the Python Imaging Library to support the ImagesPipeline.
+
 This image is based on `debian:jessie` without any useless packages installed.
 Only 4 latest python packages are installed:
 
@@ -21,6 +23,7 @@ Only 4 latest python packages are installed:
 - `scrapyd`: git+https://github.com/scrapy/scrapyd.git
 - `scrapyd-client`: git+https://github.com/scrapy/scrapyd-client.git
 - `scrapyjs`: git+https://github.com/scrapinghub/scrapy-splash.git
+- `pillow`: git+https://github.com/python-pillow/Pillow.git
 
 Please use this image as base for your own project.
 
@@ -66,3 +69,4 @@ $ docker run -it --rm -v `pwd`:/code -w /code vimagick/scrapyd bash
 [2]: https://github.com/scrapy/scrapyd
 [3]: https://github.com/scrapy/scrapyd-client
 [4]: https://github.com/scrapinghub/scrapy-splash
+[5]: https://github.com/python-pillow/Pillow
