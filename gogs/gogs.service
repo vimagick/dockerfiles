@@ -1,0 +1,15 @@
+[Unit]
+Description=Gogs (Go Git Service)
+After=network.target
+
+[Service]
+Type=simple
+User=git
+Group=git
+WorkingDirectory=/home/git/gogs
+ExecStart=/home/git/gogs/gogs web
+Restart=always
+Environment=USER=git HOME=/home/git
+
+[Install]
+WantedBy=multi-user.target
