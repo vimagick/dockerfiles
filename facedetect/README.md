@@ -9,7 +9,7 @@ Quick Start
 -----------
 
 ```
-$ alias facedetect='docker run --rm -v `pwd`:/work -w /work vimagick/facedetect'
+$ alias facedetect='2>/dev/null docker run --rm -v `pwd`:/work -w /work vimagick/facedetect'
 $ facedetect image.png
 ```
 
