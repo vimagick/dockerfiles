@@ -1,0 +1,7 @@
+notebook:
+  image: jupyter/notebook
+  ports:
+    - "8888:8888"
+  volumes:
+    - ./notebooks:/notebooks
+  restart: unless-stopped

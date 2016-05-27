@@ -130,6 +130,7 @@ A collection of delicious docker recipes.
 - [x] gliderlabs/registrator
 - [x] gogs :cn:
 - [x] jenkins
+- [x] jupyter/notebook
 - [x] letsencrypt
 - [x] mongo
 - [x] neo4j
