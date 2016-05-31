@@ -1,8 +1,8 @@
 gogs:
   image: gogs/gogs
   ports:
-    - "22:22"
-    - "80:3000"
+    - "2222:22"
+    - "3000:3000"
   volumes:
     - ./data:/data
   restart: always

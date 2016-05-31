@@ -9,21 +9,23 @@ gogs
 gogs:
   image: gogs/gogs
   ports:
-    - "22:22"
-    - "80:3000"
+    - "2222:22"
+    - "3000:3000"
   volumes:
     - ./data:/data
   restart: always
 ```
-
-> :warning: Listening on port 22 and 80 may cause problems!
 
 ## up and running
 
 ```
 $ docker-compose up -d
 
-$ firefox http://localhost/
+$ docker-compose exec gogs vi /data/gogs/conf/app.ini
+
+$ docker-compose restart
+
+$ firefox http://localhost:3000/
 
 $ tree -FL 3 ./data/git/
 ./data/git/
