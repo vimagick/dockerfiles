@@ -1,9 +1,12 @@
 drone:
-  image: drone/drone:0.4
+  image: drone/drone
   ports:
     - "8000:8000"
   volumes:
     - ./drone:/var/lib/drone
     - /var/run/docker.sock:/var/run/docker.sock
-  env_file: ./dronerc
+  environment:
+    - REMOTE_DRIVER=gogs
+    - REMOTE_CONFIG=https://git.easypi.info/?open=false
+    - DEBUG=true
   restart: always
