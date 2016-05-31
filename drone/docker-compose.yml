@@ -8,5 +8,11 @@ drone:
   environment:
     - REMOTE_DRIVER=gogs
     - REMOTE_CONFIG=https://git.easypi.info/?open=false
-    - DEBUG=true
+    - DEBUG=false
+  restart: always
+
+wall:
+  image: drone/drone-wall
+  ports:
+    - "8080:80"
   restart: always
