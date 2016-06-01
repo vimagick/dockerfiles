@@ -1,0 +1,8 @@
+influxdb:
+  image: easypi/influxdb-arm
+  ports:
+    - "8083:8083"
+    - "8086:8086"
+  volumes:
+    - ./data:/var/lib/influxdb
+  restart: always
