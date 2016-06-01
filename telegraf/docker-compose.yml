@@ -1,0 +1,8 @@
+telegraf:
+  image: telegraf:alpine
+  ports:
+    - "8092:8092/udp"
+    - "8094:8094/tcp"
+  volumes:
+    - ./telegraf.conf:/etc/telegraf/telegraf.conf
+  restart: always

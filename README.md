@@ -108,6 +108,7 @@ A collection of delicious docker recipes.
 - [x] squid
 - [x] swarm-arm
 - [x] taskd
+- [x] telegraf
 - [x] tinc :+1:
 - [x] tmail :beetle:
 - [x] tor
