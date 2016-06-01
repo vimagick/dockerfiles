@@ -12,7 +12,7 @@ ENV TELEGRAF_URL https://dl.influxdata.com/telegraf/releases/${TELEGRAF_FILE}
 RUN set -xe \
     && apk add --no-cache --virtual .build-deps ca-certificates curl tar \
     && update-ca-certificates \
-    && curl -sSL ${TELEGRAF_URL} | tar xz --strip 1 -C / \
+    && curl -sSL ${TELEGRAF_URL} | tar xz --strip 2 -C / \
     && apk del .build-deps \
     && rm -rf /var/cache/apk/*
 
