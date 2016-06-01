@@ -13,7 +13,7 @@ ENV COLLECTD_URL=https://github.com/collectd/collectd/raw/master/src/types.db
 
 RUN set -xe \
     && apt-get update \
-    && apt-get install -y wget \
+    && apt-get install -y ca-certificates wget \
     && wget ${INFLUXDB_URL} -O ${INFLUXDB_FILE} \
     && echo "${INFLUXDB_MD5}  ${INFLUXDB_FILE}" | md5sum -c \
     && dpkg -i ${INFLUXDB_FILE} \
