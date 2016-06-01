@@ -25,9 +25,10 @@ grafana:
 ```
 $ docker-compose up -d
 $ docker-compose exec grafana bash
->>> cd /etc/grafana
->>> cat grafana.ini
+>>> cat /etc/grafana/grafana.ini
+>>> grafana-cli plugins install grafana-worldmap-panel
 >>> exit
+$ docker-compose restart
 $ firefox http://localhost:3000/
 ```
 

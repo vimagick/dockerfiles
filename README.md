@@ -47,6 +47,7 @@ A collection of delicious docker recipes.
 - [x] fteproxy :+1:
 - [x] fteproxy-arm :+1:
 - [x] grafana
+- [x] grafana-arm
 - [x] h2o
 - [x] httpbin :+1:
 - [x] hubot
@@ -54,6 +55,7 @@ A collection of delicious docker recipes.
 - [x] hugo-arm
 - [x] hydra
 - [x] influxdb
+- [x] influxdb-arm
 - [x] iptables
 - [x] jamapi
 - [x] jenkins-arm :beetle:
