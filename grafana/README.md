@@ -14,6 +14,7 @@ grafana:
   ports:
     - "3000:3000"
   environment:
+    - GF_SERVER_ROOT_URL=http://grafana.easypi.info/
     - GF_SECURITY_ADMIN_USER=admin
     - GF_SECURITY_ADMIN_PASSWORD=admin
   restart: always
@@ -27,7 +28,7 @@ $ docker-compose exec grafana bash
 >>> cd /etc/grafana
 >>> cat grafana.ini
 >>> exit
-$ firefox http://localhost:3000
+$ firefox http://localhost:3000/
 ```
 
 [1]: http://grafana.org/

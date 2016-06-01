@@ -1,13 +1,13 @@
 #
-# Dockerfile for grafana
+# Dockerfile for grafana-arm
 #
 
-FROM debian:jessie
+FROM resin/rpi-raspbian:jessie
 MAINTAINER kev <noreply@easypi.info>
 
-ENV GRAFANA_VERSION=3.0.4-1464167696
-ENV GRAFANA_FILE=grafana_${GRAFANA_VERSION}_amd64.deb
-ENV GRAFANA_URL=https://grafanarel.s3.amazonaws.com/builds/${GRAFANA_FILE}
+ENV GRAFANA_VERSION=3.0.4-1464202710
+ENV GRAFANA_FILE=grafana_${GRAFANA_VERSION}_armhf.deb
+ENV GRAFANA_URL=https://github.com/vimagick/rpi-bin/raw/master/deb/${GRAFANA_FILE}
 
 RUN set -xe \
     && apt-get update \

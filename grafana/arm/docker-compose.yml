@@ -1,5 +1,5 @@
 grafana:
-  image: vimagick/grafana
+  image: easypi/grafana-arm
   ports:
     - "3000:3000"
   environment:
