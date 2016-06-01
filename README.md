@@ -111,6 +111,7 @@ A collection of delicious docker recipes.
 - [x] swarm-arm
 - [x] taskd
 - [x] telegraf
+- [x] telegraf-arm
 - [x] tinc :+1:
 - [x] tmail :beetle:
 - [x] tor
