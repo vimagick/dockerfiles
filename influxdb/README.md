@@ -9,6 +9,8 @@ analytics.
 
 ## docker-compose.yml
 
+For official image:
+
 ```yaml
 influxdb:
   image: influxdb:alpine
@@ -19,6 +21,8 @@ influxdb:
     - ./data:/var/lib/influxdb
   restart: always
 ```
+
+For unofficial image:
 
 ```yaml
 influxdb:
