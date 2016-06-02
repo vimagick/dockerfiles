@@ -1,0 +1,5 @@
+scrapyd:
+  image: vimagick/scrapyd
+  ports:
+    - "6800:6800"
+  restart: always
