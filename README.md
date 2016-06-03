@@ -63,6 +63,7 @@ A collection of delicious docker recipes.
 - [x] json-server
 - [x] mantisbt
 - [x] mariadb
+- [x] mariadb-arm
 - [x] minidlna
 - [x] monit
 - [x] moodle :beetle:

@@ -1,0 +1,8 @@
+mariadb:
+  image: easypi/mariadb-arm
+  ports:
+    - "3306:3306"
+  environment:
+    - MYSQL_ROOT_PASSWORD=root
+    - MYSQL_DATABASE=wordpress
+  restart: always
