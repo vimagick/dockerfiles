@@ -46,6 +46,7 @@ A collection of delicious docker recipes.
 - [x] ffserver :beetle:
 - [x] fteproxy :+1:
 - [x] fteproxy-arm :+1:
+- [x] gogs-arm :cn:
 - [x] grafana
 - [x] grafana-arm
 - [x] h2o

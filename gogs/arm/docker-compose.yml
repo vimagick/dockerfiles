@@ -1,0 +1,17 @@
+gogs:
+  image: easypi/gogs-arm
+  ports:
+    - "2222:22"
+    - "3000:3000"
+  volumes:
+    - ./data:/data
+  restart: always
+
+db:
+  image: easypi/mariadb-arm
+  ports:
+    - "3306:3306"
+  environment:
+    - MYSQL_ROOT_PASSWORD=root
+    - MYSQL_DATABASE=gogs
+  restart: always
