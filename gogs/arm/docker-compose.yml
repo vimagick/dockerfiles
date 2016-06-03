@@ -15,3 +15,11 @@ db:
     - MYSQL_ROOT_PASSWORD=root
     - MYSQL_DATABASE=gogs
   restart: always
+
+phpmyadmin:
+  image: easypi/phpmyadmin-arm
+  ports:
+    - "8080:80"
+  links:
+    - db
+  restart: always
