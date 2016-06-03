@@ -85,6 +85,7 @@ A collection of delicious docker recipes.
 - [x] pdnsd
 - [x] phantomjs
 - [x] phpbb
+- [x] phpmyadmin-arm
 - [x] piwik
 - [x] plex :moneybag:
 - [x] polipo
@@ -141,6 +142,7 @@ A collection of delicious docker recipes.
 - [x] mongo
 - [x] neo4j
 - [x] owncloud
+- [x] phpmyadmin
 - [x] rocket.chat
 - [x] scrapinghub/splash
 - [ ] selenium

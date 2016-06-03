@@ -1,0 +1,8 @@
+phpmyadmin:
+  image: phpmyadmin/phpmyadmin
+  ports:
+    - "8080:80"
+  environment:
+    - PMA_HOST=dbhost
+    - PMA_PORT=3306
+  restart: always
