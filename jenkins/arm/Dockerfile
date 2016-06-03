@@ -2,7 +2,7 @@
 # Dockerfile for jenkins-arm
 #
 
-FROM easypi/alpine-arm
+FROM easypi/alpine-arm:edge
 MAINTAINER EasyPi Software Foundation
 
 ENV JENKINS_HOME /var/jenkins_home
