@@ -10,6 +10,7 @@ ENV JENKINS_HOME /var/jenkins_home
 RUN set -xe \
     && apk add -U bash \
                   curl \
+                  git \
                   openjdk7 \
                   openssh-client \
                   ttf-dejavu \
