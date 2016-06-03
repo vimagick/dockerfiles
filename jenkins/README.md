@@ -1,7 +1,7 @@
 jenkins
 =======
 
-![](https://badge.imagelayers.io/vimagick/jenkins:latest.svg)
+![](https://badge.imagelayers.io/jenkinsci/jenkins:latest.svg)
 
 In a nutshell, [Jenkins][1] is the leading open source automation server. Built
 with Java, it provides hundreds of plugins to support building, testing,
@@ -11,14 +11,12 @@ deploying and automation for virtually any project.
 
 ```yml
 jenkins:
-  image: jenkins:alpine
+  image: jenkinsci/jenkins
   ports:
     - "8080:8080"
     - "50000:50000"
   volumes:
     - ./data:/var/jenkins_home
-  environment:
-    - JAVA_OPTS=-Dhudson.footerURL=https://easypi.info/
   restart: always
 ```
 
@@ -29,8 +27,11 @@ $ cd ~/fig/jenkins
 $ mkdir -p data
 $ sudo chown 1000 data
 $ docker-compose up -d
+$ docker-compose exec jenkins bash
+>>> cat secrets/initialAdminPassword
+>>> ssh-keygen
+>>> exit
 $ docker-compose exec --user root jenkins apk add -U git
-$ docker-compose exec jenkins cat /var/jenkins_home/secrets/initialAdminPassword
 $ firefox http://localhost:8080/
 ```
 
