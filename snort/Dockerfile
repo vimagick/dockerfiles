@@ -5,7 +5,12 @@
 FROM debian:jessie
 MAINTAINER kev <noreply@easypi.info>
 
-RUN apt-get update \
+ENV DAQ_VERSION 2.0.6
+ENV SNORT_VERSION 2.9.8.2
+ENV LIBDNET_VERSION 1.12
+
+RUN set -xe \
+    && apt-get update \
     && apt-get install -y build-essential \
                           bison \
                           curl \
@@ -19,14 +24,14 @@ RUN apt-get update \
                           zlib1g \
                           zlib1g-dev \
     && mkdir daq \
-        && curl -sSL https://snort.org/downloads/snort/daq-2.0.6.tar.gz | tar xz --strip 1 -C daq \
+        && curl -sSL https://snort.org/downloads/snort/daq-${DAQ_VERSION}.tar.gz | tar xz --strip 1 -C daq \
         && cd daq \
         && ./configure \
         && make install \
         && cd .. \
         && rm -rf daq \
     && mkdir libdnet \
-        && curl -sSL https://github.com/dugsong/libdnet/archive/libdnet-1.12.tar.gz | tar xz --strip 1 -C libdnet \
+        && curl -sSL https://github.com/dugsong/libdnet/archive/libdnet-${LIBDNET_VERSION}.tar.gz | tar xz --strip 1 -C libdnet \
         && cd libdnet \
         && ./configure \
         && make install \
@@ -34,7 +39,7 @@ RUN apt-get update \
         && cd .. \
         && rm -rf libdnet \
     && mkdir snort \
-        && curl -sSL https://snort.org/downloads/snort/snort-2.9.7.5.tar.gz | tar xz --strip 1 -C snort \
+        && curl -sSL https://snort.org/downloads/snort/snort-${SNORT_VERSION}.tar.gz | tar xz --strip 1 -C snort \
         && cd snort \
         && ./configure --enable-sourcefire \
         && make install \
@@ -48,8 +53,8 @@ RUN apt-get update \
                                       libdnet-dev \
                                       libpcap-dev \
                                       libpcre3-dev \
-                                      zlib1g-dev
+                                      zlib1g-dev \
+    && rm -rf /var/lib/apt/lists/*
 
 ENTRYPOINT ["snort"]
 CMD ["--help"]
-
