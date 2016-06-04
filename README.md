@@ -92,6 +92,7 @@ A collection of delicious docker recipes.
 - [x] portia
 - [x] pptpd
 - [x] privoxy
+- [x] privoxy-arm
 - [x] proxyhub
 - [x] pure-ftpd
 - [x] red5-server

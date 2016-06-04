@@ -1,5 +1,5 @@
 privoxy:
-  image: vimagick/privoxy
+  image: easypi/privoxy-arm
   ports:
     - "8118:8118"
   volumes:
