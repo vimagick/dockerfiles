@@ -1,9 +1,9 @@
 privoxy
 =======
 
-[![](https://badge.imagelayers.io/vimagick/privoxy:latest.svg)](https://imagelayers.io/?images=vimagick/privoxy:latest)
+![](https://badge.imagelayers.io/vimagick/privoxy:latest.svg)
 
-`Privoxy` is a non-caching web proxy with advanced filtering capabilities for
+[Privoxy][1] is a non-caching web proxy with advanced filtering capabilities for
 enhancing privacy, modifying web page data and HTTP headers, controlling
 access, and removing ads and other obnoxious Internet junk. Privoxy has a
 flexible configuration and can be customized to suit individual needs and
@@ -22,7 +22,7 @@ networks.
 
 file: docker-compose.yml
 
-```
+```yaml
 privoxy:
   image: vimagick/privoxy
   ports:
@@ -43,12 +43,11 @@ file: user.action
 
 {+block}
 127.0.0.1
-104.156.239.190
+45.32.57.113
 .easypi.info
-
 ```
 
-> Make sure you block ip/domain which point to server itself.
+> :warning: Make sure you block ip/domain which point to server itself.
 
 file: user.filter
 
@@ -59,7 +58,7 @@ s|</head>|<style>img{transform: rotate(180deg);}</style></head>|gisU
 
 ## server
 
-```
+```bash
 $ cd ~/fig/privoxy/
 $ docker-compose up -d
 $ docker-compose logs
@@ -78,9 +77,11 @@ privoxy_1 | 2015-06-28 17:48:53.069 7ff17bff3ab0 Request: www.example.org/
 
 ## client
 
-```
+```bash
 $ http_proxy=127.0.0.1:8118 wget -O- http://www.example.org
 $ docker run --rm --net container:privoxy_privoxy_1 alpine wget -O- http://www.example.org
 ```
 
 In both cases, you will see `<style>img{transform: rotate(180deg);}</style></head>` in output.
+
+[1]: https://www.privoxy.org/
