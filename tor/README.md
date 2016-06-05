@@ -44,7 +44,7 @@ BridgeRelay 1
 ContactInfo noreply@easypi.info
 DataDirectory /var/lib/tor
 Exitpolicy reject *:*
-Nickname datageek
+Nickname easypi
 ORPort 9001
 PublishServerDescriptor 0
 SocksPort 0
@@ -77,8 +77,8 @@ ClientTransportPlugin obfs4 exec /usr/local/bin/obfs4proxy
 $ openssl req -x509 -newkey rsa:2048 -keyout key.pem -out cert.pem -days 365 -nodes -subj "/C=JP/ST=Tokyo/L=Heiwajima/O=DataGeek/OU=Org/CN=meek.easypi.info"
 $ docker-compose up -d
 $ docker-compose logs
-$ docker exec -it tor_tor_1 tor --quiet --list-fingerprint
-datageek F24B F4DE 7464 9E20 5A8A 3621 C84F 97FF 623B 2083
+$ docker-compose exec tor tor --quiet --list-fingerprint
+easypi F24B F4DE 7464 9E20 5A8A 3621 C84F 97FF 623B 2083
 ```
 
 ## client

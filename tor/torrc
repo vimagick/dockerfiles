@@ -2,7 +2,7 @@ BridgeRelay 1
 ContactInfo noreply@easypi.info
 DataDirectory /var/lib/tor
 Exitpolicy reject *:*
-Nickname datageek
+Nickname easypi
 ORPort 9001
 PublishServerDescriptor 0
 SocksPort 0
