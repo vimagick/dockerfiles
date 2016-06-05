@@ -2,7 +2,7 @@
 # Dockerfile for squid-arm
 #
 
-FROM easypi/alpine-arm
+FROM easypi/alpine-arm:edge
 MAINTAINER EasyPi Software Foundation
 
 RUN set -xe \
