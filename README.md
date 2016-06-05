@@ -81,6 +81,7 @@ A collection of delicious docker recipes.
 - [x] nullmailer-arm
 - [x] obfsproxy
 - [x] opencart
+- [x] openrefine
 - [x] openvpn :+1:
 - [x] pdnsd
 - [x] phantomjs
