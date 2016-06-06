@@ -20,10 +20,12 @@ $ docker-compose up -d
 $ docker-compose exec ghost bash
 >>> cd /var/lib/ghost/
 >>> sed -i 's@http://localhost:2368@https://blog.easypi.info@' config.js
->>> sed -i '/google/d' themes/casper/default.hbs
+>>> grep -rIl 'googleapis' core content | xargs sed -i 's/googleapis/useso/g'
 >>> exit
 $ docker-compose restart
 ```
+
+> :warning: `useso.com` doesn't support https!
 
 ## Setup SSL
 
