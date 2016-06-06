@@ -138,6 +138,7 @@ A collection of delicious docker recipes.
 - [ ] gliderlabs/logspout
 - [x] gliderlabs/registrator
 - [x] gogs :cn:
+- [x] jazzdd/phpvirtualbox
 - [x] jenkins
 - [x] jupyter/notebook
 - [x] letsencrypt

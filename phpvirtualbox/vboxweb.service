@@ -1,0 +1,11 @@
+# /etc/systemd/system/vboxweb.service
+[Unit]
+Description=VirtualBox Web Service
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/vboxwebsrv -H 0.0.0.0 -p 18083
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
