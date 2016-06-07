@@ -87,6 +87,7 @@ A collection of delicious docker recipes.
 - [x] phantomjs
 - [x] phpbb
 - [x] phpmyadmin-arm
+- [x] phpvirtualbox-arm
 - [x] piwik
 - [x] plex :moneybag:
 - [x] polipo
