@@ -11,13 +11,14 @@ RUN set -xe \
     && apk add -U ca-certificates \
                   gzip \
                   nginx \
-                  php-fpm \
-                  php-openssl \
-                  php-pdo_sqlite \
-                  php-sqlite3 \
-                  php-xml \
-                  php-zlib \
+                  php5-fpm \
+                  php5-openssl \
+                  php5-pdo_sqlite \
+                  php5-sqlite3 \
+                  php5-xml \
+                  php5-zlib \
                   tar \
+    && touch /etc/php5/fpm.d/empty.conf \
     && wget -O- http://download.dokuwiki.org/src/dokuwiki/dokuwiki-stable.tgz | tar xz --strip 1 \
     && chown -R nobody:nobody . \
     && rm -rf /var/cache/apk/*
@@ -35,4 +36,4 @@ VOLUME /var/www/html/conf \
 
 EXPOSE 80
 
-CMD php-fpm && nginx -g 'daemon off;'
+CMD mkdir -p /run/nginx && php-fpm && nginx -g 'daemon off;'

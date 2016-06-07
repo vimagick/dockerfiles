@@ -8,6 +8,7 @@ MAINTAINER kev <noreply@easypi.info>
 RUN set -xe \
     && apk add --no-cache bash nginx php5-fpm php5-cli php5-json php5-soap \
     && apk add --no-cache --virtual build-dependencies wget unzip \
+    && touch /etc/php5/fpm.d/empty.conf \
     && wget --no-check-certificate https://sourceforge.net/projects/phpvirtualbox/files/latest/download -O phpvirtualbox.zip \
     && unzip phpvirtualbox.zip -d phpvirtualbox \
     && mkdir -p /var/www \
@@ -29,4 +30,4 @@ COPY servers-from-env.php /servers-from-env.php
 EXPOSE 80
 
 # write linked instances to config, then monitor all services
-CMD php /servers-from-env.php && php-fpm && nginx
+CMD mkdir -p /run/nginx && php /servers-from-env.php && php-fpm && nginx
