@@ -1,0 +1,11 @@
+phpvirtualbox:
+  image: easypi/phpvirtualbox-arm
+  ports:
+    - "8888:80"
+  environment:
+    - ID_PORT_18083_TCP=remote-server:18083
+    - ID_NAME=Vbox
+    - ID_USER=username
+    - ID_PW=password
+    - CONF_browserRestrictFolders=/data,
+  restart: always
