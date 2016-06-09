@@ -1,12 +1,15 @@
 gitlab:
   image: gitlab/gitlab-ce
+  hostname: gitlab.example.com
+  environment:
+    GITLAB_OMNIBUS_CONFIG: |
+      external_url 'https://gitlab.example.com'
   ports:
-    - "8443:443"
-    - "8080:80"
-    - "2222:22"
+    - "22:22"
+    - "80:80"
+    - "443:443"
   volumes:
-    - /srv/gitlab/config:/etc/gitlab
-    - /srv/gitlab/logs:/var/log/gitlab
-    - /srv/gitlab/data:/var/opt/gitlab
-  privileged: true
+    - ./gitlab/config:/etc/gitlab
+    - ./gitlab/logs:/var/log/gitlab
+    - ./gitlab/data:/var/opt/gitlab
   restart: always

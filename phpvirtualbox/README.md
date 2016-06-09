@@ -21,7 +21,7 @@ phpvirtualbox:
 
 > - Make sure you can login `remote-server` with `username:password`.
 > - ISO images can be placed at `/data` directory of `remote-server`.
-> - During the OS installation, you can connect it with RDC program.
+> - During the OS installation, you can connect to it with RDP viewer.
 
 ### vboxweb.service
 
