@@ -1,9 +1,10 @@
 gitlab:
   image: gitlab/gitlab-ce
-  hostname: gitlab.example.com
+  hostname: git.example.com
   environment:
     GITLAB_OMNIBUS_CONFIG: |
-      external_url 'https://gitlab.example.com'
+      external_url 'https://git.example.com'
+      nginx['redirect_http_to_https'] = true
   ports:
     - "22:22"
     - "80:80"

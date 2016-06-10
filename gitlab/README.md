@@ -10,10 +10,11 @@ deployment tool.
 ```
 gitlab:
   image: gitlab/gitlab-ce
-  hostname: gitlab.example.com
+  hostname: git.example.com
   environment:
     GITLAB_OMNIBUS_CONFIG: |
-      external_url 'https://gitlab.example.com'
+      external_url 'https://git.example.com'
+      nginx['redirect_http_to_https'] = true
   ports:
     - "22:22"
     - "80:80"
@@ -24,6 +25,8 @@ gitlab:
     - ./gitlab/data:/var/opt/gitlab
   restart: always
 ```
+
+> You can put TLS crt+key into `./gitlab/config/ssl/`.
 
 ## up and running
 
@@ -36,7 +39,7 @@ $ systemctl restart ssh
 
 $ docker-compose up -d
 
-$ firefox https://gitlab.example.com
+$ firefox https://git.example.com
 ```
 
 ## backup volumes
@@ -54,5 +57,6 @@ $ tar tzf gitlab.tgz
 ## read more
 
 - http://docs.gitlab.com/omnibus/docker/
+- https://gitlab.com/gitlab-org/omnibus-gitlab/blob/master/doc/settings/nginx.md
 
 [1]: https://gitlab.com/
