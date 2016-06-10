@@ -37,6 +37,7 @@ A collection of delicious docker recipes.
 - [x] dante
 - [x] delegated
 - [x] discuz :cn:
+- [x] django-cms
 - [x] dnscrypt
     - [x] dnscrypt-proxy
     - [x] dnscrypt-wrapper
