@@ -10,7 +10,17 @@ WORKDIR /app
 RUN set -xe \
     && apk add -U py-pillow tzdata \
     && pip install djangocms-installer \
-    && djangocms -q -l en --utc -f -p . mysite
+    && mkdir -p data \
+    && djangocms --db sqlite://localhost/data/project.db \
+                 --filer \
+                 --languages en \
+                 --no-input \
+                 --parent-dir . \
+                 --skip-empty-check \
+                 --utc \
+                 mysite
+
+VOLUME /app/data
 
 EXPOSE 80
 
