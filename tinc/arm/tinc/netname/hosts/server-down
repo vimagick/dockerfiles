@@ -1,0 +1,7 @@
+#!/bin/sh
+
+ORIGINAL_GATEWAY=`ip route show | grep ^default | cut -d ' ' -f 2-3`
+
+ip route del $REMOTEADDRESS $ORIGINAL_GATEWAY
+ip route del 0.0.0.0/1 dev $INTERFACE
+ip route del 128.0.0.0/1 dev $INTERFACE
