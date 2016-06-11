@@ -1,0 +1,5 @@
+webgoat:
+  image: vimagick/webgoat
+  ports:
+    - "8080:8080"
+  restart: always

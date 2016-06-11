@@ -124,6 +124,7 @@ A collection of delicious docker recipes.
 - [x] tor
 - [x] urlwatch :beetle:
 - [x] vsftpd
+- [x] webgoat
 - [x] webhook
 - [x] webkit :beetle:
 - [x] youtube :beetle:
