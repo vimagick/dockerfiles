@@ -1,13 +1,15 @@
 phpVirtualBox
 =============
 
+This is a fork of [jazzdd86/phpvirtualbox](https://hub.docker.com/r/jazzdd/phpvirtualbox/).
+
 [phpVirtualBox][1] is a web-based front-end to VirtualBox written in PHP.
 
 ### docker-compose.yml
 
 ```yaml
 phpvirtualbox:
-  image: jazzdd/phpvirtualbox
+  image: vimagick/phpvirtualbox
   ports:
     - "8888:80"
   environment:
@@ -20,7 +22,7 @@ phpvirtualbox:
 ```
 
 > - Make sure you can login `remote-server` with `username:password`.
-> - ISO images can be placed at `/data` directory of `remote-server`.
+> - ISO images can be placed at `/data` directory on `remote-server`.
 > - During the OS installation, you can connect to it with RDP viewer.
 
 ### vboxweb.service

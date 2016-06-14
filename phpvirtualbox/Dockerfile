@@ -1,8 +1,8 @@
 #
-# Dockerfile for phpvirtualbox-arm
+# Dockerfile for phpvirtualbox
 #
 
-FROM easypi/alpine-arm
+FROM alpine
 MAINTAINER kev <noreply@easypi.info>
 
 RUN set -xe \
