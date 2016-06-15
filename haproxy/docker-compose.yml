@@ -1,0 +1,6 @@
+haproxy:
+  image: haproxy:alpine
+  volumes:
+    - ./haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg
+  net: host
+  restart: always

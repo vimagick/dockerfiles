@@ -51,6 +51,7 @@ A collection of delicious docker recipes.
 - [x] grafana
 - [x] grafana-arm
 - [x] h2o
+- [x] haproxy-arm
 - [x] httpbin :+1:
 - [x] hubot
 - [x] hugo
@@ -141,6 +142,7 @@ A collection of delicious docker recipes.
 - [ ] gliderlabs/logspout
 - [x] gliderlabs/registrator
 - [x] gogs :cn:
+- [x] haproxy
 - [x] jazzdd/phpvirtualbox
 - [x] jenkins
 - [x] jupyter/notebook

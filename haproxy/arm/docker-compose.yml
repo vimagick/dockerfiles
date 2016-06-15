@@ -1,0 +1,6 @@
+haproxy:
+  image: easypi/haproxy-arm
+  volumes:
+    - ./haproxy.cfg:/etc/haproxy/haproxy.cfg
+  net: host
+  restart: always
