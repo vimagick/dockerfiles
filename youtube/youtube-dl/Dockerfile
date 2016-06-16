@@ -5,13 +5,12 @@
 FROM alpine
 MAINTAINER kev <noreply@easypi.info>
 
-RUN apk add -U ca-certificates \
-               ffmpeg \
-               python \
-    && rm -rf /var/cache/apk/* \
+RUN set -xe \
+    && apk add --no-cache ca-certificates \
+                          ffmpeg \
+                          python \
     && wget -O- https://bootstrap.pypa.io/get-pip.py | python \
-    && pip install youtube-dl \
-    && mkdir -p /data
+    && pip install youtube-dl
 
 WORKDIR /data
 
