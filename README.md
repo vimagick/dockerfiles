@@ -152,6 +152,7 @@ A collection of delicious docker recipes.
 - [x] neo4j
 - [x] owncloud
 - [x] phpmyadmin
+- [x] registry
 - [x] rocket.chat
 - [x] scrapinghub/splash
 - [ ] selenium
