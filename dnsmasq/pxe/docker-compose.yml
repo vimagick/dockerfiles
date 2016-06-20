@@ -1,0 +1,7 @@
+pxe:
+  image: vimagick/dnsmasq
+  volumes:
+    - ./dnsmasq.conf:/etc/dnsmasq.d/dnsmasq.conf
+    - ./tftpboot:/tftpboot
+  net: host
+  restart: always

@@ -15,8 +15,8 @@ registry:
     - ./certs:/certs
     - ./auth:/auth
   environment:
-    - REGISTRY_HTTP_TLS_CERTIFICATE=/certs/easypi.info.crt
-    - REGISTRY_HTTP_TLS_KEY=/certs/easypi.info.key
+    - REGISTRY_HTTP_TLS_CERTIFICATE=/certs/registry.easypi.info.crt
+    - REGISTRY_HTTP_TLS_KEY=/certs/registry.easypi.info.key
     - REGISTRY_AUTH=htpasswd
     - REGISTRY_AUTH_HTPASSWD_REALM=Registry Realm
     - REGISTRY_AUTH_HTPASSWD_PATH=/auth/htpasswd
@@ -32,11 +32,17 @@ $ docker-compose exec registry bash
 >>> exit
 
 $ docker pull alpine
-$ docker tag alpine easypi.info:5000/alpine
+$ docker tag alpine registry.easypi.info:5000/alpine
 
 $ docker login -u username -p password easypi.info:5000
-$ docker push easypi.info:5000/alpine
-$ docker pull easypi.info:5000/alpine
+$ docker push registry.easypi.info:5000/alpine
+$ docker pull registry.easypi.info:5000/alpine
 ```
+
+## read more
+
+- https://github.com/docker/distribution/blob/master/docs/deploying.md
+- https://github.com/docker/distribution/blob/master/docs/insecure.md
+- https://serversforhackers.com/tcp-load-balancing-with-nginx-ssl-pass-thru
 
 [1]: https://github.com/docker/distribution
