@@ -1,0 +1,8 @@
+nginx:
+  image: easypi/nginx-arm
+  ports:
+    - "80:80"
+  volumes:
+    - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+    - ./html:/usr/share/nginx/html
+  restart: always

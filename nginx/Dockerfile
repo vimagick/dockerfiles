@@ -3,13 +3,10 @@
 #
 
 FROM alpine
+
 MAINTAINER kev <noreply@easypi.info>
 
-RUN set -xe \
-    && apk add -U nginx \
-    && rm -rf /var/cache/apk/*
-
-VOLUME /usr/share/nginx/html
+RUN apk add --no-cache nginx
 
 EXPOSE 80
 
