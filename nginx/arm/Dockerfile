@@ -6,7 +6,9 @@ FROM easypi/alpine-arm
 
 MAINTAINER EasyPi Software Foundation
 
-RUN apk add --no-cache nginx
+RUN set -xe \
+    && apk add --no-cache nginx \
+    && mkdir -p /run/nginx
 
 EXPOSE 80
 

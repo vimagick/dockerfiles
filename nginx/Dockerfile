@@ -6,7 +6,9 @@ FROM alpine
 
 MAINTAINER kev <noreply@easypi.info>
 
-RUN apk add --no-cache nginx
+RUN set -xe \
+    && apk add --no-cache nginx \
+    && mkdir -p /run/nginx
 
 EXPOSE 80
 

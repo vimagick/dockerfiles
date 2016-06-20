@@ -1,7 +1,16 @@
 pxe:
   image: vimagick/dnsmasq
+  net: host
   volumes:
     - ./dnsmasq.conf:/etc/dnsmasq.d/dnsmasq.conf
     - ./tftpboot:/tftpboot
-  net: host
   restart: always
+
+web:
+  image: nginx:alpine
+  ports:
+    - "80:80"
+  volumes:
+    - ./nginx.conf:/etc/nginx/nginx.conf
+    - ./html:/var/lib/nginx/html
+  restsart: always
