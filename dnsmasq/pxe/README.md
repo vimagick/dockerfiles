@@ -27,6 +27,8 @@ web:
   restsart: always
 ```
 
+> :warning: The local mirror doesn't work!
+
 ## dnsmasq.conf
 
 ```
@@ -92,4 +94,5 @@ docker-compose up -d
 docker-compose logs -f
 ```
 
-> You should stop DHCP service on local network.
+> You should stop DHCP service on local network before starting PXE.
+> Also take a look at `preseed.cfg` for unattended installation.

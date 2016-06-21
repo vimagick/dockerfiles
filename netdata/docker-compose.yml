@@ -1,0 +1,5 @@
+netdata:
+  image: vimagick/netdata
+  net: host
+  pid: host
+  restart: always

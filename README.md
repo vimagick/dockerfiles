@@ -73,6 +73,7 @@ A collection of delicious docker recipes.
 - [x] mosquitto
 - [x] motion-arm :+1:
 - [x] mysql-proxy
+- [x] netdata
 - [x] nginad
 - [x] nginx
 - [x] ngrok :+1:
