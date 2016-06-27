@@ -10,13 +10,16 @@
 
 if [ -e /etc/ipsec.d/ipsec.conf ]
 then
-    echo "Already Initialized!"
+    echo "Initialized!"
     exit 0
+else
+    echo "Initializing ..."
 fi
 
 cat > /etc/ipsec.d/ipsec.conf <<_EOF_
 config setup
     uniqueids=never
+    charondebug="cfg 2, dmn 2, ike 2, net 2"
 
 conn %default
     keyexchange=ike
@@ -41,7 +44,7 @@ conn IPSec-IKEv2
     leftsendcert=always
     leftauth=pubkey
     rightauth=pubkey
-    rightid="client.${VPN_DOMAIN}"
+    rightid="client@${VPN_DOMAIN}"
     rightcert=client.cert.pem
     auto=add
 _EOF_
@@ -52,30 +55,12 @@ cat > /etc/ipsec.d/ipsec.secrets <<_EOF_
 _EOF_
 
 
-cat > /etc/strongswan.d/charon.conf <<_EOF_
-charon {
-    duplicheck.enable = no
-    dns1 = ${VPN_DNS}
-    filelog {
-        /var/log/charon.log {
-            time_format = %b %e %T
-            ike_name = yes
-            append = yes
-            default = 1
-            flush_line = yes
-        }
-    }
-    user = root
-}
-_EOF_
-
-
 # gen ca key and cert
 ipsec pki --gen --outform pem > /etc/ipsec.d/private/ca.pem
 
 ipsec pki --self \
           --in /etc/ipsec.d/private/ca.pem \
-          --dn "C=CN, O=ING, CN=StrongSwan CA" \
+          --dn "C=CN, O=strongSwan, CN=strongSwan Root CA" \
           --ca \
           --lifetime 3650 \
           --outform pem > /etc/ipsec.d/cacerts/ca.cert.pem
@@ -85,7 +70,7 @@ ipsec pki --gen --outform pem > /etc/ipsec.d/private/server.pem
 
 ipsec pki --pub --in /etc/ipsec.d/private/server.pem |
     ipsec pki --issue --lifetime 1200 --cacert /etc/ipsec.d/cacerts/ca.cert.pem \
-              --cakey /etc/ipsec.d/private/ca.pem --dn "C=CN, O=ING, CN=${VPN_DOMAIN}" \
+              --cakey /etc/ipsec.d/private/ca.pem --dn "C=CN, O=strongSwan, CN=${VPN_DOMAIN}" \
               --san="${VPN_DOMAIN}" --flag serverAuth --flag ikeIntermediate \
               --outform pem > /etc/ipsec.d/certs/server.cert.pem
 
@@ -95,16 +80,16 @@ ipsec pki --gen --outform pem > /etc/ipsec.d/private/client.pem
 ipsec pki --pub --in /etc/ipsec.d/private/client.pem |
     ipsec pki --issue \
               --cacert /etc/ipsec.d/cacerts/ca.cert.pem \
-              --cakey /etc/ipsec.d/private/ca.pem --dn "C=CN, O=ING, CN=client.${VPN_DOMAIN}" \
-              --san="client.${VPN_DOMAIN}" \
+              --cakey /etc/ipsec.d/private/ca.pem --dn "C=CN, O=strongSwan, CN=client@${VPN_DOMAIN}" \
+              --san="client@${VPN_DOMAIN}" \
               --outform pem > /etc/ipsec.d/certs/client.cert.pem
 
 openssl pkcs12 -export \
                -inkey /etc/ipsec.d/private/client.pem \
                -in /etc/ipsec.d/certs/client.cert.pem \
-               -name "client.${VPN_DOMAIN}" \
+               -name "client@${VPN_DOMAIN}" \
                -certfile /etc/ipsec.d/cacerts/ca.cert.pem \
-               -caname "StrongSwan CA" \
+               -caname "strongSwan Root CA" \
                -out /etc/ipsec.d/client.cert.p12 \
                -passout pass:${VPN_P12_PASSWORD}
 
@@ -156,7 +141,7 @@ $(base64 /etc/ipsec.d/cacerts/ca.cert.pem)
    <key>PayloadDescription</key>
    <string>添加 CA 根证书</string>
    <key>PayloadDisplayName</key>
-   <string>StrongSwan CA</string>
+   <string>strongSwan Root CA</string>
    <key>PayloadIdentifier</key>
    <string>com.apple.security.root.${UUID2}</string>
    <key>PayloadType</key>
@@ -204,7 +189,7 @@ $(base64 /etc/ipsec.d/cacerts/ca.cert.pem)
      <integer>1440</integer>
     </dict>
     <key>LocalIdentifier</key>
-    <string>client.${VPN_DOMAIN}</string>
+    <string>client@${VPN_DOMAIN}</string>
     <key>PayloadCertificateUUID</key>
     <string>${UUID1}</string>
     <key>RemoteAddress</key>

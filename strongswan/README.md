@@ -18,7 +18,6 @@ strongswan:
     - 500:500/udp
     - 4500:4500/udp
   volumes:
-    - ./log:/var/log
     - /lib/modules:/lib/modules
     - /etc/localtime:/etc/localtime
   environment:
@@ -37,7 +36,7 @@ strongswan:
 ```bash
 docker-compose up -d
 docker cp strongswan_strongswan_1:/etc/ipsec.d/client.mobileconfig .
-tail -f log/charon.log
+docker-compose logs -f
 ```
 
 > File `client.mobileconfig` can be imported into MacOSX as `VPN (IKEv2)`.

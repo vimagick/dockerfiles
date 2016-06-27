@@ -4,7 +4,6 @@ strongswan:
     - 500:500/udp
     - 4500:4500/udp
   volumes:
-    - ./log:/var/log
     - /lib/modules:/lib/modules
     - /etc/localtime:/etc/localtime
   environment:
