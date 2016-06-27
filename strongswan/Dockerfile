@@ -1,0 +1,25 @@
+#
+# Dockerfile for ipsec
+#
+
+FROM alpine
+MAINTAINER kev <noreply@easypi.info>
+
+RUN set -xe \
+    && apk add --no-cache iptables openssl strongswan util-linux \
+    && ln -sf /etc/ipsec.d/ipsec.conf /etc/ipsec.conf \
+    && ln -sf /etc/ipsec.d/ipsec.secrets /etc/ipsec.secrets
+
+COPY init.sh /
+
+VOLUME /etc/ipsec.d /etc/strongswan.d
+
+ENV VPN_SUBNET=10.20.30.0/24
+
+EXPOSE 500/udp 4500/udp
+
+CMD set -xe \
+    && /init.sh \
+    && sysctl -w net.ipv4.ip_forward=1 \
+    && iptables -t nat -A POSTROUTING -s $VPN_SUBNET -o eth0 -j MASQUERADE \
+    && ipsec start --nofork

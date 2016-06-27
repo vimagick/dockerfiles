@@ -117,6 +117,7 @@ A collection of delicious docker recipes.
 - [x] shadowvpn
 - [x] snort :beetle:
 - [x] squid
+- [x] strongswan :+1:
 - [x] swarm-arm
 - [x] taskd
 - [x] telegraf
