@@ -8,7 +8,6 @@ strongswan:
     - /etc/localtime:/etc/localtime
   environment:
     - VPN_DOMAIN=vpn.easypi.info
-    - VPN_DNS=8.8.8.8
     - VPN_SUBNET=10.20.30.0/24
     - VPN_P12_PASSWORD=secret
   cap_add:

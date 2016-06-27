@@ -15,6 +15,7 @@ COPY init.sh /
 VOLUME /etc/ipsec.d /etc/strongswan.d
 
 ENV VPN_SUBNET=10.20.30.0/24
+ENV VPN_DNS=8.8.8.8,8.8.4.4
 
 EXPOSE 500/udp 4500/udp
 

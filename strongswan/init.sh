@@ -2,10 +2,10 @@
 #
 # gen config files for strongswan
 #
-# - VPN_SUBNET
-# - VPN_DOMAIN
 # - VPN_DNS
+# - VPN_DOMAIN
 # - VPN_P12_PASSWORD
+# - VPN_SUBNET
 #
 
 if [ -e /etc/ipsec.d/ipsec.conf ]
@@ -27,16 +27,14 @@ conn %default
     dpddelay=300s
     rekey=no
     left=%any
-    leftsubnet=0.0.0.0/0
-    right=%any
-
-conn IKE-BASE
     leftca=ca.cert.pem
     leftcert=server.cert.pem
+    leftsubnet=0.0.0.0/0
+    right=%any
+    rightdns=${VPN_DNS}
     rightsourceip=${VPN_SUBNET}
 
 conn IPSec-IKEv2
-    also=IKE-BASE
     keyexchange=ikev2
     ike=aes256-sha256-modp1024,3des-sha1-modp1024,aes256-sha1-modp1024!
     esp=aes256-sha256,3des-sha1,aes256-sha1!
