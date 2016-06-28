@@ -21,6 +21,6 @@ EXPOSE 500/udp 4500/udp
 
 CMD set -xe \
     && /init.sh \
-    && sysctl -w net.ipv4.ip_forward=1 \
+    && rm -f /var/run/starter.charon.pid \
     && iptables -t nat -A POSTROUTING -s $VPN_SUBNET -o eth0 -j MASQUERADE \
     && ipsec start --nofork
