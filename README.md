@@ -83,6 +83,7 @@ A collection of delicious docker recipes.
 - [x] nullmailer
 - [x] nullmailer-arm
 - [x] obfsproxy
+- [x] ocserv
 - [x] opencart
 - [x] openrefine
 - [x] openvpn :+1:
