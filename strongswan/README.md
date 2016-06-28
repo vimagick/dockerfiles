@@ -22,7 +22,6 @@ strongswan:
     - /etc/localtime:/etc/localtime
   environment:
     - VPN_DOMAIN=vpn.easypi.info
-    - VPN_DNS=8.8.8.8
     - VPN_SUBNET=10.20.30.0/24
     - VPN_P12_PASSWORD=secret
   cap_add:
@@ -36,9 +35,11 @@ strongswan:
 ```bash
 docker-compose up -d
 docker cp strongswan_strongswan_1:/etc/ipsec.d/client.mobileconfig .
+docker cp strongswan_strongswan_1:/etc/ipsec.d/client.cert.p12 .
 docker-compose logs -f
 ```
 
-> File `client.mobileconfig` can be imported into MacOSX as `VPN (IKEv2)`.
+- Mac/IOS: `client.mobileconfig`
+- Android: `client.cert.p12`
 
 [1]: https://strongswan.org/

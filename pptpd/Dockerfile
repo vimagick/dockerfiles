@@ -3,13 +3,9 @@
 #
 
 FROM alpine
-MAINTAINER kev<noreply@easypi.info>
+MAINTAINER kev <noreply@easypi.info>
 
-RUN set -xe \
-    && apk add -U iptables \
-                  ppp \
-                  pptpd \
-    && rm -rf /var/cache/apk/*
+RUN apk add --no-cache iptables ppp pptpd
 
 COPY pptpd.conf    /etc/
 COPY chap-secrets  /etc/ppp/
