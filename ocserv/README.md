@@ -44,7 +44,7 @@ $ docker cp ocserv_ocserv_1:/etc/ocserv/certs/client.p12 .
 $ docker-compose logs -f
 ```
 
-## android client
+## mobile client
 
 There are two auth types:
 
@@ -58,8 +58,15 @@ AnyConnect ->
       Advanced Preferences... ->
         Certificate ->
           Import ->
-            File System
+            File System: client.p12
 ```
+
+## desktop client
+
+[download](https://www.cellsystech.com/software/anyconnect/)
+
+`client.p12` can be imported into keychain.
+
 
 [1]: http://www.infradead.org/ocserv/
 [2]: http://www.gnutls.org/manual/html_node/certtool-Invocation.html

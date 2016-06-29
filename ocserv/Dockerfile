@@ -61,7 +61,7 @@ RUN set -xe \
               -e 's@^try-mtu-discovery = false$@try-mtu-discovery = true@' \
               -e 's@^dns =.*$@dns = 8.8.8.8@' \
               -e 's@^route@#&@' \
-              -e 's@^no-route@#&@' \
+              -e 's@^no-route =.*$@no-route = 192.168.0.0/255.255.0.0@' \
               /etc/ocserv/ocserv.conf \
     && cd .. \
     && apt-get purge --auto-remove -y autogen \
