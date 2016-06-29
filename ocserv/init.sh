@@ -26,6 +26,7 @@ _EOF_
 
 cat > server.tmpl <<_EOF_
 cn = "${VPN_DOMAIN}"
+dns_name = "${VPN_DOMAIN}"
 organization = "ocserv"
 serial = 2
 expiration_days = 3650
@@ -75,12 +76,13 @@ certtool --generate-certificate \
          --outfile client-cert.pem
 
 certtool --to-p12 \
-         --load-privkey client-key.pem \
          --pkcs-cipher 3des-pkcs12 \
+         --load-ca-certificate ca-cert.pem \
          --load-certificate client-cert.pem \
+         --load-privkey client-key.pem \
          --outfile client.p12 \
          --outder \
-         --p12-name "${VPN_USERNAME}" \
+         --p12-name "${VPN_DOMAIN}" \
          --password "${VPN_PASSWORD}"
 
 sed -i -e "s@^ipv4-network =.*@ipv4-network = ${VPN_NETWORK}@" \

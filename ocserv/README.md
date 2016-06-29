@@ -41,6 +41,7 @@ $ docker-compose exec ocserv bash
     Re-enter password: ******
 >>> exit
 $ docker cp ocserv_ocserv_1:/etc/ocserv/certs/client.p12 .
+$ docker cp ocserv_ocserv_1:/etc/ocserv/certs/server-cert.pem .
 $ docker-compose logs -f
 ```
 
@@ -61,11 +62,13 @@ AnyConnect ->
             File System: client.p12
 ```
 
+> :question: Android client show warning dialog: `Certificate is not yet valid.`
+
 ## desktop client
 
 [download](https://www.cellsystech.com/software/anyconnect/)
 
-`client.p12` can be imported into keychain.
+`client.p12` and `server-cert.pem` can be imported into keychain.
 
 
 [1]: http://www.infradead.org/ocserv/
