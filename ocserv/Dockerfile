@@ -53,15 +53,15 @@ RUN set -xe \
     && mkdir -p /etc/ocserv/certs \
     && cp ./doc/sample.config /etc/ocserv/ocserv.conf \
     && cp ./doc/profile.xml /etc/ocserv/profile.xml \
-    && sed -i -e 's@^#user-profile = /path/to/file.xml@user-profile = /etc/ocserv/profile.xml@' \
+    && sed -i -e 's@^#user-profile = /path/to/file.xml@#user-profile = /etc/ocserv/profile.xml@' \
               -e 's@../tests/@/etc/ocserv/certs/@' \
               -e 's@certs/ca.pem@certs/ca-cert.pem@' \
               -e 's@./sample.passwd@/etc/ocserv/ocpasswd@' \
               -e 's@^#enable-auth = "certificate"$@enable-auth = "certificate"@' \
               -e 's@^try-mtu-discovery = false$@try-mtu-discovery = true@' \
               -e 's@^dns =.*$@dns = 8.8.8.8@' \
+              -e 's@^default-domain@#&@' \
               -e 's@^route@#&@' \
-              -e 's@^no-route =.*$@no-route = 192.168.0.0/255.255.0.0@' \
               /etc/ocserv/ocserv.conf \
     && cd .. \
     && apt-get purge --auto-remove -y autogen \
@@ -93,6 +93,8 @@ VOLUME /etc/ocserv
 ENV VPN_DOMAIN=vpn.easypi.info \
     VPN_NETWORK=10.20.30.0     \
     VPN_NETMASK=255.255.255.0  \
+    LAN_NETWORK=192.168.0.0    \
+    LAN_NETMASK=255.255.0.0    \
     VPN_USERNAME=username      \
     VPN_PASSWORD=password
 

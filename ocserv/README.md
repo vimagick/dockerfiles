@@ -18,6 +18,8 @@ ocserv:
     - VPN_DOMAIN=vpn.easypi.info
     - VPN_NETWORK=10.20.30.0
     - VPN_NETMASK=255.255.255.0
+    - LAN_NETWORK=192.168.0.0
+    - LAN_NETMASK=255.255.0.0
     - VPN_USERNAME=username
     - VPN_PASSWORD=password
   cap_add:
@@ -36,14 +38,27 @@ ocserv:
 $ docker-compose up -d
 $ docker-compose exec ocserv bash
 >>> cd /etc/ocserv/
->>> ocpasswd -c /etc/ocserv/ocpasswd username
+>>> echo 'no-route = 1.2.3.4/32' >> ocserv.conf
+>>> ocpasswd -c ocpasswd username
     Enter password: ******
     Re-enter password: ******
 >>> exit
+$ docker-compose restart
 $ docker cp ocserv_ocserv_1:/etc/ocserv/certs/client.p12 .
 $ docker cp ocserv_ocserv_1:/etc/ocserv/certs/server-cert.pem .
 $ docker-compose logs -f
 ```
+
+To remove the password protection of `client.p12`:
+
+```bash
+mv client.p12 client.p12.orig
+openssl pkcs12 -in client.p12.orig -nodes -out tmp.pem
+openssl pkcs12 -export -in tmp.pem -out client.p12 -passout pass:
+rm tmp.pem
+```
+
+> :warning: Apple's Keychain Access will refuse to open it with no passphrase.
 
 ## mobile client
 
@@ -62,7 +77,7 @@ AnyConnect ->
             File System: client.p12
 ```
 
-> :question: Android client show warning dialog: `Certificate is not yet valid.`
+> :question: Android client show warning dialog: `Certificate is not yet valid.` ([WHY?][4])
 
 ## desktop client
 
@@ -74,3 +89,4 @@ AnyConnect ->
 [1]: http://www.infradead.org/ocserv/
 [2]: http://www.gnutls.org/manual/html_node/certtool-Invocation.html
 [3]: http://www.infradead.org/ocserv/manual.html
+[4]: http://www.cisco.com/c/en/us/td/docs/security/vpn_client/anyconnect/anyconnect31/release/notes/anyconnect31rn.html
