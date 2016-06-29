@@ -34,6 +34,16 @@ signing_key
 tls_www_server
 _EOF_
 
+cat > client.tmpl <<_EOF_
+cn = "client@${VPN_DOMAIN}"
+uid = "client@${VPN_DOMAIN}"
+unit = "ocserv"
+expiration_days = 3650
+signing_key
+tls_www_client
+_EOF_
+
+# gen ca keys
 certtool --generate-privkey \
          --outfile ca-key.pem
 
@@ -42,6 +52,7 @@ certtool --generate-self-signed \
          --template ca.tmpl \
          --outfile ca-cert.pem
 
+# gen server keys
 certtool --generate-privkey \
          --outfile server-key.pem
 
@@ -51,6 +62,26 @@ certtool --generate-certificate \
          --load-ca-privkey ca-key.pem \
          --template server.tmpl \
          --outfile server-cert.pem
+
+# gen client keys
+certtool --generate-privkey \
+         --outfile client-key.pem
+
+certtool --generate-certificate \
+         --load-privkey client-key.pem \
+         --load-ca-certificate ca-cert.pem \
+         --load-ca-privkey ca-key.pem \
+         --template client.tmpl \
+         --outfile client-cert.pem
+
+certtool --to-p12 \
+         --load-privkey client-key.pem \
+         --pkcs-cipher 3des-pkcs12 \
+         --load-certificate client-cert.pem \
+         --outfile client.p12 \
+         --outder \
+         --p12-name "${VPN_USERNAME}" \
+         --password "${VPN_PASSWORD}"
 
 sed -i -e "s@^ipv4-network =.*@ipv4-network = ${VPN_NETWORK}@" \
        -e "s@^ipv4-netmask =.*@ipv4-netmask = ${VPN_NETMASK}@" /etc/ocserv/ocserv.conf

@@ -10,4 +10,4 @@ fi
 
 iptables -t nat -A POSTROUTING -s ${VPN_NETWORK}/${VPN_NETMASK} -j MASQUERADE
 
-exec ocserv -c /etc/ocserv/ocserv.conf -f $@
+exec ocserv -c /etc/ocserv/ocserv.conf -f -d 1 "$@"

@@ -52,9 +52,12 @@ RUN set -xe \
     && make install \
     && mkdir -p /etc/ocserv/certs \
     && cp ./doc/sample.config /etc/ocserv/ocserv.conf \
-    && sed -i -e 's@../tests/@/etc/ocserv/certs/@' \
+    && cp ./doc/profile.xml /etc/ocserv/profile.xml \
+    && sed -i -e 's@^#user-profile = /path/to/file.xml@user-profile = /etc/ocserv/profile.xml@' \
+              -e 's@../tests/@/etc/ocserv/certs/@' \
               -e 's@certs/ca.pem@certs/ca-cert.pem@' \
               -e 's@./sample.passwd@/etc/ocserv/ocpasswd@' \
+              -e 's@^#enable-auth = "certificate"$@enable-auth = "certificate"@' \
               -e 's@^try-mtu-discovery = false$@try-mtu-discovery = true@' \
               -e 's@^dns =.*$@dns = 8.8.8.8@' \
               -e 's@^route@#&@' \

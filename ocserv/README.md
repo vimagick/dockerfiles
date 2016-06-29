@@ -23,4 +23,13 @@ ocserv:
   restart: always
 ```
 
+> :warning: Please choose a strong password to protect VPN service.
+
+## up and running
+
+```bash
+$ docker-compose up -d
+$ docker cp ocserv_ocserv_1:/etc/ocserv/certs/client.p12 .
+```
+
 [1]: http://www.infradead.org/ocserv/
