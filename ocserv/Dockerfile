@@ -14,6 +14,7 @@ RUN set -xe \
                           curl \
                           gnutls-bin \
                           iptables \
+                          less \
                           libdbus-1-3 \
                           libdbus-1-dev \
                           libev4 \
@@ -96,7 +97,8 @@ ENV VPN_DOMAIN=vpn.easypi.info \
     LAN_NETWORK=192.168.0.0    \
     LAN_NETMASK=255.255.0.0    \
     VPN_USERNAME=username      \
-    VPN_PASSWORD=password
+    VPN_PASSWORD=password      \
+    TERM=xterm
 
 EXPOSE 443/tcp 443/udp
 

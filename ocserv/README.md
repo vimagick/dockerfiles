@@ -30,6 +30,7 @@ ocserv:
 > - :warning: Please choose a strong password to protect VPN service.
 > - These environment variables are used to generate config files/keys.
 > - VPN accounts can be managed via [ocpasswd][2] command.
+> - VPN status can be viewed via `occtl` command
 > - You can edit the config file [/etc/ocserv/ocserv.conf][3], then restart service.
 
 ## up and running
