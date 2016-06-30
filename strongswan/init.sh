@@ -1,11 +1,11 @@
-#!/bin/sh
+#!/bin/sh -e
 #
 # gen config files for strongswan
 #
 # - VPN_DNS
 # - VPN_DOMAIN
+# - VPN_NETWORK
 # - VPN_P12_PASSWORD
-# - VPN_SUBNET
 #
 
 if [ -e /etc/ipsec.d/ipsec.conf ]
@@ -13,7 +13,7 @@ then
     echo "Initialized!"
     exit 0
 else
-    echo "Initializing ..."
+    echo "Initializing..."
 fi
 
 cat > /etc/ipsec.d/ipsec.conf <<_EOF_
@@ -32,7 +32,7 @@ conn %default
     leftsubnet=0.0.0.0/0
     right=%any
     rightdns=${VPN_DNS}
-    rightsourceip=${VPN_SUBNET}
+    rightsourceip=${VPN_NETWORK}
 
 conn IPSec-IKEv2
     keyexchange=ikev2

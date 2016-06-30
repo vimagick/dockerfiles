@@ -12,22 +12,25 @@ protocols.
 ### docker-compose.yml
 
 ```yaml
-strongswan:
-  image: vimagick/strongswan
-  ports:
-    - 500:500/udp
-    - 4500:4500/udp
-  volumes:
-    - /lib/modules:/lib/modules
-    - /etc/localtime:/etc/localtime
-  environment:
-    - VPN_DOMAIN=vpn.easypi.info
-    - VPN_SUBNET=10.20.30.0/24
-    - VPN_P12_PASSWORD=secret
-  cap_add:
-    - NET_ADMIN
-  privileged: yes
-  restart: always
+version: '2'
+services:
+  strongswan:
+    image: vimagick/strongswan
+    ports:
+      - 500:500/udp
+      - 4500:4500/udp
+    volumes:
+      - /lib/modules:/lib/modules
+      - /etc/localtime:/etc/localtime
+    environment:
+      - VPN_DOMAIN=vpn.easypi.info
+      - VPN_NETWORK=10.20.30.0/24
+      - VPN_P12_PASSWORD=secret
+    cap_add:
+      - NET_ADMIN
+    tmpfs: /run
+    privileged: yes
+    restart: always
 ```
 
 ### up and running

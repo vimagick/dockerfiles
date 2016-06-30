@@ -10,17 +10,15 @@ RUN set -xe \
     && ln -sf /etc/ipsec.d/ipsec.conf /etc/ipsec.conf \
     && ln -sf /etc/ipsec.d/ipsec.secrets /etc/ipsec.secrets
 
-COPY init.sh /
+COPY init.sh /init.sh
+COPY docker-entrypoint.sh /entrypoint.sh
 
 VOLUME /etc/ipsec.d /etc/strongswan.d
 
-ENV VPN_SUBNET=10.20.30.0/24
+ENV VPN_DEVICE=eth0
+ENV VPN_NETWORK=10.20.30.0/24
 ENV VPN_DNS=8.8.8.8,8.8.4.4
 
 EXPOSE 500/udp 4500/udp
 
-CMD set -xe \
-    && /init.sh \
-    && rm -f /var/run/starter.charon.pid \
-    && iptables -t nat -A POSTROUTING -s $VPN_SUBNET -o eth0 -j MASQUERADE \
-    && ipsec start --nofork
+ENTRYPOINT ["/entrypoint.sh"]
