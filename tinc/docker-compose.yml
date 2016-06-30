@@ -6,7 +6,7 @@ tinc:
   volumes:
     - ./tinc:/etc/tinc
   environment:
-    - VERBOSE=2
+    - IP_ADDR=45.32.57.113
   cap_add:
     - NET_ADMIN
   dns: 8.8.8.8

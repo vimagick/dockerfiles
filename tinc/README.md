@@ -6,13 +6,9 @@ tinc
 [tinc][1] is a Virtual Private Network (VPN) daemon that uses tunnelling and
 encryption to create a secure private network between hosts on the Internet.
 
-To use this image, you need to:
+To use this image, you need to have basic knowledges of tinc. (See this [tutor][2])
 
-- Have baisc knowledges of tinc
-- Create a directory tree by hand ([tutor][2])
-- Use `docker-compose` to manage
-
-## directory tree
+## Directory Tree
 
 ```
 ~/fig/tinc/
@@ -41,34 +37,16 @@ tinc:
   volumes:
     - ./tinc:/etc/tinc
   environment:
-    - VERBOSE=2
+    - IP_ADDR=1.2.3.4
   cap_add:
     - NET_ADMIN
   dns: 8.8.8.8
   restart: always
 ```
 
-## server
+## Server Setup
 
 ```bash
-# config
-$ cd ~/fig/tinc/
-$ mkdir -p tinc/netname/hosts/
-$ docker-compose run --rm tinc sh
->>> cat > tinc.conf
-Name=server
-Interface=tun0
->>> cat > hosts/server
-Subnet=10.0.0.1
-Subnet=0.0.0.0/0
->>> tincd -n netname -K4096 < /dev/null
->>> cat > tinc-up
-ifconfig $INTERFACE 10.0.0.1 netmask 255.255.255.0
->>> cat > tinc-down
-ifconfig $INTERFACE down
->>> chmod +x tinc-up tinc-down
->>> exit
-
 # run
 $ docker-compose up -d
 
@@ -76,10 +54,10 @@ $ docker-compose up -d
 $ docker-compose logs
 
 # stats
-$ watch docker exec tinc_tinc_1 netstat -an
+$ watch docker-compose exec tinc netstat -an
 ```
 
-## client
+## Client Setup
 
 ```bash
 # start
@@ -89,7 +67,7 @@ $ tincd -d -D -n netname --pidfile /tmp/tinc.pid
 $ tincd -k --pidfile /tmp/tinc.pid
 ```
 
-## client (openwrt)
+## Client Setup (openwrt)
 
 ```bash
 $ opkg install tinc ip
