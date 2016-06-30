@@ -6,3 +6,4 @@ openconnect:
     - ./data:/etc/openconnect
   stop_signal: SIGINT
   privileged: yes
+  restart: unless-stopped

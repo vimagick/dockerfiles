@@ -97,6 +97,7 @@ A collection of delicious docker recipes.
 - [x] plex :moneybag:
 - [x] polipo
 - [x] portia
+- [x] pptp
 - [x] pptpd
 - [x] privoxy
 - [x] privoxy-arm
