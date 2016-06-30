@@ -11,9 +11,8 @@ services:
     environment:
       - VPN_DOMAIN=vpn.easypi.info
       - VPN_NETWORK=10.20.30.0/24
+      - LAN_NETWORK=192.168.0.0/16
       - VPN_P12_PASSWORD=secret
-    cap_add:
-      - NET_ADMIN
     tmpfs: /run
     privileged: yes
     restart: always
