@@ -31,6 +31,7 @@ A collection of delicious docker recipes.
 - [ ] irc
 - [ ] libreswan
 - [ ] mitmproxy
+- [ ] nagios
 - [ ] nfs
 - [ ] openldap
 - [ ] openswan
@@ -69,6 +70,7 @@ A collection of delicious docker recipes.
 - [x] nginx
 - [x] nullmailer
 - [x] nullmailer-arm
+- [x] openssh
 - [x] phantomjs
 - [x] plex :moneybag:
 - [x] portia
@@ -172,6 +174,8 @@ A collection of delicious docker recipes.
 - [x] dnscrypt
     - [x] dnscrypt-proxy
     - [x] dnscrypt-wrapper
+- [x] dnsmasq
+- [x] dnsmasq-arm
 - [x] pdnsd
 
 ## 3rd-party

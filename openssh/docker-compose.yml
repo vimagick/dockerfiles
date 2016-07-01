@@ -1,0 +1,8 @@
+openssh:
+  image: vimagick/openssh
+  hostname: alpine
+  ports:
+    - "2222:22"
+  volumes:
+    - ./keys:/root/.ssh/keys
+  restart: always
