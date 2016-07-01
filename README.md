@@ -12,58 +12,52 @@ A collection of delicious docker recipes.
 
 [![](https://www.vultr.com/media/badge_onwhite.png)](https://www.vultr.com/?ref=6821947)
 
-## TODO
+## Todo
 
+- [ ] caddy
 - [ ] cloudtunes
+- [ ] dsniff
+- [ ] ettercap
 - [ ] ffmpeg
+- [ ] firehol
 - [ ] freegeoip
+- [ ] freelan
+- [ ] freeradius
+- [ ] gitbook
 - [ ] gitolite
 - [ ] hashcat
+- [ ] imagemagick
+- [ ] ipset
 - [ ] irc
+- [ ] libreswan
+- [ ] mitmproxy
+- [ ] nfs
+- [ ] openldap
+- [ ] openswan
+- [ ] pritunl
+- [ ] pyinstaller
+- [ ] rtmpdump
 - [ ] sensu
+- [ ] tinyproxy
 - [ ] tshark
+- [ ] youtube-upload
+- [ ] xl2tpd
 
-## DONE
+## Daemon
 
 - [x] alpine-arm :+1:
 - [x] aria2 :+1:
 - [x] audiowaveform
-- [x] bro
+- [x] btsync
 - [x] cadvisor
 - [x] casperjs :+1:
-- [x] chinadns
-- [x] clamav
 - [x] collectd
-- [x] dante
-- [x] delegated
-- [x] discuz :cn:
-- [x] django-cms
-- [x] dnscrypt
-    - [x] dnscrypt-proxy
-    - [x] dnscrypt-wrapper
-- [x] dokuwiki :+1:
-- [x] dokuwiki-arm :+1:
-- [x] ferm
 - [x] ffserver :beetle:
-- [x] fteproxy :+1:
-- [x] fteproxy-arm :+1:
-- [x] gogs-arm :cn:
-- [x] grafana
-- [x] grafana-arm
 - [x] h2o
-- [x] haproxy-arm
 - [x] httpbin :+1:
 - [x] hubot
-- [x] hugo
-- [x] hugo-arm
-- [x] hydra
 - [x] influxdb
 - [x] influxdb-arm
-- [x] iptables
-- [x] jamapi
-- [x] jenkins-arm :beetle:
-- [x] joomla
-- [x] json-server
 - [x] mantisbt
 - [x] mariadb
 - [x] mariadb-arm
@@ -72,71 +66,113 @@ A collection of delicious docker recipes.
 - [x] moodle :beetle:
 - [x] mosquitto
 - [x] motion-arm :+1:
-- [x] mysql-proxy
-- [x] netdata
-- [x] nginad
 - [x] nginx
-- [x] ngrok :+1:
-- [x] nodebb :+1:
-- [x] node-red :+1:
-- [x] node-red-arm :+1:
 - [x] nullmailer
 - [x] nullmailer-arm
-- [x] obfsproxy
-- [x] ocserv :+1:
-- [x] opencart
-- [x] openconnect
-- [x] openrefine
-- [x] openvpn :+1:
-- [x] pdnsd
 - [x] phantomjs
-- [x] phpbb
-- [x] phpmyadmin-arm
-- [x] phpvirtualbox-arm
-- [x] piwik
 - [x] plex :moneybag:
-- [x] polipo
 - [x] portia
-- [x] pptp
-- [x] pptpd
-- [x] privoxy
-- [x] privoxy-arm
-- [x] proxyhub
 - [x] pure-ftpd
 - [x] red5-server
 - [x] redis-arm
-- [x] revive
-- [x] routersploit
 - [x] rsyncd
 - [x] rtmp
 - [x] samba :+1:
 - [x] samba-arm :+1:
 - [x] scrapyd :+1:
-- [x] shadowsocks
-    - [x] shadowsocks
-    - [x] shadowsocks-libev :+1:
-    - [x] shadowsocks-arm
-    - [x] shadowsocks-libev-arm :+1:
-- [x] shadowvpn
-- [x] snort :beetle:
-- [x] squid
-- [x] strongswan :+1:
 - [x] swarm-arm
 - [x] taskd
 - [x] telegraf
 - [x] telegraf-arm
-- [x] tinc :+1:
 - [x] tmail :beetle:
-- [x] tor
 - [x] urlwatch :beetle:
 - [x] vnstat
 - [x] vsftpd
-- [x] webgoat
 - [x] webhook
 - [x] webkit :beetle:
 - [x] youtube :beetle:
     - [x] youtube-dl
     - [x] youtube-worker
+
+## Web
+
+- [x] discuz :cn:
+- [x] django-cms
+- [x] dokuwiki :+1:
+- [x] dokuwiki-arm :+1:
+- [x] gogs-arm :cn:
+- [x] grafana
+- [x] grafana-arm
+- [x] hugo
+- [x] hugo-arm
+- [x] jamapi
+- [x] jenkins-arm :beetle:
+- [x] joomla
+- [x] json-server
+- [x] netdata
+- [x] nginad
+- [x] nodebb :+1:
+- [x] node-red :+1:
+- [x] node-red-arm :+1:
+- [x] opencart
+- [x] openrefine
+- [x] phpbb
+- [x] phpmyadmin-arm
+- [x] phpvirtualbox-arm
+- [x] piwik
+- [x] revive
+
+## Security
+
+- [x] bro
+- [x] clamav
+- [x] ferm
+- [x] hydra
+- [x] iptables
+- [x] routersploit
+- [x] snort :beetle:
+- [x] webgoat
+
+## Proxy
+
+- [x] dante
+- [x] delegated
+- [x] fteproxy :+1:
+- [x] fteproxy-arm :+1:
+- [x] haproxy-arm
+- [x] mysql-proxy
+- [x] ngrok :+1:
+- [x] obfsproxy
+- [x] polipo
+- [x] privoxy
+- [x] privoxy-arm
+- [x] proxyhub
+- [x] shadowsocks
+    - [x] shadowsocks
+    - [x] shadowsocks-libev :+1:
+    - [x] shadowsocks-arm
+    - [x] shadowsocks-libev-arm :+1:
+- [x] squid
+- [x] tor
+
+## VPN
+
+- [x] ocserv :+1:
+- [x] openconnect
+- [x] openvpn :+1:
+- [x] pptp
+- [x] pptpd
+- [x] shadowvpn
+- [x] strongswan :+1:
+- [x] tinc :+1:
+
+## DNS
+
+- [x] chinadns
+- [x] dnscrypt
+    - [x] dnscrypt-proxy
+    - [x] dnscrypt-wrapper
+- [x] pdnsd
 
 ## 3rd-party
 
@@ -147,6 +183,9 @@ A collection of delicious docker recipes.
 - [x] gitlab/gitlab-ce
 - [ ] gliderlabs/logspout
 - [x] gliderlabs/registrator
+- [ ] glot
+    - [ ] bash
+    - [ ] python
 - [x] gogs :cn:
 - [x] haproxy
 - [x] jazzdd/phpvirtualbox
