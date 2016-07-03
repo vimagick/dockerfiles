@@ -26,16 +26,18 @@ server:
   restart: always
 
 client:
-  image: vimagick/rtmp-client-arm
+  image: easypi/rtmp-client-arm
 # command: ffmpeg -i /dev/video0 -vf "hflip,vflip" -f flv rtmp://cctv.easypi.info/live/webcam
   devices:
     - /dev/video0:/dev/video0
   environment:
+#   - RTMP_DEV=rtsp://192.168.42.1/live
     - RTMP_URI=rtmp://easypi.info/live/webcam
   restart: always
 ```
 
-> You can run customized `ffmpeg` command.
+> - You can run customized `ffmpeg` command.
+> - Input can be stream instead of device. (It works as a relay!)
 
 ## Server
 
