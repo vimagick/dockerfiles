@@ -18,7 +18,6 @@ A collection of delicious docker recipes.
 - [ ] cloudtunes
 - [ ] dsniff
 - [ ] ettercap
-- [ ] ffmpeg
 - [ ] firehol
 - [ ] freegeoip
 - [ ] freelan
@@ -92,9 +91,12 @@ A collection of delicious docker recipes.
 - [x] vsftpd
 - [x] webhook
 - [x] webkit :beetle:
-- [x] youtube :beetle:
-    - [x] youtube-dl
-    - [x] youtube-worker
+- [x] youtube-worker :beetle:
+
+## Tool
+
+- [x] ffmpeg
+- [x] youtube-dl
 
 ## Web
 
