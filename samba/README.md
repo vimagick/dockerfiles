@@ -12,12 +12,14 @@ Linux and Unix.
 samba:
   image: vimagick/samba
   volumes:
-    - ./smb.conf:/etc/samba/smb.conf
+#   - ./smb.conf:/etc/samba/smb.conf
     - /mnt/usb:/share
   net: host
   tty: yes
   restart: always
 ```
+
+> Uncomment to use a customized config file.
 
 ## mnt-usb.mount
 
