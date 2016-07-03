@@ -10,29 +10,18 @@ rtmp
 ~/fig/rtmp/
 ├── data/
 │   └── video.mp4
-├── docker-compose.yml
-├── html
-│   ├── img
-│   │   └── cctv.jpg
-│   ├── index.html
-│   └── js
-│       ├── jquery.min.js
-│       ├── jwplayer.flash.swf
-│       └── jwplayer.js
-└── nginx/
-    └── nginx.conf
+└── docker-compose.yml
 ```
 
 ## docker-compose.yml
 
 ```yaml
 server:
-  image: vimagick/nginx
+  image: vimagick/rtmp-server
   ports:
     - "1935:1935"
     - "9999:80"
   volumes:
-    - ./nginx/nginx.conf:/etc/nginx/nginx.conf
     - ./data:/data
   restart: always
 
@@ -64,7 +53,7 @@ $ vlc rtmp://easypi.info/vod/video.mp4
 
 # play local video (local -> remote -> local)
 $ ffmpeg -re -i video.mp4 -f flv rtmp://easypi.info/live/video
-$ vlc rtmp://easypi.info/live/video.mp4
+$ vlc rtmp://easypi.info/live/video
 
 # capture desktop (local -> remote)
 $ ffmpeg -f avfoundation -pixel_format bgr0 -i 1:0 -f flv rtmp://easypi.info/live/webcam
@@ -80,6 +69,9 @@ $ /opt/vc/bin/raspivid -o - -t 0 -hf -w 640 -h 360 -fps 25 | ffmpeg -i - -f flv 
 
 # watch webcam (remote -> local)
 $ vlc rtmp://easypi.info/live/webcam
+
+# watch webcam (remote -> local)
+$ firefox http://easypi.info:9999/
 ```
 
 Optinally, you can run a docker container as RTMP client on raspberry pi.
