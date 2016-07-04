@@ -1,10 +1,13 @@
 magento:
-  build: .
-  net: host
+  image: vimagick/magento
+  ports:
+    - "8000:80"
+  links:
+    - mysql
   restart: always
+
 mysql:
   image: mysql
-  net: host
   environment:
     - MYSQL_ROOT_PASSWORD=root
     - MYSQL_DATABASE=magento

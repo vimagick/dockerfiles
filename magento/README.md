@@ -1,12 +1,14 @@
 magento
 =======
 
-`Magento` Community Edition is open source eCommerce software used to power your
+[Magento][1] Community Edition is open source eCommerce software used to power your
 online store and can be downloaded for free. Developers can modify the core
 code and add features and functionality by installing extensions from the
 Magento Connect marketplace.
 
-```
+## docker-compose.yml
+
+```yaml
 magento:
   image: vimagick/magento
   ports:
@@ -22,3 +24,5 @@ mysql:
     - MYSQL_DATABASE=magento
   restart: always
 ```
+
+[1]: https://magento.com/

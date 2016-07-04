@@ -58,7 +58,6 @@ A collection of delicious docker recipes.
 - [x] hubot
 - [x] influxdb
 - [x] influxdb-arm
-- [x] mantisbt
 - [x] mariadb
 - [x] mariadb-arm
 - [x] minidlna
@@ -113,6 +112,8 @@ A collection of delicious docker recipes.
 - [x] jenkins-arm :beetle:
 - [x] joomla
 - [x] json-server
+- [x] magento
+- [x] mantisbt
 - [x] netdata
 - [x] nginad
 - [x] nodebb :+1:
