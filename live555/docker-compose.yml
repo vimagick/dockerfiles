@@ -1,0 +1,8 @@
+live555:
+  image: vimagick/live555
+  ports:
+    - "8080:80"
+    - "554:554"
+  volumes:
+    - ./data:/data
+  restart: always

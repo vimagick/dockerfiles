@@ -58,6 +58,7 @@ A collection of delicious docker recipes.
 - [x] hubot
 - [x] influxdb
 - [x] influxdb-arm
+- [x] live555
 - [x] mariadb
 - [x] mariadb-arm
 - [x] minidlna
