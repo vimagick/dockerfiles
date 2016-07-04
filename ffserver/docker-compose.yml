@@ -1,6 +1,7 @@
 ffserver:
   image: vimagick/ffserver
   ports:
+    - "554:554"
     - "8090:8090"
   volumes:
     - ./ffserver.conf:/etc/ffserver.conf

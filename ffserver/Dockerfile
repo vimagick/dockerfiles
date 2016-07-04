@@ -1,14 +1,13 @@
 #
-# Dockerfile for ffmpeg
+# Dockerfile for ffserver
 #
 
-FROM alpine
+FROM vimagick/ffmpeg
+
 MAINTAINER kev <noreply@easypi.info>
 
-RUN apk add -U ffmpeg
+COPY ffserver.conf /etc/
 
-ADD ffserver.conf /etc/
+EXPOSE 554 8090
 
-EXPOSE 8090
-
-CMD ["ffserver"]
+ENTRYPOINT ["ffserver"]
