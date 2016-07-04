@@ -1,4 +1,0 @@
-red5-server:
-  image: vimagick/red5-server
-  net: host
-  restart: always

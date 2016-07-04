@@ -74,7 +74,7 @@ A collection of delicious docker recipes.
 - [x] plex :moneybag:
 - [x] portia
 - [x] pure-ftpd
-- [x] red5-server
+- [x] red5
 - [x] redis-arm
 - [x] rsyncd
 - [x] rtmp
