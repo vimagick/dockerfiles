@@ -27,7 +27,8 @@ server:
 
 client:
   image: easypi/rtmp-client-arm
-# command: ffmpeg -i /dev/video0 -video_size 640x480 -vf "hflip,vflip" -f flv rtmp://cctv.easypi.info/live/webcam
+# command:
+#   - ffmpeg -i $$RTMP_DEV -video_size 800x600 -vf "hflip,vflip" -f flv $$RTMP_URI
   devices:
     - /dev/video0:/dev/video0
   environment:
@@ -36,10 +37,10 @@ client:
   restart: always
 ```
 
-> - You can run customized `ffmpeg` command.
-> - Input can be stream instead of device. (It works as a relay!)
+> - You can run customized command. (It should be single item list!)
+> - Input can be a stream instead of device. (It works as a relay!)
 
-## Server
+## Server Setup
 
 ```
 $ cd ~/fig/rtmp/
@@ -47,7 +48,7 @@ $ docker-compose up -d server
 $ youtube-dl 'https://www.youtube.com/watch?v=lJZlz-WnXzU' -o data/video.mp4
 ```
 
-## Client
+## Client Setup
 
 ```
 # play remote video (remote -> local)
@@ -83,7 +84,7 @@ $ cd ~/fig/rtmp/
 $ docker-compose up -d client
 ```
 
-## OBS
+## OBS Setup
 
 ```yaml
 Stream Type: Custom Streaming Server

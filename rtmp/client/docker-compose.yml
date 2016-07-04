@@ -1,5 +1,7 @@
 client:
   image: easypi/rtmp-client-arm
+# command:
+#   - ffmpeg -i $$RTMP_DEV -video_size 800x600 -f flv $$RTMP_URI
   devices:
     - /dev/video0:/dev/video0
   environment:
