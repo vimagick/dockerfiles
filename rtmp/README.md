@@ -27,7 +27,7 @@ server:
 
 client:
   image: easypi/rtmp-client-arm
-# command: ffmpeg -i /dev/video0 -vf "hflip,vflip" -f flv rtmp://cctv.easypi.info/live/webcam
+# command: ffmpeg -i /dev/video0 -video_size 640x480 -vf "hflip,vflip" -f flv rtmp://cctv.easypi.info/live/webcam
   devices:
     - /dev/video0:/dev/video0
   environment:
@@ -83,9 +83,18 @@ $ cd ~/fig/rtmp/
 $ docker-compose up -d client
 ```
 
+## OBS
+
+```yaml
+Stream Type: Custom Streaming Server
+URL: rtmp://192.168.31.254/live/
+Streaming key: webcam
+```
+
 ## References
 
 - https://github.com/arut/nginx-rtmp-module/wiki/Directives
 - https://trac.ffmpeg.org/wiki/StreamingGuide
 - https://trac.ffmpeg.org/wiki/Capture/Webcam
+- https://trac.ffmpeg.org/wiki/EncodingForStreamingSites
 - http://apk-dl.com/vlc-for-android/org.videolan.vlc/

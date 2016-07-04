@@ -2,10 +2,9 @@
 # Dockerfile for rtmp-client-arm
 #
 
-FROM easypi/alpine-arm
-MAINTAINER EasyPi Software Foundation
+FROM easypi/ffmpeg-arm
 
-RUN apk add --no-cache ffmpeg
+MAINTAINER EasyPi Software Foundation
 
 ENV RTMP_DEV=/dev/video0 \
     RTMP_FMT=flv \
