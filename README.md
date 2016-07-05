@@ -42,6 +42,7 @@ A collection of delicious docker recipes.
 - [ ] tshark
 - [ ] youtube-upload
 - [ ] xl2tpd
+- [ ] zoneminder
 
 ## Daemon
 

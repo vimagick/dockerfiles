@@ -1,0 +1,15 @@
+zoneminder:
+  image: vimagick/zoneminder
+  ports:
+    - "8080:80"
+  links:
+    - mysql
+  restart: always
+
+mysql:
+  image: mysql
+  volumes:
+    - ./sql:/docker-entrypoint-initdb.d
+  environment:
+    - MYSQL_ROOT_PASSWORD=root
+  restart: always
