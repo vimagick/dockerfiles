@@ -1,0 +1,12 @@
+reconcile-csv:
+  image: vimagick/openrefine-reconcile-csv
+  ports:
+    - "8000:8000"
+  volumes:
+    - ./data:/data
+  environment:
+    - JAVA_OPTS=-Xmx2g
+    - CSV_FILE=input.csv
+    - SEARCH_COLUMN=name
+    - ID_COLUMN=id
+  restart: unless-stopped
