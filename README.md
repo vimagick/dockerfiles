@@ -75,10 +75,12 @@ A collection of delicious docker recipes.
 - [x] plex :moneybag:
 - [x] portia
 - [x] pure-ftpd
-- [x] red5
+- [x] red5 :+1:
+- [x] red5-arm
 - [x] redis-arm
 - [x] rsyncd
-- [x] rtmp
+- [x] rtmp-client
+- [x] rtmp-server
 - [x] samba :+1:
 - [x] samba-arm :+1:
 - [x] scrapyd :+1:

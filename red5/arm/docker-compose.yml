@@ -1,0 +1,7 @@
+red5:
+  image: easypi/red5-arm
+  ports:
+    - "1935:1935"  # rtmp/e
+    - "5080:5080"  # http
+    - "8081:8081"  # websocket
+  restart: always
