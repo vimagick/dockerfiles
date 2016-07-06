@@ -12,12 +12,13 @@ ENV OR_URL https://github.com/OpenRefine/OpenRefine/releases/download/${OR_VERSI
 WORKDIR /app
 
 RUN set -xe \
-    && apk add -U bash curl tar \
-    && curl -sSL ${OR_URL} | tar xz --strip 1 \
-    && rm -rf /var/cache/apk/*
+    && apk add --no-cache bash curl jq tar \
+    && curl -sSL ${OR_URL} | tar xz --strip 1
 
-VOLUME /root/.local/share/openrefine
+VOLUME /data
+WORKDIR /data
 
 EXPOSE 3333
 
-CMD /app/refine -i 0.0.0.0
+ENTRYPOINT ["/app/refine"]
+CMD ["-i", "0.0.0.0", "-d", "/data"]

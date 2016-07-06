@@ -29,8 +29,10 @@ client:
   image: easypi/rtmp-client-arm
 # command:
 #   - ffmpeg -i $$RTMP_DEV -video_size 800x600 -vf "hflip,vflip" -f flv $$RTMP_URI
+#   - ffmpeg -f alsa -i default -i $$RTMP_DEV -c:a aac -c:v libx264 -f flv $$RTMP_URI
   devices:
-    - /dev/video0:/dev/video0
+#   - /dev/snd
+    - /dev/video0
   environment:
 #   - RTMP_DEV=rtsp://192.168.42.1/live
     - RTMP_URI=rtmp://easypi.info/live/webcam

@@ -21,6 +21,10 @@ red5:
 
 ```bash
 $ docker-compose up -d
+$ docker-compose exec red5 bash
+>>> vi /opt/red5/conf/red5.properties
+>>> exit
+$ docker-compose restart
 ```
 
 ## Client Setup
