@@ -1,0 +1,11 @@
+nifi:
+  image: vimagick/nifi
+  ports:
+    - "8080:8080"
+    - "8081:8081"
+  volumes:
+    - ./data/content_repository:/opt/nifi/content_repository
+    - ./data/database_repository:/opt/nifi/database_repository
+    - ./data/flowfile_repository:/opt/nifi/flowfile_repository
+    - ./data/provenance_repository:/opt/nifi/provenance_repository
+  restart: always

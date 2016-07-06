@@ -68,6 +68,7 @@ A collection of delicious docker recipes.
 - [x] mosquitto
 - [x] motion-arm :+1:
 - [x] nginx
+- [x] nifi
 - [x] nullmailer
 - [x] nullmailer-arm
 - [x] openssh
