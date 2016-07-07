@@ -42,7 +42,6 @@ A collection of delicious docker recipes.
 - [ ] tshark
 - [ ] youtube-upload
 - [ ] xl2tpd
-- [ ] zoneminder
 
 ## Daemon
 
@@ -53,16 +52,13 @@ A collection of delicious docker recipes.
 - [x] cadvisor
 - [x] casperjs :+1:
 - [x] collectd
-- [x] ffserver :beetle:
 - [x] h2o
 - [x] httpbin :+1:
 - [x] hubot
 - [x] influxdb
 - [x] influxdb-arm
-- [x] live555
 - [x] mariadb
 - [x] mariadb-arm
-- [x] minidlna
 - [x] monit
 - [x] moodle :beetle:
 - [x] mosquitto
@@ -73,15 +69,10 @@ A collection of delicious docker recipes.
 - [x] nullmailer-arm
 - [x] openssh
 - [x] phantomjs
-- [x] plex :moneybag:
 - [x] portia
 - [x] pure-ftpd
-- [x] red5 :+1:
-- [x] red5-arm
 - [x] redis-arm
 - [x] rsyncd
-- [x] rtmp-client
-- [x] rtmp-server
 - [x] samba :+1:
 - [x] samba-arm :+1:
 - [x] scrapyd :+1:
@@ -95,12 +86,20 @@ A collection of delicious docker recipes.
 - [x] vsftpd
 - [x] webhook
 - [x] webkit :beetle:
-- [x] youtube-worker :beetle:
 
-## Tool
+## Media
 
 - [x] ffmpeg
+- [x] ffserver :beetle:
+- [x] live555
+- [x] minidlna
+- [x] plex :moneybag:
+- [x] red5 :+1:
+- [x] red5-arm :construction:
+- [x] rtmp-client
+- [x] rtmp-server
 - [x] youtube-dl
+- [x] youtube-worker :beetle:
 
 ## Web
 
@@ -131,6 +130,7 @@ A collection of delicious docker recipes.
 - [x] phpvirtualbox-arm
 - [x] piwik
 - [x] revive
+- [x] zoneminder
 
 ## Security
 
