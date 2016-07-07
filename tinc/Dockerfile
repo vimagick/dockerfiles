@@ -9,6 +9,7 @@ RUN apk add --no-cache iptables tinc
 
 COPY init.sh /init.sh
 COPY docker-entrypoint.sh /entrypoint.sh
+COPY peer.sh /usr/local/bin/peer.sh
 
 VOLUME /etc/tinc
 

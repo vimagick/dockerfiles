@@ -17,6 +17,7 @@ $ ffmpeg -i video.mov video.mp4
 
 ## Todo List
 
-- [ ] Re-compile with fontconfig/freetype enabled to support text overlay.
+- [ ] Re-compile with fontconfig/freetype enabled to support [timestamp][2] overlay.
 
 [1]: http://ffmpeg.org/
+[2]: https://einar.slaskete.net/2011/09/05/adding-time-stamp-overlay-to-video-stream-using-ffmpeg/
