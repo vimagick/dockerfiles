@@ -33,6 +33,8 @@ $ docker-compose restart
 $ ffmpeg -i /dev/video0 -video_size 800x600 -f flv rtmp://easypi.info/live/webcam
 ```
 
+> Please try [easypi/rtmp-client-arm][2] on Raspberry Pi.
+
 ## Player Setup
 
 ```bash
@@ -50,3 +52,4 @@ $ ffplay 'rtmp://easypi.info/live/webcam live=1'
 - <http://kodi.wiki/view/Internet_video_and_audio_streams>
 
 [1]: https://github.com/Red5/red5-server
+[2]: https://hub.docker.com/r/easypi/rtmp-client-arm/

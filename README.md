@@ -90,13 +90,14 @@ A collection of delicious docker recipes.
 ## Media
 
 - [x] ffmpeg
+- [x] ffmpeg-arm
 - [x] ffserver :beetle:
 - [x] live555
 - [x] minidlna
 - [x] plex :moneybag:
 - [x] red5 :+1:
 - [x] red5-arm :construction:
-- [x] rtmp-client
+- [x] rtmp-client-arm :+1:
 - [x] rtmp-server
 - [x] youtube-dl
 - [x] youtube-worker :beetle:
