@@ -94,6 +94,7 @@ A collection of delicious docker recipes.
 - [x] ffserver :beetle:
 - [x] live555
 - [x] minidlna
+- [x] murmur
 - [x] plex :moneybag:
 - [x] red5 :+1:
 - [x] red5-arm :construction:

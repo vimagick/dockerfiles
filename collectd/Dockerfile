@@ -3,12 +3,13 @@
 #
 
 FROM alpine
+
 MAINTAINER kev <noreply@easypi.info>
 
-RUN apk add -U collectd collectd-dev \
-    && rm -rf /var/cache/apk/*
+RUN apk add --no-cache collectd collectd-dev
 
 COPY ./collectd /etc/collectd
+
 VOLUME /etc/collectd
 
 CMD ["collectd", "-f"]
