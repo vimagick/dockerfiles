@@ -2,20 +2,19 @@
 # Dockerfile for tor
 #
 
-FROM alpine
+FROM alpine:edge
 MAINTAINER kev <noreply@easypi.info>
 
 RUN set -xe \
-    && echo 'http://dl-4.alpinelinux.org/alpine/edge/testing' >> /etc/apk/repositories \
-    && apk add -U build-base \
-                  git \
-                  gmp-dev \
-                  go \
-                  libgmpxx \
-                  py-pip \
-                  python \
-                  python-dev \
-                  tor \
+    && apk add --no-cache build-base \
+                          git \
+                          gmp-dev \
+                          go \
+                          libgmpxx \
+                          py-pip \
+                          python \
+                          python-dev \
+                          tor \
     && pip install fteproxy \
                    obfsproxy \
     && GOPATH=/tmp/obfs4 go get git.torproject.org/pluggable-transports/obfs4.git/obfs4proxy \
@@ -28,8 +27,7 @@ RUN set -xe \
                git \
                gmp-dev \
                go \
-               python-dev \
-    && rm -rf /var/cache/apk/*
+               python-dev
 
 COPY ./torrc /etc/tor/torrc
 
