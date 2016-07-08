@@ -47,15 +47,13 @@ RUN set -xe \
                          libxml2-dev \
     && rm -rf /var/lib/apt/lists/*
 
-WORKDIR /var/www/html
-
-ENV MOODLE_VER 3.0.1+
-ENV MOODLE_MD5 560c9b2ff110d9d833513e3e2568d79b
-ENV MOODLE_URL https://download.moodle.org/download.php/direct/stable30/moodle-latest-30.tgz
-ENV MOODLE_FILE moodle.tgz
+ENV MOODLE_VERSION 3.1
+ENV MOODLE_FILE moodle-${MOODLE_VERSION}.tgz
+ENV MOODLE_URL https://download.moodle.org/download.php/stable31/${MOODLE_FILE}
+ENV MOODLE_MD5 970a17ea97d2a1dc2354fd975206f531
 
 RUN curl -sSL ${MOODLE_URL} -o ${MOODLE_FILE} \
-    && echo "${MOODLE_MD5} ${MOODLE_FILE}" | md5sum -c \
+    && echo "${MOODLE_MD5}  ${MOODLE_FILE}" | md5sum -c \
     && tar xzf ${MOODLE_FILE} --strip 1 \
     && rm ${MOODLE_FILE} \
     && chown -R www-data:www-data .

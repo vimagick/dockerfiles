@@ -68,7 +68,7 @@ file: chap-secrets
 username    *       password        *
 ```
 
-> Please use strong password in `cha-secrets` file to protect your server.
+> Please use strong password in `chap-secrets` file to protect your server.
 
 ## Server Setup
 

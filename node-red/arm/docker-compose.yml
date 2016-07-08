@@ -3,5 +3,5 @@ node-red:
   ports:
     - "1880:1880"
   volumes:
-    - ./node-red:/root/.node-red
+    - ./data:/root/.node-red
   restart: always
