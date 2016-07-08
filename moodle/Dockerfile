@@ -49,7 +49,7 @@ RUN set -xe \
 
 ENV MOODLE_VERSION 3.1
 ENV MOODLE_FILE moodle-${MOODLE_VERSION}.tgz
-ENV MOODLE_URL https://download.moodle.org/download.php/stable31/${MOODLE_FILE}
+ENV MOODLE_URL https://download.moodle.org/download.php/direct/stable31/${MOODLE_FILE}
 ENV MOODLE_MD5 970a17ea97d2a1dc2354fd975206f531
 
 RUN curl -sSL ${MOODLE_URL} -o ${MOODLE_FILE} \
