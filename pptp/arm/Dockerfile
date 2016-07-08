@@ -1,9 +1,9 @@
 #
-# Dockerfile for pptp
+# Dockerfile for pptp-arm
 #
 
-FROM alpine:edge
-MAINTAINER kev <noreply@easypi.info>
+FROM easypi/alpine-arm:edge
+MAINTAINER EasyPi Software Foundation
 
 RUN apk add --no-cache \
             --repository http://dl-cdn.alpinelinux.org/alpine/edge/testing/ \

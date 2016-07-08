@@ -29,7 +29,7 @@ client:
   image: easypi/rtmp-client-arm
 # command:
 #   - ffmpeg -i $$RTMP_DEV -video_size 800x600 -vf "hflip,vflip" -f flv $$RTMP_URI
-#   - ffmpeg -f alsa -i default -i $$RTMP_DEV -c:a aac -c:v libx264 -f flv $$RTMP_URI
+#   - ffmpeg -f alsa -ac 1 -ar 22050 -i hw:1 -i $$RTMP_DEV -c:a aac -c:v flv1 -f flv $$RTMP_URI
   devices:
 #   - /dev/snd
     - /dev/video0
@@ -94,10 +94,17 @@ URL: rtmp://192.168.31.254/live/
 Streaming key: webcam
 ```
 
+## Player Setup
+
+- vlc
+- ffplay
+- [online](https://www.hlsplayer.net/rtmp-player)
+
 ## References
 
 - https://github.com/arut/nginx-rtmp-module/wiki/Directives
 - https://trac.ffmpeg.org/wiki/StreamingGuide
 - https://trac.ffmpeg.org/wiki/Capture/Webcam
+- https://trac.ffmpeg.org/wiki/Capture/ALSA
 - https://trac.ffmpeg.org/wiki/EncodingForStreamingSites
 - http://apk-dl.com/vlc-for-android/org.videolan.vlc/
