@@ -10,9 +10,15 @@ RUN set -xe \
     && apt-get install -y autoconf \
                           build-essential \
                           git \
+                          libcairo2 \
+                          libcairo2-dev \
+                          libgomp1 \
+                          libicu52 \
+                          libicu-dev \
                           liblept4 \
                           libleptonica-dev \
-                          libgomp1 \
+                          libpango1.0-0 \
+                          libpango1.0-dev \
                           libtool \
     && git clone https://github.com/tesseract-ocr/tesseract.git \
         && cd tesseract \
@@ -27,7 +33,10 @@ RUN set -xe \
     && apt-get purge --auto-remove -y autoconf \
                                       build-essential \
                                       git \
+                                      libcairo2-dev \
+                                      libicu-dev \
                                       libleptonica-dev \
+                                      libpango1.0-dev \
                                       libtool \
     && rm -rf tesseract tessdata /var/cache/apk/*
 
