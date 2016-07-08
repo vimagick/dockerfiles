@@ -11,6 +11,8 @@ RUN set -xe \
     && apk add -U bash \
                   build-base \
                   curl \
+                  libffi \
+                  libffi-dev \
                   ncurses-dev \
                   python \
                   python-dev \
@@ -22,6 +24,7 @@ RUN set -xe \
     && apk del bash \
                build-base \
                curl \
+               libffi-dev \
                ncurses-dev \
                python3-dev \
                readline-dev \
