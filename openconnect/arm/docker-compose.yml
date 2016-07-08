@@ -1,0 +1,9 @@
+openconnect:
+  image: vimagick/openconnect
+  command: https://vpn.easypi.info:4443
+  net: host
+  volumes:
+    - ./data:/etc/openconnect
+  stop_signal: SIGINT
+  privileged: yes
+  restart: unless-stopped

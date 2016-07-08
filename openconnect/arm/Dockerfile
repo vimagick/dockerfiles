@@ -1,9 +1,9 @@
 #
-# Dockerfile for openconnect
+# Dockerfile for openconnect-arm
 #
 
-FROM alpine:edge
-MAINTAINER kev <noreply@easypi.info>
+FROM easypi/alpine-arm:edge
+MAINTAINER EasyPi Software Foundation
 
 RUN set -xe \
     && apk add --no-cache \
