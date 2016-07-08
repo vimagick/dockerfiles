@@ -6,7 +6,7 @@ FROM alpine
 MAINTAINER kev <noreply@easypi.info>
 
 RUN set -xe \
-    && apk add --update ca-certificates device-mapper \
+    && apk add --update ca-certificates openssl device-mapper \
     && wget https://circle-artifacts.com/gh/andyshinn/alpine-pkg-glibc/8/artifacts/0/home/ubuntu/alpine-pkg-glibc/packages/x86_64/glibc-2.21-r2.apk \
     && wget https://circle-artifacts.com/gh/andyshinn/alpine-pkg-glibc/8/artifacts/0/home/ubuntu/alpine-pkg-glibc/packages/x86_64/glibc-bin-2.21-r2.apk \
     && apk add --allow-untrusted glibc-2.21-r2.apk glibc-bin-2.21-r2.apk \
@@ -16,7 +16,7 @@ RUN set -xe \
     && rm -rf /var/cache/apk/*
 
 RUN set -xe \
-    && wget https://github.com/google/cadvisor/releases/download/v0.22.0/cadvisor -O /usr/bin/cadvisor \
+    && wget https://github.com/google/cadvisor/releases/download/v0.23.6/cadvisor -O /usr/bin/cadvisor \
     && chmod +x /usr/bin/cadvisor
 
 EXPOSE 8080
