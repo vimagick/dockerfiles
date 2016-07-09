@@ -1,5 +1,5 @@
 openconnect:
-  image: vimagick/openconnect
+  image: easypi/openconnect-arm
   command: https://vpn.easypi.info:4443
   net: host
   volumes:

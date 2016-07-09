@@ -14,6 +14,7 @@ A collection of delicious docker recipes.
 
 ## Todo
 
+- [ ] badvpn
 - [ ] caddy
 - [ ] cloudtunes
 - [ ] dsniff
@@ -92,6 +93,7 @@ A collection of delicious docker recipes.
 - [x] ffmpeg
 - [x] ffmpeg-arm
 - [x] ffserver :beetle:
+- [x] icecast
 - [x] live555
 - [x] minidlna
 - [x] murmur
