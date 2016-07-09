@@ -7,14 +7,15 @@ MAINTAINER kev <noreply@easypi.info>
 
 RUN set -xe \
     && apk add --no-cache build-base \
+                          curl \
                           git \
                           gmp-dev \
                           go \
                           libgmpxx \
-                          py-pip \
                           python \
                           python-dev \
                           tor \
+    && curl -sSL https://bootstrap.pypa.io/get-pip.py | python \
     && pip install fteproxy \
                    obfsproxy \
     && GOPATH=/tmp/obfs4 go get git.torproject.org/pluggable-transports/obfs4.git/obfs4proxy \
@@ -24,6 +25,7 @@ RUN set -xe \
         && mv /tmp/meek/bin/meek-server /usr/bin \
         && rm -rf /tmp/meek \
     && apk del build-base \
+               curl \
                git \
                gmp-dev \
                go \
