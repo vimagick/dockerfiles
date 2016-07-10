@@ -8,7 +8,8 @@ A collection of delicious docker recipes.
 - :octocat: <https://github.com/vimagick/dockerfiles>
 - :beetle: <https://github.com/vimagick/dockerfiles/issues>
 - :book: <https://github.com/vimagick/dockerfiles/wiki>
-- :whale: <https://hub.docker.com/u/vimagick/>
+- :whale: <https://hub.docker.com/u/vimagick/> (x86)
+- :whale: <https://hub.docker.com/u/easypi/> (arm)
 
 [![](https://www.vultr.com/media/badge_onwhite.png)](https://www.vultr.com/?ref=6821947)
 

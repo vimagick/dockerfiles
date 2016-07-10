@@ -85,7 +85,9 @@ ENV MG_MAIL admin@easypi.info
 CMD set -xe \
     && sudo nginx \
     && sudo chown -hR mediagoblin:www-data /var/lib/mediagoblin \
-    && bin/gmg dbupdate \
-    && bin/gmg adduser --username "${MG_USER}" --password "${MG_PASS}" --email "${MG_MAIL}" \
-    && bin/gmg makeadmin "${MG_USER}" \
+    && { \
+        bin/gmg dbupdate; \
+        bin/gmg adduser --username "${MG_USER}" --password "${MG_PASS}" --email "${MG_MAIL}"; \
+        bin/gmg makeadmin "${MG_USER}"; \
+       } \
     && ./lazyserver.sh --server-name=fcgi fcgi_host=127.0.0.1 fcgi_port=26543
