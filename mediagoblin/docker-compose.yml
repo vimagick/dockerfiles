@@ -1,0 +1,11 @@
+mediagoblin:
+  image: vimagick/mediagoblin
+  ports:
+    - "8080:80"
+  volumes:
+    - ./data:/var/lib/mediagoblin
+  environment:
+    - MG_USER=admin
+    - MG_PASS=admin
+    - MG_MAIL=admin@easypi.info
+  restart: always
