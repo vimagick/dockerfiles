@@ -96,7 +96,6 @@ A collection of delicious docker recipes.
 - [x] ffserver :beetle:
 - [x] icecast
 - [x] live555
-- [x] mediagoblin
 - [x] minidlna
 - [x] murmur
 - [x] plex :moneybag:
@@ -107,7 +106,6 @@ A collection of delicious docker recipes.
 - [x] tesseract
 - [x] youtube-dl
 - [x] youtube-worker :beetle:
-- [x] zoneminder
 
 ## Web
 
@@ -126,7 +124,9 @@ A collection of delicious docker recipes.
 - [x] json-server
 - [x] magento
 - [x] mantisbt
+- [x] mediagoblin
 - [x] netdata
+- [x] nextcloud :+1:
 - [x] nginad
 - [x] nodebb :+1:
 - [x] node-red :+1:
@@ -138,6 +138,7 @@ A collection of delicious docker recipes.
 - [x] phpvirtualbox-arm
 - [x] piwik
 - [x] revive
+- [x] zoneminder
 
 ## Security
 
