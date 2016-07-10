@@ -6,7 +6,7 @@ FROM debian:jessie
 MAINTAINER kev <noreply@easypi.info>
 
 ENV DAQ_VERSION 2.0.6
-ENV SNORT_VERSION 2.9.8.2
+ENV SNORT_VERSION 2.9.8.3
 ENV LIBDNET_VERSION 1.12
 
 RUN set -xe \
