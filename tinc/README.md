@@ -1,8 +1,6 @@
 tinc
 ====
 
-![](https://badge.imagelayers.io/vimagick/tinc:latest.svg)
-
 [tinc][1] is a Virtual Private Network (VPN) daemon that uses tunnelling and
 encryption to create a secure private network between hosts on the Internet.
 

@@ -1,4 +1,5 @@
-stunnel:
+# In Japan
+master:
   image: vimagick/stunnel
   ports:
     - "4911:4911"
@@ -9,4 +10,18 @@ stunnel:
     - CONNECT=server:1194
   external_links:
     - openvpn_server_1:server
+  restart: always
+
+# In China
+bridge:
+  image: vimagick/stunnel
+  ports:
+    - "1194:1194"
+  environment:
+    - CLIENT=yes
+    - SERVICE=openvpn
+    - ACCEPT=0.0.0.0:1194
+    - CONNECT=server:4911
+  extra_hosts:
+    - server:1.2.3.4
   restart: always

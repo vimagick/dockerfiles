@@ -1,8 +1,6 @@
 fteproxy
 ========
 
-![](https://badge.imagelayers.io/vimagick/fteproxy:latest.svg)
-
 [fteproxy][1] provides transport-layer protection to resist keyword filtering,
 censorship and discriminatory routing policies.
 

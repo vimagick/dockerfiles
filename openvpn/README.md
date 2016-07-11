@@ -1,9 +1,9 @@
 openvpn
 =======
 
-![](https://badge.imagelayers.io/vimagick/openvpn:latest.svg)
+[OpenVPN][1] is blocked in China. You need to connect vpn via secure tunnel.
 
-OpenVPN is blocked in China. You need to connect vpn via secure tunnel.
+Instead of using [fteproxy][2] as bridge, you can also use [stunnel][3].
 
 - server: vpn.easypi.info
 - bridge: bridge.easypi.info
@@ -93,3 +93,12 @@ route 192.168.1.0 255.255.255.0 net_gateway
 $ systemctl start openvpn@client
 $ systemctl enable openvpn@client
 ```
+
+## References
+
+- <https://community.openvpn.net/openvpn/wiki>
+- <https://www.digitalocean.com/community/tutorials/how-to-set-up-an-openvpn-server-on-ubuntu-16-04>
+
+[1]: https://openvpn.net/index.php/open-source.html
+[2]: https://github.com/vimagick/dockerfiles/tree/master/fteproxy
+[3]: https://github.com/vimagick/dockerfiles/tree/master/stunnel

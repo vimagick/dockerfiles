@@ -1,6 +1,9 @@
 stunnel
 =======
 
+[Stunnel][1] is a proxy designed to add TLS encryption functionality to
+existing clients and servers without any changes in the programs' code.
+
 ### Overview
 
 domain | ip:port      | country | services
@@ -89,6 +92,4 @@ route 192.168.0.0 255.255.0.0 net_gateway
 ....
 ```
 
-### References
-
-- <https://community.openvpn.net/openvpn/wiki>
+[1]: https://www.stunnel.org/index.html
