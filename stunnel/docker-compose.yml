@@ -1,0 +1,12 @@
+stunnel:
+  image: vimagick/stunnel
+  ports:
+    - "4911:4911"
+  environment:
+    - CLIENT=no
+    - SERVICE=openvpn
+    - ACCEPT=0.0.0.0:4911
+    - CONNECT=server:1194
+  external_links:
+    - openvpn_server_1:server
+  restart: always

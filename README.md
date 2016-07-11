@@ -171,6 +171,7 @@ A collection of delicious docker recipes.
     - [x] shadowsocks-arm
     - [x] shadowsocks-libev-arm :+1:
 - [x] squid
+- [x] stunnel
 - [x] tor
 
 ## VPN
