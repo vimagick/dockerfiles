@@ -182,6 +182,7 @@ A collection of delicious docker recipes.
 - [x] openconnect-arm
 - [x] openvpn-arm
 - [x] pptp
+- [x] pptp-arm
 - [x] pptpd
 - [x] shadowvpn
 - [x] strongswan :+1:

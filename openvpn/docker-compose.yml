@@ -13,36 +13,15 @@ server:
     - NET_ADMIN
   restart: always
 
-################################### SERVER ###################################
-
-fteproxy:
-  image: vimagick/fteproxy
+stunnel:
+  image: vimagick/stunnel
   ports:
     - "4911:4911"
   links:
     - server
   environment:
-    - MODE=server
-    - SERVER_IP=0.0.0.0
-    - SERVER_PORT=4911
-    - PROXY_IP=server
-    - PROXY_PORT=1194
-    - KEY=66754b8113ea7a218b7613f73f7e13b1e91790216f659b5f78b903b34c654741
+    - CLIENT=no
+    - SERVICE=openvpn
+    - ACCEPT=0.0.0.0:4911
+    - CONNECT=server:1194
   restart: always
-
-################################### CLIENT ###################################
-#
-#fteproxy:
-#  image: vimagick/fteproxy
-#  ports:
-#    - "1194:1194"
-#  environment:
-#    - MODE=client
-#    - SERVER_IP=vpn.easypi.info
-#    - SERVER_PORT=4911
-#    - CLIENT_IP=0.0.0.0
-#    - CLIENT_PORT=1194
-#    - KEY=66754b8113ea7a218b7613f73f7e13b1e91790216f659b5f78b903b34c654741
-#  restart: always
-#
-##############################################################################
