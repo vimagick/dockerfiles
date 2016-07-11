@@ -1,0 +1,12 @@
+bridge:
+  image: easypi/stunnel-arm
+  ports:
+    - "1194:1194"
+  environment:
+    - CLIENT=yes
+    - SERVICE=openvpn
+    - ACCEPT=0.0.0.0:1194
+    - CONNECT=server:4911
+  extra_hosts:
+    - server:1.2.3.4
+  restart: always
