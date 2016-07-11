@@ -1,0 +1,9 @@
+openvpn:
+  image: easypi/openvpn-arm
+  command: --config pi.ovpn
+  volumes:
+    - ./data:/etc/openvpn
+  cap_add:
+    - NET_ADMIN
+  net: host
+  restart: always

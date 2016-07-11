@@ -179,7 +179,8 @@ A collection of delicious docker recipes.
 
 - [x] ocserv :+1:
 - [x] openconnect
-- [x] openvpn :+1:
+- [x] openconnect-arm
+- [x] openvpn-arm
 - [x] pptp
 - [x] pptpd
 - [x] shadowvpn
