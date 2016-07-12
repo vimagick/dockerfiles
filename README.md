@@ -31,6 +31,7 @@ A collection of delicious docker recipes.
 - [ ] ipset
 - [ ] irc
 - [ ] libreswan
+- [ ] metasploit
 - [ ] mitmproxy
 - [ ] nagios
 - [ ] nfs

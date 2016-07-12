@@ -1,7 +1,7 @@
 dnsmasq:
   image: easypi/dnsmasq-arm
   volumes:
-    - ./dnsmasq.d:/etc/dnsmasq.d
+    - ./dnsmasq.conf:/etc/dnsmasq.d/dnsmasq.conf
   net: container:dnscrypt
   restart: always
 

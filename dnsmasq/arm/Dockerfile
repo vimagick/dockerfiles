@@ -1,10 +1,10 @@
 #
-# Dockerfile for dnsmasq
+# Dockerfile for dnsmasq-arm
 #
 
-FROM alpine
+FROM easypi/alpine-arm
 
-MAINTAINER kev <norelply@easypi.info>
+MAINTAINER EasyPi Software Foundation
 
 RUN set -xe \
     && apk add --no-cache dnsmasq \
