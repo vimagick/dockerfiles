@@ -2,7 +2,7 @@
 # Dockerfile for dnscrypt-proxy-arm
 #
 
-FROM resin/rpi-raspbian
+FROM armhf/debian:jessie
 MAINTAINER EasyPi Software Foundation
 
 ENV LIBSODIUM_VERSION 1.0.10
@@ -19,7 +19,7 @@ RUN set -xe \
                           curl \
     && mkdir libsodium \
         && cd libsodium \
-        && curl -sSL https://github.com/vimagick/dockerfiles/raw/master/dnscrypt/proxy/arm/libsodium-$LIBSODIUM_VERSION.tar.gz | tar xz --strip 1 \
+        && curl -sSL https://download.libsodium.org/libsodium/releases/libsodium-$LIBSODIUM_VERSION.tar.gz | tar xz --strip 1 \
         && ./configure --prefix=/usr --enable-minimal \
         && make install \
         && ldconfig \
@@ -27,7 +27,7 @@ RUN set -xe \
         && rm -rf libsodium \
     && mkdir dnscrypt-proxy \
         && cd dnscrypt-proxy \
-        && curl -sSL https://github.com/vimagick/dockerfiles/raw/master/dnscrypt/proxy/arm/dnscrypt-proxy-$DNSCRYPT_VERSION.tar.gz | tar xz --strip 1 \
+        && curl -sSL https://download.dnscrypt.org/dnscrypt-proxy/dnscrypt-proxy-$DNSCRYPT_VERSION.tar.gz | tar xz --strip 1 \
         && ./configure --prefix=/usr --with-plugins \
         && make install \
         && cd .. \
@@ -43,4 +43,3 @@ CMD dnscrypt-proxy --local-address=$LISTEN_ADDR \
                    --provider-name=$PROVIDER_NAME \
                    --provider-key=$PROVIDER_KEY \
                    --resolver-address=$RESOLVER_ADDR
-

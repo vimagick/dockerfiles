@@ -43,4 +43,3 @@ CMD dnscrypt-proxy --local-address=$LISTEN_ADDR \
                    --provider-name=$PROVIDER_NAME \
                    --provider-key=$PROVIDER_KEY \
                    --resolver-address=$RESOLVER_ADDR
-

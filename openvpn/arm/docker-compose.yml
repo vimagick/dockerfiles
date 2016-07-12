@@ -19,3 +19,12 @@ stunnel:
   extra_hosts:
     - server:1.2.3.4
   restart: always
+
+dnsmasq:
+  image: easypi/dnsmasq-arm
+  volumes:
+    - ./data/dnsmasq.conf:/etc/dnsmasq.d/dnsmasq.conf
+  cap_add:
+    - NET_ADMIN
+  net: host
+  restart: always
