@@ -1,12 +1,3 @@
-openvpn:
-  image: easypi/openvpn-arm
-  command: --config pi.ovpn
-  volumes:
-    - ./data:/etc/openvpn
-  net: host
-  privileged: yes
-  restart: always
-
 stunnel:
   image: easypi/stunnel-arm
   ports:
@@ -18,6 +9,15 @@ stunnel:
     - CONNECT=server:4911
   extra_hosts:
     - server:1.2.3.4
+  restart: always
+
+openvpn:
+  image: easypi/openvpn-arm
+  command: --config pi.ovpn
+  volumes:
+    - ./data:/etc/openvpn
+  net: host
+  privileged: yes
   restart: always
 
 dnsmasq:
