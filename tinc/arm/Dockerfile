@@ -1,9 +1,9 @@
 #
-# Dockerfile for tinc
+# Dockerfile for tinc-arm
 #
 
-FROM alpine
-MAINTAINER kev <noreply@easypi.info>
+FROM easypi/alpine-arm
+MAINTAINER EasyPi Software Foundation
 
 RUN apk add --no-cache iptables tinc
 

@@ -188,6 +188,7 @@ A collection of delicious docker recipes.
 - [x] shadowvpn
 - [x] strongswan :+1:
 - [x] tinc :+1:
+- [x] tinc-arm :+1:
 
 ## DNS
 
