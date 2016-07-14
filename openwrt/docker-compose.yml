@@ -1,0 +1,6 @@
+openwrt:
+  image: vimagick/openwrt
+  container_name: openwrt
+  command: sleep inf
+  volumes:
+    - ./data:/data

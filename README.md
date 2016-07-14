@@ -141,6 +141,10 @@ A collection of delicious docker recipes.
 - [x] revive
 - [x] zoneminder
 
+## Builder
+
+- [x] openwrt :+1:
+
 ## Security
 
 - [x] bro
