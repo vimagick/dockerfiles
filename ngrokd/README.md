@@ -18,7 +18,7 @@ service:
   image: debian:jessie
   command: >
     ./ngrokd
-    -domain=ngrok.foobar.site
+    -domain=ngrok.easypi.info
     -httpAddr=:2080
     -httpsAddr=:2443
     -tunnelAddr=:4443
@@ -59,6 +59,116 @@ $ docker-compose logs service
 - [vimagick/ngrokd][2] should not be used directly
 - Change `NGROK_BASE_DOMAIN` in [Dockerfile][3]
 - Nerver push it to public repo
+
+## raspberry pi
+
+```
+/etc/ngrok/
+├── conf.d/
+│   ├── router.json
+│   └── webcam.json
+└── ngrok.yml
+```
+
+```
+{
+  "name": "router",
+  "proto": "http",
+  "addr": "192.168.1.1:80",
+  "bind_tls": true,
+  "inspect": false,
+  "auth": "user:pass"
+}
+```
+
+```yaml
+# /etc/ngrok/ngrok.yml
+authtoken: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+console_ui: false
+log: stdout
+region: ap
+web_addr: 0.0.0.0:4040
+tunnels:
+  ssh:
+    proto: tcp
+    addr: 22
+  web:
+    proto: http
+    addr: 4040
+    bind_tls: true
+    inspect: false
+    auth: "user:pass"
+```
+
+```ini
+# /etc/systemd/system/ngrok.service
+[Unit]
+Description=Ngrok Daemon
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/ngrok start --config /etc/ngrok/ngrok.yml --all
+RestartSec=10
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+```
+
+```ini
+# /etc/systemd/system/ngrok@.service
+[Unit]
+Description=Ngrok Instance Daemon
+Requires=ngrok.service
+After=ngrok.service
+
+[Service]
+ExecStart=/usr/bin/curl -sS -X POST \
+                        -H 'Content-Type: application/json' \
+                        -d @/etc/ngrok/conf.d/%I.json \
+                        http://127.0.0.1:4040/api/tunnels
+ExecStop=/usr/bin/curl -sS -X DELETE http://127.0.0.1:4040/api/tunnels/%I
+Restart=on-failure
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
+```
+
+```bash
+$ systemctl daemon-reload
+$ systemctl start ngrok
+$ systemctl enable ngrok
+
+$ curl http://127.0.0.1:4040/api/tunnels/ssh
+{"public_url": "tcp://0.tcp.ap.ngrok.io:19136"}
+$ ssh -p 19136 root@0.tcp.ap.ngrok.io
+
+$ systemctl start ngrok@router
+$ curl http://127.0.0.1:4040/api/tunnels/router
+{"public_url":"https://db45322c.ap.ngrok.io"}
+$ w3m https://db45322c.ap.ngrok.io
+
+$ systemctl status ngrok@*
+```
+
+## openwrt
+
+```bash
+#!/bin/sh /etc/rc.common
+
+START=90
+STOP=10
+
+USE_PROCD=1
+
+start_service() {
+    procd_open_instance
+    procd_set_param command /usr/bin/ngrok start --config /etc/ngrok.yml --all
+    procd_set_param respawn 3600 5 0
+    procd_close_instance
+}
+```
 
 [1]: https://github.com/inconshreveable/ngrok
 [2]: https://hub.docker.com/r/vimagick/ngrokd/
