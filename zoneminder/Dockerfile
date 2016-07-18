@@ -19,7 +19,8 @@ RUN set -xe \
     && chmod o+r /etc/zm/zm.conf \
     && sed -i 's@^ZM_DB_HOST=.*$@ZM_DB_HOST=mysql@' /etc/zm/zm.conf \
     && sed -i 's@^;date.timezone =.*$@date.timezone = Asia/Shanghai@' /etc/php5/*/php.ini \
-    && ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+    && ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
+    && echo 'FCGI_CHILDREN=4' > /etc/default/fcgiwrap
 
 COPY nginx.conf /etc/nginx/sites-available/default
 

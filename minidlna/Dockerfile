@@ -5,9 +5,7 @@
 FROM alpine
 MAINTAINER kev <noreply@easypi.info>
 
-RUN set -xe \
-    && apk add -U minidlna \
-    && rm -rf /var/cache/apk/*
+RUN apk add --no-cache minidlna
 
 VOLUME /opt
 WORKDIR /opt
