@@ -15,4 +15,4 @@ WORKDIR /opt
 EXPOSE 1900/udp
 EXPOSE 8200/tcp
 
-CMD ["minidlna", "-d"]
+CMD ["minidlnad", "-d"]
