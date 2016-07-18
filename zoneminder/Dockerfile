@@ -26,6 +26,8 @@ COPY nginx.conf /etc/nginx/sites-available/default
 EXPOSE 80
 
 CMD set -xe \
+    && mkdir -p /var/run/zm \
+    && chown www-data:www-data /var/run/zm \
     && /etc/init.d/fcgiwrap start \
     && /etc/init.d/php5-fpm start \
     && nginx -g 'daemon off;'

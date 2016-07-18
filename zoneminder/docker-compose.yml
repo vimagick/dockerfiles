@@ -9,7 +9,9 @@ zoneminder:
 mysql:
   image: mysql
   volumes:
-    - ./sql:/docker-entrypoint-initdb.d
+    - ./mysql/my.cnf:/etc/mysql/conf.d/my.cnf
+    - ./mysql:/docker-entrypoint-initdb.d
+    - /usr/share/zoneinfo/Asia/Shanghai:/etc/localtime
   environment:
     - MYSQL_ROOT_PASSWORD=root
   restart: always

@@ -139,7 +139,7 @@ A collection of delicious docker recipes.
 - [x] phpvirtualbox-arm
 - [x] piwik
 - [x] revive
-- [x] zoneminder
+- [x] zoneminder :+1:
 
 ## Builder
 

@@ -85,7 +85,6 @@ $ docker-compose logs service
 # /etc/ngrok/ngrok.yml
 authtoken: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 console_ui: false
-log: stdout
 region: ap
 web_addr: 0.0.0.0:4040
 tunnels:
@@ -103,11 +102,12 @@ tunnels:
 ```ini
 # /etc/systemd/system/ngrok.service
 [Unit]
-Description=Ngrok Daemon
+Description=Secure Tunnels To Localhost
+Documentation=https://ngrok.com/docs
 After=network.target
 
 [Service]
-ExecStart=/usr/bin/ngrok start --config /etc/ngrok/ngrok.yml --all
+ExecStart=/usr/bin/ngrok start --config /etc/ngrok/ngrok.yml --log stdout --all
 RestartSec=10
 Restart=always
 
