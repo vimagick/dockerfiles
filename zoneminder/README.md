@@ -17,6 +17,8 @@ zoneminder:
     - "127.0.0.1:8080:80"
   links:
     - mysql
+  volumes:
+    - ./fcgiwrap:/etc/default/fcgiwrap
   restart: always
 
 mysql:
@@ -32,6 +34,12 @@ mysql:
 
 > - `timezone = Asia/Shanghai` was hard-coded in Dockerfile.
 > - Make sure two containers have the same timezone.
+
+## fcgiwrap
+
+```bash
+FCGI_CHILDREN=4
+```
 
 ## /etc/nginx/sites-enabled/default
 
