@@ -14,7 +14,7 @@ or as small as you need.
 zoneminder:
   image: vimagick/zoneminder
   ports:
-    - "8080:80"
+    - "127.0.0.1:8080:80"
   links:
     - mysql
   restart: always
@@ -33,18 +33,47 @@ mysql:
 > - `timezone = Asia/Shanghai` was hard-coded in Dockerfile.
 > - Make sure two containers have the same timezone.
 
+## /etc/nginx/sites-enabled/default
+
+```
+server {
+    listen 80;
+    server_name zm.easypi.info;
+    location = / {
+      return 301 /zm/;
+    }
+    location /zm/ {
+        auth_basic "Restricted";
+        auth_basic_user_file /etc/nginx/htpasswd;
+        proxy_pass http://127.0.0.1:8080;
+    }
+}
+```
+
+## /etc/nginx/htpasswd
+
+```
+user:$apr1$zLX30Ahb$S0pZUiZW676E0gTplhpie0
+```
+
 ## up and running
 
 ```bash
 $ docker-compose up -d
 ```
 
-- Open <http://localhost:8080/zm/>
+- Open <http://zm.easypi.info/>
 - Add New Monitor
-  - Click Presets
+  - Click Presets: 640x480, mpjpeg
   - Change Source
+    - Remote Host Name: user:pass@x.x.x.x
+    - Remote Host Port: 8080
+    - Remote Host Path: /?action=stream
   - Save
 - Run State: Stopped -> Running
+- Click `Monitor-1`
+
+> I'm running `mjpg-streamer` on OpenWrt.
 
 ## references
 
@@ -52,5 +81,6 @@ $ docker-compose up -d
 - <https://chiralsoftware.com/content/zoneminder-nginx-yes-it-works>
 - <https://forums.zoneminder.com/viewtopic.php?p=55482>
 - <https://dev.mysql.com/doc/refman/5.7/en/option-files.html>
+- <http://www.htaccesstools.com/htpasswd-generator/>
 
 [1]: https://www.zoneminder.com/
