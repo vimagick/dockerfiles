@@ -149,6 +149,7 @@ A collection of delicious docker recipes.
 
 - [x] bro
 - [x] clamav
+- [x] dsniff
 - [x] ferm
 - [x] hydra
 - [x] iptables

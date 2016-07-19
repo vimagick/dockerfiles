@@ -1,0 +1,8 @@
+dsniff:
+  image: easypi/dsniff-arm
+  net: host
+  volumes:
+    - ./data:/data
+  working_dir: /data
+  tty: yes
+  restart: unless-stopped
