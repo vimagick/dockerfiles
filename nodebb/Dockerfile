@@ -5,7 +5,7 @@
 FROM alpine
 MAINTAINER kev <noreply@easypi.info>
 
-ENV BB_VER 1.0.3
+ENV BB_VER 1.1.0
 ENV BB_URL https://github.com/NodeBB/NodeBB/archive/v$BB_VER.tar.gz
 ENV BB_SOURCE /usr/src/nodebb
 ENV BB_CONTENT /var/lib/nodebb
