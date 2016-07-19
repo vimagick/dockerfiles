@@ -1,8 +1,8 @@
 sslsplit:
   image: easypi/sslsplit-arm
   command:
-    -k key/ca.key -c key/ca.crt -P
-    -l log/cnn.log -S log
+    -k keys/ca.key -c keys/ca.crt -P
+    -l logs/connections.log -S logs
     tcp 0.0.0.0 8080
     ssl 0.0.0.0 8443
   net: host
