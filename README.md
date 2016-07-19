@@ -154,6 +154,7 @@ A collection of delicious docker recipes.
 - [x] iptables
 - [x] routersploit
 - [x] snort :beetle:
+- [x] sslsplit
 - [x] webgoat
 
 ## Proxy

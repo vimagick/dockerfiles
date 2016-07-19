@@ -1,0 +1,12 @@
+sslsplit:
+  image: easypi/sslsplit-arm
+  command:
+    -k key/ca.key -c key/ca.crt -P
+    -l log/cnn.log -S log
+    tcp 0.0.0.0 8080
+    ssl 0.0.0.0 8443
+  net: host
+  volumes:
+    - ./data:/data
+  working_dir: /data
+  restart: unless-stopped
