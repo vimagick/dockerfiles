@@ -1,5 +1,5 @@
 nodebb:
-  image: vimagick/nodebb-arm
+  image: easypi/nodebb-arm
   ports:
     - "4567:4567"
   links:
@@ -7,7 +7,7 @@ nodebb:
   restart: always
 
 redis:
-  image: vimagick/redis-arm
+  image: easypi/redis-arm
   ports:
     - "127.0.0.1:6379:6379"
   restart: always

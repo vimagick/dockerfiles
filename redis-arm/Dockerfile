@@ -2,13 +2,12 @@
 # Dockerfile for redis-arm
 #
 
-FROM vimagick/alpine-arm
-MAINTAINER kev <noreply@easypi.info>
+FROM easypi/alpine-arm
+MAINTAINER EasyPi Software Foundation
 
 RUN set -ex \
-    && apk add -U redis \
-    && sed -i 's/^daemonize yes/daemonize no/' /etc/redis.conf \
-    && rm -rf /var/cache/apk/*
+    && apk add --no-cache redis \
+    && sed -i 's/^daemonize yes/daemonize no/' /etc/redis.conf
 
 WORKDIR /var/lib/redis/
 VOLUME /var/lib/redis/
