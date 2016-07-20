@@ -29,6 +29,7 @@ $ docker-compose exec openwrt bash
 >>> ./scripts/feeds install vim tmux htop
 >>> make V=s
 
+>>> sudo apt install asciidoc
 >>> export TERM=xterm
 >>> git clone https://github.com/shadowsocks/openwrt-shadowsocks.git package/shadowsocks-libev
 >>> make menuconfig

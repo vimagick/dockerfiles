@@ -8,14 +8,15 @@ MAINTAINER kev <noreply@easypi.info>
 RUN set -xe \
     && apt-get update \
     && apt-get install -y build-essential \
-                          ccache \
                           curl \
+                          file \
                           gawk \
                           gettext \
                           git \
                           libncurses5-dev \
                           libssl-dev \
                           mercurial \
+                          python \
                           subversion \
                           sudo \
                           tree \
@@ -23,9 +24,6 @@ RUN set -xe \
                           wget \
                           xsltproc \
                           zlib1g-dev \
-    && rm -rf /var/lib/apt/lists/*
-
-RUN set -xe \
     && useradd -m openwrt \
     && echo 'openwrt ALL=NOPASSWD: ALL' > /etc/sudoers.d/openwrt
 
