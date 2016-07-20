@@ -6,12 +6,9 @@ FROM alpine
 MAINTAINER kev <noreply@easypi.info>
 
 RUN set -xe \
-    && apk add -U clamav clamav-libunrar \
+    && apk add --no-cache clamav clamav-libunrar \
     && cd /etc/clamav/ \
-    && mv clamd.conf.sample clamd.conf \
-    && mv freshclam.conf.sample freshclam.conf \
-    && freshclam \
-    && rm -rf /var/cache/apk/*
+    && freshclam
 
 WORKDIR /data
 
