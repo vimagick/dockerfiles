@@ -4,3 +4,4 @@ openwrt:
   command: sleep inf
   volumes:
     - ./data:/data
+  restart: unless-stopped

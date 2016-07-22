@@ -29,11 +29,12 @@ $ docker-compose exec openwrt bash
 >>> ./scripts/feeds install vim tmux htop
 >>> make V=s
 
->>> sudo apt install asciidoc
 >>> export TERM=xterm
+>>> sudo apt install asciidoc xmlto
+>>> ./scripts/feeds install libopenssl zlib
 >>> git clone https://github.com/shadowsocks/openwrt-shadowsocks.git package/shadowsocks-libev
 >>> make menuconfig
->>> make package/shadowsocks-libev/compile V=99
+>>> make package/shadowsocks-libev/compile V=s
 
 >>> tree -dF /data/
 /data/
