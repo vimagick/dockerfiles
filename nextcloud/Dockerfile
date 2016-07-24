@@ -14,7 +14,6 @@ RUN set -xe \
                           libfreetype6-dev \
                           libicu-dev \
                           libjpeg-dev \
-                          libldap2-dev \
                           libmcrypt-dev \
                           libmemcached-dev \
                           libpng12-dev \
@@ -25,7 +24,6 @@ RUN set -xe \
     && docker-php-ext-install exif \
                               gd \
                               intl \
-                              ldap \
                               mbstring \
                               mcrypt \
                               mysqli \
