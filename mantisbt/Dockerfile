@@ -14,10 +14,8 @@ RUN set -xe \
     && docker-php-ext-configure gd --with-png-dir=/usr --with-jpeg-dir=/usr \
     && docker-php-ext-install gd mbstring mysql mysqli pgsql soap
 
-WORKDIR /var/www/html
-
-ENV MANTIS_VER 1.2.19
-ENV MANTIS_MD5 8377a0219ec344b9ab9c186012b5114f
+ENV MANTIS_VER 1.3.0
+ENV MANTIS_MD5 74415837b3ebcc17068258a6e5ab0732
 ENV MANTIS_URL http://jaist.dl.sourceforge.net/project/mantisbt/mantis-stable/${MANTIS_VER}/mantisbt-${MANTIS_VER}.tar.gz
 ENV MANTIS_FILE mantisbt.tar.gz
 
