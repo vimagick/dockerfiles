@@ -2,8 +2,8 @@
 # Dockerfile for phpmyadmin-arm
 #
 
-FROM easypi/alpine-arm:3.4
-MAINTAINER kev <noreply@easypi.info>
+FROM easypi/alpine-arm
+MAINTAINER EasyPi Software Foundation
 
 WORKDIR /www/
 
@@ -26,6 +26,7 @@ RUN set -xe \
     && curl -sSL https://github.com/phpmyadmin/docker/raw/master/config.inc.php > ./config.inc.php \
     && curl -sSL https://github.com/phpmyadmin/docker/raw/master/run.sh > /run.sh \
     && chmod +x /run.sh \
+    && mkdir -p /sessions \
     && apk del curl tar \
     && rm -rf /var/cache/apk/*
 

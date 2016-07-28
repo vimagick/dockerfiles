@@ -5,9 +5,11 @@ gogs:
     - "3000:3000"
   volumes:
     - ./data:/data
+  links:
+    - mysql
   restart: always
 
-db:
+mysql
   image: easypi/mariadb-arm
   ports:
     - "3306:3306"
@@ -20,6 +22,9 @@ phpmyadmin:
   image: easypi/phpmyadmin-arm
   ports:
     - "8080:80"
+  environment:
+    - PMA_HOST=mysql
+    - PMA_PORT=3306
   links:
-    - db
+    - mysql
   restart: always
