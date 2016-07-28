@@ -57,16 +57,20 @@ $ docker-compose exec mysql mysql -uroot -proot radius
 +----------------------------------------------------------------+
 5 rows in set (0.00 sec)
 
->>> INSERT INTO radcheck VALUES(NULL, 'user', 'Cleartext-Password', ':=', 'pass');
-Query OK, 1 row affected (0.00 sec)
+>>> INSERT INTO radcheck VALUES
+    (NULL, 'user', 'MD5-Password', ':=', MD5('pass')),
+    (NULL, 'user', 'Expiration', ':=', 'Jul 31 2016 00:00:00');
+Query OK, 2 row affected (0.04 sec)
+Records: 2  Duplicates: 0  Warnings: 0
 
 >>> SELECT * FROM radcheck;
-+----+----------+--------------------+----+-------+
-| id | username | attribute          | op | value |
-+----+----------+--------------------+----+-------+
-|  1 | user     | Cleartext-Password | := | pass  |
-+----+----------+--------------------+----+-------+
-1 row in set (0.00 sec)
++----+----------+--------------+----+----------------------------------+
+| id | username | attribute    | op | value                            |
++----+----------+--------------+----+----------------------------------+
+|  1 | user     | MD5-Password | := | 1a1dc91c907325c69271ddf0c944bc72 |
+|  2 | user     | Expiration   | := | Jul 31 2016 00:00:00             |
++----+----------+--------------+----+----------------------------------+
+2 rows in set (0.00 sec)
 
 >>> INSERT INTO nas VALUES(NULL, '0.0.0.0/0', 'testing', NULL, NULL, 'testing321', NULL, NULL, NULL);
 Query OK, 1 row affected (0.02 sec)
@@ -95,9 +99,15 @@ $ docker-compose up -d freeradius
 $ docker-compose exec freeradius sh
 >>> vi /etc/raddb/clients.conf
 >>> radtest user pass localhost 0 testing123
+>>> cd /etc/raddb/certs
+>>> make client.p12
 >>> exit
+$ docker cp freeradius_freeradius_1:/etc/raddb/certs/ca.pem /tmp
+$ docker cp freeradius_freeradius_1:/etc/raddb/certs/client.p12 /tmp
 $ docker-compose restart freeradius
 ```
+
+> The `ca.pem` and `client.p12` (password: whatever) is for `EAP-TLS`.
 
 ```
 # /etc/raddb/clients.conf
@@ -110,13 +120,38 @@ $ docker-compose restart freeradius
 
 > Manage NAS (Network Access Server) via MySQL.
 
+
+## OpenWrt Setup
+
+```
+Network > Wireless > Wireless Security:
+    Encryption: WPA2-EAP
+    AuthServer: 192.168.31.138
+    AuthSecret: testing321
+    AcctServer: 192.168.31.138
+    AcctSecret: testing321
+```
+
+## Android Setup
+
+```
+# Import CA and P12(CRT+KEY)
+Settings > Additional settings > Privacy > Install from SD card
+
+# Connect WiFi
+Settings > WLAN > TLS:
+    CA: xxxxxx
+    KEY: xxxxxx
+    ID: android
+```
+
 ## Client Setup
 
 ```bash
 # ssh root@192.168.31.231
 $ pacman -S freeradius freeradius-client
-$ radtest user pass 192.168.31.234 0 testing321
-$ radtest user xxxx 192.168.31.234 0 testing321
+$ radtest user pass 192.168.31.138 0 testing321
+$ radtest user xxxx 192.168.31.138 0 testing321
 ```
 
 [1]: http://freeradius.org/
