@@ -7,27 +7,17 @@ MAINTAINER kev <noreply@easypi.info>
 
 RUN set -xe \
     && apk add --no-cache freeradius \
+                          freeradius-mysql \
                           freeradius-radclient \
-                          freeradius-sqlite \
-                          sqlite \
+    && rm -f /etc/raddb/mods-enabled/eap \
     && ln -s /etc/raddb/mods-available/sql /etc/raddb/mods-enabled/sql \
-    && sed -i -e 's@driver =.*@driver = "rlm_sql_sqlite"@' \
-              -e 's@dialect =.*@dialect = "sqlite"@' \
-              -e '/sqlite {$/,/}$/{s@^#@@;s@/tmp@/etc/raddb@}' \
+    && sed -i -e 's@driver =.*@driver = "rlm_sql_mysql"@' \
+              -e 's@dialect =.*@dialect = "mysql"@' \
+              -e '/Connection info:/,/^$/{s@^#@@;s@localhost@mysql@}' \
               /etc/raddb/mods-available/sql
-
-RUN set -xe \
-    && cd /etc/raddb \
-    && sqlite3 freeradius.db < /etc/raddb/mods-config/sql/main/sqlite/schema.sql \
-    && echo "INSERT INTO radcheck VALUES('0','user','Cleartext-Password',':=','pass');" | sqlite3 freeradius.db \
-    && radiusd \
-    && radtest user pass localhost 0 testing123 \
-    && echo "DELETE FROM radcheck WHERE id='0';" | sqlite3 freeradius.db
 
 VOLUME /etc/raddb
 
-EXPOSE 1812/udp \
-       1813/udp \
-       47132/udp
+EXPOSE 1812/udp 1813/udp
 
-CMD ["radiusd", "-f"]
+CMD ["radiusd", "-fl", "stdout"]
