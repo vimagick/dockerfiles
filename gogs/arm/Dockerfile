@@ -2,22 +2,21 @@
 # Dockerfile for gogs-arm
 #
 
-FROM easypi/alpine-arm:3.4
-MAINTAINER kev <noreply@easypi.info>
+FROM easypi/alpine-arm
+MAINTAINER EasyPi Software Foundation
 
+ENV GOGS_VERSION 0.9.48
 ENV GOGS_CUSTOM /data/gogs
 
-RUN set -xe \
-    && apk add -U bash \
-                  ca-certificates \
-                  curl \
-                  git \
-                  linux-pam \
-                  openssh \
-                  s6 \
-                  socat \
-                  tar \
-    && rm -rf /var/cache/apk/*
+RUN apk add --no-cache bash \
+                       ca-certificates \
+                       curl \
+                       git \
+                       linux-pam \
+                       openssh \
+                       s6 \
+                       socat \
+                       tar
 
 RUN set -xe \
     && adduser -H -D -g 'Gogs Git User' -h /data/git -s /bin/bash git \
@@ -31,7 +30,7 @@ RUN set -xe \
 RUN set -xe \
     && mkdir /app/ \
     && cd /app/ \
-    && curl -LO https://github.com/gogits/gogs/releases/download/v0.9.13/linux_arm.zip \
+    && curl -LO https://github.com/gogits/gogs/releases/download/v${GOGS_VERSION}/linux_arm.zip \
     && unzip linux_arm.zip \
     && rm linux_arm.zip
 
