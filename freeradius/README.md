@@ -57,8 +57,36 @@ $ docker-compose exec mysql mysql -uroot -proot radius
 +----------------------------------------------------------------+
 5 rows in set (0.00 sec)
 
->>> INSERT INTO radcheck(id, username, attribute, op, value) VALUES(0, 'user', 'Cleartext-Password', ':=', 'pass');
+>>> INSERT INTO radcheck VALUES(NULL, 'user', 'Cleartext-Password', ':=', 'pass');
 Query OK, 1 row affected (0.00 sec)
+
+>>> SELECT * FROM radcheck;
++----+----------+--------------------+----+-------+
+| id | username | attribute          | op | value |
++----+----------+--------------------+----+-------+
+|  1 | user     | Cleartext-Password | := | pass  |
++----+----------+--------------------+----+-------+
+1 row in set (0.00 sec)
+
+>>> INSERT INTO nas VALUES(NULL, '0.0.0.0/0', 'testing', NULL, NULL, 'testing321', NULL, NULL, NULL);
+Query OK, 1 row affected (0.02 sec)
+
+>>> SELECT * FROM nas;
++----+-----------+-----------+------+-------+------------+--------+-----------+-------------+
+| id | nasname   | shortname | type | ports | secret     | server | community | description |
++----+-----------+-----------+------+-------+------------+--------+-----------+-------------+
+|  1 | 0.0.0.0/0 | testing   | NULL |  NULL | testing321 | NULL   | NULL      | NULL        |
++----+-----------+-----------+------+-------+------------+--------+-----------+-------------+
+1 row in set (0.00 sec)
+
+>>> SELECT * FROM radpostauth;
++----+----------+--------------------------------------------------------------+---------------+---------------------+
+| id | username | pass                                                         | reply         | authdate            |
++----+----------+--------------------------------------------------------------+---------------+---------------------+
+|  1 | user     | pass                                                         | Access-Accept | 2016-07-28 06:28:28 |
+|  2 | user     | pass                                                         | Access-Accept | 2016-07-28 06:30:04 |
+|  3 | user     | xxxx                                                         | Access-Reject | 2016-07-28 06:30:22 |
++----+----------+--------------------------------------------------------------+---------------+---------------------+
 
 >>> EXIT
 Bye
@@ -66,6 +94,7 @@ Bye
 $ docker-compose up -d freeradius
 $ docker-compose exec freeradius sh
 >>> vi /etc/raddb/clients.conf
+>>> radtest user pass localhost 0 testing123
 >>> exit
 $ docker-compose restart freeradius
 ```
@@ -73,11 +102,13 @@ $ docker-compose restart freeradius
 ```
 # /etc/raddb/clients.conf
 
-client testing {
-        ipaddr = 0.0.0.0/0
-        secret = testing321
-}
+#client testing {
+#        ipaddr = 0.0.0.0/0
+#        secret = testing321
+#}
 ```
+
+> Manage NAS (Network Access Server) via MySQL.
 
 ## Client Setup
 
@@ -85,6 +116,7 @@ client testing {
 # ssh root@192.168.31.231
 $ pacman -S freeradius freeradius-client
 $ radtest user pass 192.168.31.234 0 testing321
+$ radtest user xxxx 192.168.31.234 0 testing321
 ```
 
 [1]: http://freeradius.org/
