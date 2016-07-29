@@ -209,6 +209,7 @@ A collection of delicious docker recipes.
 ## 3rd-party
 
 - [x] centurylink/watchtower
+- [x] certbot
 - [x] drone/drone
 - [x] drupal
 - [x] ghost
@@ -223,7 +224,6 @@ A collection of delicious docker recipes.
 - [x] jazzdd/phpvirtualbox
 - [x] jenkins
 - [x] jupyter/notebook
-- [x] letsencrypt
 - [x] mongo
 - [x] neo4j
 - [x] owncloud

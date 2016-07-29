@@ -1,0 +1,9 @@
+certbot:
+  image: quay.io/letsencrypt/letsencrypt
+  command: certonly --standalone
+  ports:
+    - "80:80"
+    - "443:443"
+  volumes:
+    - /etc/letsencrypt:/etc/letsencrypt
+    - /var/lib/letsencrypt:/var/lib/letsencrypt

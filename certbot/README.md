@@ -1,5 +1,5 @@
-letsencrypt
-===========
+certbot
+=======
 
 [Let’s Encrypt][1] is a new Certificate Authority:
 It’s free, automated, and open.
@@ -7,15 +7,15 @@ It’s free, automated, and open.
 ## docker-compose.yml
 
 ```
-letsencrypt:
+certbot:
   image: quay.io/letsencrypt/letsencrypt
-  command: auth
+  command: certonly --standalone
   ports:
     - "80:80"
     - "443:443"
   volumes:
-    - "./etc/letsencrypt:/etc/letsencrypt"
-    - "./var/lib/letsencrypt:/var/lib/letsencrypt"
+    - /etc/letsencrypt:/etc/letsencrypt
+    - /var/lib/letsencrypt:/var/lib/letsencrypt
 ```
 
 ## up and running
@@ -24,15 +24,27 @@ letsencrypt:
 # stop nginx (release 80/tcp and 443/tcp)
 $ systemctl stop nginx
 
-# generate keys
-$ docker-compose run --rm --service-ports letsencrypt
+# generate keys (interactive)
+$ docker-compose run --rm --service-ports certbot
 >>> email: admin@easypi.info
 >>> domains: easypi.info,blog.easypi.info,wiki.easypi.info
 
+# renew keys (headless)
+$ docker-compose run --rm --service-ports certbot renew
+
+# list keys
+$ tree /etc/letsencrypt/live/
+/etc/letsencrypt/live/
+└── easypi.info
+    ├── cert.pem -> ../../archive/easypi.info/cert1.pem
+    ├── chain.pem -> ../../archive/easypi.info/chain1.pem
+    ├── fullchain.pem -> ../../archive/easypi.info/fullchain1.pem
+    └── privkey.pem -> ../../archive/easypi.info/privkey1.pem
+
 # deploy keys
 $ mkdir -p /etc/nginx/ssl/
-$ cp ./etc/letsencrypt/live/easypi.info/fullchain.pem /etc/nginx/ssl/easypi.info.crt
-$ cp ./etc/letsencrypt/live/easypi.info/privkey.pem /etc/nginx/ssl/easypi.info.key
+$ cp /etc/letsencrypt/live/easypi.info/fullchain.pem /etc/nginx/ssl/easypi.info.crt
+$ cp /etc/letsencrypt/live/easypi.info/privkey.pem /etc/nginx/ssl/easypi.info.key
 
 # reconfig nginx
 $ vi /etc/nginx/sites-enabled/default
