@@ -11,9 +11,11 @@ drone:
     - /var/run/docker.sock:/var/run/docker.sock
   environment:
     - REMOTE_DRIVER=gogs
-    - REMOTE_CONFIG=https://git.easypi.info/?open=false
+    - REMOTE_CONFIG=http://git.easypi.info:3000/?open=false
     - PLUGIN_FILTER=armdrone/*
     - GIN_MODE=release
+  extra_hosts:
+    - git.easypi.info:192.168.31.231
   restart: always
 ```
 
@@ -90,6 +92,7 @@ environment:
 
 ## read more
 
+- <http://readme.drone.io/setup/overview/>
 - <http://readme.drone.io/devs/cli/>
 - <https://github.com/drone-plugins/drone-docker/blob/master/DOCS.md>
 - <https://gist.github.com/philipz/1e7a36560700fdc1ad63>

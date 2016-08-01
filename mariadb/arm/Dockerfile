@@ -3,18 +3,18 @@
 #
 
 FROM easypi/alpine-arm
-MAINTAINER kev <noreplay@easypi.info>
+MAINTAINER EasyPi Software Foundation
 
 RUN set -xe \
-    && apk add -U bash \
-                  mariadb \
-                  mariadb-client \
-                  tzdata \
+    && apk add --no-cache bash \
+                          mariadb \
+                          mariadb-client \
+                          tzdata \
     && mkdir -p /run/mysqld \
     && chown mysql:mysql /run/mysqld \
     && sed -Ei -e 's/^(bind-address|log)/#&/' \
-               -e 's/^\[mysqld\]$/&\nskip-host-cache\nskip-name-resolve\nuser=mysql/' /etc/mysql/my.cnf \
-    && rm -rf /var/cache/apk/*
+               -e 's/^\[mysqld\]$/&\nskip-host-cache\nskip-name-resolve\nuser=mysql/' \
+               /etc/mysql/my.cnf
 
 COPY docker-entrypoint.sh /
 

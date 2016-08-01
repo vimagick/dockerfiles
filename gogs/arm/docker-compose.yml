@@ -9,7 +9,7 @@ gogs:
     - mysql
   restart: always
 
-mysql
+mysql:
   image: easypi/mariadb-arm
   ports:
     - "3306:3306"

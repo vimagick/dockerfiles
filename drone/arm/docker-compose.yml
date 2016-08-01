@@ -7,7 +7,7 @@ drone:
     - /var/run/docker.sock:/var/run/docker.sock
   environment:
     - REMOTE_DRIVER=gogs
-    - REMOTE_CONFIG=https://git.easypi.info/?open=false
+    - REMOTE_CONFIG=http://git.easypi.info:3000/?open=false
     - PLUGIN_FILTER=armdrone/*
     - GIN_MODE=release
   restart: always
