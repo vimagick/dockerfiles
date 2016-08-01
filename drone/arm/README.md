@@ -93,6 +93,7 @@ environment:
 ## read more
 
 - <http://readme.drone.io/setup/overview/>
+- <http://readme.drone.io/plugins/>
 - <http://readme.drone.io/devs/cli/>
 - <https://github.com/drone-plugins/drone-docker/blob/master/DOCS.md>
 - <https://gist.github.com/philipz/1e7a36560700fdc1ad63>
