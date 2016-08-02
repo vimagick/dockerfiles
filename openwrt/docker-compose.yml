@@ -1,7 +1,7 @@
 openwrt:
-  image: vimagick/openwrt
-  container_name: openwrt
+  image: vimagick/openwrt:bcm2710
+  container_name: openwrt_bcm2710
   command: sleep inf
   volumes:
-    - ./data:/data
+    - ./data/bcm2710:/data
   restart: unless-stopped
