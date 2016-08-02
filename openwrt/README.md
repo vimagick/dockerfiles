@@ -7,20 +7,21 @@ Build OpenWrt Package/Image For Raspberry Pi
 
 ```yaml
 openwrt:
-  image: vimagick/openwrt
-  container_name: openwrt
+  image: vimagick/openwrt:bcm2710
+  container_name: openwrt_bcm2710
   command: sleep inf
   volumes:
-    - ./data:/data
+    - ./data/bcm2710:/data
+  restart: unless-stopped
 ```
 
 ## up and running
 
 ```bash
-$ mkdir -m 777 data
 $ docker-compose up -d
 $ docker-compose exec openwrt bash
 >>> cd ~/sdk
+>>> sudo chmod 777 /data
 >>> ln -s /data bin
 
 >>> ./scripts/feeds update -a
@@ -30,16 +31,19 @@ $ docker-compose exec openwrt bash
 >>> make V=s
 
 >>> export TERM=xterm
->>> sudo apt install asciidoc xmlto
->>> ./scripts/feeds install libopenssl zlib
+>>> sudo apt install -y asciidoc xmlto
 >>> git clone https://github.com/shadowsocks/openwrt-shadowsocks.git package/shadowsocks-libev
->>> make menuconfig
+>>> vi package/shadowsocks-libev/Makefile
+- Package/shadowsocks-libev-spec = $(call Package/shadowsocks-libev/Default,openssl,(OpenSSL),+libopenssl +libpthread +ipset +ip)
++ Package/shadowsocks-libev-spec = $(call Package/shadowsocks-libev/Default,openssl,(OpenSSL),+libopenssl +libpthread +ipset +ip +iptables-mod-tproxy +zlib)
+>>> make menuconfig # Network ▷ shadowsocks-libev-spec ▷ Save ▷ Exit
+>>> make package/zlib/compile V=s
 >>> make package/shadowsocks-libev/compile V=s
 
 >>> tree -dF /data/
 /data/
-└── brcm2708
-    └── packages
+└── brcm2708/
+    └── packages/
         ├── base
         ├── luci
         ├── management

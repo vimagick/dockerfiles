@@ -22,6 +22,7 @@ RUN set -xe \
                           tree \
                           unzip \
                           wget \
+                          vim-tiny \
                           xsltproc \
                           zlib1g-dev \
     && useradd -m openwrt \
