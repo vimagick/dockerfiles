@@ -33,6 +33,34 @@ $ docker run -d --restart always --name scrapyd -p 6800:6800 vimagick/scrapyd
 $ firefox http://localhost:6800
 ```
 
+```
+$ mkvirtualenv webbot
+$ pip install scrapy scrapyd-client
+
+$ scrapy startproject myproject
+$ cd myproject
+$ setvirtualenvproject
+
+$ scrapy genspider myspider mydomain.com
+$ scrapy edit myspider
+$ scrapy list
+
+$ vi scrapy.cfg
+$ scrapyd-client deploy
+$ curl http://localhost:6800/schedule.json -d project=myproject -d spider=myspider
+```
+
+File: scrapy.cfg
+
+```
+[settings]
+default = myproject.settings
+
+[deploy]
+url = http://localhost:6800/
+project = myproject
+```
+
 ## Run it as interactive-shell for scrapy
 
 ```
