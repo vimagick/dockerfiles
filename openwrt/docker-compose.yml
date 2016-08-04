@@ -1,7 +1,27 @@
 openwrt:
+  image: vimagick/openwrt
+  command: sleep infinity
+  environment:
+    - TERM=xterm
+  restart: unless-stopped
+
+bcm2708:
+  extends:
+    service: openwrt
+  image: vimagick/openwrt:bcm2708
+  volumes:
+    - ./data/bcm2708:/data
+
+bcm2710:
+  extends:
+    service: openwrt
   image: vimagick/openwrt:bcm2710
-  container_name: openwrt_bcm2710
-  command: sleep inf
   volumes:
     - ./data/bcm2710:/data
-  restart: unless-stopped
+
+mt7628:
+  extends:
+    service: openwrt
+  image: vimagick/openwrt:mt7628
+  volumes:
+    - ./data/mt7628:/data
