@@ -5,7 +5,7 @@
 FROM easypi/alpine-arm
 MAINTAINER EasyPi Software Foundation
 
-ENV GOGS_VERSION 0.9.48
+ENV GOGS_VERSION 0.9.60
 ENV GOGS_CUSTOM /data/gogs
 
 RUN apk add --no-cache bash \
@@ -36,7 +36,7 @@ RUN set -xe \
 
 RUN set -xe \
     && cd /app/gogs/ \
-    && curl -L https://github.com/gogits/gogs/archive/master.tar.gz | tar xz --strip 1 gogs-master/docker \
+    && curl -L https://github.com/gogits/gogs/archive/v${GOGS_VERSION}.tar.gz | tar xz --strip 1 gogs-${GOGS_VERSION}/docker \
     && mv docker/nsswitch.conf /etc/
 
 WORKDIR /app/gogs/
