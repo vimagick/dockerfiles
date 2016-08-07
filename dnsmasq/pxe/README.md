@@ -37,7 +37,7 @@ port=0
 no-hosts
 no-resolv
 server=8.8.8.8
-dhcp-range=192.168.1.10,192.168.1.20,1h
+dhcp-range=192.168.1.10,192.168.1.20,1h,proxy
 dhcp-option=3,192.168.1.1
 dhcp-option=6,192.168.1.1
 dhcp-boot=pxelinux.0
