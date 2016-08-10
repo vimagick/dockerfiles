@@ -26,14 +26,37 @@ This image is based on `debian:jessie`, 5 latest python packages are installed:
 
 Please use this as base image for your own project.
 
+## docker-compose.yml
+
+```yaml
+scrapyd:
+  image: vimagick/scrapyd
+  ports:
+    - "6800:6800"
+  restart: always
+
+scrapy:
+  image: vimagick/scrapyd
+  command: bash
+  volumes:
+    - .:/code
+  working_dir: /code
+  restart: always
+```
+
 ## Run it as background-daemon for scrapyd
 
-```
-$ docker run -d --restart always --name scrapyd -p 6800:6800 vimagick/scrapyd
-$ firefox http://localhost:6800
+```bash
+$ docker-compose up -d scrapyd
+$ docker-compose logs -f scrapyd
+$ docker cp scrapyd_scrapyd_1:/var/lib/scrapyd/items .
+$ tree items
+└── myproject
+    └── myspider
+        └── ad6153ee5b0711e68bc70242ac110005.jl
 ```
 
-```
+```bash
 $ mkvirtualenv webbot
 $ pip install scrapy scrapyd-client
 
@@ -48,11 +71,12 @@ $ scrapy list
 $ vi scrapy.cfg
 $ scrapyd-client deploy
 $ curl http://localhost:6800/schedule.json -d project=myproject -d spider=myspider
+$ firefox http://localhost:6800
 ```
 
 File: scrapy.cfg
 
-```
+```ini
 [settings]
 default = myproject.settings
 
@@ -63,7 +87,7 @@ project = myproject
 
 ## Run it as interactive-shell for scrapy
 
-```
+```bash
 $ cat > stackoverflow_spider.py << _EOF_
 import scrapy
 
@@ -86,7 +110,7 @@ class StackOverflowSpider(scrapy.Spider):
         }
 _EOF_
 
-$ docker run -it --rm -v `pwd`:/code -w /code vimagick/scrapyd bash
+$ docker-compose run --rm scrapy
 >>> scrapy runspider stackoverflow_spider.py -o top-stackoverflow-questions.json
 >>> cat top-stackoverflow-questions.json
 >>> exit
