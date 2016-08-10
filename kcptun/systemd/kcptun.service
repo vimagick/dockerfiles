@@ -1,0 +1,11 @@
+[Unit]
+Description=udp tunnel based on kcp protocol
+After=network.target
+
+[Service]
+EnvironmentFile=-/etc/default/kcptun
+ExecStart=/usr/bin/kcptun $KCPTUN_OPTS
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
