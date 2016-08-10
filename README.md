@@ -161,6 +161,7 @@ A collection of delicious docker recipes.
 - [x] fteproxy :+1:
 - [x] fteproxy-arm :+1:
 - [x] haproxy-arm
+- [x] kcptun :cn:
 - [x] mysql-proxy
 - [x] ngrok :+1:
 - [x] obfsproxy

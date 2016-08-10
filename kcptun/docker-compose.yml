@@ -1,0 +1,22 @@
+server:
+  image: vimagick/kcptun
+  command:
+    --listen :29900
+    --target google-public-dns-a.google.com:53
+  ports:
+    - "29900:29900/udp"
+  environment:
+    - KCPTUN_KEY=******
+  restart: always
+
+client:
+  image: vimagick/kcptun
+  entrypoint: client_linux_amd64
+  command:
+    --localaddr :12948
+    --remoteaddr easypi.info:29900
+  ports:
+    - "12948:12948/tcp"
+  environment:
+    - KCPTUN_KEY=******
+  restart: always
