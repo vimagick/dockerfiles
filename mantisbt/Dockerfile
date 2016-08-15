@@ -3,16 +3,16 @@
 #
 
 FROM php:5.6-apache
-MAINTAINER kev<noreply@easypi.info>
+MAINTAINER kev <noreply@easypi.info>
 
 RUN a2enmod rewrite
 
 RUN set -xe \
     && apt-get update \
     && apt-get install -y libpng12-dev libjpeg-dev libpq-dev libxml2-dev \
-    && rm -rf /var/lib/apt/lists/* \
     && docker-php-ext-configure gd --with-png-dir=/usr --with-jpeg-dir=/usr \
-    && docker-php-ext-install gd mbstring mysql mysqli pgsql soap
+    && docker-php-ext-install gd mbstring mysql mysqli pgsql soap \
+    && rm -rf /var/lib/apt/lists/*
 
 ENV MANTIS_VER 1.3.0
 ENV MANTIS_MD5 74415837b3ebcc17068258a6e5ab0732
