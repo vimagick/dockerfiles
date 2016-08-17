@@ -1,0 +1,10 @@
+mpd:
+  image: vimagick/mpd
+  ports:
+    - "6600:6600"
+  volumes:
+    - ./music:/var/lib/mpd/music
+    - ./playlists:/var/lib/mpd/playlists
+  devices:
+    - /dev/snd
+  restart: always

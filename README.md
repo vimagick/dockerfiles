@@ -98,6 +98,7 @@ A collection of delicious docker recipes.
 - [x] icecast
 - [x] live555
 - [x] minidlna
+- [x] mpd
 - [x] murmur
 - [x] plex :moneybag:
 - [x] red5 :+1:
