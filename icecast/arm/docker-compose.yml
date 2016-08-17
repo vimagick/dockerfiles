@@ -1,0 +1,5 @@
+icecast:
+  image: easypi/icecast-arm
+  ports:
+    - "8000:8000"
+  restart: always

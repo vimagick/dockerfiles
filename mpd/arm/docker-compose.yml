@@ -3,8 +3,17 @@ mpd:
   ports:
     - "6600:6600"
   volumes:
+    - ./mpd.conf:/etc/mpd.conf
     - ./music:/var/lib/mpd/music
     - ./playlists:/var/lib/mpd/playlists
   devices:
     - /dev/snd
+  links:
+    - icecast
+  restart: always
+
+icecast:
+  image: easypi/icecast-arm
+  ports:
+    - "8000:8000"
   restart: always
