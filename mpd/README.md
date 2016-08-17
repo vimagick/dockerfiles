@@ -24,8 +24,9 @@ mpd:
 ## Server Setup
 
 ```bash
-$ mkdir -p music
-$ wget -P music https://upload.wikimedia.org/wikipedia/commons/d/d5/Pop_Goes_the_Weasel.ogg
+$ mkdir -p music playlists
+$ wget https://upload.wikimedia.org/wikipedia/commons/d/d5/Pop_Goes_the_Weasel.ogg -O music/song.ogg
+$ wget http://yp.shoutcast.com/sbin/tunein-station.m3u?id=760782 -O playlists/760782.m3u
 $ docker-compose up -d
 ```
 
