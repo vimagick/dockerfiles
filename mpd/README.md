@@ -13,7 +13,9 @@ mpd:
   image: vimagick/mpd
   ports:
     - "6600:6600"
+    - "8800:8800"
   volumes:
+    - ./mpd.conf:/etc/mpd.conf
     - ./music:/var/lib/mpd/music
     - ./playlists:/var/lib/mpd/playlists
   devices:
@@ -35,9 +37,17 @@ $ docker-compose up -d
 - Android: https://play.google.com/store/apps/details?id=com.namelessdev.mpdroid
 - Desktop: http://rybczak.net/ncmpcpp/
 
+```yaml
+Host: x.x.x.x
+Port: 6600
+Streaming host: x.x.x.x
+Streaming port: 8800
+```
+
 ## Read More
 
 - <https://wiki.archlinux.org/index.php/Music_Player_Daemon>
+- <https://wiki.archlinux.org/index.php/Music_Player_Daemon/Tips_and_tricks>
 - <https://wiki.archlinux.org/index.php/Streaming_With_Icecast>
 - <https://stmllr.net/blog/streaming-audio-with-mpd-and-icecast2-on-raspberry-pi/>
 

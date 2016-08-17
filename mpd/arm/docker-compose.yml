@@ -2,6 +2,7 @@ mpd:
   image: easypi/mpd-arm
   ports:
     - "6600:6600"
+    - "8800:8800"
   volumes:
     - ./mpd.conf:/etc/mpd.conf
     - ./music:/var/lib/mpd/music
