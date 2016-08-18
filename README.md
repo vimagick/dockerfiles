@@ -70,6 +70,7 @@ A collection of delicious docker recipes.
 - [x] nifi
 - [x] nullmailer
 - [x] nullmailer-arm
+- [x] openhab
 - [x] openssh
 - [x] phantomjs
 - [x] portia
