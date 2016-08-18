@@ -26,9 +26,14 @@ mpd:
 ## Server Setup
 
 ```bash
+$ cd ~/fig/mpd/
 $ mkdir -p music playlists
 $ wget https://upload.wikimedia.org/wikipedia/commons/d/d5/Pop_Goes_the_Weasel.ogg -O music/song.ogg
-$ wget http://yp.shoutcast.com/sbin/tunein-station.m3u?id=760782 -O playlists/760782.m3u
+$ curl -s -X POST -H 'Content-Length: 0' http://www.shoutcast.com/Home/Top |
+    jq '.[].ID' |
+      parallel --eta -k curl -s 'http://yp.shoutcast.com/sbin/tunein-station.m3u?id={}' |
+        sed '1!s@#EXTM3U@@' |
+          cat -s > playlists/shoutcast.m3u
 $ docker-compose up -d
 ```
 
