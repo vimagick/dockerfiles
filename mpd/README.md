@@ -55,5 +55,6 @@ Streaming port: 8800
 - <https://wiki.archlinux.org/index.php/Music_Player_Daemon/Tips_and_tricks>
 - <https://wiki.archlinux.org/index.php/Streaming_With_Icecast>
 - <https://stmllr.net/blog/streaming-audio-with-mpd-and-icecast2-on-raspberry-pi/>
+- <https://www.musicpd.org/doc/user/input_plugins.html>
 
 [1]: https://www.musicpd.org/

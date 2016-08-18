@@ -1,0 +1,3 @@
+#EXTM3U
+#EXTINF:-1,microphone
+alsa://plughw:1,0
