@@ -7,10 +7,14 @@ MAINTAINER EasyPi Software Foundation
 
 RUN set -xe \
     && apk add --no-cache bash \
+                          curl \
                           build-base \
                           nodejs \
                           python \
                           python-dev \
+                          sudo \
+    && curl https://bootstrap.pypa.io/get-pip.py | python \
+    && pip install rpi.gpio \
     && npm install -g node-red \
                       node-red-admin \
     && apk del build-base \
