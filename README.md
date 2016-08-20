@@ -73,6 +73,7 @@ A collection of delicious docker recipes.
 - [x] openhab
 - [x] openssh
 - [x] phantomjs
+- [x] piknik
 - [x] portia
 - [x] pure-ftpd
 - [x] redis-arm

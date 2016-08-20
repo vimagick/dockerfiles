@@ -52,6 +52,10 @@ $ docker-compose exec mpd sh
 >>> mpc repeat on
 >>> mpc random on
 >>> mpc
+>>> mpc clear
+>>> mpc lsplaylists
+>>> mpc load shoutcast
+>>> mpc play
 >>> exit
 ```
 
