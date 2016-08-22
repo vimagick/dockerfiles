@@ -1,0 +1,20 @@
+--- a/36-rpi-gpio.js
++++ b/36-rpi-gpio.js
+@@ -224,7 +224,7 @@
+         this.butt = n.butt || 7;
+         var node = this;
+
+-        node.child = spawn(gpioCommand+".py", ["mouse,node.butt]);
++        node.child = spawn(gpioCommand, ["mouse",node.butt]);
+         node.status({fill:"green",shape:"dot",text:"common.status.ok"});
+
+         node.child.stdout.on('data', function (data) {
+@@ -270,7 +270,7 @@
+         RED.nodes.createNode(this,n);
+         var node = this;
+
+-        node.child = spawn(gpioCommand+".py", ["kbd","0"]);
++        node.child = spawn(gpioCommand, ["kbd","0"]);
+         node.status({fill:"green",shape:"dot",text:"common.status.ok"});
+
+         node.child.stdout.on('data', function (data) {
