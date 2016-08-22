@@ -69,7 +69,15 @@ module.exports = {
 $ cd ~/fig/node-red/
 $ docker-compose up -d
 $ vi node-red/settings.js
+$ docker-compose exec node-red bash
+>>> cd /root/.node-red
+>>> apk add -U build-base
+>>> npm install node-red-node-irc
+>>> npm install node-red-node-daemon
+>>> exit
 $ docker-compose restart
 ```
+
+> Install nodes from [node-red-nodes](https://github.com/node-red/node-red-nodes).
 
 [1]: http://nodered.org/

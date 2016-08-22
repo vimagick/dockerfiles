@@ -13,6 +13,7 @@ RUN set -xe \
                           python-dev \
     && npm install -g node-red \
                       node-red-admin \
+                      node-red-dashboard \
     && apk del build-base \
                python-dev \
     && rm -rf /tmp/npm-*
