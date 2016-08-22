@@ -6,6 +6,8 @@ node-red
 [Node-RED][1] is a tool for wiring together hardware devices, APIs and online
 services in new and interesting ways.
 
+![](screenshot.png)
+
 ## directory tree
 
 ```
