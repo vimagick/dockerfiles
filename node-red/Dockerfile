@@ -8,7 +8,7 @@ MAINTAINER kev <noreply@easypi.info>
 RUN set -xe \
     && apk add --no-cache bash \
                           build-base \
-                          nodejs \
+                          nodejs-lts \
                           python \
                           python-dev \
     && npm install -g node-red \

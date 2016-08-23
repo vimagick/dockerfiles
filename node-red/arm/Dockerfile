@@ -9,7 +9,7 @@ RUN set -xe \
     && apk add --no-cache bash \
                           curl \
                           build-base \
-                          nodejs \
+                          nodejs-lts \
                           python \
                           python-dev \
                           sudo \
