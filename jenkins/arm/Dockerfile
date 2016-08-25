@@ -2,24 +2,26 @@
 # Dockerfile for jenkins-arm
 #
 
-FROM easypi/alpine-arm:edge
+FROM easypi/alpine-arm
 MAINTAINER EasyPi Software Foundation
 
 ENV JENKINS_HOME /var/jenkins_home
 
 RUN set -xe \
-    && apk add -U bash \
-                  curl \
-                  git \
-                  openjdk7 \
-                  openssh-client \
-                  ttf-dejavu \
+    && apk add --no-cache bash \
+                          coreutils \
+                          curl \
+                          git \
+                          openjdk7 \
+                          openssh-client \
+                          ttf-dejavu \
+                          unzip \
+                          zip \
     && addgroup -g 1000 jenkins \
     && adduser -h $JENKINS_HOME -u 1000 -G jenkins -s /bin/bash -D jenkins \
     && mkdir -p /usr/share/jenkins \
     && cd /usr/share/jenkins \
-    && wget http://mirrors.jenkins-ci.org/war/latest/jenkins.war \
-    && rm -rf /var/cache/apk/*
+    && wget http://mirrors.jenkins-ci.org/war/latest/jenkins.war
 
 VOLUME $JENKINS_HOME
 WORKDIR $JENKINS_HOME
