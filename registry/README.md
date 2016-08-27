@@ -7,10 +7,11 @@ registry
 
 ```yaml
 registry:
-  image: registry:2
+  image: registry
   ports:
     - "5000:5000"
   volumes:
+    - /etc/docker/registry
     - ./data:/var/lib/registry
     - ./certs:/certs
     - ./auth:/auth
@@ -27,9 +28,16 @@ registry:
 
 ```bash
 $ docker-compose up -d
-$ docker-compose exec registry bash
+$ docker-compose exec registry sh
 >>> htpasswd -Bbn username password >> /auth/htpasswd
+>>> cat >> /etc/docker/registry/config.yml
+proxy:
+  remoteurl: https://registry-1.docker.io
+  username: username
+  password: password
+^D
 >>> exit
+$ docker-compose restart
 
 $ docker pull alpine
 $ docker tag alpine registry.easypi.info:5000/alpine
@@ -44,5 +52,6 @@ $ docker pull registry.easypi.info:5000/alpine
 - https://github.com/docker/distribution/blob/master/docs/deploying.md
 - https://github.com/docker/distribution/blob/master/docs/insecure.md
 - https://serversforhackers.com/tcp-load-balancing-with-nginx-ssl-pass-thru
+- https://github.com/docker/distribution/blob/master/docs/recipes/mirror.md
 
 [1]: https://github.com/docker/distribution

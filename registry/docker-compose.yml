@@ -1,8 +1,9 @@
 registry:
-  image: registry:2
+  image: registry
   ports:
     - "5000:5000"
   volumes:
+    - /etc/docker/registry
     - ./data:/var/lib/registry
     - ./certs:/certs
     - ./auth:/auth
