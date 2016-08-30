@@ -5,7 +5,8 @@
 FROM alpine
 MAINTAINER kev <noreply@easypi.info>
 
-RUN apk add -U build-base openssl \
+RUN set -xe \
+    && apk add --no-cache build-base openssl \
     && wget https://github.com/jech/polipo/archive/master.zip -O polipo.zip \
     && unzip polipo.zip \
     && cd polipo-master \
@@ -14,8 +15,7 @@ RUN apk add -U build-base openssl \
     && cd .. \
     && rm -rf polipo.zip polipo-master \
     && mkdir -p /usr/share/polipo/www /var/cache/polipo \
-    && apk del build-base openssl \
-    && rm -rf /var/cache/apk/*
+    && apk del build-base openssl
 
 EXPOSE 8123
 
