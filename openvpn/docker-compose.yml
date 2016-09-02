@@ -1,14 +1,9 @@
-data:
-  image: busybox
-  volumes:
-    - /etc/openvpn
-
-server:
+openvpn:
   image: vimagick/openvpn
-  expose:
-    - "1194/tcp"
-  volumes_from:
-    - data
+  ports:
+    - "1194:1194"
+  volumes:
+    - ./data:/etc/openvpn
   cap_add:
     - NET_ADMIN
   restart: always
@@ -18,10 +13,10 @@ stunnel:
   ports:
     - "4911:4911"
   links:
-    - server
+    - openvpn
   environment:
     - CLIENT=no
     - SERVICE=openvpn
     - ACCEPT=0.0.0.0:4911
-    - CONNECT=server:1194
+    - CONNECT=openvpn:1194
   restart: always

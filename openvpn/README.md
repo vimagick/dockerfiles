@@ -1,4 +1,4 @@
-openvpn
+OpenVPN
 =======
 
 [OpenVPN][1] is blocked in China. You need to connect vpn via secure tunnel.
@@ -11,18 +11,13 @@ Instead of using [fteproxy][2] as bridge, you can also use [stunnel][3].
 
 ## docker-compose.yml (server)
 
-```
-data:
-  image: busybox
-  volumes:
-    - /etc/openvpn
-
-server:
+```yaml
+openvpn:
   image: vimagick/openvpn
-  expose:
-    - "1194/tcp"
-  volumes_from:
-    - data
+  ports:
+    - "1194:1194"
+  volumes:
+    - ./data:/etc/openvpn
   cap_add:
     - NET_ADMIN
   restart: always
@@ -32,59 +27,55 @@ fteproxy:
   ports:
     - "4911:4911"
   links:
-    - "server"
+    - openvpn
   environment:
-    - "MODE=server"
-    - "SERVER_IP=0.0.0.0"
-    - "SERVER_PORT=4911"
-    - "PROXY_IP=server"
-    - "PROXY_PORT=1194"
-    - "KEY=CB2FBA2BC70490526E749E01BB050F6B555964290DFF58CF24785B4A093F7B18"
+    - MODE=server
+    - SERVER_IP=0.0.0.0
+    - SERVER_PORT=4911
+    - PROXY_IP=openvpn
+    - PROXY_PORT=1194
+    - KEY=CB2FBA2BC70490526E749E01BB050F6B555964290DFF58CF24785B4A093F7B18
   restart: always
 ```
 
 ## docker-compose.yml (bridge)
 
-```
+```yaml
 fteproxy:
   image: vimagick/fteproxy
   ports:
     - "1194:1194"
   environment:
-    - "MODE=client"
-    - "SERVER_IP=vpn.easypi.info"
-    - "SERVER_PORT=4911"
-    - "CLIENT_IP=0.0.0.0"
-    - "CLIENT_PORT=1194"
-    - "KEY=CB2FBA2BC70490526E749E01BB050F6B555964290DFF58CF24785B4A093F7B18"
+    - MODE=client
+    - SERVER_IP=vpn.easypi.info
+    - SERVER_PORT=4911
+    - CLIENT_IP=0.0.0.0
+    - CLIENT_PORT=1194
+    - KEY=CB2FBA2BC70490526E749E01BB050F6B555964290DFF58CF24785B4A093F7B18
   restart: always
 ```
 
-## server
+## Server Setup
 
-```
-$ fig up -d data
-
+```bash
 $ ./setup.sh
-1) server
-2) client
+1) server ...... (Step 1)
+2) client ...... (Step 2)
 3) revoke
-4) backup
-5) restore
-6) quit
+4) quit   ...... (Step 3)
 
-$ fig up -d
+$ docker-compose up -d
 ```
 
-## bridge
+## Bridge Setup
 
-```
-$ fig up -d
+```bash
+$ docker-compose up -d
 ```
 
-## client
+## Client Setup
 
-```
+```bash
 $ cat /etc/openvpn/client.conf
 ...
 remote bridge.easypi.info 1194 tcp
