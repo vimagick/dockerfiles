@@ -4,11 +4,10 @@ gitlab:
   environment:
     GITLAB_OMNIBUS_CONFIG: |
       external_url 'https://git.example.com'
-      nginx['redirect_http_to_https'] = true
+      gitlab_rails['gitlab_shell_ssh_port'] = 2222
   ports:
-    - "22:22"
-    - "80:80"
     - "443:443"
+    - "2222:22"
   volumes:
     - ./gitlab/config:/etc/gitlab
     - ./gitlab/logs:/var/log/gitlab
