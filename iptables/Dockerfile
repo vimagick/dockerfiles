@@ -5,7 +5,7 @@
 FROM alpine
 MAINTAINER kev <noreply@easypi.info>
 
-RUN apk add -U iproute2
+RUN apk add -U iproute2 && ln -s /usr/lib/tc /lib/tc
 
 ENV LIMIT_PORT 8388
 ENV LIMIT_CONN 5
