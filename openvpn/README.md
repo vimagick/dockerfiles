@@ -3,7 +3,7 @@ OpenVPN
 
 [OpenVPN][1] is blocked in China. You need to connect vpn via secure tunnel.
 
-Instead of using [fteproxy][2] as bridge, you can also use [stunnel][3].
+Instead of using [fteproxy][2] as bridge, you can also use [stunnel][3] or [kcptun][4].
 
 - server: vpn.easypi.info
 - bridge: bridge.easypi.info
@@ -93,3 +93,4 @@ $ systemctl enable openvpn@client
 [1]: https://openvpn.net/index.php/open-source.html
 [2]: https://github.com/vimagick/dockerfiles/tree/master/fteproxy
 [3]: https://github.com/vimagick/dockerfiles/tree/master/stunnel
+[3]: https://github.com/vimagick/dockerfiles/tree/master/kcptun

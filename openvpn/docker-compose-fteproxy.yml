@@ -1,0 +1,24 @@
+openvpn:
+  image: vimagick/openvpn
+  ports:
+    - "1194:1194"
+  volumes:
+    - ./data:/etc/openvpn
+  cap_add:
+    - NET_ADMIN
+  restart: always
+
+fteproxy:
+  image: vimagick/fteproxy
+  ports:
+    - "4911:4911"
+  links:
+    - openvpn
+  environment:
+    - MODE=server
+    - SERVER_IP=0.0.0.0
+    - SERVER_PORT=4911
+    - PROXY_IP=openvpn
+    - PROXY_PORT=1194
+    - KEY=CB2FBA2BC70490526E749E01BB050F6B555964290DFF58CF24785B4A093F7B18
+  restart: always

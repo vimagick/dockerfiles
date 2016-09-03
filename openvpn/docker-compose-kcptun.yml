@@ -1,0 +1,22 @@
+openvpn:
+  image: vimagick/openvpn
+  ports:
+    - "1194:1194"
+  volumes:
+    - ./data:/etc/openvpn
+  cap_add:
+    - NET_ADMIN
+  restart: always
+
+kcptun:
+  image: vimagick/kcptun
+  command:
+    --listen :4911
+    --target openvpn:1194
+  ports:
+    - "4911:4911/udp"
+  links:
+    - openvpn
+  environment:
+    - KCPTUN_KEY=******
+  restart: always
