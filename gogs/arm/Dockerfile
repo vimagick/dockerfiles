@@ -5,7 +5,7 @@
 FROM easypi/alpine-arm
 MAINTAINER EasyPi Software Foundation
 
-ENV GOGS_VERSION 0.9.71
+ENV GOGS_VERSION 0.9.97
 ENV GOGS_CUSTOM /data/gogs
 
 RUN apk add --no-cache bash \
