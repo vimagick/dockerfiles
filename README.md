@@ -178,6 +178,7 @@ A collection of delicious docker recipes.
 - [x] stunnel
 - [x] stunnel-arm
 - [x] tor
+- [x] traefik-arm
 
 ## VPN
 
