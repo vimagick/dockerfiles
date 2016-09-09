@@ -59,7 +59,6 @@ A collection of delicious docker recipes.
 - [x] httpbin :+1:
 - [x] hubot
 - [x] influxdb
-- [x] influxdb-arm
 - [x] mariadb
 - [x] mariadb-arm
 - [x] monit
@@ -84,7 +83,6 @@ A collection of delicious docker recipes.
 - [x] swarm-arm
 - [x] taskd
 - [x] telegraf
-- [x] telegraf-arm
 - [x] tmail :beetle:
 - [x] urlwatch :beetle:
 - [x] vnstat
@@ -119,7 +117,6 @@ A collection of delicious docker recipes.
 - [x] dokuwiki-arm :+1:
 - [x] gogs-arm :cn:
 - [x] grafana
-- [x] grafana-arm
 - [x] hugo
 - [x] hugo-arm
 - [x] jamapi

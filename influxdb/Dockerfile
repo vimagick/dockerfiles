@@ -5,9 +5,9 @@
 FROM debian:jessie
 MAINTAINER kev <noreply@easypi.info>
 
-ENV INFLUXDB_VERSION=0.13.0
+ENV INFLUXDB_VERSION=1.0.0
 ENV INFLUXDB_FILE=influxdb_${INFLUXDB_VERSION}_amd64.deb
-ENV INFLUXDB_MD5=4f0aa76fee22cf4c18e2a0779ba4f462
+ENV INFLUXDB_MD5=a25daf049d2482166b248fe2d0be4b69
 ENV INFLUXDB_URL=https://dl.influxdata.com/influxdb/releases/${INFLUXDB_FILE}
 ENV COLLECTD_URL=https://github.com/collectd/collectd/raw/master/src/types.db
 

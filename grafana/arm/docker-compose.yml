@@ -1,9 +1,0 @@
-grafana:
-  image: easypi/grafana-arm
-  ports:
-    - "3000:3000"
-  environment:
-    - GF_SERVER_ROOT_URL=http://grafana.easypi.info/
-    - GF_SECURITY_ADMIN_USER=admin
-    - GF_SECURITY_ADMIN_PASSWORD=admin
-  restart: always
