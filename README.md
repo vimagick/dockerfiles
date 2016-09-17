@@ -105,6 +105,7 @@ A collection of delicious docker recipes.
 - [x] red5-arm :construction:
 - [x] rtmp-client-arm :+1:
 - [x] rtmp-server
+- [x] shoutcast
 - [x] tesseract
 - [x] youtube-dl
 - [x] youtube-worker :beetle:

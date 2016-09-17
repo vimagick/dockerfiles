@@ -1,0 +1,8 @@
+shoutcast:
+  image: vimagick/shoutcast
+  ports:
+    - "8000:8000"
+    - "8001:8001"
+  volumes:
+    - ./sc_serv.conf:/opt/shoutcast/sc_serv.conf
+  restart: always
