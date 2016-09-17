@@ -1,6 +1,8 @@
 shoutcast
 =========
 
+![](https://upload.wikimedia.org/wikipedia/en/thumb/f/f7/SHOUTcast_logo.svg/200px-SHOUTcast_logo.svg.png)
+
 [SHOUTcast][1] Server (DNAS) - The most popular online streaming server
 software on the planet, used by over 50,000 broadcasters.
 
