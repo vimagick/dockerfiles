@@ -138,6 +138,9 @@ audio_output {
 }
 ```
 
+> `MPD` doesn't support `streampath` setting.
+> The `mount` setting doesn't work.
+
 ```bash
 $ export MPD_HOST=192.168.31.104
 $ mpc update
