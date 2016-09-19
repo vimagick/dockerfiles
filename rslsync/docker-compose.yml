@@ -1,5 +1,5 @@
-btsync:
-  image: vimagick/btsync
+rslsync:
+  image: vimagick/rslsync
   ports:
     - "8888:8888"
     - "55555:55555"

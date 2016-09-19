@@ -50,7 +50,6 @@ A collection of delicious docker recipes.
 - [x] alpine-arm :+1:
 - [x] aria2 :+1:
 - [x] audiowaveform
-- [x] btsync
 - [x] cadvisor
 - [x] casperjs :+1:
 - [x] collectd
@@ -76,6 +75,7 @@ A collection of delicious docker recipes.
 - [x] portia
 - [x] pure-ftpd
 - [x] redis-arm
+- [x] rslsync
 - [x] rsyncd
 - [x] samba :+1:
 - [x] samba-arm :+1:
@@ -223,6 +223,7 @@ A collection of delicious docker recipes.
 - [x] jazzdd/phpvirtualbox
 - [x] jenkins
 - [x] jupyter/notebook
+- [x] kylemanna/openvpn
 - [x] mongo
 - [x] neo4j
 - [x] owncloud

@@ -1,5 +1,5 @@
 {
-  "device_name": "BitTorrent Sync Server",
+  "device_name": "Resilio Sync Server",
   "listening_port": 55555,
   "storage_path": "/data/.syncsystem",
   "pid_file": "/data/.syncsystem/btsync.pid",

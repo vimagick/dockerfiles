@@ -1,5 +1,5 @@
 [Unit]
-Description=BitTorrent Sync Daemon
+Description=Resilio Sync Daemon
 After=network.target
 AssertPathExists=/etc/btsync/config.json
 AssertPathIsDirectory=/data/.syncsystem
