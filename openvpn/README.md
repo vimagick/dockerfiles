@@ -13,7 +13,7 @@ Instead of using [fteproxy][2] as bridge, you can also use [stunnel][3] or [kcpt
 
 ```yaml
 openvpn:
-  image: vimagick/openvpn
+  image: kylemanna/openvpn
   ports:
     - "1194:1194"
   volumes:

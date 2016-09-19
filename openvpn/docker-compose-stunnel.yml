@@ -1,5 +1,5 @@
 openvpn:
-  image: vimagick/openvpn
+  image: kylemanna/openvpn
   ports:
     - "1194:1194"
   volumes:

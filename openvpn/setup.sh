@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# setup script for vimagick/openvpn
+# setup script for kylemanna/openvpn
 #
 
 OVPN_DIR=./ovpn
