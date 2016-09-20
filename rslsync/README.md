@@ -13,33 +13,38 @@ rslsync:
     - "55555:55555"
   volumes:
     - ./data:/data
-    - ./rslsync.conf:/etc/rslsync.conf
+    - ./rslsync.json:/etc/rslsync.json
   restart: always
 ```
 
-## rslsync.conf
+## rslsync.json
 
 ```json
 {
-  "device_name": "My Sync Device",
+  "device_name": "Resilio Sync Server",
   "listening_port": 55555,
-  "storage_path": "/data/.syncsystem",
+  "storage_path": "/data/system",
   "pid_file": "/var/run/rslsync.pid",
   "use_upnp": false,
   "download_limit": 0,
   "upload_limit": 0,
-  "directory_root": "/data/syncaod",
+  "directory_root": "/data/user",
   "directory_root_policy": "all",
   "webui": {
-    "listen": "0.0.0.0:8888"
+    "listen": "0.0.0.0:8888",
+    "login": "admin",
+    "password": "admin"
   }
 }
 ```
 
+> Please change the default login/password.
+
 ## up and running
 
 ```bash
-$ docker-compose run --rm rslsync --dump-sample-config > rslsync.conf
+$ docker-compose run --rm rslsync rslsync --dump-sample-config > rslsync.json
+$ vi rslsync.json
 $ docker-compose up -d
 ```
 
