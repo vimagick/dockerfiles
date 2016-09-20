@@ -5,4 +5,5 @@ rslsync:
     - "55555:55555"
   volumes:
     - ./data:/data
+    - ./rslsync.conf:/etc/rslsync.conf
   restart: always

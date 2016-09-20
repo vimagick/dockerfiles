@@ -1,12 +1,12 @@
 [Unit]
 Description=Resilio Sync Daemon
 After=network.target
-AssertPathExists=/etc/btsync/config.json
+AssertPathExists=/etc/rslsync.conf
 AssertPathIsDirectory=/data/.syncsystem
 AssertPathIsDirectory=/data/syncaod
 
 [Service]
-ExecStart=/usr/bin/btsync --nodaemon --config /etc/btsync/config.json
+ExecStart=/usr/bin/rslsync --nodaemon --config /etc/rslsync.conf
 Restart=always
 RestartSec=10
 
