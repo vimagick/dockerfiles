@@ -25,19 +25,19 @@ services in new and interesting ways.
 
 ## docker-compose.yml
 
-```
+```yaml
 node-red:
   image: vimagick/node-red
   ports:
     - "1880:1880"
   volumes:
-    - ./node-red:/root/.node-red
+    - ./data:/root/.node-red
   restart: always
 ```
 
 ## settings.js
 
-```
+```javascript
 module.exports = {
 
     //...
@@ -68,7 +68,7 @@ module.exports = {
 ```
 $ cd ~/fig/node-red/
 $ docker-compose up -d
-$ vi node-red/settings.js
+$ vi data/settings.js
 $ docker-compose exec node-red bash
 >>> cd /root/.node-red
 >>> apk add -U build-base
