@@ -47,10 +47,10 @@ RUN set -xe \
                          libxml2-dev \
     && rm -rf /var/lib/apt/lists/*
 
-ENV MOODLE_VERSION 3.1
+ENV MOODLE_VERSION 3.1.2
 ENV MOODLE_FILE moodle-${MOODLE_VERSION}.tgz
-ENV MOODLE_URL https://download.moodle.org/download.php/direct/stable31/${MOODLE_FILE}
-ENV MOODLE_MD5 970a17ea97d2a1dc2354fd975206f531
+ENV MOODLE_URL https://download.moodle.org/stable31/${MOODLE_FILE}
+ENV MOODLE_MD5 02b0ab99babb90bfa52c6100d7c91659
 
 RUN curl -sSL ${MOODLE_URL} -o ${MOODLE_FILE} \
     && echo "${MOODLE_MD5}  ${MOODLE_FILE}" | md5sum -c \
