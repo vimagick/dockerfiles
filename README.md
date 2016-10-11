@@ -36,6 +36,7 @@ A collection of delicious docker recipes.
 - [ ] nfs
 - [ ] openldap
 - [ ] openswan
+- [ ] postfix
 - [ ] pritunl
 - [ ] pyinstaller
 - [ ] rtmpdump
