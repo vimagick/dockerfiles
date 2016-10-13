@@ -16,9 +16,9 @@ RUN set -xe \
 
 WORKDIR /var/www/html
 
-ENV PHPBB_VERSION 3.1.9
+ENV PHPBB_VERSION 3.1.10
 ENV PHPBB_URL https://www.phpbb.com/files/release/phpBB-${PHPBB_VERSION}.tar.bz2
-ENV PHPBB_SHA 94d67899269dd871cd314b3f2d3275fc7b31f5e6856e56fa70f0aed8e47a3ac8
+ENV PHPBB_SHA 198fda1a0bd833d42e0d4f4fe26a47d656a6e087ed9a561e06b0940de131a22c
 ENV PHPBB_FILE phpBB.tar.bz2
 
 RUN set -xe \
