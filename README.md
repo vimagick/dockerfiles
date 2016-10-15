@@ -41,6 +41,7 @@ A collection of delicious docker recipes.
 - [ ] pyinstaller
 - [ ] rtmpdump
 - [ ] sensu
+- [ ] ssf
 - [ ] tinyproxy
 - [ ] tshark
 - [ ] youtube-upload
