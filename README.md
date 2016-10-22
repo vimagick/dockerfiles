@@ -15,12 +15,9 @@ A collection of delicious docker recipes.
 
 ## Todo
 
-- [ ] badvpn
 - [ ] caddy
-- [ ] cloudtunes
 - [ ] dsniff
 - [ ] ettercap
-- [ ] firehol
 - [ ] freegeoip
 - [ ] freelan
 - [ ] gitbook
