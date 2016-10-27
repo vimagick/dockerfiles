@@ -147,6 +147,7 @@ A collection of delicious docker recipes.
 - [x] clamav
 - [x] dsniff
 - [x] ferm
+- [x] grr
 - [x] hydra
 - [x] iptables
 - [x] routersploit

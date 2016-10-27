@@ -1,0 +1,16 @@
+grr:
+  image: grrdocker/grr
+  ports:
+    - "8000:8000"
+    - "8080:8080"
+  volumes:
+    - ./data/db:/var/grr-datastore
+    - ./data/log:/var/log
+  environment:
+    - EXTERNAL_HOSTNAME="grr.easypi.info"
+    - ADMIN_PASSWORD="******"
+  ulimits:
+    nofile:
+      soft: 1048576
+      hard: 1048576 
+  restart: always
