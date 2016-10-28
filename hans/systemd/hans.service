@@ -1,0 +1,17 @@
+# /etc/systemd/system/hans.service
+[Unit]
+Description=IP over ICMP
+After=network.target
+
+[Service]
+EnvironmentFile=/etc/default/hans
+ExecStartPre=/bin/ping -c 1 $SERVER
+ExecStart=/usr/local/bin/hans -f -c $SERVER -p $PASSWORD
+ExecStartPost=/bin/sleep 5
+ExecStartPost=-/sbin/ip route add $SERVER via $GATEWAY
+ExecStartPost=/sbin/ip route add 0.0.0.0/1 dev tun0
+ExecStartPost=/sbin/ip route add 128.0.0.0/1 dev tun0
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
