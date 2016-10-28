@@ -4,13 +4,29 @@ hans
 [Hans][1] makes it possible to tunnel IPv4 through ICMP echo packets, so you
 could call it a ping tunnel.
 
+## How It Works
+
+```
+Client ---> G.F.W ---> Server ---> Internet
+ tun0       ping        tun0
+```
+
 ## docker-compose.yml
 
 ```yaml
-hans:
+server:
   image: vimagick/hans
   environment:
     - NETWORK=10.1.2.0
+    - PASSWORD=password
+  net: host
+  privileged: yes
+  restart: always
+
+client:
+  image: easypi/hans-arm
+  environment:
+    - SERVER=1.2.3.4
     - PASSWORD=password
   net: host
   privileged: yes
@@ -20,8 +36,8 @@ hans:
 ## Server Setup
 
 ```bash
-# Start Server Program
-$ docker-compose up -d
+# Start Server Container
+$ docker-compose up -d server
 
 # Enable Masquerade (Method A)
 $ iptables -t nat -A POSTROUTING -s 10.1.2.0/24 -o eth0 -j MASQUERADE
@@ -33,8 +49,8 @@ $ firewall-cmd --add-masquerade
 ## Client Setup
 
 ```bash
-# Start Client Program
-$ hans -f -c 1.2.3.4 -p password
+# Start Client Container
+$ docker-compose up -d client
 
 # Access Server Directly
 $ ip route add 1.2.3.4 via 192.168.1.1
