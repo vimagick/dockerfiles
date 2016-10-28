@@ -1,0 +1,8 @@
+hans:
+  image: vimagick/hans
+  environment:
+    - NETWORK=10.1.2.0
+    - PASSWORD=password
+  net: host
+  privileged: yes
+  restart: always

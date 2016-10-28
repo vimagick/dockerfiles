@@ -161,6 +161,7 @@ A collection of delicious docker recipes.
 - [x] delegated
 - [x] fteproxy :+1:
 - [x] fteproxy-arm :+1:
+- [x] hans
 - [x] haproxy-arm
 - [x] kcptun :cn:
 - [x] mysql-proxy
