@@ -20,13 +20,20 @@ hans:
 ## Server Setup
 
 ```bash
+# Start Server Program
 $ docker-compose up -d
+
+# Enable Masquerade (Method A)
+$ iptables -t nat -A POSTROUTING -s 10.1.2.0/24 -o eth0 -j MASQUERADE
+
+# Enable Masquerade (Method B)
+$ firewall-cmd --add-masquerade
 ```
 
 ## Client Setup
 
 ```bash
-# Run Client Program
+# Start Client Program
 $ hans -f -c 1.2.3.4 -p password
 
 # Access Server Directly
