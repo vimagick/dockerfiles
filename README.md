@@ -76,6 +76,7 @@ A collection of delicious docker recipes.
 - [x] redis-arm
 - [x] rslsync
 - [x] rsyncd
+- [x] rsyslog
 - [x] samba :+1:
 - [x] samba-arm :+1:
 - [x] scrapyd :+1:
