@@ -3,7 +3,6 @@
 #
 
 FROM alpine
-
 MAINTAINER kev <noreply@easypi.info>
 
 RUN set -xe \
@@ -18,6 +17,7 @@ RUN set -xe \
     } >> /etc/rsyslog.conf
 
 VOLUME /var/log
+WORKDIR /var/log
 
 EXPOSE 514/tcp \
        514/udp

@@ -1,6 +1,8 @@
 rsyslog
 =======
 
+[RSYSLOG][1] is the rocket-fast system for log processing.
+
 ## docker-compose.yml
 
 ```yaml
@@ -18,8 +20,19 @@ rsyslog:
 
 ```bash
 $ docker-compose up -d
+
 $ docker-compose exec rsyslog sh
->>> logger -t debug hello world
->>> tail /var/log/messages
-2016-10-29T07:52:15.177918+00:00 c88f52cf86b6 debug: hello world
+>>> pwd
+/var/log
+>>> touch maillog
+>>> tail -f /var/log/maillog
+2016-10-29T08:17:34+00:00 172.17.0.1 root: hello
+2016-10-29T08:17:41+00:00 172.17.0.1 root: world
+^C
+>>> exit
+
+$ logger -n localhost -p mail.debug hello
+$ logger -n localhost -p mail.info world
 ```
+
+[1]: http://www.rsyslog.com/
