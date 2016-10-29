@@ -212,6 +212,7 @@ A collection of delicious docker recipes.
 - [x] certbot
 - [x] drone/drone
 - [x] drupal
+- [x] elk
 - [x] ghost
 - [x] gitlab/gitlab-ce
 - [ ] gliderlabs/logspout

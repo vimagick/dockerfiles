@@ -1,0 +1,33 @@
+version: '2'
+services:
+  elasticsearch:
+    image: elasticsearch:5.0
+    ports:
+      - '9200:9200'
+      - '9300:9300'
+    volumes:
+      - ./elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+      - ./data:/usr/share/elasticsearch/data
+    mem_limit: 4g
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+      nofile:
+        soft: 65536
+        hard: 65536
+    cap_add:
+      - IPC_LOCK
+  logstash:
+    image: logstash:5.0
+    ports:
+      - '5000:5000'
+      - '5044:5044'
+    volumes:
+      - ./conf:/etc/logstash/conf.d
+  kibana:
+    image: kibana:5.0
+    ports:
+      - '5601:5601'
+    environment:
+      - ELASTICSEARCH_URL=http://elasticsearch:9200
