@@ -44,6 +44,13 @@ A collection of delicious docker recipes.
 - [ ] youtube-upload
 - [ ] xl2tpd
 
+## IoT
+
+- [x] hass
+- [x] hass-arm
+- [x] node-red :+1:
+- [x] node-red-arm :+1:
+
 ## Daemon
 
 - [x] alpine-arm :+1:
@@ -118,7 +125,6 @@ A collection of delicious docker recipes.
 - [x] dokuwiki-arm :+1:
 - [x] gogs-arm :cn:
 - [x] grafana
-- [x] hass
 - [x] hugo
 - [x] hugo-arm
 - [x] jamapi
@@ -132,8 +138,6 @@ A collection of delicious docker recipes.
 - [x] nextcloud :+1:
 - [x] nginad
 - [x] nodebb :+1:
-- [x] node-red :+1:
-- [x] node-red-arm :+1:
 - [x] opencart
 - [x] openrefine
 - [x] phpbb
