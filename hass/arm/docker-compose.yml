@@ -1,0 +1,7 @@
+hass:
+  image: easypi/hass-arm
+  ports:
+    - "8123:8123"
+  volumes:
+    - ./data:/etc/hass
+  restart: unless-stopped

@@ -118,6 +118,7 @@ A collection of delicious docker recipes.
 - [x] dokuwiki-arm :+1:
 - [x] gogs-arm :cn:
 - [x] grafana
+- [x] hass
 - [x] hugo
 - [x] hugo-arm
 - [x] jamapi

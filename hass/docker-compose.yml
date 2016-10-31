@@ -1,0 +1,7 @@
+hass:
+  image: vimagick/hass
+  ports:
+    - "8123:8123"
+  volumes:
+    - ./data:/etc/hass
+  restart: unless-stopped
