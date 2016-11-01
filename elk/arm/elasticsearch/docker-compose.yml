@@ -1,0 +1,9 @@
+elasticsearch:
+  image: easypi/elasticsearch-arm
+  ports:
+    - '9200:9200'
+    - '9300:9300'
+  volumes:
+    - ./data:/opt/elasticsearch/data
+    - ./config:/opt/elasticsearch/config
+  restart: always

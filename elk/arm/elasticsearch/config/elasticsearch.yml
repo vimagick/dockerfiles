@@ -1,0 +1,5 @@
+network.host: 0.0.0.0
+path.data: /opt/elasticsearch/data
+path.logs: /opt/elasticsearch/logs
+discovery.zen.minimum_master_nodes: 1
+bootstrap.mlockall: false

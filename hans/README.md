@@ -61,6 +61,10 @@ $ ip route change default via 10.1.2.1
 # Change Default Route (Method B)
 $ ip route add 0.0.0.0/1 dev tun0
 $ ip route add 128.0.0.0/1 dev tun0
+
+# Enable IP Forwarding
+$ sysctl -w net.ipv4.ip_forward=1
+$ iptables -t nat -A POSTROUTING -s 192.168.1.0/24 -o tun0 -j MASQUERADE
 ```
 
 [1]: http://code.gerade.org/hans/
