@@ -2,7 +2,7 @@
 # Dockerfile for jenkins-arm
 #
 
-FROM easypi/alpine-arm
+FROM easypi/alpine-arm:edge
 MAINTAINER EasyPi Software Foundation
 
 ENV JENKINS_HOME /var/jenkins_home
@@ -12,7 +12,7 @@ RUN set -xe \
                           coreutils \
                           curl \
                           git \
-                          openjdk7 \
+                          openjdk8 \
                           openssh-client \
                           ttf-dejavu \
                           unzip \
