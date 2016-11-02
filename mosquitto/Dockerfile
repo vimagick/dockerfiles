@@ -8,7 +8,7 @@ MAINTAINER kev <noreply@easypi.info>
 RUN apk add --no-cache mosquitto
 
 VOLUME /etc/mosquitto
-EXPOSE 1883
+EXPOSE 1883 8883
 
 ENTRYPOINT ["mosquitto"]
-CMD ["-c", "/etc/mosquitto/mosquitto.conf", "-p", "1883"]
+CMD ["-c", "/etc/mosquitto/mosquitto.conf"]
