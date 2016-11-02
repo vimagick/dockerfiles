@@ -90,6 +90,7 @@ A collection of delicious docker recipes.
 - [x] swarm-arm
 - [x] taskd
 - [x] telegraf
+- [x] tftpd
 - [x] tmail :beetle:
 - [x] urlwatch :beetle:
 - [x] vnstat
