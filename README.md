@@ -136,7 +136,6 @@ A collection of delicious docker recipes.
 - [x] mantisbt
 - [x] mediagoblin
 - [x] netdata
-- [x] nextcloud :+1:
 - [x] nginad
 - [x] nodebb :+1:
 - [x] opencart
@@ -229,6 +228,7 @@ A collection of delicious docker recipes.
     - [ ] python
 - [x] gogs :cn:
 - [x] haproxy
+- [x] indiehosters/nextcloud
 - [x] jazzdd/phpvirtualbox
 - [x] jenkins
 - [x] jupyter/notebook
