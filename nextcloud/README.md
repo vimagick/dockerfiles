@@ -30,7 +30,18 @@ nginx:
 
 ```bash
 $ docker-compose up -d
+$ docker-compose exec --user www-data nextcloud bash
+>>> php occ files:scan --all
+Starting scan for user 1 out of 1 (admin)
++---------+-------+--------------+
+| Folders | Files | Elapsed time |
++---------+-------+--------------+
+| 10      | 21    | 00:00:00     |
++---------+-------+--------------+
+>>> exit
 ```
+
+You can use the [occ][2] admin tool.
 
 ## Client Setup
 
@@ -39,3 +50,4 @@ $ docker-compose up -d
 - Windows: <https://download.nextcloud.com/desktop/releases/Windows/>
 
 [1]: https://nextcloud.com/
+[2]: https://docs.nextcloud.com/server/9/admin_manual/configuration_server/occ_command.html
