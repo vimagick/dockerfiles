@@ -35,8 +35,7 @@ $ docker-compose up -d
 ## Client Setup
 
 - Android: <https://download.nextcloud.com/android/>
-- Linux: <https://software.opensuse.org/download/package?project=isv:ownCloud:desktop&package=owncloud-client>
-- MacOSX: <https://download.owncloud.com/desktop/stable/ownCloud-2.2.4.3709.pkg>
-- Windows: <https://download.owncloud.com/desktop/stable/ownCloud-2.2.4.6408-setup.exe>
+- MacOSX: <https://download.nextcloud.com/desktop/releases/Mac/Installer/>
+- Windows: <https://download.nextcloud.com/desktop/releases/Windows/>
 
 [1]: https://nextcloud.com/
