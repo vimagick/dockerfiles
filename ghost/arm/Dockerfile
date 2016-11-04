@@ -5,7 +5,7 @@
 FROM easypi/alpine-arm
 MAINTAINER EasyPi Software Foundation
 
-ENV GHOST_VER 0.11.2
+ENV GHOST_VER 0.11.3
 ENV GHOST_URL https://ghost.org/archives/ghost-$GHOST_VER.zip
 ENV GHOST_SOURCE /usr/src/ghost
 ENV GHOST_CONTENT /var/lib/ghost
@@ -15,7 +15,7 @@ VOLUME $GHOST_CONTENT
 
 RUN set -ex \
     && apk add -U bash \
-                  nodejs-lts \
+                  nodejs \
     && apk add -t TMP build-base \
                       curl \
                       python \
