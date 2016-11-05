@@ -9,9 +9,8 @@ RUN set -xe \
     && apk add --no-cache ca-certificates \
                           ffmpeg \
                           openssl \
-                          python \
-    && wget -O- https://bootstrap.pypa.io/get-pip.py | python \
-    && pip install youtube-dl
+                          python3 \
+    && pip3 install youtube-dl
 
 WORKDIR /data
 
