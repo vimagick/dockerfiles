@@ -39,7 +39,6 @@ A collection of delicious docker recipes.
 - [ ] rtmpdump
 - [ ] sensu
 - [ ] ssf
-- [ ] tinyproxy
 - [ ] tshark
 - [ ] youtube-upload
 - [ ] xl2tpd
@@ -185,6 +184,7 @@ A collection of delicious docker recipes.
 - [x] squid
 - [x] stunnel
 - [x] stunnel-arm
+- [x] tinyproxy
 - [x] tor
 - [x] traefik-arm
 
