@@ -20,6 +20,7 @@ nginx:
   image: nginx:alpine
   volumes:
     - ./nginx.conf:/etc/nginx/conf.d/default.conf
+    - ./ssl:/etc/nginx/ssl
   volumes_from:
     - nextcloud
   net: host
