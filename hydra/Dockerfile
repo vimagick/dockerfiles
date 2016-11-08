@@ -5,30 +5,31 @@
 FROM alpine
 MAINTAINER kev <noreply@easypi.info>
 
-RUN apk add -U apr-dev \
-               apr-util-dev \
-               bash \
-               build-base \
-               curl \
-               git \
-               jq \
-               libidn \
-               libidn-dev \
-               libpq \
-               libssh \
-               libssh-dev \
-               mariadb-dev \
-               mariadb-libs \
-               ncurses \
-               ncurses-dev \
-               openssl \
-               openssl-dev \
-               parallel \
-               pcre \
-               pcre-dev \
-               postgresql-dev \
-               subversion-dev \
-               subversion-libs \
+RUN set -xe \
+    && apk add --no-cache apr-dev \
+                          apr-util-dev \
+                          bash \
+                          build-base \
+                          curl \
+                          git \
+                          jq \
+                          libidn \
+                          libidn-dev \
+                          libpq \
+                          libssh \
+                          libssh-dev \
+                          mariadb-dev \
+                          mariadb-libs \
+                          ncurses \
+                          ncurses-dev \
+                          openssl \
+                          openssl-dev \
+                          parallel \
+                          pcre \
+                          pcre-dev \
+                          postgresql-dev \
+                          subversion-dev \
+                          subversion-libs \
     && echo 'will cite' | parallel --bibtex \
     && mkdir src \
         && cd src \
@@ -47,9 +48,9 @@ RUN apk add -U apr-dev \
                        openssl-dev \
                        pcre-dev \
                        postgresql-dev \
-                       subversion-dev \
-    && rm -rf /var/cache/apk/*
+                       subversion-dev
 
 VOLUME /work
 WORKDIR /work
+
 CMD ["bash"]
