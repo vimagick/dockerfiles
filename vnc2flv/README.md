@@ -23,13 +23,19 @@ vnc2flv:
 
 ```bash
 # Create passwd file
-echo secret > pwdfile
+$ echo secret > pwdfile
 
 # Start recording
-docker-compose up -d
+$ docker-compose up -d
 
 # Stop recording
-docker-compose kill -s INT
+$ docker-compose kill -s INT
+
+# View logs
+$ docker-compose logs
+Attaching to vnc2flv_vnc2flv_1
+vnc2flv_1  | start recording
+vnc2flv_1  | stop recording
 ```
 
 [1]: http://www.unixuser.org/~euske/python/vnc2flv/index.html
