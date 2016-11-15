@@ -1,0 +1,7 @@
+vnc2flv:
+  image: vimagick/vnc2flv
+  command: -P /pwdfile -o record.flv localhost 5900
+  volumes:
+    - ./pwdfile:/pwdfile
+    - ./data:/data
+  net: host

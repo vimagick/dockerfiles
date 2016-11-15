@@ -114,6 +114,7 @@ A collection of delicious docker recipes.
 - [x] rtmp-server
 - [x] shoutcast
 - [x] tesseract
+- [x] vnc2flv
 - [x] youtube-dl
 - [x] youtube-worker :beetle:
 
