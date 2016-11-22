@@ -1,0 +1,27 @@
+hub:
+  image: selenium/hub
+  ports:
+    - "4444:4444"
+  restart: always
+
+firefox:
+  image: selenium/node-firefox-debug
+  ports:
+    - "5555"
+    - "5900"
+  links:
+    - hub
+  environment:
+    - JAVA_OPTS=-Xmx512m
+  restart: always
+
+chrome:
+  image: selenium/node-chrome-debug
+  ports:
+    - "5555"
+    - "5900"
+  links:
+    - hub
+  environment:
+    - JAVA_OPTS=-Xmx512m
+  restart: always
