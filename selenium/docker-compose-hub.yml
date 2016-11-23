@@ -3,8 +3,8 @@ hub:
   ports:
     - "4444:4444"
   environment:
-    - GRID_TIMEOUT=30000
-    - GRID_BROWSER_TIMEOUT=30000
+    - GRID_TIMEOUT=60
+    - GRID_BROWSER_TIMEOUT=30
   restart: always
 
 firefox:
