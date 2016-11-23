@@ -9,7 +9,7 @@ RUN set -xe \
     && apk add --no-cache build-base curl libstdc++ linux-headers tar \
     && mkdir hans \
     && cd hans \
-    && curl -sSL https://github.com/friedrich/hans/archive/v0.4.4.tar.gz | tar xz --strip 1 \
+    && curl -sSL https://github.com/friedrich/hans/archive/v1.0.tar.gz | tar xz --strip 1 \
     && make \
     && mv hans /usr/bin/hans \
     && cd .. \
