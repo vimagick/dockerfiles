@@ -21,7 +21,7 @@ firefox:
   restart: always
 ```
 
-docker-compose-hub.yml
+docker-compose-grid.yml
 
 ```yaml
 hub:
