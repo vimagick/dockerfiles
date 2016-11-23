@@ -2,26 +2,33 @@ hub:
   image: selenium/hub
   ports:
     - "4444:4444"
+  environment:
+    - GRID_TIMEOUT=30000
+    - GRID_BROWSER_TIMEOUT=30000
   restart: always
 
 firefox:
   image: selenium/node-firefox-debug
   ports:
     - "5555"
-    - "5900"
+    - "5901:5900"
   links:
     - hub
   environment:
-    - JAVA_OPTS=-Xmx512m
+    - JAVA_OPTS=-Xmx768m
+    - NODE_MAX_INSTANCES=5
+    - NODE_MAX_SESSION=5
   restart: always
 
 chrome:
   image: selenium/node-chrome-debug
   ports:
     - "5555"
-    - "5900"
+    - "5902:5900"
   links:
     - hub
   environment:
-    - JAVA_OPTS=-Xmx512m
+    - JAVA_OPTS=-Xmx768m
+    - NODE_MAX_INSTANCES=5
+    - NODE_MAX_SESSION=5
   restart: always
