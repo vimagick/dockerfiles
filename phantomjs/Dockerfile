@@ -5,6 +5,8 @@
 FROM ubuntu:14.04
 MAINTAINER kev <noreply@easypi.info>
 
+ENV PHANTOMJS_VERSION 2.1.1
+
 RUN set -xe \
     && apt-get update \
     && apt-get install -y bison \
@@ -25,8 +27,12 @@ RUN set -xe \
                           perl \
                           python \
                           ruby \
-    && git clone -b 2.1 --depth 1 --single-branch git://github.com/ariya/phantomjs.git \
+    && git clone git://github.com/ariya/phantomjs.git \
     && cd phantomjs \
+    && git checkout PHANTOMJS_VERSION \
+    && git submodule init \
+    && git submodule update \
+    && sed -i '/platform:/s@^@//@' src/ghostdriver/hub_register.js \
     && echo y | ./build.py 2>/dev/null 1>&2 \
     && install -v -s -m 755 bin/phantomjs /usr/local/bin/ \
     && cd .. \
