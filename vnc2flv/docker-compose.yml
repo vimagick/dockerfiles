@@ -5,3 +5,4 @@ vnc2flv:
     - ./pwdfile:/pwdfile
     - ./data:/data
   net: host
+  stop_signal: SIGINT

@@ -17,6 +17,7 @@ vnc2flv:
     - ./pwdfile:/pwdfile
     - ./data:/data
   net: host
+  stop_signal: SIGINT
 ```
 
 ## Up and Running
@@ -29,7 +30,7 @@ $ echo secret > pwdfile
 $ docker-compose up -d
 
 # Stop recording
-$ docker-compose kill -s INT
+$ docker-compose stop
 
 # View logs
 $ docker-compose logs
