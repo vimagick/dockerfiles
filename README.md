@@ -75,7 +75,6 @@ A collection of delicious docker recipes.
 - [x] nullmailer-arm
 - [x] openhab
 - [x] openssh
-- [x] phantomjs
 - [x] piknik
 - [x] portia
 - [x] pure-ftpd

@@ -1,8 +1,0 @@
-phantomjs:
-  image: vimagick/selenium-node-phantomjs
-  ports:
-    - "5555"
-  environment:
-    - HUB_HOST=1.2.3.4
-    - HUB_PORT=4444
-  restart: always
