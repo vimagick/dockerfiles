@@ -181,6 +181,7 @@ A collection of delicious docker recipes.
     - [x] shadowsocks-libev :+1:
     - [x] shadowsocks-arm
     - [x] shadowsocks-libev-arm :+1:
+- [x] spiped
 - [x] squid
 - [x] stunnel
 - [x] stunnel-arm
