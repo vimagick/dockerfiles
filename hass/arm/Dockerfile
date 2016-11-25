@@ -10,8 +10,8 @@ RUN set -xe \
                           linux-headers \
                           python3 \
                           python3-dev \
-    && pip3 install --no-cache-dir homeassistant==0.32.4 \
-                                   netdisco==0.7.5 \
+    && pip3 install --no-cache-dir homeassistant==0.33.4 \
+                                   netdisco==0.7.7 \
     && apk del build-base \
                linux-headers \
                python3-dev
