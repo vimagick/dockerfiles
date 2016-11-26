@@ -2,11 +2,11 @@
 # Dockerfile for stunnel-arm
 #
 
-FROM easypi/alpine-arm
+FROM easypi/alpine-arm:edge
 
 MAINTAINER kev <noreply@easypi.info>
 
-RUN apk add --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/testing stunnel
+RUN apk add --no-cache stunnel
 
 COPY docker-entrypoint.sh /entrypoint.sh
 
