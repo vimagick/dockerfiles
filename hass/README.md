@@ -21,3 +21,4 @@ $ curl http://localhost:8123
 ```
 
 > More python packages will be installed during startup.
+> The missing package can be installed: `pip install --target=data sqlalchemy==1.1.3`.
