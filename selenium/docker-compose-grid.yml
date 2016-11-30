@@ -16,6 +16,9 @@ firefox:
     - hub
   environment:
     - JAVA_OPTS=-Xmx768m
+    - SCREEN_WIDTH=1024
+    - SCREEN_HEIGHT=768
+    - SCREEN_DEPTH=16
     - NODE_MAX_INSTANCES=5
     - NODE_MAX_SESSION=5
   restart: always
@@ -29,6 +32,9 @@ chrome:
     - hub
   environment:
     - JAVA_OPTS=-Xmx768m
+    - SCREEN_WIDTH=1024
+    - SCREEN_HEIGHT=768
+    - SCREEN_DEPTH=16
     - NODE_MAX_INSTANCES=5
     - NODE_MAX_SESSION=5
   restart: always

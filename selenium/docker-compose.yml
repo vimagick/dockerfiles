@@ -5,4 +5,7 @@ firefox:
     - "5900:5900"
   environment:
     - JAVA_OPTS=-Xmx512m
+    - SCREEN_WIDTH=1024
+    - SCREEN_HEIGHT=768
+    - SCREEN_DEPTH=16
   restart: always
