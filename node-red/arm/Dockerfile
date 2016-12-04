@@ -15,9 +15,9 @@ RUN set -xe \
                           sudo \
     && curl https://bootstrap.pypa.io/get-pip.py | python \
     && pip install rpi.gpio \
-    && npm install -g node-red \
-                      node-red-admin \
-                      node-red-dashboard \
+    && npm install -g --unsafe-perm node-red \
+                                    node-red-admin \
+                                    node-red-dashboard \
     && apk del build-base \
                python-dev \
     && rm -rf /tmp/npm-*
