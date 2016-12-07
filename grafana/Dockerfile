@@ -5,7 +5,7 @@
 FROM debian:jessie
 MAINTAINER kev <noreply@easypi.info>
 
-ENV GRAFANA_VERSION=3.1.0-1468321182
+ENV GRAFANA_VERSION=4.0.1-1480694114
 ENV GRAFANA_FILE=grafana_${GRAFANA_VERSION}_amd64.deb
 ENV GRAFANA_URL=https://grafanarel.s3.amazonaws.com/builds/${GRAFANA_FILE}
 
