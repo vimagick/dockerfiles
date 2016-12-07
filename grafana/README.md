@@ -10,9 +10,11 @@ measurement data.
 
 ```yaml
 grafana:
-  image: vimagick/grafana
+  image: grafana/grafana
   ports:
     - "3000:3000"
+  volumes:
+    - ./data:/var/lib/grafana
   environment:
     - GF_SERVER_ROOT_URL=http://grafana.easypi.info/
     - GF_SECURITY_ADMIN_USER=admin
@@ -23,6 +25,8 @@ grafana:
 ## up and running
 
 ```
+$ mkdir data
+$ chmod 777 data
 $ docker-compose up -d
 $ docker-compose exec grafana bash
 >>> cat /etc/grafana/grafana.ini

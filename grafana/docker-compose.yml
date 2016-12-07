@@ -2,6 +2,8 @@ grafana:
   image: grafana/grafana
   ports:
     - "3000:3000"
+  volumes:
+    - ./data:/var/lib/grafana
   environment:
     - GF_SERVER_ROOT_URL=http://grafana.easypi.info/
     - GF_SECURITY_ADMIN_USER=admin
