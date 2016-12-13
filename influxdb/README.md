@@ -37,6 +37,27 @@ influxdb:
 
 ## up and running
 
+```bash
+$ docker-compose up -d
+$ docker-compose exec influxdb influx
+>>> show databases
+name: databases
+name
+----
+_internal
+db_name
+
+>>> use db_name
+Using database db_name
+
+>>> show series
+key
+---
+cpu
+
+>>> quit
+```
+
 - Open url: <http://localhost:8083>
 - Create user: `CREATE USER "username" WITH PASSWORD 'password'`
 - Create database: `CREATE DATABASE "db_name"`
