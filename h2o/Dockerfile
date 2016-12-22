@@ -5,7 +5,7 @@
 FROM alpine
 MAINTAINER kev <noreply@easypi.info>
 
-ENV H2O_VER 2.0.4
+ENV H2O_VER 2.0.5
 ENV H2O_URL https://github.com/h2o/h2o/archive/v${H2O_VER}.tar.gz
 ENV H2O_DIR h2o-${H2O_VER}
 
