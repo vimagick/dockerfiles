@@ -5,7 +5,7 @@
 FROM easypi/alpine-arm
 MAINTAINER EasyPi Software Foundation
 
-ENV GOGS_VERSION 0.9.97
+ENV GOGS_VERSION 0.9.113
 ENV GOGS_CUSTOM /data/gogs
 
 RUN apk add --no-cache bash \
@@ -24,7 +24,7 @@ RUN set -xe \
     && echo "export GOGS_CUSTOM=${GOGS_CUSTOM}" >> /etc/profile
 
 RUN set -xe \
-    && curl -L https://github.com/tianon/gosu/releases/download/1.9/gosu-armhf > /usr/sbin/gosu \
+    && curl -L https://github.com/tianon/gosu/releases/download/1.10/gosu-armhf > /usr/sbin/gosu \
     && chmod +x /usr/sbin/gosu
 
 RUN set -xe \
