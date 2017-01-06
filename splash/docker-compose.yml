@@ -1,13 +1,14 @@
 splash:
-  image: vimagick/splash
-  command: --maxrss 4096
+  image: scrapinghub/splash
+  command: --maxrss 4096 --max-timeout 300
   ports:
     - "8050:8050"
     - "8051:8051"
     - "5023:5023"
   volumes:
-    - ./splash/proxy-profiles:/etc/splash/proxy-profiles
-    - ./splash/js-profiles:/etc/splash/js-profiles
-    - ./splash/filters:/etc/splash/filters
-  mem_limit: 4500M
+    - ./data/filters:/etc/splash/filters
+    - ./data/js-profiles:/etc/splash/js-profiles
+    - ./data/lua_modules:/etc/splash/lua_modules
+    - ./data/proxy-profiles:/etc/splash/proxy-profiles
+  mem_limit: 4608M
   restart: always

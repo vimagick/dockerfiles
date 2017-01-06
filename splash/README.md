@@ -1,7 +1,7 @@
 splash
 ======
 
-[`Splash`][1] is a javascript rendering service with an HTTP API. It's a
+[Splash][1] is a javascript rendering service with an HTTP API. It's a
 lightweight browser with an HTTP API, implemented in Python using Twisted and
 QT.
 
@@ -9,7 +9,7 @@ It's fast, lightweight and state-less which makes it easy to distribute.
 
 ## docker-compose.yml
 
-```
+```yaml
 splash:
   image: scrapinghub/splash
   command: --maxrss 4096
@@ -33,14 +33,14 @@ $ cd ~/fig/splash
 $ tree
 .
 ├── docker-compose.yml
-└── splash
+└── data
     ├── filters
     │   ├── easylist.txt
     │   └── default.txt
     ├── js-profiles
     └── proxy-profiles
 
-$ cat splash/filters/default.txt
+$ cat data/filters/default.txt
 ||fonts.googleapis.com^
 ||ajax.googleapis.com^
 
@@ -53,13 +53,23 @@ $ docker-compose up -d
 
 ## client
 
-```
-$ http --proxy http:http://server:8051 http://stackoverflow.com x-splash-render:json x-splash-html:1 x-splash-png:1 x-splash-iframes:1 x-splash-har:1 > so.json
-$ jq .har so.json | pbcopy
-$ open http://www.softwareishard.com/har/viewer/
+```lua
+-- youtube-logo.lua
 
-$ http --proxy http:http://server:8051 http://stackoverflow.com x-splash-render:png > so.png
-$ open so.png
+function main(splash)
+    splash:go('https://www.youtube.com/')
+    splash:wait(0.5)
+    local logo = splash:select('.logo')
+    return logo:png()
+end
+```
+
+```bash
+# whole page
+$ http http://server:8050/render.png url==https://www.youtube.com > youtube.png
+
+# only logo
+$ http http://server:8050/execute lua_source=@youtube-logo.lua > youtube-logo.png
 ```
 
 [1]: http://splash.readthedocs.org/en/latest/
