@@ -1,5 +1,7 @@
 hubot:
   image: vimagick/hubot
+  volumes:
+    - ./data:/home/hubot/scripts
   environment:
     - HUBOT_SLACK_TOKEN=xoxb-xxxxxxxxxxx-xxxxxxxxxxxxxxxxxxxxxxxx
   restart: always

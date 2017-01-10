@@ -3,15 +3,18 @@ hubot
 
 ![](https://badge.imagelayers.io/vimagick/hubot:latest.svg)
 
-[hubot][1] is a customizable, life embetterment robot commissioned by github.
+[Hubot][1] is a customizable, life embetterment robot commissioned by github.
+Hubot's power comes through [scripts][3].
 
 ## docker-compse.yml
 
 ```yaml
 hubot:
   image: vimagick/hubot
+  volumes:
+    - ./data:/home/hubot/scripts
   environment:
-    - HUBOT_SLACK_TOKEN=xoxb-xxxxxxxxxxx-xxxxxxxxxxxxxxxxxxxxxxxx
+    - HUBOT_SLACK_TOKEN=xoxb-xxxxxxxxxxxx-xxxxxxxxxxxxxxxxxxxxxxxx
   restart: always
 ```
 
@@ -19,3 +22,4 @@ hubot:
 
 [1]: https://hubot.github.com/
 [2]: https://my.slack.com/services/new/hubot
+[3]: https://github.com/github/hubot/blob/master/docs/scripting.md
