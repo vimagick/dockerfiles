@@ -22,4 +22,4 @@ hubot:
 
 [1]: https://hubot.github.com/
 [2]: https://my.slack.com/services/new/hubot
-[3]: https://github.com/github/hubot/blob/master/docs/scripting.md
+[3]: https://hubot.github.com/docs/scripting/

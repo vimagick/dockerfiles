@@ -1,0 +1,7 @@
+hubot:
+  image: easypi/hubot-arm
+  volumes:
+    - ./data:/home/hubot/scripts
+  environment:
+    - HUBOT_SLACK_TOKEN=xoxb-xxxxxxxxxxx-xxxxxxxxxxxxxxxxxxxxxxxx
+  restart: always
