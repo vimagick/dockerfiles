@@ -5,12 +5,12 @@
 FROM alpine
 MAINTAINER kev <noreply@easypi.info>
 
-RUN apk add -U monit \
-    && rm -rf /var/cache/apk/*
+RUN apk add --no-cache monit
 
-COPY monit /etc/monit
+COPY data /etc/monit
 
-RUN chmod 600 /etc/monit/monitrc \
+RUN set -xe \
+    && chmod 600 /etc/monit/monitrc \
     && ln -sf /etc/monit/monitrc /etc/monitrc \
     && mkdir -p /var/lib/monit/events
 
