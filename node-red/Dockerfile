@@ -8,7 +8,8 @@ MAINTAINER kev <noreply@easypi.info>
 RUN set -xe \
     && apk add --no-cache bash \
                           build-base \
-                          nodejs-lts \
+                          ca-certificates \
+                          nodejs \
                           python \
                           python-dev \
     && npm install -g --unsafe-perm node-red \

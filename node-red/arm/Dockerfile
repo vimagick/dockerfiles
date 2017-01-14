@@ -7,9 +7,10 @@ MAINTAINER EasyPi Software Foundation
 
 RUN set -xe \
     && apk add --no-cache bash \
-                          curl \
                           build-base \
-                          nodejs-lts \
+                          ca-certificates \
+                          curl \
+                          nodejs \
                           python \
                           python-dev \
                           sudo \
