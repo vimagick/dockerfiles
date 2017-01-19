@@ -5,13 +5,11 @@
 FROM easypi/alpine-arm
 MAINTAINER EasyPi Software Foundation
 
-RUN set -ex \
-    && apk add --no-cache redis \
-    && sed -i 's/^daemonize yes/daemonize no/' /etc/redis.conf
+RUN apk add --no-cache redis
 
-WORKDIR /var/lib/redis/
-VOLUME /var/lib/redis/
+WORKDIR /data
+VOLUME /data
 
 EXPOSE 6379
 
-CMD ["redis-server", "/etc/redis.conf"]
+CMD ["redis-server"]
