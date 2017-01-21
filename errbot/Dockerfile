@@ -8,6 +8,7 @@ MAINTAINER kev <noreply@easypi.info>
 RUN set -xe \
     && apk add --no-cache ca-certificates \
                           build-base \
+                          git \
                           libffi-dev \
                           openssl-dev \
                           python3 \

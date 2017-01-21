@@ -13,10 +13,10 @@ BOT_IDENTITY = {
 
 CHATROOM_FN = 'Errbot'
 
-BOT_DATA_DIR = r'/home/errbot/data'
+BOT_DATA_DIR = '/home/errbot/data'
 BOT_EXTRA_PLUGIN_DIR = '/home/errbot/plugins'
 
-BOT_LOG_FILE = r'/home/errbot/errbot.log'
+BOT_LOG_FILE = '/home/errbot/errbot.log'
 BOT_LOG_LEVEL = logging.DEBUG
 
-BOT_ADMINS = ('CHANGE ME', )
+BOT_ADMINS = ('@master', )

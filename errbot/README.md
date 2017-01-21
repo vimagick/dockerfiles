@@ -32,11 +32,22 @@ $ docker-compose up -d
 master [8:50 PM] !tryme
 errbot [8:50 PM] It works!
 
-master [8:50 PM] !help
-errbot [8:50 PM] All commands ...
+master [8:51 PM] !help
+errbot [8:51 PM] All commands ...
 
-master [8:55 PM] !uptime
-errbot [8:55 PM] I've been up for 6 minutes
+master [8:52 PM] !whoami
+errbot [8:52 PM]
+┏━━━━━━━━━━┳━━━━━━━━━━━━━┓
+┃ key      ┃ value       ┃
+┡━━━━━━━━━━╇━━━━━━━━━━━━━┩
+│ person   │ `@master`   │
+├──────────┼─────────────┤
+│ nick     │ `master`    │
+├──────────┼─────────────┤
+│ fullname │ `Mr Robot`  │
+├──────────┼─────────────┤
+│ client   │ `XXXXXXXXX` │
+└──────────┴─────────────┘
 ```
 
 [1]: http://errbot.io
