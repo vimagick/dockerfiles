@@ -2,7 +2,7 @@
 # Dockerfile for hubot
 #
 
-FROM node:slim
+FROM alpine
 MAINTAINER kev <noreply@easypi.info>
 
 ENV HUBOT_NAME=Hubot
@@ -11,11 +11,9 @@ ENV HUBOT_DESCRIPTION=$HUBOT_NAME-$HUBOT_ADAPTER
 ENV HUBOT_SLACK_TOKEN=
 
 RUN set -xe \
-    && npm install -g coffee-script \
-                      generator-hubot \
-                      hubot \
-                      yo \
-    && useradd -m -s /bin/bash hubot
+    && apk add --update ca-certificates nodejs \
+    && npm install -g yo generator-hubot \
+    && adduser -s /bin/sh -D hubot
 
 USER hubot
 WORKDIR /home/hubot
@@ -28,6 +26,7 @@ RUN set -xe \
     && npm install hubot-$HUBOT_ADAPTER --save \
     && sed -i -r 's/^\s+#//' scripts/example.coffee
 
-VOLUME /home/hobot/scripts
+VOLUME /home/hobot
+EXPOSE 8080
 
 CMD ["./bin/hubot", "--adapter", "slack"]

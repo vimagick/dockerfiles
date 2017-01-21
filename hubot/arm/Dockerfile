@@ -26,7 +26,7 @@ RUN set -xe \
     && npm install hubot-$HUBOT_ADAPTER --save \
     && sed -i -r 's/^\s+#//' scripts/example.coffee
 
-VOLUME /home/hobot/scripts
+VOLUME /home/hobot
 EXPOSE 8080
 
 CMD ["./bin/hubot", "--adapter", "slack"]
