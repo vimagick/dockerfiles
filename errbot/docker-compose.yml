@@ -1,0 +1,6 @@
+errbot:
+  image: vimagick/errbot
+  volumes:
+    - ./data:/home/errbot
+  tty: yes
+  restart: always
