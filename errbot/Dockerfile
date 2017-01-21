@@ -6,7 +6,8 @@ FROM alpine
 MAINTAINER kev <noreply@easypi.info>
 
 RUN set -xe \
-    && apk add --no-cache build-base \
+    && apk add --no-cache ca-certificates \
+                          build-base \
                           libffi-dev \
                           openssl-dev \
                           python3 \
