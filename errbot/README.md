@@ -25,6 +25,10 @@ $ mkdir -m 777 data
 $ docker-compose run --rm errbot --init
 $ vim data/config.py
 $ docker-compose up -d
+$ docker-compose exec --user root errbot sh
+>>> chmod 777 /usr/lib/python3.5/site-packages
+>>> chmod 777 /usr/lib/python3.5/site-packages/__pycache__
+>>> exit
 ```
 
 Check the example config.py [here][2].

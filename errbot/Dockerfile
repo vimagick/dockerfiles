@@ -14,6 +14,7 @@ RUN set -xe \
                           openssl-dev \
                           python3 \
                           python3-dev \
+    && pip3 install -U pip \
     && pip3 install errbot \
                     hypchat \
                     irc \
@@ -30,7 +31,11 @@ RUN set -xe \
 
 USER errbot
 WORKDIR /home/errbot
-RUN errbot --init
+
+RUN set -xe \
+    && mkdir -p ~/.local/lib/python3.5/site-packages \
+    && errbot --init
+
 VOLUME /home/errbot
 
 ENTRYPOINT ["errbot"]
