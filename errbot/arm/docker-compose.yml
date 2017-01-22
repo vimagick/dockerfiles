@@ -2,5 +2,6 @@ errbot:
   image: easypi/errbot-arm
   volumes:
     - ./data:/home/errbot
+  stop_signal: SIGINT
   tty: yes
   restart: always

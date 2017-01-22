@@ -10,6 +10,7 @@ RUN set -xe \
                           build-base \
                           git \
                           libffi-dev \
+                          openssl \
                           openssl-dev \
                           python3 \
                           python3-dev \
@@ -22,8 +23,6 @@ RUN set -xe \
                     slackclient \
                     sleekxmpp \
     && adduser -s /bin/sh -D errbot \
-    && cd /home/errbot \
-    && wget http://errbot.io/en/latest/_downloads/config-template.py \
     && apk del --purge build-base \
                        libffi-dev \
                        openssl-dev \

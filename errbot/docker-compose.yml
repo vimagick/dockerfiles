@@ -2,5 +2,6 @@ errbot:
   image: vimagick/errbot
   volumes:
     - ./data:/home/errbot
+  stop_signal: SIGINT
   tty: yes
   restart: always

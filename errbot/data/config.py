@@ -20,3 +20,5 @@ BOT_LOG_FILE = '/home/errbot/errbot.log'
 BOT_LOG_LEVEL = logging.DEBUG
 
 BOT_ADMINS = ('@master', )
+
+AUTOINSTALL_DEPS = True

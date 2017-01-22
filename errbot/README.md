@@ -6,6 +6,7 @@ errbot
 [Errbot][1] is a chatbot, a daemon that connects to your favorite chat service
 and brings your tools into the conversation.
 
+
 ## docker-compose.yml
 
 ```yaml
@@ -25,6 +26,8 @@ $ docker-compose run --rm errbot --init
 $ vim data/config.py
 $ docker-compose up -d
 ```
+
+Check the example config.py [here][2].
 
 ## chat-ops
 
@@ -51,3 +54,4 @@ errbot [8:52 PM]
 ```
 
 [1]: http://errbot.io
+[2]: http://errbot.io/en/latest/_downloads/config-template.py
