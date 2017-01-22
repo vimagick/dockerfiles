@@ -3,25 +3,25 @@ scrapyd
 
 ![](http://dockeri.co/image/vimagick/scrapyd)
 
-[Scrapy][1] is an open source and collaborative framework for extracting the
+[scrapy][1] is an open source and collaborative framework for extracting the
 data you need from websites. In a fast, simple, yet extensible way.
 
-[Scrapyd][2] is a service for running Scrapy spiders.  It allows you to deploy
+[scrapyd][2] is a service for running Scrapy spiders.  It allows you to deploy
 your Scrapy projects and control their spiders using a HTTP JSON API.
 
-[Scrapyd-client][3] is a client for scrapyd. It provides the scrapyd-deploy
+[scrapyd-client][3] is a client for scrapyd. It provides the scrapyd-deploy
 utility which allows you to deploy your project to a Scrapyd server.
 
-[ScrapyJS][4] provides Scrapy+JavaScript integration using Splash.
+[scrapy-splash][4] provides Scrapy+JavaScript integration using Splash.
 
-[Pillow][5] is the Python Imaging Library to support the ImagesPipeline.
+[pillow][5] is the Python Imaging Library to support the ImagesPipeline.
 
 This image is based on `debian:jessie`, 5 latest python packages are installed:
 
 - `scrapy`: git+https://github.com/scrapy/scrapy.git
 - `scrapyd`: git+https://github.com/scrapy/scrapyd.git
 - `scrapyd-client`: git+https://github.com/scrapy/scrapyd-client.git
-- `scrapyjs`: git+https://github.com/scrapinghub/scrapy-splash.git
+- `scrapy-splash`: git+https://github.com/scrapinghub/scrapy-splash.git
 - `pillow`: git+https://github.com/python-pillow/Pillow.git
 
 Please use this as base image for your own project.
@@ -33,6 +33,9 @@ scrapyd:
   image: vimagick/scrapyd
   ports:
     - "6800:6800"
+  volumes:
+    - ./data:/var/lib/scrapyd
+    - /usr/local/lib/python2.7/dist-packages
   restart: always
 
 scrapy:
