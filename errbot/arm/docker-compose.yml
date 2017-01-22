@@ -1,0 +1,6 @@
+errbot:
+  image: easypi/errbot-arm
+  volumes:
+    - ./data:/home/errbot
+  tty: yes
+  restart: always
