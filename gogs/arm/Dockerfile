@@ -30,9 +30,10 @@ RUN set -xe \
 RUN set -xe \
     && mkdir /app/ \
     && cd /app/ \
-    && curl -LO https://github.com/gogits/gogs/releases/download/v${GOGS_VERSION}/linux_armv6.zip \
-    && unzip linux_armv6.zip \
-    && rm linux_armv6.zip
+    && curl -LO https://github.com/gogits/gogs/releases/download/v${GOGS_VERSION}/raspi2.zip \
+    && unzip raspi2.zip \
+    && rm raspi2.zip \
+    && ln -s /lib/libc.musl-armhf.so.1 /lib/ld-linux-armhf.so.3
 
 RUN set -xe \
     && cd /app/gogs/ \
