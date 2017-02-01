@@ -5,7 +5,7 @@
 FROM easypi/alpine-arm
 MAINTAINER EasyPi Software Foundation
 
-ENV GOGS_VERSION 0.9.113
+ENV GOGS_VERSION 0.9.128
 ENV GOGS_CUSTOM /data/gogs
 
 RUN apk add --no-cache bash \
@@ -30,9 +30,9 @@ RUN set -xe \
 RUN set -xe \
     && mkdir /app/ \
     && cd /app/ \
-    && curl -LO https://github.com/gogits/gogs/releases/download/v${GOGS_VERSION}/linux_arm.zip \
-    && unzip linux_arm.zip \
-    && rm linux_arm.zip
+    && curl -LO https://github.com/gogits/gogs/releases/download/v${GOGS_VERSION}/linux_armv6.zip \
+    && unzip linux_armv6.zip \
+    && rm linux_armv6.zip
 
 RUN set -xe \
     && cd /app/gogs/ \
