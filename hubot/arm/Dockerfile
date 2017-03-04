@@ -2,7 +2,7 @@
 # Dockerfile for hubot-arm
 #
 
-FROM easypi/alpine-arm:edge
+FROM easypi/alpine-arm
 MAINTAINER EasyPi Software Foundation
 
 ENV HUBOT_NAME=Hubot
