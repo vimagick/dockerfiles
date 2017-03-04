@@ -1,0 +1,8 @@
+scrapyd:
+  image: easypi/scrapyd-arm
+  ports:
+    - "6800:6800"
+  volumes:
+    - ./data:/var/lib/scrapyd
+    - /usr/local/lib/python2.7/dist-packages
+  restart: always
