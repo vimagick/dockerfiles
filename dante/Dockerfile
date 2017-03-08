@@ -6,9 +6,9 @@ FROM debian:jessie
 MAINTAINER kev <noreply@easypi.info>
 
 
-ENV DANTE_VER 1.4.1
+ENV DANTE_VER 1.4.2
 ENV DANTE_URL https://www.inet.no/dante/files/dante-$DANTE_VER.tar.gz
-ENV DANTE_MD5 68c2ce12119e12cea11a90c7a80efa8f
+ENV DANTE_SHA baa25750633a7f9f37467ee43afdf7a95c80274394eddd7dcd4e1542aa75caad
 ENV DANTE_FILE dante.tar.gz
 ENV DANTE_TEMP dante
 ENV DANTE_DEPS build-essential curl
@@ -19,7 +19,7 @@ RUN set -xe \
     && mkdir $DANTE_TEMP \
         && cd $DANTE_TEMP \
         && curl -sSL $DANTE_URL -o $DANTE_FILE \
-        && echo "$DANTE_MD5 $DANTE_FILE" | md5sum -c \
+        && echo "$DANTE_SHA *$DANTE_FILE" | shasum -c \
         && tar xzf $DANTE_FILE --strip 1 \
         && ./configure \
         && make install \
