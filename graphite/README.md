@@ -29,14 +29,17 @@ graphite:
 $ cd ~/fig/graphite
 $ mkdir -p data/log/webapp
 $ docker-compose up -d
+$ docker-compose exec graphite sh
 >>> python webapp/manage.py migrate --run-syncdb --noinput
 >>> exit
-$ tree -F -L 2
+$ tree -F -L 3
 ├── data/
 │   ├── carbon-cache-a.pid
 │   ├── graphite.db
 │   ├── log/
+│   │   └── webapp/
 │   └── whisper/
+│       └── carbon/
 └── docker-compose.yml
 $ curl http://localhost:8080
 ```
