@@ -60,6 +60,7 @@ A collection of delicious docker recipes.
 - [x] collectd
 - [x] errbot :octocat:
 - [x] freeradius
+- [x] graphite
 - [x] h2o
 - [x] httpbin :+1:
 - [x] hubot :octocat:
