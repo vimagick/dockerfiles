@@ -1,4 +1,9 @@
-`Pure-FTPd` is a free (BSD), secure, production-quality and standard-conformant
+pure-ftpd
+=========
+
+![](https://www.pureftpd.org/images/pure-ftpd.png)
+
+[Pure-FTPd][1] is a free (BSD), secure, production-quality and standard-conformant
 FTP server. It doesn't provide useless bells and whistles, but focuses on
 efficiency and ease of use. It provides simple answers to common needs, plus
 unique useful features for personal users as well as hosting providers. 
@@ -6,29 +11,28 @@ unique useful features for personal users as well as hosting providers.
 
 ## ~/fig/pureftpd/docker-compose.yml
 
-```
+```yaml
 pureftpd:
   image: vimagick/pure-ftpd
   ports:
     - "21:21"
   volumes:
-    - ftpuser:/home/ftpuser
-    - pure-ftpd:/etc/pure-ftpd
+    - ./data/ftpuser:/home/ftpuser
+    - ./data/pure-ftpd:/etc/pure-ftpd
   privileged: true
   restart: always
 ```
 
-> We only need to expose port 21 to accept client ftp connection.
+> We only need to expose port `21` to accept client ftp connection.
 > Pure-FTPd will open random port to accept client ftp-data connection.
 > At this time, host machine is a router for DNAT.
 
 ## server
 
-```
+```bash
 $ cd ~/fig/pureftpd/
-$ fig up -d
-$ fig ps
-$ docker exec -it pureftpd_pureftpd_1 bash
+$ docker-compose up -d
+$ docker-compose exec pureftpd bash
 >>> pure-pw useradd kev -u ftpuser -d /home/ftpuser/kev -t 1024 -T 1024 -y 1 -m
 >>> pure-pw list
 >>> pure-pw show kev
@@ -39,17 +43,18 @@ $ docker exec -it pureftpd_pureftpd_1 bash
 $ tree -F
 .
 ├── docker-compose.yml
-├── ftpuser/
-│   └── kev/
-│       └── file.txt
-└── pure-ftpd/
-    ├── pureftpd.passwd
-    └── pureftpd.pdb
+└── data/
+    ├── ftpuser/
+    │   └── kev/
+    │       └── file.txt
+    └── pure-ftpd/
+        ├── pureftpd.passwd
+        └── pureftpd.pdb
 ```
 
 ## client
 
-```
+```bash
 $ ftp remote-server
 Name: kev
 Password: ******
@@ -62,3 +67,5 @@ ftp> del file.txt
 ftp> ls
 ftp> bye
 ```
+
+[1]: https://www.pureftpd.org/project/pure-ftpd
