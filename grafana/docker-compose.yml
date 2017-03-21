@@ -5,7 +5,12 @@ grafana:
   volumes:
     - ./data:/var/lib/grafana
   environment:
-    - GF_SERVER_ROOT_URL=http://grafana.easypi.info/
+    - GF_SERVER_ROOT_URL=http://grafana.example.com:3000/
     - GF_SECURITY_ADMIN_USER=admin
     - GF_SECURITY_ADMIN_PASSWORD=admin
+    - GF_SMTP_ENABLED=true
+    - GF_SMTP_HOST=smtp.gmail.com:587
+    - GF_SMTP_USER=grafana@example.com
+    - GF_SMTP_FROM_ADDRESS=grafana@example.com
+    - GF_SMTP_PASSWORD=******
   restart: always
