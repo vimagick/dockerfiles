@@ -11,7 +11,9 @@ A collection of delicious docker recipes.
 - :whale: <https://hub.docker.com/u/vimagick/> (x86)
 - :whale: <https://hub.docker.com/u/easypi/> (arm)
 
-[![](https://www.vultr.com/media/badge_onwhite.png)](https://www.vultr.com/?ref=6821947)
+## 友情赞助
+
+[![](https://www.vultr.com/media/banner_1.png)](https://www.vultr.com/?ref=6821947)
 
 ## Todo
 
