@@ -1,0 +1,2 @@
+artist=Various Artists
+title=Untitled Song

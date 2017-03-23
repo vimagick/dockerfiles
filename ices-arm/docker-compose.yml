@@ -1,7 +1,7 @@
 ices:
   image: easypi/ices-arm
   volumes:
-    - ./ices.xml:/etc/ices.xml
+    - ./data:/etc/ices
   devices:
     - /dev/snd
   links:

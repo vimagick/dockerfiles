@@ -22,7 +22,7 @@ docker-compose.yml
 ices:
   image: easypi/ices-arm
   volumes:
-    - ./ices.xml:/etc/ices.xml
+    - ./data:/etc/ices
   devices:
     - /dev/snd
   links:
@@ -58,6 +58,8 @@ ices.xml
             <param name="rate">44100</param>
             <param name="channels">1</param>
             <param name="device">hw:1,0</param>
+            <param name="metadata">1</param>
+            <param name="metadatafilename">/etc/ices/ices.txt</param>
         </input>
         <instance>
             <hostname>icecast</hostname>
@@ -76,7 +78,16 @@ ices.xml
 
 > You can setup multiple `instances` (e.g. LAN & WAN).
 
-## Debug
+ices.txt
+--------
+
+```ini
+artist=Various Artists
+title=Untitled Song
+```
+
+Running
+-------
 
 ```bash
 $ arecord -l
@@ -84,8 +95,11 @@ $ arecord -l
 card 1: Device [USB Audio Device], device 0: USB Audio [USB Audio]
   Subdevices: 0/1
   Subdevice #0: subdevice #0
-
 $ alsamixer -c 1
+$ docker-compose up -d
+$ streamripper http://localhost:8000/live.ogg
+$ vi data/ices.txt
+$ docker-compose kill -s SIGUSR1
 ```
 
 [1]: http://icecast.org/ices/
