@@ -76,4 +76,16 @@ ices.xml
 
 > You can setup multiple `instances` (e.g. LAN & WAN).
 
+## Debug
+
+```bash
+$ arecord -l
+**** List of CAPTURE Hardware Devices ****
+card 1: Device [USB Audio Device], device 0: USB Audio [USB Audio]
+  Subdevices: 0/1
+  Subdevice #0: subdevice #0
+
+$ alsamixer -c 1
+```
+
 [1]: http://icecast.org/ices/
