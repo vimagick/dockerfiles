@@ -1,5 +1,5 @@
 portainer:
-  image: portainer/portainer:arm
+  image: portainer/portainer:linux-arm
   ports:
     - "9000:9000"
   volumes:
