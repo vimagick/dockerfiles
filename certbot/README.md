@@ -30,7 +30,8 @@ $ docker-compose run --rm --service-ports certbot
 >>> domains: easypi.info,blog.easypi.info,wiki.easypi.info
 
 # renew keys (headless)
-$ docker-compose run --rm --service-ports certbot renew
+$ crontab -l
+0 0 * * * cd ~/fig/certbot && docker-compose run --rm certbot renew >> renew.log
 
 # list keys
 $ tree /etc/letsencrypt/live/

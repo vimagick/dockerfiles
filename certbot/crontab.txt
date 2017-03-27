@@ -1,0 +1,1 @@
+0 0 * * * cd ~/fig/certbot && docker-compose run --rm certbot renew >> renew.log
