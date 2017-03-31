@@ -22,4 +22,3 @@ VOLUME /var/www/html/data/pages \
        /var/www/html/data/media_meta \
        /var/www/html/data/attic \
        /var/www/html/conf
-
