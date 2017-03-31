@@ -79,6 +79,8 @@ A collection of delicious docker recipes.
 - [x] nullmailer-arm
 - [x] openhab
 - [x] openssh
+- [x] ot-recorder
+- [x] ot-recorder-arm
 - [x] piknik
 - [x] portia
 - [x] pure-ftpd

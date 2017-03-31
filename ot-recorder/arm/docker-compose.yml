@@ -1,0 +1,7 @@
+ot-recorder:
+  image: easypi/ot-recorder-arm
+  ports:
+    - "8083:8083"
+  volumes:
+    - ./data:/var/spool/owntracks/recorder/store
+  restart: always
