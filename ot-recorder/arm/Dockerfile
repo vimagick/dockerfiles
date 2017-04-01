@@ -15,9 +15,9 @@ RUN set -xe \
     && rm -rf /var/lib/apt/lists/*
 
 ENV OTR_STORAGEDIR /var/spool/owntracks/recorder/store
-ENV OTR_TOPICS     owntracks/#
 ENV OTR_HOST       iot.eclipse.org
 ENV OTR_PORT       1883
+ENV OTR_TOPICS     owntracks/#
 
 VOLUME $OTR_STORAGEDIR
 
