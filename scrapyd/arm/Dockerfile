@@ -61,4 +61,4 @@ COPY ./scrapyd.conf /etc/scrapyd/
 VOLUME /etc/scrapyd/ /var/lib/scrapyd/
 EXPOSE 6800
 
-CMD ["scrapyd"]
+CMD ["scrapyd", "--pidfile="]
