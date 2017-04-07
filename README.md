@@ -47,6 +47,7 @@ A collection of delicious docker recipes.
 
 ## IoT
 
+- [x] docker-compose-arm
 - [x] hass
 - [x] hass-arm
 - [x] node-red :+1:
