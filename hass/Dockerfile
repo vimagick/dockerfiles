@@ -7,7 +7,8 @@ MAINTAINER EasyPi Software Foundation
 
 RUN set -xe \
     && apk update \
-    && apk add --no-cache build-base \
+    && apk add --no-cache ca-certificates \
+                          build-base \
                           linux-headers \
                           python3 \
                           python3-dev \
