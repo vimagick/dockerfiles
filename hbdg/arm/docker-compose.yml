@@ -1,0 +1,7 @@
+hbdg:
+  image: easypi/hbdg-arm
+  volumes:
+    - ./data:/root/.homebridge
+  net: host
+  privileged: yes
+  restart: always

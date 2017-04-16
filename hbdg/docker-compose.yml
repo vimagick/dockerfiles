@@ -1,0 +1,7 @@
+hbdg:
+  image: vimagick/hbdg
+  volumes:
+    - ./data:/root/.homebridge
+  net: host
+  privileged: yes
+  restart: always

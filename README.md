@@ -50,6 +50,8 @@ A collection of delicious docker recipes.
 - [x] docker-compose-arm
 - [x] hass
 - [x] hass-arm
+- [x] hbdg
+- [x] hbdg-arm
 - [x] node-red :+1:
 - [x] node-red-arm :+1:
 
