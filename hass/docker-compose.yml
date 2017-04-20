@@ -1,6 +1,15 @@
 hass:
   image: vimagick/hass
   volumes:
-    - ./data:/etc/hass
+    - ./data:/etc/hass:ro
   net: host
+  privileged: yes
+  restart: unless-stopped
+
+hcfg:
+  image: vimagick/hcfg
+  volumes:
+    - ./data:/etc/hass:rw
+  net: host
+  working_dir: /etc/hass
   restart: unless-stopped
