@@ -1,7 +1,7 @@
 hass:
   image: easypi/hass-arm:debian
   volumes:
-    - ./data:/etc/hass:ro
+    - ./data:/etc/hass
   net: host
   privileged: yes
   restart: unless-stopped
@@ -9,7 +9,7 @@ hass:
 hcfg:
   image: easypi/hcfg-arm
   volumes:
-    - ./data:/etc/hass:rw
+    - ./data:/etc/hass
   net: host
   working_dir: /etc/hass
   restart: unless-stopped
