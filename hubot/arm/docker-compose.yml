@@ -1,5 +1,7 @@
 hubot:
   image: easypi/hubot-arm
+  ports:
+    - "8080:8080"
   volumes:
     - ./data:/home/hubot/scripts
   environment:
