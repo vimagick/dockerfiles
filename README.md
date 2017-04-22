@@ -47,13 +47,10 @@ A collection of delicious docker recipes.
 
 ## IoT
 
-- [x] docker-compose-arm
-- [x] hass
-- [x] hass-arm
-- [x] hbdg
-- [x] hbdg-arm
+- [x] hass :+1:
+- [x] hbdg :+1:
 - [x] node-red :+1:
-- [x] node-red-arm :+1:
+- [x] mosquitto :+1:
 
 ## Daemon
 
