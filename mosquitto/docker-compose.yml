@@ -2,6 +2,7 @@ mosquitto:
   image: vimagick/mosquitto
   ports:
     - "1883:1883"
+    - "8080:8080"
     - "8883:8883"
   volumes:
     - ./data/mosquitto.conf:/etc/mosquitto/mosquitto.conf

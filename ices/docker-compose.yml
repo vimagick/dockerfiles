@@ -1,0 +1,15 @@
+ices:
+  image: vimagick/ices
+  volumes:
+    - ./data:/etc/ices
+  devices:
+    - /dev/snd
+  links:
+    - icecast
+  restart: always
+
+icecast:
+  image: vimagick/icecast
+  ports:
+    - "8000:8000"
+  restart: always

@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<ices>
+    <background>0</background>
+    <loglevel>4</loglevel>
+    <consolelog>1</consolelog>
+    <pidfile>/var/run/ices.pid</pidfile>
+    <stream>
+        <metadata>
+            <name>Example stream name</name>
+            <genre>Example genre</genre>
+            <description>A short description of your stream</description>
+            <url>http://easypi.info</url>
+        </metadata>
+        <input>
+            <module>alsa</module>
+            <param name="rate">44100</param>
+            <param name="channels">1</param>
+            <param name="device">hw:1,0</param>
+            <param name="metadata">1</param>
+            <param name="metadatafilename">/etc/ices/ices.txt</param>
+        </input>
+        <instance>
+            <hostname>icecast</hostname>
+            <port>8000</port>
+            <password>hackme</password>
+            <mount>/live.ogg</mount>
+            <encode>
+                <quality>0</quality>
+                <samplerate>44100</samplerate>
+                <channels>1</channels>
+            </encode>
+        </instance>
+    </stream>
+</ices>
