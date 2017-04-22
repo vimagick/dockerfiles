@@ -19,6 +19,8 @@ to run on a Raspberry Pi.
 └── docker-compose.yml
 ```
 
+Click [here][3] to get latitude and longitude.
+
 ## docker-compose.yml
 
 Lightweight without bluetooth [trackers][2]
@@ -130,3 +132,4 @@ kevin_android:
 
 [1]: https://home-assistant.io/
 [2]: https://home-assistant.io/components/device_tracker/
+[3]: http://api.map.baidu.com/lbsapi/getpoint/index.html
