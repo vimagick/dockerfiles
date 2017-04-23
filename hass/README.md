@@ -134,9 +134,10 @@ kevin_android:
 
 Use `vimagick/hass:latest`, and disable bluetooth device tracker.
 
+- https://joost.oostdijk.net/articles/playing_with_ble_on_an_onion_omega/
 - https://home-assistant.io/blog/2016/04/30/ibeacons-part-1-making-presence-detection-work-better/
 - https://home-assistant.io/blog/2016/05/26/ibeacons-how-to-track-things-that-cant-track-themselves-part-ii/
-- http://owntracks.org/
+- http://owntracks.org/booklet/tech/json/
 - https://play.google.com/store/apps/details?id=de.flurp.beaconscanner.app&hl=en
 
 [1]: https://home-assistant.io/
