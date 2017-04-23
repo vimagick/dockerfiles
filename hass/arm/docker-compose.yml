@@ -1,5 +1,5 @@
 hass:
-  image: easypi/hass-arm:debian
+  image: easypi/hass-arm
   volumes:
     - ./data:/etc/hass
   net: host
