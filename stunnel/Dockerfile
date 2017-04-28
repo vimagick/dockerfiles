@@ -6,7 +6,7 @@ FROM alpine:edge
 
 MAINTAINER kev <noreply@easypi.info>
 
-RUN apk add --no-cache stunnel
+RUN apk add --no-cache stunnel openssl
 
 COPY docker-entrypoint.sh /entrypoint.sh
 
