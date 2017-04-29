@@ -104,6 +104,8 @@ A collection of delicious docker recipes.
 
 ## Media
 
+- [x] cmus
+- [x] cmus-arm
 - [x] ffmpeg
 - [x] ffmpeg-arm
 - [x] ffserver :beetle:
