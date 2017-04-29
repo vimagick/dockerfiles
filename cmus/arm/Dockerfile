@@ -7,9 +7,10 @@ MAINTAINER EasyPi Software Foundation
 
 RUN apk add --no-cache cmus
 
-VOLUME /root/.cmus
-WORKDIR /root/.cmus
+VOLUME /etc/cmus
+WORKDIR /etc/cmus
 
+ENV CMUS_HOME=/etc/cmus
 ENV CMUS_SOCKET=0.0.0.0:3000
 ENV USERNAME=root
 ENV PASSWORD=secret

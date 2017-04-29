@@ -12,7 +12,7 @@ cmus:
   ports:
     - "3000:3000"
   volumes:
-    - ./data:/root/.cmus
+    - ./data:/etc/cmus
     - ~/music:/root/music
   devices:
     - /dev/snd
@@ -36,6 +36,7 @@ $ docker-compose exec cmus cmus-remote --passwd secret
 >>> set resume=true
 >>> player-play
 >>> ^D
+$ alsamixer
 ```
 
 [1]: https://cmus.github.io/

@@ -3,7 +3,7 @@ cmus:
   ports:
     - "3000:3000"
   volumes:
-    - ./data:/root/.cmus
+    - ./data:/etc/cmus
     - ~/music:/root/music
   devices:
     - /dev/snd
