@@ -19,9 +19,9 @@ RUN set -xe \
                                     node-red-admin \
                                     node-red-dashboard \
     && cd /usr/lib/node_modules/node-red/nodes/core/hardware \
-    && curl -sSL https://github.com/vimagick/dockerfiles/raw/master/node-red/arm/patch/nrgpio > nrgpio \
-    && curl -sSL https://github.com/vimagick/dockerfiles/raw/master/node-red/arm/patch/nrgpio.py > nrgpio.py \
-    && curl -sSL https://github.com/vimagick/dockerfiles/raw/master/node-red/arm/patch/36-rpi-gpio.js > 36-rpi-gpio.js \
+    && curl -sSL https://github.com/vimagick/dockerfiles/raw/master/node-red/patch/nrgpio > nrgpio \
+    && curl -sSL https://github.com/vimagick/dockerfiles/raw/master/node-red/patch/nrgpio.py > nrgpio.py \
+    && curl -sSL https://github.com/vimagick/dockerfiles/raw/master/node-red/patch/36-rpi-gpio.js > 36-rpi-gpio.js \
     && apk del build-base \
                python3-dev \
     && rm -rf /tmp/npm-*
