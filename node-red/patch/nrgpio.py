@@ -15,7 +15,17 @@
 
 # Import library functions we need
 import six
-import RPi.GPIO as GPIO
+
+try:
+    import RPi.GPIO as GPIO
+except:
+    class GPIO:
+        BOARD = None
+        @staticmethod
+        def setmode(*args): pass
+        @staticmethod
+        def setwarnings(*args): pass
+
 import struct
 import sys
 import os
