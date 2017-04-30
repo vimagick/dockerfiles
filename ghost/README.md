@@ -7,9 +7,11 @@ ghost
 
 ```yaml
 ghost:
-  image: ghost
+  image: ghost:alpine
   ports:
     - "127.0.0.1:2368:2368"
+  volumes:
+    - ./data:/var/lib/ghost
   restart: always
 ```
 
@@ -17,11 +19,9 @@ ghost:
 
 ```bash
 $ docker-compose up -d
-$ docker-compose exec ghost bash
->>> cd /var/lib/ghost/
->>> sed -i 's@http://localhost:2368@https://blog.easypi.info@' config.js
->>> grep -rIl 'googleapis' core content | xargs sed -i 's/googleapis/useso/g'
->>> exit
+$ cd data
+$ sed -i 's@http://localhost:2368@https://blog.easypi.info@' config.js
+$ grep -rIl 'googleapis' core content | xargs sed -i 's/googleapis/useso/g'
 $ docker-compose restart
 ```
 
