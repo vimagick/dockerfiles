@@ -19,7 +19,7 @@ ExecStart=/usr/bin/hcitool -i hci0 cmd 0x08 0x000a 01
 # See: http://stackoverflow.com/questions/21124993/
 # ExecStart=/bin/hciconfig hci0 leadv 3
 ExecStop=/bin/hciconfig hci0 noleadv
-ExecStop=/bin/hciconfig hci0 down
+#ExecStop=/bin/hciconfig hci0 down
 RemainAfterExit=yes
 
 [Install]
