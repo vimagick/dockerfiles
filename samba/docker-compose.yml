@@ -1,7 +1,7 @@
 samba:
   image: vimagick/samba
   volumes:
-#   - ./smb.conf:/etc/samba/smb.conf
+    - ./data/smb.conf:/etc/samba/smb.conf
     - ./share:/share
   net: host
   tty: yes

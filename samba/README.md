@@ -8,12 +8,12 @@ Linux and Unix.
 
 ## docker-compose.yml
 
-```
+```yaml
 samba:
   image: vimagick/samba
   volumes:
-#   - ./smb.conf:/etc/samba/smb.conf
-    - /mnt/usb:/share
+    - ./data/smb.conf:/etc/samba/smb.conf
+    - ./share:/share
   net: host
   tty: yes
   restart: always
