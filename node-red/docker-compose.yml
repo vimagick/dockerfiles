@@ -4,4 +4,6 @@ node-red:
     - "1880:1880"
   volumes:
     - ./data:/root/.node-red
+    - /dev/input:/dev/input
+  privileged: yes
   restart: always

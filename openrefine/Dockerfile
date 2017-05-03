@@ -5,7 +5,7 @@
 FROM java:8-jre-alpine
 MAINTAINER kev <noreply@easypi.info>
 
-ENV OR_VERSION 2.6-rc.2
+ENV OR_VERSION 2.7-rc.2
 ENV OR_FILE openrefine-linux-${OR_VERSION}.tar.gz
 ENV OR_URL https://github.com/OpenRefine/OpenRefine/releases/download/${OR_VERSION}/${OR_FILE}
 

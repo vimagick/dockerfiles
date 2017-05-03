@@ -1,0 +1,26 @@
+# /etc/systemd/system/ibeacon.service
+
+[Unit]
+Description=iBeacon Service
+Requires=bluetooth.service
+After=dbus-org.bluez.service sys-subsystem-bluetooth-devices-hci0.device
+
+[Service]
+Type=oneshot
+Environment="UUID=88 88 88 88 88 88 88 88 88 88 88 88 88 88 88 88"
+Environment="MAJOR=00 00"
+Environment="MINOR=00 00"
+Environment="POWER=C8"
+ExecStart=/bin/hciconfig hci0 up
+ExecStart=/bin/hciconfig hci0 noscan
+ExecStart=/usr/bin/hcitool -i hci0 cmd 0x08 0x0008 1E 02 01 1A 1A FF 4C 00 02 15 $UUID $MAJOR $MINOR $POWER 00
+ExecStart=/usr/bin/hcitool -i hci0 cmd 0x08 0x0006 A0 00 A0 00 03 00 00 00 00 00 00 00 00 07 00
+ExecStart=/usr/bin/hcitool -i hci0 cmd 0x08 0x000a 01
+# See: http://stackoverflow.com/questions/21124993/
+# ExecStart=/bin/hciconfig hci0 leadv 3
+ExecStop=/bin/hciconfig hci0 noleadv
+#ExecStop=/bin/hciconfig hci0 down
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target

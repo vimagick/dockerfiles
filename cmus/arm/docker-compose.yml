@@ -1,0 +1,13 @@
+cmus:
+  image: easypi/cmus-arm
+  ports:
+    - "3000:3000"
+  volumes:
+    - ./data:/etc/cmus
+    - ~/music:/root/music
+  devices:
+    - /dev/snd
+  environment:
+    - PASSWORD=secret
+  tty: yes
+  restart: unless-stopped

@@ -1,9 +1,0 @@
-#!/bin/bash
-
-BASEDIR=$(dirname $0)
-if [[ $1 == mouse || $1 == kbd ]]
-then
-    exec python3 -u $BASEDIR/nrinput.py $@
-else
-    sudo python -u $BASEDIR/nrgpio.py $@
-fi

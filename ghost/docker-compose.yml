@@ -1,5 +1,7 @@
 ghost:
-  image: ghost
+  image: ghost:alpine
   ports:
     - "127.0.0.1:2368:2368"
+  volumes:
+    - ./data:/var/lib/ghost
   restart: always

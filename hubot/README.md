@@ -11,6 +11,8 @@ Hubot's power comes through [scripts][2].
 ```yaml
 hubot:
   image: vimagick/hubot
+  ports:
+    - "8080:8080"
   volumes:
     - ./data:/home/hubot/scripts
   environment:

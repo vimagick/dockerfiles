@@ -1,0 +1,25 @@
+#!/bin/sh /etc/rc.common
+# (C) 2017 easypi.info
+#
+# See: https://wiki.openwrt.org/doc/howto/usb.bluetooth
+#
+
+START=99
+
+UUID="77 77 77 77 77 77 77 77 77 77 77 77 77 77 77 77"
+MAJOR="00 00"
+MINOR="00 00"
+POWER="C8"
+
+start() {
+	/usr/bin/hciconfig hci0 up
+	/usr/bin/hciconfig hci0 noscan
+	/usr/bin/hcitool -i hci0 cmd 0x08 0x0008 1E 02 01 1A 1A FF 4C 00 02 15 $UUID $MAJOR $MINOR $POWER 00
+	/usr/bin/hcitool -i hci0 cmd 0x08 0x0006 A0 00 A0 00 03 00 00 00 00 00 00 00 00 07 00
+	/usr/bin/hcitool -i hci0 cmd 0x08 0x000a 01
+}
+
+stop() {
+	/usr/bin/hciconfig hci0 noleadv
+	#/usr/bin/hciconfig hci0 down
+}

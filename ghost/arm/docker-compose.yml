@@ -1,5 +1,7 @@
 ghost:
   image: easypi/ghost-arm
   ports:
-    - "2368:2368"
+    - "127.0.0.1:2368:2368"
+  volumes:
+    - ./data:/var/lib/ghost
   restart: always

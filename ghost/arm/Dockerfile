@@ -5,8 +5,8 @@
 FROM easypi/alpine-arm
 MAINTAINER EasyPi Software Foundation
 
-ENV GHOST_VER 0.11.3
-ENV GHOST_URL https://ghost.org/archives/ghost-$GHOST_VER.zip
+ENV GHOST_VER 0.11.8
+ENV GHOST_URL https://github.com/TryGhost/Ghost/releases/download/$GHOST_VER/Ghost-$GHOST_VER.zip
 ENV GHOST_SOURCE /usr/src/ghost
 ENV GHOST_CONTENT /var/lib/ghost
 

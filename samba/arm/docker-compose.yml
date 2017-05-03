@@ -1,7 +1,7 @@
 samba:
   image: easypi/samba-arm
   volumes:
-#   - ./smb.conf:/etc/samba/smb.conf
+    - ./data/smb.conf:/etc/samba/smb.conf
     - /mnt/usb:/share
   net: host
   tty: yes

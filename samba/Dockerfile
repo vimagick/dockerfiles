@@ -5,11 +5,9 @@
 FROM alpine
 MAINTAINER kev <noreply@easypi.info>
 
-RUN set -xe \
-    && apk add -U samba-common-tools samba-server \
-    && rm -rf /var/cache/apk/*
+RUN apk add --no-cache samba-common-tools samba-server \
 
-COPY smb.conf /etc/samba/
+COPY ./data/smb.conf /etc/samba/
 
 VOLUME /etc/samba \
        /var/lib/samba

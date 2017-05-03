@@ -23,7 +23,14 @@ RUN set -xe \
                 --description $HUBOT_DESCRIPTION \
                 --adapter $HUBOT_ADAPTER \
                 --defaults \
-    && npm install hubot-$HUBOT_ADAPTER --save \
+    && npm install --save hubot-$HUBOT_ADAPTER \
+                          htmlparser \
+                          moment \
+                          querystring \
+                          soupselect \
+                          underscore \
+                          underscore.string \
+                          url \
     && sed -i -r 's/^\s+#//' scripts/example.coffee
 
 VOLUME /home/hobot
