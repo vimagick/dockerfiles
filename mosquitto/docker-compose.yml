@@ -6,5 +6,6 @@ mosquitto:
     - "8883:8883"
   volumes:
     - ./data/mosquitto.conf:/etc/mosquitto/mosquitto.conf
+    - ./data/pwfile:/etc/mosquitto/pwfile
     - ./data:/var/lib/mosquitto
   restart: always

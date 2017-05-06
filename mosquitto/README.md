@@ -50,8 +50,9 @@ $ touch data/mosquitto.conf data/pwfile
 $ docker-compose up -d
 $ docker-compose exec mosquitto sh
 >>> cd /etc/mosquitto
->>> echo username:password >> data/pwfile
->>> mosquitto_passwd -U passwd
+>>> mosquitto_passwd -b pwfile username password
+>>> cat pwfile
+username:$6$IuF7JUzS1k/QoF3y$YpiClom7/==
 >>> exit
 $ docker-compose restart
 $ docker-compose logs -f
