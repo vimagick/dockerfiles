@@ -3,7 +3,7 @@
 #
 
 FROM debian:jessie
-MAINTAINER kev <noreply@easypi.info>
+MAINTAINER kev <noreply@easypi.pro>
 
 ENV PHANTOM_VER 2.1.1
 ENV PHANTOM_URL https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-${PHANTOM_VER}-linux-x86_64.tar.bz2

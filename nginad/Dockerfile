@@ -3,7 +3,7 @@
 #
 
 FROM alpine
-MAINTAINER kev <noreply@easypi.info>
+MAINTAINER kev <noreply@easypi.pro>
 
 ENV NGINAD_VER 1.6.12
 ENV NGINAD_URL https://github.com/nginadfoundation/nginad/archive/${NGINAD_VER}.tar.gz

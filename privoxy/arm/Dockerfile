@@ -3,7 +3,7 @@
 #
 
 FROM easypi/alpine-arm
-MAINTAINER kev <noreply@easypi.info>
+MAINTAINER kev <noreply@easypi.pro>
 
 RUN set -xe \
     && apk add -U curl privoxy \

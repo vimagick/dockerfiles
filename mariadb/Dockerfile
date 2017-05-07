@@ -3,7 +3,7 @@
 #
 
 FROM alpine
-MAINTAINER kev <noreplay@easypi.info>
+MAINTAINER kev <noreplay@easypi.pro>
 
 RUN set -xe \
     && apk add -U bash \

@@ -3,7 +3,7 @@
 #
 
 FROM easypi/alpine-arm
-MAINTAINER kev <noreply@easypi.info>
+MAINTAINER kev <noreply@easypi.pro>
 
 RUN set -xe \
     && apk add --no-cache bash nginx php5-fpm php5-cli php5-json php5-soap \

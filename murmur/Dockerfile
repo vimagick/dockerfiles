@@ -3,7 +3,7 @@
 #
 
 FROM alpine 
-MAINTAINER kev <noreply@easypi.info>
+MAINTAINER kev <noreply@easypi.pro>
 
 ENV MM_VERSION 1.2.17
 ENV MM_FILE murmur-static_x86-${MM_VERSION}.tar.bz2

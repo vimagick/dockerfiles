@@ -3,7 +3,7 @@
 #
 
 FROM java:jre-alpine
-MAINTAINER kev <noreply@easypi.info>
+MAINTAINER kev <noreply@easypi.pro>
 
 ENV WEBGOAT_VERSION 7.0.1
 ENV WEBGOAT_FILE webgoat-container-$WEBGOAT_VERSION-war-exec.jar

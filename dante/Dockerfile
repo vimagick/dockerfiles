@@ -3,7 +3,7 @@
 #
 
 FROM debian:jessie
-MAINTAINER kev <noreply@easypi.info>
+MAINTAINER kev <noreply@easypi.pro>
 
 
 ENV DANTE_VER 1.4.2

@@ -3,7 +3,7 @@
 #
 
 FROM alpine
-MAINTAINER kev <noreply@easypi.info>
+MAINTAINER kev <noreply@easypi.pro>
 
 ENV TOKEN 00000000-0000-0000-0000-000000000000
 

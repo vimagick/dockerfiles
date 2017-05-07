@@ -3,7 +3,7 @@
 #
 
 FROM php:7-apache
-MAINTAINER kev <noreply@easypi.info>
+MAINTAINER kev <noreply@easypi.pro>
 
 RUN a2enmod rewrite
 

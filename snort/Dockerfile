@@ -3,7 +3,7 @@
 #
 
 FROM debian:jessie
-MAINTAINER kev <noreply@easypi.info>
+MAINTAINER kev <noreply@easypi.pro>
 
 ENV DAQ_VERSION 2.0.6
 ENV SNORT_VERSION 2.9.8.3

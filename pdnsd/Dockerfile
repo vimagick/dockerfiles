@@ -3,7 +3,7 @@
 #
 
 FROM alpine
-MAINTAINER kev <noreply@easypi.info>
+MAINTAINER kev <noreply@easypi.pro>
 
 RUN apk add -U pdnsd \
     && rm -rf /var/cache/apk/*

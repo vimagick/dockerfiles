@@ -3,7 +3,7 @@
 #
 
 FROM alpine
-MAINTAINER kev <noreply@easypi.info>
+MAINTAINER kev <noreply@easypi.pro>
 
 ENV PATH=$PATH:/opt/graphite/bin
 ENV PYTHONPATH=/opt/graphite/lib:/opt/graphite/webapp

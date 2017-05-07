@@ -3,7 +3,7 @@
 #
 
 FROM vimagick/alpine-arm:edge
-MAINTAINER kev <noreply@easypi.info>
+MAINTAINER kev <noreply@easypi.pro>
 
 RUN set -ex \
     && apk add -U curl libsodium python \

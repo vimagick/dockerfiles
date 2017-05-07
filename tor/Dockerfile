@@ -3,7 +3,7 @@
 #
 
 FROM alpine:edge
-MAINTAINER kev <noreply@easypi.info>
+MAINTAINER kev <noreply@easypi.pro>
 
 RUN set -xe \
     && apk add --no-cache build-base \

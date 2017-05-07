@@ -3,7 +3,7 @@
 #
 
 FROM debian
-MAINTAINER kev <noreply@easypi.info>
+MAINTAINER kev <noreply@easypi.pro>
 
 ENV DG_VERSION 9_9_13
 ENV DG_FILE linux2.6-dg${DG_VERSION}.tar.gz

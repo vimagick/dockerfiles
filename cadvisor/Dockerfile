@@ -3,7 +3,7 @@
 #
 
 FROM alpine:edge
-MAINTAINER kev <noreply@easypi.info>
+MAINTAINER kev <noreply@easypi.pro>
 
 ENV CADVISOR_VERSION 0.23.4
 

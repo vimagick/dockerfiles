@@ -3,7 +3,7 @@
 #
 
 FROM java:8-jre-alpine
-MAINTAINER kev <noreply@easypi.info>
+MAINTAINER kev <noreply@easypi.pro>
 
 ENV RED5_VERSION 1.0.7
 ENV RED5_FILE red5-server-${RED5_VERSION}-RELEASE.tar.gz

@@ -3,7 +3,7 @@
 #
 
 FROM java:8-jre-alpine
-MAINTAINER kev <noreply@easypi.info>
+MAINTAINER kev <noreply@easypi.pro>
 
 ENV NIFI_VERSION 0.6.1
 ENV NIFI_FILE nifi-${NIFI_VERSION}-bin.tar.gz

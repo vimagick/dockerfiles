@@ -3,7 +3,7 @@
 #
 
 FROM debian:jessie
-MAINTAINER kev <noreply@easypi.info>
+MAINTAINER kev <noreply@easypi.pro>
 
 ENV PLEX_VERSION 0.9.16.6.1993-5089475
 ENV PLEX_FILE plexmediaserver_${PLEX_VERSION}_amd64.deb

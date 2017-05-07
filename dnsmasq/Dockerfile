@@ -4,7 +4,7 @@
 
 FROM alpine
 
-MAINTAINER kev <norelply@easypi.info>
+MAINTAINER kev <norelply@easypi.pro>
 
 RUN set -xe \
     && apk add --no-cache dnsmasq \

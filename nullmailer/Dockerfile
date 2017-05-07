@@ -3,7 +3,7 @@
 #
 
 FROM alpine
-MAINTAINER kev <noreply@easypi.info>
+MAINTAINER kev <noreply@easypi.pro>
 
 ENV NM_VER 2.0
 ENV NM_URL https://github.com/bruceg/nullmailer/archive/$NM_VER.tar.gz

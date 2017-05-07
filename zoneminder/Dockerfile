@@ -3,7 +3,7 @@
 #
 
 FROM debian:jessie
-MAINTAINER kev <noreply@easypi.info>
+MAINTAINER kev <noreply@easypi.pro>
 
 RUN set -xe \
     && echo 'deb http://http.debian.net/debian jessie-backports main' >> /etc/apt/sources.list \

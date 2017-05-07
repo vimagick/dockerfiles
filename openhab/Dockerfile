@@ -3,7 +3,7 @@
 #
 
 FROM java:jre-alpine
-MAINTAINER kev <noreply@easypi.info>
+MAINTAINER kev <noreply@easypi.pro>
 
 ENV OPENHAB_VERSION 2.0.0-SNAPSHOT
 ENV OPENHAB_FILE openhab-online-${OPENHAB_VERSION}.zip

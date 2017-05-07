@@ -3,7 +3,7 @@
 #
 
 FROM debian:jessie
-MAINTAINER kev <noreply@easypi.info>
+MAINTAINER kev <noreply@easypi.pro>
 
 RUN set -xe \
     && apt-get update \
@@ -80,7 +80,7 @@ EXPOSE 80
 
 ENV MG_USER admin
 ENV MG_PASS admin
-ENV MG_MAIL admin@easypi.info
+ENV MG_MAIL admin@easypi.pro
 
 CMD set -xe \
     && sudo nginx \

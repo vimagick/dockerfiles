@@ -3,7 +3,7 @@
 #
 
 FROM alpine
-MAINTAINER kev <noreply@easypi.info>
+MAINTAINER kev <noreply@easypi.pro>
 
 RUN set -ex \
     && echo 'http://nl.alpinelinux.org/alpine/edge/main' >> /etc/apk/repositories \

@@ -4,7 +4,7 @@
 
 FROM alpine:edge
 
-MAINTAINER kev <noreply@easypi.info>
+MAINTAINER kev <noreply@easypi.pro>
 
 RUN apk add --no-cache stunnel libressl
 

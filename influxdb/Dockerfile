@@ -3,7 +3,7 @@
 #
 
 FROM debian:jessie
-MAINTAINER kev <noreply@easypi.info>
+MAINTAINER kev <noreply@easypi.pro>
 
 ENV INFLUXDB_VERSION=1.0.0
 ENV INFLUXDB_FILE=influxdb_${INFLUXDB_VERSION}_amd64.deb

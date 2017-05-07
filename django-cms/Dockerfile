@@ -3,7 +3,7 @@
 #
 
 FROM vimagick/python:2
-MAINTAINER kev <noreply@easypi.info>
+MAINTAINER kev <noreply@easypi.pro>
 
 WORKDIR /app
 

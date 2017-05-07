@@ -3,7 +3,7 @@
 #
 
 FROM debian:jessie
-MAINTAINER kev<noreply@easypi.info>
+MAINTAINER kev<noreply@easypi.pro>
 
 RUN set -xe \
     && apt-get update \

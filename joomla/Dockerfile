@@ -3,7 +3,7 @@
 #
 
 FROM php:5.6-apache
-MAINTAINER kev<noreply@easypi.info>
+MAINTAINER kev<noreply@easypi.pro>
 
 RUN set -xe \
     && apt-get update && apt-get install -y curl unzip bzip2 libpq-dev libpng12-dev libjpeg-dev \

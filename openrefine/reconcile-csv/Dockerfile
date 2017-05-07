@@ -4,7 +4,7 @@
 
 FROM java:8-jre-alpine
 
-MAINTAINER kev <noreply@easypi.info>
+MAINTAINER kev <noreply@easypi.pro>
 
 ADD http://okfnlabs.org/reconcile-csv/dist/reconcile-csv-0.1.2.jar /app/
 

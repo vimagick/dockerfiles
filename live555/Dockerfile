@@ -3,7 +3,7 @@
 #
 
 FROM alpine
-MAINTAINER kev <noreply@easypi.info>
+MAINTAINER kev <noreply@easypi.pro>
 
 RUN set -xe \
     && wget -qP /usr/local/bin/ http://www.live555.com/mediaServer/linux/live555MediaServer \

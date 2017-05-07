@@ -4,7 +4,7 @@
 
 FROM vimagick/ffmpeg
 
-MAINTAINER kev <noreply@easypi.info>
+MAINTAINER kev <noreply@easypi.pro>
 
 COPY ffserver.conf /etc/
 
