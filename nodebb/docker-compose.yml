@@ -4,6 +4,8 @@ nodebb:
     - "4567:4567"
   links:
     - redis
+  volumes:
+    - ./data:/var/lib/nodebb
   restart: always
 
 redis:
