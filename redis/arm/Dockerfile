@@ -13,4 +13,4 @@ VOLUME /data
 EXPOSE 6379
 
 ENTRYPOINT ["redis-server"]
-CMD ["--protected-mode", "no"]
+CMD ["--protected-mode", "no", "--save", "900 1 300 10"]
