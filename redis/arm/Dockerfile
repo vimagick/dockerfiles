@@ -12,4 +12,5 @@ VOLUME /data
 
 EXPOSE 6379
 
-CMD ["redis-server"]
+ENTRYPOINT ["redis-server"]
+CMD ["--protected-mode", "no"]
