@@ -12,5 +12,9 @@ VOLUME /data
 
 EXPOSE 6379
 
-ENTRYPOINT ["redis-server"]
-CMD ["--protected-mode", "no", "--save", "900 1 300 10"]
+ENTRYPOINT ["redis-server", "--protected-mode", "no"]
+CMD [ \
+  "--save", "900", "1", \
+  "--save", "300", "10", \
+  "--save", "60", "10000" \
+]
