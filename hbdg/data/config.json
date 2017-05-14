@@ -1,9 +1,9 @@
 {
   "bridge": {
     "name": "HomeBridge",
-    "username": "CC:22:3D:E3:CE:30",
+    "username": "AA:BB:CC:DD:EE:FF",
     "port": 51826,
-    "pin": "031-45-154"
+    "pin": "123-45-678"
   },
   "platforms": [
     {
@@ -17,6 +17,7 @@
         "cover",
         "device_tracker",
         "fan",
+        "group",
         "input_boolean",
         "light",
         "lock",
