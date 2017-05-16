@@ -1,0 +1,7 @@
+phpbb:
+  image: vimagick/phpbb
+  ports:
+    - "8000:80"
+  volumes:
+    - ./data:/var/www/store
+  restart: always
