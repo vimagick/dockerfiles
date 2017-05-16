@@ -2,7 +2,7 @@
 # Dockerfile for phpBB
 #
 
-FROM php:5.6-apache
+FROM php:7-apache
 MAINTAINER kev <noreply@easypi.pro>
 
 RUN a2enmod rewrite
