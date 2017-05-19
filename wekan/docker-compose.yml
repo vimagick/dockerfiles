@@ -1,0 +1,18 @@
+wekan:
+  image: wekanteam/wekan
+  ports:
+    - "8081:80"
+  links:
+    - mongo
+  environment:
+    - MONGO_URL=mongodb://mongo/wekan
+    - ROOT_URL=https://todo.easypi.pro
+  restart: always
+
+mongo:
+  image: mongo
+  ports:
+   - "27017:27017"
+  volumes:
+    - ./data:/data/db
+  restart: always

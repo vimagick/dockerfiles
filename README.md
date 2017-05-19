@@ -256,6 +256,7 @@ A collection of delicious docker recipes.
     - [ ] node-firefox
     - [x] standalone-firefox
 - [x] tutum/builder
+- [x] wekanteam/wekan
 
 ## auto-completion
 
