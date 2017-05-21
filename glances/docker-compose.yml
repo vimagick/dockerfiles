@@ -1,6 +1,7 @@
 glances:
   image: vimagick/glances
   volumes:
+    - ./data:/etc/glances
     - /var/run/docker.sock:/var/run/docker.sock:ro
   environment:
     - GLANCES_OPT=-w

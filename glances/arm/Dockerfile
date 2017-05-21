@@ -28,8 +28,8 @@ RUN set -xe \
                          python-dev \
     && rm -rf /root/.cache/pip /var/lib/apt/lists/*
 
-VOLUME /glances
-WORKDIR /glances
+VOLUME /etc/glances
+WORKDIR /etc/glances
 
 EXPOSE 61208
 EXPOSE 61209
