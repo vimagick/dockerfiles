@@ -5,7 +5,7 @@
 FROM alpine
 MAINTAINER kev <noreply@easypi.pro>
 
-ENV NETDATA_VERSION 1.3.0
+ENV NETDATA_VERSION 1.6.0
 
 RUN set -xe \
     && apk add --no-cache autoconf \
