@@ -131,6 +131,7 @@ A collection of delicious docker recipes.
 - [x] django-cms
 - [x] dokuwiki :+1:
 - [x] dokuwiki-arm :+1:
+- [x] glances
 - [x] gogs-arm :cn:
 - [x] grafana
 - [x] hugo

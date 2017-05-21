@@ -1,0 +1,9 @@
+glances:
+  image: vimagick/glances
+  volumes:
+    - /var/run/docker.sock:/var/run/docker.sock:ro
+  environment:
+    - GLANCES_OPT=-w
+  net: host
+  pid: host
+  restart: always
