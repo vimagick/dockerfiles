@@ -2,7 +2,7 @@
 # Dockerfile for glances-arm
 #
 
-FROM armhf/debian:jessie
+FROM resin/rpi-raspbian:jessie
 MAINTAINER EasyPi Software Foundation
 
 RUN set -xe \
