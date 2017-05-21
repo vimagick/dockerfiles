@@ -9,7 +9,12 @@ RUN set -xe \
     && apt-get update \
     && apt-get -y install build-essential \
                           curl \
+                          libfreetype6 \
+                          libfreetype6-dev \
+                          libpng12-0 \
+                          libpng12-dev \
                           lm-sensors \
+                          pkg-config \
                           python \
                           python-dev \
                           wireless-tools \
@@ -17,6 +22,9 @@ RUN set -xe \
     && pip install "glances[action,batinfo,browser,cpuinfo,chart,docker,export,folders,gpu,ip,raid,snmp,web,wifi]" \
     && apt-get remove -y build-essential \
                          curl \
+                         libfreetype6-dev \
+                         libpng12-dev \
+                         pkg-config \
                          python-dev \
     && rm -rf /var/lib/apt/lists/*
 
