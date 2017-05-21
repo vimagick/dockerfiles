@@ -33,6 +33,8 @@ RUN set -xe \
                util-linux-dev \
                zlib-dev
 
+VOLUME /etc/netdata
+
 EXPOSE 19999
 
 CMD ["netdata", "-nd"]
