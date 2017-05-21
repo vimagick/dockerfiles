@@ -17,14 +17,13 @@ RUN set -xe \
                           autoconf-archive \
                           autogen \
                           automake \
+                          build-essential \
                           curl \
                           debhelper \
                           dh-autoreconf \
                           dh-systemd \
                           fakeroot \
-                          gcc \
                           libmnl-dev \
-                          make \
                           pkg-config \
                           uuid-dev \
                           zlib1g-dev \
@@ -38,12 +37,11 @@ RUN set -xe \
                          autoconf-archive \
                          autogen \
                          automake \
+                         build-essential \
                          curl \
                          debhelper \
                          dh-autoreconf \
                          dh-systemd \
-                         gcc \
-                         make \
                          pkg-config \
     && rm -rf netdata-${NETDATA_VER} /var/lib/apt/lists/*
 
@@ -51,4 +49,4 @@ VOLUME /etc/netdata
 
 EXPOSE 19999
 
-CMD ["netdata", "-nd"]
+CMD ["netdata", "-D"]

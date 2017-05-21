@@ -37,4 +37,4 @@ VOLUME /etc/netdata
 
 EXPOSE 19999
 
-CMD ["netdata", "-nd"]
+CMD ["netdata", "-D"]
