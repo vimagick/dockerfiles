@@ -26,7 +26,7 @@ RUN set -xe \
                          libpng12-dev \
                          pkg-config \
                          python-dev \
-    && rm -rf /var/lib/apt/lists/*
+    && rm -rf /root/.cache/pip /var/lib/apt/lists/*
 
 VOLUME /glances
 WORKDIR /glances
