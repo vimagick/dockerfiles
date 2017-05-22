@@ -15,11 +15,17 @@ ot-recorder:
     - ./data:/var/spool/owntracks/recorder/store
   environment:
     - OTR_HOST=iot.eclipse.org
-    - OTR_PORT=1883
-    - OTR_TOPICS=owntracks/username/#
-    - OTR_OPTIONS=--browser-apikey XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+    - OTR_PORT=8883
+    - OTR_USER=username
+    - OTR_PASS=password
+    - OTR_CAFILE=/etc/ssl/certs/DST_Root_CA_X3.pem
+    - OTR_TOPICS=owntracks/#
+    - OTR_BROWSERAPIKEY=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+    - OTR_OPTIONS=--qos 0
   restart: always
 ```
+
+You can pass any options to process via `OTR_OPTIONS` environment variable.
 
 Click [this][2] to generate a google map api key.
 

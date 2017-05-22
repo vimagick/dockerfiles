@@ -10,4 +10,4 @@ then
     ot-recorder --initialize
 fi
 
-exec ot-recorder --http-host 0.0.0.0 $OTR_OPTIONS $OTR_TOPICS
+exec ot-recorder --http-host $OTR_HTTPHOST --http-port $OTR_HTTPPORT $OTR_OPTIONS

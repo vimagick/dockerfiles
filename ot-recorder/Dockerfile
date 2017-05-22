@@ -17,6 +17,8 @@ RUN set -xe \
 ENV OTR_STORAGEDIR /var/spool/owntracks/recorder/store
 ENV OTR_HOST       iot.eclipse.org
 ENV OTR_PORT       1883
+ENV OTR_HTTPHOST   0.0.0.0
+ENV OTR_HTTPPORT   8083
 ENV OTR_TOPICS     owntracks/#
 
 VOLUME $OTR_STORAGEDIR
