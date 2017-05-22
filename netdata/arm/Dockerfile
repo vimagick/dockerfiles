@@ -2,48 +2,36 @@
 # Dockerfile for netdata-arm
 #
 
-FROM resin/rpi-raspbian:jessie
+FROM easypi/alpine-arm
 MAINTAINER EasyPi Software Foundation
 
-ENV NETDATA_VER 1.6.0
-ENV NETDATA_URL https://github.com/firehol/netdata/releases/download/v${NETDATA_VER}/netdata-${NETDATA_VER}.tar.gz
-ENV NETDATA_DEB netdata_${NETDATA_VER}_armhf.deb
-
-WORKDIR /usr/src
+ENV NETDATA_VERSION 1.6.0
 
 RUN set -xe \
-    && apt-get update \
-    && apt-get -y install autoconf \
-                          autoconf-archive \
-                          autogen \
+    && apk add --no-cache autoconf \
                           automake \
-                          build-essential \
+                          bash \
+                          build-base \
                           curl \
-                          debhelper \
-                          dh-autoreconf \
-                          dh-systemd \
-                          fakeroot \
+                          libmnl \
                           libmnl-dev \
-                          pkg-config \
-                          uuid-dev \
-                          zlib1g-dev \
-    && curl -sSL ${NETDATA_URL} | tar xz \
-    && cd netdata-${NETDATA_VER} \
-    && ln -s contrib/debian \
-    && dpkg-buildpackage -us -uc -rfakeroot \
+                          libuuid \
+                          util-linux-dev \
+                          zlib-dev \
+    && addgroup -g 1000 netdata \
+    && adduser -D -H -u 1000 -G netdata netdata \
+    && curl -sSL https://github.com/firehol/netdata/releases/download/v$NETDATA_VERSION/netdata-$NETDATA_VERSION.tar.gz | tar xz \
+    && cd netdata-$NETDATA_VERSION \
+    && ./netdata-installer.sh --dont-wait \
     && cd .. \
-    && dpkg -i ${NETDATA_DEB} \
-    && apt-get remove -y autoconf \
-                         autoconf-archive \
-                         autogen \
-                         automake \
-                         build-essential \
-                         curl \
-                         debhelper \
-                         dh-autoreconf \
-                         dh-systemd \
-                         pkg-config \
-    && rm -rf netdata-${NETDATA_VER} /var/lib/apt/lists/*
+    && rm -rf netdata-$NETDATA_VERSION \
+    && apk del autoconf \
+               automake \
+               build-base \
+               curl \
+               libmnl-dev \
+               util-linux-dev \
+               zlib-dev
 
 VOLUME /etc/netdata
 

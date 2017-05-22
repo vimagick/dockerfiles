@@ -5,7 +5,7 @@
 FROM easypi/alpine-arm
 MAINTAINER EasyPi Software Foundation
 
-RUN apk add --no-cache mosquitto
+RUN apk add --no-cache ca-certificates mosquitto
 
 VOLUME /etc/mosquitto
 EXPOSE 1883 8883
