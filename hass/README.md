@@ -12,10 +12,12 @@ to run on a Raspberry Pi.
 ```
 ~/fig/hass/
 ├── data/
+│   ├── automations.yaml
 │   ├── configuration.yaml
 │   ├── device_trackers.yaml
 │   ├── groups.yaml
-│   └── known_devices.yaml
+│   ├── known_devices.yaml
+│   └── secrets.yaml
 └── docker-compose.yml
 ```
 
@@ -66,23 +68,36 @@ $ sudo hciconfig hci0 up
 
 ```yaml
 # configuration.yaml
-group: !include groups.yaml
+automation: !include automations.yaml
 device_tracker: !include device_trackers.yaml
+group: !include groups.yaml
+
+mqtt:
+  broker: iot.eclipse.org
+  port: 8883
+  certificate: auto
+  username: !secret mqtt_username
+  password: !secret mqtt_password
 ```
 
 ```yaml
+# secrets.yaml
+mqtt_username: YOUR_MQTT_USERNAME
+http_password: YOUR_MQTT_PASSWORD
+```
+
+```yaml
+# groups.yaml
 default_view:
   view: yes
   entities:
     - group.living_room
     - group.bedroom
-
 Living Room:
   view: no
   entities:
     - device_tracker.band
     - device_tracker.iphone
-
 Bedroom:
   view: no
   entities:
@@ -129,6 +144,14 @@ kevin_android:
   track: true
   vendor: unknown
 ```
+
+## setup mosquitto
+
+Use `vimagick/mosquitto:latest` with letsencrypt free certificates.
+
+- https://github.com/vimagick/dockerfiles/tree/master/mosquitto
+- https://mosquitto.org/man/mosquitto-conf-5.html
+- https://github.com/vimagick/dockerfiles/tree/master/certbot
 
 ## setup ibeacon
 
