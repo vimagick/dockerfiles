@@ -1,0 +1,5 @@
+luigi:
+  image: vimagick/luigi
+  ports:
+    - "8082:8082"
+  restart: always

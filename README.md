@@ -67,6 +67,7 @@ A collection of delicious docker recipes.
 - [x] httpbin :+1:
 - [x] hubot :octocat:
 - [x] influxdb
+- [x] luigi
 - [x] mariadb
 - [x] mariadb-arm
 - [x] monit
