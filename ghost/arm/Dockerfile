@@ -16,6 +16,7 @@ VOLUME $GHOST_CONTENT
 RUN set -ex \
     && apk add -U bash \
                   nodejs \
+                  nodejs-npm \
     && apk add -t TMP build-base \
                       curl \
                       python \
