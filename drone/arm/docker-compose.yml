@@ -1,13 +1,28 @@
-drone:
-  image: armdrone/drone
-  ports:
-    - "8000:80"
-  volumes:
-    - ./data:/var/lib/drone
-    - /var/run/docker.sock:/var/run/docker.sock
-  environment:
-    - REMOTE_DRIVER=gogs
-    - REMOTE_CONFIG=http://git.easypi.info:3000/?open=false
-    - PLUGIN_FILTER=armdrone/*
-    - GIN_MODE=release
-  restart: always
+version: '2'
+
+services:
+  drone-server:
+    image: easypi/drone-arm
+    ports:
+      -  "8000:8000"
+    volumes:
+      - ./data:/var/lib/drone
+    environment:
+      - DRONE_OPEN=true
+      - DRONE_HOST=drone.easypi.pro
+      - DRONE_GOGS=true
+      - DRONE_GOGS_URL=https://gogs.easypi.pro
+      - DRONE_SECRET=0123456789
+    restart: always
+
+  drone-agent:
+    image: easypi/drone-arm
+    command: agent
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      - DRONE_SERVER=ws://drone-server:8000/ws/broker
+      - DRONE_SECRET=0123456789
+    depends_on:
+      - drone-server
+    restart: always
