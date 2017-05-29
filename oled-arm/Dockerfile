@@ -1,5 +1,5 @@
 #
-# Dockerfile for oled
+# Dockerfile for oled-arm
 #
 
 FROM easypi/alpine-arm
@@ -23,5 +23,12 @@ RUN set -xe \
                        python-dev \
                        freetype-dev \
                        jpeg-dev
+
+WORKDIR /code
+
+RUN set -xe \
+    && apk add --no-cache curl tar \
+    && curl -sSL https://github.com/rm-hull/luma.examples/archive/master.tar.gz | tar xz --strip 2  luma.examples-master/examples \
+    && apk del --purge curl tar
 
 ENTRYPOINT ["python"]
