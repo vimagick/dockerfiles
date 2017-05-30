@@ -36,4 +36,4 @@ VOLUME /var/www/html/conf \
 
 EXPOSE 80
 
-CMD php-fpm && nginx -g 'daemon off;'
+CMD php-fpm5 && nginx -g 'daemon off;'
