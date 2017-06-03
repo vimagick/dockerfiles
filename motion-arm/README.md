@@ -1,7 +1,7 @@
 motion-arm
 ==========
 
-![](https://badge.imagelayers.io/vimagick/motion-arm:latest.svg)
+![](http://www.lavrsen.dk/foswiki/pub/Motion/WebPreferences/motion-trans.gif)
 
 [Motion][1] is a program that monitors the video signal from one or more cameras
 and is able to detect if a significant part of the picture has changed. Or in
@@ -46,7 +46,19 @@ ffmpeg_output_movies off
 ffmpeg_timelapse 60
 ```
 
-Please read [this][2] to enable raspberry pi camera module.
+Motion can work with Home-Assistant via [External Commands][2].
+
+```bash
+# Command to be executed when a movie file (.mpg|.avi) is created. (default: none)
+# To give the filename as an argument to a command append it with %f
+on_movie_start curl -s -H 'X-HA-Access: ******' -H 'Content-Type: application/json' -d '{"state": "on", "attributes": {"friendly_name": "Motion", "device_class": "motion"}}' http://hass.easypi.pro:8123/api/states/binary_sensor.motion
+
+# Command to be executed when a movie file (.mpg|.avi) is closed. (default: none)
+# To give the filename as an argument to a command append it with %f
+on_movie_end curl -s -H 'X-HA-Access: ******' -H 'Content-Type: application/json' -d '{"state": "off", "attributes": {"friendly_name": "Motion", "device_class": "motion"}}' http://hass.easypi.pro:8123/api/states/binary_sensor.motion
+```
+
+Please read [this][3] to enable raspberry pi camera module.
 
 ```
 ####################
@@ -61,4 +73,5 @@ disable_camera_led=1
 ```
 
 [1]: http://lavrsen.dk/foswiki/bin/view/Motion/WebHome
-[2]: https://wiki.archlinux.org/index.php/Raspberry_Pi#Raspberry_Pi_camera_module
+[2]: http://www.lavrsen.dk/foswiki/bin/view/Motion/ExternalCommands
+[3]: https://wiki.archlinux.org/index.php/Raspberry_Pi#Raspberry_Pi_camera_module
