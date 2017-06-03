@@ -4,7 +4,9 @@ motion:
     - "8080:8080"
     - "8081:8081"
   volumes:
-    - ./motion:/var/lib/motion
+    - ./data/motion.conf:/etc/motion/motion.conf
+    - ./data:/var/lib/motion
+    - /etc/localtime:/etc/localtime
   devices:
     - /dev/video0:/dev/video0
   restart: always

@@ -11,7 +11,7 @@ ENV MOTION_URL https://github.com/Motion-Project/motion/releases/download/releas
 
 RUN set -xe \
     && apt-get update \
-    && apt-get install -y curl \
+    && apt-get install -y curl libraspberrypi0 \
     && curl -sSL ${MOTION_URL} -o ${MOTION_FILE} \
     && (dpkg -i ${MOTION_FILE} || apt-get -f install -y) \
     && sed -i -e 's/^daemon on/daemon off/' \
