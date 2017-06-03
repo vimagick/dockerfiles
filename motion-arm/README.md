@@ -48,14 +48,34 @@ ffmpeg_timelapse 60
 
 Motion can work with Home-Assistant via [External Commands][2].
 
+``yaml
+binary_sensor:
+  - platform: mqtt
+    name: Motion
+    state_topic: /pi/sensor/motion
+    qos: 0
+    payload_on: ON
+    payload_off: OFF
+    device_class: motion
+```
+
 ```bash
 # Command to be executed when a movie file (.mpg|.avi) is created. (default: none)
 # To give the filename as an argument to a command append it with %f
-on_movie_start curl -s -H 'X-HA-Access: ******' -H 'Content-Type: application/json' -d '{"state": "on", "attributes": {"friendly_name": "Motion", "device_class": "motion"}}' http://hass.easypi.pro:8123/api/states/binary_sensor.motion
+
+# CURL
+;on_movie_start curl -s -H 'X-HA-Access: ******' -H 'Content-Type: application/json' -d '{"state": "on", "attributes": {"friendly_name": "Motion", "device_class": "motion"}}' http://hass.easypi.pro:8123/api/states/binary_sensor.motion
+# MQTT
+;on_movie_start mosquitto_pub -h mqtt.easypi.pro -u username -P password -r -t /pi/sensor/motion -m ON
 
 # Command to be executed when a movie file (.mpg|.avi) is closed. (default: none)
 # To give the filename as an argument to a command append it with %f
-on_movie_end curl -s -H 'X-HA-Access: ******' -H 'Content-Type: application/json' -d '{"state": "off", "attributes": {"friendly_name": "Motion", "device_class": "motion"}}' http://hass.easypi.pro:8123/api/states/binary_sensor.motion
+
+# CURL
+;on_movie_end curl -s -H 'X-HA-Access: ******' -H 'Content-Type: application/json' -d '{"state": "off", "attributes": {"friendly_name": "Motion", "device_class": "motion"}}' http://hass.easypi.pro:8123/api/states/binary_sensor.motion
+# MQTT
+;on_movie_end mosquitto_pub -h mqtt.easypi.pro -u username -P password -r -t /pi/sensor/motion -m OFF
+
 ```
 
 Please read [this][3] to enable raspberry pi camera module.
