@@ -9,23 +9,24 @@ other words, it can detect motion.
 
 ## docker-compose.yml
 
-```
+```yaml
 motion:
-  image: vimagick/motion-arm
+  image: easypi/motion-arm
   ports:
     - "8080:8080"
     - "8081:8081"
   volumes:
-#   - ./motion.conf:/etc/motion/motion.conf
-    - ./motion:/var/lib/motion
+    - ./motion.conf:/etc/motion/motion.conf
+    - ./data:/var/lib/motion
+    - /etc/localtime:/etc/localtime
   devices:
     - /dev/video0:/dev/video0
   restart: always
 ```
 
-You can edit `/etc/motion/motion.conf` to customize motion.
+You can edit `motion.conf` to customize motion.
 
-```
+```ini
 # set image width
 width 640
 
