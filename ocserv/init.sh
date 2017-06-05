@@ -87,6 +87,6 @@ certtool --to-p12 \
 
 sed -i -e "s@^ipv4-network =.*@ipv4-network = ${VPN_NETWORK}@" \
        -e "s@^ipv4-netmask =.*@ipv4-netmask = ${VPN_NETMASK}@" \
-       -e "s@^no-route =.*$@no-route = ${LAN_NETWORK}/${LAN_NETMASK}@" /etc/ocserv/ocserv.conf
+       -e "s@^no-route =.*@no-route = ${LAN_NETWORK}/${LAN_NETMASK}@" /etc/ocserv/ocserv.conf
 
 echo "${VPN_PASSWORD}" | ocpasswd -c /etc/ocserv/ocpasswd "${VPN_USERNAME}"
