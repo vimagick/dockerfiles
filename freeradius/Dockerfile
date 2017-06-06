@@ -12,7 +12,6 @@ RUN set -xe \
                           make \
                           openssl \
     && /etc/raddb/certs/bootstrap \
-    && chown -R root:radius /etc/raddb/certs \
     && ln -s /etc/raddb/mods-available/sql \
              /etc/raddb/mods-available/sqlcounter /etc/raddb/mods-enabled \
     && sed -i -e 's@driver =.*@driver = "rlm_sql_mysql"@' \
@@ -23,6 +22,7 @@ RUN set -xe \
     && sed -i -e '/^#\t*eap$/s@^#@@' \
               -e '/^#\teap {$/,/#\t}$/s@^#@@' \
               /etc/raddb/sites-enabled/default
+    && chown -R root:radius /etc/raddb
 
 VOLUME /etc/raddb
 

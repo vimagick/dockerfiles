@@ -22,7 +22,8 @@ RUN set -xe \
     && echo "INSERT INTO radcheck VALUES('0','user','Cleartext-Password',':=','pass');" | sqlite3 freeradius.db \
     && radiusd \
     && radtest user pass localhost 0 testing123 \
-    && echo "DELETE FROM radcheck WHERE id='0';" | sqlite3 freeradius.db
+    && echo "DELETE FROM radcheck WHERE id='0';" | sqlite3 freeradius.db \
+    && chown -R root:radius /etc/raddb
 
 VOLUME /etc/raddb
 
