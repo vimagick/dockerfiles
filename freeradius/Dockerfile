@@ -21,7 +21,7 @@ RUN set -xe \
               /etc/raddb/mods-available/sql \
     && sed -i -e '/^#\t*eap$/s@^#@@' \
               -e '/^#\teap {$/,/#\t}$/s@^#@@' \
-              /etc/raddb/sites-enabled/default
+              /etc/raddb/sites-enabled/default \
     && chown -R root:radius /etc/raddb
 
 VOLUME /etc/raddb
