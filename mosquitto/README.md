@@ -51,8 +51,9 @@ require_certificate false
 ## server
 
 ```bash
-$ mkdir -p data
+$ mkdir -m 777 data
 $ touch data/mosquitto.conf data/pwfile
+$ vi data/mosquitto.conf
 $ docker-compose up -d
 $ docker-compose exec mosquitto sh
 >>> cd /etc/mosquitto
