@@ -53,7 +53,7 @@ if len(sys.argv) > 2:
 
         while True:
             try:
-                data = six.input()
+                data = six.moves.input()
                 if 'close' in data:
                     sys.exit(0)
                 p.ChangeDutyCycle(float(data))
@@ -71,7 +71,7 @@ if len(sys.argv) > 2:
 
         while True:
             try:
-                data = six.input()
+                data = six.moves.input()
                 if 'close' in data:
                     sys.exit(0)
                 elif float(data) == 0:
@@ -93,7 +93,7 @@ if len(sys.argv) > 2:
 
         while True:
             try:
-                data = six.input()
+                data = six.moves.input()
                 if 'close' in data:
                     sys.exit(0)
                 data = int(data)
@@ -128,7 +128,7 @@ if len(sys.argv) > 2:
 
         while True:
             try:
-                data = six.input()
+                data = six.moves.input()
                 if 'close' in data:
                     sys.exit(0)
             except (EOFError, SystemExit):        # hopefully always caused by us sigint'ing the program
@@ -142,7 +142,7 @@ if len(sys.argv) > 2:
 
         while True:
             try:
-                data = six.input()
+                data = six.moves.input()
                 if 'close' in data:
                     sys.exit(0)
                 data = int(data)
@@ -172,7 +172,7 @@ if len(sys.argv) > 2:
 
         while True:
             try:
-                data = six.input()
+                data = six.moves.input()
                 if 'close' in data:
                     sys.exit(0)
                 c = data.split(",")
