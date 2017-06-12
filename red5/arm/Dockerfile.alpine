@@ -5,7 +5,7 @@
 FROM easypi/alpine-arm
 MAINTAINER EasyPi Software Foundation
 
-ENV RED5_VERSION 1.0.7
+ENV RED5_VERSION 1.0.9
 ENV RED5_FILE red5-server-${RED5_VERSION}-RELEASE.tar.gz
 ENV RED5_URL https://github.com/Red5/red5-server/releases/download/v${RED5_VERSION}-RELEASE/${RED5_FILE}
 
