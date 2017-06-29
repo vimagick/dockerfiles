@@ -3,7 +3,7 @@
 #
 
 FROM alpine
-MAINTAINER kev <noreply@easypi.pro>
+MAINTAINER EasyPi Software Foundation
 
 ENV PATH=$PATH:/opt/graphite/bin
 ENV PYTHONPATH=/opt/graphite/lib:/opt/graphite/webapp
@@ -22,12 +22,9 @@ RUN set -xe \
                python \
                python-dev \
     && curl -sSL https://bootstrap.pypa.io/get-pip.py | python \
-    && pip install gunicorn \
-                   supervisor \
-                   https://github.com/graphite-project/whisper/tarball/master \
-                   https://github.com/graphite-project/carbon/tarball/master \
-                   https://github.com/graphite-project/graphite-web/tarball/master \
-                -r https://github.com/graphite-project/graphite-web/raw/master/requirements.txt \
+    && pip install gunicorn scandir supervisor whisper \
+    && pip install carbon --install-option="--install-lib=/opt/graphite/lib" \
+    && pip install graphite-web --install-option="--prefix=/opt/graphite" --install-option="--install-lib=/opt/graphite/webapp" \
     && cd conf \
     && cp carbon.conf.example carbon.conf \
     && cp storage-schemas.conf.example storage-schemas.conf \
@@ -35,7 +32,7 @@ RUN set -xe \
     && echo "SECRET_KEY = '$(head -c 16 /dev/urandom | base64)'" > graphite/local_settings.py \
     && curl -sSL https://github.com/graphite-project/graphite-web/raw/master/webapp/manage.py > manage.py \
     && chmod +x manage.py \
-    && python manage.py migrate --run-syncdb --noinput \
+    && ./manage.py migrate --run-syncdb --noinput \
     && apk del build-base \
                curl \
                git \
