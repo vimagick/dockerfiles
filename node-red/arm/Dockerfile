@@ -10,6 +10,7 @@ RUN set -xe \
                           ca-certificates \
                           curl \
                           nodejs \
+                          nodejs-npm \
                           python3 \
                           python3-dev \
     && ln -sf /usr/bin/python3 /usr/bin/python \
