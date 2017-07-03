@@ -5,7 +5,7 @@
 FROM alpine
 MAINTAINER kev <noreply@easypi.pro>
 
-RUN apk add --no-cache samba-common-tools samba-server \
+RUN apk add --no-cache samba-common-tools samba-server
 
 COPY ./data/smb.conf /etc/samba/
 
