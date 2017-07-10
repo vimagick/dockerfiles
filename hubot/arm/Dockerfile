@@ -11,7 +11,7 @@ ENV HUBOT_DESCRIPTION=$HUBOT_NAME-$HUBOT_ADAPTER
 ENV HUBOT_SLACK_TOKEN=
 
 RUN set -xe \
-    && apk add --update ca-certificates nodejs \
+    && apk add --update ca-certificates nodejs nodejs-npm \
     && npm install -g yo generator-hubot \
     && adduser -s /bin/sh -D hubot
 

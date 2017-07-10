@@ -13,6 +13,7 @@ RUN set -xe \
                build-base \
                dbus \
                nodejs \
+               nodejs-npm \
                python \
     && npm install -g homebridge \
                       homebridge-homeassistant \

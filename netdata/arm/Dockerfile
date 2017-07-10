@@ -14,6 +14,7 @@ RUN set -xe \
                           build-base \
                           curl \
                           nodejs \
+                          nodejs-npm \
                           python \
                           libmnl \
                           libmnl-dev \

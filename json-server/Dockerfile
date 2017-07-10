@@ -8,7 +8,7 @@ MAINTAINER kev <noreply@easypi.pro>
 WORKDIR /app
 
 RUN set -xe \
-    && apk add -U nodejs \
+    && apk add --no-cache nodejs nodejs-npm \
     && npm install -g json-server \
     && rm -rf /tmp/npm* /var/cache/apk/*
 
