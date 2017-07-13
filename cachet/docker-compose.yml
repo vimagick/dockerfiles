@@ -1,0 +1,27 @@
+cachet:
+  image: cachethq/docker
+  ports:
+    - 8000:8000
+  links:
+    - postgres
+  environment:
+    - DB_DRIVER=pgsql
+    - DB_HOST=postgres
+    - DB_PORT=5432
+    - DB_DATABASE=postgres
+    - DB_USERNAME=postgres
+    - DB_PASSWORD=postgres
+    - DB_PREFIX=chq_
+    - APP_KEY=XXXXXXXX
+    - DEBUG=false
+  restart: always
+
+postgres:
+  image: postgres:alpine
+  volumes:
+    - ./data:/var/lib/postgresql/data
+  environment:
+    - POSTGRES_DB=postgres
+    - POSTGRES_USER=postgres
+    - POSTGRES_PASSWORD=postgres
+  restart: always

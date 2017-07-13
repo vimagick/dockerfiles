@@ -226,6 +226,7 @@ A collection of delicious docker recipes.
 
 ## 3rd-party
 
+- [x] cachethq/docker
 - [x] centurylink/watchtower
 - [x] certbot
 - [x] drone/drone
