@@ -3,7 +3,7 @@ ffmpeg:
   entrypoint: sh
   command:
     - -c
-    - ffmpeg -f lavfi -i anullsrc -rtsp_transport udp -i $$RTMP_DEV -tune zerolatency -vcodec mpeg4 -pix_fmt + -c:v copy -c:a copy -f flv $$RTMP_URI
+    - ffmpeg -f lavfi -i anullsrc -rtsp_transport udp -i $$RTMP_DEV -tune zerolatency -vcodec mpeg4 -pix_fmt + -c:v copy -c:a aac -f flv $$RTMP_URI
   environment:
     - RTMP_DEV=rtsp://10.50.254.197/live
     - RTMP_URI=rtmp://a.rtmp.youtube.com/live2/xxxx-xxxx-xxxx-xxxx
