@@ -11,7 +11,7 @@ ghost:
   ports:
     - "127.0.0.1:2368:2368"
   volumes:
-    - ./data:/var/lib/ghost
+    - ./data:/var/lib/ghost/content
   restart: always
 ```
 
