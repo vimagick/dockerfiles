@@ -2,14 +2,14 @@
 # Dockerfile for ot-recorder-arm
 #
 
-FROM arm32v7/debian:stretch
+FROM arm32v7/debian:jessie
 MAINTAINER EasyPi Software Foundation
 
 RUN set -xe \
     && apt-get update \
-    && apt-get install -y curl gnupg \
+    && apt-get install -y curl \
     && curl -sSL http://repo.owntracks.org/repo.owntracks.org.gpg.key | apt-key add - \
-    && echo 'deb http://repo.owntracks.org/debian stretch main' > /etc/apt/sources.list.d/owntracks.list \
+    && echo 'deb http://repo.owntracks.org/debian jessie main' > /etc/apt/sources.list.d/owntracks.list \
     && apt-get update \
     && apt-get install -y ot-recorder \
     && rm -rf /var/lib/apt/lists/*
