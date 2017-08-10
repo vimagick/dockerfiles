@@ -7,9 +7,9 @@ MAINTAINER EasyPi Software Foundation
 
 RUN set -xe \
     && apt-get update \
-    && apt-get install -y curl \
+    && apt-get install -y curl gnupg \
     && curl -sSL http://repo.owntracks.org/repo.owntracks.org.gpg.key | apt-key add - \
-    && echo 'deb http://repo.owntracks.org/debian jessie main' > /etc/apt/sources.list.d/owntracks.list \
+    && echo 'deb http://repo.owntracks.org/debian stretch main' > /etc/apt/sources.list.d/owntracks.list \
     && apt-get update \
     && apt-get install -y ot-recorder \
     && rm -rf /var/lib/apt/lists/*
