@@ -2,7 +2,7 @@
 # Dockerfile for ot-recorder-arm
 #
 
-FROM armhf/debian:jessie
+FROM arm32v7/debian:stretch
 MAINTAINER EasyPi Software Foundation
 
 RUN set -xe \
