@@ -35,5 +35,7 @@ ENV APNAME EasyPi
 CMD set -xe \
     && rm -f /var/run/dbus.pid \
     && dbus-daemon --system \
+    && sleep 1 \
     && avahi-daemon -D \
+    && sleep 1 \
     && shairplay --apname="$APNAME"
