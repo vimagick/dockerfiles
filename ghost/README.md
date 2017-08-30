@@ -12,20 +12,19 @@ ghost:
     - "127.0.0.1:2368:2368"
   volumes:
     - ./data:/var/lib/ghost/content
+    - ./data/config.json:/var/lib/ghost/config.production.json
   restart: always
 ```
 
 ## Up and Running
 
 ```bash
-$ docker-compose up -d
+$ mkdir data
 $ cd data
-$ sed -i 's@http://localhost:2368@https://blog.easypi.info@' config.js
-$ grep -rIl 'googleapis' core content | xargs sed -i 's/googleapis/useso/g'
-$ docker-compose restart
+$ wget https://github.com/vimagick/dockerfiles/raw/master/ghost/data/config.json
+$ sed -i 's@http://localhost:2368@https://blog.easypi.pro@' config.js
+$ docker-compose up -d
 ```
-
-> :warning: `useso.com` doesn't support https!
 
 ## Setup SSL
 
@@ -42,11 +41,11 @@ server {
 
 server {
     listen 443 ssl;
-    server_name easypi.info blog.easypi.info;
-    ssl_certificate ssl/easypi.info.crt;
-    ssl_certificate_key ssl/easypi.info.key;
+    server_name easypi.pro blog.easypi.pro;
+    ssl_certificate ssl/easypi.pro.crt;
+    ssl_certificate_key ssl/easypi.pro.key;
     location / {
-        if ($host = 'easypi.info') {
+        if ($host = 'easypi.pro') {
             return 301 $scheme://blog.$host$request_uri;
         }
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
@@ -72,4 +71,4 @@ files without editing them.
 
 [1]: https://ghost.org/
 [2]: http://support.ghost.org/setup-ssl-self-hosted-ghost/
-[3]: https://blog.easypi.info/ghost/settings/code-injection/
+[3]: https://blog.easypi.pro/ghost/settings/code-injection/
