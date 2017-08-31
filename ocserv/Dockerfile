@@ -5,7 +5,7 @@
 FROM debian:jessie
 MAINTAINER kev <noreply@easypi.pro>
 
-ENV OCSERV_VERSION 0.11.3
+ENV OCSERV_VERSION 0.11.8
 
 RUN set -xe \
     && apt-get update \

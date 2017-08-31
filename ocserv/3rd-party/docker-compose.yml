@@ -1,0 +1,17 @@
+ocserv:
+  image: tommylau/ocserv
+  ports:
+    - "4443:443/tcp"
+    - "4443:443/udp"
+  volumes:
+    - ./data/ocpasswd:/etc/ocserv/ocpasswd
+  environment:
+    - CA_CN=EasyPi
+    - CA_DAYS=3650
+    - CA_ORG=EasyPi
+    - SRV_CN=vpn.easypi.pro
+    - SRV_DAYS=365
+    - SRV_ORG=EasyPi
+    - NO_TEST_USER=1
+  privileged: yes
+  restart: always
