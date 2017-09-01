@@ -37,7 +37,7 @@ _EOF_
 
 cat > client.tmpl <<_EOF_
 cn = "client@${VPN_DOMAIN}"
-uid = "client@${VPN_DOMAIN}"
+uid = "client"
 unit = "ocserv"
 expiration_days = 3650
 signing_key
@@ -51,7 +51,7 @@ certtool --generate-privkey \
 certtool --generate-self-signed \
          --load-privkey /etc/ocserv/certs/ca-key.pem \
          --template ca.tmpl \
-         --outfile ca-cert.pem
+         --outfile ca.pem
 
 # gen server keys
 certtool --generate-privkey \
@@ -59,7 +59,7 @@ certtool --generate-privkey \
 
 certtool --generate-certificate \
          --load-privkey server-key.pem \
-         --load-ca-certificate ca-cert.pem \
+         --load-ca-certificate ca.pem \
          --load-ca-privkey ca-key.pem \
          --template server.tmpl \
          --outfile server-cert.pem
@@ -70,14 +70,14 @@ certtool --generate-privkey \
 
 certtool --generate-certificate \
          --load-privkey client-key.pem \
-         --load-ca-certificate ca-cert.pem \
+         --load-ca-certificate ca.pem \
          --load-ca-privkey ca-key.pem \
          --template client.tmpl \
          --outfile client-cert.pem
 
 certtool --to-p12 \
          --pkcs-cipher 3des-pkcs12 \
-         --load-ca-certificate ca-cert.pem \
+         --load-ca-certificate ca.pem \
          --load-certificate client-cert.pem \
          --load-privkey client-key.pem \
          --outfile client.p12 \
