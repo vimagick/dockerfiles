@@ -15,7 +15,7 @@ ocserv:
     - "4443:443/tcp"
     - "4443:443/udp"
   environment:
-    - VPN_DOMAIN=vpn.easypi.info
+    - VPN_DOMAIN=vpn.easypi.pro
     - VPN_NETWORK=10.20.30.0
     - VPN_NETMASK=255.255.255.0
     - LAN_NETWORK=192.168.0.0
@@ -37,9 +37,9 @@ ocserv:
 
 ```bash
 $ docker-compose up -d
-$ docker-compose exec ocserv bash
+$ docker-compose exec ocserv sh
 >>> cd /etc/ocserv/
->>> echo 'no-route = 1.2.3.4/32' >> ocserv.conf
+>>> echo 'no-route = 1.2.3.4/32' >> /etc/ocserv/defaults/group.conf
 >>> ocpasswd -c ocpasswd username
     Enter password: ******
     Re-enter password: ******
@@ -50,13 +50,15 @@ $ docker cp ocserv_ocserv_1:/etc/ocserv/certs/server-cert.pem .
 $ docker-compose logs -f
 ```
 
+> You need to access your vpn server directly with `no-route`.
+
 To remove the password protection of `client.p12`:
 
 ```bash
-mv client.p12 client.p12.orig
-openssl pkcs12 -in client.p12.orig -nodes -out tmp.pem
-openssl pkcs12 -export -in tmp.pem -out client.p12 -passout pass:
-rm tmp.pem
+$ mv client.p12 client.p12.orig
+$ openssl pkcs12 -in client.p12.orig -nodes -out tmp.pem
+$ openssl pkcs12 -export -in tmp.pem -out client.p12 -passout pass:
+$ rm tmp.pem
 ```
 
 > :warning: Apple's Keychain Access will refuse to open it with no passphrase.

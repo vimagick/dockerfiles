@@ -29,7 +29,7 @@ cn = "${VPN_DOMAIN}"
 dns_name = "${VPN_DOMAIN}"
 organization = "ocserv"
 serial = 2
-expiration_days = 3650
+expiration_days = 365
 encryption_key
 signing_key
 tls_www_server
@@ -39,7 +39,7 @@ cat > client.tmpl <<_EOF_
 cn = "client@${VPN_DOMAIN}"
 uid = "client"
 unit = "ocserv"
-expiration_days = 3650
+expiration_days = 365
 signing_key
 tls_www_client
 _EOF_

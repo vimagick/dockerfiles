@@ -40,7 +40,6 @@ RUN buildDeps=" \
     && make install \
     && mkdir -p /etc/ocserv \
     && cp /usr/src/ocserv/doc/sample.config /etc/ocserv/ocserv.conf \
-    && cp /usr/src/ocserv/doc/profile.xml /etc/ocserv/profile.xml \
     && cd / \
     && rm -rf /usr/src/ocserv \
     && runDeps="$( \
@@ -68,7 +67,6 @@ RUN set -xe \
               -e 's@^#config-per-@config-per-@' \
               -e 's@^#default-@default-@' \
               -e 's@^#enable-auth = "certificate"$@enable-auth = "certificate"@' \
-              -e 's@^#user-profile =.*@user-profile = /etc/ocserv/profile.xml@' \
               -e 's@^default-domain@#&@' \
               -e 's@^dns =.*@dns = 8.8.8.8@' \
               -e 's@^max-clients =.*@max-clients = 0@' \
@@ -83,13 +81,13 @@ COPY docker-entrypoint.sh /entrypoint.sh
 VOLUME /etc/ocserv
 WORKDIR /etc/ocserv
 
-ENV VPN_DOMAIN=vpn.easypi.pro  \
-    VPN_NETWORK=10.20.30.0     \
-    VPN_NETMASK=255.255.255.0  \
-    LAN_NETWORK=192.168.0.0    \
-    LAN_NETMASK=255.255.0.0    \
-    VPN_USERNAME=username      \
-    VPN_PASSWORD=password      \
+ENV VPN_DOMAIN=vpn.easypi.pro    \
+    VPN_NETWORK=10.20.30.0       \
+    VPN_NETMASK=255.255.255.0    \
+    LAN_NETWORK=192.168.0.0      \
+    LAN_NETMASK=255.255.0.0      \
+    VPN_USERNAME=username        \
+    VPN_PASSWORD=password        \
     TERM=xterm
 
 EXPOSE 443/tcp 443/udp
