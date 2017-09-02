@@ -2,14 +2,18 @@
 # Dockerfile for obfsproxy (scramblesuit)
 #
 
-FROM alpine
+FROM debian:jessie
 MAINTAINER kev <noreply@easypi.pro>
 
 RUN set -xe \
-    && apk add --no-cache build-base curl python python-dev \
-    && curl -sSL https://bootstrap.pypa.io/get-pip.py | python \
+    && apt-get update \
+    && apt-get install -y build-essential curl python python-dev \
+    && curl https://bootstrap.pypa.io/get-pip.py | python \
     && pip install obfsproxy \
-    && apk del build-base curl python-dev
+    && apt-get purge -y build-essential python-dev \
+    && apt-get autoremove -y \
+    && apt-get clean -y \
+    && rm -rf /var/lib/apt/lists/*
 
 ENV LOG_MIN_SEVERITY info
 ENV DATA_DIR /var/lib/obfsproxy
