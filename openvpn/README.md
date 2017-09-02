@@ -79,7 +79,9 @@ $ docker-compose up -d
 $ cat /etc/openvpn/client.conf
 ...
 remote bridge.easypi.info 1194 tcp
-route 192.168.1.0 255.255.255.0 net_gateway
+route 192.168.0.0 255.255.0.0 net_gateway
+route 172.16.0.0 255.240.0.0 net_gateway
+route 10.0.0.0 255.0.0.0 net_gateway
 ...
 $ systemctl start openvpn@client
 $ systemctl enable openvpn@client
