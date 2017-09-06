@@ -249,6 +249,7 @@ A collection of delicious docker recipes.
 - [x] kylemanna/openvpn
 - [x] mongo
 - [x] neo4j
+- [x] odoo
 - [x] owncloud
 - [x] phpmyadmin
 - [x] portainer/portainer :+1:
