@@ -9,20 +9,22 @@ deploying and automation for virtually any project.
 
 ## docker-compose.yml
 
-```yml
+```yaml
 jenkins:
-  image: jenkinsci/jenkins
+  image: jenkins/jenkins:lts-alpine
   ports:
     - "8080:8080"
     - "50000:50000"
   volumes:
     - ./data:/var/jenkins_home
+  environment:
+    - JAVA_OPTS=-Dhudson.footerURL=http://jenkins.easypi.pro
   restart: always
 ```
 
 ## up and running
 
-```
+```bash
 $ cd ~/fig/jenkins
 $ mkdir -p data
 $ sudo chown 1000 data
@@ -38,4 +40,4 @@ $ docker-compose exec --user root jenkins apk add -U git
 $ firefox http://localhost:8080/
 ```
 
-[1]: http://jenkins-ci.org/
+[1]: https://jenkins.io/index.html
