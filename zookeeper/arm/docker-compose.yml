@@ -1,0 +1,8 @@
+zookeeper:
+  image: easypi/zookeeper-arm
+  ports:
+    - "2181:2181"
+  volumes:
+    - ./data:/data
+    - ./datalog:/datalog
+  restart: always

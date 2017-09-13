@@ -263,6 +263,7 @@ A collection of delicious docker recipes.
     - [x] standalone-firefox
 - [x] tutum/builder
 - [x] wekanteam/wekan
+- [x] zookeeper
 
 ## auto-completion
 

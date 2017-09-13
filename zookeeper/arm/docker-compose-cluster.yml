@@ -1,0 +1,12 @@
+zookeeper:
+  image: easypi/zookeeper-arm
+  volumes:
+    - ./data:/data
+    - ./datalog:/datalog
+  environment:
+    - ZOO_MY_ID=1
+    - ZOO_SERVERS=server.1=192.168.1.106:2888:3888
+                  server.2=192.168.1.107:2888:3888
+                  server.3=192.168.1.108:2888:3888
+  net: host
+  restart: always
