@@ -18,6 +18,7 @@ RUN set -ex \
                   imagemagick \
                   krb5-libs \
                   nodejs \
+                  nodejs-npm \
                   openssl \
     && apk add -t TMP build-base \
                       curl \
