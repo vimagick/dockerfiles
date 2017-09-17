@@ -35,6 +35,7 @@ RUN set -xe \
     && mkdir src \
         && cd src \
         && curl -sSL $HYDRA_URL | tar xz --strip 1 \
+        && sed -i '1s/^/#include <stdint.h>\n/' pw-inspector.c \
         && ./configure --prefix=/usr \
         && make install \
         && cd .. \
