@@ -1,8 +1,8 @@
 #
-# Dockerfile for hydra
+# Dockerfile for hydra-arm
 #
 
-FROM alpine
+FROM easypi/alpine-arm
 MAINTAINER EasyPi Software Foundation
 
 RUN set -xe \
