@@ -5,13 +5,15 @@
 FROM easypi/alpine-arm
 MAINTAINER EasyPi Software Foundation
 
+ENV HYDRA_VERSION=8.6
+ENV HYDRA_URL=https://github.com/vanhauser-thc/thc-hydra/archive/$HYDRA_VERSION.tar.gz
+
 RUN set -xe \
     && apk add --no-cache apr-dev \
                           apr-util-dev \
                           bash \
                           build-base \
                           curl \
-                          git \
                           jq \
                           libidn \
                           libidn-dev \
@@ -28,10 +30,11 @@ RUN set -xe \
                           postgresql-dev \
                           subversion-dev \
                           subversion-libs \
+                          tar \
     && echo 'will cite' | parallel --bibtex \
     && mkdir src \
         && cd src \
-        && git clone --depth 1 https://github.com/vanhauser-thc/thc-hydra.git . \
+        && curl -sSL $HYDRA_URL | tar xz --strip 1 \
         && ./configure --prefix=/usr \
         && make install \
         && cd .. \
