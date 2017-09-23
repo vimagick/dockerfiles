@@ -1,1 +1,1 @@
-GRANT ALL ON zm.* TO 'zmuser'@% IDENTIFIED BY 'zmpass';
+GRANT ALL PRIVILEGES ON zm.* TO 'zmuser'@'%' IDENTIFIED BY 'zmpass';
