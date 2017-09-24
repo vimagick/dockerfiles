@@ -2,27 +2,40 @@ version: '2'
 
 services:
   drone-server:
-    image: easypi/drone-arm
+    image: quay.io/armswarm/drone:0.8
     ports:
       -  "8000:8000"
+      -  "9000:9000"
     volumes:
       - ./data:/var/lib/drone
     environment:
       - DRONE_OPEN=true
-      - DRONE_HOST=drone.easypi.pro
+      - DRONE_HOST=https://drone.easypi.pro
+      - DRONE_DATABASE_DRIVER=mysql
+      - DRONE_DATABASE_DATASOURCE=root:root@tcp(mariadb:3306)/drone?parseTime=true
       - DRONE_GOGS=true
       - DRONE_GOGS_URL=https://gogs.easypi.pro
       - DRONE_SECRET=0123456789
+    depends_on:
+      - mariadb
     restart: always
 
   drone-agent:
-    image: easypi/drone-arm
-    command: agent
+    image: quay.io/armswarm/drone:0.8-agent
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     environment:
-      - DRONE_SERVER=ws://drone-server:8000/ws/broker
+      - DRONE_SERVER=drone-server:9000
       - DRONE_SECRET=0123456789
     depends_on:
       - drone-server
+    restart: always
+
+  mariadb:
+    image: easypi/mariadb-arm
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=drone
     restart: always
