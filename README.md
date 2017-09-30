@@ -116,6 +116,7 @@ A collection of delicious docker recipes.
 - [x] minidlna
 - [x] mpd
 - [x] murmur
+- [x] openmeetings
 - [x] plex :moneybag:
 - [x] red5 :+1:
 - [x] red5-arm :construction:

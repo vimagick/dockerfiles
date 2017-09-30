@@ -21,7 +21,7 @@ RUN set -xe \
                           libssh \
                           libssh-dev \
                           mariadb-dev \
-                          mariadb-libs \
+                          mariadb-client-libs \
                           ncurses \
                           ncurses-dev \
                           parallel \
