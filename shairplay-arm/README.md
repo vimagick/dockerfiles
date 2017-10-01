@@ -18,5 +18,24 @@ shairplay:
   restart: unless-stopped
 ```
 
+## Quick Start
+
+On MacOSX: click 🔉  to show a list of output devices, then click `EasyPi` to connect.
+
+```bash
+# Enable Audio
+$ grep audio /boot/config.txt
+dtparam=audio=on
+
+# Start Container
+$ docker-compose up -d
+
+# Control Volume
+$ docker-compose exec shairplay alsamixer
+>>> Press ↑ to volume up
+>>> Press ↓ to volume down
+>>> Press ESC to quit
+```
+
 [1]: https://github.com/juhovh/shairplay
 [2]: https://github.com/abrasive/shairport

@@ -6,7 +6,8 @@ FROM easypi/alpine-arm
 MAINTAINER EasyPi Software Foundation
 
 RUN set -xe \
-    && apk add --no-cache autoconf \
+    && apk add --no-cache alsa-utils \
+                          autoconf \
                           automake \
                           avahi-dev \
                           build-base \
