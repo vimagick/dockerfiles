@@ -9,11 +9,10 @@ Currently only AirPort Express emulation is supported.
 ```yaml
 shairplay:
   image: easypi/shairplay-arm
-  command: shairplay --apname=EasyPi --hwaddr=01:45:89:ab:cd:ef
-  volumes:
-    - /var/run/dbus:/var/run/dbus
   devices:
     - /dev/snd
+  environment:
+    - APNAME=EasyPi
   net: host
   restart: unless-stopped
 ```

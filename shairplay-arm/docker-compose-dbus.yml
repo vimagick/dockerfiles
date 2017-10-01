@@ -1,0 +1,9 @@
+shairplay:
+  image: easypi/shairplay-arm
+  command: shairplay --apname=EasyPi --hwaddr=01:45:89:ab:cd:ef
+  volumes:
+    - /var/run/dbus:/var/run/dbus
+  devices:
+    - /dev/snd
+  net: host
+  restart: unless-stopped
