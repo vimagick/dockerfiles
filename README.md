@@ -52,6 +52,11 @@ A collection of delicious docker recipes.
 - [x] node-red :+1:
 - [x] mosquitto :+1:
 
+## Automation
+
+- [x] drone-rsync-arm
+- [x] jenkins-arm :beetle:
+
 ## Daemon
 
 - [x] alpine-arm :+1:
@@ -141,7 +146,6 @@ A collection of delicious docker recipes.
 - [x] hugo
 - [x] hugo-arm
 - [x] jamapi
-- [x] jenkins-arm :beetle:
 - [x] joomla
 - [x] json-server
 - [x] magento
