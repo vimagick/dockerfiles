@@ -23,7 +23,17 @@ minio:
   restart: always
 ```
 
-## Quick Start
+## Server
+
+```bash
+$ docker-compose up -d
+$ cat ./conf/config.json
+# "accessKey": "XXXXXXXXXXXXXXXXXXXX",
+# "secretKey": "YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY"
+$ curl -u XXXXXXXXXXXXXXXXXXXX:YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY http://127.0.0.1:9000
+```
+
+## Client
 
 Download minio client:
 
@@ -34,12 +44,6 @@ Download minio client:
 Read minio [tutorial][5].
 
 ```bash
-$ docker-compose up -d
-$ cat ./conf/config.json
-# "accessKey": "XXXXXXXXXXXXXXXXXXXX",
-# "secretKey": "YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY"
-$ curl http://127.0.0.1:9000
-
 $ mc config host add minio http://127.0.0.1:9000 XXXXXXXXXXXXXXXXXXXX YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY
 $ mc mb minio/test
 $ mc cp README.md minio/test
@@ -47,6 +51,50 @@ $ mc cat minio/test/README.md
 $ mc ls -r minio
 $ mc rm minio/test/README.md
 $ mc rm minio/test
+```
+
+## Client (Android)
+
+```bash
+$ termux-setup-storage
+$ realpath ~/storage/dcim
+/storage/emulated/0/DCIM
+$ cd ~/storage/dcim/Camera
+$ termux-camera-photo -c 0 back.jpg
+$ termux-camera-photo -c 1 front.jpg
+
+$ go get -u github.com/minio/mc
+$ mc config host add minio http://127.0.0.1:9000 XXXXXXXXXXXXXXXXXXXX YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY
+$ mc mb minio/android
+$ mc mirror --force --remove --watch /storage/emulated/0/DCIM/Camera/ minio/android/camera
+```
+
+```bash
+$ pwd
+/data/data/com.termux/files/home
+
+$ cat >> .bashrc << _EOF_
+export TMPDIR=/data/data/com.termux/files/usr/tmp
+export AWS_ACCESS_KEY_ID=XXXXXXXXXXXXXXXXXXXX
+export AWS_SECRET_ACCESS_KEY=YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY
+export RESTIC_REPOSITORY=s3:http://192.168.1.104:9000/android
+export RESTIC_PASSWORD=ZZZZZZZZ
+_EOF_
+
+$ restic init
+$ restic backup .bashrc
+$ restic snapshots
+ID        Date                 Host        Tags        Directory
+----------------------------------------------------------------------
+8d6a4777  2017-10-03 04:54:39  localhost               /data/data/com.termux/files/home/.bashrc
+
+$ restic restore 8d6a4777 -t xxx
+$ ls -al xxx
+total 12
+drwx------    2 u0_a120  u0_a120       4096 Oct  3 12:59 .
+drwx------   14 u0_a120  u0_a120       4096 Oct  3 12:59 ..
+-rw-------    1 u0_a120  u0_a120        406 Oct  3 12:53 .bashrc
+$ rm -r xxx
 ```
 
 [1]: https://minio.io/
