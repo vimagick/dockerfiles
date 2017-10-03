@@ -1,0 +1,9 @@
+minio:
+  image: minio/minio
+  command: server /data
+  ports:
+    - "9000:9000"
+  volumes:
+    - ./data:/data
+    - ./conf:/root/.minio
+  restart: always
