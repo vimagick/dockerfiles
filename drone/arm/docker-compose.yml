@@ -7,7 +7,7 @@ services:
       -  "8000:8000"
       -  "9000:9000"
     volumes:
-      - ./data:/var/lib/drone
+      - ./data/drone:/var/lib/drone
     environment:
       - DRONE_OPEN=true
       - DRONE_HOST=https://drone.easypi.pro
@@ -16,12 +16,14 @@ services:
       - DRONE_GOGS=true
       - DRONE_GOGS_URL=https://gogs.easypi.pro
       - DRONE_SECRET=0123456789
+      - DRONE_ADMIN=root
     depends_on:
       - mariadb
+      - gogs
     restart: always
 
   drone-agent:
-    image: quay.io/armswarm/drone:0.8-agent
+    image: drone/agent:linux-arm
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     environment:
@@ -38,4 +40,22 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD=root
       - MYSQL_DATABASE=drone
+    restart: always
+
+  gogs:
+    image: easypi/gogs-arm
+    ports:
+      - "2222:22"
+      - "3000:3000"
+    volumes:
+      - ./data/gogs:/data
+    restart: always
+
+  phpmyadmin:
+    image: easypi/phpmyadmin-arm
+    ports:
+      - "8080:80"
+    environment:
+      - PMA_HOST=mariadb
+      - PMA_PORT=3306
     restart: always
