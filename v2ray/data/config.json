@@ -1,0 +1,24 @@
+{
+  "log" : {
+    "access": "/dev/stdout",
+    "error": "/dev/stderr",
+    "loglevel": "warning"
+  },
+  "inbound": {
+    "port": 8001,
+    "protocol": "vmess",
+    "settings": {
+      "clients": [
+        {
+          "id": "11111111-2222-3333-4444-555555555555",
+          "level": 1,
+          "alterId": 32
+        }
+      ]
+    }
+  },
+  "outbound": {
+    "protocol": "freedom",
+    "settings": {}
+  }
+}
