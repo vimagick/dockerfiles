@@ -11,8 +11,9 @@ A collection of delicious docker recipes.
 - :whale: <https://hub.docker.com/u/vimagick/> (x86)
 - :whale: <https://hub.docker.com/u/easypi/> (arm)
 
-## 友情赞助
+## Affiliates
 
+[![](https://bandwagonhost.com/templates/organicbandwagon/images/logo.png)](https://bandwagonhost.com/aff.php?aff=21106)
 [![](https://www.vultr.com/media/banner_1.png)](https://www.vultr.com/?ref=6821947)
 
 ## Todo
