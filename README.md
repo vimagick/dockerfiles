@@ -175,6 +175,7 @@ A collection of delicious docker recipes.
 - [x] grr
 - [x] hydra
 - [x] iptables
+- [x] metasploit
 - [x] routersploit
 - [x] snort :beetle:
 - [x] sslsplit
