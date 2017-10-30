@@ -30,7 +30,6 @@ A collection of delicious docker recipes.
 - [ ] ipset
 - [ ] irc
 - [ ] libreswan
-- [ ] metasploit
 - [ ] mitmproxy
 - [ ] nagios
 - [ ] nfs
@@ -175,7 +174,6 @@ A collection of delicious docker recipes.
 - [x] grr
 - [x] hydra
 - [x] iptables
-- [x] metasploit
 - [x] routersploit
 - [x] snort :beetle:
 - [x] sslsplit
@@ -256,6 +254,7 @@ A collection of delicious docker recipes.
 - [x] jenkins
 - [x] jupyter/notebook
 - [x] kylemanna/openvpn
+- [x] metasploitframework/metasploit-framework :skull:
 - [x] minio/minio
 - [x] mongo
 - [x] neo4j
