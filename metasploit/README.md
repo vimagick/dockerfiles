@@ -1,7 +1,7 @@
 metasploit
 ==========
 
-[![](https://metasploit.com/includes/images/metasploit-logo.svg)][1]
+[![](https://upload.wikimedia.org/wikipedia/commons/3/38/Metasploit_logo_and_wordmark.png)][1]
 
 The world’s most used penetration testing framework.
 
