@@ -22,6 +22,9 @@ RUN set -xe \
                nmap-scripts \
                postgresql-libs \
                ruby \
+               ruby-bigdecimal \
+               ruby-bundler \
+               ruby-io-console \
                sqlite-libs \
     && apk add --virtual .ruby-builddeps \
                autoconf \
