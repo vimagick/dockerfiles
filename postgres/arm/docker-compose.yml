@@ -1,0 +1,11 @@
+postgres:
+  image: easypi/postgres-arm
+  ports:
+    - "5432:5432"
+  volumes:
+    - ./data:/var/lib/postgresql/data
+  environment:
+    - POSTGRES_USER=root
+    - POSTGRES_PASSWORD=root
+    - POSTGRES_DB=postgres
+  restart: always
