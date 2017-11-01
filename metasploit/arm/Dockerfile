@@ -29,6 +29,7 @@ RUN set -xe \
                build-base \
                curl \
                git \
+               libffi-dev \
                libpcap-dev \
                libressl-dev \
                libxml2-dev \
