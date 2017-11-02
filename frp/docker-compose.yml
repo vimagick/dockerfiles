@@ -1,0 +1,9 @@
+frp:
+  image: vimagick/frp
+  ports:
+    - "7000:7000/tcp"
+    - "7000:7000/udp"
+    - "7500:7500/tcp"
+  volumes:
+    - ./data/frps.ini:/opt/frp/frps.ini
+  restart: always
