@@ -1,4 +1,4 @@
-frp:
+frps:
   image: vimagick/frp
   ports:
     - "7000:7000/tcp"

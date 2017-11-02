@@ -70,6 +70,7 @@ A collection of delicious docker recipes.
 - [x] casperjs :+1:
 - [x] collectd
 - [x] freeradius
+- [x] frp :cn:
 - [x] graphite
 - [x] h2o
 - [x] httpbin :+1:
