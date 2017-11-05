@@ -3,10 +3,10 @@ cowrie
 
 ![](https://badge.imagelayers.io/vimagick/cowrie:latest.svg)
 
-[`Cowrie`][1] is a medium interaction SSH honeypot designed to log brute force attacks
+[Cowrie][1] is a medium interaction SSH honeypot designed to log brute force attacks
 and, most importantly, the entire shell interaction performed by the attacker.
 
-`Cowrie` is directly based on [`Kippo`][2] by Upi Tamminen (desaster).
+Cowrie is directly based on [Kippo][2] by Upi Tamminen (desaster).
 
 ## docker-compose.yml
 
@@ -17,8 +17,8 @@ cowrie:
     - "2222:2222"
     - "2223:2223"
   volumes:
-    - ./dl:/home/cowrie/dl
-    - ./log:/home/cowrie/log
+    - ./data/dl:/home/cowrie/dl
+    - ./data/log:/home/cowrie/log
   restart: always
 ```
 
@@ -26,8 +26,8 @@ cowrie:
 
 ```bash
 $ cd ~/fig/cowrie
-$ mkdir -p dl log/tty
-$ chmod -R 777 dl log
+$ mkdir -p data/dl data/log/tty
+$ chmod -R 777 data
 $ tree -F
 .
 ├── docker-compose.yml
