@@ -10,11 +10,12 @@ and, most importantly, the entire shell interaction performed by the attacker.
 
 ## docker-compose.yml
 
-```
+```yaml
 cowrie:
   image: vimagick/cowrie
   ports:
     - "2222:2222"
+    - "2223:2223"
   volumes:
     - ./dl:/home/cowrie/dl
     - ./log:/home/cowrie/log
@@ -23,7 +24,7 @@ cowrie:
 
 ## server
 
-```
+```bash
 $ cd ~/fig/cowrie
 $ mkdir -p dl log/tty
 $ chmod -R 777 dl log
@@ -39,8 +40,9 @@ $ tail -f log/cowrie.log
 
 ## client
 
-```
+```bash
 $ ssh -p 2222 root@server
+$ telnet server 2223
 ```
 
 > You can login as `root` with any password except `root` or `123456`.

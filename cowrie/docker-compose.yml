@@ -2,6 +2,7 @@ cowrie:
   image: vimagick/cowrie
   ports:
     - "2222:2222"
+    - "2223:2223"
   volumes:
     - ./dl:/home/cowrie/dl
     - ./log:/home/cowrie/log
