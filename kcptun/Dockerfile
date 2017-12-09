@@ -5,7 +5,7 @@
 FROM alpine
 MAINTAINER kev <noreply@easypi.pro>
 
-ENV KCPTUN_VERSION 20171021
+ENV KCPTUN_VERSION 20171201
 ENV KCPTUN_FILE kcptun-linux-amd64-${KCPTUN_VERSION}.tar.gz
 ENV KCPTUN_URL https://github.com/xtaci/kcptun/releases/download/v${KCPTUN_VERSION}/${KCPTUN_FILE}
 
