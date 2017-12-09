@@ -5,7 +5,7 @@
 FROM easypi/alpine-arm
 MAINTAINER EasyPi Software Foundation
 
-ENV MSF_VERSION 4.16.13
+ENV MSF_VERSION 4.16.22
 ENV APP_HOME /usr/src/metasploit-framework/
 ENV MSF_USER msf
 ENV NMAP_PRIVILEGED=""
