@@ -4,7 +4,9 @@ opencart
 [OpenCart][1] is designed feature rich, easy to use, search engine
 friendly and with a visually appealing interface.
 
-```
+## docker-compose.yml
+
+```yaml
 opencart:
   image: vimagick/opencart
   ports:
