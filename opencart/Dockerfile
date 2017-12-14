@@ -12,7 +12,9 @@ RUN set -xe \
     && apt-get install -y libpng-dev libjpeg-dev libmcrypt-dev \
     && rm -rf /var/lib/apt/lists/* \
     && docker-php-ext-configure gd --with-png-dir=/usr --with-jpeg-dir=/usr \
-    && docker-php-ext-install gd mcrypt mbstring mysqli zip
+    && docker-php-ext-install gd mbstring mysqli zip \
+    && pecl install mcrypt-1.0.1 \
+    && docker-php-ext-enable mcrypt
 
 WORKDIR /var/www/html
 
@@ -28,5 +30,5 @@ RUN set -xe \
     && mv config-dist.php config.php \
     && mv admin/config-dist.php admin/config.php \
     && rm ${OPENCART_FILE} \
-    && chown -R www-data:www-data .
+    && chown -R www-data:www-data /var/www
 

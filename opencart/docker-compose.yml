@@ -5,7 +5,7 @@ opencart:
   links:
     - mysql
   volumes:
-    - /var/www/html
+    - /var/www
   restart: always
 
 mysql:
