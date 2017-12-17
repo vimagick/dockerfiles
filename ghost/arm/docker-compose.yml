@@ -4,5 +4,4 @@ ghost:
     - "127.0.0.1:2368:2368"
   volumes:
     - ./data:/var/lib/ghost/content
-    - ./data/config.json:/var/lib/ghost/config.production.json
   restart: always
