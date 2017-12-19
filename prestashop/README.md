@@ -27,4 +27,8 @@ mysql:
 
 ```
 
+## Documentation
+
+<http://doc.prestashop.com/dashboard.action>
+
 [1]: https://www.prestashop.com/
