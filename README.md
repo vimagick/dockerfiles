@@ -151,21 +151,24 @@ A collection of delicious docker recipes.
 - [x] jamapi
 - [x] joomla
 - [x] json-server
-- [x] magento :shopping_bags:
 - [x] mantisbt
 - [x] mediagoblin
 - [x] netdata
 - [x] nginad
 - [x] nodebb :+1:
-- [x] opencart :shopping_bags:
 - [x] openrefine
 - [x] phpbb
 - [x] phpmyadmin-arm
 - [x] phpvirtualbox-arm
 - [x] piwik
-- [x] prestashop :shopping_bags:
 - [x] revive
 - [x] zoneminder :+1:
+
+## E-commerce
+
+- [x] magento :shopping:
+- [x] opencart :shopping:
+- [x] prestashop :shopping:
 
 ## Security
 
