@@ -1,0 +1,11 @@
+logstash:
+  image: docker.elastic.co/logstash/logstash:6.1.1
+  ports:
+    - "5044:5044"
+    - "9600:9600"
+  volumes:
+    - ./data/logstash.yml:/usr/share/logstash/config/logstash.yml
+    - ./data/pipeline:/usr/share/logstash/pipeline
+  environment:
+    LS_JAVA_OPTS: "-Xms1g -Xmx1g"
+  restart: always

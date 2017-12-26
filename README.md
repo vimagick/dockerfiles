@@ -75,6 +75,7 @@ A collection of delicious docker recipes.
 - [x] h2o
 - [x] httpbin :+1:
 - [x] influxdb
+- [x] logstash
 - [x] luigi
 - [x] mariadb
 - [x] mariadb-arm
