@@ -74,8 +74,12 @@ $ systemctl start filebeat
 $ systemctl enable filebeat
 ```
 
+Download filebeat binary for raspberry pi [here][1].
+
 ## References
 
 - https://www.elastic.co/guide/en/logstash/current/getting-started-with-logstash.html
 - https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-getting-started.html
 - https://www.alibabacloud.com/help/zh/doc-detail/28984.htm
+
+[1]: https://github.com/vimagick/rpi-bin/raw/master/bin/filebeat-6.1.1-armv7h.gz
