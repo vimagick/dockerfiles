@@ -28,7 +28,11 @@ $ docker-compose restart
 ## Client Setup
 
 ```bash
-$ ffmpeg -i /dev/video0 -video_size 800x600 -f flv rtmp://easypi.info/live/webcam
+# no watermark
+$ ffmpeg -i /dev/video0 -video_size 800x600 -b 512k -f flv rtmp://easypi.pro/live/webcam
+
+# with watermark (bottom right with 10 pixel padding)
+$ ffmpeg -i /dev/video0 -video_size 800x600 -vf "drawtext=fontfile=/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf:expansion=strftime:text='\%F \%T':fontcolor=white@0.8:x=w-tw-10:y=h-th-10" -b 512k -f flv rtmp://easypi.pro/live/webcam
 ```
 
 > Please try [easypi/rtmp-client-arm][2] on Raspberry Pi.
@@ -37,11 +41,11 @@ $ ffmpeg -i /dev/video0 -video_size 800x600 -f flv rtmp://easypi.info/live/webca
 
 ```bash
 # kodi
-$ echo 'rtmp://easypi.info/live/webcam live=1' > ~/Movies/webcam.strm
+$ echo 'rtmp://easypi.pro/live/webcam live=1' > ~/Movies/webcam.strm
 
 # ffplay
 $ brew reinstall ffmpeg --with-ffplay --with-rtmpdump
-$ ffplay 'rtmp://easypi.info/live/webcam live=1'
+$ ffplay 'rtmp://easypi.pro/live/webcam live=1'
 ```
 
 ## references
