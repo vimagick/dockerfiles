@@ -11,9 +11,7 @@ red5
 red5:
   image: vimagick/red5
   ports:
-    - "1935:1935"  # rtmp/e
-    - "5080:5080"  # http
-    - "8081:8081"  # websocket
+    - "1935:1935"
   restart: always
 ```
 
