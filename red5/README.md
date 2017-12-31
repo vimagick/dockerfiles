@@ -31,11 +31,13 @@ $ docker-compose restart
 # no watermark
 $ ffmpeg -i /dev/video0 -video_size 800x600 -b 512k -f flv rtmp://easypi.pro/live/webcam
 
-# with watermark (bottom right with 10 pixel padding)
-$ ffmpeg -i /dev/video0 -video_size 800x600 -vf "drawtext=fontfile=/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf:expansion=strftime:text='\%F \%T':fontcolor=white@0.8:x=w-tw-10:y=h-th-10" -b 512k -f flv rtmp://easypi.pro/live/webcam
+# with watermark (top right with 10px padding)
+$ ffmpeg -i /dev/video0 -video_size 800x600 -vf "drawtext=fontfile=/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf:expansion=strftime:text='\%F^L    \%T':fontcolor=white@0.8:x=w-tw-10:y=10" -b 512k -f flv rtmp://easypi.pro/live/webcam
 ```
 
-> Please try [easypi/rtmp-client-arm][2] on Raspberry Pi.
+> Note: `^L` was typed via pressing `Ctrl-V` + `Ctrl-L`
+
+Please try [easypi/rtmp-client-arm][2] on Raspberry Pi.
 
 ## Player Setup
 
