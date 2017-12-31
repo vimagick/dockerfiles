@@ -1,0 +1,11 @@
+ffmpeg:
+  image: easypi/ffmpeg-arm
+  entrypoint: sh
+  command:
+    - -c
+    - ffmpeg -f video4linux2 -i /dev/video0 -video_size 800x600 -b:v 500k -f flv $$RTMP_URI
+  devices:
+    - /dev/video0
+  environment:
+    - RTMP_URI=rtmp://a.rtmp.youtube.com/live2/xxxx-xxxx-xxxx-xxxx
+  restart: always
