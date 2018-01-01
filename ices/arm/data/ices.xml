@@ -15,7 +15,7 @@
             <module>alsa</module>
             <param name="rate">44100</param>
             <param name="channels">1</param>
-            <param name="device">hw:1,0</param>
+            <param name="device">plughw:1,0</param>
             <param name="metadata">1</param>
             <param name="metadatafilename">/etc/ices/ices.txt</param>
         </input>
