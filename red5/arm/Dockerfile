@@ -2,7 +2,7 @@
 # Dockerfile for red5-arm
 #
 
-FROM armhf/debian:jessie
+FROM easypi/alpine-arm
 MAINTAINER EasyPi Software Foundation
 
 ENV RED5_VERSION 1.0.9
@@ -12,17 +12,11 @@ ENV RED5_URL https://github.com/Red5/red5-server/releases/download/v${RED5_VERSI
 WORKDIR /opt/red5
 
 RUN set -xe \
-    && echo 'deb http://httpredir.debian.org/debian jessie-backports main' >> /etc/apt/sources.list \
-    && apt-get update \
-    && apt-get install -y ca-certificates-java \
-                          curl \
-                          openjdk-8-jre-headless \
-    && /var/lib/dpkg/info/ca-certificates-java.postinst configure \
+    && apk add --no-cache --progress bash curl openjdk8-jre tar \
     && curl -sSL ${RED5_URL} | tar xz --strip 1 \
-    && apt-get remove -y curl \
-    && rm -rf /var/lib/apt/lists/*
+    && apk del curl tar
 
-ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-armhf/jre
+ENV JAVA_HOME /usr/lib/jvm/java-1.8-openjdk/jre
 ENV PATH $PATH:$JAVA_HOME/bin
 
 EXPOSE 843 1935 5080 5443 8081 8443
