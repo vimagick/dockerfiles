@@ -24,6 +24,7 @@ logstash:
   volumes:
     - ./data/logstash.yml:/usr/share/logstash/config/logstash.yml
     - ./data/pipeline:/usr/share/logstash/pipeline
+    - /usr/share/logstash/vendor/bundle
   environment:
     LS_JAVA_OPTS: "-Xms1g -Xmx1g"
   restart: always
@@ -42,7 +43,7 @@ Installation successful
 logstash-output-logservice
 >>> exit
 $ vim data/pipeline/logstash.conf
-$ docker-compose restart
+$ docker-compose exec logstash kill -HUP 1
 $ docker-compose logs -f
 $ curl http://localhost:9600
 {
@@ -56,6 +57,11 @@ $ curl http://localhost:9600
   "build_snapshot": false
 }
 ```
+
+You can install logstash plugin manually:
+
+- /usr/share/logstash/vendor/bundle/jruby/2.3.0/specifications/logstash-output-logservice-0.3.0.gemspec
+- /usr/share/logstash/vendor/bundle/jruby/2.3.0/gems/logstash-output-logservice-0.3.0/
 
 ## Setup Filebeat
 

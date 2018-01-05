@@ -6,6 +6,7 @@ logstash:
   volumes:
     - ./data/logstash.yml:/usr/share/logstash/config/logstash.yml
     - ./data/pipeline:/usr/share/logstash/pipeline
+    - /usr/share/logstash/vendor/bundle
   environment:
     LS_JAVA_OPTS: "-Xms1g -Xmx1g"
   restart: always
