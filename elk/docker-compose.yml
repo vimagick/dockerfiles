@@ -1,33 +1,42 @@
-version: '2'
-services:
-  elasticsearch:
-    image: elasticsearch:5.0
-    ports:
-      - '9200:9200'
-      - '9300:9300'
-    volumes:
-      - ./elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
-      - ./data:/usr/share/elasticsearch/data
-    mem_limit: 4g
-    ulimits:
-      memlock:
-        soft: -1
-        hard: -1
-      nofile:
-        soft: 65536
-        hard: 65536
-    cap_add:
-      - IPC_LOCK
-  logstash:
-    image: logstash:5.0
-    ports:
-      - '5000:5000'
-      - '5044:5044'
-    volumes:
-      - ./conf:/etc/logstash/conf.d
-  kibana:
-    image: kibana:5.0
-    ports:
-      - '5601:5601'
-    environment:
-      - ELASTICSEARCH_URL=http://elasticsearch:9200
+elasticsearch:
+  image: docker.elastic.co/elasticsearch/elasticsearch:6.1.1
+  ports:
+    - "9200:9200"
+  volumes:
+    - ./data:/usr/share/elasticsearch/data
+  environment:
+    - node_name=elastic-search
+    - cluster.name=docker-cluster
+    - bootstrap.memory_lock=true
+    - "ES_JAVA_OPTS=-Xms1g -Xmx1g"
+  ulimits:
+    memlock:
+      soft: -1
+      hard: -1
+  restart: unless-stopped
+
+logstash:
+  image: docker.elastic.co/logstash/logstash:6.1.1
+  ports:
+    - "5044:5044"
+    - "9600:9600"
+  links:
+    - elasticsearch
+  volumes:
+    - ./data/logstash.yml:/usr/share/logstash/config/logstash.yml
+    - ./data/pipeline:/usr/share/logstash/pipeline
+    - /usr/share/logstash/vendor/bundle
+  environment:
+    LS_JAVA_OPTS: "-Xms1g -Xmx1g"
+  restart: unless-stopped
+
+kibana:
+  image: docker.elastic.co/kibana/kibana:6.1.1
+  ports:
+    - "5601:5601"
+  links:
+    - elasticsearch
+  environment:
+    SERVER_NAME: kibana
+    ELASTICSEARCH_URL: http://elasticsearch:9200
+  restart: unless-stopped
