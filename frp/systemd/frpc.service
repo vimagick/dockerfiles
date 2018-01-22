@@ -4,6 +4,7 @@ After=network.target
 
 [Service]
 ExecStart=/usr/local/bin/frpc -c /etc/frp/frpc.ini
+RestartSec=5
 Restart=always
 
 [Install]
