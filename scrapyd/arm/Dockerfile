@@ -28,7 +28,7 @@ RUN set -xe \
                           libjpeg62-turbo-dev \
                           liblcms2-2 \
                           liblcms2-dev \
-                          libwebp5 \
+                          libwebp6 \
                           libwebp-dev \
                           zlib1g \
                           zlib1g-dev \
