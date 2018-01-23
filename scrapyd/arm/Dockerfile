@@ -2,7 +2,7 @@
 # Dockerfile for scrapyd-arm
 #
 
-FROM armhf/debian:jessie
+FROM resin/rpi-raspbian:stretch
 MAINTAINER EasyPi Software Foundation
 
 RUN set -xe \

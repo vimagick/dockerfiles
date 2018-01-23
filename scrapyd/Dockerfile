@@ -2,7 +2,7 @@
 # Dockerfile for scrapyd
 #
 
-FROM debian:jessie
+FROM debian:stretch
 MAINTAINER kev <noreply@easypi.pro>
 
 RUN set -xe \
