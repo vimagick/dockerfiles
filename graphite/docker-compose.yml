@@ -7,5 +7,6 @@ graphite:
     - "8080:8080"
     - "9001:9001"
   volumes:
-    - ./data:/opt/graphite/storage
+    - ./data/conf:/opt/graphite/conf
+    - ./data/storage:/opt/graphite/storage
   restart: always

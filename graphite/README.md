@@ -19,7 +19,8 @@ graphite:
     - "8080:8080"
     - "9001:9001"
   volumes:
-    - ./data:/opt/graphite/storage
+    - ./data/conf:/opt/graphite/conf
+    - ./data/storage:/opt/graphite/storage
   restart: always
 ```
 
@@ -27,20 +28,24 @@ graphite:
 
 ```bash
 $ cd ~/fig/graphite
-$ mkdir -p data/log/webapp
+$ mkdir -p data/storage/log/webapp
 $ docker-compose up -d
 $ docker-compose exec graphite sh
 >>> vi conf/storage-schemas.conf
 >>> python webapp/manage.py migrate --run-syncdb --noinput
 >>> exit
-$ tree -F -L 3
+$ tree -F -L 4
 ├── data/
-│   ├── carbon-cache-a.pid
-│   ├── graphite.db
-│   ├── log/
-│   │   └── webapp/
-│   └── whisper/
-│       └── carbon/
+│   ├── conf/
+│   │   ├── carbon.conf
+│   │   └── storage-schemas.conf
+│   └── storage/
+│       ├── carbon-cache-a.pid
+│       ├── graphite.db
+│       ├── log/
+│       │   └── webapp/
+│       └── whisper/
+│           └── carbon/
 └── docker-compose.yml
 $ curl http://localhost:8080
 ```
@@ -52,7 +57,7 @@ $ curl http://localhost:8080
 pattern = ^carbon\.
 retentions = 60:90d
 
-[leancloud_1day_for_1year]
+[test_1day_for_1year]
 pattern = ^test\.
 retentions = 1d:1y
 
