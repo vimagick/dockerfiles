@@ -5,7 +5,7 @@
 FROM alpine
 MAINTAINER EasyPi Software Foundation
 
-ENV GRAPHITE_VERSION=1.0.2
+ENV GRAPHITE_VERSION=1.1.1
 ENV GRAPHITE_CONF_DIR=/opt/graphite/conf
 ENV GRAPHITE_STORAGE_DIR=/opt/graphite/storage
 ENV PATH=$PATH:/opt/graphite/bin
