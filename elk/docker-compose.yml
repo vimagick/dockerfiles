@@ -20,6 +20,7 @@ logstash:
   ports:
     - "5044:5044"
     - "9600:9600"
+    - "12201:12201/udp"
   links:
     - elasticsearch
   volumes:

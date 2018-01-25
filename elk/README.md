@@ -35,3 +35,26 @@ actions:
 $ pip install elasticsearch-curator
 $ curator delete-indices.yml
 ```
+
+## Send container's log to ELK
+
+```nginx
+input {
+  gelf {
+    port => 12201
+  }
+}
+```
+
+```yaml
+test:
+  image: alpine
+  command: 'sh -c "while :; do date; sleep 1; done"'
+  log_driver: gelf
+  log_opt:
+    gelf-address: udp://x.x.x.x:12201
+    tag: test
+```
+
+Search `tag: test` in kibana to show recent logging.
+
