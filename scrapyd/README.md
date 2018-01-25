@@ -18,7 +18,7 @@ utility which allows you to deploy your project to a Scrapyd server.
 
 [pillow][6] is the Python Imaging Library to support the ImagesPipeline.
 
-This image is based on `debian:jessie`, 6 latest python packages are installed:
+This image is based on `debian:stretch`, 6 latest python packages are installed:
 
 - `scrapy`: git+https://github.com/scrapy/scrapy.git
 - `scrapyd`: git+https://github.com/scrapy/scrapyd.git
@@ -44,6 +44,16 @@ scrapyd:
 scrapy:
   image: vimagick/scrapyd
   command: bash
+  volumes:
+    - .:/code
+  working_dir: /code
+  restart: always
+
+scrapyrt:
+  image: vimagick/scrapyd
+  command: scrapyrt -i 0.0.0.0 -p 9080
+  ports:
+    - "9080:9080"
   volumes:
     - .:/code
   working_dir: /code
@@ -120,6 +130,14 @@ $ docker-compose run --rm scrapy
 >>> scrapy runspider stackoverflow_spider.py -o top-stackoverflow-questions.json
 >>> cat top-stackoverflow-questions.json
 >>> exit
+```
+
+## Run it as realtime crawler for scrapyrt
+
+```bash
+$ git clone https://github.com/scrapy/quotesbot.git .
+$ docker-compose up -d scrapyrt
+$ curl -s 'http://localhost:9080/crawl.json?spider_name=toscrape-css&callback=parse&url=http://quotes.toscrape.com/&max_requests=5' | jq -c '.items[]'
 ```
 
 [1]: https://github.com/scrapy/scrapy

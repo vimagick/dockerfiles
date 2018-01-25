@@ -14,3 +14,13 @@ scrapy:
     - .:/code
   working_dir: /code
   restart: always
+
+scrapyrt:
+  image: vimagick/scrapyd
+  command: scrapyrt -i 0.0.0.0 -p 9080
+  ports:
+    - "9080:9080"
+  volumes:
+    - .:/code
+  working_dir: /code
+  restart: always
