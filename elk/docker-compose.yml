@@ -1,5 +1,5 @@
 elasticsearch:
-  image: docker.elastic.co/elasticsearch/elasticsearch:6.1.1
+  image: docker.elastic.co/elasticsearch/elasticsearch:6.1.2
   ports:
     - "9200:9200"
   volumes:
@@ -16,7 +16,7 @@ elasticsearch:
   restart: unless-stopped
 
 logstash:
-  image: docker.elastic.co/logstash/logstash:6.1.1
+  image: docker.elastic.co/logstash/logstash:6.1.2
   ports:
     - "5044:5044"
     - "9600:9600"
@@ -28,11 +28,12 @@ logstash:
     - ./data/pipeline:/usr/share/logstash/pipeline
     - /usr/share/logstash/vendor/bundle
   environment:
-    LS_JAVA_OPTS: "-Xms1g -Xmx1g"
+    - node.name=ls1
+    - "LS_JAVA_OPTS=-Xms1g -Xmx1g"
   restart: unless-stopped
 
 kibana:
-  image: docker.elastic.co/kibana/kibana:6.1.1
+  image: docker.elastic.co/kibana/kibana:6.1.2
   ports:
     - "5601:5601"
   links:
