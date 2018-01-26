@@ -5,6 +5,19 @@ ELK
 - Logstash
 - Kibana
 
+## How it works
+
+![](https://logz.io/wp-content/uploads/2017/03/elk-pipeline-in-docker-environment.png)
+
+## Up and running
+
+```bash
+$ sysctl -w vm.max_map_count=262144
+$ vi /etc/sysctl.conf
+  vm.max_map_count = 262144
+$ docker-compose up -d
+```
+
 ## Delete indices older than 7 days
 
 ```yaml
