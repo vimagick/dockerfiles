@@ -15,6 +15,7 @@ ELK
 $ sysctl -w vm.max_map_count=262144
 $ vi /etc/sysctl.conf
   vm.max_map_count = 262144
+$ chown -R 1000:1000 data
 $ docker-compose up -d
 ```
 
