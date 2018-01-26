@@ -5,7 +5,7 @@ elasticsearch:
   volumes:
     - ./data:/usr/share/elasticsearch/data
   environment:
-    - node_name=elastic-search
+    - node.name=es1
     - cluster.name=docker-cluster
     - bootstrap.memory_lock=true
     - "ES_JAVA_OPTS=-Xms1g -Xmx1g"
