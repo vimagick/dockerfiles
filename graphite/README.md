@@ -33,6 +33,8 @@ $ docker-compose up -d
 $ docker-compose exec graphite sh
 >>> vi conf/storage-schemas.conf
 >>> python webapp/manage.py migrate --run-syncdb --noinput
+>>> python webapp/manage.py createsuperuser
+>>> python webapp/manage.py changepassword
 >>> exit
 $ tree -F -L 4
 ├── data/

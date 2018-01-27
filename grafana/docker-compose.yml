@@ -13,4 +13,5 @@ grafana:
     - GF_SMTP_USER=grafana@example.com
     - GF_SMTP_FROM_ADDRESS=grafana@example.com
     - GF_SMTP_PASSWORD=******
+    - GF_USERS_ALLOW_SIGN_UP=false
   restart: always
