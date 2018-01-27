@@ -2,6 +2,7 @@ graphite:
   image: vimagick/graphite
   ports:
     - "2003:2003"
+    - "2003:2003/udp"
     - "2004:2004"
     - "7002:7002"
     - "8080:8080"
