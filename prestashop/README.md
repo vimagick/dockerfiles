@@ -66,6 +66,20 @@ server {
 
 3. Configure > Shop Parameters > General > Enable SSL on all pages
 
+## Reset Admin Password
+
+```bash
+$ docker-compose exec prestashop bash
+>>> grep cookie app/config/parameters.php
+    'cookie_key' => 'xxxxxx',
+>>> exit
+
+$ docker-compose exec mysql mysql -uroot -proot prestashop
+>>> select * from ps_employee where email='admin@easypi.pro';
+>>> update ps_employee set passwd=md5(concat("xxxxxx", "password")) where email='admin@easypi.pro';
+>>> select * from ps_employee where email='admin@easypi.pro';
+```
+
 ## Documentation
 
 <http://doc.prestashop.com/dashboard.action>
