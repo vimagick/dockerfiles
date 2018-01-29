@@ -1,6 +1,8 @@
 nextcloud
 =========
 
+:warning: IT'S DEPRECATED! PLEASE USE OFFICIAL DOCKER IMAGE: [nextcloud](https://hub.docker.com/_/nextcloud/)
+
 [Nextcloud][1] puts your data at your fingertips, under your control.
 
 ## docker-compose.yml

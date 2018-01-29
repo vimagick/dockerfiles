@@ -1,0 +1,11 @@
+nextcloud:
+  image: arm32v7/nextcloud
+  ports:
+    - "8080:80"
+  volumes:
+    - ./data:/var/www/html
+  environment:
+    - SQLITE_DATABASE=/var/www/html/data/nextcloud.db
+    - NEXTCLOUD_ADMIN_USER=admin
+    - NEXTCLOUD_ADMIN_PASSWORD=admin
+  restart: always

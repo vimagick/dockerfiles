@@ -255,7 +255,7 @@ A collection of delicious docker recipes.
     - [ ] python
 - [x] gogs :cn:
 - [x] haproxy
-- [x] indiehosters/nextcloud
+- [x] nextcloud
 - [x] jazzdd/phpvirtualbox
 - [x] jenkins
 - [x] jupyter/notebook
