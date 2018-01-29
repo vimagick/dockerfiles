@@ -5,7 +5,7 @@ rocketchat:
   links:
     - mongo:db
   environment:
-    - ROOT_URL=http://chat.foobar.site
+    - ROOT_URL=http://chat.easypi.pro
   restart: always
 
 mongo:
