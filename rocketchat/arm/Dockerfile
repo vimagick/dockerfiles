@@ -5,7 +5,7 @@
 FROM easypi/alpine-arm
 MAINTAINER EasyPi Software Foundation
 
-RUN apk add --no-cache gnupg nodejs nodejs-npm shadow
+RUN apk add --no-cache curl gnupg nodejs nodejs-npm shadow
 
 RUN groupadd -r rocketchat \
 &&  useradd -r -g rocketchat rocketchat \
