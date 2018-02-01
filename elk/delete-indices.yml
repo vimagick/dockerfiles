@@ -11,8 +11,8 @@ actions:
       disable_action: False
     filters:
     - filtertype: pattern
-      kind: prefix
-      value: logstash-
+      kind: regex
+      value: '^\.?(logstash|reporting)-.'
     - filtertype: age
       source: name
       direction: older
