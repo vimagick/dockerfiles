@@ -1,5 +1,5 @@
 /**
- * Copyright 2013, 2016 IBM Corp.
+ * Copyright JS Foundation and other contributors, http://js.foundation
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -47,12 +47,32 @@ module.exports = {
     // The maximum length, in characters, of any message sent to the debug sidebar tab
     debugMaxLength: 1000,
 
+    // The maximum number of messages nodes will buffer internally as part of their
+    // operation. This applies across a range of nodes that operate on message sequences.
+    //  defaults to no limit. A value of 0 also means no limit is applied.
+    //nodeMaxMessageBufferLength: 0,
+
+    // To disable the option for using local files for storing keys and certificates in the TLS configuration
+    //  node, set this to true
+    //tlsConfigDisableLocalFiles: true,
+
+    // Colourise the console output of the debug node
+    //debugUseColors: true,
+
     // The file containing the flows. If not set, it defaults to flows_<hostname>.json
     flowFile: 'flows.json',
 
     // To enabled pretty-printing of the flow within the flow file, set the following
     //  property to true:
     //flowFilePretty: true,
+
+    // By default, credentials are encrypted in storage using a generated key. To
+    // specify your own secret, set the following property.
+    // If you want to disable encryption of credentials, set this property to false.
+    // Note: once you set this property, do not change it - doing so will prevent
+    // node-red from being able to decrypt your existing credentials and they will be
+    // lost.
+    //credentialSecret: "a-secret-key",
 
     // By default, all user data is stored in the Node-RED install directory. To
     // use a different location, the following property can be used
@@ -63,7 +83,7 @@ module.exports = {
     //nodesDir: '/home/nol/.node-red/nodes',
 
     // By default, the Node-RED UI is available at http://localhost:1880/
-    // The following property can be used to specifiy a different root path.
+    // The following property can be used to specify a different root path.
     // If set to false, this is disabled.
     //httpAdminRoot: '/admin',
 
@@ -81,6 +101,14 @@ module.exports = {
     // following property can be used to identify a directory of static content
     // that should be served at http://localhost:1880/.
     //httpStatic: '/home/nol/node-red-static/',
+
+    // The maximum size of HTTP request that will be accepted by the runtime api.
+    // Default: 5mb
+    //apiMaxLength: '5mb',
+
+    // If you installed the optional node-red-dashboard you can set it's path
+    // relative to httpRoot
+    //ui: { path: "ui" },
 
     // Securing Node-RED
     // -----------------
@@ -113,6 +141,10 @@ module.exports = {
     //    cert: fs.readFileSync('certificate.pem')
     //},
 
+    // The following property can be used to cause insecure HTTP connections to
+    // be redirected to HTTPS.
+    //requireHttps: true
+
     // The following property can be used to disable the editor. The admin API
     // is not affected by this option. To disable both the editor and the admin
     // API, use either the httpRoot or httpAdminRoot properties
@@ -138,9 +170,29 @@ module.exports = {
     // in front of all http in nodes. This allows custom authentication to be
     // applied to all http in nodes, or any other sort of common request processing.
     //httpNodeMiddleware: function(req,res,next) {
-    //   // Handle/reject the request, or pass it on to the http in node
-    //   // by calling next();
-    //   next();
+    //    // Handle/reject the request, or pass it on to the http in node by calling next();
+    //    // Optionally skip our rawBodyParser by setting this to true;
+    //    //req.skipRawBodyParser = true;
+    //    next();
+    //},
+
+    // The following property can be used to verify websocket connection attempts.
+    // This allows, for example, the HTTP request headers to be checked to ensure
+    // they include valid authentication information.
+    //webSocketNodeVerifyClient: function(info) {
+    //    // 'info' has three properties:
+    //    //   - origin : the value in the Origin header
+    //    //   - req : the HTTP request
+    //    //   - secure : true if req.connection.authorized or req.connection.encrypted is set
+    //    //
+    //    // The function should return true if the connection should be accepted, false otherwise.
+    //    //
+    //    // Alternatively, if this function is defined to accept a second argument, callback,
+    //    // it can be used to verify the client asynchronously.
+    //    // The callback takes three arguments:
+    //    //   - result : boolean, whether to accept the connection or not
+    //    //   - code : if result is false, the HTTP error status to return
+    //    //   - reason: if result is false, the HTTP reason string to return
     //},
 
     // Anything in this hash is globally available to all functions.
@@ -174,6 +226,7 @@ module.exports = {
             // info - record information about the general running of the application + warn + error + fatal errors
             // debug - record information which is more verbose than info + info + warn + error + fatal errors
             // trace - record very detailed logging + debug + info + warn + error + fatal errors
+            // off - turn off all logging (doesn't affect metrics or audit)
             level: "info",
             // Whether or not to include metric events in the log output
             metrics: false,
