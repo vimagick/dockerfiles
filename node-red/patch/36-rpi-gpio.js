@@ -15,14 +15,14 @@ module.exports = function(RED) {
 
     try {
         fs.statSync("/usr/share/doc/python-rpi.gpio"); // test on Raspbian
-        // /usr/lib/python3.5/dist-packages/RPi/GPIO
+        // /usr/lib/python3.6/dist-packages/RPi/GPIO
     } catch(err) {
         try {
-            fs.statSync("/usr/lib/python3.5/site-packages/RPi/GPIO"); // test on Arch
+            fs.statSync("/usr/lib/python3.6/site-packages/RPi/GPIO"); // test on Arch
         }
         catch(err) {
             try {
-                fs.statSync("/usr/lib/python3.5/dist-packages/RPi/GPIO"); // test on Hypriot
+                fs.statSync("/usr/lib/python3.6/dist-packages/RPi/GPIO"); // test on Hypriot
             }
             catch(err) {
                 RED.log.warn(RED._("rpi-gpio.errors.libnotfound"));
