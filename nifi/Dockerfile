@@ -14,7 +14,7 @@ WORKDIR $NIFI_HOME
 
 RUN set -xe \
     && apk add --no-cache bash curl tar \
-    && curl -sSL ${NIFI_URL} | tar xz --strip-components=1 \
+    && curl -fSL ${NIFI_URL} | tar xz --strip-components=1 \
     && apk del curl tar \
     && addgroup -g 1000 nifi \
     && adduser -h ${NIFI_HOME} -s /bin/bash -G nifi -u 1000 -D -H nifi \

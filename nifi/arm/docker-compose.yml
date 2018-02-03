@@ -1,0 +1,6 @@
+nifi:
+  image: easypi/nifi-arm
+  ports:
+    - "8080:8080"
+    - "10000:10000"
+  restart: always
