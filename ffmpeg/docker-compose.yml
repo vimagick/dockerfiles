@@ -1,10 +1,21 @@
-ffmpeg:
+youtube:
   image: vimagick/ffmpeg
   entrypoint: sh
   command:
     - -c
-    - ffmpeg -f lavfi -i anullsrc -rtsp_transport udp -i $$RTMP_DEV -tune zerolatency -vcodec mpeg4 -pix_fmt + -c:v copy -c:a aac -f flv $$RTMP_URI
+    - ffmpeg -f lavfi -i anullsrc -rtsp_transport udp -i $$RTMP_URI -tune zerolatency -vcodec mpeg4 -pix_fmt + -c:v copy -c:a aac -f flv $$RTMP_URI
   environment:
-    - RTMP_DEV=rtsp://10.50.254.197/live
+    - RTMP_URI=rtsp://10.50.254.197/live
     - RTMP_URI=rtmp://a.rtmp.youtube.com/live2/xxxx-xxxx-xxxx-xxxx
   restart: always
+
+bilibili:
+  image: vimagick/ffmpeg
+  entrypoint: sh
+  command:
+    - -c
+    - ffmpeg -f lavfi -i anullsrc -rtsp_transport udp -i $$RTSP_URI -tune zerolatency -vcodec mpeg4 -pix_fmt + -c:v copy -f flv $$RTMP_URI
+  environment:
+    - RTSP_URI=rtsp://192.168.1.137/live
+    - RTMP_URI=rtmp://js.live-send.acg.tv/live-js/?streamname=xxxx&key=xxxx
+  restart: unless-stopped
