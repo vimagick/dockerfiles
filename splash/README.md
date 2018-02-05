@@ -55,6 +55,25 @@ $ docker-compose up -d
 ## client
 
 ```lua
+-- baidu-search.lua
+
+function main(splash)
+  splash:go('https://www.baidu.com/')
+  splash:wait(1)
+  splash:select('#kw'):send_text('google')
+  splash:wait(1)
+  splash:select('#su'):click()
+  splash:wait(1)
+  splash:evaljs([[
+    $('#content_left').css('padding', '0');
+  ]])
+  splash:set_viewport_full()
+  splash:wait(1)
+  return splash:select('#content_left'):png()
+end
+```
+
+```lua
 -- youtube-logo.lua
 
 function main(splash)
