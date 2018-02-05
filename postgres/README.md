@@ -22,12 +22,14 @@ postgres:
 ```bash
 $ docker-compose up -d
 
-$ docker-compose exec postgres psql postgres
+$ docker-compose exec postgres psql -U root postgres
 >>> SELECT CURRENT_TIMESTAMP;
               now
 -------------------------------
  2016-12-07 01:44:29.872928+00
 (1 row)
 
+>>> \?
+>>> \d
 >>> \q
 ```
