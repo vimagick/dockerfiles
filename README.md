@@ -95,6 +95,7 @@ A collection of delicious docker recipes.
 - [x] portia
 - [x] pure-ftpd
 - [x] redis-arm
+- [x] rinetd
 - [x] rslsync
 - [x] rsyncd
 - [x] rsyslog

@@ -1,0 +1,6 @@
+rinetd:
+  image: vimagick/rinetd
+  volumes:
+    - ./data:/etc/rinetd
+  net: host
+  restart: always
