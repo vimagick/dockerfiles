@@ -55,6 +55,22 @@ $ docker-compose up -d
 ## client
 
 ```lua
+-- http-proxy.lua
+
+function main(splash, args)
+  splash:on_request(function(request)
+    request:set_proxy{
+        host = "61.91.251.235",
+        port = 8080,
+    }
+  end)
+  assert(splash:go("http://ifconfig.co"))
+  assert(splash:wait(0.5))
+  return splash:png()
+end
+```
+
+```lua
 -- baidu-search.lua
 
 function main(splash)
