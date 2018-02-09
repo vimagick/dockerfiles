@@ -122,6 +122,8 @@ function main(splash)
 end
 ```
 
+View more [examples][2].
+
 ```bash
 # whole page
 $ http http://server:8050/render.png url==https://www.youtube.com/ > youtube.png
@@ -137,3 +139,4 @@ $ http http://server:8050/execute lua_source=@crop.lua \
 ```
 
 [1]: http://splash.readthedocs.org/en/latest/
+[2]: https://github.com/scrapinghub/splash/tree/master/splash/examples
