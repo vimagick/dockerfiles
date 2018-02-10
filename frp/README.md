@@ -18,4 +18,7 @@ frps:
   restart: always
 ```
 
+Sample config file: [frps.ini][2]
+
 [1]: https://github.com/fatedier/frp
+[2]: https://github.com/fatedier/frp/blob/master/conf/frps_full.ini
