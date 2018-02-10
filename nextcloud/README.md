@@ -33,15 +33,17 @@ nginx:
 
 ```bash
 $ docker-compose up -d
-$ docker-compose exec --user www-data nextcloud bash
->>> php occ files:scan --all
+
+$ docker-compose exec -u www-data nextcloud ./occ files:scan --all
 Starting scan for user 1 out of 1 (admin)
 +---------+-------+--------------+
 | Folders | Files | Elapsed time |
 +---------+-------+--------------+
 | 10      | 21    | 00:00:00     |
 +---------+-------+--------------+
->>> exit
+
+$ crontab -l
+0 * * * * docker exec -u www-data nextcloud_nextcloud_1 ./occ files:scan --all
 ```
 
 You can use the [occ][2] admin tool.
