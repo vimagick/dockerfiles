@@ -43,7 +43,6 @@ A collection of delicious docker recipes.
 - [ ] ssf
 - [ ] tshark
 - [ ] youtube-upload
-- [ ] xl2tpd
 
 ## IoT
 
@@ -228,6 +227,7 @@ A collection of delicious docker recipes.
 - [x] strongswan :+1:
 - [x] tinc :+1:
 - [x] tinc-arm :+1:
+- [x] xl2tpd
 
 ## DNS
 

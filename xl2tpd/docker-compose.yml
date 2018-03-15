@@ -1,0 +1,13 @@
+xl2tpd:
+  image: hwdsl2/ipsec-vpn-server
+  ports:
+    - "500:500"
+    - "4500:4500"
+  volumes:
+    - /lib/modules:/lib/modules:ro
+  environment:
+    - VPN_IPSEC_PSK=foobar
+    - VPN_USER=easypi
+    - VPN_PASSWORD=123456
+  privileged: yes
+  restart: always
