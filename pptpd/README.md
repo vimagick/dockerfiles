@@ -12,9 +12,10 @@ The Point-to-Point Tunneling Protocol is a method for implementing virtual priva
 ```
 ~/fig/pptpd/
 ├── docker-compose.yml
-├── pptpd.conf
-├── pptpd-options
-└── chap-secrets
+└── data/
+    ├── pptpd.conf
+    ├── pptpd-options
+    └── chap-secrets
 ```
 
 file: docker-compose.yml
@@ -23,9 +24,9 @@ file: docker-compose.yml
 pptpd:
   image: vimagick/pptpd
   volumes:
-    - ./pptpd.conf:/etc/pptpd.conf
-    - ./pptpd-options:/etc/ppp/pptpd-options
-    - ./chap-secrets:/etc/ppp/chap-secrets
+    - ./data/pptpd.conf:/etc/pptpd.conf
+    - ./data/pptpd-options:/etc/ppp/pptpd-options
+    - ./data/chap-secrets:/etc/ppp/chap-secrets
   privileged: true
   restart: always
 ```
@@ -64,7 +65,6 @@ file: chap-secrets
 ```
 # Secrets for authentication using CHAP
 # client    server  secret          IP addresses
-
 username    *       password        *
 ```
 
@@ -73,6 +73,7 @@ username    *       password        *
 ## Server Setup
 
 ```bash
+# edit /etc/default/ufw (for ubuntu)
 $ modprobe nf_conntrack_pptp nf_nat_pptp
 $ cd ~/fig/pptpd/
 $ docker-compose up -d
