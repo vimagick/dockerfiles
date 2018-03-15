@@ -9,9 +9,9 @@ RUN apt-get update \
     && apt-get install -y iptables pptpd \
     && rm -rf /var/lib/apt/lists/*
 
-COPY pptpd.conf    /etc/
-COPY chap-secrets  /etc/ppp/
-COPY pptpd-options /etc/ppp/
+COPY ./data/pptpd.conf    /etc/
+COPY ./data/chap-secrets  /etc/ppp/
+COPY ./data/pptpd-options /etc/ppp/
 
 EXPOSE 1723
 

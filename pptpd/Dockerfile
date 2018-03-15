@@ -7,9 +7,9 @@ MAINTAINER kev <noreply@easypi.pro>
 
 RUN apk add --no-cache iptables ppp pptpd
 
-COPY pptpd.conf    /etc/
-COPY chap-secrets  /etc/ppp/
-COPY pptpd-options /etc/ppp/
+COPY ./data/pptpd.conf    /etc/
+COPY ./data/chap-secrets  /etc/ppp/
+COPY ./data/pptpd-options /etc/ppp/
 
 EXPOSE 1723
 
