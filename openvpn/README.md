@@ -47,7 +47,7 @@ fteproxy:
     - "1194:1194"
   environment:
     - MODE=client
-    - SERVER_IP=vpn.easypi.info
+    - SERVER_IP=vpn.easypi.pro
     - SERVER_PORT=4911
     - CLIENT_IP=0.0.0.0
     - CLIENT_PORT=1194
@@ -65,6 +65,20 @@ $ ./setup.sh
 4) quit   ...... (Step 3)
 
 $ docker-compose up -d
+```
+
+Some Advanced Config
+
+```bash
+$ cat ./data/openvpn.conf
+...
+### Push Configurations Below
+push "route 114.114.114.114 255.255.255.255 net_gateway"
+push "route 192.168.0.0 255.255.0.0 net_gateway"
+push "route 172.16.0.0 255.240.0.0 net_gateway"
+push "route 10.0.0.0 255.0.0.0 net_gateway"
+
+$ docker-compose restart
 ```
 
 ## Bridge Setup
