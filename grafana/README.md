@@ -6,6 +6,8 @@ grafana
 [Grafana][1] is a leading open source application for visualizing large-scale
 measurement data.
 
+[Installing using Docker][2]
+
 ## docker-compose.yml
 
 ```yaml
@@ -43,3 +45,4 @@ $ curl http://localhost:3000/
 ```
 
 [1]: http://grafana.org/
+[2]: http://docs.grafana.org/installation/docker/

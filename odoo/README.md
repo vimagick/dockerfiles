@@ -7,7 +7,7 @@ odoo
 
 ```yaml
 odoo:
-  image: odoo:10.0
+  image: odoo:11.0
   ports:
     - "8069:8069"
   volumes:
@@ -30,7 +30,7 @@ postgres:
 ## up and running
 
 ```bash
-$ mkdir -p 777 data/odoo
+$ mkdir -m 777 -p data/odoo
 $ docker-compose up -d
 $ docker-compose exec postgres psql -U postgres
 postgres=# \l
