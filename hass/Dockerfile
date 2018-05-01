@@ -13,7 +13,7 @@ RUN set -xe \
                           python3 \
                           python3-dev \
     && pip3 install --no-cache-dir homeassistant \
-    && wget https://github.com/home-assistant/hassio-cli/releases/download/1.2.1/hassio_armhf -O /usr/local/bin/hassio
+    && wget https://github.com/home-assistant/hassio-cli/releases/download/1.3.0/hassio_armhf -O /usr/local/bin/hassio
 
 VOLUME /etc/hass
 EXPOSE 8123
