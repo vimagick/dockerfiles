@@ -5,7 +5,7 @@
 FROM alpine
 MAINTAINER kev <norely@easypi.pro>
 
-ENV PIKNIK_VERSION 0.9
+ENV PIKNIK_VERSION 0.9.1
 ENV PIKNIK_FILE piknik-linux_x86_64-${PIKNIK_VERSION}.tar.gz
 ENV PIKNIK_URL https://github.com/jedisct1/piknik/releases/download/${PIKNIK_VERSION}/${PIKNIK_FILE}
 
