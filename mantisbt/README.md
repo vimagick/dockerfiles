@@ -1,6 +1,8 @@
 `MantisBT` is an open source issue tracker that provides
 a delicate balance between simplicity and power.
 
+**MantisBT version: 2.13.1**
+
 ## docker-compose.yml
 
 ```
