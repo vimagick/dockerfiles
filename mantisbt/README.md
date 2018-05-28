@@ -50,7 +50,7 @@ Attempt Installation                                    [Install/Upgrade Databas
 
 ## email
 
-Append following to `/var/www/html/config_inc.php`
+Append following to `/var/www/html/config/config_inc.php`
 
 ```
 $g_phpMailer_method = PHPMAILER_METHOD_SMTP;
