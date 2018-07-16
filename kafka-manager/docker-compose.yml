@@ -4,4 +4,7 @@ kafka-manager:
     - "9000:9000"
   environment:
     - "ZK_HOSTS=my.zookeeper.host.com:2181"
+    - "KAFKA_MANAGER_AUTH_ENABLED=true"
+    - "KAFKA_MANAGER_USERNAME=admin"
+    - "KAFKA_MANAGER_PASSWORD=admin"
   restart: always
