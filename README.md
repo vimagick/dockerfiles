@@ -149,6 +149,7 @@ A collection of delicious docker recipes.
 - [x] grafana
 - [x] hugo
 - [x] hugo-arm
+- [x] kafka-manager
 - [x] jamapi
 - [x] joomla
 - [x] json-server

@@ -1,0 +1,7 @@
+kafka-manager:
+  image: vimagick/kafka-manager
+  ports:
+    - "9000:9000"
+  environment:
+    - "ZK_HOSTS=my.zookeeper.host.com:2181"
+  restart: always
