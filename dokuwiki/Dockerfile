@@ -13,6 +13,7 @@ RUN set -xe \
                           nginx \
                           openssl \
                           php5-fpm \
+                          php5-json \
                           php5-openssl \
                           php5-pdo_sqlite \
                           php5-sqlite3 \
