@@ -8,6 +8,8 @@
 
 cd "$(dirname "${BASH_SOURCE[0]}")"
 
+mkdir -p backups
+
 ACTION=${1:?action is required}
 FILENAME=${2:-dw-backup-$(date +%Y%m%d-%H%M%S).tar.gz}
 CONTAINER=${3:-dokuwiki_dokuwiki_1}
@@ -18,13 +20,13 @@ do_help() {
 
 do_backup() {
     echo "backup to $FILENAME"
-    docker run --rm --volumes-from $CONTAINER -v `pwd`:/backup alpine \
+    docker run --rm --volumes-from $CONTAINER -v `pwd`/backups:/backup alpine \
            tar czf /backup/$FILENAME /var/www/html
 }
 
 do_restore() {
     echo "restore from $FILENAME"
-    docker run --rm --volumes-from $CONTAINER -v `pwd`:/backup alpine \
+    docker run --rm --volumes-from $CONTAINER -v `pwd`/backups:/backup alpine \
            tar xzf /backup/$FILENAME -C /
 }
 
