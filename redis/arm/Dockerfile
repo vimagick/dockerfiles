@@ -1,14 +1,14 @@
-FROM easypi/alpine-arm:3.7
+FROM easypi/alpine-arm:3.8
 
 # add our user and group first to make sure their IDs get assigned consistently, regardless of whatever dependencies get added
 RUN addgroup -S redis && adduser -S -G redis redis
 
 # grab su-exec for easy step-down from root
-RUN apk add --no-cache libgcc 'su-exec>=0.2'
+RUN apk add --no-cache 'su-exec>=0.2'
 
-ENV REDIS_VERSION 4.0.6
-ENV REDIS_DOWNLOAD_URL http://download.redis.io/releases/redis-4.0.6.tar.gz
-ENV REDIS_DOWNLOAD_SHA 769b5d69ec237c3e0481a262ff5306ce30db9b5c8ceb14d1023491ca7be5f6fa
+ENV REDIS_VERSION 4.0.10
+ENV REDIS_DOWNLOAD_URL http://download.redis.io/releases/redis-4.0.10.tar.gz
+ENV REDIS_DOWNLOAD_SHA 1db67435a704f8d18aec9b9637b373c34aa233d65b6e174bdac4c1b161f38ca4
 
 # for redis-sentinel see: http://redis.io/topics/sentinel
 RUN set -ex; \
@@ -16,6 +16,7 @@ RUN set -ex; \
 	apk add --no-cache --virtual .build-deps \
 		coreutils \
 		gcc \
+		jemalloc-dev \
 		linux-headers \
 		make \
 		musl-dev \
@@ -42,7 +43,16 @@ RUN set -ex; \
 	\
 	rm -r /usr/src/redis; \
 	\
-	apk del .build-deps
+	runDeps="$( \
+		scanelf --needed --nobanner --format '%n#p' --recursive /usr/local \
+			| tr ',' '\n' \
+			| sort -u \
+			| awk 'system("[ -e /usr/local/lib/" $1 " ]") == 0 { next } { print "so:" $1 }' \
+	)"; \
+	apk add --virtual .redis-rundeps $runDeps; \
+	apk del .build-deps; \
+	\
+	redis-server --version
 
 RUN mkdir /data && chown redis:redis /data
 VOLUME /data
