@@ -1,0 +1,22 @@
+zookeeper:
+  image: zookeeper
+  ports:
+    - "2181:2181"
+  volumes:
+    - ./zookeeper/data:/data
+    - ./zookeeper/datalog:/datalog
+  restart: always
+
+kafka:
+  image: wurstmeister/kafka
+  ports:
+    - "9092:9092"
+  links:
+    - zookeeper
+  volumes:
+    - ./kafka:/kafka
+    - /var/run/docker.sock:/var/run/docker.sock
+  environment:
+    - KAFKA_ADVERTISED_HOST_NAME=10.50.254.182
+    - KAFKA_ZOOKEEPER_CONNECT=zookeeper:2181
+  restart: always

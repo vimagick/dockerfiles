@@ -44,6 +44,11 @@ A collection of delicious docker recipes.
 - [ ] tshark
 - [ ] youtube-upload
 
+## Big Data
+
+- [x] kafka-manager
+- [x] zookeeper-arm
+
 ## IoT
 
 - [x] hass :+1:
@@ -149,7 +154,6 @@ A collection of delicious docker recipes.
 - [x] grafana
 - [x] hugo
 - [x] hugo-arm
-- [x] kafka-manager
 - [x] jamapi
 - [x] joomla
 - [x] json-server
@@ -257,6 +261,7 @@ A collection of delicious docker recipes.
     - [ ] python
 - [x] gogs :cn:
 - [x] haproxy
+- [x] wurstmeister/kafka
 - [x] nextcloud
 - [x] jazzdd/phpvirtualbox
 - [x] jenkins
