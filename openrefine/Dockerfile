@@ -5,15 +5,15 @@
 FROM java:8-jre-alpine
 MAINTAINER kev <noreply@easypi.pro>
 
-ENV OR_VERSION 2.8
-ENV OR_FILE openrefine-linux-${OR_VERSION}.tar.gz
-ENV OR_URL https://github.com/OpenRefine/OpenRefine/releases/download/${OR_VERSION}/${OR_FILE}
+ENV OPENREFINE_VERSION 3.0-rc.1
+ENV OPENREFINE_FILE openrefine-linux-${OPENREFINE_VERSION}.tar.gz
+ENV OPENREFINE_URL https://github.com/OpenRefine/OpenRefine/releases/download/${OPENREFINE_VERSION}/${OPENREFINE_FILE}
 
 WORKDIR /app
 
 RUN set -xe \
     && apk add --no-cache bash curl jq tar \
-    && curl -sSL ${OR_URL} | tar xz --strip 1
+    && curl -sSL ${OPENREFINE_URL} | tar xz --strip 1
 
 VOLUME /data
 WORKDIR /data
