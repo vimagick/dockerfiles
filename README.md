@@ -246,9 +246,10 @@ A collection of delicious docker recipes.
 
 ## 3rd-party
 
-- [x] cachethq/docker
-- [x] centurylink/watchtower
+- [x] tutum/builder
 - [x] certbot
+- [x] cachethq/docker
+- [x] puckel/docker-airflow
 - [x] drone/drone
 - [x] drupal
 - [x] elk
@@ -283,8 +284,8 @@ A collection of delicious docker recipes.
     - [ ] hub
     - [ ] node-firefox
     - [x] standalone-firefox
-- [x] tutum/builder
 - [x] v2ray/official :cn:
+- [x] centurylink/watchtower
 - [x] wekanteam/wekan
 - [x] zookeeper
 
