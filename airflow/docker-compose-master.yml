@@ -44,17 +44,10 @@ services:
       interval: 30s
       timeout: 30s
       retries: 3
-    restart: always
-  
-  flower:
-    image: puckel/docker-airflow:1.9.0-4
-    command: flower
-    ports:
-      - "5555:5555"
-    environment:
-      - EXECUTOR=Celery
-    depends_on:
-      - redis
+    extra_hosts:
+      - "worker1:10.99.0.4"
+      - "worker2:10.99.0.5"
+      - "worker3:10.99.0.6"
     restart: always
   
   scheduler:
@@ -66,6 +59,17 @@ services:
     environment:
       - LOAD_EX=y
       - FERNET_KEY=46BKJoQYlPPOexq0OhDZnIlNepKFf87WFwLbfzqDDho=
+      - EXECUTOR=Celery
+    depends_on:
+      - webserver
+    restart: always
+  
+  flower:
+    image: puckel/docker-airflow:1.9.0-4
+    command: flower
+    ports:
+      - "5555:5555"
+    environment:
       - EXECUTOR=Celery
     depends_on:
       - webserver
