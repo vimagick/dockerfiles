@@ -26,6 +26,7 @@ services:
   webserver:
     image: puckel/docker-airflow:1.9.0-4
     command: webserver
+    hostname: master
     ports:
       - "8080:8080"
     volumes:

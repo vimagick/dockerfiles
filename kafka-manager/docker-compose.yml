@@ -1,10 +1,35 @@
+zookeeper:
+  image: zookeeper
+  ports:
+    - "2181:2181"
+  volumes:
+    - ./data/zookeeper/data:/data
+    - ./data/zookeeper/datalog:/datalog
+  restart: always
+
+kafka:
+  image: wurstmeister/kafka
+  ports:
+    - "9092:9092"
+  volumes:
+    - ./data/kafka:/kafka
+    - /var/run/docker.sock:/var/run/docker.sock
+  environment:
+    - KAFKA_ADVERTISED_HOST_NAME=10.0.0.13
+    - KAFKA_ZOOKEEPER_CONNECT=zookeeper:2181
+  links:
+    - zookeeper
+  restart: always
+
 kafka-manager:
   image: vimagick/kafka-manager
   ports:
     - "9000:9000"
   environment:
-    - "ZK_HOSTS=my.zookeeper.host.com:2181"
-    - "KAFKA_MANAGER_AUTH_ENABLED=true"
-    - "KAFKA_MANAGER_USERNAME=admin"
-    - "KAFKA_MANAGER_PASSWORD=admin"
+    - ZK_HOSTS=zookeeper:2181
+    - KAFKA_MANAGER_AUTH_ENABLED=true
+    - KAFKA_MANAGER_USERNAME=admin
+    - KAFKA_MANAGER_PASSWORD=admin
+  links:
+    - zookeeper
   restart: always
