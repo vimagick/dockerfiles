@@ -46,6 +46,7 @@ A collection of delicious docker recipes.
 
 ## Big Data
 
+- [x] kafka-arm
 - [x] kafka-manager
 - [x] zookeeper-arm
 
