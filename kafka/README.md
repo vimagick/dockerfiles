@@ -14,11 +14,13 @@ kafka
 $ docker-compose up -d
 $ docker-compose exec kafka bash
 >>> kafka-topics.sh --create --zookeeper zookeeper:2181 --replication-factor 1 --partitions 2 --topic my-topic
+>>> kafka-topics.sh --alert --zookeeper zookeeper:2181 --topic my-topic --config retention.hours=168
+>>> kafka-topics.sh --alert --zookeeper zookeeper:2181 --topic my-topic --delete-config retention.hours
 >>> exit
 
 # Producer
 $ kafkacat -P -b localhost:9092 -t my-topic
 
 # Consumer
-$ kafkacat -C -b localhost:9092 -t my-topic -o end
+$ kafkacat -C -b localhost:9092 -t my-topic -o end -u -q | jq .
 ```
