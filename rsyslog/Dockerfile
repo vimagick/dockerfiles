@@ -19,6 +19,8 @@ RUN set -xe \
 VOLUME /var/log
 WORKDIR /var/log
 
+ENV TZ=UTC
+
 EXPOSE 514/tcp \
        514/udp
 
