@@ -1,0 +1,7 @@
+superset:
+  image: easypi/superset-arm
+  ports:
+    - "8088:8088"
+  volumes:
+    - ./data:/var/lib/superset
+  restart: always

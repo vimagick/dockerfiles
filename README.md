@@ -48,6 +48,7 @@ A collection of delicious docker recipes.
 
 - [x] kafka-arm
 - [x] kafka-manager
+- [x] superset-arm
 - [x] zookeeper-arm
 
 ## IoT

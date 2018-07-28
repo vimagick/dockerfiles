@@ -22,3 +22,17 @@ kafka:
   links:
     - zookeeper
   restart: always
+
+kafka-manager:
+  image: easypi/kafka-manager-arm
+  ports:
+    - "9000:9000"
+  environment:
+    - ZK_HOSTS=zookeeper:2181
+    - KAFKA_MANAGER_AUTH_ENABLED=true
+    - KAFKA_MANAGER_USERNAME=admin
+    - KAFKA_MANAGER_PASSWORD=admin
+  links:
+    - zookeeper
+    - kafka
+  restart: always
