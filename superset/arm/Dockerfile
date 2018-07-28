@@ -34,11 +34,11 @@ RUN useradd -U -m superset && \
         libpq-dev \
         libsasl2-dev \
         libssl-dev \
-        python3-dev \
-        python3-pip && \
+        python3-dev && \
     apt-get clean && \
     rm -r /var/lib/apt/lists/* && \
     curl https://raw.githubusercontent.com/${SUPERSET_REPO}/${SUPERSET_VERSION}/requirements.txt -o requirements.txt && \
+    curl -sSL https://bootstrap.pypa.io/get-pip.py | python3 && \
     pip3 install --no-cache-dir -r requirements.txt && \
     pip3 install --no-cache-dir \
         Werkzeug==0.12.1 \
