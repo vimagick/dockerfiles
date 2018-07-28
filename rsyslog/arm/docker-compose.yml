@@ -1,5 +1,5 @@
 rsyslog:
-  image: vimagick/rsyslog
+  image: easypi/rsyslog-arm
   ports:
     - "514:514/tcp"
     - "514:514/udp"

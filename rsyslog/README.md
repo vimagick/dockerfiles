@@ -12,7 +12,7 @@ rsyslog:
     - "514:514/tcp"
     - "514:514/udp"
   volumes:
-    - ./log:/var/log
+    - ./data:/var/log
   restart: always
 ```
 
