@@ -254,6 +254,7 @@ A collection of delicious docker recipes.
 - [x] puckel/docker-airflow
 - [x] drone/drone
 - [x] drupal
+- [x] elastalert
 - [x] elk
 - [x] ghost
 - [x] gitlab/gitlab-ce

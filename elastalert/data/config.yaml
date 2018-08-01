@@ -1,0 +1,49 @@
+# The elasticsearch hostname for metadata writeback
+# Note that every rule can have its own elasticsearch host
+es_host: elasticsearch
+
+# The elasticsearch port
+es_port: 9200
+
+# This is the folder that contains the rule yaml files
+# Any .yaml file will be loaded as a rule
+rules_folder: rules
+
+# How often ElastAlert will query elasticsearch
+# The unit can be anything from weeks to seconds
+run_every:
+  seconds: 60
+
+# ElastAlert will buffer results from the most recent
+# period of time, in case some log sources are not in real time
+buffer_time:
+  minutes: 15
+
+# Optional URL prefix for elasticsearch
+#es_url_prefix: elasticsearch
+
+# Connect with TLS to elasticsearch
+#use_ssl: True
+
+# Verify TLS certificates
+#verify_certs: True
+
+# GET request with body is the default option for Elasticsearch.
+# If it fails for some reason, you can pass 'GET', 'POST' or 'source'.
+# See http://elasticsearch-py.readthedocs.io/en/master/connection.html?highlight=send_get_body_as#transport
+# for details
+#es_send_get_body_as: GET
+
+# Option basic-auth username and password for elasticsearch
+#es_username: someusername
+#es_password: somepassword
+
+# The index on es_host which is used for metadata storage
+# This can be a unmapped index, but it is recommended that you run
+# elastalert-create-index to set a mapping
+writeback_index: elastalert_status
+
+# If an alert fails for some reason, ElastAlert will retry
+# sending the alert until this time period has elapsed
+alert_time_limit:
+  hours: 2
