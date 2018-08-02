@@ -8,4 +8,6 @@ elastalert:
   environment:
     - ES_HOST=elasticsearch
     - ES_PORT=9200
+  external_links:
+    - elk_elasticsearch_1:elasticsearch
   restart: always
