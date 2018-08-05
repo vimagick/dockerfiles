@@ -258,7 +258,7 @@ A collection of delicious docker recipes.
 - [x] elk
 - [x] ghost
 - [x] gitlab/gitlab-ce
-- [ ] gliderlabs/logspout
+- [x] gliderlabs/logspout
 - [x] gliderlabs/registrator
 - [ ] glot
     - [ ] bash
