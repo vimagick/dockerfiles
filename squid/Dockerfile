@@ -5,9 +5,7 @@
 FROM alpine
 MAINTAINER kev <noreply@easypi.pro>
 
-RUN set -xe \
-    && apk add -U squid \
-    && rm -rf /var/cache/apk/*
+RUN apk add --no-cache squid
 
 EXPOSE 3128 3130
 
