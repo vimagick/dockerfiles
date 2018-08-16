@@ -13,7 +13,7 @@ mantisbt:
   restart: always
 
 mysql:
-  image: mysql:latest
+  image: mysql:5.7
   environment:
     - MYSQL_ROOT_PASSWORD=root
     - MYSQL_DATABASE=bugtracker
