@@ -19,6 +19,7 @@ nodebb:
   volumes:
     - ./data:/var/lib/nodebb
     - /usr/src/nodebb/build
+    - /usr/src/nodebb/node_modules
   restart: always
 
 redis:
