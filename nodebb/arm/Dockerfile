@@ -15,21 +15,20 @@ VOLUME $BB_CONTENT
 
 RUN set -ex \
     && apk add -U bash \
+                  icu \
                   imagemagick \
-                  krb5-libs \
                   nodejs \
                   nodejs-npm \
                   openssl \
     && apk add -t TMP build-base \
                       curl \
                       git \
-                      krb5-dev \
+                      icu-dev \
                       openssl-dev \
                       python \
                       tar \
     && curl -sSL $BB_URL | tar xz --strip 1 \
-    && npm install --production \
-    && npm cache clean \
+    && ./nodebb setup \
     && apk del TMP \
     && rm -rf /tmp/npm* \
               /var/cache/apk/*
