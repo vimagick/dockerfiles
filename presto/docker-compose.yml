@@ -1,0 +1,19 @@
+coordinator:
+  image: vimagick/presto
+  ports:
+    - "8080:8080"
+  volumes:
+    - ./conf/coordinator:/opt/presto/etc
+    - ./data/coordinator:/var/lib/presto
+  restart: always
+
+worker:
+  image: vimagick/presto
+  ports:
+    - "8081:8081"
+  volumes:
+    - ./conf/worker:/opt/presto/etc
+    - ./data/worker:/var/lib/presto
+  links:
+    - coordinator
+  restart: always
