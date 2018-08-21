@@ -12,13 +12,13 @@ ENV PRESTO_HOME /opt/presto
 WORKDIR $PRESTO_HOME
 
 RUN set -xe \
-    && apk add --no-cache curl tar \
+    && apk add --no-cache curl python tar \
     && curl -sSL $PRESTO_URL | tar xz --strip 1 \
     && apk del curl tar
 
 VOLUME /var/presto/data
 
-EXPOSE 8080 8081
+EXPOSE 8080
 
 ENTRYPOINT ["./bin/launcher"]
 CMD ["run"]
