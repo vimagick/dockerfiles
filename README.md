@@ -279,6 +279,7 @@ A collection of delicious docker recipes.
 - [x] odoo
 - [x] owncloud
 - [x] phpmyadmin
+- [x] pihole/pihole
 - [x] portainer/portainer :+1:
 - [x] postgres
 - [x] registry
