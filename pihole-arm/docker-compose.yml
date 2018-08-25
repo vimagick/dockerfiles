@@ -10,10 +10,10 @@ pihole:
     - ./data/pihole:/etc/pihole
     - ./data/dnsmasq.d:/etc/dnsmasq.d
   environment:
-    - ServerIP=192.168.31.195
+    - ServerIP=10.0.0.195
     - WEBPASSWORD=random
     - DNS1=8.8.8.8
-    - DNS2=8.8.4.4
+    - DNS2=no
   cap_add:
     - NET_ADMIN
   restart: unless-stopped
