@@ -20,6 +20,7 @@ nodebb:
     - ./data:/var/lib/nodebb
     - /usr/src/nodebb/build
     - /usr/src/nodebb/node_modules
+    - /usr/src/nodebb/public/uploads
   restart: always
 
 redis:
@@ -47,9 +48,9 @@ $ firefox http://localhost:4567
 ```bash
 $ docker-compose pull nodebb
 $ docker-compose exec nodebb sh
->>> ./nodebb build
+>>> ./nodebb upgrade
 >>> exit
 ```
 
 [1]: https://nodebb.org/
-[2]: https://docs.nodebb.org/en/latest/
+[2]: https://docs.nodebb.org/

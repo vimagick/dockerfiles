@@ -37,4 +37,4 @@ COPY docker-entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
 
 EXPOSE 4567
-CMD ["npm", "start"]
+CMD ["./nodebb", "start"]
