@@ -2,59 +2,29 @@
 # Dockerfile for snort
 #
 
-FROM debian:jessie
+FROM centos:7
 MAINTAINER kev <noreply@easypi.pro>
 
 ENV DAQ_VERSION 2.0.6
-ENV SNORT_VERSION 2.9.8.3
-ENV LIBDNET_VERSION 1.12
+ENV SNORT_VERSION 2.9.11.1
+ENV BASE_URL https://www.snort.org/downloads
 
 RUN set -xe \
-    && apt-get update \
-    && apt-get install -y build-essential \
-                          bison \
-                          curl \
-                          flex \
-                          libdnet \
-                          libdnet-dev \
-                          libpcap0.8 \
-                          libpcap-dev \
-                          libpcre3 \
-                          libpcre3-dev \
-                          zlib1g \
-                          zlib1g-dev \
-    && mkdir daq \
-        && curl -sSL https://snort.org/downloads/snort/daq-${DAQ_VERSION}.tar.gz | tar xz --strip 1 -C daq \
-        && cd daq \
-        && ./configure \
-        && make install \
-        && cd .. \
-        && rm -rf daq \
-    && mkdir libdnet \
-        && curl -sSL https://github.com/dugsong/libdnet/archive/libdnet-${LIBDNET_VERSION}.tar.gz | tar xz --strip 1 -C libdnet \
-        && cd libdnet \
-        && ./configure \
-        && make install \
-        && (cd /usr/local/lib && ln -s libdnet.1 libdnet.so.1) \
-        && cd .. \
-        && rm -rf libdnet \
-    && mkdir snort \
-        && curl -sSL https://snort.org/downloads/snort/snort-${SNORT_VERSION}.tar.gz | tar xz --strip 1 -C snort \
-        && cd snort \
-        && ./configure --enable-sourcefire \
-        && make install \
-        && cd .. \
-        && rm -rf snort \
-    && mkdir -p /etc/snort/rules \
-        && curl -sSL https://snort.org/rules/community | tar xz -C /etc/snort/rules \
-    && apt-get purge -y --auto-remove build-essential \
-                                      bison \
-                                      flex \
-                                      libdnet-dev \
-                                      libpcap-dev \
-                                      libpcre3-dev \
-                                      zlib1g-dev \
-    && rm -rf /var/lib/apt/lists/*
+    && yum -y install epel-release libdnet \
+    && yum -y install ${BASE_URL}/snort/daq-${DAQ_VERSION}-1.centos7.x86_64.rpm \
+                      ${BASE_URL}/snort/snort-${SNORT_VERSION}-1.centos7.x86_64.rpm \
+    && curl -sSL ${BASE_URL}/community/community-rules.tar.gz | \
+       tar xz --strip 1 -C /etc/snort/rules/ community-rules/community.rules \
+    && touch /etc/snort/rules/local.rules \
+             /etc/snort/rules/black_list.rules \
+             /etc/snort/rules/white_list.rules \
+    && mkdir -p /etc/snort/so_rules \
+                /etc/snort/preproc_rules \
+                /usr/local/lib/snort_dynamicrules \
+    && ln -s /usr/lib64/libdnet.so.1 /usr/local/lib/libdnet.1 \
+    && yum clean all
+
+COPY data/snort.conf /etc/snort/snort.conf
 
 ENTRYPOINT ["snort"]
 CMD ["--help"]
