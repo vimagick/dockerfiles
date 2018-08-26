@@ -17,7 +17,6 @@ snort:
   cap_add:
     - NET_ADMIN
   net: host
-  tty: true
   restart: unless-stopped
 ```
 

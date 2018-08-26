@@ -1,5 +1,5 @@
 snort:
-  image: vimagick/snort
+  image: easypi/snort-arm
   command: -q -c /etc/snort/snort.conf -A fast -y -i eth0
   volumes:
     - ./data/snort.conf:/etc/snort/snort.conf

@@ -1,0 +1,520 @@
+# $Id$
+# GENERATORS -> msg map
+# Format: generatorid || alertid || MSG
+
+1 || 1 || snort general alert
+2 || 1 || tag: Tagged Packet
+3 || 1 || snort dynamic alert
+100 || 1 || spp_portscan: Portscan Detected
+100 || 2 || spp_portscan: Portscan Status
+100 || 3 || spp_portscan: Portscan Ended
+101 || 1 || spp_minfrag: minfrag alert
+102 || 1 || http_decode: Unicode Attack
+102 || 2 || http_decode: CGI NULL Byte Attack
+102 || 3 || http_decode: large method attempted
+102 || 4 || http_decode: missing uri
+102 || 5 || http_decode: double encoding detected
+102 || 6 || http_decode: illegal hex values detected
+102 || 7 || http_decode: overlong character detected
+103 || 1 || spp_defrag: Fragmentation Overflow Detected
+103 || 2 || spp_defrag: Stale Fragments Discarded
+104 || 1 || spp_anomsensor: SPADE Anomaly Threshold Exceeded
+104 || 2 || spp_anomsensor: SPADE Anomaly Threshold Adjusted
+105 || 1 || spp_bo: Back Orifice Traffic Detected
+105 || 2 || spp_bo: Back Orifice Client Traffic Detected
+105 || 3 || spp_bo: Back Orifice Server Traffic Detected
+105 || 4 || spp_bo: Back Orifice Snort Buffer Attack
+106 || 1 || spp_rpc_decode: Fragmented RPC Records
+106 || 2 || spp_rpc_decode: Multiple Records in one packet
+106 || 3 || spp_rpc_decode: Large RPC Record Fragment
+106 || 4 || spp_rpc_decode: Incomplete RPC segment
+106 || 5 || spp_rpc_decode: Zero-length RPC Fragment
+110 || 1 || spp_unidecode: CGI NULL Attack
+110 || 2 || spp_unidecode: Directory Traversal
+110 || 3 || spp_unidecode: Unknown Mapping
+110 || 4 || spp_unidecode: Invalid Mapping
+111 || 1 || spp_stream4: Stealth Activity Detected
+111 || 2 || spp_stream4: Evasive Reset Packet
+111 || 3 || spp_stream4: Retransmission
+111 || 4 || spp_stream4: Window Violation
+111 || 5 || spp_stream4: Data on SYN Packet
+111 || 6 || spp_stream4: Full XMAS Stealth Scan
+111 || 7 || spp_stream4: SAPU Stealth Scan
+111 || 8 || spp_stream4: FIN Stealth Scan
+111 || 9 || spp_stream4: NULL Stealth Scan
+111 || 10 || spp_stream4: NMAP XMAS Stealth Scan
+111 || 11 || spp_stream4: VECNA Stealth Scan
+111 || 12 || spp_stream4: NMAP Fingerprint Stateful Detection
+111 || 13 || spp_stream4: SYN FIN Stealth Scan
+111 || 14 || spp_stream4: TCP forward overlap detected
+111 || 15 || spp_stream4: TTL Evasion attempt
+111 || 16 || spp_stream4: Evasive retransmitted data attempt
+111 || 17 || spp_stream4: Evasive retransmitted data with the data split attempt
+111 || 18 || spp_stream4: Multiple acked
+111 || 19 || spp_stream4: Shifting to Emergency Session Mode
+111 || 20 || spp_stream4: Shifting to Suspend Mode
+111 || 21 || spp_stream4: TCP Timestamp option has value of zero
+111 || 22 || spp_stream4: Too many overlapping TCP packets
+111 || 23 || spp_stream4: Packet in established TCP stream missing ACK
+111 || 24 || spp_stream4: Evasive FIN Packet
+111 || 25 || spp_stream4: SYN on established
+112 || 1 || spp_arpspoof: Directed ARP Request
+112 || 2 || spp_arpspoof: Etherframe ARP Mismatch SRC
+112 || 3 || spp_arpspoof: Etherframe ARP Mismatch DST
+112 || 4 || spp_arpspoof: ARP Cache Overwrite Attack
+113 || 1 || spp_frag2: Oversized Frag
+113 || 2 || spp_frag2: Teardrop/Fragmentation Overlap Attack
+113 || 3 || spp_frag2: TTL evasion detected
+113 || 4 || spp_frag2: overlap detected
+113 || 5 || spp_frag2: Duplicate first fragments
+113 || 6 || spp_frag2: memcap exceeded
+113 || 7 || spp_frag2: Out of order fragments
+113 || 8 || spp_frag2: IP Options on Fragmented Packet
+113 || 9 || spp_frag2: Shifting to Emegency Session Mode
+113 || 10 || spp_frag2: Shifting to Suspend Mode
+114 || 1 || spp_fnord: Possible Mutated GENERIC NOP Sled detected
+114 || 2 || spp_fnord: Possible Mutated IA32 NOP Sled detected
+114 || 3 || spp_fnord: Possible Mutated HPPA NOP Sled detected
+114 || 4 || spp_fnord: Possible Mutated SPARC NOP Sled detected
+115 || 1 || spp_asn1: Indefinite ASN.1 length encoding
+115 || 2 || spp_asn1: Invalid ASN.1 length encoding
+115 || 3 || spp_asn1: ASN.1 oversized item, possible overflow
+115 || 4 || spp_asn1: ASN.1 spec violation, possible overflow
+115 || 5 || spp_asn1: ASN.1 Attack: Datum length > packet length
+116 || 1 || snort_decoder: WARNING: Not IPv4 datagram
+116 || 2 || snort_decoder: WARNING: hlen < IP_HEADER_LEN
+116 || 3 || snort_decoder: WARNING: IP dgm len < IP Hdr len
+116 || 4 || snort_decoder: WARNING: Bad IPv4 Options
+116 || 5 || snort_decoder: WARNING: Truncated IPv4 Options
+116 || 6 || snort_decoder: WARNING: IP dgm len > captured len
+116 || 45 || snort_decoder: WARNING: TCP packet len is smaller than 20 bytes
+116 || 46 || snort_decoder: WARNING: TCP Data Offset is less than 5
+116 || 47 || snort_decoder: WARNING: TCP Data Offset is longer than payload
+116 || 54 || snort_decoder: WARNING: Tcp Options found with bad lengths
+116 || 55 || snort_decoder: WARNING: Truncated Tcp Options
+116 || 56 || snort_decoder: WARNING: T/TCP Detected
+116 || 57 || snort_decoder: WARNING: Obsolete TCP options
+116 || 58 || snort_decoder: WARNING: Experimental TCP options
+116 || 59 || snort_decoder: WARNING: TCP Window Scale Option Scale Invalid (> 14)
+116 || 95 || snort_decoder: WARNING: Truncated UDP Header
+116 || 96 || snort_decoder: WARNING: Invalid UDP header, length field < 8
+116 || 97 || snort_decoder: WARNING: Short UDP packet, length field > payload length
+116 || 98 || snort_decoder: WARNING: Long UDP packet, length field < payload length
+116 || 105 || snort_decoder: WARNING: ICMP Header Truncated
+116 || 106 || snort_decoder: WARNING: ICMP Timestamp Header Truncated
+116 || 107 || snort_decoder: WARNING: ICMP Address Header Truncated
+116 || 108 || snort_decoder: WARNING: Unknown Datagram decoding problem
+116 || 109 || snort_decoder: WARNING: Truncated ARP Packet
+116 || 110 || snort_decoder: WARNING: Truncated EAP Header
+116 || 111 || snort_decoder: WARNING: EAP Key Truncated
+116 || 112 || snort_decoder: WARNING: EAP Header Truncated
+116 || 120 || snort_decoder: WARNING: Bad PPPOE frame detected
+116 || 130 || snort_decoder: WARNING: Bad VLAN Frame
+116 || 131 || snort_decoder: WARNING: Bad LLC header
+116 || 132 || snort_decoder: WARNING: Bad Extra LLC Info
+116 || 133 || snort_decoder: WARNING: Bad 802.11 LLC header
+116 || 134 || snort_decoder: WARNING: Bad 802.11 Extra LLC Info
+116 || 140 || snort_decoder: WARNING: Bad Token Ring Header
+116 || 141 || snort_decoder: WARNING: Bad Token Ring ETHLLC Header
+116 || 142 || snort_decoder: WARNING: Bad Token Ring MRLEN Header
+116 || 143 || snort_decoder: WARNING: Bad Token Ring MR Header
+116 || 150 || snort_decoder: WARNING: Bad Traffic Loopback IP
+116 || 151 || snort_decoder: WARNING: Bad Traffic Same Src/Dst IP
+116 || 160 || snort_decoder: WARNING: GRE header length > payload length
+116 || 161 || snort_decoder: WARNING: Multiple encapsulations in packet
+116 || 162 || snort_decoder: WARNING: Invalid GRE version
+116 || 163 || snort_decoder: WARNING: Invalid GRE v.0 header
+116 || 164 || snort_decoder: WARNING: Invalid GRE v.1 PPTP header
+116 || 165 || snort_decoder: WARNING: GRE Trans header length > payload length
+116 || 170 || snort_decoder: WARNING: Bad MPLS Frame
+116 || 171 || snort_decoder: WARNING: MPLS Label 0 Appears in Nonbottom Header
+116 || 172 || snort_decoder: WARNING: MPLS Label 1 Appears in Bottom Header
+116 || 173 || snort_decoder: WARNING: MPLS Label 2 Appears in Nonbottom Header
+116 || 174 || snort_decoder: WARNING: Bad use of label 3
+116 || 175 || snort_decoder: WARNING: MPLS Label 4, 5,.. or 15 Appears in Header
+116 || 176 || snort_decoder: WARNING: Too Many MPLS headers
+116 || 250 || snort_decoder: WARNING: ICMP Original IP Header Truncated
+116 || 251 || snort_decoder: WARNING: ICMP Original IP Header Not IPv4
+116 || 252 || snort_decoder: WARNING: ICMP Original Datagram Length < Original IP Header Length
+116 || 253 || snort_decoder: WARNING: ICMP Original IP Payload < 64 bits
+116 || 254 || snort_decoder: WARNING: ICMP Original IP Payload > 576 bytes
+116 || 255 || snort_decoder: WARNING: ICMP Original IP Fragmented and Offset Not 0
+116 || 270 || snort_decoder: WARNING: IPV6 packet exceeded TTL limit
+116 || 271 || snort_decoder: WARNING: IPv6 header claims to not be IPv6
+116 || 272 || snort_decoder: WARNING: IPV6 truncated extension header
+116 || 273 || snort_decoder: WARNING: IPV6 truncated header
+116 || 274 || snort_decoder: WARNING: IPV6 dgm len < IPV6 Hdr len
+116 || 275 || snort_decoder: WARNING: IPV6 dgm len > captured len
+116 || 276 || snort_decoder: WARNING: IPv6 packet with destination address ::0
+116 || 277 || snort_decoder: WARNING: IPv6 packet with multicast source address
+116 || 278 || snort_decoder: WARNING: IPv6 packet with reserved multicast destination address
+116 || 279 || snort_decoder: WARNING: IPv6 header includes an undefined option type
+116 || 280 || snort_decoder: WARNING: IPv6 address includes an unassigned multicast scope value
+116 || 281 || snort_decoder: WARNING: IPv6 header includes an invalid value for the "next header" field
+116 || 282 || snort_decoder: WARNING: IPv6 header includes a routing extension header followed by a hop-by-hop header
+116 || 283 || snort_decoder: WARNING: IPv6 header includes two routing extension headers
+116 || 285 || snort_decoder: WARNING: ICMPv6 packet of type 2 (message too big) with MTU field < 1280
+116 || 286 || snort_decoder: WARNING: ICMPv6 packet of type 1 (destination unreachable) with non-RFC 2463 code 
+116 || 287 || snort_decoder: WARNING: ICMPv6 router solicitation packet with a code not equal to 0
+116 || 288 || snort_decoder: WARNING: ICMPv6 router advertisement packet with a code not equal to 0
+116 || 289 || snort_decoder: WARNING: ICMPv6 router solicitation packet with the reserved field not equal to 0
+116 || 290 || snort_decoder: WARNING: ICMPv6 router advertisement packet with the reachable time field set > 1 hour
+116 || 291 || snort_decoder: WARNING: IPV6 tunneled over IPv4, IPv6 header truncated, possible Linux Kernel attack
+116 || 292 || snort_decoder: WARNING: IPv6 header has destination options followed by a routing header
+116 || 293 || snort_decoder: WARNING: Two or more IP (v4 and/or v6) encapsulation layers present
+116 || 294 || snort_decoder: WARNING: truncated Encapsulated Security Payload (ESP) header
+116 || 295 || snort_decoder: WARNING: IPv6 header includes an option which is too big for the containing header.
+116 || 296 || snort_decoder: WARNING: IPv6 packet includes out-of-order extension headers
+116 || 297 || snort_decoder: WARNING: Two or more GTP encapsulation layers are present
+116 || 298 || snort_decoder: WARNING: GTP header length is invalid
+116 || 400 || snort_decoder: WARNING: XMAS Attack Detected
+116 || 401 || snort_decoder: WARNING: Nmap XMAS Attack Detected
+116 || 402 || snort_decoder: WARNING: DOS NAPTHA Vulnerability Detected
+116 || 403 || snort_decoder: WARNING: Bad Traffic SYN to multicast address
+116 || 404 || snort_decoder: WARNING: IPV4 packet with zero TTL
+116 || 405 || snort_decoder: WARNING: IPV4 packet with bad frag bits (Both MF and DF set)
+116 || 406 || snort_decoder: WARNING: Invalid IPv6 UDP packet, checksum zero
+116 || 407 || snort_decoder: WARNING: IPV4 packet frag offset + length exceed maximum
+116 || 408 || snort_decoder: WARNING: IPV4 packet from 'current net' source address
+116 || 409 || snort_decoder: WARNING: IPV4 packet to 'current net' dest address
+116 || 410 || snort_decoder: WARNING: IPV4 packet from multicast source address
+116 || 411 || snort_decoder: WARNING: IPV4 packet from reserved source address
+116 || 412 || snort_decoder: WARNING: IPV4 packet to reserved dest address
+116 || 413 || snort_decoder: WARNING: IPV4 packet from broadcast source address
+116 || 414 || snort_decoder: WARNING: IPV4 packet to broadcast dest address
+116 || 415 || snort_decoder: WARNING: ICMP4 packet to multicast dest address
+116 || 416 || snort_decoder: WARNING: ICMP4 packet to broadcast dest address
+116 || 417 || snort_decoder: WARNING: ICMP4 source quence
+116 || 418 || snort_decoder: WARNING: ICMP4 type other
+116 || 419 || snort_decoder: WARNING: TCP urgent pointer exceeds payload length or no payload
+116 || 420 || snort_decoder: WARNING: TCP SYN with FIN
+116 || 421 || snort_decoder: WARNING: TCP SYN with RST
+116 || 422 || snort_decoder: WARNING: TCP PDU missing ack for established session
+116 || 423 || snort_decoder: WARNING: TCP has no SYN, ACK, or RST
+116 || 424 || snort_decoder: WARNING: truncated eth header
+116 || 425 || snort_decoder: WARNING: truncated IP4 header
+116 || 426 || snort_decoder: WARNING: truncated ICMP4 header
+116 || 427 || snort_decoder: WARNING: truncated ICMP6 header
+116 || 428 || snort_decoder: WARNING: IPV4 packet below TTL limit
+116 || 429 || snort_decoder: WARNING: IPV6 packet has zero hop limit
+116 || 430 || snort_decoder: WARNING: IPV4 packet both DF and offset set
+116 || 431 || snort_decoder: WARNING: ICMP6 type not decoded
+116 || 432 || snort_decoder: WARNING: ICMP6 packet to multicast address
+116 || 433 || snort_decoder: WARNING: DDOS shaft synflood
+116 || 434 || snort_decoder: WARNING: ICMP PING NMAP
+116 || 435 || snort_decoder: WARNING: ICMP icmpenum v1.1.1
+116 || 436 || snort_decoder: WARNING: ICMP redirect host
+116 || 437 || snort_decoder: WARNING: ICMP redirect net
+116 || 438 || snort_decoder: WARNING: ICMP traceroute ipopts
+116 || 439 || snort_decoder: WARNING: ICMP Source Quench
+116 || 440 || snort_decoder: WARNING: Broadscan Smurf Scanner
+116 || 441 || snort_decoder: WARNING: ICMP Destination Unreachable Communication Administratively Prohibited
+116 || 442 || snort_decoder: WARNING: ICMP Destination Unreachable Communication with Destination Host is Administratively Prohibited
+116 || 443 || snort_decoder: WARNING: ICMP Destination Unreachable Communication with Destination Network is Administratively Prohibited
+116 || 444 || snort_decoder: WARNING: MISC IP option set
+116 || 445 || snort_decoder: WARNING: MISC Large UDP Packet
+116 || 446 || snort_decoder: WARNING: BAD-TRAFFIC TCP port 0 traffic
+116 || 447 || snort_decoder: WARNING: BAD-TRAFFIC UDP port 0 traffic
+116 || 448 || snort_decoder: WARNING: BAD-TRAFFIC IP reserved bit set
+116 || 449 || snort_decoder: WARNING: BAD-TRAFFIC Unassigned/Reserved IP protocol
+116 || 450 || snort_decoder: WARNING: BAD-TRAFFIC Bad IP protocol
+116 || 451 || snort_decoder: WARNING: ICMP PATH MTU denial of service attempt
+116 || 452 || snort_decoder: WARNING: BAD-TRAFFIC linux ICMP header dos attempt
+116 || 453 || snort_decoder: WARNING: IPV6 ISATAP spoof
+116 || 454 || snort_decoder: WARNING: PGM NAK overflow
+116 || 455 || snort_decoder: WARNING: IGMP options dos
+116 || 456 || snort_decoder: WARNING: too many IPV6 extension headers
+116 || 457 || snort_decoder: WARNING: ICMPv6 packet of type 1 (destination unreachable) with non-RFC 4443 code 
+116 || 458 || snort_decoder: WARNING: bogus fragmentation packet. Possible BSD attack
+116 || 459 || snort_decoder: WARNING: zero length fragment
+116 || 460 || snort_decoder: WARNING: ICMPv6 node info query/response packet with a code greater than 2
+116 || 461 || snort_decoder: WARNING: Deprecated IPv6 Type 0 Routing Header
+116 || 462 || snort_decoder: WARNING: ERSpan Header version mismatch
+116 || 463 || snort_decoder: WARNING: captured < ERSpan Type2 Header Length
+116 || 464 || snort_decoder: WARNING: captured < ERSpan Type3 Header Length
+116 || 467 || snort_decoder: WARNING: truncated FabricPath header
+117 || 1 || spp_portscan2: Portscan detected
+118 || 1 || spp_conversation: Bad IP protocol
+119 || 1 || http_inspect: ASCII ENCODING
+119 || 2 || http_inspect: DOUBLE DECODING ATTACK
+119 || 3 || http_inspect: U ENCODING
+119 || 4 || http_inspect: BARE BYTE UNICODE ENCODING
+119 || 5 || http_inspect: BASE36 ENCODING
+119 || 6 || http_inspect: UTF-8 ENCODING
+119 || 7 || http_inspect: IIS UNICODE CODEPOINT ENCODING
+119 || 8 || http_inspect: MULTI_SLASH ENCODING
+119 || 9 || http_inspect: IIS BACKSLASH EVASION
+119 || 10 || http_inspect: SELF DIRECTORY TRAVERSAL
+119 || 11 || http_inspect: DIRECTORY TRAVERSAL
+119 || 12 || http_inspect: APACHE WHITESPACE (TAB)
+119 || 13 || http_inspect: NON-RFC HTTP DELIMITER
+119 || 14 || http_inspect: NON-RFC DEFINED CHAR
+119 || 15 || http_inspect: OVERSIZE REQUEST-URI DIRECTORY
+119 || 16 || http_inspect: OVERSIZE CHUNK ENCODING
+119 || 17 || http_inspect: UNAUTHORIZED PROXY USE DETECTED
+119 || 18 || http_inspect: WEBROOT DIRECTORY TRAVERSAL
+119 || 19 || http_inspect: LONG HEADER
+119 || 20 || http_inspect: MAX HEADERS
+119 || 21 || http_inspect: MULTIPLE CONTENT LENGTH HEADER FIELDS
+119 || 22 || http_inspect: CHUNK SIZE MISMATCH DETECTED
+119 || 23 || http_inspect: INVALID IP IN TRUE-CLIENT-IP/XFF HEADER
+119 || 24 || http_inspect: MULTIPLE HOST HEADERS DETECTED 
+119 || 25 || http_inspect: HOSTNAME EXCEEDS 255 CHARACTERS
+119 || 26 || http_inspect: HEADER PARSING SPACE SATURATION
+119 || 27 || http_inspect: CHUNKED ENCODING - EXCESSIVE CONSECUTIVE SMALL CHUNKS
+119 || 28 || http_inspect: POST W/O CONTENT-LENGTH OR CHUNKS
+119 || 29 || http_inspect: MULTIPLE TRUE IPS IN A SESSION
+119 || 30 || http_inspect: BOTH TRUE_CLIENT_IP AND XFF HDRS PRESENT
+119 || 31 || http_inspect: UNKNOWN METHOD
+119 || 32 || http_inspect: SIMPLE REQUEST
+119 || 33 || http_inspect: UNESCAPED SPACE IN HTTP URI 
+119 || 34 || http_inspect: TOO MANY PIPELINED REQUESTS
+120 || 1 || http_inspect: ANOMALOUS HTTP SERVER ON UNDEFINED HTTP PORT
+120 || 2 || http_inspect: INVALID STATUS CODE IN HTTP RESPONSE
+120 || 3 || http_inspect: NO CONTENT-LENGTH OR TRANSFER-ENCODING IN HTTP RESPONSE
+120 || 4 || http_inspect: HTTP RESPONSE HAS UTF CHARSET WHICH FAILED TO NORMALIZE
+120 || 5 || http_inspect: HTTP RESPONSE HAS UTF-7 CHARSET
+120 || 6 || http_inspect: HTTP RESPONSE GZIP DECOMPRESSION FAILED
+120 || 7 || http_inspect: CHUNKED ENCODING - EXCESSIVE CONSECUTIVE SMALL CHUNKS
+120 || 8 || http_inspect: MESSAGE WITH INVALID CONTENT-LENGTH OR CHUNK SIZE
+120 || 9 || http_inspect: JAVASCRIPT OBFUSCATION LEVELS EXCEEDS 1
+120 || 10 || http_inspect: JAVASCRIPT WHITESPACES EXCEEDS MAX ALLOWED
+120 || 11 || http_inspect: MULTIPLE ENCODINGS WITHIN JAVASCRIPT OBFUSCATED DATA
+120 || 12 || http_inspect: SWF FILE ZLIB DECOMPRESSION FAILURE
+120 || 13 || http_inspect: SWF FILE LZMA DECOMPRESSION FAILURE
+120 || 14 || http_inspect: PDF FILE DEFLATE DECOMPRESSION FAILURE
+120 || 15 || http_inspect: PDF FILE UNSUPPORTED COMPRESSION TYPES
+120 || 16 || http_inspect: PDF FILE CASCADED COMPRESSION
+120 || 17 || http_inspect: PDF FILE PARSE FAILURE
+120 || 18 || http_inspect: PROTOCOL-OTHER HTTP server response before client request
+121 || 1 || flow-portscan: Fixed Scale Scanner Limit Exceeded
+121 || 2 || flow-portscan: Sliding Scale Scanner Limit Exceeded
+121 || 3 || flow-portscan: Fixed Scale Talker Limit Exceeded
+121 || 4 || flow-portscan: Sliding Scale Talker Limit Exceeded
+122 || 1 || portscan: TCP Portscan
+122 || 2 || portscan: TCP Decoy Portscan
+122 || 3 || portscan: TCP Portsweep
+122 || 4 || portscan: TCP Distributed Portscan
+122 || 5 || portscan: TCP Filtered Portscan
+122 || 6 || portscan: TCP Filtered Decoy Portscan
+122 || 7 || portscan: TCP Filtered Portsweep
+122 || 8 || portscan: TCP Filtered Distributed Portscan
+122 || 9 || portscan: IP Protocol Scan
+122 || 10 || portscan: IP Decoy Protocol Scan
+122 || 11 || portscan: IP Protocol Sweep
+122 || 12 || portscan: IP Distributed Protocol Scan
+122 || 13 || portscan: IP Filtered Protocol Scan
+122 || 14 || portscan: IP Filtered Decoy Protocol Scan
+122 || 15 || portscan: IP Filtered Protocol Sweep
+122 || 16 || portscan: IP Filtered Distributed Protocol Scan
+122 || 17 || portscan: UDP Portscan
+122 || 18 || portscan: UDP Decoy Portscan
+122 || 19 || portscan: UDP Portsweep
+122 || 20 || portscan: UDP Distributed Portscan
+122 || 21 || portscan: UDP Filtered Portscan
+122 || 22 || portscan: UDP Filtered Decoy Portscan
+122 || 23 || portscan: UDP Filtered Portsweep
+122 || 24 || portscan: UDP Filtered Distributed Portscan
+122 || 25 || portscan: ICMP Sweep
+122 || 26 || portscan: ICMP Filtered Sweep
+122 || 27 || portscan: Open Port
+123 || 1 || frag3: IP Options on fragmented packet
+123 || 2 || frag3: Teardrop attack
+123 || 3 || frag3: Short fragment, possible DoS attempt
+123 || 4 || frag3: Fragment packet ends after defragmented packet
+123 || 5 || frag3: Zero-byte fragment
+123 || 6 || frag3: Bad fragment size, packet size is negative
+123 || 7 || frag3: Bad fragment size, packet size is greater than 65536
+123 || 8 || frag3: Fragmentation overlap
+123 || 9 || frag3: IPv6 BSD mbufs remote kernel buffer overflow
+123 || 10 || frag3: Bogus fragmentation packet. Possible BSD attack
+123 || 11 || frag3: TTL value less than configured minimum, not using for reassembly
+123 || 12 || frag3: Number of overlapping fragments exceed configured limit
+123 || 13 || frag3: Fragments smaller than configured min_fragment_length
+124 || 1 || smtp: Attempted command buffer overflow
+124 || 2 || smtp: Attempted data header buffer overflow
+124 || 3 || smtp: Attempted response buffer overflow
+124 || 4 || smtp: Attempted specific command buffer overflow
+124 || 5 || smtp: Unknown command
+124 || 6 || smtp: Illegal command
+124 || 7 || smtp: Attempted header name buffer overflow
+124 || 8 || smtp: Attempted X-Link2State command buffer overflow
+124 || 9 || smtp: No memory available for decoding. Max Mime Mem exceeded.
+124 || 10 || smtp: Base64 Decoding failed
+124 || 11 || smtp: Quoted-Printable Decoding failed
+124 || 12 || smtp: Non-Encoded MIME attachment Extraction failed
+124 || 13 || smtp: Unix-to-Unix Decoding failed
+124 || 14 || smtp: Cyrus SASL authentication attack
+125 || 1 || ftp_pp: Telnet command on FTP command channel
+125 || 2 || ftp_pp: Invalid FTP command
+125 || 3 || ftp_pp: FTP parameter length overflow
+125 || 4 || ftp_pp: FTP malformed parameter
+125 || 5 || ftp_pp: Possible string format attempt in FTP command/parameter
+125 || 6 || ftp_pp: FTP response length overflow
+125 || 7 || ftp_pp: FTP command channel encrypted
+125 || 8 || ftp_pp: FTP bounce attack
+125 || 9 || ftp_pp: Evasive Telnet command on FTP command channel
+126 || 1 || telnet_pp: Telnet consecutive AYT overflow
+126 || 2 || telnet_pp: Telnet data encrypted
+126 || 3 || telnet_pp: Subnegotiation Begin without matching Subnegotiation End
+128 || 1 || ssh: Gobbles exploit
+128 || 2 || ssh: SSH1 CRC32 exploit
+128 || 3 || ssh: Server version string overflow
+128 || 4 || ssh: Protocol mismatch
+128 || 5 || ssh: Bad message direction
+128 || 6 || ssh: Payload size incorrect for the given payload
+128 || 7 || ssh: Failed to detect SSH version string
+129 || 1 || stream5: SYN on established session
+129 || 2 || stream5: Data on SYN packet
+129 || 3 || stream5: Data sent on stream not accepting data
+129 || 4 || stream5: TCP Timestamp is outside of PAWS window
+129 || 5 || stream5: Bad segment, overlap adjusted size less than/equal 0
+129 || 6 || stream5: Window size (after scaling) larger than policy allows
+129 || 7 || stream5: Limit on number of overlapping TCP packets reached
+129 || 8 || stream5: Data sent on stream after TCP Reset
+129 || 9 || stream5: TCP Client possibly hijacked, different Ethernet Address
+129 || 10 || stream5: TCP Server possibly hijacked, different Ethernet Address
+129 || 11 || stream5: TCP Data with no TCP Flags set
+129 || 12 || stream5: TCP Small Segment Threshold Exceeded
+129 || 13 || stream5: TCP 4-way handshake detected
+129 || 14 || stream5: TCP Timestamp is missing
+129 || 15 || stream5: Reset outside window
+129 || 16 || stream5: FIN number is greater than prior FIN
+129 || 17 || stream5: ACK number is greater than prior FIN
+129 || 18 || stream5: Data sent on stream after TCP Reset received
+129 || 19 || stream5: TCP window closed before receiving data
+129 || 20 || stream5: TCP session without 3-way handshake
+130 || 1 || dcerpc: Maximum memory usage reached
+131 || 1 || dns: Obsolete DNS RData Type
+131 || 2 || dns: Experimental DNS RData Type
+131 || 3 || dns: Client RData TXT Overflow
+133 || 1 || dcerpc2: Memory cap exceeded
+133 || 2 || dcerpc2: SMB - Bad NetBIOS Session Service session type
+133 || 3 || dcerpc2: SMB - Bad SMB message type
+133 || 4 || dcerpc2: SMB - Bad SMB Id (not "\xffSMB" for SMB1 or not "\xfeSMB" for SMB2)
+133 || 5 || dcerpc2: SMB - Bad word count or structure size for command
+133 || 6 || dcerpc2: SMB - Bad byte count for command
+133 || 7 || dcerpc2: SMB - Bad format type for command
+133 || 8 || dcerpc2: SMB - Bad AndX or data offset in command
+133 || 9 || dcerpc2: SMB - Zero total data count in command
+133 || 10 || dcerpc2: SMB - NetBIOS data length less than SMB header length
+133 || 11 || dcerpc2: SMB - Remaining NetBIOS data length less than command length
+133 || 12 || dcerpc2: SMB - Remaining NetBIOS data length less than command byte count
+133 || 13 || dcerpc2: SMB - Remaining NetBIOS data length less than command data size
+133 || 14 || dcerpc2: SMB - Remaining total data count less than this command data size
+133 || 15 || dcerpc2: SMB - Total data sent greater than command total data expected
+133 || 16 || dcerpc2: SMB - Byte count less than command data size
+133 || 17 || dcerpc2: SMB - Invalid command data size for byte count
+133 || 18 || dcerpc2: SMB - Excessive Tree Connect requests with pending Tree Connect responses
+133 || 19 || dcerpc2: SMB - Excessive Read requests with pending Read responses
+133 || 20 || dcerpc2: SMB - Excessive command chaining
+133 || 21 || dcerpc2: SMB - Multiple chained login requests
+133 || 22 || dcerpc2: SMB - Multiple chained tree connect requests
+133 || 23 || dcerpc2: SMB - Chained/Compounded login followed by logoff
+133 || 24 || dcerpc2: SMB - Chained/Compounded tree connect followed by tree disconnect
+133 || 25 || dcerpc2: SMB - Chained/Compounded open pipe followed by close pipe
+133 || 26 || dcerpc2: SMB - Invalid share access
+133 || 27 || dcerpc2: Connection-oriented DCE/RPC - Invalid major version
+133 || 28 || dcerpc2: Connection-oriented DCE/RPC - Invalid minor version
+133 || 29 || dcerpc2: Connection-oriented DCE/RPC - Invalid pdu type
+133 || 30 || dcerpc2: Connection-oriented DCE/RPC - Fragment length less than header size
+133 || 31 || dcerpc2: Connection-oriented DCE/RPC - Remaining fragment length less than size needed
+133 || 32 || dcerpc2: Connection-oriented DCE/RPC - No context items specified
+133 || 33 || dcerpc2: Connection-oriented DCE/RPC - No transfer syntaxes specified
+133 || 34 || dcerpc2: Connection-oriented DCE/RPC - Fragment length on non-last fragment less than maximum negotiated fragment transmit size for client
+133 || 35 || dcerpc2: Connection-oriented DCE/RPC - Fragment length greater than maximum negotiated fragment transmit size
+133 || 36 || dcerpc2: Connection-oriented DCE/RPC - Alter Context byte order different from Bind
+133 || 37 || dcerpc2: Connection-oriented DCE/RPC - Call id of non first/last fragment different from call id established for fragmented request
+133 || 38 || dcerpc2: Connection-oriented DCE/RPC - Opnum of non first/last fragment different from opnum established for fragmented request
+133 || 39 || dcerpc2: Connection-oriented DCE/RPC - Context id of non first/last fragment different from context id established for fragmented request
+133 || 40 || dcerpc2: Connectionless DCE/RPC - Invalid major version
+133 || 41 || dcerpc2: Connectionless DCE/RPC - Invalid pdu type
+133 || 42 || dcerpc2: Connectionless DCE/RPC - Data length less than header size
+133 || 43 || dcerpc2: Connectionless DCE/RPC - Bad sequence number
+#133 || 44 || dcerpc2: SMB - Invalid SMB version 1 seen
+#133 || 45 || dcerpc2: SMB - Invalid SMB version 2 seen
+#133 || 46 || dcerpc2: SMB - Invalid user, tree connect, file binding
+#133 || 47 || dcerpc2: SMB - Excessive command compounding
+133 || 48 || dcerpc2: SMB - Zero data count
+133 || 49 || dcerpc2: SMB - Data count mismatch
+133 || 50 || dcerpc2: SMB - Maximum number of outstanding requests exceeded
+133 || 51 || dcerpc2: SMB - Outstanding requests with the same MID
+133 || 52 || dcerpc2: SMB - Deprecated dialect negotiated
+133 || 53 || dcerpc2: SMB - Deprecated command used
+133 || 54 || dcerpc2: SMB - Unusual command used
+133 || 55 || dcerpc2: SMB - Invalid setup count
+133 || 56 || dcerpc2: SMB - Client attempted multiple dialect negotiations on session
+133 || 57 || dcerpc2: SMB - Client attempted to create or set a file's attributes to readonly/hidden/system
+133 || 58 || dcerpc2: SMB - File offset provided is greater than file size specified
+133 || 59 || dcerpc2: SMB - Nextcommand specified in SMB2 header is beyond payload boundary
+134 || 1 || ppm: rule tree disabled
+134 || 2 || ppm: rule tree enabled
+134 || 3 || ppm: packet aborted
+135 || 1 || internal: syn received
+135 || 2 || internal: session established
+135 || 3 || internal: session cleared
+136 || 1 || reputation: Packet is blacklisted
+136 || 2 || reputation: Packet is whitelisted
+137 || 1 || spp_ssl: Invalid Client HELLO after Server HELLO Detected
+137 || 2 || spp_ssl: Invalid Server HELLO without Client HELLO Detected
+137 || 3 || spp_ssl: Heartbeat Read Overrun Attempt Detected
+137 || 4 || spp_ssl: Large Heartbeat Response Detected
+138 || 2 || sensitive_data: sensitive data - Credit card numbers
+138 || 3 || sensitive_data: sensitive data - U.S. social security numbers with dashes
+138 || 4 || sensitive_data: sensitive data - U.S. social security numbers without dashes
+138 || 5 || sensitive_data: sensitive data - eMail addresses
+138 || 6 || sensitive_data: sensitive data - U.S. phone numbers
+139 || 1 || sensitive_data: sensitive data global threshold exceeded
+140 || 1 || sip: Maximum sessions reached 
+140 || 2 || sip: Empty request URI 
+140 || 3 || sip: URI is too long
+140 || 4 || sip: Empty call-Id
+140 || 5 || sip: Call-Id is too long
+140 || 6 || sip: CSeq number is too large or negative
+140 || 7 || sip: Request name in CSeq is too long 
+140 || 8 || sip: Empty From header
+140 || 9 || sip: From header is too long
+140 || 10 || sip: Empty To header
+140 || 11 || sip: To header is too long
+140 || 12 || sip: Empty Via header 
+140 || 13 || sip: Via header is too long
+140 || 14 || sip: Empty Contact
+140 || 15 || sip: Contact is too long
+140 || 16 || sip: Content length is too large or negative
+140 || 17 || sip: Multiple SIP messages in a packet
+140 || 18 || sip: Content length mismatch
+140 || 19 || sip: Request name is invalid
+140 || 20 || sip: Invite replay attack
+140 || 21 || sip: Illegal session information modification
+140 || 22 || sip: Response status code is not a 3 digit number
+140 || 23 || sip: Empty Content type
+140 || 24 || sip: SIP version other than 2.0, 1.0, and 1.1 are invalid
+140 || 25 || sip: Mismatch in Method of request and the CSEQ header
+140 || 26 || sip: The method is unknown
+140 || 27 || sip: Maximum dialogs in a session reached 
+141 || 1 || imap: Unknown IMAP4 command
+141 || 2 || imap: Unknown IMAP4 response
+141 || 3 || imap: No memory available for decoding. Memcap exceeded.
+141 || 4 || imap: Base64 Decoding failed
+141 || 5 || imap: Quoted-Printable Decoding failed
+141 || 6 || imap: Non-Encoded MIME attachment Extraction failed
+141 || 7 || imap: Unix-to-Unix Decoding failed
+142 || 1 || pop: Unknown POP3 command
+142 || 2 || pop: Unknown POP3 response
+142 || 3 || pop: No memory available for decoding. Memcap exceeded.
+142 || 4 || pop: Base64 Decoding failed
+142 || 5 || pop: Quoted-Printable Decoding failed
+142 || 6 || pop: Non-Encoded MIME attachment Extraction failed
+142 || 7 || pop: Unix-to-Unix Decoding failed
+143 || 1 || gtp: Message length is invalid
+143 || 2 || gtp: Information element length is invalid
+143 || 3 || gtp: Information elements are out of order
+144 || 1 || modbus: Length in Modbus MBAP header does not match the length needed for the given Modbus function.
+144 || 2 || modbus: Modbus protocol ID is non-zero.
+144 || 3 || modbus: Reserved Modbus function code in use.
+145 || 1 || dnp3: DNP3 Link-Layer Frame contains bad CRC.
+145 || 2 || dnp3: DNP3 Link-Layer Frame was dropped.
+145 || 3 || dnp3: DNP3 Transport-Layer Segment was dropped during reassembly.
+145 || 4 || dnp3: DNP3 Reassembly Buffer was cleared without reassembling a complete message.
+145 || 5 || dnp3: DNP3 Link-Layer Frame uses a reserved address.
+145 || 6 || dnp3: DNP3 Application-Layer Fragment uses a reserved function code.
