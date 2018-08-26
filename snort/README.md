@@ -36,6 +36,8 @@ snort_1  | 08/26/18-06:47:35.460835  [**] [1:10001:0] ICMP Echo Reply [**] [Prio
 $ tcpdump -n -r data/log/snort.log.xxx
 06:47:35.460754 IP x.x.x.x > y.y.y.y: ICMP echo request, id 17767, seq 933, length 12
 06:47:35.460835 IP y.y.y.y > x.x.x.x: ICMP echo reply, id 17767, seq 933, length 12
+
+$ while :; do inotifywait -q -e modify data/log/alert && play -q alert.wav; done
 ```
 
 [1]: https://snort.org/
