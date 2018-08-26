@@ -1,6 +1,6 @@
 snort:
   image: vimagick/snort
-  command: -q -c /etc/snort/snort.conf -A console -k none -i ens3
+  command: -q -c /etc/snort/snort.conf -A fast -y -i eth0
   volumes:
     - ./data/snort.conf:/etc/snort/snort.conf
     - ./data/rules:/etc/snort/rules
