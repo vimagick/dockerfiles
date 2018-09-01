@@ -189,6 +189,7 @@ A collection of delicious docker recipes.
 - [x] grr
 - [x] hydra
 - [x] iptables
+- [x] kismet
 - [x] routersploit
 - [x] snort :beetle:
 - [x] sslsplit
