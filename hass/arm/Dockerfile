@@ -9,7 +9,9 @@ RUN set -xe \
     && apk update \
     && apk add --no-cache ca-certificates \
                           build-base \
+                          libffi-dev \
                           linux-headers \
+                          openssl-dev \
                           python3 \
                           python3-dev \
     && pip3 install --no-cache-dir homeassistant \
