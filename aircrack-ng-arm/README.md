@@ -8,6 +8,6 @@ $ docker-compose exec aircrack bash
 >>> airmon-ng start wlan1
 >>> ifconfig
 >>> airodump-ng wlan1mon
->>> airmon-ng stop wlan1
+>>> airmon-ng stop wlan1mon
 >>> exit
 ```
