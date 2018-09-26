@@ -5,7 +5,7 @@
 FROM java:8-jre-alpine
 MAINTAINER kev <noreply@easypi.pro>
 
-ENV OPENREFINE_VERSION 3.0-rc.1
+ENV OPENREFINE_VERSION 3.0
 ENV OPENREFINE_FILE openrefine-linux-${OPENREFINE_VERSION}.tar.gz
 ENV OPENREFINE_URL https://github.com/OpenRefine/OpenRefine/releases/download/${OPENREFINE_VERSION}/${OPENREFINE_FILE}
 
