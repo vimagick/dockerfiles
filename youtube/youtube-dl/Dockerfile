@@ -10,7 +10,8 @@ RUN set -xe \
                           ffmpeg \
                           openssl \
                           python3 \
-    && pip3 install youtube-dl
+                          aria2 \
+    && pip3 install youtube-dl==2018.09.26
 
 WORKDIR /data
 
