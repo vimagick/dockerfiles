@@ -1,0 +1,18 @@
+zookeeper:
+  image: zookeeper
+  ports:
+    - "2181:2181"
+    - "2888:2888"
+    - "3888:3888"
+  hostname: zookeeper1
+  volumes:
+    - /data/zookeeper/data:/data
+    - /data/zookeeper/datalog:/datalog
+  environment:
+    - ZOO_MY_ID=1
+    - ZOO_SERVERS=server.1=0.0.0.0:2888:3888 server.2=zookeeper2:2888:3888 server.3=zookeeper3:2888:3888
+  extra_hosts:
+    - zookeeper1:10.0.0.21
+    - zookeeper2:10.0.0.22
+    - zookeeper3:10.0.0.23
+  restart: always
