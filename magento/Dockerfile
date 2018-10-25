@@ -20,8 +20,8 @@ RUN set -xe \
                           libjpeg62-turbo-dev \
                           libmcrypt4          \
                           libmcrypt-dev       \
-                          libpng12-0          \
-                          libpng12-dev        \
+                          libpng16-16         \
+                          libpng-dev          \
                           libxslt1.1          \
                           libxslt1-dev        \
                           zlib1g              \
@@ -42,7 +42,7 @@ RUN set -xe \
                                       libicu-dev          \
                                       libjpeg62-turbo-dev \
                                       libmcrypt-dev       \
-                                      libpng12-dev        \
+                                      libpng-dev          \
                                       libxslt1-dev        \
                                       zlib1g-dev          \
     && rm -rf /var/lib/apt/lists/*
@@ -58,8 +58,8 @@ RUN {                                             \
 
 WORKDIR /var/www/html
 
-ENV MAGENTO_VER 2.1.0
-ENV MAGENTO_MD5 aab11e6b443be7179410b195b2099819
+ENV MAGENTO_VER 2.1.15
+ENV MAGENTO_MD5 139aeece901f0e8c07f3e572bba646da
 ENV MAGENTO_URL https://github.com/magento/magento2/archive/$MAGENTO_VER.tar.gz
 ENV MAGENTO_FILE magento.tar.gz
 
