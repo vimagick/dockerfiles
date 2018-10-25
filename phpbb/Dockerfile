@@ -9,7 +9,7 @@ RUN a2enmod rewrite
 
 RUN set -xe \
     && apt-get update \
-    && apt-get install -y curl unzip bzip2 libpq-dev libpng12-dev libjpeg-dev \
+    && apt-get install -y curl unzip bzip2 libpq-dev libpng-dev libjpeg-dev \
     && rm -rf /var/lib/apt/lists/* \
     && docker-php-ext-configure gd --with-png-dir=/usr --with-jpeg-dir=/usr \
     && docker-php-ext-install gd mysqli pgsql
