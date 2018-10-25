@@ -268,6 +268,7 @@ A collection of delicious docker recipes.
     - [ ] python
 - [x] gogs :cn:
 - [x] haproxy
+- [x] jmxtrans/jmxtrans
 - [x] wurstmeister/kafka
 - [x] nextcloud
 - [x] jazzdd/phpvirtualbox

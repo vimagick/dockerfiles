@@ -1,0 +1,6 @@
+jmxtrans:
+  image: jmxtrans/jmxtrans
+  command: start-without-jmx
+  volumes:
+    - ./data:/var/lib/jmxtrans
+  restart: always
