@@ -280,6 +280,7 @@ A collection of delicious docker recipes.
 - [x] mongo
 - [x] neo4j
 - [x] odoo
+- [x] osixia/openldap
 - [x] owncloud
 - [x] phpmyadmin
 - [x] pihole/pihole
