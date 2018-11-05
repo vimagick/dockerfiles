@@ -14,6 +14,7 @@ openldap:
     - LDAP_TLS_CA_CRT_FILENAME=ca.crt
     - LDAP_TLS_CRT_FILENAME=ldap.crt
     - LDAP_TLS_KEY_FILENAME=ldap.key
+    # LDAP_TLS_ENFORCE=true
   restart: always
 
 phpldapadmin:

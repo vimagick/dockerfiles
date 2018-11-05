@@ -45,6 +45,7 @@ openldap:
     - LDAP_TLS_CA_CRT_FILENAME=ca.crt
     - LDAP_TLS_CRT_FILENAME=ldap.crt
     - LDAP_TLS_KEY_FILENAME=ldap.key
+    # LDAP_TLS_ENFORCE=true
   restart: always
 
 phpldapadmin:
@@ -58,6 +59,8 @@ phpldapadmin:
     - openldap
   restart: always
 ```
+
+> :warnning: I haven't figured out how to connect phpldapadmin to openladp via STARTTLS.
 
 ## Create Keys and Certificates
 
