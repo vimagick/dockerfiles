@@ -14,7 +14,10 @@ graphite:
   image: vimagick/graphite
   ports:
     - "2003:2003"
+    - "2003:2003/udp"
     - "2004:2004"
+    - "2023:2023"
+    - "2024:2024"
     - "7002:7002"
     - "8080:8080"
     - "9001:9001"
@@ -35,11 +38,17 @@ $ docker-compose exec graphite sh
 >>> python webapp/manage.py migrate --run-syncdb --noinput
 >>> python webapp/manage.py createsuperuser
 >>> python webapp/manage.py changepassword
+>>> supervisorctl status
+carbon-aggregator   RUNNING   pid 9, uptime 0:00:13
+carbon-cache        RUNNING   pid 8, uptime 0:00:22
+graphite-webapp     RUNNING   pid 7, uptime 0:00:24
 >>> exit
 $ tree -F -L 4
 ├── data/
 │   ├── conf/
+│   │   ├── aggregation-rules.conf
 │   │   ├── carbon.conf
+│   │   ├── rewrite-rules.conf
 │   │   └── storage-schemas.conf
 │   └── storage/
 │       ├── carbon-cache-a.pid
