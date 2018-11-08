@@ -48,8 +48,11 @@ COPY supervisord.conf /etc/supervisor/
 VOLUME $GRAPHITE_CONF_DIR \
        $GRAPHITE_STORAGE_DIR
 
-EXPOSE 2003 \
+EXPOSE 2003/udp \
+       2003 \
        2004 \
+       2023 \
+       2024 \
        7002 \
        8080 \
        9001
