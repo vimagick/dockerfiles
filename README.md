@@ -252,6 +252,7 @@ A collection of delicious docker recipes.
 ## 3rd-party
 
 - [x] tutum/builder
+- [x] browserless/chrome
 - [x] certbot
 - [x] cachethq/docker
 - [x] puckel/docker-airflow
