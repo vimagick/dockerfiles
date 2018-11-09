@@ -162,7 +162,6 @@ A collection of delicious docker recipes.
 - [x] json-server
 - [x] mantisbt
 - [x] mediagoblin
-- [x] netdata
 - [x] nginad
 - [x] nodebb :+1:
 - [x] openrefine
@@ -271,6 +270,7 @@ A collection of delicious docker recipes.
 - [x] haproxy
 - [x] jmxtrans/jmxtrans
 - [x] wurstmeister/kafka
+- [x] netdata/netdata
 - [x] nextcloud
 - [x] jazzdd/phpvirtualbox
 - [x] jenkins

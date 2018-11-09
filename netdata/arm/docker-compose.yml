@@ -1,7 +1,14 @@
 netdata:
-  image: easypi/netdata-arm
+  image: netdata/netdata:latest-armhf
+  hostname: easypi.pro
+  ports:
+    - 19999:19999
+  cap_add:
+    - SYS_PTRACE
+  security_opt:
+    - apparmor:unconfined
   volumes:
+    - /proc:/host/proc:ro
+    - /sys:/host/sys:ro
     - /var/run/docker.sock:/var/run/docker.sock:ro
-  net: host
-  pid: host
   restart: always
