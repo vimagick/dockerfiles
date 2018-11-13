@@ -1,6 +1,10 @@
 browserless
 ===========
 
+[Browserless][1] makes it easy to run your puppeteer scripts in an optimized
+way. It takes care of all the binaries and managing of Chrome so you don't have
+to.
+
 ## docker-compose.yml
 
 ```yaml
@@ -40,6 +44,15 @@ const puppeteer = require('puppeteer');
 ```bash
 $ docker-compose up -d
 $ PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true npm install puppeteer
+
 $ node screenshot.js
 $ imgcat google.png
+
+$ http http://127.0.0.1:3000/screenshot \
+       url=https://www.youtube.com \
+       options:='{"fullPage":true}' \
+       gotoOptions:='{"waitUntil":"networkidle2"}' > youtube.png
+$ imgcat youtube.png
 ```
+
+[1]: https://docs.browserless.io/
