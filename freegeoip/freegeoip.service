@@ -1,0 +1,12 @@
+[Unit]
+Description=IP Geolocation Web Server
+After=network-online.target
+
+[Service]
+WorkingDirectory=/opt/freegeoip
+ExecStart=/opt/freegeoip/freegeoip -public public -http :8080 -internal-server :8888
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

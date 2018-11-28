@@ -21,7 +21,6 @@ A collection of delicious docker recipes.
 - [ ] caddy
 - [ ] dsniff
 - [ ] ettercap
-- [ ] freegeoip
 - [ ] freelan
 - [ ] gitbook
 - [ ] gitolite
@@ -76,6 +75,7 @@ A collection of delicious docker recipes.
 - [x] cadvisor
 - [x] casperjs :+1:
 - [x] collectd
+- [x] freegeoip
 - [x] freeradius
 - [x] frp :cn:
 - [x] graphite
