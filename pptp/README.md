@@ -13,6 +13,7 @@ pptp:
     - TUNNEL=vps
     - USERNAME=username
     - PASSWORD=password
+    - ROUTES=0.0.0.0/1 128.0.0.0/1
   net: host
   privileged: yes
   restart: unless-stopped
