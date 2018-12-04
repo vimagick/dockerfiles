@@ -19,6 +19,13 @@ pptp:
   restart: unless-stopped
 ```
 
+## available parameters (passed as environment variables)
+
+* `SERVER`: IP or hostname of the VPN server
+* `TUNNEL`: name of the tunnel
+* `USERNAME` / `PASSWORD`: auth info for the server
+* `ROUTES`: space separated list of routes that should be routed through the VPN. By default all traffic is routed
+
 ## up and running
 
 ```
