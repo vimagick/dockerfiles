@@ -5,7 +5,7 @@
 FROM easypi/alpine-arm
 MAINTAINER EasyPi Software Foundation
 
-ENV GHOST_VERSION 2.5.0
+ENV GHOST_VERSION 2.7.1
 ENV GHOST_INSTALL /var/lib/ghost
 ENV GHOST_CONTENT /var/lib/ghost/content
 ENV GHOST_CLI_VERSION 1.9.8
