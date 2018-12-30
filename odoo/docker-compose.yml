@@ -1,5 +1,5 @@
 odoo:
-  image: odoo:11.0
+  image: odoo:12.0
   ports:
     - "8069:8069"
   volumes:
@@ -10,7 +10,7 @@ odoo:
   restart: always
 
 postgres:
-  image: postgres:9-alpine
+  image: postgres:11-alpine
   volumes:
     - ./data/postgres:/var/lib/postgresql/data
   environment:

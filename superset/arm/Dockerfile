@@ -6,7 +6,7 @@ FROM resin/rpi-raspbian:stretch
 MAINTAINER EasyPi Software Foundation
 
 # Superset version
-ARG SUPERSET_VERSION=0.26.3
+ARG SUPERSET_VERSION=0.28.1
 
 # Configure environment
 ENV LANG=C.UTF-8 \

@@ -7,7 +7,7 @@ odoo
 
 ```yaml
 odoo:
-  image: odoo:11.0
+  image: odoo:12
   ports:
     - "8069:8069"
   volumes:
