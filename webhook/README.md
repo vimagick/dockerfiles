@@ -7,64 +7,53 @@ webhook
 to easily create HTTP endpoints (hooks) on your server, which you can use to
 execute configured commands.
 
-## Build Binary
-
-To build a docker image from scratch, we need to build static linked binary.
-
-```bash
-$ go get -d github.com/adnanh/webhook
-$ CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -installsuffix cgo -ldflags '-s -extld ld -extldflags -static' -a -x -o webhook github.com/adnanh/webhook
-$ file webhook
-```
-
 ## Directory Tree
 
 ```
 ~/fig/webhook/
 ├── docker-compose.yml
-└── scripts/
+└── data/
     ├── hooks.json
     └── test.sh* (executable)
 ```
 
 docker-compose.yml
 
-```
+```yaml
 webhook:
   image: vimagick/webhook
-  command: -hooks hooks.json -verbose
   ports:
     - "9000:9000"
   volumes:
-    - "./scripts:/scripts"
+    - "./data:/etc/webhook"
   restart: always
 ```
 
 hooks.json
 
-```
+```json
 [
   {
     "id": "test",
-    "execute-command": "/scripts/test.sh",
-    "command-working-directory": "/scripts"
+    "execute-command": "/etc/webhook/test.sh",
+    "command-working-directory": "/etc/webhook"
   }
 ]
 ```
 
 test.sh
 
-```
+```bash
 #!/bin/bash
 echo 'hello world'
 ```
 
 ## Up and Running
 
-```
+```bash
 $ cd ~/fig/webhook/
 
-$ chmod +x scripts/test.sh
+$ chmod +x data/test.sh
 
 $ docker-compose up -d
 Creating webhook_webhook_1...

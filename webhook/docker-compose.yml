@@ -1,8 +1,7 @@
 webhook:
   image: vimagick/webhook
-  command: -hooks hooks.json -verbose
   ports:
     - "9000:9000"
   volumes:
-    - "./scripts:/scripts"
+    - "./data:/etc/webhook"
   restart: always

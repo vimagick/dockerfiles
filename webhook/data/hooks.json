@@ -1,0 +1,7 @@
+[
+  {
+    "id": "test",
+    "execute-command": "/etc/webhook/test.sh",
+    "command-working-directory": "/etc/webhook"
+  }
+]
