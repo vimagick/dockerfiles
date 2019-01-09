@@ -15,7 +15,8 @@ FROM alpine
 MAINTAINER kev <noreply@easypi.pro>
 RUN apk add --no-cache bash coreutils curl jq
 COPY --from=build /go/bin/webhook /usr/local/bin/
+WORKDIR /etc/webhook
 VOLUME /etc/webhook
 EXPOSE 9000
 ENTRYPOINT ["webhook"]
-CMD ["-header", "Access-Control-Allow-Origin=*", "-hooks", "/etc/webhook/hooks.json", "-verbose"]
+CMD ["-header", "Access-Control-Allow-Origin=*", "-hooks", "hooks.json", "-verbose"]
