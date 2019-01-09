@@ -36,7 +36,8 @@ hooks.json
   {
     "id": "test",
     "execute-command": "/etc/webhook/test.sh",
-    "command-working-directory": "/etc/webhook"
+    "command-working-directory": "/etc/webhook",
+    "include-command-output-in-response": true
   }
 ]
 ```
@@ -59,6 +60,7 @@ $ docker-compose up -d
 Creating webhook_webhook_1...
 
 $ curl http://localhost:9000/hooks/test
+hello world
 
 $ docker-compose logs
 Attaching to webhook_webhook_1

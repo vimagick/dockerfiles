@@ -2,6 +2,7 @@
   {
     "id": "test",
     "execute-command": "/etc/webhook/test.sh",
-    "command-working-directory": "/etc/webhook"
+    "command-working-directory": "/etc/webhook",
+    "include-command-output-in-response": true
   }
 ]
