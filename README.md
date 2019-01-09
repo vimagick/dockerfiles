@@ -299,6 +299,7 @@ A collection of delicious docker recipes.
 - [x] centurylink/watchtower
 - [x] wekanteam/wekan
 - [x] zookeeper
+- [x] elkozmon/zoonavigator
 
 ## auto-completion
 
