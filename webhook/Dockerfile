@@ -19,4 +19,4 @@ WORKDIR /etc/webhook
 VOLUME /etc/webhook
 EXPOSE 9000
 ENTRYPOINT ["webhook"]
-CMD ["-header", "Access-Control-Allow-Origin=*", "-hooks", "hooks.json", "-verbose"]
+CMD ["-header", "Access-Control-Allow-Origin=*", "-hooks", "hooks.json", "-hotreload", "-verbose"]
