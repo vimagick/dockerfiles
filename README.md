@@ -294,6 +294,7 @@ A collection of delicious docker recipes.
     - [ ] hub
     - [ ] node-firefox
     - [x] standalone-firefox
+- [x] sentry
 - [x] amancevice/superset
 - [x] v2ray/official :cn:
 - [x] centurylink/watchtower
