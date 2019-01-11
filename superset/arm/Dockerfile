@@ -9,12 +9,18 @@ MAINTAINER EasyPi Software Foundation
 ARG SUPERSET_VERSION=0.28.1
 
 # Configure environment
-ENV LANG=C.UTF-8 \
+ENV GUNICORN_BIND=0.0.0.0:8088 \
+    GUNICORN_LIMIT_REQUEST_FIELD_SIZE=0 \
+    GUNICORN_LIMIT_REQUEST_LINE=0 \
+    GUNICORN_TIMEOUT=60 \
+    GUNICORN_WORKERS=2 \
+    LANG=C.UTF-8 \
     LC_ALL=C.UTF-8 \
     PYTHONPATH=/etc/superset:/home/superset:$PYTHONPATH \
     SUPERSET_REPO=apache/incubator-superset \
     SUPERSET_VERSION=${SUPERSET_VERSION} \
     SUPERSET_HOME=/var/lib/superset
+ENV GUNICORN_CMD_ARGS="--workers ${GUNICORN_WORKERS} --timeout ${GUNICORN_TIMEOUT} --bind ${GUNICORN_BIND} --limit-request-line ${GUNICORN_LIMIT_REQUEST_LINE} --limit-request-field_size ${GUNICORN_LIMIT_REQUEST_FIELD_SIZE}"
 
 # Create superset user & install dependencies
 RUN useradd -U -m superset && \
@@ -48,7 +54,7 @@ RUN useradd -U -m superset && \
         flask_oauthlib==0.9.3 \
         gevent==1.2.2 \
         impyla==0.14.0 \
-        infi.clickhouse-orm==0.9.8 \
+        infi.clickhouse-orm==1.0.2 \
         mysqlclient==1.3.7 \
         psycopg2==2.6.1 \
         pyathena==1.2.5 \
@@ -56,8 +62,8 @@ RUN useradd -U -m superset && \
         pyldap==2.4.28 \
         pymssql==2.1.3 \
         redis==2.10.5 \
-        sqlalchemy-clickhouse==0.1.3.post0 \
-        sqlalchemy-redshift==0.5.0 \
+        sqlalchemy-clickhouse==0.1.5.post0 \
+        sqlalchemy-redshift==0.7.1 \
         superset==${SUPERSET_VERSION} && \
     rm requirements.txt
 
@@ -71,5 +77,5 @@ WORKDIR /home/superset
 # Deploy application
 EXPOSE 8088
 HEALTHCHECK CMD ["curl", "-f", "http://localhost:8088/health"]
-CMD ["gunicorn", "-w", "2", "--timeout", "60", "-b", "0.0.0.0:8088", "--limit-request-line", "0", "--limit-request-field_size", "0", "superset:app"]
+CMD ["gunicorn", "superset:app"]
 USER superset
