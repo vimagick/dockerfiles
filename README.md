@@ -276,6 +276,7 @@ A collection of delicious docker recipes.
 - [x] jenkins
 - [x] jupyter/notebook
 - [x] kylemanna/openvpn
+- [x] metabase/metabase
 - [x] metasploitframework/metasploit-framework :skull:
 - [x] minio/minio
 - [x] mongo
