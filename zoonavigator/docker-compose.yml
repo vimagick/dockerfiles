@@ -3,7 +3,7 @@ version: '2.1'
 services:
 
   web:
-    image: elkozmon/zoonavigator-web:0.5.1
+    image: elkozmon/zoonavigator-web
     ports:
       - "8000:8000"
     environment:
@@ -15,7 +15,7 @@ services:
     restart: always
 
   api:
-    image: elkozmon/zoonavigator-api:0.5.1
+    image: elkozmon/zoonavigator-api
     environment:
       - API_HTTP_PORT=9000
     restart: always
