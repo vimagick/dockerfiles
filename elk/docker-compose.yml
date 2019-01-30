@@ -1,5 +1,5 @@
 elasticsearch:
-  image: docker.elastic.co/elasticsearch/elasticsearch:6.1.2
+  image: docker.elastic.co/elasticsearch/elasticsearch:6.6.0
   ports:
     - "9200:9200"
     - "9300:9300"
@@ -17,7 +17,7 @@ elasticsearch:
   restart: unless-stopped
 
 logstash:
-  image: docker.elastic.co/logstash/logstash:6.1.2
+  image: docker.elastic.co/logstash/logstash:6.6.0
   ports:
     - "5044:5044"
     - "9600:9600"
@@ -34,7 +34,7 @@ logstash:
   restart: unless-stopped
 
 kibana:
-  image: docker.elastic.co/kibana/kibana:6.1.2
+  image: docker.elastic.co/kibana/kibana:6.6.0
   ports:
     - "5601:5601"
   links:
@@ -42,4 +42,14 @@ kibana:
   environment:
     SERVER_NAME: kibana
     ELASTICSEARCH_URL: http://elasticsearch:9200
+  restart: unless-stopped
+
+apm-server:
+  image: docker.elastic.co/apm/apm-server:6.6.0
+  ports:
+    - "8200:8200"
+  links:
+    - elasticsearch
+  volumes:
+    - ./data/apm-server.yml:/usr/share/apm-server/apm-server.yml
   restart: unless-stopped
