@@ -300,6 +300,7 @@ A collection of delicious docker recipes.
 - [x] v2ray/official :cn:
 - [x] centurylink/watchtower
 - [x] wekanteam/wekan
+- [x] yourls
 - [x] zookeeper
 - [x] elkozmon/zoonavigator
 
