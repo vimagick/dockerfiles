@@ -283,6 +283,7 @@ A collection of delicious docker recipes.
 - [x] neo4j
 - [x] odoo
 - [x] osixia/openldap
+- [x] campbellsoftwaresolutions/osticket
 - [x] owncloud
 - [x] phpmyadmin
 - [x] pihole/pihole
