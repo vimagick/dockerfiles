@@ -259,6 +259,7 @@ A collection of delicious docker recipes.
 - [x] drupal
 - [x] elastalert
 - [x] elk
+- [x] mher/flower
 - [x] ghost
 - [x] gitlab/gitlab-ce
 - [x] gliderlabs/logspout
