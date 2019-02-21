@@ -11,12 +11,10 @@ It's fast, lightweight and state-less which makes it easy to distribute.
 
 ```yaml
 splash:
-  image: scrapinghub/splash
+  image: scrapinghub/splash:3.3
   command: --maxrss 4096 --max-timeout 300
   ports:
     - "8050:8050"
-    - "8051:8051"
-    - "5023:5023"
   volumes:
     - ./data/filters:/etc/splash/filters
     - ./data/js-profiles:/etc/splash/js-profiles
