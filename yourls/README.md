@@ -61,10 +61,14 @@ $yourls_user_passwords = [
 ];
 ```
 
-## Backup Database
+## Backup and Restore
 
 ```bash
-$ docker-compose exec -T mysql mysqldump -uroot -proot yourls > yourls-$(date +\%F).sql
+# backup
+$ docker-compose exec -T mysql mysqldump -uroot -proot yourls > yourls-$(date +%F).sql
+
+# restore
+$ docker exec -i yourls_mysql_1 mysql -uroot -proot yourls < yourls-$(date +%F -d yesterday).sql
 ```
 
 [1]: http://yourls.org/
