@@ -5,4 +5,5 @@ sdc:
   volumes:
     - ./data:/data
     - ./data/sdc.properties:/etc/sdc/sdc.properties
+    - ./data/form-realm.properties:/etc/sdc/form-realm.properties
   restart: always
