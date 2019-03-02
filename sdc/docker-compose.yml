@@ -1,0 +1,8 @@
+sdc:
+  image: streamsets/datacollector
+  ports:
+    - "18630:18630"
+  volumes:
+    - ./data:/data
+    - ./data/sdc.properties:/etc/sdc/sdc.properties
+  restart: always

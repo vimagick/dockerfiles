@@ -253,6 +253,7 @@ A collection of delicious docker recipes.
 - [x] tutum/builder
 - [x] browserless/chrome
 - [x] certbot
+- [x] streamsets/datacollector
 - [x] cachethq/docker
 - [x] puckel/docker-airflow
 - [x] drone/drone
