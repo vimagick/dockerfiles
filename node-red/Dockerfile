@@ -24,9 +24,9 @@ RUN set -xe \
                python3-dev \
     && rm -rf /tmp/npm-*
 
-WORKDIR /root/.node-red
-VOLUME /root/.node-red
+WORKDIR /data
+VOLUME /data
 
 EXPOSE 1880
 
-CMD ["node-red"]
+CMD ["node-red", "--userDir", "/data"]

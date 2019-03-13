@@ -13,7 +13,7 @@ services in new and interesting ways.
 ```
 ~/fig/node-red/
 ├── docker-compose.yml
-└── node-red/
+└── data/
     ├── flows_cred.json
     ├── flows.json
     ├── lib/
@@ -31,7 +31,7 @@ node-red:
   ports:
     - "1880:1880"
   volumes:
-    - ./data:/root/.node-red
+    - ./data:/data
   restart: always
 ```
 
@@ -73,7 +73,7 @@ $ docker-compose up -d
 $ docker-compose exec node-red node-red-admin hash-pw
 $ vi data/settings.js
 $ docker-compose exec node-red bash
->>> cd /root/.node-red
+>>> cd /data
 >>> apk add -U build-base
 >>> npm install node-red-node-irc
 >>> npm install node-red-node-daemon
