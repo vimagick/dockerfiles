@@ -29,4 +29,6 @@ VOLUME /data
 
 EXPOSE 1880
 
+ENV FLOWS=flows.json
+
 CMD ["node-red", "--userDir", "/data"]
