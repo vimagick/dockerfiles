@@ -18,7 +18,7 @@ RUN set -xe \
     && npm install -g --unsafe-perm node-red \
                                     node-red-admin \
                                     node-red-dashboard \
-    && sed -i '1s/bash/sh/' /usr/lib/node_modules/node-red/nodes/core/hardware/nrgpio \
+    && sed -i '1s/bash/sh/' /usr/lib/node_modules/node-red/node_modules/@node-red/nodes/core/hardware/nrgpio \
     && mkdir -p /usr/share/doc/python-rpi.gpio \
     && apk del build-base \
                python3-dev \
@@ -29,6 +29,4 @@ VOLUME /data
 
 EXPOSE 1880
 
-ENV FLOWS=flows.json
-
-CMD ["node-red", "--userDir", "/data"]
+CMD ["node-red", "--userDir", "/data", "--flowFile", "flows.json"]
