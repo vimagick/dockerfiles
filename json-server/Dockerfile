@@ -5,7 +5,7 @@
 FROM alpine
 MAINTAINER kev <noreply@easypi.pro>
 
-WORKDIR /app
+WORKDIR /data
 
 RUN set -xe \
     && apk add --no-cache nodejs nodejs-npm \
