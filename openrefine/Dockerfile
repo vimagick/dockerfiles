@@ -2,7 +2,7 @@
 # Dockerfile for openrefine
 #
 
-FROM java:8-jre-alpine
+FROM openjdk:8-jre-alpine
 MAINTAINER kev <noreply@easypi.pro>
 
 ENV OPENREFINE_VERSION 3.1
@@ -12,7 +12,7 @@ ENV OPENREFINE_URL https://github.com/OpenRefine/OpenRefine/releases/download/${
 WORKDIR /app
 
 RUN set -xe \
-    && apk add --no-cache bash curl jq tar \
+    && apk add --no-cache bash curl tar \
     && curl -sSL ${OPENREFINE_URL} | tar xz --strip 1
 
 VOLUME /data
