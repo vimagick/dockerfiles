@@ -1,8 +1,9 @@
 odoo:
-  image: odoo:12.0
+  image: odoo:12
   ports:
-    - "8069:8069"
+    - "127.0.0.1:8069:8069"
   volumes:
+    - ./data/config:/etc/odoo
     - ./data/odoo:/var/lib/odoo
     - ./data/addons:/mnt/extra-addons
   links:
@@ -14,6 +15,7 @@ postgres:
   volumes:
     - ./data/postgres:/var/lib/postgresql/data
   environment:
+    - POSTGRES_DB=postgres
     - POSTGRES_USER=odoo
     - POSTGRES_PASSWORD=odoo
   restart: always
