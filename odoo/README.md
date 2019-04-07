@@ -12,7 +12,7 @@ odoo:
     - "127.0.0.1:8069:8069"
   volumes:
     - ./data/config:/etc/odoo
-    - ./data/odoo:/var/lib/odoo
+    - ./data/web:/var/lib/odoo
     - ./data/addons:/mnt/extra-addons
   links:
     - postgres:db
@@ -32,7 +32,7 @@ postgres:
 ## up and running
 
 ```bash
-$ mkdir -m 777 -p data/odoo
+$ mkdir -m 777 -p data/web
 $ docker-compose up -d
 $ curl http://localhost:8069
 ```
