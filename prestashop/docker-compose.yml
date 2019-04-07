@@ -1,16 +1,17 @@
 prestashop:
-  image: vimagick/prestashop
+  image: prestashop/prestashop:1.7-7.2-apache
   ports:
-    - "8000:80"
+    - "8080:80"
   links:
     - mysql
   volumes:
-    - /var/www
-  restart: always
+    - ./data:/var/www/html
+  restart: unless-stopped
 
 mysql:
-  image: mysql
+  image: mysql:8
+  command: --default-authentication-plugin=mysql_native_password
   environment:
     - MYSQL_ROOT_PASSWORD=root
     - MYSQL_DATABASE=prestashop
-  restart: always
+  restart: unless-stopped

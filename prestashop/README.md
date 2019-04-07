@@ -9,21 +9,22 @@ free.
 
 ```yaml
 prestashop:
-  image: vimagick/prestashop
+  image: prestashop/prestashop:1.7-7.2-apache
   ports:
-    - "8000:80"
+    - "8080:80"
   links:
     - mysql
   volumes:
-    - /var/www
-  restart: always
+    - ./data:/var/www/html
+  restart: unless-stopped
 
 mysql:
-  image: mysql
+  image: mysql:8
+  command: --default-authentication-plugin=mysql_native_password
   environment:
     - MYSQL_ROOT_PASSWORD=root
     - MYSQL_DATABASE=prestashop
-  restart: always
+  restart: unless-stopped
 ```
 
 ## Nginx Config
@@ -44,7 +45,7 @@ server {
     ssl_ciphers          HIGH:!aNULL:!MD5;
     client_max_body_size 20M;
     location / {
-        proxy_pass       http://127.0.0.1:8000;
+        proxy_pass       http://127.0.0.1:8080;
         proxy_set_header Host $host;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
     }
@@ -53,18 +54,26 @@ server {
 
 ## Enable SSL
 
-1. Activate SSL directtly on the database, (because the broken images avoid to
+0. Open http://localhost:8080 (`ssh -L 8080:localhost:8080`)
+
+1. Configure > Shop Parameters > Traffic & SEO > SEO & URLs > Set shop URL
+
+        - Shop domain: shop.easypi.pro
+        - SSL domain: shop.easypi.pro
+        - Base URI: /
+
+2. Activate SSL directtly on the database, (because the broken images avoid to
    use the activate SSL option on the admin panel, click on the url simply does
    not pass the test). To ativate SSL on the database i use the next query on:
 
         UPDATE ps_configuration SET value = 1 WHERE name = 'PS_SSL_ENABLED';
 
-2. Add the next line to the `.htacces` file to avoid teh loop redirect issue with
+3. Add the next line to the `.htacces` file to avoid the loop redirect issue with
    SSL enabled:
 
         SetEnv HTTPS On
 
-3. Configure > Shop Parameters > General > Enable SSL on all pages
+4. Configure > Shop Parameters > General > Enable SSL on all pages
 
 ## Reset Admin Password
 
