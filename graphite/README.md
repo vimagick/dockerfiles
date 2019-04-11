@@ -35,9 +35,10 @@ $ mkdir -p data/storage/log/webapp
 $ docker-compose up -d
 $ docker-compose exec graphite sh
 >>> vi conf/storage-schemas.conf
->>> python webapp/manage.py migrate --run-syncdb --noinput
+>>> python webapp/manage.py migrate --noinput --run-syncdb
 >>> python webapp/manage.py createsuperuser
 >>> python webapp/manage.py changepassword
+>>> supervisorctl restart
 >>> supervisorctl status
 carbon-aggregator   RUNNING   pid 9, uptime 0:00:13
 carbon-cache        RUNNING   pid 8, uptime 0:00:22
