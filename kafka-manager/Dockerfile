@@ -7,7 +7,7 @@ MAINTAINER kev <noreply@easypi.pro>
 
 ENV SCALA_VERSION 2.12.8
 ENV SBT_VERSION 1.2.8
-ENV KAFKA_MANAGER_VERSION 2.0.0.1
+ENV KAFKA_MANAGER_VERSION 2.0.0.2
 
 RUN set -xe \
     && apt update \
