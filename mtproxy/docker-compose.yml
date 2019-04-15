@@ -1,0 +1,11 @@
+mtproxy:
+  image: vimagick/mtproxy
+  ports:
+    - "8443:443"
+    - "8888:8888"
+  volumes:
+    - ./data:/etc/mtproxy
+  environment:
+    - MTP_SECRET=092b4a4da9855f7923c7dc032157ff53
+    - MTP_SLAVES=4
+  restart: unless-stopped

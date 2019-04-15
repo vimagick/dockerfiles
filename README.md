@@ -203,6 +203,7 @@ A collection of delicious docker recipes.
 - [x] hans
 - [x] haproxy-arm
 - [x] kcptun :cn:
+- [x] mtproxy
 - [x] mysql-proxy
 - [x] ngrok :+1:
 - [x] obfsproxy
