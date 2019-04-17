@@ -303,6 +303,7 @@ A collection of delicious docker recipes.
 - [x] amancevice/superset
 - [x] v2ray/official :cn:
 - [x] centurylink/watchtower
+- [x] anapsix/webdis
 - [x] wekanteam/wekan
 - [x] yourls
 - [x] zookeeper
