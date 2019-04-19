@@ -10,25 +10,64 @@ It's fast, lightweight and state-less which makes it easy to distribute.
 ## docker-compose.yml
 
 ```yaml
-splash:
-  image: scrapinghub/splash:3.3
-  command: --maxrss 4096 --max-timeout 300
-  ports:
-    - "8050:8050"
-  volumes:
-    - ./data/filters:/etc/splash/filters
-    - ./data/js-profiles:/etc/splash/js-profiles
-    - ./data/lua_modules:/etc/splash/lua_modules
-    - ./data/proxy-profiles:/etc/splash/proxy-profiles
-  mem_limit: 4608M
-  restart: always
+version: '2'
+services:
+  splash:
+    image: scrapinghub/splash:3.3.1
+    command: --maxrss 2048 --max-timeout 300 --disable-lua-sandbox
+    volumes:
+      - ./data/filters:/etc/splash/filters
+      - ./data/js-profiles:/etc/splash/js-profiles
+      - ./data/lua_modules:/etc/splash/lua_modules
+      - ./data/proxy-profiles:/etc/splash/proxy-profiles
+    mem_limit: 2560M
+    restart: unless-stopped
+  haproxy:
+    image: haproxy:alpine
+    ports:
+      - "8050:8050"
+    volumes:
+      - ./data/haproxy:/usr/local/etc/haproxy
+    depends_on:
+      - splash
+    restart: unless-stopped
 ```
 
 ## server
 
-```
-$ cd ~/fig/splash
+File: data/filters/default.txt
 
+```
+||fonts.googleapis.com^
+||ajax.googleapis.com^
+```
+
+File: data/haproxy/haproxy.cfg
+
+```ini
+global
+        maxconn 4000
+
+defaults
+        timeout connect 5000ms
+        timeout client 50000ms
+        timeout server 50000ms
+
+frontend front
+        bind *:8050
+        mode http
+        default_backend back
+
+backend back
+        mode http
+        balance roundrobin
+        server a splash_splash_1:8050
+        server b splash_splash_2:8050
+        server c splash_splash_3:8050
+```
+
+```bash
+$ cd ~/fig/splash
 $ tree
 .
 ├── docker-compose.yml
@@ -36,14 +75,20 @@ $ tree
     ├── filters
     │   ├── easylist.txt
     │   └── default.txt
+    ├── haproxy
+    │   └── haproxy.cfg
     ├── js-profiles
+    ├── lua_modules
+    │   └── utils.lua
     └── proxy-profiles
-
-$ cat data/filters/default.txt
-||fonts.googleapis.com^
-||ajax.googleapis.com^
-
-$ docker-compose up -d
+$ docker-compose up -d --scale splash=3
+$ docker-compose ps
+      Name                    Command               State           Ports
+----------------------------------------------------------------------------------
+splash_haproxy_1   /docker-entrypoint.sh hapr ...   Up      0.0.0.0:8050->8050/tcp
+splash_splash_1    python3 /app/bin/splash -- ...   Up      8050/tcp
+splash_splash_2    python3 /app/bin/splash -- ...   Up      8050/tcp
+splash_splash_3    python3 /app/bin/splash -- ...   Up      8050/tcp
 ```
 
 > If `default.txt` file is present in `--filters-path` folder it is used by default
