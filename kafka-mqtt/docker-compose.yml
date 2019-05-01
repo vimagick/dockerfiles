@@ -1,0 +1,12 @@
+kafka-mqtt:
+  image: confluentinc/cp-kafka-mqtt
+  ports:
+    - "1883:1883"
+  environment:
+    - KAFKA_MQTT_BOOTSTRAP_SERVERS=kafka1:9092,kafka2:9092,kafka3:9092
+    - KAFKA_MQTT_TOPIC_REGEX_LIST=temperature:.*
+  extra_hosts:
+    - kafka1:10.0.0.21
+    - kafka2:10.0.0.22
+    - kafka3:10.0.0.23
+  restart: unless-stopped
