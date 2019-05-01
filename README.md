@@ -293,6 +293,7 @@ A collection of delicious docker recipes.
 - [x] pihole/pihole
 - [x] portainer/portainer :+1:
 - [x] postgres
+- [x] postgrest/postgrest
 - [x] registry
 - [x] rocket.chat
 - [x] scrapinghub/splash
