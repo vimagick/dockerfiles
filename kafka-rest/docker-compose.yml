@@ -3,6 +3,7 @@ kafka-rest:
   ports:
     - "8082:8082"
   environment:
+    - KAFKA_REST_HOST_NAME=kafka-rest
     - KAFKA_REST_ZOOKEEPER_CONNECT=zookeeper1:2181,zookeeper2:2181,zookeeper3:2181
     - KAFKA_REST_BOOTSTRAP_SERVERS=kafka1:9092,kafka2:9092,kafka3:9092
   extra_hosts:
