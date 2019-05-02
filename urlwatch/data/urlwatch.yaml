@@ -1,0 +1,4 @@
+report:
+  slack:
+    webhook_url: https://hooks.slack.com/services/xxxxxx
+    enabled: true

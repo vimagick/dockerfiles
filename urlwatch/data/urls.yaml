@@ -1,0 +1,4 @@
+- url: "https://github.com/thp/urlwatch/releases/latest"
+  filter:
+  - xpath: '(//div[contains(@class,"release-timeline-tags")]//h4)[1]/a'
+  - html2text: re
