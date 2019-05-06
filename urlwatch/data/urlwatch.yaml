@@ -1,4 +1,5 @@
 report:
   slack:
     webhook_url: https://hooks.slack.com/services/xxxxxx
+    footer: false
     enabled: true
