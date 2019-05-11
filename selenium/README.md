@@ -32,7 +32,7 @@ hub:
   environment:
     - GRID_TIMEOUT=60
     - GRID_BROWSER_TIMEOUT=30
-  retart: always
+  restart: always
 
 chrome:
   image: selenium/node-chrome
@@ -41,7 +41,7 @@ chrome:
     - "5555"
   links:
     - hub
-  retart: always
+  restart: always
 
 firefox:
   image: selenium/node-firefox
@@ -50,7 +50,7 @@ firefox:
     - "5555"
   links:
     - hub
-  retart: always
+  restart: always
 ```
 
 > Access grid console at <http://127.0.0.1:4444/grid/console>
