@@ -1,5 +1,5 @@
 #!/bin/sh /etc/rc.common
-# Copyright (C) 2018 EasyPi Software Foundation
+# Copyright (C) 2019 EasyPi Software Foundation
 
 START=99
 USE_PROCD=1
