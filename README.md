@@ -92,6 +92,7 @@ A collection of delicious docker recipes.
 - [x] motion-arm :+1:
 - [x] nginx
 - [x] nifi
+- [x] ntopng
 - [x] nullmailer
 - [x] nullmailer-arm
 - [x] openhab
