@@ -21,5 +21,6 @@ EXPOSE 3000 5556
 
 CMD ntopng --http-port 0.0.0.0:3000 \
            --interface tcp://0.0.0.0:5556c \
+           --data-dir /var/lib/ntopng \
            --redis redis \
-           --data-dir /var/lib/ntopng
+           --community
