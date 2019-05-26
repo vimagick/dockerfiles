@@ -23,9 +23,9 @@ EXPOSE 3000 5556
 
 ENTRYPOINT ["ntopng"]
 CMD [                                         \
+        "--community",                        \
+        "--data-dir", "/var/lib/ntopng",      \
         "--http-port", "0.0.0.0:3000",        \
         "--interface", "tcp://0.0.0.0:5556c", \
-        "--data-dir", "/var/lib/ntopng",      \
-        "--redis", "redis",                   \
-        "--community"                         \
+        "--redis", "redis"                    \
     ]
