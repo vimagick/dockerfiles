@@ -298,6 +298,7 @@ A collection of delicious docker recipes.
 - [x] postgrest/postgrest
 - [x] registry
 - [x] rocket.chat
+- [x] rundeck/rundeck
 - [x] scrapinghub/splash
 - [ ] selenium
     - [ ] hub

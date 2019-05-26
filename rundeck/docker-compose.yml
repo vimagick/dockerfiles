@@ -1,0 +1,11 @@
+rundeck:
+  image: rundeck/rundeck:3.0.22
+  ports:
+    - "4440:4440"
+  volumes:
+    - ./data/ssh:/home/rundeck/.ssh
+    - ./data/rundeck:/home/rundeck/server/data
+  environment:
+    - RUNDECK_SECURITY_HTTPHEADERS_ENABLED=false
+  mem_limit: 1024m
+  restart: always
