@@ -227,6 +227,7 @@ A collection of delicious docker recipes.
 
 ## VPN
 
+- [x] n2n :+1:
 - [x] ocserv :+1:
 - [x] openconnect
 - [x] openconnect-arm
