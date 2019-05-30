@@ -17,3 +17,4 @@ RUN set -xe \
 EXPOSE 5645/udp 7654/udp
 
 ENTRYPOINT ["supernode"]
+CMD ["-l", "7654"]
