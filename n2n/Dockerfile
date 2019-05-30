@@ -14,7 +14,6 @@ RUN set -xe \
     && apt install -y n2n \
     && rm -rf apt-ntop.deb /var/lib/apt/lists/*
 
-EXPOSE 5645/udp # management
-EXPOSE 7654/udp # main
+EXPOSE 5645/udp 7654/udp
 
 ENTRYPOINT ["supernode"]
