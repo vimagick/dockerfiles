@@ -5,10 +5,10 @@
 FROM alpine
 MAINTAINER kev <noreply@easypi.pro>
 
-ENV STATSD_VERSION 0.8.0
+ENV STATSD_VERSION 0.8.2
 ENV STATSD_URL https://github.com/etsy/statsd/archive/v$STATSD_VERSION.tar.gz
 
-WORKDIR /app
+WORKDIR /opt/statsd
 
 RUN set -xe \
     && apk add --no-cache ca-certificates curl nodejs nodejs-npm tar \
