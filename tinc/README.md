@@ -36,6 +36,10 @@ tinc:
     - ./tinc:/etc/tinc
   environment:
     - IP_ADDR=1.2.3.4
+    - ADDRESS=10.20.30.1
+    - NETMASK=255.255.255.0
+    - NETWORK=10.20.30.0/24
+    - RUNMODE=server
   cap_add:
     - NET_ADMIN
   dns: 8.8.8.8
@@ -88,7 +92,7 @@ Interface = tun0
 ConnectTo = server
  
 $ cat > /etc/tinc/netname/hosts/linkit
-Subnet = 10.0.0.125
+Subnet = 10.20.30.125
  
 $ tincd -n netname -K < /dev/null
 Generating 2048 bits keys:
@@ -99,11 +103,11 @@ Done.
 $ cat > /etc/tinc/netname/tinc-up
 #!/bin/sh
 ip link set $INTERFACE up
-ip addr add  10.0.0.125/24 dev $INTERFACE
+ip addr add  10.20.30.125/24 dev $INTERFACE
  
 $ cat > /etc/tinc/netname/tinc-down
 #!/bin/sh
-ip addr del 10.0.0.125/24 dev $INTERFACE
+ip addr del 10.20.30.125/24 dev $INTERFACE
 ip link set $INTERFACE down
  
 $ cat > /etc/tinc/netname/hosts/server-up
