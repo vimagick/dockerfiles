@@ -256,6 +256,7 @@ A collection of delicious docker recipes.
 - [x] tutum/builder
 - [x] browserless/chrome
 - [x] certbot
+- [x] codercom/code-server
 - [x] confluentinc/cp-kafka-mqtt
 - [x] confluentinc/cp-kafka-rest
 - [x] streamsets/datacollector
