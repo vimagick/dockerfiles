@@ -1,6 +1,7 @@
 hydra:
   image: vimagick/hydra
-  command: sleep infinity
+  entrypoint: sleep
+  command: infinity
   volumes:
     - ./data:/data
   working_dir: /data
