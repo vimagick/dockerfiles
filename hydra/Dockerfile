@@ -20,8 +20,9 @@ RUN set -xe \
                           libpq \
                           libssh \
                           libssh-dev \
+                          mariadb-connector-c \
+                          mariadb-connector-c-dev \
                           mariadb-dev \
-                          mariadb-client-libs \
                           ncurses \
                           ncurses-dev \
                           parallel \
@@ -31,7 +32,7 @@ RUN set -xe \
                           subversion-dev \
                           subversion-libs \
                           tar \
-    && echo 'will cite' | parallel --bibtex \
+    && parallel --will-cite \
     && mkdir src \
         && cd src \
         && curl -sSL $HYDRA_URL | tar xz --strip 1 \
@@ -45,6 +46,7 @@ RUN set -xe \
                        libidn-dev \
                        libssh-dev \
                        ncurses-dev \
+                       mariadb-connector-c-dev \
                        mariadb-dev \
                        pcre-dev \
                        postgresql-dev \
