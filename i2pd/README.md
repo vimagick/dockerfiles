@@ -20,8 +20,9 @@ i2pd:
 
 ## Server
 
-```
+```bash
 $ docker-compose up -d
+$ curl http://127.0.0.1:7070/
 ```
 
 ## Client
@@ -30,9 +31,9 @@ Download [FoxyProxy][2] for Firefox.
 
 ## Example Sites
 
-http://planet.i2p/
-http://identiguy.i2p
-http://tracker2.postman.i2p
+- http://planet.i2p/
+- http://identiguy.i2p
+- http://tracker2.postman.i2p
 
 [1]: https://github.com/PurpleI2P/i2pd
 [2]: https://addons.mozilla.org/en-US/firefox/addon/foxyproxy-standard/
