@@ -22,7 +22,7 @@ A very fast network logon cracker which support many different services.
 
 
 ```
-$ docker run --rm -it -v `pwd`:/work vimagick/hydra
+$ docker run --rm -it -v `pwd`:/data -w /data vimagick/hydra
 
 >>> cat passwd.txt
     123456

@@ -2,11 +2,11 @@
 # Dockerfile for hydra-arm
 #
 
-FROM easypi/alpine-arm
+FROM arm32v7/alpine
 MAINTAINER EasyPi Software Foundation
 
-ENV HYDRA_VERSION=8.6
-ENV HYDRA_URL=https://github.com/vanhauser-thc/thc-hydra/archive/$HYDRA_VERSION.tar.gz
+ENV HYDRA_VERSION=9.0
+ENV HYDRA_URL=https://github.com/vanhauser-thc/thc-hydra/archive/v$HYDRA_VERSION.tar.gz
 
 RUN set -xe \
     && apk add --no-cache apr-dev \
@@ -35,7 +35,6 @@ RUN set -xe \
     && mkdir src \
         && cd src \
         && curl -sSL $HYDRA_URL | tar xz --strip 1 \
-        && sed -i '1s/^/#include <stdint.h>\n/' pw-inspector.c \
         && ./configure --prefix=/usr \
         && make install \
         && cd .. \
@@ -51,7 +50,4 @@ RUN set -xe \
                        postgresql-dev \
                        subversion-dev
 
-VOLUME /hydra
-WORKDIR /hydra
-
-CMD ["bash"]
+ENTRYPOINT ["bash"]
