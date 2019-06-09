@@ -5,7 +5,7 @@
 FROM resin/rpi-raspbian:jessie
 MAINTAINER EasyPi Software Foundation
 
-ENV DOCKER_COMPOSE_VERSION 1.23.1
+ENV DOCKER_COMPOSE_VERSION 1.24.0
 ENV PYINSTALLER_VERSION 3.2.1
 
 RUN set -xe \
