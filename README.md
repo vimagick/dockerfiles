@@ -266,6 +266,7 @@ A collection of delicious docker recipes.
 - [x] drupal
 - [x] elastalert
 - [x] elk
+- [x] flogo/flogo-docker
 - [x] mher/flower
 - [x] ghost
 - [x] gitlab/gitlab-ce
