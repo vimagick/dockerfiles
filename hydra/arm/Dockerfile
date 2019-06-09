@@ -13,6 +13,7 @@ RUN set -xe \
                           apr-util-dev \
                           bash \
                           build-base \
+                          coreutils \
                           curl \
                           jq \
                           libidn \
@@ -32,6 +33,7 @@ RUN set -xe \
                           subversion-dev \
                           subversion-libs \
                           tar \
+                          tmux \
     && parallel --will-cite \
     && mkdir src \
         && cd src \
