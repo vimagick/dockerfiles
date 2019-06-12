@@ -14,9 +14,8 @@ services:
       - MB_DB_PORT=5432
       - MB_DB_USER=root
       - MB_DB_PASS=root
-      # JAVA_OPTS=-Xms2g
-      #           -Xmx4g
-      #           -Dcom.sun.management.jmxremote.port=1099
+      - JAVA_TOOL_OPTIONS=-Xmx6g
+      # JAVA_OPTS=-Dcom.sun.management.jmxremote.port=1099
       #           -Dcom.sun.management.jmxremote.rmi.port=1099
       #           -Dcom.sun.management.jmxremote.authenticate=false
       #           -Dcom.sun.management.jmxremote.ssl=false
