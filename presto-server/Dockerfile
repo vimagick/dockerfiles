@@ -5,9 +5,9 @@
 FROM java:8-jre-alpine
 MAINTAINER kev <noreply@easypi.pro>
 
-ENV PRESTO_VERSION 0.217
-ENV PRESTO_URL https://repo1.maven.org/maven2/com/facebook/presto/presto-server/$PRESTO_VERSION/presto-server-$PRESTO_VERSION.tar.gz
-ENV PRESTO_HOME /opt/presto-server
+ENV PRESTO_VERSION=0.221
+ENV PRESTO_URL=https://repo1.maven.org/maven2/com/facebook/presto/presto-server/$PRESTO_VERSION/presto-server-$PRESTO_VERSION.tar.gz
+ENV PRESTO_HOME=/opt/presto-server
 
 WORKDIR $PRESTO_HOME
 
