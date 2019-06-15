@@ -303,12 +303,13 @@ A collection of delicious docker recipes.
 - [x] registry
 - [x] rocket.chat
 - [x] rundeck/rundeck
-- [x] scrapinghub/splash
+- [x] wonderfall/searx
 - [ ] selenium
     - [ ] hub
     - [ ] node-firefox
     - [x] standalone-firefox
 - [x] sentry
+- [x] scrapinghub/splash
 - [x] amancevice/superset
 - [x] v2ray/official :cn:
 - [x] centurylink/watchtower
