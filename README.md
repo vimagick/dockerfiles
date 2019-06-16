@@ -47,7 +47,7 @@ A collection of delicious docker recipes.
 
 - [x] kafka-arm
 - [x] kafka-manager
-- [x] presto-server
+- [x] presto
 - [x] superset-arm
 - [x] zookeeper-arm
 
