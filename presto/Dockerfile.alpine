@@ -2,7 +2,7 @@
 # Dockerfile for presto
 #
 
-FROM openjdk:8-jre-slim
+FROM openjdk:13-alpine
 MAINTAINER kev <noreply@easypi.pro>
 
 ENV PRESTO_VERSION=0.221
@@ -14,13 +14,11 @@ ENV PATH=${PRESTO_HOME}/bin:${PATH}
 WORKDIR $PRESTO_HOME
 
 RUN set -xe \
-    && apt-get update \
-    && apt-get install -y curl less python \
+    && apk add --no-cache curl python tar \
     && curl -sSL $PRESTO_SERVER_URL | tar xz --strip 1 \
     && curl -sSL $PRESTO_CLI_URL > ./bin/presto \
     && chmod +x ./bin/presto \
-    && apt-get remove -y curl \
-    && rm -rf /var/lib/apt/lists/*
+    && apk del curl tar
 
 VOLUME /data
 
