@@ -21,6 +21,13 @@ presto:
 
 ```bash
 $ docker-comopse up -d
+
+$ docker-compose exec presto presto --server localhost:8080 --catalog tpch
+>>> show schemas;
+>>> show tables from tiny;
+>>> select * from tiny.customer limit 10;
+>>> quit
+
 $ curl http://localhost:8080/
 ```
 
