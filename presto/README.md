@@ -28,7 +28,7 @@ $ docker-compose exec presto presto --server localhost:8080 --catalog tpch
 >>> select * from tiny.customer limit 10;
 >>> quit
 
-$ curl http://localhost:8080/
+$ curl http://localhost:8080/v1/service/presto/general
 ```
 
 [1]: https://prestodb.io/
