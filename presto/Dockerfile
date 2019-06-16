@@ -2,7 +2,7 @@
 # Dockerfile for presto
 #
 
-FROM java:8-jre-alpine
+FROM openjdk:13-alpine
 MAINTAINER kev <noreply@easypi.pro>
 
 ENV PRESTO_VERSION=0.221
