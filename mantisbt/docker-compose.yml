@@ -6,7 +6,7 @@ mantisbt:
     - mysql
   restart: always
 
-mysql:
+mysql:5
   image: mysql:latest
   environment:
     - MYSQL_ROOT_PASSWORD=root
