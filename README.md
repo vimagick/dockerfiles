@@ -291,6 +291,7 @@ A collection of delicious docker recipes.
 - [x] minio/minio
 - [x] mongo
 - [x] neo4j
+- [x] erichough/nfs-server
 - [x] odoo
 - [x] osixia/openldap
 - [x] campbellsoftwaresolutions/osticket
