@@ -1,0 +1,45 @@
+version: '3.5'
+services:
+  hub:
+    image: selenium/hub:3.141.59-radium
+    ports:
+      - "4444:4444"
+    volumes:
+      - /dev/shm:/dev/shm
+    environment:
+      - JAVA_OPTS=-Xmx512m
+      - GRID_TIMEOUT=60
+      - GRID_BROWSER_TIMEOUT=30
+    deploy:
+      replicas: 1
+      placement:
+        constraints:
+          - node.role == manager
+      restart_policy:
+        condition: on-failure
+  chrome:
+    image: selenium/node-chrome:3.141.59-radium
+    ports:
+      - "5555:5555"
+    volumes:
+      - /dev/shm:/dev/shm
+    environment:
+      - HUB_HOST=hub
+      - HUB_PORT=4444
+      - REMOTE_HOST=http://{{.Task.Name}}:5555
+      - NODE_MAX_INSTANCES=4
+      - NODE_MAX_SESSION=4
+    depends_on:
+      - hub
+    deploy:
+      replicas: 8
+      placement:
+        constraints:
+          - node.role == worker
+      restart_policy:
+        condition: on-failure
+networks:
+  default:
+    ipam:
+      config:
+        - subnet: 192.168.127.0/24
