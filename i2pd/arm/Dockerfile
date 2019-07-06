@@ -5,7 +5,7 @@
 FROM arm32v7/debian:stretch
 MAINTAINER EasyPi Software Foundation
 
-ENV I2PD_VERSION=2.26.0
+ENV I2PD_VERSION=2.27.0
 ENV I2PD_ARCH=armhf
 ENV I2PD_DIST=stretch
 ENV I2PD_URL=https://github.com/PurpleI2P/i2pd/releases/download/${I2PD_VERSION}/i2pd_${I2PD_VERSION}-1${I2PD_DIST}1_${I2PD_ARCH}.deb

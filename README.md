@@ -282,6 +282,7 @@ A collection of delicious docker recipes.
 - [x] wurstmeister/kafka
 - [x] netdata/netdata
 - [x] nextcloud
+- [x] sonatype/nexus3
 - [x] jazzdd/phpvirtualbox
 - [x] jenkins
 - [x] jupyter/notebook
