@@ -1,0 +1,7 @@
+n2n:
+  image: easypi/n2n-arm
+  entrypoint: ["edge"]
+  command: ["-dn2n0", "-cEasyPi", "-ksecret", "-m11:22:33:44:55:55", "-a10.1.2.100", "-p50001", "-l1.2.3.4:7654"]
+  net: host
+  privileged: true
+  restart: unless-stopped
