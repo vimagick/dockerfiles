@@ -2,7 +2,7 @@
 # Dockerfile for building docker-compose-arm
 #
 
-FROM resin/rpi-raspbian:stretch
+FROM arm32v7/debian:stretch
 MAINTAINER EasyPi Software Foundation
 
 ENV DOCKER_COMPOSE_VERSION 1.24.1
