@@ -8,7 +8,7 @@ services:
       - "3000:3000"
       - "5556:5556"
     volumes:
-      - ./data/ntop:/var/lib/ntopng
+      - ./data/ntopng:/var/lib/ntopng
     restart: unless-stopped
 
   redis:

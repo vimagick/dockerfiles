@@ -25,7 +25,7 @@ services:
     image: vimagick/ntopng
     command: --community -d /var/lib/ntopng -i eth0 -r 127.0.0.1:6379@0 -w 0.0.0.0:3000
     volumes:
-      - ./data/ntop:/var/lib/ntopng
+      - ./data/ntopng:/var/lib/ntopng
     network_mode: host
     restart: unless-stopped
 

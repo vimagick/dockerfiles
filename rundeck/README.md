@@ -25,7 +25,7 @@ Read [this][2] to use more environment variables.
 ## up and running
 
 ```bash
-$ mkdir -p data/{rundeck,ssh}
+$ mkdir -p data/{rundeck,ssh,postgres}
 $ chown -R 1000:1000 data
 $ chmod 700 data/ssh
 $ docker-compose up -d
