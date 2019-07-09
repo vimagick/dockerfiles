@@ -1,7 +1,9 @@
 n2n:
   image: easypi/n2n-arm
   entrypoint: ["edge"]
-  command: ["-dn2n0", "-cEasyPi", "-ksecret", "-m11:22:33:44:55:55", "-a10.1.2.100", "-p50001", "-l1.2.3.4:7654"]
+  command: ["-dn2n0", "-cmynetwork", "-kmypassword", "-mAA:BB:CC:DD:EE:FF", "-a192.168.100.1", "-p50001", "-lsupernode:7654", "-f"]
   net: host
   privileged: true
+  extra_hosts:
+    - supernode:1.2.3.4
   restart: unless-stopped
