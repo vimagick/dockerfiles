@@ -12,7 +12,7 @@ services:
   edge:
     image: vimagick/n2n
     entrypoint: ["edge"]
-    command: ["-dn2n0", "-cmynetwork", "-kmypassword", "-mAA:BB:CC:DD:EE:FF", "-a192.168.100.1", "-p50001", "-lsupernode:7654", "-f"]
+    command: ["-dn2n0", "-cmynetwork", "-kmypassword", "-mAA:BB:CC:DD:EE:FF", "-a192.168.100.1", "-p50001", "-lsupernode:7654", "-r", "-f"]
     devices:
       - /dev/net/tun
     cap_add:

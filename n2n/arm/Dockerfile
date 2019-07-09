@@ -7,7 +7,7 @@ MAINTAINER EasyPi Software Foundation
 
 RUN set -xe \
     && apt update \
-    && apt install -y gnupg lsb-release net-tools wget \
+    && apt install -y gnupg iptables lsb-release net-tools wget \
     && wget -qO- http://packages.ntop.org/apt/ntop.key | apt-key add - \
     && { \
            echo "deb http://apt.ntop.org/stretch_pi armhf/"; \

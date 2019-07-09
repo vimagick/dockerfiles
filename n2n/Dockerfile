@@ -7,7 +7,7 @@ MAINTAINER EasyPi Software Foundation
 
 RUN set -xe \
     && apt update \
-    && apt install -y gnupg lsb-release net-tools wget \
+    && apt install -y gnupg iptables lsb-release net-tools wget \
     && wget http://apt.ntop.org/stretch/all/apt-ntop.deb \
     && dpkg -i apt-ntop.deb \
     && apt update \
