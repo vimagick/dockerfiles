@@ -10,15 +10,22 @@ application level.
 +------LAN-+-----+                 +- Edge.
 |          .     |                /       .
 | Client ->.Edge +-> Supernode <-+- Edge  .
-|          .     |                \       .
+|          .     |    (Edge)      \       .
 +----------+-----+                 +- Edge.
            ................................
 ```
 
-## Supernode (eth0:1.2.3.4)
+## Supernode/Edge (eth0:1.2.3.4, n2n0:192.168.100.1/24)
 
 ```bash
-$ docker-compose up -d supernode
+# start supernode & edge
+$ docker-compose up -d
+
+# config edge routing
+$ docker-compose exec edge bash
+>>> ifconfig
+>>> iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
+>>> exit
 ```
 
 ## Edge (eth0:192.168.1.23/24, n2n0:192.168.100.x/24)
@@ -33,6 +40,7 @@ $ iptables -t nat -A POSTROUTING -o n2n0 -j MASQUERADE
 
 ```bash
 $ ip route add 192.168.100.0/24 via 192.168.1.23
+$ ping 192.168.100.1
 $ nmap -sP 192.168.100.0/24
 ```
 
