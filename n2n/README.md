@@ -20,12 +20,21 @@ application level.
 ```bash
 # start supernode & edge
 $ docker-compose up -d
+$ ifconfig
+  eth0: 1.2.3.4
+  br-2e0238bf6b9d: 172.20.0.1
 
 # config edge routing
 $ docker-compose exec edge bash
 >>> ifconfig
->>> iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
+    eth0: 172.20.0.2
+    n2n0: 192.168.100.1
+>>> iptables -t nat -A POSTROUTING -j MASQUERADE
 >>> exit
+
+# add vpn route (via edge's n2n0)
+$ ip route add 192.168.200.0/24 via 172.20.0.2
+$ ping 192.168.200.1
 ```
 
 ## Edge (eth0:192.168.1.23/24, n2n0:192.168.100.x/24)
