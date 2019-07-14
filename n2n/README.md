@@ -42,6 +42,7 @@ $ ping 192.168.200.1
 ```bash
 $ docker-compose up -d edge
 $ sysctl -w net.ipv4.ip_forward=1
+$ iptables -t filter -A FORWARD -j ACCEPT
 $ iptables -t nat -A POSTROUTING -o n2n0 -j MASQUERADE
 ```
 
@@ -52,5 +53,7 @@ $ ip route add 192.168.100.0/24 via 192.168.1.23
 $ ping 192.168.100.1
 $ nmap -sP 192.168.100.0/24
 ```
+
+> Static routes can be added on your home router.
 
 [1]: https://www.ntop.org/products/n2n/
