@@ -24,7 +24,7 @@ services:
     restart: always
   
   webserver:
-    image: puckel/docker-airflow:1.10.0-4
+    image: puckel/docker-airflow:1.10.3
     command: webserver
     hostname: master
     ports:
@@ -52,7 +52,7 @@ services:
     restart: always
   
   scheduler:
-    image: puckel/docker-airflow:1.10.0-4
+    image: puckel/docker-airflow:1.10.3
     command: scheduler
     volumes:
       - ./data/airflow/dags:/usr/local/airflow/dags
@@ -66,7 +66,7 @@ services:
     restart: always
   
   flower:
-    image: puckel/docker-airflow:1.10.0-4
+    image: puckel/docker-airflow:1.10.3
     command: flower
     ports:
       - "5555:5555"
