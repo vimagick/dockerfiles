@@ -1,5 +1,5 @@
 elasticsearch:
-  image: docker.elastic.co/elasticsearch/elasticsearch:6.6.0
+  image: docker.elastic.co/elasticsearch/elasticsearch:7.3.0
   ports:
     - "9200:9200"
     - "9300:9300"
@@ -8,6 +8,7 @@ elasticsearch:
   environment:
     - node.name=es1
     - cluster.name=elk
+    - cluster.initial_master_nodes=es1
     - bootstrap.memory_lock=true
     - "ES_JAVA_OPTS=-Xms1g -Xmx1g"
   ulimits:
@@ -17,7 +18,7 @@ elasticsearch:
   restart: unless-stopped
 
 logstash:
-  image: docker.elastic.co/logstash/logstash:6.6.0
+  image: docker.elastic.co/logstash/logstash:7.3.0
   ports:
     - "5044:5044"
     - "9600:9600"
@@ -34,7 +35,7 @@ logstash:
   restart: unless-stopped
 
 kibana:
-  image: docker.elastic.co/kibana/kibana:6.6.0
+  image: docker.elastic.co/kibana/kibana:7.3.0
   ports:
     - "5601:5601"
   links:
@@ -45,7 +46,7 @@ kibana:
   restart: unless-stopped
 
 apm-server:
-  image: docker.elastic.co/apm/apm-server:6.6.0
+  image: docker.elastic.co/apm/apm-server:7.3.0
   ports:
     - "8200:8200"
   links:

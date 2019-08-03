@@ -4,6 +4,7 @@ ELK
 - Elasticsearch
 - Logstash
 - Kibana
+- APM Server
 
 ## How it works
 
