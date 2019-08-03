@@ -35,7 +35,7 @@ RUN set -xe \
 
 VOLUME /home/hobot \
        /usr/local/bin \
-       /usr/lib/python3.6/site-packages
+       /usr/lib/python3.7/site-packages
 
 EXPOSE 8080
 
