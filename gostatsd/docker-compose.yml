@@ -1,0 +1,12 @@
+gostatsd:
+  image: atlassianlabs/gostatsd
+  command: gostatsd --backends=graphite --config-path=/etc/gostatsd/gostatsd.toml
+  ports:
+    - "8125:8125/udp"
+    - "8126:8126/tcp"
+    - "8181:8181/tcp"
+  volumes:
+    - ./data:/etc/gostatsd
+  external_links:
+    - graphite_graphite_1:graphite
+  restart: unless-stopped
