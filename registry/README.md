@@ -90,6 +90,7 @@ $ firefox http://registry.easypi.info:8080
 
 ## Read More
 
+- https://docs.docker.com/registry/insecure/#deploy-a-plain-http-registry
 - https://github.com/docker/distribution/blob/master/docs/deploying.md
 - https://github.com/docker/distribution/blob/master/docs/insecure.md
 - https://serversforhackers.com/tcp-load-balancing-with-nginx-ssl-pass-thru
