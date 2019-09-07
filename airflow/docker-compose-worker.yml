@@ -3,7 +3,7 @@ version: '2.1'
 services:
 
   worker:
-    image: puckel/docker-airflow:1.10.3
+    image: puckel/docker-airflow:1.10.4
     command: worker
     hostname: worker1
     ports:
