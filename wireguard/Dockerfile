@@ -2,7 +2,7 @@
 # Dockerfile for wireguard-arm
 #
 
-FROM arm32v7/alpine:edge
+FROM arm32v7/alpine
 
 MAINTAINER EasyPi Software Foundation
 
