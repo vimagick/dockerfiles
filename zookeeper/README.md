@@ -24,6 +24,12 @@ zookeeper:
 
 ```bash
 $ docker-compose up -d
+
+$ docker-compose exec zookeeper zkServer.sh status
+ZooKeeper JMX enabled by default
+Using config: /conf/zoo.cfg
+Mode: leader
+
 $ docker-compose exec zookeeper zkCli.sh
 >>> help
 >>> create /hello world
