@@ -15,8 +15,11 @@ zookeeper:
   ports:
     - "2181:2181"
   volumes:
-    - ./data:/data
-    - ./datalog:/datalog
+    - ./data/data:/data
+    - ./data/datalog:/datalog
+    - ./data/logs:/logs
+  environment:
+    - ZOO_LOG4J_PROP=INFO,ROLLINGFILE
   restart: always
 ```
 
@@ -28,7 +31,8 @@ $ docker-compose up -d
 $ docker-compose exec zookeeper zkServer.sh status
 ZooKeeper JMX enabled by default
 Using config: /conf/zoo.cfg
-Mode: leader
+Client port found: 2181. Client address: localhost.
+Mode: standalone
 
 $ docker-compose exec zookeeper zkCli.sh
 >>> help
@@ -40,7 +44,9 @@ $ docker-compose exec zookeeper zkCli.sh
 
 Click [this][2] to learn more.
 
-## Cluster Mode [TODO]
+## Cluster Mode
+
+See: https://github.com/vimagick/dockerfiles/tree/master/kafka
 
 [1]: http://zookeeper.apache.org/
 [2]: https://zookeeper.apache.org/doc/trunk/zookeeperStarted.html
