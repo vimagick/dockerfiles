@@ -29,11 +29,14 @@ services:
   
   phpldapadmin:
     image: osixia/phpldapadmin
+    command: "--loglevel debug"
     ports:
       - "8080:80"
     environment:
-      - PHPLDAPADMIN_LDAP_HOSTS=#PYTHON2BASH:[{'ldap.easypi.pro':[{'server':[{'tls':True}]}]}]
+      # PHPLDAPADMIN_LDAP_HOSTS=#PYTHON2BASH:[{'ldap.easypi.pro':[{'server':[{'tls':True}]}]}]
+      - PHPLDAPADMIN_LDAP_HOSTS=ldaps://ldap.easypi.pro/
       - PHPLDAPADMIN_HTTPS=false
+      - PHPLDAPADMIN_TRUST_PROXY_SSL=true
     extra_hosts:
       - ldap.easypi.pro:x.x.x.x
     depends_on:

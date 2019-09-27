@@ -60,11 +60,14 @@ services:
   
   phpldapadmin:
     image: osixia/phpldapadmin
+    command: "--loglevel debug"
     ports:
       - "8080:80"
     environment:
-      - PHPLDAPADMIN_LDAP_HOSTS=#PYTHON2BASH:[{'ldap.easypi.pro':[{'server':[{'tls':True}]}]}]
+      # PHPLDAPADMIN_LDAP_HOSTS=#PYTHON2BASH:[{'ldap.easypi.pro':[{'server':[{'tls':True}]}]}]
+      - PHPLDAPADMIN_LDAP_HOSTS=ldaps://ldap.easypi.pro/
       - PHPLDAPADMIN_HTTPS=false
+      - PHPLDAPADMIN_TRUST_PROXY_SSL=true
     extra_hosts:
       - ldap.easypi.pro:x.x.x.x
     depends_on:
@@ -72,7 +75,7 @@ services:
     restart: always
 ```
 
-> :warnning: I haven't figured out how to connect phpldapadmin to openladp via STARTTLS:
+> :warnning: I haven't figured out how to connect [phpldapadmin][1] to openladp via STARTTLS:
 >> openldap_1      | 5d8a7abe conn=1023 fd=12 ACCEPT from IP=172.29.0.1:59342 (IP=0.0.0.0:389)
 >> openldap_1      | 5d8a7abe conn=1023 op=0 EXT oid=1.3.6.1.4.1.1466.20037
 >> openldap_1      | 5d8a7abe conn=1023 op=0 STARTTLS
@@ -118,3 +121,5 @@ dn:cn=admin,dc=ldap,dc=easypi,dc=pro
 ## References
 
 - https://www.digitalocean.com/community/tutorials/how-to-encrypt-openldap-connections-using-starttls
+
+[1]: https://github.com/commandprompt/phpldapadmin/blob/master/config/config.php.example
