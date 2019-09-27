@@ -70,6 +70,7 @@ A collection of delicious docker recipes.
 ## Daemon
 
 - [x] alpine-arm :+1:
+- [x] apacheds
 - [x] aria2 :+1:
 - [x] audiowaveform
 - [x] cadvisor
