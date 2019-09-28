@@ -31,8 +31,6 @@ A collection of delicious docker recipes.
 - [ ] libreswan
 - [ ] mitmproxy
 - [ ] nagios
-- [ ] nfs
-- [ ] openldap
 - [ ] openswan
 - [ ] postfix
 - [ ] pritunl
@@ -45,6 +43,7 @@ A collection of delicious docker recipes.
 
 ## Big Data
 
+- [x] airflow
 - [x] kafka-arm
 - [x] kafka-manager
 - [x] presto
@@ -264,7 +263,6 @@ A collection of delicious docker recipes.
 - [x] confluentinc/cp-kafka-rest
 - [x] streamsets/datacollector
 - [x] cachethq/docker
-- [x] puckel/docker-airflow
 - [x] drone/drone
 - [x] drupal
 - [x] elastalert
