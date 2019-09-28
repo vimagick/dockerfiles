@@ -5,7 +5,7 @@
 FROM alpine
 MAINTAINER kev <noreply@easypi.pro>
 
-ENV STATSD_VERSION 0.8.2
+ENV STATSD_VERSION 0.8.5
 ENV STATSD_URL https://github.com/etsy/statsd/archive/v$STATSD_VERSION.tar.gz
 
 WORKDIR /opt/statsd
