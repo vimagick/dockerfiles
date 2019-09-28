@@ -4,7 +4,20 @@ presto
 [Presto][1] is a distributed SQL query engine designed to query large data sets
 distributed over one or more heterogeneous data sources.
 
-## up and running
+## standalone mode
+
+```yaml
+presto:
+  image: vimagick/presto
+  ports:
+    - "8080:8080"
+  volumes:
+    - ./conf/standalone:/opt/presto/etc:ro
+    - /data:/data
+  restart: unless-stopped
+```
+
+## cluster mode
 
 ```bash
 $ ansible all -a 'mkdir -p /data'
