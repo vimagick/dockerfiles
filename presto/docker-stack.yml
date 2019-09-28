@@ -1,0 +1,50 @@
+version: "3.7"
+
+services:
+
+  coordinator:
+    image: vimagick/presto
+    ports:
+      - "8080:8080"
+    volumes:
+      - /data:/data
+      - presto_coordinator_conf:/opt/presto/etc
+    deploy:
+      replicas: 1
+      placement:
+        constraints:
+          - node.role == manager
+          - node.hostname == presto-coordinator
+      restart_policy:
+        condition: on-failure
+  
+  worker:
+    image: vimagick/presto
+    volumes:
+      - /data:/data
+      - presto_worker_conf:/opt/presto/etc
+    deploy:
+      replicas: 0
+      placement:
+        constraints:
+          - node.role == worker
+      restart_policy:
+        condition: on-failure
+    depends_on:
+      - coordinator
+
+volumes:
+
+  presto_coordinator_conf:
+    driver: local
+    driver_opts:
+      type: nfs
+      o: "addr=10.0.0.1,nolock,soft,ro"
+      device: ":/export/presto/coordinator"
+
+  presto_worker_conf:
+    driver: local
+    driver_opts:
+      type: nfs
+      o: "addr=10.0.0.1,nolock,soft,ro"
+      device: ":/export/presto/worker"

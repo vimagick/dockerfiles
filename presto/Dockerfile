@@ -2,10 +2,10 @@
 # Dockerfile for presto
 #
 
-FROM openjdk:8-jre-slim
+FROM openjdk:8-jre-slim-buster
 MAINTAINER kev <noreply@easypi.pro>
 
-ENV PRESTO_VERSION=0.221
+ENV PRESTO_VERSION=0.226
 ENV PRESTO_SERVER_URL=https://repo1.maven.org/maven2/com/facebook/presto/presto-server/${PRESTO_VERSION}/presto-server-${PRESTO_VERSION}.tar.gz
 ENV PRESTO_CLI_URL=https://repo1.maven.org/maven2/com/facebook/presto/presto-cli/${PRESTO_VERSION}/presto-cli-${PRESTO_VERSION}-executable.jar
 ENV PRESTO_HOME=/opt/presto

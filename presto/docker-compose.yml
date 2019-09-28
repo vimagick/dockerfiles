@@ -1,19 +1,20 @@
-coordinator:
-  image: vimagick/presto
+nfs:
+  image: erichough/nfs-server
   ports:
-    - "8080:8080"
+    - "111:111/tcp"
+    - "111:111/udp"
+    - "2049:2049/tcp"
+    - "2049:2049/udp"
+    - "32765:32765/tcp"
+    - "32765:32765/udp"
+    - "32767:32767/tcp"
+    - "32767:32767/udp"
   volumes:
-    - ./conf/coordinator:/opt/presto/etc
-    - ./data/coordinator:/data
-  restart: always
-
-worker1:
-  image: vimagick/presto
-  ports:
-    - "8081:8080"
-  volumes:
-    - ./conf/worker1:/opt/presto/etc
-    - ./data/worker1:/data
-  links:
-    - coordinator
-  restart: always
+    - ./conf:/export/presto:ro
+    - /lib/modules:/lib/modules:ro
+  environment:
+    - NFS_LOG_LEVEL=DEBUG
+    - NFS_EXPORT_0=/export/presto/coordinator *(ro,no_subtree_check)
+    - NFS_EXPORT_1=/export/presto/worker1     *(ro,no_subtree_check)
+  privileged: true
+  restart: unless-stopped
