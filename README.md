@@ -44,6 +44,7 @@ A collection of delicious docker recipes.
 ## Big Data
 
 - [x] airflow
+- [x] ambari
 - [x] kafka-arm
 - [x] kafka-manager
 - [x] presto

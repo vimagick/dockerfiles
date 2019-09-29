@@ -1,0 +1,25 @@
+ambari:
+  image: vimagick/ambari
+  hostname: ambari-server
+  ports:
+    - "8080:8080"
+  volumes:
+    - ./data/ssh:/root/.ssh
+    - ./data/ambari:/etc/ambari-server/conf
+  extra_hosts:
+    - ambari-agent1:172.16.1.101
+    - ambari-agent2:172.16.1.102
+    - ambari-agent3:172.16.1.103
+  restart: unless-stopped
+
+postgres:
+  image: postgres:alpine
+  ports:
+    - "5432:5432"
+  volumes:
+    - /data/postgres:/var/lib/postgresql/data
+  environment:
+    - POSTGRES_USER=ambari
+    - POSTGRES_PASSWORD=ambari
+    - POSTGRES_DB=ambari
+  restart: unless-stopped
