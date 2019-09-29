@@ -3,17 +3,15 @@ ambari
 
 The [Apache Ambari][1] project is aimed at making Hadoop management simpler by
 developing software for provisioning, managing, and monitoring Apache Hadoop
-clusters. Ambari provides an intuitive, easy-to-use Hadoop management web UI
+clusters. [Ambari][2] provides an intuitive, easy-to-use Hadoop management web UI
 backed by its RESTful APIs.
 
-Make sure that ambari-server is reachable by ambari-agents.
+Make sure that ambari-server is reachable by ambari-agents via DNS.
 
 ## Up and Running
 
 ```bash
-$ docker-compose up -d
-
-$ docker-compose exec ambari bash
+$ docker-compose run --rm server bash
 >>> ambari-server setup
 Customize user account for ambari-server daemon [y/n] (n)?
 Do you want to change Oracle JDK [y/n] (n)?
@@ -30,12 +28,12 @@ Proceed with configuring remote database connection properties [y/n] (y)?
 CREATE TABLE ...
 CREATE INDEX ...
 
-$ docker-compose exec ambari ambari-server start
-Waiting for server start........................
-Server started listening on 8080
-Ambari Server 'start' completed successfully.
+$ docker-compose up -d
+Starting ambari_postgres_1 ... done
+Starting ambari_server_1 ... done
 
 $ curl http://localhost:8080/
 ```
 
 [1]: https://ambari.apache.org/
+[2]: https://docs.cloudera.com/HDPDocuments/Ambari/Ambari-2.7.4.0/index.html
