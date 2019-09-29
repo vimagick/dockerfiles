@@ -35,7 +35,7 @@ Waiting for server start........................
 Server started listening on 8080
 Ambari Server 'start' completed successfully.
 
-$ curl http://localhost:8080
+$ curl http://localhost:8080/
 ```
 
 [1]: https://ambari.apache.org/
