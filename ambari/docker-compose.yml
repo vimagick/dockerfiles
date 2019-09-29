@@ -6,6 +6,8 @@ ambari:
   volumes:
     - ./data/ssh:/root/.ssh
     - ./data/ambari:/etc/ambari-server/conf
+  links:
+    - postgres
   extra_hosts:
     - ambari-agent1:172.16.1.101
     - ambari-agent2:172.16.1.102
@@ -14,8 +16,6 @@ ambari:
 
 postgres:
   image: postgres:alpine
-  ports:
-    - "5432:5432"
   volumes:
     - /data/postgres:/var/lib/postgresql/data
   environment:

@@ -1,0 +1,11 @@
+Host ambari-agent1
+  HostName 172.16.1.101
+  User root
+
+Host ambari-agent2
+  HostName 172.16.1.102
+  User root
+
+Host ambari-agent3
+  HostName 172.16.1.102
+  User root
