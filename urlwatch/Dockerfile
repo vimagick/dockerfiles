@@ -23,6 +23,7 @@ RUN set -xe \
                               minidb    \
                               pyyaml    \
                               requests  \
+                              chump     \
                               urlwatch  \
     && apk del build-base  \
                libffi-dev  \
