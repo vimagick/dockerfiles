@@ -6,6 +6,8 @@ developing software for provisioning, managing, and monitoring Apache Hadoop
 clusters. [Ambari][2] provides an intuitive, easy-to-use Hadoop management web UI
 backed by its RESTful APIs.
 
+![](https://docs.cloudera.com/common/img/product_icons/icon-ambari.png)
+
 Make sure that ambari-server is reachable by ambari-agents via DNS.
 
 ## Up and Running
