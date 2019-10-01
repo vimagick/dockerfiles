@@ -5,10 +5,10 @@
 FROM alpine
 MAINTAINER kev <noreply@easypi.pro>
 
-ENV BB_VER 1.10.1
-ENV BB_URL https://github.com/NodeBB/NodeBB/archive/v$BB_VER.tar.gz
-ENV BB_SOURCE /usr/src/nodebb
-ENV BB_CONTENT /var/lib/nodebb
+ENV BB_VER=1.12.2
+ENV BB_URL=https://github.com/NodeBB/NodeBB/archive/v$BB_VER.tar.gz
+ENV BB_SOURCE=/usr/src/nodebb
+ENV BB_CONTENT=/var/lib/nodebb
 
 WORKDIR $BB_SOURCE
 VOLUME $BB_CONTENT
