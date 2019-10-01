@@ -273,12 +273,13 @@ A collection of delicious docker recipes.
 - [x] ghost
 - [x] gitlab/gitlab-ce
 - [x] atlassianlabs/gostatsd
+- [x] gitea/gitea :cn:
 - [x] gliderlabs/logspout
 - [x] gliderlabs/registrator
 - [ ] glot
     - [ ] bash
     - [ ] python
-- [x] gogs :cn:
+- [x] gogs/gogs :cn:
 - [x] haproxy
 - [x] jmxtrans/jmxtrans
 - [x] wurstmeister/kafka
