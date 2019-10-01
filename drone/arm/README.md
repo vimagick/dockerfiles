@@ -1,24 +1,6 @@
 drone-arm
 =========
 
-```yaml
-drone:
-  image: armdrone/drone
-  ports:
-    - "8000:80"
-  volumes:
-    - ./data:/var/lib/drone
-    - /var/run/docker.sock:/var/run/docker.sock
-  environment:
-    - REMOTE_DRIVER=gogs
-    - REMOTE_CONFIG=http://git.easypi.info:3000/?open=false
-    - PLUGIN_FILTER=armdrone/*
-    - GIN_MODE=release
-  extra_hosts:
-    - git.easypi.info:192.168.31.231
-  restart: always
-```
-
 ## Deploy Key Setup
 
 ```yaml

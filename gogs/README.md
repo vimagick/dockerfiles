@@ -38,4 +38,7 @@ $ tree -FL 3 ./data/git/
     └── user2/
 ```
 
+Please read [this][2] to learn more about `app.ini`.
+
 [1]: https://gogs.io/
+[2]: https://gogs.io/docs/advanced/configuration_cheat_sheet.html
