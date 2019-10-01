@@ -25,9 +25,11 @@ ot-recorder:
   restart: always
 ```
 
+:warning: Some variables don't work (`OTR_QOS`) as [document][3] said.
 You can pass any options to process via `OTR_OPTIONS` environment variable.
 
 Click [this][2] to generate a google map api key.
 
 [1]: https://github.com/owntracks/recorder
 [2]: https://developers.google.com/maps/documentation/javascript/?authuser=1
+[3]: https://github.com/owntracks/recorder#configuration-file

@@ -12,5 +12,5 @@ ot-recorder:
     - OTR_CAFILE=/etc/ssl/certs/DST_Root_CA_X3.pem
     - OTR_TOPICS=owntracks/#
     - OTR_BROWSERAPIKEY=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-    - OTR_OPTIONS=--qos 0
+    # OTR_OPTIONS=--debug
   restart: always
