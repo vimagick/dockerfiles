@@ -19,6 +19,7 @@ RUN set -xe \
     && npm install -g --unsafe-perm node-red \
                                     node-red-admin \
                                     node-red-dashboard \
+                                    node-red-node-pi-gpio \
     && mkdir -p /usr/share/doc/python-rpi.gpio \
     && apk del build-base \
                python3-dev \
