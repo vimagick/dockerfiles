@@ -2,7 +2,7 @@
 # Dockerfile for n2n-arm
 #
 
-FROM arm32v7/debian:stretch
+FROM arm32v7/debian:buster
 MAINTAINER EasyPi Software Foundation
 
 RUN set -xe \
@@ -10,8 +10,8 @@ RUN set -xe \
     && apt install -y gnupg iptables lsb-release net-tools wget \
     && wget -qO- http://packages.ntop.org/apt/ntop.key | apt-key add - \
     && { \
-           echo "deb http://apt.ntop.org/stretch_pi armhf/"; \
-           echo "deb http://apt.ntop.org/stretch_pi all/"; \
+           echo "deb http://apt.ntop.org/buster_pi armhf/"; \
+           echo "deb http://apt.ntop.org/buster_pi all/"; \
        } > /etc/apt/sources.list.d/ntop.list \
     && apt update \
     && apt install -y n2n \
