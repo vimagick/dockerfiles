@@ -32,6 +32,10 @@ $ docker-compose exec edge bash
 >>> iptables -t nat -A POSTROUTING -j MASQUERADE
 >>> exit
 
+# get bridge ip
+$ ip route get 192.168.200.1
+192.168.200.1 via 172.20.0.2 dev br-2e0238bf6b9d  src 172.20.0.1
+
 # add vpn route (via edge's n2n0)
 $ ip route add 192.168.200.0/24 via 172.20.0.2
 $ ping 192.168.200.1
