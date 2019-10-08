@@ -6,7 +6,7 @@ FROM alpine
 MAINTAINER EasyPi Software Foundation
 
 RUN set -xe \
-    && apk add --no-cache
+    && apk add --no-cache \
         bash \
         build-base \
         ca-certificates \
@@ -17,7 +17,7 @@ RUN set -xe \
         python3-dev \
     && ln -sf /usr/bin/python3 /usr/bin/python \
     && pip3 install --no-cache-dir rpi.gpio \
-    && npm install -g --unsafe-perm
+    && npm install -g --unsafe-perm \
         node-red \
         node-red-admin \
         node-red-dashboard \
@@ -27,7 +27,7 @@ RUN set -xe \
         node-red-node-sentiment \
         node-red-node-twitter \
     && mkdir -p /usr/share/doc/python-rpi.gpio \
-    && apk del
+    && apk del \
         build-base \
         python3-dev \
     && rm -rf /tmp/npm-*

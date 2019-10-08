@@ -9,7 +9,7 @@ efficiency and ease of use. It provides simple answers to common needs, plus
 unique useful features for personal users as well as hosting providers. 
 
 
-## ~/fig/pureftpd/docker-compose.yml
+## docker-compose.yml
 
 ```yaml
 pure-ftpd:
