@@ -34,7 +34,8 @@ RUN set -xe \
     && echo "SECRET_KEY = '$(head -c 16 /dev/urandom | base64)'" > graphite/local_settings.py \
     && curl -sSL https://github.com/graphite-project/graphite-web/raw/master/webapp/manage.py > manage.py \
     && chmod +x manage.py \
-    && ./manage.py migrate --run-syncdb --noinput \
+    && ./manage.py collectstatic --noinput --settings=graphite.settings \
+    && ./manage.py migrate --noinput --run-syncdb \
     && apk del build-base \
                curl \
                git \

@@ -1,13 +1,13 @@
 elastalert:
-  image: bitsensor/elastalert
+  image: bitsensor/elastalert:2.0.0
   ports:
     - "3030:3030"
+    - "3333:3333"
   volumes:
     - ./data/config.yaml:/opt/elastalert/config.yaml
     - ./data/rules:/opt/elastalert/rules
-  environment:
-    - ES_HOST=elasticsearch
-    - ES_PORT=9200
   external_links:
     - elk_elasticsearch_1:elasticsearch
+# extra_hosts:
+#   - elasticsearch:1.2.3.4
   restart: always

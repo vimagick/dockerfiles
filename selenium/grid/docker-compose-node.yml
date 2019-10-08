@@ -1,0 +1,13 @@
+chrome:
+  image: selenium/node-chrome:3.141.59-neon
+  ports:
+    - "5555:5555"
+  volumes:
+    - /dev/shm:/dev/shm
+  environment:
+    - HUB_HOST=10.0.0.21
+    - HUB_PORT=4444
+    - REMOTE_HOST=http://10.0.0.22:5555
+    - NODE_MAX_INSTANCES=2
+    - NODE_MAX_SESSION=2
+  restart: unless-stopped

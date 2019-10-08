@@ -1,0 +1,66 @@
+version: '3.5'
+services:
+  hub:
+    image: selenium/hub:3.141.59-selenium
+    ports:
+      - "4444:4444"
+    volumes:
+      - /dev/shm:/dev/shm
+    environment:
+      - JAVA_OPTS=-Xmx2g
+      - GRID_TIMEOUT=200
+      - GRID_BROWSER_TIMEOUT=180
+      - GRID_CLEAN_UP_CYCLE=5000
+      - GRID_MAX_SESSION=9999
+    deploy:
+      replicas: 1
+      placement:
+        constraints:
+          - node.role == manager
+      restart_policy:
+        condition: on-failure
+  firefox:
+    image: selenium/node-firefox:3.141.59-selenium
+    entrypoint: bash -c 'REMOTE_HOST=http://$$HOSTNAME:5555 /opt/bin/entry_point.sh'
+    volumes:
+      - /dev/shm:/dev/shm
+    environment:
+      - HUB_HOST=hub
+      - HUB_PORT=4444
+      - NODE_MAX_INSTANCES=4
+      - NODE_MAX_SESSION=4
+      - NODE_UNREGISTER_IF_STILL_DOWN_AFTER=30000
+    depends_on:
+      - hub
+    deploy:
+      replicas: 1
+      placement:
+        constraints:
+          - node.role == manager
+      restart_policy:
+        condition: on-failure
+  chrome:
+    image: selenium/node-chrome:3.141.59-selenium
+    entrypoint: bash -c 'REMOTE_HOST=http://$$HOSTNAME:5555 /opt/bin/entry_point.sh'
+    volumes:
+      - /dev/shm:/dev/shm
+    environment:
+      - HUB_HOST=hub
+      - HUB_PORT=4444
+      - NODE_MAX_INSTANCES=8
+      - NODE_MAX_SESSION=8
+      - NODE_UNREGISTER_IF_STILL_DOWN_AFTER=30000
+    depends_on:
+      - hub
+    deploy:
+      replicas: 8
+      placement:
+        constraints:
+          - node.role == worker
+      restart_policy:
+        condition: on-failure
+networks:
+  default:
+    ipam:
+      config:
+        - subnet: 192.168.100.0/24

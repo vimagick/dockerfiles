@@ -1,0 +1,29 @@
+version: '3.5'
+
+services:
+
+  rundeck:
+    image: rundeck/rundeck:3.0.23
+    ports:
+      - "4440:4440"
+    volumes:
+      - ./data/ssh:/home/rundeck/.ssh
+      - ./data/rundeck:/home/rundeck/server/data
+    environment:
+      - RUNDECK_GRAILS_URL=https://rundeck.easypi.pro
+      - RUNDECK_SECURITY_HTTPHEADERS_ENABLED=true
+      - RUNDECK_DATABASE_DRIVER=org.postgresql.Driver
+      - RUNDECK_DATABASE_URL=jdbc:postgresql://postgres/rundeck
+      - RUNDECK_DATABASE_USERNAME=rundeck
+      - RUNDECK_DATABASE_PASSWORD=rundeck
+    restart: always
+
+  postgres:
+    image: postgres:alpine
+    volumes:
+      - ./data/postgres:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=rundeck
+      - POSTGRES_PASSWORD=rundeck
+      - POSTGRES_DB=rundeck
+    restart: always

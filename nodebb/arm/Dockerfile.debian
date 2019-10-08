@@ -5,10 +5,10 @@
 FROM resin/rpi-raspbian
 MAINTAINER EasyPi Software Foundation
 
-ENV BB_VER 1.6.1
-ENV BB_URL https://github.com/NodeBB/NodeBB/archive/v$BB_VER.tar.gz
-ENV BB_SOURCE /usr/src/nodebb
-ENV BB_CONTENT /var/lib/nodebb
+ENV BB_VER=1.12.2
+ENV BB_URL=https://github.com/NodeBB/NodeBB/archive/v$BB_VER.tar.gz
+ENV BB_SOURCE=/usr/src/nodebb
+ENV BB_CONTENT=/var/lib/nodebb
 
 WORKDIR $BB_SOURCE
 VOLUME $BB_CONTENT
@@ -22,7 +22,7 @@ RUN set -ex \
                           libssl1.0.0 \
                           libssl-dev \
                           python \
-    && curl -sSL https://deb.nodesource.com/setup_6.x | bash - \
+    && curl -sSL https://deb.nodesource.com/setup_10.x | bash - \
     && apt-get install -y nodejs \
     && curl -sSL $BB_URL | tar xz --strip 1 \
     && npm install --production \

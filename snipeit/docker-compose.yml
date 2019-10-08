@@ -1,0 +1,22 @@
+snipeit:
+  image: snipe/snipe-it
+  ports:
+    - "8080:80"
+  links:
+    - mysql
+  volumes:
+    - ./data/snipeit:/var/lib/snipeit
+  env_file:
+    - ./data/snipeit/snipeit.env
+  restart: always
+
+mysql:
+  image: mysql
+  volumes:
+    - ./data/mysql:/var/lib/mysql
+  environment:
+    - MYSQL_ROOT_PASSWORD=root
+    - MYSQL_USER=snipeit
+    - MYSQL_PASSWORD=snipeit
+    - MYSQL_DATABASE=snipeit
+  restart: always

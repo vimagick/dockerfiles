@@ -1,0 +1,10 @@
+i2pd:
+  image: easypi/i2pd-arm
+  ports:
+    - "4444:4444"
+    - "4447:4447"
+    - "7070:7070"
+  volumes:
+    - ./data/i2pd.conf:/etc/i2pd/i2pd.conf
+    - ./data/tunnels.conf.d:/etc/i2pd/tunnels.conf.d
+  restart: unless-stopped

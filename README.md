@@ -31,8 +31,6 @@ A collection of delicious docker recipes.
 - [ ] libreswan
 - [ ] mitmproxy
 - [ ] nagios
-- [ ] nfs
-- [ ] openldap
 - [ ] openswan
 - [ ] postfix
 - [ ] pritunl
@@ -45,9 +43,11 @@ A collection of delicious docker recipes.
 
 ## Big Data
 
+- [x] airflow
+- [x] ambari
 - [x] kafka-arm
 - [x] kafka-manager
-- [x] presto-server
+- [x] presto
 - [x] superset-arm
 - [x] zookeeper-arm
 
@@ -70,6 +70,7 @@ A collection of delicious docker recipes.
 ## Daemon
 
 - [x] alpine-arm :+1:
+- [x] apacheds
 - [x] aria2 :+1:
 - [x] audiowaveform
 - [x] cadvisor
@@ -92,6 +93,7 @@ A collection of delicious docker recipes.
 - [x] motion-arm :+1:
 - [x] nginx
 - [x] nifi
+- [x] ntopng
 - [x] nullmailer
 - [x] nullmailer-arm
 - [x] openhab
@@ -202,7 +204,9 @@ A collection of delicious docker recipes.
 - [x] fteproxy-arm :+1:
 - [x] hans
 - [x] haproxy-arm
+- [x] i2pd :ru:
 - [x] kcptun :cn:
+- [x] mtproxy
 - [x] mysql-proxy
 - [x] ngrok :+1:
 - [x] obfsproxy
@@ -225,6 +229,7 @@ A collection of delicious docker recipes.
 
 ## VPN
 
+- [x] n2n :+1:
 - [x] ocserv :+1:
 - [x] openconnect
 - [x] openconnect-arm
@@ -236,6 +241,7 @@ A collection of delicious docker recipes.
 - [x] strongswan :+1:
 - [x] tinc :+1:
 - [x] tinc-arm :+1:
+- [x] wiregurad :beetle:
 - [x] xl2tpd
 
 ## DNS
@@ -253,52 +259,70 @@ A collection of delicious docker recipes.
 - [x] tutum/builder
 - [x] browserless/chrome
 - [x] certbot
+- [x] codercom/code-server
+- [x] confluentinc/cp-kafka-mqtt
+- [x] confluentinc/cp-kafka-rest
+- [x] streamsets/datacollector
 - [x] cachethq/docker
-- [x] puckel/docker-airflow
 - [x] drone/drone
 - [x] drupal
 - [x] elastalert
 - [x] elk
+- [x] flogo/flogo-docker
+- [x] mher/flower
 - [x] ghost
 - [x] gitlab/gitlab-ce
+- [x] atlassianlabs/gostatsd
+- [x] gitea/gitea :cn:
 - [x] gliderlabs/logspout
 - [x] gliderlabs/registrator
 - [ ] glot
     - [ ] bash
     - [ ] python
-- [x] gogs :cn:
+- [x] gogs/gogs :cn:
 - [x] haproxy
 - [x] jmxtrans/jmxtrans
 - [x] wurstmeister/kafka
 - [x] netdata/netdata
 - [x] nextcloud
+- [x] sonatype/nexus3
 - [x] jazzdd/phpvirtualbox
 - [x] jenkins
 - [x] jupyter/notebook
 - [x] kylemanna/openvpn
+- [x] metabase/metabase
 - [x] metasploitframework/metasploit-framework :skull:
 - [x] minio/minio
 - [x] mongo
 - [x] neo4j
+- [x] erichough/nfs-server
 - [x] odoo
 - [x] osixia/openldap
+- [x] campbellsoftwaresolutions/osticket
 - [x] owncloud
 - [x] phpmyadmin
 - [x] pihole/pihole
 - [x] portainer/portainer :+1:
 - [x] postgres
+- [x] postgrest/postgrest
 - [x] registry
 - [x] rocket.chat
-- [x] scrapinghub/splash
+- [x] rundeck/rundeck
+- [x] wonderfall/searx
 - [ ] selenium
     - [ ] hub
     - [ ] node-firefox
     - [x] standalone-firefox
+- [x] sentry
+- [x] scrapinghub/splash
 - [x] amancevice/superset
 - [x] v2ray/official :cn:
 - [x] centurylink/watchtower
+- [x] anapsix/webdis
 - [x] wekanteam/wekan
+- [x] yourls
 - [x] zookeeper
+- [x] elkozmon/zoonavigator
 
 ## auto-completion
 

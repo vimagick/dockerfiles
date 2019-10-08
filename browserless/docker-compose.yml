@@ -7,7 +7,8 @@ browserless:
     - MAX_CONCURRENT_SESSIONS=10
     - CONNECTION_TIMEOUT=600000
     - MAX_QUEUE_LENGTH=10
-    - ENABLE_CORS=true
     - CHROME_REFRESH_TIME=3600000
+    - ENABLE_CORS=true
+    - EXIT_ON_HEALTH_FAILURE=true
   shm_size: 2gb
   restart: always

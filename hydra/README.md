@@ -20,9 +20,24 @@ A very fast network logon cracker which support many different services.
 - [x] Android specialities
 - [x] secure compile option support in gcc
 
+## docker-compose.yml
 
+```yaml
+hydra:
+  image: vimagick/hydra
+  command: sleep infinity
+  volumes:
+    - ./data:/data
+  working_dir: /data
+  restart: unless-stopped
 ```
-$ docker run --rm -it -v `pwd`:/work vimagick/hydra
+
+# up and running
+
+```bash
+$ docker-compose up -d
+
+$ docker-compose exec hydra bash
 
 >>> cat passwd.txt
     123456

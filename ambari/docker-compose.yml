@@ -1,0 +1,31 @@
+version: "3.7"
+
+services:
+
+  server:
+    image: vimagick/ambari
+    hostname: ambari-server
+    ports:
+      - "8080:8080"
+      - "8440:8440"
+      - "8441:8441"
+    volumes:
+      - ./data/ambari:/etc/ambari-server/conf
+      - ./data/log:/var/log/ambari-server
+    extra_hosts:
+      - ambari-agent1:172.16.1.101
+      - ambari-agent2:172.16.1.102
+      - ambari-agent3:172.16.1.103
+    depends_on:
+      - postgres
+    restart: unless-stopped
+
+  postgres:
+    image: postgres:alpine
+    volumes:
+      - ./data/postgres:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=ambari
+      - POSTGRES_PASSWORD=ambari
+      - POSTGRES_DB=ambari
+    restart: unless-stopped

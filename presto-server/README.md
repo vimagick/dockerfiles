@@ -1,4 +1,0 @@
-presto
-======
-
-https://prestodb.io/

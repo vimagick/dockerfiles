@@ -5,11 +5,29 @@
 FROM alpine
 MAINTAINER kev <noreply@easypi.pro>
 
-RUN apk add -U ca-certificates \
-               build-base \
-               libxml2 \
+RUN set -xe \
+    && apk add --no-cache ca-certificates \
+                          build-base      \
+                          libffi-dev      \
+                          libxml2         \
+                          libxml2-dev     \
+                          libxslt         \
+                          libxslt-dev     \
+                          openssl-dev     \
+                          python3         \
+                          python3-dev     \
+                          openssl-dev \
+    && python3 -m pip install appdirs   \
+                              cssselect \
+                              keyring   \
+                              lxml      \
+                              minidb    \
+                              pyyaml    \
+                              requests  \
+                              urlwatch  \
+    && apk del build-base  \
+               libffi-dev  \
                libxml2-dev \
-               libxslt \
                libxslt-dev \
                make \
                python-dev \
@@ -28,7 +46,6 @@ RUN apk add -U ca-certificates \
     && rm -rf /var/cache/apk/* \
     && echo '*/15 * * * * cd ~/.urlwatch && make' | crontab -
 
-COPY urlwatch /root/.urlwatch
 VOLUME /root/.urlwatch
 WORKDIR /root/.urlwatch
 

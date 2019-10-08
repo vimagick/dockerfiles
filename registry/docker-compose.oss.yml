@@ -1,0 +1,18 @@
+#
+# See: https://docs.docker.com/registry/storage-drivers/oss/
+#
+
+registry:
+  image: registry:2
+  ports:
+    - 5000:5000
+  environment:
+    - REGISTRY_STORAGE=oss
+    - REGISTRY_STORAGE_OSS_ACCESSKEYID=xxxxxxxxxxxxxxxx
+    - REGISTRY_STORAGE_OSS_ACCESSKEYSECRET=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+    - REGISTRY_STORAGE_OSS_REGION=oss-us-west-1
+    - REGISTRY_STORAGE_OSS_INTERNAL=true
+    - REGISTRY_STORAGE_OSS_BUCKET=easypi
+    - REGISTRY_STORAGE_OSS_SECURE=false
+    - REGISTRY_STORAGE_OSS_ROOTDIRECTORY=/registry/
+  restart: always

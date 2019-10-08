@@ -1,3 +1,7 @@
+#
+# See: https://docs.docker.com/registry/deploying/
+#
+
 registry:
   image: registry:2
   ports:

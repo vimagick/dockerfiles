@@ -1,0 +1,77 @@
+version: '2.1'
+
+services:
+
+  redis:
+    image: redis:alpine
+    command: --save 900 1
+    ports:
+      - "6379:6379"
+    volumes:
+      - ./data/redis:/data
+    restart: always
+  
+  postgres:
+    image: postgres:alpine
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./data/postgres:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=airflow
+      - POSTGRES_PASSWORD=airflow
+      - POSTGRES_DB=airflow
+    restart: always
+  
+  webserver:
+    image: puckel/docker-airflow:1.10.4
+    command: webserver
+    hostname: master
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./data/airflow/dags:/usr/local/airflow/dags
+      - ./data/airflow/plugins:/usr/local/airflow/plugins
+    environment:
+      - LOAD_EX=y
+      - FERNET_KEY=46BKJoQYlPPOexq0OhDZnIlNepKFf87WFwLbfzqDDho=
+      - EXECUTOR=Celery
+      - AIRFLOW__WEBSERVER__BASE_URL=http://1.2.3.4:8080
+    depends_on:
+      - postgres
+      - redis
+    healthcheck:
+      test: ["CMD-SHELL", "[ -f /usr/local/airflow/airflow-webserver.pid ]"]
+      interval: 30s
+      timeout: 30s
+      retries: 3
+    extra_hosts:
+      - "worker1:10.99.0.4"
+      - "worker2:10.99.0.5"
+      - "worker3:10.99.0.6"
+    restart: always
+  
+  scheduler:
+    image: puckel/docker-airflow:1.10.4
+    command: scheduler
+    volumes:
+      - ./data/airflow/dags:/usr/local/airflow/dags
+      - ./data/airflow/plugins:/usr/local/airflow/plugins
+    environment:
+      - LOAD_EX=y
+      - FERNET_KEY=46BKJoQYlPPOexq0OhDZnIlNepKFf87WFwLbfzqDDho=
+      - EXECUTOR=Celery
+    depends_on:
+      - webserver
+    restart: always
+  
+  flower:
+    image: puckel/docker-airflow:1.10.4
+    command: flower
+    ports:
+      - "5555:5555"
+    environment:
+      - EXECUTOR=Celery
+    depends_on:
+      - webserver
+    restart: always

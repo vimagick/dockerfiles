@@ -1,0 +1,9 @@
+code-server:
+  image: codercom/code-server
+  command: --allow-http --no-auth --disable-telemetry
+  ports:
+    - "8443:8443"
+  volumes:
+    - ./data:/home/coder/project
+    - /home/coder/local/share/code-server
+  restart: unless-stopped

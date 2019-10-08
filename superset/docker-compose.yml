@@ -1,7 +1,45 @@
-superset:
-  image: amancevice/superset
-  ports:
-    - "8088:8088"
-  volumes:
-    - ./data:/var/lib/superset
-  restart: always
+version: '3.7'
+
+services:
+
+  redis:
+    image: redis:5-alpine
+    command: --save 900 1
+    volumes:
+      - ./data/redis:/data
+    restart: always
+
+  postgres:
+    image: postgres:11-alpine
+    volumes:
+      - ./data/postgres:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: superset
+      POSTGRES_PASSWORD: superset
+      POSTGRES_USER: superset
+    restart: always
+
+  superset:
+    image: amancevice/superset:0.34.0
+    ports:
+      - "8088:8088"
+    volumes:
+      - ./data/superset:/etc/superset
+    environment:
+      MAPBOX_API_KEY: ${MAPBOX_API_KEY}
+    depends_on:
+      - postgres
+      - redis
+    restart: always
+
+  worker:
+    image: amancevice/superset:0.34.0
+    command: celery worker
+    volumes:
+      - ./data/superset:/etc/superset
+    environment:
+      MAPBOX_API_KEY: ${MAPBOX_API_KEY}
+    depends_on:
+      - postgres
+      - redis
+    restart: always

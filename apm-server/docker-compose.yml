@@ -1,0 +1,9 @@
+apm-server:
+  image: docker.elastic.co/apm/apm-server:6.5.4
+  ports:
+    - "8200:8200"
+  volumes:
+    - ./data:/usr/share/apm-server
+  extra_hosts:
+    - elasticsearch:1.2.3.4
+  restart: always

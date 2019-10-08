@@ -1,0 +1,8 @@
+hydra:
+  image: easypi/hydra-arm
+  entrypoint: sleep
+  command: infinity
+  volumes:
+    - ./data:/data
+  working_dir: /data
+  restart: unless-stopped

@@ -1,11 +1,25 @@
 nifi:
-  image: vimagick/nifi
+  image: apache/nifi
   ports:
     - "8080:8080"
-    - "8081:8081"
-  volumes:
-    - ./data/content_repository:/opt/nifi/content_repository
-    - ./data/database_repository:/opt/nifi/database_repository
-    - ./data/flowfile_repository:/opt/nifi/flowfile_repository
-    - ./data/provenance_repository:/opt/nifi/provenance_repository
+    - "8082:8082"
+    - "10000:10000"
+  environment:
+    - NIFI_WEB_HTTP_PORT=8080
+    - NIFI_CLUSTER_IS_NODE=true
+    - NIFI_CLUSTER_NODE_PROTOCOL_PORT=8082
+    - NIFI_REMOTE_INPUT_SOCKET_PORT=10000
+    - NIFI_ZK_CONNECT_STRING=zookeeper1:2181,zookeeper2:2181,zookeeper3:2181
+    - NIFI_ELECTION_MAX_WAIT=1 min
+    - NIFI_ELECTION_MAX_CANDIDATES=2
+    - NIFI_JVM_HEAP_INIT=512m
+    - NIFI_JVM_HEAP_MAX=1g
+  extra_hosts:
+    - zookeeper1:10.0.0.21
+    - zookeeper2:10.0.0.22
+    - zookeeper3:10.0.0.23
+    # nifi1:10.0.0.11
+    - nifi2:10.0.0.12
+    - nifi3:10.0.0.13
+  hostname: nifi1
   restart: always

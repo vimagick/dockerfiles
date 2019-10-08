@@ -1,0 +1,14 @@
+[graphite]
+address = "graphite:2003"
+dial_timeout = '5s'
+write_timeout = '30s'
+
+mode = 'tags'
+
+global_prefix = 'stats'
+global_suffix = ''
+
+prefix_counter = 'counters'
+prefix_timer = 'timers'
+prefix_gauge = 'gauges'
+prefix_sets = 'sets'

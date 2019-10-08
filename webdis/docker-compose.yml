@@ -1,0 +1,12 @@
+webdis:
+  image: anapsix/webdis
+  ports:
+    - "7379:7379"
+  environment:
+    - REDIS_HOST=x.x.x.x
+    - REDIS_PORT=6379
+    - REDIS_AUTH=null
+    - DATABASE=0
+    - HTTP_HOST=0.0.0.0
+    - HTTP_PORT=7379
+  restart: unless-stopped

@@ -1,0 +1,8 @@
+hydra:
+  image: vimagick/hydra
+  entrypoint: sleep
+  command: infinity
+  volumes:
+    - ./data:/data
+  working_dir: /data
+  restart: unless-stopped

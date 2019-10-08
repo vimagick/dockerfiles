@@ -1,0 +1,12 @@
+wireguard:
+  image: easypi/wireguard-arm
+  command: ["sh", "-c", "wg-quick up wg0 && sleep infinity"]
+  ports:
+    - "51820:51820/udp"
+  volumes:
+    - ./data:/etc/wireguard
+    - /lib/modules:/lib/modules
+  cap_add:
+    - NET_ADMIN
+    - SYS_MODULE
+  restart: unless-stopped

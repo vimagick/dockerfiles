@@ -1,0 +1,12 @@
+edge:
+  image: easypi/n2n-arm
+  entrypoint: ["edge"]
+  command: ["-dn2n0", "-cmynetwork", "-kmypassword", "-mAA:BB:CC:DD:EE:FF", "-a192.168.100.1", "-p50001", "-lsupernode:7654", "-r", "-f"]
+  extra_hosts:
+    - supernode:1.2.3.4
+  devices:
+    - /dev/net/tun
+  cap_add:
+    - NET_ADMIN
+  net: host
+  restart: unless-stopped

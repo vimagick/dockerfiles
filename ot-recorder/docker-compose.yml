@@ -1,16 +1,29 @@
-ot-recorder:
-  image: vimagick/ot-recorder
-  ports:
-    - "8083:8083"
-  volumes:
-    - ./data:/var/spool/owntracks/recorder/store
-  environment:
-    - OTR_HOST=iot.eclipse.org
-    - OTR_PORT=8883
-    - OTR_USER=username
-    - OTR_PASS=password
-    - OTR_CAFILE=/etc/ssl/certs/DST_Root_CA_X3.pem
-    - OTR_TOPICS=owntracks/#
-    - OTR_BROWSERAPIKEY=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-    - OTR_OPTIONS=--qos 0
-  restart: always
+version: "3.7"
+
+services:
+
+  recorder:
+    image: vimagick/ot-recorder
+    ports:
+      - "8083:8083"
+    volumes:
+      - ./data:/var/spool/owntracks/recorder/store
+    environment:
+      - OTR_HOST=iot.eclipse.org
+      - OTR_PORT=1883
+      - OTR_USER=username
+      - OTR_PASS=password
+      - OTR_TOPICS=owntracks/#
+      # OTR_CAFILE=/etc/ssl/certs/DST_Root_CA_X3.pem
+      # OTR_BROWSERAPIKEY=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+      # OTR_OPTIONS=--debug
+    restart: unless-stopped
+
+  frontend:
+    image: owntracks/frontend
+    ports:
+      - 8080:80
+    environment:
+      - SERVER_HOST=recorder
+      - SERVER_PORT=8083
+    restart: unless-stopped

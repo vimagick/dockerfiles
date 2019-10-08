@@ -2,16 +2,18 @@
 # Dockerfile for building docker-compose-arm
 #
 
-FROM resin/rpi-raspbian:jessie
+FROM arm32v7/debian:stretch
 MAINTAINER EasyPi Software Foundation
 
-ENV DOCKER_COMPOSE_VERSION 1.23.1
+ENV DOCKER_COMPOSE_VERSION 1.24.1
 ENV PYINSTALLER_VERSION 3.2.1
 
 RUN set -xe \
     && apt-get update \
     && apt-get install -y build-essential \
                           curl \
+                          libffi-dev \
+                          libssl-dev \
                           python-dev \
                           zlib1g-dev \
     && curl https://bootstrap.pypa.io/get-pip.py | python \

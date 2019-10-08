@@ -2,7 +2,7 @@
 # Dockerfile for prestashop
 #
 
-FROM php:5.6-apache
+FROM php:7.3-apache
 MAINTAINER kev <noreply@easypi.pro>
 
 RUN a2enmod rewrite
@@ -17,8 +17,8 @@ RUN set -xe \
 
 WORKDIR /var/www/html
 
-ENV PS_VER 1.7.2.4
-ENV PS_MD5 19c374fd4e65e2a0d978c619781686bc
+ENV PS_VER 1.7.5.1
+ENV PS_MD5 7ec5bf2ce9c5d0d369c76ae5d0a716a3
 ENV PS_URL https://download.prestashop.com/download/releases/prestashop_${PS_VER}.zip
 ENV PS_FILE prestashop_${PS_VER}.zip
 

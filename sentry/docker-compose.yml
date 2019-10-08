@@ -1,0 +1,69 @@
+version: '3'
+
+services:
+
+  sentry:
+    image: 'sentry:latest'
+    ports:
+      - '9000:9000'
+    environment:
+      SENTRY_SECRET_KEY: 'theSentrySecretKey'
+      SENTRY_POSTGRES_HOST: 'postgres'
+      SENTRY_POSTGRES_PORT: '5432'
+      SENTRY_DB_NAME: 'sentry'
+      SENTRY_DB_USER: 'sentry'
+      SENTRY_DB_PASSWORD: 'sentry'
+      SENTRY_REDIS_HOST: 'redis'
+    depends_on:
+      - 'redis'
+      - 'postgres'
+    restart: always
+
+  sentry_worker:
+    image: 'sentry:latest'
+    command: "sentry run worker"
+    environment:
+      SENTRY_SECRET_KEY: 'theSentrySecretKey'
+      SENTRY_POSTGRES_HOST: 'postgres'
+      SENTRY_POSTGRES_PORT: '5432'
+      SENTRY_DB_NAME: 'sentry'
+      SENTRY_DB_USER: 'sentry'
+      SENTRY_DB_PASSWORD: 'sentry'
+      SENTRY_REDIS_HOST: 'redis'
+    depends_on:
+      - 'redis'
+      - 'postgres'
+    restart: always
+
+  sentry_cron:
+    image: 'sentry:latest'
+    command: "sentry run cron"
+    environment:
+      SENTRY_SECRET_KEY: 'theSentrySecretKey'
+      SENTRY_POSTGRES_HOST: 'postgres'
+      SENTRY_POSTGRES_PORT: '5432'
+      SENTRY_DB_NAME: 'sentry'
+      SENTRY_DB_USER: 'sentry'
+      SENTRY_DB_PASSWORD: 'sentry'
+      SENTRY_REDIS_HOST: 'redis'
+    depends_on:
+      - 'redis'
+      - 'postgres'
+    restart: always
+
+  redis:
+    image: 'redis:alpine'
+    command: --save 900 1
+    volumes:
+      - ./data/redis:/data
+    restart: always
+
+  postgres:
+    image: 'postgres:alpine'
+    volumes:
+      - ./data/postgres:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: 'sentry'
+      POSTGRES_PASSWORD: 'sentry'
+      POSTGRES_DB: 'sentry'
+    restart: always
