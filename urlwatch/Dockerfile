@@ -20,6 +20,7 @@ RUN apk add -U ca-certificates \
                    lxml \
                    urlwatch \
                    pyyaml \
+                   keyrings.alt \
     && apk del build-base \
                libxml2-dev \
                libxslt-dev \
