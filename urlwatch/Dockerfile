@@ -19,6 +19,7 @@ RUN set -xe \
     && python3 -m pip install appdirs   \
                               cssselect \
                               keyring   \
+                              keyrings.alt \
                               lxml      \
                               minidb    \
                               pyyaml    \
