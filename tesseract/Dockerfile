@@ -20,13 +20,13 @@ RUN set -xe \
                           libpango1.0-0 \
                           libpango1.0-dev \
                           libtool \
-    && git clone https://github.com/tesseract-ocr/tesseract.git \
+    && git clone --depth 1 -b 4.0.0-beta.3 https://github.com/tesseract-ocr/tesseract.git \
         && cd tesseract \
         && ./autogen.sh \
         && ./configure \
         && make install \
         && cd .. \
-    && git clone https://github.com/tesseract-ocr/tessdata.git \
+    && git clone --depth 1 -b 4.00 https://github.com/tesseract-ocr/tessdata.git \
         && cd tessdata \
         && mv * /usr/local/share/tessdata/ \
         && cd .. \
