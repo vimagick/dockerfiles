@@ -257,6 +257,7 @@ A collection of delicious docker recipes.
 
 ## 3rd-party
 
+- [x] docker.bintray.io/jfrog/artifactory-oss
 - [x] tutum/builder
 - [x] browserless/chrome
 - [x] certbot
