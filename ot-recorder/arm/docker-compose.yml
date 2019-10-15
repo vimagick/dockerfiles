@@ -23,7 +23,6 @@ services:
     ports:
       - 8080:80
     environment:
-      - LISTEN_PORT=80
       - SERVER_HOST=recorder
       - SERVER_PORT=8083
     restart: unless-stopped

@@ -35,4 +35,5 @@ EXPOSE 80
 
 CMD set -xe \
     && envsubst '${SERVER_HOST}:${SERVER_PORT}' < /etc/nginx/nginx.tmpl > /etc/nginx/nginx.conf \
+    && mkdir -p /run/nginx/ \
     && nginx -g 'daemon off;'
