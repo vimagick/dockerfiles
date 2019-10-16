@@ -1,0 +1,7 @@
+nexus3:
+  image: sonatype/nexus3
+  ports:
+    - "8081:8081"
+  volumes:
+    - ./data:/nexus-data
+  restart: unless-stopped

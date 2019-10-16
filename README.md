@@ -290,6 +290,7 @@ A collection of delicious docker recipes.
 - [x] sonatype/nexus3
 - [x] jazzdd/phpvirtualbox
 - [x] jenkins
+- [x] sonatype/nexus3
 - [x] jupyter/notebook
 - [x] kylemanna/openvpn
 - [x] metabase/metabase
