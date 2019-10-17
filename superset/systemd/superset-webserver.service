@@ -1,0 +1,16 @@
+[Unit]
+Description=Superset webserver daemon
+After=network.target postgresql.service redis-server.service
+Wants=postgresql.service redis-server.service
+
+[Service]
+EnvironmentFile=/etc/default/superset
+User=superset
+Group=superset
+Type=simple
+ExecStart=/home/superset/.virtualenvs/superset/bin/gunicorn superset:app
+Restart=on-failure
+RestartSec=5s
+
+[Install]
+WantedBy=multi-user.target

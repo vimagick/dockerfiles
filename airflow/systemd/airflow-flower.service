@@ -1,0 +1,16 @@
+[Unit]
+Description=Airflow celery flower
+After=network.target postgresql.service redis-server.service
+Wants=postgresql.service redis-server.service
+
+[Service]
+EnvironmentFile=/etc/default/airflow
+User=airflow
+Group=airflow
+Type=simple
+ExecStart=/home/airflow/.virtualenvs/airflow/bin/airflow flower --port=5555
+Restart=on-failure
+RestartSec=5s
+
+[Install]
+WantedBy=multi-user.target

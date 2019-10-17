@@ -1,0 +1,4 @@
+PYTHONPATH=/home/superset/superset
+SUPERSET_HOME=/home/superset/superset
+FLASK_APP=superset
+GUNICORN_CMD_ARGS="--workers=4 --timeout=60 --bind=0.0.0.0:8088 --limit-request-line=0 --limit-request-field_size=0"

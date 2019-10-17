@@ -1,0 +1,18 @@
+[Unit]
+Description=Airflow webserver daemon
+After=network.target postgresql.service redis-server.service
+Wants=postgresql.service redis-server.service
+
+[Service]
+EnvironmentFile=/etc/default/airflow
+User=airflow
+Group=airflow
+Type=simple
+RuntimeDirectory=airflow
+ExecStart=/home/airflow/.virtualenvs/airflow/bin/airflow webserver --pid /run/airflow/webserver.pid
+Restart=on-failure
+RestartSec=5s
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target
