@@ -7,7 +7,7 @@ FROM python:3.7-alpine
 ENV AIRFLOW_VERSION=1.10.5
 ENV AIRFLOW_EXTRAS=async,all_dbs,celery,crypto,devel_hadoop,jdbc,ldap,password,redis,s3,samba,slack,ssh,statsd
 ENV AIRFLOW_HOME=/opt/airflow
-ENV AIRFLOW_CONFIG=airflow.cfg
+ENV AIRFLOW_CONFIG=/opt/airflow/airflow.cfg
 
 ARG FERNET_KEY=4XHGZH0dZ40iOv6z5cyfrXVg5qg3s_d06A7BFfbSsqA=
 ENV FERNET_KEY=${FERNET_KEY}
