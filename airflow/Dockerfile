@@ -9,9 +9,6 @@ ENV AIRFLOW_EXTRAS=async,all_dbs,celery,crypto,devel_hadoop,jdbc,ldap,password,r
 ENV AIRFLOW_HOME=/opt/airflow
 ENV AIRFLOW_CONFIG=/opt/airflow/airflow.cfg
 
-ARG FERNET_KEY=4XHGZH0dZ40iOv6z5cyfrXVg5qg3s_d06A7BFfbSsqA=
-ENV FERNET_KEY=${FERNET_KEY}
-
 RUN set -xe \
     && apk add --no-cache \
         build-base \
@@ -23,7 +20,7 @@ RUN set -xe \
         mariadb-dev \
         postgresql-dev \
         python3-dev \
-    && pip install cython numpy \
+    && pip install cython gunicorn numpy psycopg2-binary \
     && pip install apache-airflow[${AIRFLOW_EXTRAS}]==${AIRFLOW_VERSION} \
     && pip install "websocket-client<0.55.0,>=0.35" \
     && apk del \
