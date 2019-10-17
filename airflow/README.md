@@ -26,6 +26,18 @@ $ docker stack deploy -c docker-stack.yaml airflow
 $ docker service update --replicas-max-per-node=1 airflow_worker
 $ docker service update --replicas 3 airflow_worker
 
+$ docker stack services airflow
+$ docker service ps airflow_webserver
+$ docker exec -it airflow_webserver.1.xxxxxx sh
+>>> airflow create_user -r Admin -u admin -e admin@borderxlab.com -f Super -l Admin -p secret
+>>> airflow list_users
+╒══════╤════════════╤══════════════════════╤══════════════╤═════════════╤═════════╕
+│   Id │ Username   │ Email                │ First name   │ Last name   │ Roles   │
+╞══════╪════════════╪══════════════════════╪══════════════╪═════════════╪═════════╡
+│    1 │ admin      │ admin@borderxlab.com │ Super        │ Admin       │ [Admin] │
+╘══════╧════════════╧══════════════════════╧══════════════╧═════════════╧═════════╛
+>>> exit
+
 $ curl http://localhost:8080/
 $ curl http://localhost:5555/
 ```
