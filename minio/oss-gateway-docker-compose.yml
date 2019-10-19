@@ -1,9 +1,0 @@
-oss-gateway:
-  image: minio/minio
-  command: gateway oss
-  ports:
-    - "9000:9000"
-  environment:
-    - MINIO_ACCESS_KEY=ossaccesskey
-    - MINIO_SECRET_KEY=osssecretkey
-  restart: always

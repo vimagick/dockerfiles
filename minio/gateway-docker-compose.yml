@@ -1,0 +1,25 @@
+version: "3.7"
+
+services:
+
+  oss:
+    image: minio/minio
+    command: gateway oss https://oss-cn-beijing.aliyuncs.com
+    ports:
+      - "9000:9000"
+    environment:
+      - MINIO_ACCESS_KEY=ossaccesskey
+      - MINIO_SECRET_KEY=osssecretkey
+    restart: unless-stopped
+
+  nas:
+    image: minio/minio
+    command: gateway nas /data
+    ports:
+      - "9001:9000"
+    volumes:
+      - ./data:/data
+    environment:
+      - MINIO_ACCESS_KEY=nasaccesskey
+      - MINIO_SECRET_KEY=nassecretkey
+    restart: unless-stopped
