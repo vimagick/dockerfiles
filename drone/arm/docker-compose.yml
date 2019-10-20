@@ -1,8 +1,9 @@
 version: '3.7'
 
 services:
+
   drone:
-    image: drone/drone:1.5-linux-arm
+    image: drone/drone:1.6-linux-arm
     ports:
       -  "8080:80"
     volumes:
@@ -11,8 +12,8 @@ services:
       - DRONE_SERVER_HOST=drone
       - DRONE_SERVER_PROTO=http
       - DRONE_RPC_SECRET=secret
-      - DRONE_DATABASE_DRIVER=postgres
-      - DRONE_DATABASE_DATASOURCE=postgres://drone:drone@postgres:5432/drone?sslmode=disable
+      - DRONE_DATABASE_DRIVER=sqlite3
+      - DRONE_DATABASE_DATASOURCE=/data/database.sqlite
       - DRONE_GOGS_SERVER=http://gogs:3000
       - DRONE_AGENTS_ENABLED=true
     depends_on:
@@ -21,7 +22,7 @@ services:
     restart: always
 
   agent:
-    image: drone/agent:1.5-linux-arm
+    image: drone/agent:1.6-linux-arm
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     environment:
@@ -32,18 +33,6 @@ services:
       - DRONE_RUNNER_CAPACITY=2
     depends_on:
       - drone
-    restart: always
-
-  postgres:
-    image: arm32v7/postgres:12-alpine
-    ports:
-      - "5432:5432"
-    volumes:
-      - ./data/postgres:/var/lib/postgresql/data
-    environment:
-      - POSTGRES_USER=drone
-      - POSTGRES_PASSWORD=drone
-      - POSTGRES_DB=drone
     restart: always
 
   gogs:

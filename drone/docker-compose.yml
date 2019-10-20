@@ -1,8 +1,9 @@
 version: "3.7"
 
 services:
+
   drone:
-    image: drone/drone:1.5-linux-amd64
+    image: drone/drone:1.6-linux-amd64
     ports:
       -  "8080:80"
     volumes:
@@ -21,7 +22,7 @@ services:
     restart: always
 
   agent:
-    image: drone/agent:1.5-linux-amd64
+    image: drone/agent:1.6-linux-amd64
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     environment:
