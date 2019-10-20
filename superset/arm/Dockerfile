@@ -37,6 +37,7 @@ RUN set -xe \
         libldap-2.4-2 \
         libldap2-dev \
         libmariadb-dev \
+        libmariadb-dev-compat \
         libmariadb3 \
         libpq-dev \
         libpq5 \
@@ -46,10 +47,12 @@ RUN set -xe \
         libssl1.1 \
         python3 \
         python3-dev \
-    && curl https://raw.githubusercontent.com/${SUPERSET_REPO}/${SUPERSET_VERSION}/requirements.txt -o requirements.txt \
-    && curl https://raw.githubusercontent.com/amancevice/docker-superset/master/requirements-db.txt -o requirements-db.txt \
     && curl -sSL https://bootstrap.pypa.io/get-pip.py | python3 \
-    && pip3 install --no-cache-dir -r requirements.txt -r requirements-db.txt superset==${SUPERSET_VERSION} \
+    && pip3 install --no-cache-dir \
+        apache-superset==${SUPERSET_VERSION} \
+        mysqlclient \
+        psycopg2-binary \
+        pyhive[hive,presto] \
     && apt-get remove -y \
         build-essential \
         freetds-dev \

@@ -22,7 +22,7 @@ RUN set -xe \
         python3-dev \
     && pip install cython numpy psycopg2-binary \
     && pip install apache-airflow[${AIRFLOW_EXTRAS}]==${AIRFLOW_VERSION} \
-    && pip install "websocket-client<0.55.0,>=0.35" \
+    && pip install "websocket-client>=0.35,<0.55.0" \
     && apk del \
         build-base \
         cyrus-sasl-dev \

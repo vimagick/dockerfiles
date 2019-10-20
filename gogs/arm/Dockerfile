@@ -2,22 +2,23 @@
 # Dockerfile for gogs-arm
 #
 
-FROM easypi/alpine-arm
+FROM arm32v7/alpine:3
 MAINTAINER EasyPi Software Foundation
 
 ENV GOSU_VERSION 1.11
 ENV GOGS_VERSION 0.11.91
 ENV GOGS_CUSTOM /data/gogs
 
-RUN apk add --no-cache bash \
-                       ca-certificates \
-                       curl \
-                       git \
-                       linux-pam \
-                       openssh \
-                       s6 \
-                       socat \
-                       tar
+RUN apk add --no-cache \
+        bash \
+        ca-certificates \
+        curl \
+        git \
+        linux-pam \
+        openssh \
+        s6 \
+        socat \
+        tar
 
 RUN set -xe \
     && adduser -H -D -g 'Gogs Git User' -h /data/git -s /bin/bash git \
@@ -32,9 +33,9 @@ RUN set -xe \
     && mkdir /app/ \
     && cd /app/ \
     && curl -LO https://github.com/gogits/gogs/releases/download/v${GOGS_VERSION}/raspi_armv7.zip \
-    && unzip raspi2_armv6.zip \
-    && rm raspi2_armv6.zip \
-    && ln -s /lib/libc.musl-armhf.so.1 /lib/ld-linux-armhf.so.3
+    && unzip raspi_armv7.zip \
+    && rm raspi_armv7.zip \
+    && ln -s /lib/libc.musl-armv7.so.1 /lib/ld-linux-armhf.so.3
 
 RUN set -xe \
     && cd /app/gogs/ \

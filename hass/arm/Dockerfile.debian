@@ -2,37 +2,42 @@
 # Dockerfile for hass-arm (Home Assistant)
 #
 
-FROM resin/rpi-raspbian:jessie
+FROM balenalib/rpi-raspbian:buster
 MAINTAINER EasyPi Software Foundation
+
+ENV HASS_VERSION=0.100.2
+ENV HASS_CLI_VERSION=3.1.0
 
 RUN set -xe \
     && apt-get update \
-    && apt-get install -y build-essential \
-                          bluez \
-                          curl \
-                          libbluetooth3 \
-                          libbluetooth-dev \
-                          libboost-python-dev \
-                          libboost-thread-dev \
-                          libglib2.0 \
-                          libglib2.0-dev \
-                          pkg-config \
-                          python-dev \
-                          python3-dev \
+    && apt-get install -y \
+        build-essential \
+        bluez \
+        curl \
+        libbluetooth3 \
+        libbluetooth-dev \
+        libboost-python-dev \
+        libboost-thread-dev \
+        libglib2.0 \
+        libglib2.0-dev \
+        pkg-config \
+        python-dev \
+        python3-dev \
     && curl https://bootstrap.pypa.io/get-pip.py | python3 \
-    && pip3 install --no-cache-dir gattlib \
-                                   homeassistant \
-                                   pybluez \
-    && setcap 'cap_net_raw,cap_net_admin+eip' /usr/bin/python3.4 \
-    && apt-get remove -y curl \
-                         libbluetooth-dev \
-                         libboost-python-dev \
-                         libboost-thread-dev \
-                         libglib2.0-dev \
-                         pkg-config \
-                         python-dev
+    && pip3 install --no-cache-dir \
+        gattlib \
+        homeassistant \
+        pybluez \
+    && setcap 'cap_net_raw,cap_net_admin+eip' /usr/bin/python3.7 \
+    && apt-get remove -y \
+        curl \
+        libbluetooth-dev \
+        libboost-python-dev \
+        libboost-thread-dev \
+        libglib2.0-dev \
+        pkg-config \
+        python-dev
 
 VOLUME /etc/hass
 EXPOSE 8123
-
 ENTRYPOINT ["hass", "--config", "/etc/hass"]
