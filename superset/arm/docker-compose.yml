@@ -4,4 +4,5 @@ superset:
     - "8088:8088"
   volumes:
     - ./data:/var/lib/superset
+    - ./data/superset_config.py:/etc/superset/superset_config.py:ro
   restart: always

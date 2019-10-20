@@ -40,4 +40,12 @@ $ docker-compose exec --user root jenkins apk add -U git
 $ firefox http://localhost:8080/
 ```
 
+## fix slow network
+
+```
+$ vim data/war/jsbundles/pluginSetupWizard.js
+    // default 10 seconds for AJAX responses to return before triggering an error condition
+    var pluginManagerErrorTimeoutMillis = 10 * 1000;
+```
+
 [1]: https://jenkins.io/index.html

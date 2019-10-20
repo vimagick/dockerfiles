@@ -53,6 +53,7 @@ RUN set -xe \
         mysqlclient \
         psycopg2-binary \
         pyhive[hive,presto] \
+        redis \
     && apt-get remove -y \
         build-essential \
         freetds-dev \
@@ -64,7 +65,7 @@ RUN set -xe \
         libssl-dev \
         python3-dev \
     && apt-get clean \
-    && rm -r requirements.txt requirements-db.txt /var/lib/apt/lists/*
+    && rm -r /var/lib/apt/lists/*
 
 # Configure Filesystem
 COPY superset /usr/local/bin
