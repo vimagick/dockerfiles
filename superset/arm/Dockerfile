@@ -5,22 +5,19 @@
 FROM arm32v7/debian:buster
 MAINTAINER EasyPi Software Foundation
 
-# Superset version
-ARG SUPERSET_VERSION=0.34.0
-
 # Configure environment
+ENV SUPERSET_VERSION=0.34.1 \
+    SUPERSET_REPO=apache/incubator-superset \
+    SUPERSET_HOME=/var/lib/superset \
+    PYTHONPATH=/etc/superset:/home/superset:$PYTHONPATH
 ENV GUNICORN_BIND=0.0.0.0:8088 \
     GUNICORN_LIMIT_REQUEST_FIELD_SIZE=0 \
     GUNICORN_LIMIT_REQUEST_LINE=0 \
     GUNICORN_TIMEOUT=60 \
     GUNICORN_WORKERS=2 \
     LANG=C.UTF-8 \
-    LC_ALL=C.UTF-8 \
-    PYTHONPATH=/etc/superset:/home/superset:$PYTHONPATH \
-    SUPERSET_REPO=apache/incubator-superset \
-    SUPERSET_VERSION=${SUPERSET_VERSION} \
-    SUPERSET_HOME=/var/lib/superset
-ENV GUNICORN_CMD_ARGS="--workers ${GUNICORN_WORKERS} --timeout ${GUNICORN_TIMEOUT} --bind ${GUNICORN_BIND} --limit-request-line ${GUNICORN_LIMIT_REQUEST_LINE} --limit-request-field_size ${GUNICORN_LIMIT_REQUEST_FIELD_SIZE}"
+    LC_ALL=C.UTF-8
+ENV GUNICORN_CMD_ARGS="-w${GUNICORN_WORKERS} -t${GUNICORN_TIMEOUT} -b${GUNICORN_BIND} --limit-request-line=0 --limit-request-field_size=0"
 
 # Create superset user & install dependencies
 RUN set -xe \
