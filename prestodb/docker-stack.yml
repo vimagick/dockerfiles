@@ -3,7 +3,7 @@ version: "3.7"
 services:
 
   coordinator:
-    image: vimagick/prestodb
+    image: vimagick/prestodb:alpine
     ports:
       - "8080:8080"
     volumes:
@@ -19,7 +19,7 @@ services:
         condition: on-failure
   
   worker:
-    image: vimagick/prestodb
+    image: vimagick/prestodb:alpine
     volumes:
       - /data:/data
       - prestodb_worker_conf:/opt/presto/etc
