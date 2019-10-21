@@ -47,7 +47,8 @@ A collection of delicious docker recipes.
 - [x] ambari
 - [x] kafka-arm
 - [x] kafka-manager
-- [x] presto
+- [x] prestodb (official)
+- [x] prestosql (community)
 - [x] superset-arm
 - [x] zookeeper-arm
 

@@ -14,7 +14,7 @@ nfs:
     - /lib/modules:/lib/modules:ro
   environment:
     - NFS_LOG_LEVEL=DEBUG
-    - NFS_EXPORT_0=/export/presto/coordinator *(ro,no_subtree_check)
-    - NFS_EXPORT_1=/export/presto/worker1     *(ro,no_subtree_check)
+    - NFS_EXPORT_0=/export/prestodb/coordinator *(ro,no_subtree_check)
+    - NFS_EXPORT_1=/export/prestodb/worker1     *(ro,no_subtree_check)
   privileged: true
   restart: unless-stopped

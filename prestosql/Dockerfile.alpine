@@ -1,5 +1,5 @@
 #
-# Dockerfile for presto-ce
+# Dockerfile for prestosql
 #
 
 FROM openjdk:8-jre-alpine
