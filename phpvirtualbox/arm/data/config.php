@@ -1,29 +1,19 @@
 <?php
 /**
- * phpVirtualBox example configuration.
- * @version $Id: config.php-example 452 2012-10-17 12:22:12Z imooreyahoo@gmail.com $
+ * phpVirtualBox example configuration. 
+ * @version $Id: config.php-example 585 2015-04-04 11:39:31Z imoore76 $
  *
  * rename to config.php and edit as needed.
  *
  */
 class phpVBoxConfig {
 
-    public function __construct() {
-        // getting servers array
-        $this->servers = require __DIR__ . '/config-servers.php';
-        // getting override settings
-        $overrides = require __DIR__.'/config-override.php';
-        foreach ($overrides as $key => $value) {
-            $this->$key = $value;
-        }
-    }
-
     /* Username / Password for system user that runs VirtualBox */
-    var $username = '';
-    var $password = '';
+    var $username = 'vbox';
+    var $password = 'pass';
 
     /* SOAP URL of vboxwebsrv (not phpVirtualBox's URL) */
-    var $location = 'http://127.0.0.1:18083/';
+    var $location = 'http://vboxwebsrv:18083/';
 
     /* Default language. See languages folder for more language options.
      * Can also be changed in File -> Preferences -> Language in
@@ -33,6 +23,8 @@ class phpVBoxConfig {
 
     /* Set the standard VRDE Port Number / Range, e.g. 1010-1020 or 1027 */
     var $vrdeports = '9000-9100';
+    /* Set the default VRDE address, e.g. 192.168.1.1 */
+    #var $vrdeaddress = '192.168.1.1';
 
     /*
      *
@@ -43,27 +35,26 @@ class phpVBoxConfig {
     // Multiple servers example config. Uncomment (remove /* and */) to use.
     // Add ALL the servers you want to use. Even if you have the server set
     // above. The default server will be the first one in the list.
-
     /*
-    var $servers = array(
-            array(
-                    'name' => 'London',
-                    'username' => 'user',
-                    'password' => 'pass',
-                    'location' => 'http://192.168.1.1:18083/',
-                    'authMaster' => true // Use this server for authentication
-            ),
-            array(
-                    'name' => '',
-                    'username' => 'user2',
-                    'password' => 'pass2',
-                    'location' => 'http://192.168.1.2:18083/'
-            ),
-    );
-    */
+       var $servers = array(
+           array(
+               'name' => 'London',
+               'username' => 'user',
+               'password' => 'pass',
+               'location' => 'http://192.168.1.1:18083/',
+               'authMaster' => true // Use this server for authentication
+           ),
+           array(
+               'name' => 'New York',
+               'username' => 'user2',
+               'password' => 'pass2',
+               'location' => 'http://192.168.1.2:18083/'
+           ),
+       );
+     */
 
     // Disable authentication
-    var $noAuth = true;
+    #var $noAuth = true;
 
     // Host / ip to use for console connections
     #var $consoleHost = '192.168.1.40';
@@ -80,7 +71,7 @@ class phpVBoxConfig {
     // Max number of progress operations to keep in list
     var $maxProgressList = 5;
 
-    // Change default preview aspect ratio to 1.
+    // Change default preview aspect ratio to 1. 
     // http://www.wikipedia.org/wiki/Aspect_ratio_%28image%29#Previous_and_presently_used_aspect_ratios
     #var $previewAspectRatio = 1.6;
 
@@ -88,24 +79,24 @@ class phpVBoxConfig {
     #var $enableCustomIcons = true;
 
     /*
-    Exclusively use phpVirtualBox's groups configuration rather than VirtualBox groups.
-    This has the following effects:
+       Exclusively use phpVirtualBox's groups configuration rather than VirtualBox groups.
+       This has the following effects:
 
-    *) Group changes made in phpVirtualBox will not be reflected in VirtualBox programs such as
-    	VirtualBox and VBoxManage
-    *) Group changes will not affect which folder a VM is placed in
-    *) You can rename groups that contain running VMs and move / copy running VMs to groups
-    */
-    #var $phpVboxGroups = true;
+     *) Group changes made in phpVirtualBox will not be reflected in VirtualBox programs such as
+     VirtualBox and VBoxManage
+     *) Group changes will not affect which folder a VM is placed in
+     *) You can rename groups that contain running VMs and move / copy running VMs to groups
+     */
+     #var $phpVboxGroups = true;
 
 
     /*
-    Allow to prompt deletion hard disk files on removal from Virtual Media Manager.
-    If this is not set, files are always kept. If this is set, you will be PROMPTED
-    to decide whether or not you would like to delete the hard disk file(s) when you
-    remove a hard disk from virtual media manager. You may still choose not to delete
-    the file when prompted.
-    */
+       Allow to prompt deletion hard disk files on removal from Virtual Media Manager.
+       If this is not set, files are always kept. If this is set, you will be PROMPTED
+       to decide whether or not you would like to delete the hard disk file(s) when you
+       remove a hard disk from virtual media manager. You may still choose not to delete
+       the file when prompted.
+     */
     var $deleteOnRemove = true;
 
     /*
@@ -116,7 +107,7 @@ class phpVBoxConfig {
     var $browserRestrictFiles = array('.iso','.vdi','.vmdk','.img','.bin','.vhd','.hdd','.ovf','.ova','.xml','.vbox','.cdr','.dmg','.ima','.dsk','.vfd');
 
     // Restrict locations / folders
-    var $browserRestrictFolders = array('/'); // Or something like array('/home/vbox','/var/ISOs')
+    #var $browserRestrictFolders = array('D:\\','C:\\Users\\Ian'); // Or something like array('/home/vbox','/var/ISOs')
 
     // Force use of local, web server based file browser instead of going through vboxwebsrv
     #var $browserLocal = true;
@@ -146,7 +137,7 @@ class phpVBoxConfig {
 
     /*
      * VM Memory warnings.
-     *
+     * 
      * If $vmMemoryStartLimitWarn is enabled, each time a VM is started through
      * phpVirtualBox, it will check that the available host memory is greater than
      * the base and video memory of the VM + 50MB (a little bit of overhead). If it
@@ -158,8 +149,8 @@ class phpVBoxConfig {
      * performed by $vmMemoryStartLimitWarn logic. For instance it may be a good
      * idea to always have VM memory requirements + 100MB free. 100 is the default.
      */
-    #var $vmMemoryStartLimitWarn = true;
-    #var $vmMemoryOffset = 100;
+     #var $vmMemoryStartLimitWarn = true;
+     #var $vmMemoryOffset = 100;
 
 
     /*
@@ -181,7 +172,7 @@ class phpVBoxConfig {
     var $nicMax = 4;
 
     /* Enable advanced configuration items (normally hidden in the VirtualBox GUI)
-     * Note that some of these items may not be translated to languages other than English.
+     * Note that some of these items may not be translated to languages other than English. 
      */
     #var $enableAdvancedConfig = true;
 
@@ -192,7 +183,7 @@ class phpVBoxConfig {
     #var $startStopConfig = true;
 
     // Authentication library.
-    var $authLib = 'Builtin';
+    // var $authLib = 'Builtin';
 
     // VM ownership
     #var $enforceVMOwnership = true;
@@ -204,26 +195,29 @@ class phpVBoxConfig {
     // Allow VDE network configuration. This must be supported by the underlying VirtualBox installation!
     // If you do not know what VDE networking is - you do not need it, it is probably not supported by your
     // VirtualBox installation and will cause errors if enabled.
-    #var $enableVDE = true;
+    #var $enableVDE = true; 
 
     // Disable setting SATA controllers port count to the max port number found when saving VMs.
     #var $disableSataPortCount = true;
 
     /* Enable Parallel Port configuration - EXPERIMENTAL
-    LPT support may or may not work for you.
-    !!! VirtualBox LPT support only works in Linux. !!!
-    */
+       LPT support may or may not work for you. 
+       !!! VirtualBox LPT support only works in Linux. !!!
+     */
     #var $enableLPTConfig = true;
 
     /* Enable HardDisk IgnoreFlush configuration. This controls the "ExtraData" setting
      * in "VBoxInternal/Devices/[controller type]/0/LUN#[x]/Config/IgnoreFlush". See
      * Responding to guest IDE/SATA flush requests at:
      * http://www.virtualbox.org/manual/ch12.html#idp12757424
-    */
+     */
     #var $enableHDFlushConfig = true;
 
+    /*
+     * Event listener timeout in seconds. This is an advanced option that most people will
+     * probably not need to change.
+     */
+    #var $eventListenerTimeout = 20;
 
     /* END SETTINGS  */
-
-
 }
