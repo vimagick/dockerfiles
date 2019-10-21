@@ -27,12 +27,12 @@ $ docker stack deploy -c docker-stack.yml prestodb
 
 $ docker service update --replicas-max-per-node=1 prestodb_worker
 
-$ docker service update --replicas 10 prestodb_worker
+$ docker service update --replicas=10 prestodb_worker
 
 $ docker ps | grep prestodb_coordinator | awk '{print $1}'
 4cc5c6c420d7
 
-$ docker exec -it 4cc5c6c420d7 prestodb --server localhost:8080 --catalog tpch
+$ docker exec -it 4cc5c6c420d7 presto --server localhost:8080 --catalog tpch
 >>> show schemas;
 >>> show tables from tiny;
 >>> select * from tiny.customer limit 10;

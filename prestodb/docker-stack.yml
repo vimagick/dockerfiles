@@ -14,12 +14,12 @@ services:
       placement:
         constraints:
           - node.role == manager
-          - node.hostname == presto-coordinator
       restart_policy:
         condition: on-failure
   
   worker:
     image: vimagick/prestodb:alpine
+    entrypoint: sh -c 'launcher run -Dnode.id=$$HOSTNAME'
     volumes:
       - /data:/data
       - prestodb_worker_conf:/opt/presto/etc
