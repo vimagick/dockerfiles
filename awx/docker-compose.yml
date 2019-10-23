@@ -1,34 +1,23 @@
+#
+# https://github.com/ansible/awx/raw/devel/installer/roles/local_docker/templates/docker-compose.yml.j2
+#
+
 version: '2'
 
 services:
 
   web:
     image: ansible/awx_web
-    ports:
-      - "8052:8052"
+    container_name: awx_web
     hostname: awxweb
     user: root
+    ports:
+      - "8052:8052"
     volumes:
+      - ./data/etc/SECRET_KEY:/etc/tower/SECRET_KEY
+      - ./data/etc/environment.sh:/etc/tower/conf.d/environment.sh
+      - ./data/etc/credentials.py:/etc/tower/conf.d/credentials.py
       - ./data/awx:/var/lib/awx/projects
-    environment:
-      http_proxy: ''
-      https_proxy: ''
-      no_proxy: ''
-      SECRET_KEY: awxsecret
-      DATABASE_NAME: awx
-      DATABASE_USER: awx
-      DATABASE_PASSWORD: awxpass
-      DATABASE_PORT: 5432
-      DATABASE_HOST: postgres
-      RABBITMQ_USER: guest
-      RABBITMQ_PASSWORD: guest
-      RABBITMQ_HOST: rabbitmq
-      RABBITMQ_PORT: 5672
-      RABBITMQ_VHOST: awx
-      MEMCACHED_HOST: memcached
-      MEMCACHED_PORT: 11211
-      AWX_ADMIN_USER: admin
-      AWX_ADMIN_PASSWORD: password
     depends_on:
       - rabbitmq
       - memcached
@@ -37,29 +26,14 @@ services:
 
   task:
     image: ansible/awx_task
+    container_name: awx_task
     hostname: awx
     user: root
     volumes:
+      - ./data/etc/SECRET_KEY:/etc/tower/SECRET_KEY
+      - ./data/etc/environment.sh:/etc/tower/conf.d/environment.sh
+      - ./data/etc/credentials.py:/etc/tower/conf.d/credentials.py
       - ./data/awx:/var/lib/awx/projects
-    environment:
-      http_proxy: ''
-      https_proxy: ''
-      no_proxy: ''
-      SECRET_KEY: awxsecret
-      DATABASE_NAME: awx
-      DATABASE_USER: awx
-      DATABASE_PASSWORD: awxpass
-      DATABASE_HOST: postgres
-      DATABASE_PORT: 5432
-      RABBITMQ_USER: guest
-      RABBITMQ_PASSWORD: guest
-      RABBITMQ_HOST: rabbitmq
-      RABBITMQ_PORT: 5672
-      RABBITMQ_VHOST: awx
-      MEMCACHED_HOST: memcached
-      MEMCACHED_PORT: 11211
-      AWX_ADMIN_USER: admin
-      AWX_ADMIN_PASSWORD: password
     depends_on:
       - rabbitmq
       - memcached
@@ -69,21 +43,27 @@ services:
 
   rabbitmq:
     image: ansible/awx_rabbitmq
+    container_name: awx_rabbitmq
     environment:
       RABBITMQ_DEFAULT_VHOST: awx
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
       RABBITMQ_ERLANG_COOKIE: cookiemonster
     restart: unless-stopped
 
   memcached:
     image: memcached:alpine
+    container_name: awx_memcached
     restart: unless-stopped
 
   postgres:
-    image: postgres:9.6-alpine
+    image: postgres:12-alpine
+    container_name: awx_postgres
     volumes:
-      - ./data/postgres:/var/lib/postgresql/data
+      - ./data/postgres:/var/lib/postgresql/data/pgdata:Z
     environment:
       POSTGRES_USER: awx
       POSTGRES_PASSWORD: awxpass
       POSTGRES_DB: awx
+      PGDATA: /var/lib/postgresql/data/pgdata
     restart: unless-stopped
