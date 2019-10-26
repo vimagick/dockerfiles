@@ -1,0 +1,34 @@
+version: '3.1'
+
+services:
+
+  openmeetings:
+    image: vimagick/openmeetings
+    ports:
+      - "5443:5443"
+    volumes:
+      - ./data/omdata:/opt/omdata
+    environment:
+      - OM_KURENTO_WS_URL=ws://kurento:8888/kurento
+      - OM_DB_HOST=mysql
+      - OM_DB_USER=root
+      - OM_DB_PASS=root
+      - OM_DB_NAME=openmeetings
+      - OM_USER=admin
+      - OM_PASS=admin
+    restart: always
+
+  kurento:
+    image: kurento/kurento-media-server
+    ports:
+      - "8888:8888"
+    restart: always
+  
+  mysql:
+    image: mysql
+    volumes:
+      - ./data/mysql:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=openmeetings
+    restart: always

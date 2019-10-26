@@ -1,0 +1,12 @@
+[Unit]
+Description=Home Assistant
+After=network-online.target
+
+[Service]
+WorkingDirectory=/opt/hass
+ExecStart=/usr/local/bin/hass -c /opt/hass
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

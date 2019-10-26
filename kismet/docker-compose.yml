@@ -1,0 +1,8 @@
+kismet:
+  image: vimagick/kismet
+  ports:
+    - "2501:2501"
+    - "3501:3501"
+  cap_add:
+    - NET_ADMIN
+  restart: unless-stopped

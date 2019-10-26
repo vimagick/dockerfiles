@@ -1,0 +1,36 @@
+version: '2'
+
+services:
+
+  metabase:
+    image: metabase/metabase
+    ports:
+      - "3000:3000"
+      # "1099:1099"
+    environment:
+      - MB_DB_TYPE=postgres
+      - MB_DB_DBNAME=metabase
+      - MB_DB_HOST=postgres
+      - MB_DB_PORT=5432
+      - MB_DB_USER=root
+      - MB_DB_PASS=root
+      - JAVA_TOOL_OPTIONS=-Xmx6g
+      # JAVA_OPTS=-Dcom.sun.management.jmxremote.port=1099
+      #           -Dcom.sun.management.jmxremote.rmi.port=1099
+      #           -Dcom.sun.management.jmxremote.authenticate=false
+      #           -Dcom.sun.management.jmxremote.ssl=false
+      #           -Dcom.sun.management.jmxremote.local.only=false
+      #           -Djava.rmi.server.hostname=metabase.easypi.pro
+    depends_on:
+      - postgres
+    restart: unless-stopped
+  
+  postgres:
+    image: postgres:alpine
+    volumes:
+      - ./data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_DB=metabase
+    restart: unless-stopped

@@ -1,0 +1,25 @@
+version: '3.5'
+services:
+  browserless:
+    image: browserless/chrome:latest
+    ports:
+      - "3000:3000"
+    environment:
+      - DEBUG=browserless/chrome
+      - MAX_CONCURRENT_SESSIONS=10
+      - CONNECTION_TIMEOUT=300000
+      - MAX_QUEUE_LENGTH=10
+      - ENABLE_CORS=true
+      - EXIT_ON_HEALTH_FAILURE=true
+    deploy:
+      resources:
+        limits:
+          memory: 1024M
+      replicas: 56
+      restart_policy:
+        condition: on-failure
+networks:
+  default:
+    ipam:
+      config:
+        - subnet: 192.168.128.0/24

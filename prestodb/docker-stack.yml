@@ -1,0 +1,50 @@
+version: "3.7"
+
+services:
+
+  coordinator:
+    image: vimagick/prestodb:alpine
+    ports:
+      - "8080:8080"
+    volumes:
+      - /data:/data
+      - prestodb_coordinator_conf:/opt/presto/etc
+    deploy:
+      replicas: 1
+      placement:
+        constraints:
+          - node.role == manager
+      restart_policy:
+        condition: on-failure
+  
+  worker:
+    image: vimagick/prestodb:alpine
+    entrypoint: sh -c 'launcher run -Dnode.id=$$HOSTNAME'
+    volumes:
+      - /data:/data
+      - prestodb_worker_conf:/opt/presto/etc
+    deploy:
+      replicas: 0
+      placement:
+        constraints:
+          - node.role == worker
+      restart_policy:
+        condition: on-failure
+    depends_on:
+      - coordinator
+
+volumes:
+
+  prestodb_coordinator_conf:
+    driver: local
+    driver_opts:
+      type: nfs
+      o: "addr=10.0.0.1,nolock,soft,ro"
+      device: ":/export/prestodb/coordinator"
+
+  prestodb_worker_conf:
+    driver: local
+    driver_opts:
+      type: nfs
+      o: "addr=10.0.0.1,nolock,soft,ro"
+      device: ":/export/prestodb/worker"

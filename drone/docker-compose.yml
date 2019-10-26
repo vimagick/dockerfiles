@@ -1,18 +1,57 @@
-drone:
-  image: drone/drone
-  ports:
-    - "8000:80"
-  volumes:
-    - ./data:/var/lib/drone
-    - /var/run/docker.sock:/var/run/docker.sock
-  environment:
-    - REMOTE_DRIVER=gogs
-    - REMOTE_CONFIG=http://git.easypi.info:3000/?open=false
-    - DEBUG=false
-  restart: always
+version: "3.7"
 
-wall:
-  image: drone/drone-wall
-  ports:
-    - "8080:80"
-  restart: always
+services:
+
+  drone:
+    image: drone/drone:1.6-linux-amd64
+    ports:
+      -  "8080:80"
+    volumes:
+      - ./data/drone:/data
+    environment:
+      - DRONE_SERVER_HOST=drone
+      - DRONE_SERVER_PROTO=http
+      - DRONE_RPC_SECRET=secret
+      - DRONE_DATABASE_DRIVER=postgres
+      - DRONE_DATABASE_DATASOURCE=postgres://drone:drone@postgres:5432/drone?sslmode=disable
+      - DRONE_GOGS_SERVER=http://gogs:3000
+      - DRONE_AGENTS_ENABLED=true
+    depends_on:
+      - postgres
+      - gogs
+    restart: always
+
+  agent:
+    image: drone/agent:1.6-linux-amd64
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      - DRONE_RPC_PROTO=http
+      - DRONE_RPC_HOST=drone
+      - DRONE_RPC_SECRET=secret
+      - DRONE_RUNNER_NAME=agent
+      - DRONE_RUNNER_CAPACITY=2
+    depends_on:
+      - drone
+    restart: always
+
+  postgres:
+    image: postgres:12-alpine
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./data/postgres:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=drone
+      - POSTGRES_PASSWORD=drone
+      - POSTGRES_DB=drone
+    restart: always
+
+  gogs:
+    image: gogs/gogs
+    ports:
+      - "2222:22"
+      - "3000:3000"
+    volumes:
+      - ./data/gogs:/data
+    restart: always

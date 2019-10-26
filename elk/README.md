@@ -4,6 +4,7 @@ ELK
 - Elasticsearch
 - Logstash
 - Kibana
+- APM Server
 
 ## How it works
 
@@ -20,6 +21,8 @@ $ docker-compose up -d
 ```
 
 ## Delete indices older than 7 days
+
+File: delete-indices.yml
 
 ```yaml
 ---
@@ -43,6 +46,14 @@ actions:
       timestring: '%Y.%m.%d'
       unit: days
       unit_count: 7
+```
+
+File: ~/.curator/curator.yml
+
+```yaml
+client:
+  hosts:
+    - 127.0.0.1
 ```
 
 ```bash

@@ -21,7 +21,6 @@ A collection of delicious docker recipes.
 - [ ] caddy
 - [ ] dsniff
 - [ ] ettercap
-- [ ] freegeoip
 - [ ] freelan
 - [ ] gitbook
 - [ ] gitolite
@@ -32,8 +31,6 @@ A collection of delicious docker recipes.
 - [ ] libreswan
 - [ ] mitmproxy
 - [ ] nagios
-- [ ] nfs
-- [ ] openldap
 - [ ] openswan
 - [ ] postfix
 - [ ] pritunl
@@ -46,8 +43,12 @@ A collection of delicious docker recipes.
 
 ## Big Data
 
+- [x] airflow
+- [x] ambari
 - [x] kafka-arm
 - [x] kafka-manager
+- [x] prestodb (official)
+- [x] prestosql (community)
 - [x] superset-arm
 - [x] zookeeper-arm
 
@@ -70,11 +71,13 @@ A collection of delicious docker recipes.
 ## Daemon
 
 - [x] alpine-arm :+1:
+- [x] apacheds
 - [x] aria2 :+1:
 - [x] audiowaveform
 - [x] cadvisor
 - [x] casperjs :+1:
 - [x] collectd
+- [x] freegeoip
 - [x] freeradius
 - [x] frp :cn:
 - [x] graphite
@@ -91,10 +94,12 @@ A collection of delicious docker recipes.
 - [x] motion-arm :+1:
 - [x] nginx
 - [x] nifi
+- [x] ntopng
 - [x] nullmailer
 - [x] nullmailer-arm
 - [x] openhab
 - [x] openssh
+- [x] ot-frontend-arm
 - [x] ot-recorder
 - [x] ot-recorder-arm
 - [x] piknik
@@ -161,7 +166,6 @@ A collection of delicious docker recipes.
 - [x] json-server
 - [x] mantisbt
 - [x] mediagoblin
-- [x] netdata
 - [x] nginad
 - [x] nodebb :+1:
 - [x] openrefine
@@ -180,6 +184,7 @@ A collection of delicious docker recipes.
 
 ## Security
 
+- [x] aircrack-ng-arm
 - [x] bro
 - [x] clamav
 - [x] dsniff
@@ -187,6 +192,7 @@ A collection of delicious docker recipes.
 - [x] grr
 - [x] hydra
 - [x] iptables
+- [x] kismet
 - [x] routersploit
 - [x] snort :beetle:
 - [x] sslsplit
@@ -200,7 +206,9 @@ A collection of delicious docker recipes.
 - [x] fteproxy-arm :+1:
 - [x] hans
 - [x] haproxy-arm
+- [x] i2pd :ru:
 - [x] kcptun :cn:
+- [x] mtproxy
 - [x] mysql-proxy
 - [x] ngrok :+1:
 - [x] obfsproxy
@@ -223,6 +231,7 @@ A collection of delicious docker recipes.
 
 ## VPN
 
+- [x] n2n :+1:
 - [x] ocserv :+1:
 - [x] openconnect
 - [x] openconnect-arm
@@ -234,6 +243,7 @@ A collection of delicious docker recipes.
 - [x] strongswan :+1:
 - [x] tinc :+1:
 - [x] tinc-arm :+1:
+- [x] wiregurad :beetle:
 - [x] xl2tpd
 
 ## DNS
@@ -248,50 +258,75 @@ A collection of delicious docker recipes.
 
 ## 3rd-party
 
+- [x] docker.bintray.io/jfrog/artifactory-oss
 - [x] tutum/builder
+- [x] browserless/chrome
 - [x] certbot
+- [x] codercom/code-server
+- [x] confluentinc/cp-kafka-mqtt
+- [x] confluentinc/cp-kafka-rest
+- [x] streamsets/datacollector
 - [x] cachethq/docker
-- [x] puckel/docker-airflow
 - [x] drone/drone
 - [x] drupal
 - [x] elastalert
 - [x] elk
+- [x] flogo/flogo-docker
+- [x] mher/flower
 - [x] ghost
 - [x] gitlab/gitlab-ce
+- [x] atlassianlabs/gostatsd
+- [x] gitea/gitea :cn:
 - [x] gliderlabs/logspout
 - [x] gliderlabs/registrator
 - [ ] glot
     - [ ] bash
     - [ ] python
-- [x] gogs :cn:
+- [x] gogs/gogs :cn:
 - [x] haproxy
+- [x] jmxtrans/jmxtrans
 - [x] wurstmeister/kafka
+- [x] netdata/netdata
 - [x] nextcloud
+- [x] sonatype/nexus3
 - [x] jazzdd/phpvirtualbox
 - [x] jenkins
+- [x] sonatype/nexus3
 - [x] jupyter/notebook
 - [x] kylemanna/openvpn
+- [x] metabase/metabase
 - [x] metasploitframework/metasploit-framework :skull:
 - [x] minio/minio
 - [x] mongo
 - [x] neo4j
+- [x] erichough/nfs-server
 - [x] odoo
+- [x] osixia/openldap
+- [x] campbellsoftwaresolutions/osticket
 - [x] owncloud
 - [x] phpmyadmin
+- [x] pihole/pihole
 - [x] portainer/portainer :+1:
 - [x] postgres
+- [x] postgrest/postgrest
 - [x] registry
 - [x] rocket.chat
-- [x] scrapinghub/splash
+- [x] rundeck/rundeck
+- [x] wonderfall/searx
 - [ ] selenium
     - [ ] hub
     - [ ] node-firefox
     - [x] standalone-firefox
+- [x] sentry
+- [x] scrapinghub/splash
 - [x] amancevice/superset
 - [x] v2ray/official :cn:
 - [x] centurylink/watchtower
+- [x] anapsix/webdis
 - [x] wekanteam/wekan
+- [x] yourls
 - [x] zookeeper
+- [x] elkozmon/zoonavigator
 
 ## auto-completion
 

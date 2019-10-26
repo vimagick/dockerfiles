@@ -1,0 +1,23 @@
+version: "3.7"
+
+services:
+
+  nexus3:
+    image: sonatype/nexus3
+    ports:
+      - "8081:8081"
+    volumes:
+      - ./data:/nexus-data
+    depends_on:
+      - minio
+    restart: unless-stopped
+
+  minio:
+    image: minio/minio
+    command: gateway oss https://oss-cn-beijing.aliyuncs.com
+    expose:
+      - "9000"
+    environment:
+      - MINIO_ACCESS_KEY=xxxxxxxxxxxxxxxx
+      - MINIO_SECRET_KEY=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+    restart: unless-stopped

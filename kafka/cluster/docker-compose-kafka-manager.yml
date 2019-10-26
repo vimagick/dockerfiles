@@ -1,0 +1,17 @@
+kafka-manager:
+  image: vimagick/kafka-manager
+  ports:
+    - "9000:9000"
+  environment:
+    - ZK_HOSTS=zookeeper1:2181,zookeeper2:2181,zookeeper3:2181
+    - KAFKA_MANAGER_AUTH_ENABLED=true
+    - KAFKA_MANAGER_USERNAME=admin
+    - KAFKA_MANAGER_PASSWORD=admin
+  extra_hosts:
+    - zookeeper1:10.0.0.21
+    - zookeeper2:10.0.0.22
+    - zookeeper3:10.0.0.23
+    - kafka1:10.0.0.21
+    - kafka2:10.0.0.22
+    - kafka3:10.0.0.23
+  restart: always

@@ -9,13 +9,12 @@ efficiency and ease of use. It provides simple answers to common needs, plus
 unique useful features for personal users as well as hosting providers. 
 
 
-## ~/fig/pureftpd/docker-compose.yml
+## docker-compose.yml
 
 ```yaml
-pureftpd:
+pure-ftpd:
   image: vimagick/pure-ftpd
-  ports:
-    - "21:21"
+  net: host
   volumes:
     - ./data/ftpuser:/home/ftpuser
     - ./data/pure-ftpd:/etc/pure-ftpd
@@ -23,16 +22,14 @@ pureftpd:
   restart: always
 ```
 
-> We only need to expose port `21` to accept client ftp connection.
-> Pure-FTPd will open random port to accept client ftp-data connection.
-> At this time, host machine is a router for DNAT.
+> Please config firewall according to `PassivePortRange`.
 
 ## server
 
 ```bash
-$ cd ~/fig/pureftpd/
+$ cd ~/fig/pure-ftpd/
 $ docker-compose up -d
-$ docker-compose exec pureftpd bash
+$ docker-compose exec pure-ftpd bash
 >>> pure-pw useradd kev -u ftpuser -d /home/ftpuser/kev -t 1024 -T 1024 -y 1 -m
 >>> pure-pw list
 >>> pure-pw show kev
@@ -48,6 +45,7 @@ $ tree -F
     │   └── kev/
     │       └── file.txt
     └── pure-ftpd/
+        ├── pure-ftpd.conf
         ├── pureftpd.passwd
         └── pureftpd.pdb
 ```

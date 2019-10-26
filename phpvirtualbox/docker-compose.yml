@@ -2,10 +2,8 @@ phpvirtualbox:
   image: vimagick/phpvirtualbox
   ports:
     - "8888:80"
-  environment:
-    - ID_PORT_18083_TCP=remote-server:18083
-    - ID_NAME=Vbox
-    - ID_USER=username
-    - ID_PW=password
-    - CONF_browserRestrictFolders=/data,
+  volumes:
+    - ./data/config.php:/var/www/config.php:ro
+  extra_hosts:
+    - vboxwebsrv:x.x.x.x
   restart: always

@@ -10,15 +10,15 @@ Get a full fake REST API with zero coding in less than 30 seconds (seriously) wi
 ```yaml
 json-server:
   image: vimagick/json-server
-  command: -w db.json
+  command: -H 0.0.0.0 -p 3000 -w db.json
   ports:
     - "3000:3000"
   volumes:
-    - ./db.json:/app/db.json
+    - ./data:/data
   restart: always
 ```
 
-## db.json
+## data/db.json
 
 ```json
 {

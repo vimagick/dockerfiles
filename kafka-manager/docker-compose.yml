@@ -17,6 +17,7 @@ kafka:
   environment:
     - KAFKA_ADVERTISED_HOST_NAME=10.0.0.13
     - KAFKA_ZOOKEEPER_CONNECT=zookeeper:2181
+    - JMX_PORT=9999
   links:
     - zookeeper
   restart: always

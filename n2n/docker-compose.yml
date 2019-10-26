@@ -1,0 +1,20 @@
+version: '3.5'
+
+services:
+
+  supernode:
+    image: vimagick/n2n
+    ports:
+      - "5645:5645/udp"
+      - "7654:7654/udp"
+    restart: unless-stopped
+
+  edge:
+    image: vimagick/n2n
+    entrypoint: ["edge"]
+    command: ["-dn2n0", "-cmynetwork", "-kmypassword", "-mAA:BB:CC:DD:EE:FF", "-a192.168.100.1", "-p50001", "-lsupernode:7654", "-r", "-f"]
+    devices:
+      - /dev/net/tun
+    cap_add:
+      - NET_ADMIN
+    restart: unless-stopped

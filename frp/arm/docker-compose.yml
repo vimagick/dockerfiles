@@ -1,6 +1,7 @@
-frps:
+frpc:
   image: easypi/frp-arm
+  command: ./frpc -c frpc.ini
   volumes:
-    - ./data/frps.ini:/opt/frp/frps.ini
+    - ./data/frpc.ini:/opt/frp/frpc.ini
   net: host
-  restart: always
+  restart: unless-stopped

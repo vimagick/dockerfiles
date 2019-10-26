@@ -1,0 +1,69 @@
+#
+# https://github.com/ansible/awx/raw/devel/installer/roles/local_docker/templates/docker-compose.yml.j2
+#
+
+version: '2'
+
+services:
+
+  web:
+    image: ansible/awx_web
+    container_name: awx_web
+    hostname: awxweb
+    user: root
+    ports:
+      - "8052:8052"
+    volumes:
+      - ./data/etc/SECRET_KEY:/etc/tower/SECRET_KEY
+      - ./data/etc/environment.sh:/etc/tower/conf.d/environment.sh
+      - ./data/etc/credentials.py:/etc/tower/conf.d/credentials.py
+      - ./data/awx:/var/lib/awx/projects
+    depends_on:
+      - rabbitmq
+      - memcached
+      - postgres
+    restart: unless-stopped
+
+  task:
+    image: ansible/awx_task
+    container_name: awx_task
+    hostname: awx
+    user: root
+    volumes:
+      - ./data/etc/SECRET_KEY:/etc/tower/SECRET_KEY
+      - ./data/etc/environment.sh:/etc/tower/conf.d/environment.sh
+      - ./data/etc/credentials.py:/etc/tower/conf.d/credentials.py
+      - ./data/awx:/var/lib/awx/projects
+    depends_on:
+      - rabbitmq
+      - memcached
+      - web
+      - postgres
+    restart: unless-stopped
+
+  rabbitmq:
+    image: ansible/awx_rabbitmq
+    container_name: awx_rabbitmq
+    environment:
+      RABBITMQ_DEFAULT_VHOST: awx
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
+      RABBITMQ_ERLANG_COOKIE: cookiemonster
+    restart: unless-stopped
+
+  memcached:
+    image: memcached:alpine
+    container_name: awx_memcached
+    restart: unless-stopped
+
+  postgres:
+    image: postgres:12-alpine
+    container_name: awx_postgres
+    volumes:
+      - ./data/postgres:/var/lib/postgresql/data/pgdata:Z
+    environment:
+      POSTGRES_USER: awx
+      POSTGRES_PASSWORD: awxpass
+      POSTGRES_DB: awx
+      PGDATA: /var/lib/postgresql/data/pgdata
+    restart: unless-stopped

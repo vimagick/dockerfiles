@@ -5,7 +5,7 @@
 FROM alpine
 MAINTAINER EasyPi Software Foundation
 
-ENV GRAPHITE_VERSION=1.1.3
+ENV GRAPHITE_VERSION=1.1.5
 ENV GRAPHITE_CONF_DIR=/opt/graphite/conf
 ENV GRAPHITE_STORAGE_DIR=/opt/graphite/storage
 ENV PATH=$PATH:/opt/graphite/bin
@@ -34,7 +34,8 @@ RUN set -xe \
     && echo "SECRET_KEY = '$(head -c 16 /dev/urandom | base64)'" > graphite/local_settings.py \
     && curl -sSL https://github.com/graphite-project/graphite-web/raw/master/webapp/manage.py > manage.py \
     && chmod +x manage.py \
-    && ./manage.py migrate --run-syncdb --noinput \
+    && ./manage.py collectstatic --noinput --settings=graphite.settings \
+    && ./manage.py migrate --noinput --run-syncdb \
     && apk del build-base \
                curl \
                git \
@@ -48,8 +49,11 @@ COPY supervisord.conf /etc/supervisor/
 VOLUME $GRAPHITE_CONF_DIR \
        $GRAPHITE_STORAGE_DIR
 
-EXPOSE 2003 \
+EXPOSE 2003/udp \
+       2003 \
        2004 \
+       2023 \
+       2024 \
        7002 \
        8080 \
        9001

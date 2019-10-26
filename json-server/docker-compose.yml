@@ -1,8 +1,8 @@
 json-server:
   image: vimagick/json-server
-  command: -w db.json
+  command: -H 0.0.0.0 -p 3000 -w db.json
   ports:
     - "3000:3000"
   volumes:
-    - ./db.json:/app/db.json
+    - ./data:/data
   restart: always

@@ -1,6 +1,8 @@
 airflow
 =======
 
+![](https://airflow.apache.org/_images/pin_large.png)
+
 ## How It Works
 
 ```
@@ -20,13 +22,31 @@ airflow
 ## Quick Start
 
 ```bash
-# On Master
-$ docker-compose up -d
-$ chmod 777 data/airflow/dags
-$ docker-compose exec webserver cp -r /usr/local/lib/python3.6/site-packages/airflow/example_dags dags
+$ docker stack deploy -c docker-stack.yaml airflow
+$ docker service update --replicas-max-per-node=1 airflow_worker
+$ docker service update --replicas 3 airflow_worker
 
-# On Workers
-$ docker-compose up -d
-$ chmod 777 data/airflow/dags
-$ docker-compose exec worker cp -r /usr/local/lib/python3.6/site-packages/airflow/example_dags dags
+$ docker stack services airflow
+$ docker service ps airflow_webserver
+$ docker exec -it airflow_webserver.1.xxxxxx sh
+>>> airflow create_user -r Admin -u admin -e admin@borderxlab.com -f Super -l Admin -p secret
+>>> airflow list_users
+╒══════╤════════════╤══════════════════════╤══════════════╤═════════════╤═════════╕
+│   Id │ Username   │ Email                │ First name   │ Last name   │ Roles   │
+╞══════╪════════════╪══════════════════════╪══════════════╪═════════════╪═════════╡
+│    1 │ admin      │ admin@borderxlab.com │ Super        │ Admin       │ [Admin] │
+╘══════╧════════════╧══════════════════════╧══════════════╧═════════════╧═════════╛
+>>> exit
+
+$ curl http://localhost:8080/
+$ curl http://localhost:5555/
 ```
+
+> :warning: You need to prepare nfs server with `airflow.cfg`.
+
+```
+$ python -c 'from cryptography.fernet import Fernet; print(Fernet.generate_key().decode())'
+CD2wL7G0zt1SLuO4JQpLJuHtBaBEcXWKbQyvkvf2cZ8=
+```
+
+> :warning: You should set another value to `fernet_key` in `airflow.cfg` to improve security.

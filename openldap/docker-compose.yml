@@ -1,0 +1,44 @@
+version: "3.7"
+
+services:
+
+  openldap:
+    image: osixia/openldap
+    command: "--loglevel debug"
+    hostname: ldap.easypi.pro
+    ports:
+      - "389:389"
+      - "636:636"
+    volumes:
+      - ./data/certs:/container/service/slapd/assets/certs
+      - ./data/etc:/etc/ldap/slapd.d
+      - ./data/var:/var/lib/ldap
+      - ./data/run:/container/run
+    environment:
+      - LDAP_ORGANISATION=EasyPi
+      - LDAP_DOMAIN=ldap.easypi.pro
+      - LDAP_ADMIN_PASSWORD=admin
+      - LDAP_CONFIG_PASSWORD=config
+      - LDAP_TLS=true
+      - LDAP_TLS_CA_CRT_FILENAME=ca.crt
+      - LDAP_TLS_CRT_FILENAME=ldap.crt
+      - LDAP_TLS_KEY_FILENAME=ldap.key
+      - LDAP_TLS_VERIFY_CLIENT=try
+      - LDAP_TLS_ENFORCE=true
+    restart: always
+  
+  phpldapadmin:
+    image: osixia/phpldapadmin
+    command: "--loglevel debug"
+    ports:
+      - "8080:80"
+    environment:
+      # PHPLDAPADMIN_LDAP_HOSTS=#PYTHON2BASH:[{'ldap.easypi.pro':[{'server':[{'tls':True}]}]}]
+      - PHPLDAPADMIN_LDAP_HOSTS=ldaps://ldap.easypi.pro/
+      - PHPLDAPADMIN_HTTPS=false
+      - PHPLDAPADMIN_TRUST_PROXY_SSL=true
+    extra_hosts:
+      - ldap.easypi.pro:x.x.x.x
+    depends_on:
+      - openldap
+    restart: always

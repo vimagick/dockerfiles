@@ -7,21 +7,23 @@ odoo
 
 ```yaml
 odoo:
-  image: odoo:11.0
+  image: odoo:12
   ports:
-    - "8069:8069"
+    - "127.0.0.1:8069:8069"
   volumes:
-    - ./data/odoo:/var/lib/odoo
+    - ./data/config:/etc/odoo
+    - ./data/web:/var/lib/odoo
     - ./data/addons:/mnt/extra-addons
   links:
     - postgres:db
   restart: always
 
 postgres:
-  image: postgres:9-alpine
+  image: postgres:11-alpine
   volumes:
     - ./data/postgres:/var/lib/postgresql/data
   environment:
+    - POSTGRES_DB=postgres
     - POSTGRES_USER=odoo
     - POSTGRES_PASSWORD=odoo
   restart: always
@@ -30,13 +32,11 @@ postgres:
 ## up and running
 
 ```bash
-$ mkdir -m 777 -p data/odoo
+$ mkdir -m 777 -p data/web
 $ docker-compose up -d
-$ docker-compose exec postgres psql -U postgres
-postgres=# \l
-postgres=# drop database odoo;
-postgres=# \q
 $ curl http://localhost:8069
 ```
+
+> Create a database: odoo
 
 [1]: https://www.odoo.com

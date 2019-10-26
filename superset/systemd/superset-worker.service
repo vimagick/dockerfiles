@@ -1,0 +1,16 @@
+[Unit]
+Description=Superset celery worker daemon
+After=network.target postgresql.service redis-server.service
+Wants=postgresql.service redis-server.service
+
+[Service]
+EnvironmentFile=/etc/default/superset
+User=superset
+Group=superset
+Type=simple
+ExecStart=/home/superset/.virtualenvs/superset/bin/celery worker --app=superset.tasks.celery_app:app --pool=prefork -Ofair -c 4
+Restart=on-failure
+RestartSec=10s
+
+[Install]
+WantedBy=multi-user.target

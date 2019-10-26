@@ -1,0 +1,16 @@
+[Unit]
+Description=Superset celery flower
+After=network.target postgresql.service redis-server.service
+Wants=postgresql.service redis-server.service
+
+[Service]
+EnvironmentFile=/etc/default/superset
+User=superset
+Group=superset
+Type=simple
+ExecStart=/home/superset/.virtualenvs/superset/bin/celery flower --app=superset.tasks.celery_app:app --port=5555
+Restart=on-failure
+RestartSec=5s
+
+[Install]
+WantedBy=multi-user.target

@@ -5,31 +5,30 @@
 FROM alpine
 MAINTAINER kev <noreply@easypi.pro>
 
-ENV BB_VER 1.10.1
-ENV BB_URL https://github.com/NodeBB/NodeBB/archive/v$BB_VER.tar.gz
-ENV BB_SOURCE /usr/src/nodebb
-ENV BB_CONTENT /var/lib/nodebb
+ENV BB_VER=1.12.2
+ENV BB_URL=https://github.com/NodeBB/NodeBB/archive/v$BB_VER.tar.gz
+ENV BB_SOURCE=/usr/src/nodebb
+ENV BB_CONTENT=/var/lib/nodebb
 
 WORKDIR $BB_SOURCE
 VOLUME $BB_CONTENT
 
 RUN set -ex \
     && apk add -U bash \
+                  icu \
                   imagemagick \
-                  krb5-libs \
                   nodejs \
                   nodejs-npm \
                   openssl \
     && apk add -t TMP build-base \
                       curl \
                       git \
-                      krb5-dev \
+                      icu-dev \
                       openssl-dev \
                       python \
                       tar \
     && curl -sSL $BB_URL | tar xz --strip 1 \
-    && npm install --production \
-    && npm cache clean \
+    && ./nodebb setup \
     && apk del TMP \
     && rm -rf /tmp/npm* \
               /var/cache/apk/*
@@ -38,4 +37,4 @@ COPY docker-entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
 
 EXPOSE 4567
-CMD ["npm", "start"]
+CMD ["./nodebb", "start"]

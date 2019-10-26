@@ -1,0 +1,28 @@
+version: "3.7"
+
+services:
+
+  recorder:
+    image: easypi/ot-recorder-arm
+    ports:
+      - "8083:8083"
+    volumes:
+      - ./data:/var/spool/owntracks/recorder/store
+    environment:
+      - OTR_HOST=iot.eclipse.org
+      - OTR_PORT=8883
+      - OTR_USER=username
+      - OTR_PASS=password
+      - OTR_TOPICS=owntracks/#
+      # OTR_CAFILE=/etc/ssl/certs/DST_Root_CA_X3.pem
+      # OTR_OPTIONS=--debug
+    restart: unless-stopped
+
+  frontend:
+    image: easypi/ot-frontend-arm
+    ports:
+      - 8080:80
+    environment:
+      - SERVER_HOST=recorder
+      - SERVER_PORT=8083
+    restart: unless-stopped

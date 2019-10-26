@@ -5,14 +5,15 @@
 FROM alpine
 MAINTAINER EasyPi Software Foundation
 
-ENV HYDRA_VERSION=8.6
-ENV HYDRA_URL=https://github.com/vanhauser-thc/thc-hydra/archive/$HYDRA_VERSION.tar.gz
+ENV HYDRA_VERSION=9.0
+ENV HYDRA_URL=https://github.com/vanhauser-thc/thc-hydra/archive/v$HYDRA_VERSION.tar.gz
 
 RUN set -xe \
     && apk add --no-cache apr-dev \
                           apr-util-dev \
                           bash \
                           build-base \
+                          coreutils \
                           curl \
                           jq \
                           libidn \
@@ -20,8 +21,9 @@ RUN set -xe \
                           libpq \
                           libssh \
                           libssh-dev \
+                          mariadb-connector-c \
+                          mariadb-connector-c-dev \
                           mariadb-dev \
-                          mariadb-client-libs \
                           ncurses \
                           ncurses-dev \
                           parallel \
@@ -31,11 +33,11 @@ RUN set -xe \
                           subversion-dev \
                           subversion-libs \
                           tar \
-    && echo 'will cite' | parallel --bibtex \
+                          tmux \
+    && parallel --will-cite \
     && mkdir src \
         && cd src \
         && curl -sSL $HYDRA_URL | tar xz --strip 1 \
-        && sed -i '1s/^/#include <stdint.h>\n/' pw-inspector.c \
         && ./configure --prefix=/usr \
         && make install \
         && cd .. \
@@ -46,12 +48,10 @@ RUN set -xe \
                        libidn-dev \
                        libssh-dev \
                        ncurses-dev \
+                       mariadb-connector-c-dev \
                        mariadb-dev \
                        pcre-dev \
                        postgresql-dev \
                        subversion-dev
 
-VOLUME /hydra
-WORKDIR /hydra
-
-CMD ["bash"]
+ENTRYPOINT ["bash"]

@@ -1,0 +1,27 @@
+kafka:
+  image: wurstmeister/kafka:2.12-2.2.1
+  ports:
+    - "9092:9092"
+    - "9999:9999"
+  hostname: kafka1
+  volumes:
+    - /data/kafka:/kafka
+    - /var/run/docker.sock:/var/run/docker.sock
+  environment:
+    - KAFKA_BROKER_ID=1
+    - KAFKA_LISTENERS=PLAINTEXT://:9092
+    - KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://kafka1:9092
+    - KAFKA_ZOOKEEPER_CONNECT=zookeeper1:2181,zookeeper2:2181,zookeeper3:2181
+    - KAFKA_JMX_OPTS=-Dcom.sun.management.jmxremote
+                     -Dcom.sun.management.jmxremote.authenticate=false
+                     -Dcom.sun.management.jmxremote.ssl=false
+                     -Dcom.sun.management.jmxremote.rmi.port=9999
+                     -Dcom.sun.management.jmxremote.port=9999
+  extra_hosts:
+    - zookeeper1:10.0.0.21
+    - zookeeper2:10.0.0.22
+    - zookeeper3:10.0.0.23
+    - kafka1:10.0.0.21
+    - kafka2:10.0.0.22
+    - kafka3:10.0.0.23
+  restart: always

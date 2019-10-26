@@ -1,0 +1,20 @@
+version: '2.1'
+
+services:
+
+  worker:
+    image: puckel/docker-airflow:1.10.4
+    command: worker
+    hostname: worker1
+    ports:
+      - "8793:8793"
+    volumes:
+      - ./data/airflow/dags:/usr/local/airflow/dags
+      - ./data/airflow/plugins:/usr/local/airflow/plugins
+    environment:
+      - FERNET_KEY=46BKJoQYlPPOexq0OhDZnIlNepKFf87WFwLbfzqDDho=
+      - EXECUTOR=Celery
+    extra_hosts:
+      - "redis:10.99.0.3"
+      - "postgres:10.99.0.3"
+    restart: always

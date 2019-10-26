@@ -3,82 +3,49 @@ urlwatch
 
 [urlwatch][1] is a tool for monitoring webpages for updates.
 
-```
-cron: triggered every 15 minutes
-    -> make: generate urls.txt from urls.yml
-        -> urlwatch: fetch webpages
-            -> hooks.py: extract info
-                -> email: send via smtp
-                    -> (^_^)
-```
-
 ## docker-compose.yml
 
-```
+```yaml
 urlwatch:
   image: vimagick/urlwatch
   volumes:
-    - urlwatch/Makefile:/root/.urlwatch/Makefile
-    - urlwatch/urls.yml:/root/.urlwatch/urls.yml
-  restart: always
+    - ./data:/root/.urlwatch
+  restart: unless-stopped
 ```
 
-## Makefile
+## urls.yaml
 
-```
-SHELL = /bin/sh
-PATH := /usr/local/bin:$(PATH)
+```yaml
+---
 
-SMTP = smtp.easypi.info:587
-FROM = urlwatch@easypi.info
-PASS = password
-TO = noreply@easypi.info
+url: "https://github.com/thp/urlwatch/releases/latest"
+filter:
+- xpath: '(//div[contains(@class,"release-timeline-tags")]//h4)[1]/a'
+- html2text: re
 
-all: setup urls.txt
-	urlwatch -s $(SMTP) -f $(FROM) -t $(TO) -A -T
+---
 
-urls.txt: urls.yml
-	python lib/hooks.py
+url: "https://github.com/shadowsocks/shadowsocks-libev/releases/latest"
+filter:
+- css: 'div.f1>a'
+- html2text: re
 
-setup:
-	python -c 'import keyring; keyring.set_password("$(SMTP)", "$(FROM)", "$(PASS)")'
-```
-
-> Please change `STMP`/`FROM`/`PASS`/`TO` to correct value.
-
-## urls.yml
-
-```
-python:
-  url: https://www.python.org/downloads/
-  exp: //div[@class="download-unknown"]/p[@class]/a[1]/text()
-
-ubuntu:
-  url: http://www.ubuntu.com/download/server
-  exp: //div[contains(@class, "row-hero")]//h2/text()
-
-coreos:
-  url: https://coreos.com
-  exp: //div[@class="co-p-homepage-release-text"]/text()
-
-urlwatch:
-  url: https://github.com/thp/urlwatch/releases
-  exp: //ul[@class="release-timeline-tags"]/li[1]//span[@class="tag-name"]/text()
+...
 ```
 
-## Email alert
+## up and running
 
+```bash
+$ docker-compose up -d
+$ docker-compose exec urlwatch sh
+>>> urlwatch --test-slack
+Successfully sent message to Slack
+>>> urlwatch --list
+1: https://github.com/thp/urlwatch/releases/latest
+2: https://github.com/shadowsocks/shadowsocks-libev/releases/latest
+>>> urlwatch --test-filter 2
+v3.2.5
+>>> exit
 ```
-***************************************************************************
-CHANGED: https://coreos.com#coreos
-***************************************************************************
---- @   Tue, 07 Jul 2015 17:15:01 +0000
-+++ @   Tue, 07 Jul 2015 20:00:01 +0000
-@@ -1 +1 @@
--coreos: 723.1.0
-+coreos: 735.0.0
 
-***************************************************************************
-```
-
-[1]: thp.io/2008/urlwatch/
+[1]: https://thp.io/2008/urlwatch/

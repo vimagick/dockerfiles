@@ -1,7 +1,6 @@
 pure-ftpd:
   image: vimagick/pure-ftpd
-  ports:
-    - "21:21"
+  net: host
   volumes:
     - ./data/ftpuser:/home/ftpuser
     - ./data/pure-ftpd:/etc/pure-ftpd

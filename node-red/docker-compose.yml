@@ -3,7 +3,7 @@ node-red:
   ports:
     - "1880:1880"
   volumes:
-    - ./data:/root/.node-red
+    - ./data:/data
     - /dev/input:/dev/input
   privileged: yes
   restart: always

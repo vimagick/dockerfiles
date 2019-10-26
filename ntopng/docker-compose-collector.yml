@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+
+  ntopng:
+    image: vimagick/ntopng
+    ports:
+      - "3000:3000"
+      - "5556:5556"
+    volumes:
+      - ./data/ntopng:/var/lib/ntopng
+    restart: unless-stopped
+
+  redis:
+    image: redis:alpine
+    command: --save 900 1
+    volumes:
+      - ./data/redis:/data
+    restart: unless-stopped

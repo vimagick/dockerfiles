@@ -1,45 +1,58 @@
-elasticsearch:
-  image: docker.elastic.co/elasticsearch/elasticsearch:6.1.2
-  ports:
-    - "9200:9200"
-    - "9300:9300"
-  volumes:
-    - ./data:/usr/share/elasticsearch/data
-  environment:
-    - node.name=es1
-    - cluster.name=elk
-    - bootstrap.memory_lock=true
-    - "ES_JAVA_OPTS=-Xms1g -Xmx1g"
-  ulimits:
-    memlock:
-      soft: -1
-      hard: -1
-  restart: unless-stopped
+version: '3.5'
 
-logstash:
-  image: docker.elastic.co/logstash/logstash:6.1.2
-  ports:
-    - "5044:5044"
-    - "9600:9600"
-    - "12201:12201/udp"
-  links:
-    - elasticsearch
-  volumes:
-    - ./data/logstash.yml:/usr/share/logstash/config/logstash.yml
-    - ./data/pipeline:/usr/share/logstash/pipeline
-    - /usr/share/logstash/vendor/bundle
-  environment:
-    - node.name=ls1
-    - "LS_JAVA_OPTS=-Xms1g -Xmx1g"
-  restart: unless-stopped
+services:
 
-kibana:
-  image: docker.elastic.co/kibana/kibana:6.1.2
-  ports:
-    - "5601:5601"
-  links:
-    - elasticsearch
-  environment:
-    SERVER_NAME: kibana
-    ELASTICSEARCH_URL: http://elasticsearch:9200
-  restart: unless-stopped
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.3.0
+    ports:
+      - "9200:9200"
+    volumes:
+      - ./data:/usr/share/elasticsearch/data
+    environment:
+      - node.name=es1
+      - cluster.name=docker-cluster
+      - cluster.initial_master_nodes=es1
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms16g -Xmx16g"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    restart: unless-stopped
+
+  logstash:
+    image: docker.elastic.co/logstash/logstash:7.3.0
+    ports:
+      - "5044:5044"
+      - "9600:9600"
+      - "12201:12201/udp"
+    depends_on:
+      - elasticsearch
+    volumes:
+      - ./data/logstash.yml:/usr/share/logstash/config/logstash.yml
+      - ./data/pipeline:/usr/share/logstash/pipeline
+    environment:
+      - node.name=ls1
+      - "LS_JAVA_OPTS=-Xms4g -Xmx4g"
+    restart: unless-stopped
+
+  kibana:
+    image: docker.elastic.co/kibana/kibana:7.3.0
+    ports:
+      - "5601:5601"
+    depends_on:
+      - elasticsearch
+    environment:
+      SERVER_NAME: kibana
+      ELASTICSEARCH_URL: http://elasticsearch:9200
+    restart: unless-stopped
+
+  apm-server:
+    image: docker.elastic.co/apm/apm-server:7.3.0
+    ports:
+      - "8200:8200"
+    depends_on:
+      - elasticsearch
+    volumes:
+      - ./data/apm-server.yml:/usr/share/apm-server/apm-server.yml
+    restart: unless-stopped

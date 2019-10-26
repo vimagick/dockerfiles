@@ -2,7 +2,7 @@
 # Dockerfile for pure-ftpd
 #
 
-FROM debian:jessie
+FROM debian:buster
 MAINTAINER kev <noreply@easypi.pro>
 
 RUN set -xe \
@@ -15,4 +15,5 @@ RUN set -xe \
 EXPOSE 21
 VOLUME /home/ftpuser /etc/pure-ftpd
 
-CMD ["pure-ftpd", "--login", "puredb:/etc/pure-ftpd/pureftpd.pdb", "--createhomedir"]
+ENTRYPOINT ["pure-ftpd"]
+CMD ["/etc/pure-ftpd/pureftpd.conf"]

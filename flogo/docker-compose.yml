@@ -1,0 +1,6 @@
+flogo:
+  image: flogo/flogo-docker
+  command: eula-accept
+  ports:
+    - "3303:3303"
+  restart: always

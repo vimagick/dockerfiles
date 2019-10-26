@@ -60,33 +60,45 @@ proxy:
 $ docker-compose restart
 ```
 
+> :warning: You cannot use it as registry+mirror at the same time.
+
 ## Client Setup
 
 ```bash
-$ scp registry.easypi.info:fig/registry/certs/domain.crt \
-      /etc/docker/certs.d/registry.easypi.info:5000/ca.crt
+$ scp registry.easypi.pro:fig/registry/certs/domain.crt \
+      /etc/docker/certs.d/registry.easypi.pro:5000/ca.crt
 
-$ systemctl edit docker
-# /etc/systemd/system/docker.service.d/override.conf
-[Service]
-ExecStart=
-ExecStart=/usr/bin/dockerd -H fd:// --registry-mirror https://registry.easypi.info:5000
+$ vim /etc/docker/daemon.json
+{
+  "registry-mirrors": [
+    "https://registry.easypi.pro:5000"
+  ],
+  "insecure-registries": [
+    "registry.easypi.pro"
+  ],
+  "log-driver": "json-file",
+  "log-opts": {
+    "max-size": "10m",
+    "max-file": "3"
+  }
+}
                            
-$ systemctl daemon-reload
-$ systemctl restart docker
+$ systemctl reload docker
+$ docker info
 
 $ docker pull alpine
-$ docker tag alpine registry.easypi.info:5000/alpine
+$ docker tag alpine registry.easypi.pro:5000/alpine
 
-$ docker login -u username -p password easypi.info:5000
-$ docker push registry.easypi.info:5000/alpine
-$ docker rmi registry.easypi.info:5000/alpine
-$ docker pull registry.easypi.info:5000/alpine
+$ docker login -u username -p password easypi.pro:5000
+$ docker push registry.easypi.pro:5000/alpine
+$ docker rmi registry.easypi.pro:5000/alpine
+$ docker pull registry.easypi.pro:5000/alpine
 
-$ firefox http://registry.easypi.info:8080
+$ curl -k -u username:password https://registry.easypi.pro:5000/v2/_catalog
+$ curl -k -u username:password https://registry.easypi.pro:5000/v2/alpine/tags/list
 ```
 
-> Append `--insecure-registry registry.easypi.info:5000` option to disable TLS.
+> :warning: Docker will connect [insecure-registries][2] via HTTPS first (ignore TLS error), then try HTTP.
 
 ## Read More
 
@@ -94,5 +106,7 @@ $ firefox http://registry.easypi.info:8080
 - https://github.com/docker/distribution/blob/master/docs/insecure.md
 - https://serversforhackers.com/tcp-load-balancing-with-nginx-ssl-pass-thru
 - https://github.com/docker/distribution/blob/master/docs/recipes/mirror.md
+- https://docs.docker.com/registry/spec/api/
 
 [1]: https://github.com/docker/distribution
+[2]: https://docs.docker.com/registry/insecure/#deploy-a-plain-http-registry

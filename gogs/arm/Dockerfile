@@ -2,21 +2,23 @@
 # Dockerfile for gogs-arm
 #
 
-FROM easypi/alpine-arm
+FROM arm32v7/alpine:3
 MAINTAINER EasyPi Software Foundation
 
-ENV GOGS_VERSION 0.11.53
+ENV GOSU_VERSION 1.11
+ENV GOGS_VERSION 0.11.91
 ENV GOGS_CUSTOM /data/gogs
 
-RUN apk add --no-cache bash \
-                       ca-certificates \
-                       curl \
-                       git \
-                       linux-pam \
-                       openssh \
-                       s6 \
-                       socat \
-                       tar
+RUN apk add --no-cache \
+        bash \
+        ca-certificates \
+        curl \
+        git \
+        linux-pam \
+        openssh \
+        s6 \
+        socat \
+        tar
 
 RUN set -xe \
     && adduser -H -D -g 'Gogs Git User' -h /data/git -s /bin/bash git \
@@ -24,16 +26,16 @@ RUN set -xe \
     && echo "export GOGS_CUSTOM=${GOGS_CUSTOM}" >> /etc/profile
 
 RUN set -xe \
-    && curl -L https://github.com/tianon/gosu/releases/download/1.10/gosu-armhf > /usr/sbin/gosu \
+    && curl -L https://github.com/tianon/gosu/releases/download/${GOSU_VERSION}/gosu-armhf > /usr/sbin/gosu \
     && chmod +x /usr/sbin/gosu
 
 RUN set -xe \
     && mkdir /app/ \
     && cd /app/ \
-    && curl -LO https://github.com/gogits/gogs/releases/download/v${GOGS_VERSION}/raspi2_armv6.zip \
-    && unzip raspi2_armv6.zip \
-    && rm raspi2_armv6.zip \
-    && ln -s /lib/libc.musl-armhf.so.1 /lib/ld-linux-armhf.so.3
+    && curl -LO https://github.com/gogits/gogs/releases/download/v${GOGS_VERSION}/raspi_armv7.zip \
+    && unzip raspi_armv7.zip \
+    && rm raspi_armv7.zip \
+    && ln -s /lib/libc.musl-armv7.so.1 /lib/ld-linux-armhf.so.3
 
 RUN set -xe \
     && cd /app/gogs/ \

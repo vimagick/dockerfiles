@@ -1,0 +1,35 @@
+#
+# https://www.jfrog.com/confluence/display/RTF/Installing+with+Docker
+#
+
+version: "3.7"
+
+services:
+
+  postgres:
+    image: postgres:12-alpine
+    ports:
+     - "5432:5432"
+    volumes:
+     - ./data/postgres:/var/lib/postgresql/data
+    environment:
+     - POSTGRES_DB=artifactory
+     - POSTGRES_USER=artifactory
+     - POSTGRES_PASSWORD=artifactory
+    restart: always
+
+  artifactory:
+    image: docker.bintray.io/jfrog/artifactory-oss:6.13.1
+    ports:
+     - "8081:8081"
+    volumes:
+     - ./data/artifactory:/var/opt/jfrog/artifactory
+    environment:
+     - DB_TYPE=postgresql
+     - DB_HOST=postgres
+     - DB_USER=artifactory
+     - DB_PASSWORD=artifactory
+     - EXTRA_JAVA_OPTIONS=-Xms512m -Xmx2g -Xss256k -XX:+UseG1GC
+    depends_on:
+     - postgres
+    restart: always
