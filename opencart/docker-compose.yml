@@ -10,8 +10,9 @@ opencart:
 
 mysql:
   image: mysql
+  volumes:
+    - ./data:/var/lib/mysql
   environment:
     - MYSQL_ROOT_PASSWORD=root
     - MYSQL_DATABASE=opencart
   restart: always
-
