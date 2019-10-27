@@ -1,19 +1,24 @@
-pihole:
-  image: pihole/pihole:v4.0_armhf
-  ports:
-    - 53:53/tcp
-    - 53:53/udp
-    - 67:67/udp
-    - 80:80/tcp
-    - 443:443/tcp
-  volumes:
-    - ./data/pihole:/etc/pihole
-    - ./data/dnsmasq.d:/etc/dnsmasq.d
-  environment:
-    - ServerIP=10.0.0.195
-    - WEBPASSWORD=random
-    - DNS1=8.8.8.8
-    - DNS2=no
-  cap_add:
-    - NET_ADMIN
-  restart: unless-stopped
+version: "3.7"
+services:
+  pihole:
+    image: pihole/pihole:4.3.2-1_armhf
+    ports:
+      - 53:53/tcp
+      - 53:53/udp
+      - 67:67/udp
+      - 80:80/tcp
+      - 443:443/tcp
+    volumes:
+      - ./data/pihole:/etc/pihole
+      - ./data/dnsmasq.d:/etc/dnsmasq.d
+    environment:
+      - TZ=Asia/Shanghai
+      - WEBPASSWORD=******
+      - DNS1=8.8.8.8
+      - DNS2=no
+    dns:
+      - 127.0.0.1
+      - 1.1.1.1
+    cap_add:
+      - NET_ADMIN
+    restart: unless-stopped
