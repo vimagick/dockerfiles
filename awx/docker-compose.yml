@@ -14,10 +14,10 @@ services:
     ports:
       - "8052:8052"
     volumes:
-      - ./data/etc/SECRET_KEY:/etc/tower/SECRET_KEY
-      - ./data/etc/environment.sh:/etc/tower/conf.d/environment.sh
-      - ./data/etc/credentials.py:/etc/tower/conf.d/credentials.py
-      - ./data/awx:/var/lib/awx/projects
+      - ./data/settings/SECRET_KEY:/etc/tower/SECRET_KEY
+      - ./data/settings/environment.sh:/etc/tower/conf.d/environment.sh
+      - ./data/settings/credentials.py:/etc/tower/conf.d/credentials.py
+      - ./data/projects:/var/lib/awx/projects
     depends_on:
       - rabbitmq
       - memcached
@@ -30,10 +30,10 @@ services:
     hostname: awx
     user: root
     volumes:
-      - ./data/etc/SECRET_KEY:/etc/tower/SECRET_KEY
-      - ./data/etc/environment.sh:/etc/tower/conf.d/environment.sh
-      - ./data/etc/credentials.py:/etc/tower/conf.d/credentials.py
-      - ./data/awx:/var/lib/awx/projects
+      - ./data/settings/SECRET_KEY:/etc/tower/SECRET_KEY
+      - ./data/settings/environment.sh:/etc/tower/conf.d/environment.sh
+      - ./data/settings/credentials.py:/etc/tower/conf.d/credentials.py
+      - ./data/projects:/var/lib/awx/projects
     depends_on:
       - rabbitmq
       - memcached

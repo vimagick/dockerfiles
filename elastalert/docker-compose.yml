@@ -1,13 +1,13 @@
-elastalert:
-  image: bitsensor/elastalert:2.0.0
-  ports:
-    - "3030:3030"
-    - "3333:3333"
-  volumes:
-    - ./data/config.yaml:/opt/elastalert/config.yaml
-    - ./data/rules:/opt/elastalert/rules
-  external_links:
-    - elk_elasticsearch_1:elasticsearch
-# extra_hosts:
-#   - elasticsearch:1.2.3.4
-  restart: always
+version: "3.7"
+
+services:
+  elastalert:
+    image: vimagick/elastalert
+    volumes:
+      - ./data:/opt/elastalert
+    restart: unless-stopped
+
+networks:
+  default:
+    external:
+      name: elk_default

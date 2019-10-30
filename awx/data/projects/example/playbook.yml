@@ -1,0 +1,7 @@
+- name: example playbook
+  hosts: 127.0.0.1
+  connection: local
+  gather_facts: false
+  tasks:
+  - debug:
+      msg: hello world

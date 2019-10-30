@@ -10,7 +10,7 @@ patterns of interest from data in Elasticsearch.
 $ docker-compose up -d
 $ docker-compose exec elastalert sh
 >>> cd /opt/elastalert/rules
->>> elastalert-test-rule xxx.yaml
+>>> elastalert-test-rule example.yaml
 >>> exit
 ```
 

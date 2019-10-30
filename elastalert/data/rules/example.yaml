@@ -1,0 +1,25 @@
+name: Example rule
+
+es_host: elasticsearch
+es_port: 9200
+
+type: frequency
+
+index: logstash-*
+
+num_events: 10
+
+timeframe:
+  hours: 1
+
+filter:
+- query:
+    query_string:
+      query: 'response:[500 TO *]'
+
+alert:
+- command
+
+command:
+- echo
+- "{match[@timestamp]} {match[message]}"
