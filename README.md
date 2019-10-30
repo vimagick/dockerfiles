@@ -77,6 +77,7 @@ A collection of delicious docker recipes.
 - [x] cadvisor
 - [x] casperjs :+1:
 - [x] collectd
+- [x] elastalert
 - [x] freegeoip
 - [x] freeradius
 - [x] frp :cn:
@@ -269,7 +270,6 @@ A collection of delicious docker recipes.
 - [x] cachethq/docker
 - [x] drone/drone
 - [x] drupal
-- [x] elastalert
 - [x] elk
 - [x] flogo/flogo-docker
 - [x] mher/flower

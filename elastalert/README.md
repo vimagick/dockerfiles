@@ -7,11 +7,11 @@ patterns of interest from data in Elasticsearch.
 ## up and running
 
 ```bash
-$ docker-compose up -d
-$ docker-compose exec elastalert sh
->>> cd /opt/elastalert/rules
->>> elastalert-test-rule example.yaml
+$ docker-compose run --rm elastalert sh
+>>> elastalert-create-index --config config.yaml
+>>> elastalert-test-rule --config config.yaml rules/example.yaml
 >>> exit
+$ docker-compose up -d
 ```
 
 > ElastAlert will also load new rules, stop running missing rules, and restart

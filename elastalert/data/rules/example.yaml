@@ -7,7 +7,11 @@ type: frequency
 
 index: logstash-*
 
+doc_type: _doc
+
 num_events: 10
+
+use_count_query: true
 
 timeframe:
   hours: 1
@@ -20,6 +24,4 @@ filter:
 alert:
 - command
 
-command:
-- echo
-- "{match[@timestamp]} {match[message]}"
+command: [echo, bad, things, happen]
