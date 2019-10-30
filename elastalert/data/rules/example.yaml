@@ -8,7 +8,10 @@ use_count_query: true
 num_events: 10
 
 timeframe:
-  hours: 1
+  minutes: 5
+
+realert:
+  minutes: 60
 
 filter:
 - query:
@@ -16,11 +19,10 @@ filter:
       query: 'response:[500 TO *]'
 
 alert:
+- command:
+    command: [echo, bad, things, happen]
 - slack:
     slack_webhook_url: https://hooks.slack.com/services/XXXXXXXXX/XXXXXXXXX/XXXXXXXXXXXXXXXXXXXXXXXX
     slack_username_override: ElastAlert
     slack_channel_override: '#monit'
     slack_emoji_override: ':bell:'
-- command
-
-command: [echo, bad, things, happen]

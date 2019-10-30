@@ -5,6 +5,8 @@ services:
     image: vimagick/elastalert
     volumes:
       - ./data:/opt/elastalert
+    environment:
+      - TZ=Asia/Shanghai
     restart: unless-stopped
 
 networks:
