@@ -1,17 +1,11 @@
-name: Example rule
-
+name: example rule
 es_host: elasticsearch
 es_port: 9200
-
 type: frequency
-
 index: logstash-*
-
 doc_type: _doc
-
-num_events: 10
-
 use_count_query: true
+num_events: 10
 
 timeframe:
   hours: 1
@@ -22,6 +16,11 @@ filter:
       query: 'response:[500 TO *]'
 
 alert:
+- slack:
+    slack_webhook_url: https://hooks.slack.com/services/XXXXXXXXX/XXXXXXXXX/XXXXXXXXXXXXXXXXXXXXXXXX
+    slack_username_override: ElastAlert
+    slack_channel_override: '#monit'
+    slack_emoji_override: ':bell:'
 - command
 
 command: [echo, bad, things, happen]
