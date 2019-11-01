@@ -18,6 +18,8 @@ services:
       - JIRA_PROXY_SCHEME=https
       - SETENV_JVM_MINIMUM_MEMORY=4g
       - SETENV_JVM_MAXIMUM_MEMORY=8g
+    depends_on:
+      - postgres
     restart: unless-stopped
 
   postgres:

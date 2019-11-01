@@ -285,7 +285,6 @@ A collection of delicious docker recipes.
     - [ ] python
 - [x] gogs/gogs :cn:
 - [x] haproxy
-- [x] teamatldocker/jira
 - [x] jmxtrans/jmxtrans
 - [x] wurstmeister/kafka
 - [x] netdata/netdata
@@ -315,12 +314,16 @@ A collection of delicious docker recipes.
 - [x] rocket.chat
 - [x] rundeck/rundeck
 - [x] wonderfall/searx
-- [ ] selenium
-    - [ ] hub
-    - [ ] node-firefox
+- [x] selenium
+    - [x] hub
+    - [x] node-chrome
+    - [x] node-firefox
     - [x] standalone-firefox
 - [x] sentry
 - [x] scrapinghub/splash
+- [x] teamatldocker
+    - [x] confluence
+    - [x] jira
 - [x] amancevice/superset
 - [x] v2ray/official :cn:
 - [x] centurylink/watchtower

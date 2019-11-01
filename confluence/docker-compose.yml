@@ -1,0 +1,33 @@
+version: "3.7"
+
+services:
+
+  confluence:
+    image: teamatldocker/confluence:7.0.4
+    ports:
+      - "8090:8090"
+    volumes:
+      - ./data/confluence:/var/atlassian/confluence
+    environment:
+      - DOCKER_WAIT_HOST=postgres
+      - DOCKER_WAIT_PORT=5432
+      - CONFLUENCE_PROXY_NAME=confluence.example.com
+      - CONFLUENCE_PROXY_PORT=443
+      - CONFLUENCE_PROXY_SCHEME=https
+      - CATALINA_PARAMETER1=-Xms
+      - CATALINA_PARAMETER_VALUE1=2g
+      - CATALINA_PARAMETER2=-Xmx
+      - CATALINA_PARAMETER_VALUE2=4g
+    depends_on:
+      - postgres
+    restart: unless-stopped
+
+  postgres:
+    image: postgres:12-alpine
+    volumes:
+      - ./data/postgres:/var/lib/postgresql/data:Z
+    environment:
+      - POSTGRES_DB=confluence
+      - POSTGRES_USER=confluence
+      - POSTGRES_PASSWORD=confluence
+    restart: unless-stopped
