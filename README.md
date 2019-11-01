@@ -270,6 +270,7 @@ A collection of delicious docker recipes.
 - [x] cachethq/docker
 - [x] drone/drone
 - [x] drupal
+- [x] elastichq/elasticsearch-hq
 - [x] elk
 - [x] flogo/flogo-docker
 - [x] mher/flower

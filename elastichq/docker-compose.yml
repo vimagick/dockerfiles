@@ -1,0 +1,13 @@
+version: "3.7"
+
+services:
+
+  elastichq:
+    image: elastichq/elasticsearch-hq
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./data:/data
+    environment:
+      - SQLALCHEMY_DATABASE_URI=/data/elastichq.db
+    restart: unless-stopped

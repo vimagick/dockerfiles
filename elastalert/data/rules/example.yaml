@@ -1,4 +1,5 @@
 name: example rule
+is_enabled: true
 es_host: elasticsearch
 es_port: 9200
 type: frequency
