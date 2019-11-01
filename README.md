@@ -285,6 +285,7 @@ A collection of delicious docker recipes.
     - [ ] python
 - [x] gogs/gogs :cn:
 - [x] haproxy
+- [x] teamatldocker/jira
 - [x] jmxtrans/jmxtrans
 - [x] wurstmeister/kafka
 - [x] netdata/netdata

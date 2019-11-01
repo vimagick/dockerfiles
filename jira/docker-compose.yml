@@ -1,0 +1,31 @@
+version: "3.7"
+
+services:
+
+  jira:
+    image: teamatldocker/jira:8.5.0
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./data/jira:/var/atlassian/jira
+    environment:
+      - DOCKER_WAIT_HOST=postgres
+      - DOCKER_WAIT_PORT=5432
+      - JIRA_DATABASE_URL=postgresql://jira@postgres/jira
+      - JIRA_DB_PASSWORD=jira
+      - JIRA_PROXY_NAME=jira.example.com
+      - JIRA_PROXY_PORT=443
+      - JIRA_PROXY_SCHEME=https
+      - SETENV_JVM_MINIMUM_MEMORY=4g
+      - SETENV_JVM_MAXIMUM_MEMORY=8g
+    restart: unless-stopped
+
+  postgres:
+    image: postgres:12-alpine
+    volumes:
+      - ./data/postgres:/var/lib/postgresql/data:Z
+    environment:
+      - POSTGRES_DB=jira
+      - POSTGRES_USER=jira
+      - POSTGRES_PASSWORD=jira
+    restart: unless-stopped
