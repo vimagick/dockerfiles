@@ -6,8 +6,6 @@ services:
     image: vimagick/ggr
     ports:
       - "4444:4444"
-    volumes:
-      - ./data/grid-router:/etc/grid-router
     environment:
       - BROWSER_NAME=chrome
       - BROWSER_VERSION=78.0
