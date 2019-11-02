@@ -65,6 +65,7 @@ A collection of delicious docker recipes.
 - [x] drone-scp-arm
 - [x] drone-ssh-arm
 - [x] errbot :octocat:
+- [x] ggr
 - [x] hubot :octocat:
 - [x] jenkins-arm :beetle:
 

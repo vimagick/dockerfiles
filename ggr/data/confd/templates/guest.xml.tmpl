@@ -1,0 +1,11 @@
+<qa:browsers xmlns:qa="urn:config.gridrouter.qatools.ru">
+<browser name="{{getenv "BROWSER_NAME" "chrome"}}" defaultVersion="{{getenv "BROWSER_VERSION" "78.0"}}">
+    <version number="{{getenv "BROWSER_VERSION" "78.0"}}">
+        <region name="{{getenv "BROWSER_REGION" "1"}}">
+        {{range lookupIP (getenv "BROWSER_HOSTS" "tasks.chrome")}}
+            <host name="{{.}}" port="{{getenv "BROWSER_PORT" "5555"}}" count="{{getenv "BROWSER_COUNT" "1"}}"/>
+        {{end}}
+        </region>
+    </version>
+</browser>
+</qa:browsers>

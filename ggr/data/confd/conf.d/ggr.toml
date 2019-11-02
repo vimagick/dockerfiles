@@ -1,0 +1,6 @@
+[template]
+src = "guest.xml.tmpl"
+dest = "/etc/grid-router/quota/guest.xml"
+keys = ["/"]
+check_cmd = "xmllint --noout /etc/grid-router/quota/guest.xml"
+reload_cmd = "supervisorctl signal HUP ggr"

@@ -1,0 +1,18 @@
+version: "3.7"
+
+services:
+
+  ggr:
+    image: vimagick/ggr
+    ports:
+      - "4444:4444"
+    volumes:
+      - ./data/grid-router:/etc/grid-router
+    environment:
+      - BROWSER_NAME=chrome
+      - BROWSER_VERSION=78.0
+      - BROWSER_REGION=1
+      - BROWSER_HOSTS=tasks.chrome
+      - BROWSER_PORT=5555
+      - BROWSER_COUNT=10
+    restart: unless-stopped
