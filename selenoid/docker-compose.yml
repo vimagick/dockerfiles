@@ -1,0 +1,33 @@
+version: "3.7"
+
+services:
+
+  selenoid:
+    image: aerokube/selenoid:latest-release
+    command: |
+      -conf config/browsers.json
+      -video-output-dir video
+      -log-output-dir logs
+      -limit 5
+      -timeout 1m
+      -max-timeout 30m
+      -container-network selenoid_default
+    ports:
+      - "4444:4444"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./data:/opt/selenoid
+    environment:
+      - TZ=UTC
+      - OVERRIDE_VIDEO_OUTPUT_DIR=$PWD/data/video
+    working_dir: /opt/selenoid
+    restart: unless-stopped
+
+  selenoid-ui:
+    image: aerokube/selenoid-ui:latest-release
+    command: --selenoid-uri=http://selenoid:4444
+    ports:
+      - "8080:8080"
+    depends_on:
+      - selenoid
+    restart: unless-stopped

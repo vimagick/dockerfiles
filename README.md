@@ -320,6 +320,13 @@ A collection of delicious docker recipes.
     - [x] node-chrome
     - [x] node-firefox
     - [x] standalone-firefox
+- [x] aerokube
+    - [x] selenoid
+      - [x] video-recorder
+      - [x] chrome
+      - [x] firefox
+      - [x] vnc
+    - selenoid-ui
 - [x] sentry
 - [x] scrapinghub/splash
 - [x] teamatldocker
