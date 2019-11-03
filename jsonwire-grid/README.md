@@ -24,8 +24,13 @@ busy
 from selenium import webdriver
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 
-capabilities = DesiredCapabilities.FIREFOX # it does not work :-1:
-capabilities = {'browserName': 'firefox'}  # it works         :+1:
+# it does not work
+capabilities = DesiredCapabilities.FIREFOX
+capabilities = DesiredCapabilities.CHROME
+
+# it works
+capabilities = {'browserName': 'firefox', 'version': '70.0'}
+capabilities = {'platform': 'ANY', 'browserName': 'chrome', 'version': '78.0.3904.70'}
 
 driver = webdriver.Remote(
     command_executor='http://127.0.0.1:4444/wd/hub',

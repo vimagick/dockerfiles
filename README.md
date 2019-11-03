@@ -47,6 +47,9 @@ A collection of delicious docker recipes.
 - [x] ambari
 - [x] kafka-arm
 - [x] kafka-manager
+- [x] luigi
+- [x] nifi
+- [x] openrefine
 - [x] prestodb (official)
 - [x] prestosql (community)
 - [x] superset-arm
@@ -65,9 +68,27 @@ A collection of delicious docker recipes.
 - [x] drone-scp-arm
 - [x] drone-ssh-arm
 - [x] errbot :octocat:
-- [x] ggr
 - [x] hubot :octocat:
 - [x] jenkins-arm :beetle:
+
+## Cluster
+
+- [x] ggr
+- [x] jsonwire-grid
+
+## Monitor
+
+- [x] collectd
+- [x] elastalert
+- [x] glances
+- [x] grafana
+- [x] graphite
+- [x] influxdb
+- [x] logstash
+- [x] statsd
+- [x] telegraf
+- [x] urlwatch :beetle:
+- [x] vnstat
 
 ## Daemon
 
@@ -77,17 +98,11 @@ A collection of delicious docker recipes.
 - [x] audiowaveform
 - [x] cadvisor
 - [x] casperjs :+1:
-- [x] collectd
-- [x] elastalert
 - [x] freegeoip
 - [x] freeradius
 - [x] frp :cn:
-- [x] graphite
 - [x] h2o
 - [x] httpbin :+1:
-- [x] influxdb
-- [x] logstash
-- [x] luigi
 - [x] mariadb
 - [x] mariadb-arm
 - [x] monit
@@ -95,7 +110,6 @@ A collection of delicious docker recipes.
 - [x] mosquitto
 - [x] motion-arm :+1:
 - [x] nginx
-- [x] nifi
 - [x] ntopng
 - [x] nullmailer
 - [x] nullmailer-arm
@@ -115,14 +129,10 @@ A collection of delicious docker recipes.
 - [x] samba :+1:
 - [x] samba-arm :+1:
 - [x] scrapyd :+1:
-- [x] statsd
 - [x] swarm-arm
 - [x] taskd
-- [x] telegraf
 - [x] tftpd
 - [x] tmail :beetle:
-- [x] urlwatch :beetle:
-- [x] vnstat
 - [x] vsftpd
 - [x] webhook
 - [x] webkit :beetle:
@@ -158,9 +168,7 @@ A collection of delicious docker recipes.
 - [x] django-cms
 - [x] dokuwiki :+1:
 - [x] dokuwiki-arm :+1:
-- [x] glances
 - [x] gogs-arm :cn:
-- [x] grafana
 - [x] hugo
 - [x] hugo-arm
 - [x] jamapi
@@ -170,7 +178,6 @@ A collection of delicious docker recipes.
 - [x] mediagoblin
 - [x] nginad
 - [x] nodebb :+1:
-- [x] openrefine
 - [x] phpbb
 - [x] phpmyadmin-arm
 - [x] phpvirtualbox-arm
@@ -291,6 +298,7 @@ A collection of delicious docker recipes.
 - [x] netdata/netdata
 - [x] nextcloud
 - [x] sonatype/nexus3
+- [ ] jwilder/nginx-proxy
 - [x] jazzdd/phpvirtualbox
 - [x] jenkins
 - [x] sonatype/nexus3

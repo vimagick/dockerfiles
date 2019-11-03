@@ -75,6 +75,7 @@ driver.maximize_window()
 driver.get('https://www.google.com/')
 driver.save_screenshot('google.png')
 driver.close()
+driver.quit()
 ```
 
 [1]: https://aerokube.com/selenoid/latest/

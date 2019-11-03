@@ -21,3 +21,15 @@ services:
     depends_on:
       - hub
     restart: unless-stopped
+
+  chrome:
+    image: selenium/node-chrome:3.141.59-xenon
+    entrypoint: bash -c 'SE_OPTS="-host $$HOSTNAME -port 5555" /opt/bin/entry_point.sh'
+    volumes:
+      - /dev/shm:/dev/shm
+    environment:
+      - HUB_HOST=hub
+      - HUB_PORT=4444
+    depends_on:
+      - hub
+    restart: unless-stopped
