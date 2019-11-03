@@ -1,0 +1,33 @@
+version: "3.7"
+
+services:
+
+  hub:
+    image: vimagick/jsonwire-grid
+    ports:
+      - "4444:4444"
+    deploy:
+      replicas: 1
+      placement:
+        constraints:
+          - node.role == manager
+      restart_policy:
+        condition: on-failure
+
+  firefox:
+    image: selenium/node-firefox:3.141.59-xenon
+    entrypoint: bash -c 'SE_OPTS="-host $$HOSTNAME -port 5555" /opt/bin/entry_point.sh'
+    volumes:
+      - /dev/shm:/dev/shm
+    environment:
+      - HUB_HOST=hub
+      - HUB_PORT=4444
+    depends_on:
+      - hub
+    deploy:
+      replicas: 10
+      placement:
+        constraints:
+          - node.role == worker
+      restart_policy:
+        condition: on-failure

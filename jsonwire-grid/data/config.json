@@ -1,0 +1,19 @@
+{
+  "logger": {
+    "level": "debug"
+  },
+  "db": {
+    "implementation": "local"
+  },
+  "grid": {
+    "client_type": "selenium",
+    "port": 4444,
+    "strategy_list": [
+      {
+        "type": "persistent"
+      }
+    ],
+    "busy_node_duration": "15m",
+    "reserved_node_duration": "5m"
+  }
+}

@@ -1,0 +1,31 @@
+#
+# Dockerfile for jsonwire-grid
+#
+
+FROM golang:alpine AS build
+
+RUN apk add --no-cache git file
+RUN go get github.com/qa-dev/jsonwire-grid
+RUN file /go/bin/jsonwire-grid
+
+FROM alpine
+MAINTAINER EasyPi Software Foundation
+
+ENV REPOSITORY=https://github.com/qa-dev/jsonwire-grid
+ENV CONFIG_PATH=config.json
+
+WORKDIR /etc/jsonwire-grid
+
+RUN set -xe \
+    && apk add --no-cache curl \
+    && curl -sSLO ${REPOSITORY}/raw/master/config-local-sample.json \
+    && curl -sSLO ${REPOSITORY}/raw/master/config-sample.json \
+    && curl -sSLO ${REPOSITORY}/raw/master/config-test.json \
+    && ln -s config-local-sample.json ${CONFIG_PATH} \
+    && apk del curl
+
+COPY --from=build /go/bin/jsonwire-grid /usr/local/bin/
+
+EXPOSE 4444
+
+ENTRYPOINT ["jsonwire-grid"]
