@@ -1,9 +1,9 @@
-version: '3.5'
+version: '3.7'
 
 services:
 
   elasticsearch:
-    image: docker.elastic.co/elasticsearch/elasticsearch:7.3.0
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.4.2
     ports:
       - "9200:9200"
     volumes:
@@ -13,7 +13,7 @@ services:
       - cluster.name=docker-cluster
       - cluster.initial_master_nodes=es1
       - bootstrap.memory_lock=true
-      - "ES_JAVA_OPTS=-Xms16g -Xmx16g"
+      - ES_JAVA_OPTS=-Xms8g -Xmx8g
     ulimits:
       memlock:
         soft: -1
@@ -21,38 +21,40 @@ services:
     restart: unless-stopped
 
   logstash:
-    image: docker.elastic.co/logstash/logstash:7.3.0
+    image: docker.elastic.co/logstash/logstash:7.4.2
     ports:
       - "5044:5044"
       - "9600:9600"
       - "12201:12201/udp"
-    depends_on:
-      - elasticsearch
     volumes:
-      - ./data/logstash.yml:/usr/share/logstash/config/logstash.yml
-      - ./data/pipeline:/usr/share/logstash/pipeline
+      - ./data/pipelines.yml:/usr/share/logstash/config/pipelines.yml
+      - ./data/pipelines:/usr/share/logstash/pipelines
     environment:
       - node.name=ls1
-      - "LS_JAVA_OPTS=-Xms4g -Xmx4g"
+      - xpack.monitoring.enabled=true
+      - xpack.monitoring.elasticsearch_hosts=[http://elasticsearch:9200]
+      - LS_JAVA_OPTS=-Xms4g -Xmx4g
+    depends_on:
+      - elasticsearch
     restart: unless-stopped
 
   kibana:
-    image: docker.elastic.co/kibana/kibana:7.3.0
+    image: docker.elastic.co/kibana/kibana:7.4.2
     ports:
       - "5601:5601"
+    environment:
+      - SERVER_NAME=kibana
+      - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
     depends_on:
       - elasticsearch
-    environment:
-      SERVER_NAME: kibana
-      ELASTICSEARCH_URL: http://elasticsearch:9200
     restart: unless-stopped
 
   apm-server:
-    image: docker.elastic.co/apm/apm-server:7.3.0
+    image: docker.elastic.co/apm/apm-server:7.4.2
     ports:
       - "8200:8200"
-    depends_on:
-      - elasticsearch
     volumes:
       - ./data/apm-server.yml:/usr/share/apm-server/apm-server.yml
+    depends_on:
+      - elasticsearch
     restart: unless-stopped
