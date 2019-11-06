@@ -8,9 +8,9 @@ services:
       -conf config/browsers.json
       -video-output-dir video
       -log-output-dir logs
-      -limit 5
-      -timeout 1m
-      -max-timeout 30m
+      -limit 4
+      -timeout 5m
+      -max-timeout 1h
       -container-network selenoid_default
     ports:
       - "4444:4444"
