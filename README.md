@@ -133,6 +133,7 @@ A collection of delicious docker recipes.
 - [x] taskd
 - [x] tftpd
 - [x] tmail :beetle:
+- [x] twemproxy
 - [x] vsftpd
 - [x] webhook
 - [x] webkit :beetle:

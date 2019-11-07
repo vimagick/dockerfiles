@@ -1,0 +1,24 @@
+version: "3.7"
+
+services:
+
+  twemproxy:
+    image: vimagick/twemproxy
+    command: >
+      --conf-file=conf/nutcracker.yml
+      --output=logs/nutcracker.log
+      --verbose=5
+    ports:
+      - "6379:6379"
+      - "22222:22222"
+    volumes:
+      - ./data/twemproxy:/opt/twemproxy
+    depends_on:
+      - redis
+    restart: unless-stopped
+
+  redis:
+    image: redis:alpine
+    volumes:
+      - ./data/redis:/data
+    restart: unless-stopped
