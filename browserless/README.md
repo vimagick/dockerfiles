@@ -9,7 +9,7 @@ to.
 
 ```yaml
 browserless:
-  image: browserless/chrome
+  image: browserless/chrome:1-chrome-stable
   ports:
     - "3000:3000"
   environment:

@@ -1,0 +1,43 @@
+version: '3.7'
+
+services:
+
+  hub:
+    image: vimagick/ggr
+    ports:
+      - "4444:4444"
+    environment:
+      - BROWSER_NAME=chrome
+      - BROWSER_VERSION=78.0
+      - BROWSER_REGION=1
+      - BROWSER_HOSTS=tasks.chrome
+      - BROWSER_PORT=4444
+      - BROWSER_COUNT=10
+    deploy:
+      replicas: 1
+      placement:
+        constraints:
+          - node.role == manager
+      restart_policy:
+        condition: on-failure
+
+  chrome:
+    image: selenium/standalone-chrome:3.141.59-xenon
+    volumes:
+      - /dev/shm:/dev/shm
+    environment:
+      - NODE_MAX_INSTANCES=10
+      - NODE_MAX_SESSION=10
+    depends_on:
+      - hub
+    deploy:
+      replicas: 2
+      placement:
+        constraints:
+          - node.role == worker
+      restart_policy:
+        condition: on-failure
+      update_config:
+        parallelism: 5
+        delay: 10s
+        order: stop-first
