@@ -74,6 +74,7 @@ A collection of delicious docker recipes.
 ## Cluster
 
 - [x] ggr
+- [x] ggr-ui
 - [x] jsonwire-grid
 
 ## Monitor

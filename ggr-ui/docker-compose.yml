@@ -1,0 +1,28 @@
+version: "3.7"
+
+services:
+
+  ggr-ui:
+    image: vimagick/ggr-ui
+    ports:
+      - "8888:8888"
+    environment:
+      - BROWSER_NAME=chrome
+      - BROWSER_VERSION=78.0
+      - BROWSER_REGION=1
+      - BROWSER_HOSTS=tasks.selenoid
+      - BROWSER_PORT=4444
+      - BROWSER_COUNT=10
+    extra_hosts:
+      - tasks.selenoid:1.2.3.4
+      - tasks.selenoid:4.3.2.1
+    restart: unless-stopped
+
+  selenoid-ui:
+    image: aerokube/selenoid-ui:latest-release
+    command: --selenoid-uri=http://ggr-ui:8888
+    ports:
+      - "8080:8080"
+    depends_on:
+      - ggr-ui
+    restart: unless-stopped

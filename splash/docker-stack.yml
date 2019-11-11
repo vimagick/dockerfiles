@@ -1,7 +1,8 @@
-version: '3.5'
+version: '3.7'
+
 services:
   splash:
-    image: scrapinghub/splash:3.3.1
+    image: scrapinghub/splash:3.4
     command: --maxrss 2048 --max-timeout 300 --disable-lua-sandbox --verbosity 1
     ports:
       - "8050:8050"
@@ -20,6 +21,7 @@ services:
           - node.role == worker
       restart_policy:
         condition: on-failure
+
 volumes:
   splash_filters:
     driver: local
@@ -45,6 +47,7 @@ volumes:
       type: nfs
       o: "addr=10.0.0.96,nolock,soft,ro"
       device: ":/export/splash/proxy-profiles"
+
 networks:
   default:
     ipam:

@@ -21,6 +21,16 @@ services:
       restart_policy:
         condition: on-failure
 
+  cleanup:
+    image: docker
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    command: docker system prune --all --force
+    deploy:
+      mode: global
+      restart_policy:
+        delay: 24h
+
 networks:
   default:
     ipam:

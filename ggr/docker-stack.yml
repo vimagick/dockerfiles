@@ -41,3 +41,8 @@ services:
         parallelism: 5
         delay: 10s
         order: stop-first
+
+networks:
+  default:
+    driver: overlay
+    attachable: true
