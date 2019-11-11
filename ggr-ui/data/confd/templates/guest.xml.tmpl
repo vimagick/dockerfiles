@@ -3,7 +3,7 @@
     <version number="{{getenv "BROWSER_VERSION" "78.0"}}">
         <region name="{{getenv "BROWSER_REGION" "1"}}">
         {{range lookupIP (getenv "BROWSER_HOSTS" "tasks.selenoid")}}
-            <host name="{{.}}" port="{{getenv "BROWSER_PORT" "5555"}}" count="{{getenv "BROWSER_COUNT" "1"}}" vnc="vnc://{{.}}:5900"/>
+            <host name="{{.}}" port="{{getenv "BROWSER_PORT" "5555"}}" count="{{getenv "BROWSER_COUNT" "1"}}" vnc="ws://{{.}}:4444/vnc"/>
         {{end}}
         </region>
     </version>
