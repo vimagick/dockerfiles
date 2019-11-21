@@ -12,6 +12,8 @@ scale your distributed caching architecture.
 ```bash
 $ docker-compose up -d
 
+$ curl http://127.0.0.1:22222
+
 $ docker-compose exec redis redis-cli -h twemproxy
 twemproxy:6379> ping
 PONG

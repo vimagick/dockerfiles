@@ -12,11 +12,21 @@ services:
       - MINIO_SECRET_KEY=osssecretkey
     restart: unless-stopped
 
+  s3:
+    image: minio/minio
+    command: gateway s3
+    ports:
+      - "9001:9000"
+    environment:
+      - MINIO_ACCESS_KEY=awsaccesskey
+      - MINIO_SECRET_KEY=awssecretkey
+    restart: unless-stopped
+
   nas:
     image: minio/minio
     command: gateway nas /data
     ports:
-      - "9001:9000"
+      - "9002:9000"
     volumes:
       - ./data:/data
     environment:
