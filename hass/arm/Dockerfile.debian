@@ -5,7 +5,7 @@
 FROM balenalib/rpi-raspbian:buster
 MAINTAINER EasyPi Software Foundation
 
-ENV HASS_VERSION=0.100.2
+ENV HASS_VERSION=0.102.1
 ENV HASS_CLI_VERSION=3.1.0
 
 RUN set -xe \
