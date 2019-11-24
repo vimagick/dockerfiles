@@ -2,7 +2,7 @@
 # Dockerfile for jsonwire-grid
 #
 
-FROM alpine:1.9-alpine
+FROM alpine:3
 MAINTAINER EasyPi Software Foundation
 
 ENV VERSION=0.5.0
