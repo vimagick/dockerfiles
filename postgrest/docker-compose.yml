@@ -1,9 +1,37 @@
-postgrest:
-  image: postgrest/postgrest
-  ports:
-    - "3000:3000"
-  environment:
-    PGRST_DB_URI: postgres://username:password@postgres:5432/postgres
-    PGRST_DB_SCHEMA: public
-    PGRST_DB_ANON_ROLE: postgres
-  restart: unless-stopped
+version: '3.7'
+
+services:
+
+  postgrest:
+    image: postgrest/postgrest
+    ports:
+      - "3000:3000"
+    environment:
+      PGRST_DB_URI: postgres://username:password@postgres:5432/test
+      PGRST_DB_SCHEMA: public
+      PGRST_DB_ANON_ROLE: postgres
+    depends_on:
+      - postgres
+    restart: unless-stopped
+
+  swagger:
+    image: swaggerapi/swagger-ui
+    ports:
+      - "8080:8080"
+    environment:
+      API_URL: http://postgrest:3000/
+    depends_on:
+      - postgrest
+    restart: unless-stopped
+
+  postgres:
+    image: postgres:alpine
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: test
+      POSTGRES_USER: username
+      POSTGRES_PASSWORD: password
+    restart: unless-stopped
