@@ -8,7 +8,10 @@ microservices into single endpoints, doing the heavy-lifting automatically for
 you: aggregate, transform, filter, decode, throttle, auth and more.
 
 
-## krakend.json
+## krakend config
+
+<details>
+<summary>krakend.json</summary>
 
 ```json
 {
@@ -36,17 +39,20 @@ you: aggregate, transform, filter, decode, throttle, auth and more.
   ]
 }
 ```
+</details>
+
+```
+$ krakend-config2dot -c krakend.json | dot -Tpng -o krakend.png
+```
+
+![](data/krakend.png)
 
 ## up and running
 
 ```bash
 $ docker-compose up -d
+
 $ curl http://localhost:8080/httpbin
-```
-
-## result.json
-
-```
 {
   "headers": {
     "Accept-Encoding": "gzip",
