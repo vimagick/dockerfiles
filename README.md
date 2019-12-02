@@ -297,6 +297,7 @@ A collection of delicious docker recipes.
 - [x] haproxy
 - [x] jmxtrans/jmxtrans
 - [x] wurstmeister/kafka
+- [x] devopsfaith/krakend
 - [x] netdata/netdata
 - [x] nextcloud
 - [x] sonatype/nexus3

@@ -1,0 +1,24 @@
+{
+  "version": 2,
+  "name": "My httpbin gateway",
+  "port": 8080,
+  "endpoints": [
+    {
+      "endpoint": "/httpbin",
+      "backend": [
+        {
+          "host": [
+            "https://httpbin.org"
+          ],
+          "url_pattern": "/headers"
+        },
+        {
+          "host": [
+            "https://httpbin.org"
+          ],
+          "url_pattern": "/ip"
+        }
+      ]
+    }
+  ]
+}
