@@ -20,6 +20,7 @@ zookeeper:
     - ./data/logs:/logs
   environment:
     - ZOO_LOG4J_PROP=INFO,ROLLINGFILE
+    - ZOO_STANDALONE_ENABLED=true
   restart: always
 ```
 
@@ -27,6 +28,8 @@ zookeeper:
 
 ```bash
 $ docker-compose up -d
+
+$ docker-compose exec zookeeper cat /conf/zoo.cfg
 
 $ docker-compose exec zookeeper zkServer.sh status
 ZooKeeper JMX enabled by default
