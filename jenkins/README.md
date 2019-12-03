@@ -48,4 +48,7 @@ $ vim data/war/jsbundles/pluginSetupWizard.js
     var pluginManagerErrorTimeoutMillis = 10 * 1000;
 ```
 
+> Chinese users may add `-Dhudson.model.DownloadService.noSignatureCheck=true` option to use [plugin update mirror site][2].
+
 [1]: https://jenkins.io/index.html
+[2]: https://mirrors.tuna.tsinghua.edu.cn/jenkins/updates/current/update-center.json

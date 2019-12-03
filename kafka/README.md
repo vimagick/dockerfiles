@@ -24,3 +24,7 @@ $ kafkacat -P -b localhost:9092 -t my-topic
 # Consumer
 $ kafkacat -C -b localhost:9092 -t my-topic -o end -u -q | jq .
 ```
+
+## Monitoring
+
+https://telegraf-kafka.readthedocs.io/en/stable/index.html
