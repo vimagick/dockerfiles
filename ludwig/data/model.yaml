@@ -1,0 +1,11 @@
+input_features:
+    -
+        name: text
+        type: text
+        level: word
+        encoder: parallel_cnn
+
+output_features:
+    -
+        name: class
+        type: category

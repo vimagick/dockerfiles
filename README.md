@@ -71,6 +71,10 @@ A collection of delicious docker recipes.
 - [x] hubot :octocat:
 - [x] jenkins-arm :beetle:
 
+## Machine Learning
+
+- [x] ludwig
+
 ## Cluster
 
 - [x] ggr
