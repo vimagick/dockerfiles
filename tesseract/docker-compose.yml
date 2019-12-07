@@ -1,0 +1,6 @@
+tesseract:
+  image: vimagick/tesseract
+  command: tesseract input.png output -l eng --psm 3
+  volumes:
+    - ./data:/data
+  working_dir: /data

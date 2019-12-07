@@ -16,4 +16,4 @@ RUN set -xe \
     && tesseract --list-langs
 
 ENTRYPOINT ["tesseract"]
-CMD ["--help"]
+CMD ["--help-extra"]
