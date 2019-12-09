@@ -48,7 +48,7 @@ $ tree -L 3 data
 ├── predict.csv
 ├── train.csv
 ├── results
-│   └── experiment_run
+│   └── experiment_example
 │       ├── description.json
 │       ├── model
 │       └── training_statistics.json

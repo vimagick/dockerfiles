@@ -20,8 +20,7 @@ $ tesseract input.png output -l eng --psm 3
 $ cat output.txt
 The (quick) [brown] {fox} jumps!
 
-$ tesseract chinese.jpg chinese -l chi_tra --psm 8 --oem 0
-$ cat chinese.txt
+$ tesseract chinese.jpg stdout -l chi_tra --psm 8 --oem 0
 學習
 ```
 

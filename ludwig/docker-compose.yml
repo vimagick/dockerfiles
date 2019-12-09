@@ -1,24 +1,24 @@
 train:
   image: vimagick/ludwig
-  command: train --data_csv train.csv -mdf model.yaml
+  command: train --model_name example --data_csv train.csv -mdf model.yaml
   volumes:
     - ./data:/data
 
 visualize:
   image: vimagick/ludwig
-  command: visualize -v learning_curves -trs results/experiment_run/training_statistics.json -od visualize -ff png
+  command: visualize -v learning_curves -trs results/experiment_example/training_statistics.json -od visualize -ff png
   volumes:
     - ./data:/data
 
 predict:
   image: vimagick/ludwig
-  command: predict --data_csv predict.csv -m results/experiment_run/model
+  command: predict --data_csv predict.csv -m results/experiment_example/model
   volumes:
     - ./data:/data
 
 serve:
   image: vimagick/ludwig
-  command: serve -m results/experiment_run/model -p 8000
+  command: serve -m results/experiment_example/model -p 8000
   ports:
     - "8000:8000"
   volumes:
