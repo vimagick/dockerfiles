@@ -1,0 +1,5 @@
+doods:
+  image: snowzach/doods
+  ports:
+    - "8080:8080"
+  restart: unless-stopped
