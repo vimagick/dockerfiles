@@ -318,6 +318,7 @@ A collection of delicious docker recipes.
 - [x] mongo
 - [x] neo4j
 - [x] erichough/nfs-server
+- [x] luzifer/nginx-sso
 - [x] odoo
 - [x] osixia/openldap
 - [x] campbellsoftwaresolutions/osticket

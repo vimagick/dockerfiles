@@ -1,0 +1,7 @@
+nginx-sso:
+  image: luzifer/nginx-sso
+  ports:
+    - "8082:8082"
+  volumes:
+    - ./data:/data
+  restart: unless-stopped
