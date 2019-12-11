@@ -1,5 +1,9 @@
 ---
 
+listen:
+  addr: "0.0.0.0"
+  port: 8082
+
 login:
   title: "yourdomain.com - Login"
   default_method: "simple"
@@ -9,25 +13,21 @@ login:
 
 cookie:
   domain: ".yourdomain.com"
-  # You'll want to regenerate this. Use something like: cat /dev/urandom | tr -dc 'A-Za-z0-9' | dd bs=1 count=60
+  # To regenerate this key: cat /dev/urandom | tr -dc "A-Za-z0-9" | dd bs=1 count=60 2>/dev/null
   authentication_key: "5foFtWocwA3hq0tUztgMqn9xaagqNP1wFqfFyZDHTxhr154iQQ60eDI9z6oDVNHF7B"
-
-listen:
-  addr: "0.0.0.0"
-  port: 8082
 
 audit_log:
   targets:
     - fd://stdout
-    - file:///var/log/nginx-sso/audit.jsonl
-  events: ['access_denied', 'login_success', 'login_failure', 'logout', 'validate']
-  headers: ['x-origin-uri']
+    - file:///data/audit.jsonl
+  events: ["access_denied", "login_success", "login_failure", "logout", "validate"]
+  headers: ["x-origin-uri"]
   trusted_ip_headers: ["X-Forwarded-For", "RemoteAddr", "X-Real-IP"]
 
 acl:
   rule_sets:
   - rules:
-    - field: "x-host"
+    - field: "X-Host"
       regexp: ".*"
     allow: ["@admins"]
 
@@ -35,8 +35,7 @@ providers:
   simple:
     enable_basic_auth: true
     users:
-      # This password is 'admin'. Use this to generate a new password:
-      #      htpasswd -BnC 10 ""
+      # To generate a new password: htpasswd -nbBC 10 username password
       admin: "$2y$10$3aJxJ6ttJNPeky/bCdg1OOVvGU8pLVj9L.U9kN0F0JWLN.nt3b5WO"
     groups:
       admins: ["admin"]
