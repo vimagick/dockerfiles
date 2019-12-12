@@ -1,0 +1,11 @@
+dsvpn:
+  image: vimagick/dsvpn
+  command: server vpn.key auto 1959
+  ports:
+    - "1959:1959"
+  volumes:
+    - ./data:/etc/dsvpn
+  devices:
+    - /dev/net/tun
+  privileged: true
+  restart: unless-stopped

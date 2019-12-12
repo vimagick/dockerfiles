@@ -246,6 +246,7 @@ A collection of delicious docker recipes.
 
 ## VPN
 
+- [x] dsvpn :+1:
 - [x] n2n :+1:
 - [x] ocserv :+1:
 - [x] openconnect
