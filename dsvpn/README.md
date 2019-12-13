@@ -3,6 +3,8 @@ dsvpn
 
 [DSVPN][1] is a Dead Simple VPN
 
+![][2]
+
 docker-compose.yml
 ------------------
 
@@ -41,3 +43,4 @@ $ ping 192.168.192.254
 ```
 
 [1]: https://github.com/jedisct1/dsvpn
+[2]: https://github.com/jedisct1/dsvpn/raw/master/logo.png
