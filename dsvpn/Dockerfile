@@ -16,7 +16,7 @@ RUN set -xe \
 FROM alpine
 MAINTAINER EasyPi Software Foundation
 
-RUN apk add --no-cache iptables
+RUN apk add --no-cache iproute2
 COPY --from=builder /usr/sbin/dsvpn /usr/sbin/
 
 WORKDIR /etc/dsvpn
@@ -24,4 +24,4 @@ WORKDIR /etc/dsvpn
 EXPOSE 443
 
 ENTRYPOINT ["dsvpn"]
-CMD ["server", "vpn.key"]
+CMD ["server", "vpn.key", "auto", "443"]
