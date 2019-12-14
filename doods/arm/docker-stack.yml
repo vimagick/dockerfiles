@@ -1,0 +1,19 @@
+version: "3.7"
+
+services:
+
+  doods:
+    image: snowzach/doods:rpi
+    ports:
+      - "8080:8080"
+    configs:
+      - source: config.yaml
+        target: /opt/doods/config.yaml
+    deploy:
+      replicas: 3
+      restart_policy:
+        condition: on-failure
+
+configs:
+  config.yaml:
+    file: ./data/config.yaml
