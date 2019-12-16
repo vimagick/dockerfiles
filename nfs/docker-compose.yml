@@ -19,4 +19,4 @@ nfs:
     - NFS_EXPORT_2=/export/splash/lua_modules    *(ro,no_subtree_check)
     - NFS_EXPORT_3=/export/splash/proxy-profiles *(ro,no_subtree_check)
   privileged: true
-  restart: always
+  restart: unless-stopped
