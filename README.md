@@ -329,6 +329,7 @@ A collection of delicious docker recipes.
 - [x] portainer/portainer :+1:
 - [x] postgres
 - [x] postgrest/postgrest
+- [x] prosody/prosody
 - [x] registry
 - [x] rocket.chat
 - [x] rundeck/rundeck

@@ -1,0 +1,11 @@
+prosody:
+  image: prosody/prosody
+  ports:
+    - "5222:5222"
+    - "5269:5269"
+    - "5347:5347"
+  volumes:
+    - ./data/etc:/etc/prosody:ro
+    - ./data/log:/var/log/prosody:rw
+    - ./data/var:/var/lib/prosody:rw
+  restart: unless-stopped
