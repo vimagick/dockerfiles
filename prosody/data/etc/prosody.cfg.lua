@@ -12,9 +12,12 @@
 -- The only thing left to do is rename this file to remove the .dist ending, and fill in the
 -- blanks. Good luck, and happy Jabbering!
 
-daemonize = false;
+daemonize = false
+pidfile = "/var/run/prosody/prosody.pid"
 
-pidfile = "/var/run/prosody/prosody.pid";
+cross_domain_bosh = true
+consider_bosh_secure = true
+consider_websocket_secure = true
 
 ---------- Server-wide settings ----------
 -- Settings in this section apply to the whole server and are the default settings
@@ -24,11 +27,11 @@ pidfile = "/var/run/prosody/prosody.pid";
 -- for the server. Note that you must create the accounts separately
 -- (see https://prosody.im/doc/creating_accounts for info)
 -- Example: admins = { "user1@example.com", "user2@example.net" }
-admins = { }
+admins = { "admin@localhost" }
 
 -- Enable use of libevent for better performance under high load
 -- For more information see: https://prosody.im/doc/libevent
---use_libevent = true
+use_libevent = true
 
 -- Prosody will always look in its source directory for modules, but
 -- this option allows you to specify additional locations where Prosody
@@ -65,16 +68,16 @@ modules_enabled = {
 		"time"; -- Let others know the time here on this server
 		"ping"; -- Replies to XMPP pings with pongs
 		"register"; -- Allow users to register on this server using a client and change passwords
-		--"mam"; -- Store messages in an archive and allow users to access it
-		--"csi_simple"; -- Simple Mobile optimizations
+		"mam"; -- Store messages in an archive and allow users to access it
+		"csi_simple"; -- Simple Mobile optimizations
 
 	-- Admin interfaces
 		"admin_adhoc"; -- Allows administration via an XMPP client that supports ad-hoc commands
 		--"admin_telnet"; -- Opens telnet console interface on localhost port 5582
 
 	-- HTTP modules
-		--"bosh"; -- Enable BOSH clients, aka "Jabber over HTTP"
-		--"websocket"; -- XMPP over WebSockets
+		"bosh"; -- Enable BOSH clients, aka "Jabber over HTTP"
+		"websocket"; -- XMPP over WebSockets
 		--"http_files"; -- Serve static files from a directory over HTTP
 
 	-- Other specific functionality

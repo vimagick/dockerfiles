@@ -1,5 +1,5 @@
 prosody:
-  image: prosody/prosody
+  image: easypi/prosody-arm
   ports:
     - "5222:5222"
     - "5280:5280"

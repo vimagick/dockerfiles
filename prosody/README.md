@@ -18,6 +18,8 @@ $ docker-compose exec prosody bash
 >>> prosodyctl adduser admin@localhost
 Enter new password: ******
 Retype new password: ******
+>>> prosodyctl register guest localhost ******
+>>> prosodyctl reload
 ```
 
 [1]: https://prosody.im/
