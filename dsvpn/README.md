@@ -11,14 +11,12 @@ docker-compose.yml
 ```yaml
 dsvpn:
   image: vimagick/dsvpn
-  command: server vpn.key auto 1959
+  command: server vpn.key auto 443
   ports:
-    - "1959:1959"
+    - "443:443"
   volumes:
     - ./data:/etc/dsvpn
-  working_dir: /etc/dsvpn
-  devices:
-    - /dev/net/tun
+  tty: true
   privileged: true
   restart: unless-stopped
 ```

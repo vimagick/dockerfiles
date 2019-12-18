@@ -1,0 +1,14 @@
+[Unit]
+Description=nginx sso service
+After=network.target
+
+[Service]
+User=nobody
+WorkingDirectory=/etc/nginx-sso
+ExecStart=/usr/local/bin/nginx-sso
+ExecReload=/bin/kill -s HUP $MAINPID
+RestartSec=5
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
