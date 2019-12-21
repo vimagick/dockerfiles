@@ -15,6 +15,9 @@
 daemonize = false
 pidfile = "/var/run/prosody/prosody.pid"
 
+motd_text = [[Welcome to the server!
+Please enjoy your stay.]]
+
 cross_domain_bosh = true
 consider_bosh_secure = true
 consider_websocket_secure = true
@@ -36,7 +39,7 @@ use_libevent = true
 -- Prosody will always look in its source directory for modules, but
 -- this option allows you to specify additional locations where Prosody
 -- will look for modules first. For community modules, see https://modules.prosody.im/
---plugin_paths = {}
+plugin_paths = { "/etc/prosody/modules" }
 
 -- Single directory for custom prosody plugins and/or Lua libraries installation
 -- This path takes priority over plugin_paths, when prosody is searching for modules
@@ -87,7 +90,7 @@ modules_enabled = {
 		--"announce"; -- Send announcement to all online users
 		--"welcome"; -- Welcome users who register accounts
 		--"watchregistrations"; -- Alert admins of registrations
-		--"motd"; -- Send a message to users when they log in
+		"motd"; -- Send a message to users when they log in
 		--"legacyauth"; -- Legacy authentication. Only used by some old clients and bots.
 		--"proxy65"; -- Enables a file transfer proxy service which clients behind NAT can use
 }
@@ -141,10 +144,10 @@ authentication = "internal_hashed"
 -- through modules. An "sql" backend is included by default, but requires
 -- additional dependencies. See https://prosody.im/doc/storage for more info.
 
---storage = "sql" -- Default is "internal"
+storage = "sql" -- Default is "internal"
 
 -- For the "sql" backend, you can uncomment *one* of the below to configure:
---sql = { driver = "SQLite3", database = "prosody.sqlite" } -- Default. 'database' is the filename.
+sql = { driver = "SQLite3", database = "prosody.sqlite" } -- Default. 'database' is the filename.
 --sql = { driver = "MySQL", database = "prosody", username = "prosody", password = "secret", host = "localhost" }
 --sql = { driver = "PostgreSQL", database = "prosody", username = "prosody", password = "secret", host = "localhost" }
 

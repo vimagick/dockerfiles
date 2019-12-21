@@ -13,6 +13,7 @@ $ docker-compose exec prosody prosodyctl cert generate localhost
 $ mv data/var/localhost.* data/etc/certs/
 $ docker-compose restart
 $ docker-compose exec prosody bash
+>>> prosodyctl about
 >>> prosodyctl check
 >>> prosodyctl status
 >>> prosodyctl adduser admin@localhost
