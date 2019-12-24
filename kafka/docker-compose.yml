@@ -1,5 +1,5 @@
 zookeeper:
-  image: zookeeper
+  image: zookeeper:3.5.6
   ports:
     - "2181:2181"
   volumes:
@@ -8,7 +8,7 @@ zookeeper:
   restart: always
 
 kafka:
-  image: wurstmeister/kafka
+  image: wurstmeister/kafka:2.12-2.4.0
   ports:
     - "9092:9092"
   hostname: kafka

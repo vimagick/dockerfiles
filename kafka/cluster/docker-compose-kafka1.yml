@@ -1,5 +1,5 @@
 kafka:
-  image: wurstmeister/kafka:2.12-2.3.0
+  image: wurstmeister/kafka:2.12-2.4.0
   ports:
     - "9092:9092"
     - "9999:9999"
