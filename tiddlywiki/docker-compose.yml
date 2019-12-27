@@ -1,0 +1,12 @@
+tiddlywiki:
+  image: vimagick/tiddlywiki
+  command: >
+    username=admin
+    password=admin
+    writers=(authenticated)
+    readers=(anon)
+  ports:
+    - "8080:8080"
+  volumes:
+    - ./data:/data
+  restart: unless-stopped
