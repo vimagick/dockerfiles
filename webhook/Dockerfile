@@ -12,7 +12,7 @@ RUN go get -d -v github.com/adnanh/webhook
 RUN go build --ldflags '-s -extldflags "-static"' -i -o webhook github.com/adnanh/webhook
 
 FROM alpine
-MAINTAINER kev <noreply@easypi.pro>
+MAINTAINER EasyPi Software Foundation
 RUN apk add --no-cache bash coreutils curl jq
 COPY --from=build /go/bin/webhook /usr/local/bin/
 WORKDIR /etc/webhook

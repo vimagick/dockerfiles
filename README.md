@@ -189,6 +189,7 @@ A collection of delicious docker recipes.
 - [x] phpvirtualbox-arm
 - [x] piwik
 - [x] revive
+- [x] tiddlywiki
 - [x] zoneminder :+1:
 
 ## E-commerce
