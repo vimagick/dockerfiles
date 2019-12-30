@@ -273,7 +273,7 @@ A collection of delicious docker recipes.
 - [x] dnsmasq-arm
 - [x] pdnsd
 
-## 3rd-party
+## 3rd-party (sorted by basename)
 
 - [x] docker.bintray.io/jfrog/artifactory-oss
 - [x] tutum/builder
@@ -313,7 +313,6 @@ A collection of delicious docker recipes.
 - [x] jenkins
 - [x] sonatype/nexus3
 - [x] jupyter/notebook
-- [x] kylemanna/openvpn
 - [x] metabase/metabase
 - [x] metasploitframework/metasploit-framework :skull:
 - [x] minio/minio
@@ -323,6 +322,7 @@ A collection of delicious docker recipes.
 - [x] luzifer/nginx-sso
 - [x] odoo
 - [x] osixia/openldap
+- [x] kylemanna/openvpn
 - [x] campbellsoftwaresolutions/osticket
 - [x] owncloud
 - [x] phpmyadmin
@@ -332,6 +332,7 @@ A collection of delicious docker recipes.
 - [x] postgrest/postgrest
 - [x] prosody/prosody
 - [x] registry
+- [x] restic/rest-server
 - [x] rocket.chat
 - [x] rundeck/rundeck
 - [x] wonderfall/searx

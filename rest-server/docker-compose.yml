@@ -1,0 +1,9 @@
+rest-server:
+  image: restic/rest-server
+  ports:
+    - "8000:8000"
+  volumes:
+    - ./data:/data
+  environment:
+    - DISABLE_AUTHENTICATION=true
+  restart: unless-stopped
