@@ -2,25 +2,25 @@
 # Dockerfile for dokuwiki
 #
 
-FROM alpine
-MAINTAINER kev <noreply@easypi.pro>
+FROM alpine:3
+MAINTAINER EasyPi Software Foundation
 
 WORKDIR /var/www/html
 
 RUN set -xe \
-    && apk add --no-cache ca-certificates \
-                          gzip \
-                          nginx \
-                          openssl \
-                          php5-fpm \
-                          php5-json \
-                          php5-openssl \
-                          php5-pdo_sqlite \
-                          php5-sqlite3 \
-                          php5-xml \
-                          php5-zlib \
-                          tar \
-    && touch /etc/php5/fpm.d/empty.conf \
+    && apk add --no-cache \
+        ca-certificates \
+        gzip \
+        nginx \
+        openssl \
+        php7-fpm \
+        php7-json \
+        php7-openssl \
+        php7-pdo_sqlite \
+        php7-sqlite3 \
+        php7-xml \
+        php7-zlib \
+        tar \
     && wget -O- http://download.dokuwiki.org/src/dokuwiki/dokuwiki-stable.tgz | tar xz --strip 1 \
     && chown -R nobody:nobody .
 
@@ -37,4 +37,4 @@ VOLUME /var/www/html/conf \
 
 EXPOSE 80
 
-CMD php-fpm5 && nginx -g 'daemon off;'
+CMD php-fpm7 && nginx -g 'daemon off;'

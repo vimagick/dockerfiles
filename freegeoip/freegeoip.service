@@ -4,7 +4,7 @@ After=network-online.target
 
 [Service]
 WorkingDirectory=/opt/freegeoip
-ExecStart=/opt/freegeoip/freegeoip -public public -http :8080 -internal-server :8888
+ExecStart=/opt/freegeoip/freegeoip -public public -http :8080 -internal-server :8888 -db data/GeoLite2-City.mmdb.gz
 Restart=always
 RestartSec=5
 

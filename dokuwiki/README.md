@@ -7,19 +7,19 @@ dokuwiki
 
 ## Run
 
-```
+```bash
 $ docker run -d -p 8000:80 --restart always --name dokuwiki vimagick/dokuwiki
 ```
 
 ## Backup
 
-```
+```bash
 $ docker run --rm --volumes-from dokuwiki -v `pwd`:/backup alpine tar czf /backup/dw-backup.tgz /var/www/html
 ```
 
 ## Restore
 
-```
+```bash
 $ docker run --rm --volumes-from dokuwiki -v `pwd`:/backup alpine tar xzf /backup/dw-backup.tgz
 ```
 
@@ -33,7 +33,7 @@ You can install [plugins][2] via **Extension Manager**.
 
 You can also install them manually.
 
-```
+```bash
 $ docker exec -it dokuwiki sh
 >>> cd /var/www/html/lib/plugins/
 >>> mkdir backup emoji wrap
