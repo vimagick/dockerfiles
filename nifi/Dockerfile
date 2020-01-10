@@ -5,7 +5,7 @@
 FROM java:8-jre-alpine
 MAINTAINER kev <noreply@easypi.pro>
 
-ENV NIFI_VERSION 0.6.1
+ENV NIFI_VERSION 1.10.0
 ENV NIFI_FILE nifi-${NIFI_VERSION}-bin.tar.gz
 ENV NIFI_URL https://archive.apache.org/dist/nifi/${NIFI_VERSION}/${NIFI_FILE}
 ENV NIFI_HOME /opt/nifi
