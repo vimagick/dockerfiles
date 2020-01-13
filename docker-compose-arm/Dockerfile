@@ -2,11 +2,11 @@
 # Dockerfile for building docker-compose-arm
 #
 
-FROM arm32v7/debian:stretch
+FROM arm32v7/debian:buster
 MAINTAINER EasyPi Software Foundation
 
-ENV DOCKER_COMPOSE_VERSION 1.24.1
-ENV PYINSTALLER_VERSION 3.2.1
+ENV DOCKER_COMPOSE_VERSION 1.25.1
+ENV PYINSTALLER_VERSION 3.6
 
 RUN set -xe \
     && apt-get update \
@@ -14,18 +14,12 @@ RUN set -xe \
                           curl \
                           libffi-dev \
                           libssl-dev \
-                          python-dev \
+                          python3-dev \
                           zlib1g-dev \
-    && curl https://bootstrap.pypa.io/get-pip.py | python \
+    && curl https://bootstrap.pypa.io/get-pip.py | python3 \
     && pip install docker-compose==$DOCKER_COMPOSE_VERSION \
                    pyinstaller==$PYINSTALLER_VERSION \
-    && cd /usr/local/lib/python2.7/dist-packages \
-    && pip download --no-binary :all: --no-deps pyinstaller==$PYINSTALLER_VERSION \
-    && tar xjf PyInstaller-$PYINSTALLER_VERSION.tar.bz2 \
-    && cd PyInstaller-$PYINSTALLER_VERSION/bootloader \
-    && ./waf all --no-lsb \
-    && cp -r ../PyInstaller/bootloader/Linux-32bit-arm/ ../../PyInstaller/bootloader/ \
-    && cd /usr/local/lib/python2.7/dist-packages \
+    && cd /usr/local/lib/python3.7/dist-packages \
     && mkdir -p bin \
     && curl -sSL https://github.com/docker/compose/raw/$DOCKER_COMPOSE_VERSION/docker-compose.spec > docker-compose.spec \
     && curl -sSL https://github.com/docker/compose/raw/$DOCKER_COMPOSE_VERSION/bin/docker-compose > bin/docker-compose \
