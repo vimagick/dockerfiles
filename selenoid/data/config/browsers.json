@@ -9,10 +9,10 @@
     }
   },
   "firefox": {
-    "default": "71.0",
+    "default": "72.0",
     "versions": {
-      "71.0": {
-        "image": "selenoid/vnc:firefox_71.0",
+      "72.0": {
+        "image": "selenoid/vnc:firefox_72.0",
         "port": "4444"
       }
     }

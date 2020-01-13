@@ -28,9 +28,9 @@ Required Images
 - aerokube/selenoid-ui:latest-release
 - selenoid/video-recorder:latest-release
 - selenoid/chrome:79.0
-- selenoid/firefox:71.0
+- selenoid/firefox:72.0
 - selenoid/vnc:chrome_79.0
-- selenoid/vnc:firefox_71.0
+- selenoid/vnc:firefox_72.0
 
 ```json
 {
@@ -44,10 +44,10 @@ Required Images
     }
   },
   "firefox": {
-    "default": "71.0",
+    "default": "72.0",
     "versions": {
-      "71.0": {
-        "image": "selenoid/vnc:firefox_71.0",
+      "72.0": {
+        "image": "selenoid/vnc:firefox_72.0",
         "port": "4444"
       }
     }
