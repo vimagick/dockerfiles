@@ -307,6 +307,7 @@ A collection of delicious docker recipes.
 - [x] devopsfaith/krakend
 - [x] netdata/netdata
 - [x] nextcloud
+- [x] prom/prometheus
 - [x] sonatype/nexus3
 - [ ] jwilder/nginx-proxy
 - [x] jazzdd/phpvirtualbox
