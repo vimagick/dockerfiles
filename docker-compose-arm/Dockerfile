@@ -15,14 +15,16 @@ RUN set -xe \
                           libffi-dev \
                           libssl-dev \
                           python3-dev \
+                          upx-ucl \
                           zlib1g-dev \
     && curl https://bootstrap.pypa.io/get-pip.py | python3 \
     && pip install docker-compose==$DOCKER_COMPOSE_VERSION \
                    pyinstaller==$PYINSTALLER_VERSION \
     && cd /usr/local/lib/python3.7/dist-packages \
     && mkdir -p bin \
-    && curl -sSL https://github.com/docker/compose/raw/$DOCKER_COMPOSE_VERSION/docker-compose.spec > docker-compose.spec \
-    && curl -sSL https://github.com/docker/compose/raw/$DOCKER_COMPOSE_VERSION/bin/docker-compose > bin/docker-compose \
+    && curl -sSL https://github.com/docker/compose/raw/v$DOCKER_COMPOSE_VERSION/docker-compose.spec > docker-compose.spec \
+    && curl -sSL https://github.com/docker/compose/raw/v$DOCKER_COMPOSE_VERSION/bin/docker-compose > bin/docker-compose \
+    && touch compose/GITSHA \
     && pyinstaller docker-compose.spec \
     && cp docker-compose/dist/docker-compose /usr/local/bin/ \
     && docker-compose version
