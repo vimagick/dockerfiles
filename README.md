@@ -283,6 +283,9 @@ A collection of delicious docker recipes.
 - [x] confluentinc/cp-kafka-mqtt
 - [x] confluentinc/cp-kafka-rest
 - [x] streamsets/datacollector
+- [x] daskdev
+  - [x] dask
+  - [x] dask-notebook
 - [x] cachethq/docker
 - [x] snowzach/doods
 - [x] drone/drone

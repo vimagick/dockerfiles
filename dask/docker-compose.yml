@@ -1,0 +1,33 @@
+version: "3.7"
+
+services:
+
+  scheduler:
+    image: daskdev/dask
+    command: ["dask-scheduler"]
+    ports:
+      - "8786:8786"
+      - "8787:8787"
+    restart: unless-stopped
+
+  worker:
+    image: daskdev/dask
+    command: ["dask-worker", "tcp://scheduler:8786"]
+    depends_on:
+      - scheduler
+    restart: unless-stopped
+
+  notebook:
+    image: daskdev/dask-notebook
+    ports:
+      - "8888:8888"
+    volumes:
+      - ./data/jupyter:/home/jovyan/.jupyter
+      - ./data/work:/home/jovyan/work
+      - /opt/conda/lib/python3.7/site-packages
+    environment:
+      - DASK_SCHEDULER_ADDRESS=tcp://scheduler:8786
+      - EXTRA_PIP_PACKAGES=dateparser parsel
+    depends_on:
+      - scheduler
+    restart: unless-stopped
