@@ -2,7 +2,7 @@
 # Dockerfile for openrefine
 #
 
-FROM openjdk:12-jre-alpine
+FROM openjdk:8-jre-alpine
 MAINTAINER kev <noreply@easypi.pro>
 
 ENV OPENREFINE_VERSION 3.3
