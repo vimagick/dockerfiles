@@ -5,7 +5,7 @@
 FROM arm32v7/debian:buster
 MAINTAINER EasyPi Software Foundation
 
-ENV DOCKER_COMPOSE_VERSION 1.25.2
+ENV DOCKER_COMPOSE_VERSION 1.25.4
 ENV PYINSTALLER_VERSION 3.6
 
 RUN set -xe \
@@ -22,8 +22,8 @@ RUN set -xe \
                    pyinstaller==$PYINSTALLER_VERSION \
     && cd /usr/local/lib/python3.7/dist-packages \
     && mkdir -p bin \
-    && curl -sSL https://github.com/docker/compose/raw/v$DOCKER_COMPOSE_VERSION/docker-compose.spec > docker-compose.spec \
-    && curl -sSL https://github.com/docker/compose/raw/v$DOCKER_COMPOSE_VERSION/bin/docker-compose > bin/docker-compose \
+    && curl -sSL https://github.com/docker/compose/raw/$DOCKER_COMPOSE_VERSION/docker-compose.spec > docker-compose.spec \
+    && curl -sSL https://github.com/docker/compose/raw/$DOCKER_COMPOSE_VERSION/bin/docker-compose > bin/docker-compose \
     && touch compose/GITSHA \
     && pyinstaller docker-compose.spec \
     && cp docker-compose/dist/docker-compose /usr/local/bin/ \

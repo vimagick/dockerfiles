@@ -1,9 +1,9 @@
-version: '3.1'
+version: '3.7'
 
 services:
 
   openmeetings:
-    image: vimagick/openmeetings
+    image: apache/openmeetings:min-5.0.0-M3
     ports:
       - "5443:5443"
     volumes:
@@ -16,13 +16,13 @@ services:
       - OM_DB_NAME=openmeetings
       - OM_USER=admin
       - OM_PASS=admin
-    restart: always
+    restart: unless-stopped
 
   kurento:
     image: kurento/kurento-media-server
     ports:
       - "8888:8888"
-    restart: always
+    restart: unless-stopped
   
   mysql:
     image: mysql
@@ -31,4 +31,4 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD=root
       - MYSQL_DATABASE=openmeetings
-    restart: always
+    restart: unless-stopped
