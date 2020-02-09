@@ -1,20 +1,24 @@
-mpd:
-  image: easypi/mpd-arm
-  ports:
-    - "6600:6600"
-    - "8800:8800"
-  volumes:
-    - ./mpd.conf:/etc/mpd.conf
-    - ./music:/var/lib/mpd/music
-    - ./playlists:/var/lib/mpd/playlists
-  devices:
-    - /dev/snd
-  links:
-    - icecast
-  restart: always
+version: "3.7"
 
-icecast:
-  image: easypi/icecast-arm
-  ports:
-    - "8000:8000"
-  restart: always
+services:
+
+  mpd:
+    image: easypi/mpd-arm
+    ports:
+      - "6600:6600"
+      - "8800:8800"
+    volumes:
+      - ./mpd.conf:/etc/mpd.conf
+      - ./music:/var/lib/mpd/music
+      - ./playlists:/var/lib/mpd/playlists
+    devices:
+      - /dev/snd
+    depends_on:
+      - icecast
+    restart: unless-stopped
+
+  icecast:
+    image: easypi/icecast-arm
+    ports:
+      - "8000:8000"
+    restart: unless-stopped
