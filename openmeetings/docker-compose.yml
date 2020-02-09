@@ -5,17 +5,20 @@ services:
   openmeetings:
     image: apache/openmeetings:min-5.0.0-M3
     ports:
-      - "5443:5443"
+      - "5080:5080"
     volumes:
       - ./data/omdata:/opt/omdata
     environment:
       - OM_KURENTO_WS_URL=ws://kurento:8888/kurento
-      - OM_DB_HOST=mysql
-      - OM_DB_USER=root
-      - OM_DB_PASS=root
+      - OM_DB_TYPE=postgresql
+      - OM_DB_HOST=postgresql
+      - OM_DB_PORT=5432
+      - OM_DB_USER=openmeetings
+      - OM_DB_PASS=openmeetings
       - OM_DB_NAME=openmeetings
-      - OM_USER=admin
-      - OM_PASS=admin
+    depends_on:
+      - kurento
+      - postgresql
     restart: unless-stopped
 
   kurento:
@@ -23,12 +26,24 @@ services:
     ports:
       - "8888:8888"
     restart: unless-stopped
-  
-  mysql:
-    image: mysql
+
+  postgresql:
+    image: postgres:alpine
     volumes:
-      - ./data/mysql:/var/lib/mysql
+      - ./data/postgresql:/var/lib/postgresql/data
     environment:
-      - MYSQL_ROOT_PASSWORD=root
-      - MYSQL_DATABASE=openmeetings
+      - POSTGRES_USER=openmeetings
+      - POSTGRES_PASSWORD=openmeetings
+      - POSTGRES_DB=openmeetings
     restart: unless-stopped
+  
+# mysql:
+#   image: mysql
+#   volumes:
+#     - ./data/mysql:/var/lib/mysql
+#   environment:
+#     - MYSQL_ROOT_PASSWORD=root
+#     - MYSQL_USER=openmeetings
+#     - MYSQL_PASSWORD=openmeetings
+#     - MYSQL_DATABASE=openmeetings
+#   restart: unless-stopped

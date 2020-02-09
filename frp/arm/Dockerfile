@@ -5,7 +5,7 @@
 FROM arm32v7/alpine:3
 MAINTAINER EasyPi Software Foundation
 
-ENV FRP_VERSION 0.29.0
+ENV FRP_VERSION 0.31.2
 ENV FRP_URL https://github.com/fatedier/frp/releases/download/v${FRP_VERSION}/frp_${FRP_VERSION}_linux_arm.tar.gz
 
 WORKDIR /opt/frp

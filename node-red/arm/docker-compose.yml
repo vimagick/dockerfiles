@@ -5,5 +5,5 @@ node-red:
   volumes:
     - ./data:/data
     - /dev/input:/dev/input
-  privileged: yes
+  privileged: true
   restart: always
