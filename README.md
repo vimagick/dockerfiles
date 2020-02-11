@@ -280,8 +280,11 @@ A collection of delicious docker recipes.
 - [x] browserless/chrome
 - [x] certbot
 - [x] codercom/code-server
-- [x] confluentinc/cp-kafka-mqtt
-- [x] confluentinc/cp-kafka-rest
+- [x] confluentinc
+  - [x] cp-kafka-mqtt
+  - [x] cp-kafka-rest
+  - [x] ksqldb-cli
+  - [x] ksqldb-server
 - [x] streamsets/datacollector
 - [x] daskdev
   - [x] dask

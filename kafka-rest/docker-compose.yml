@@ -1,16 +1,29 @@
-kafka-rest:
-  image: confluentinc/cp-kafka-rest
-  ports:
-    - "8082:8082"
-  environment:
-    - KAFKA_REST_HOST_NAME=kafka-rest
-    - KAFKA_REST_ZOOKEEPER_CONNECT=zookeeper1:2181,zookeeper2:2181,zookeeper3:2181
-    - KAFKA_REST_BOOTSTRAP_SERVERS=kafka1:9092,kafka2:9092,kafka3:9092
-  extra_hosts:
-    - zookeeper1:10.0.0.21
-    - zookeeper2:10.0.0.22
-    - zookeeper3:10.0.0.23
-    - kafka1:10.0.0.21
-    - kafka2:10.0.0.22
-    - kafka3:10.0.0.23
-  restart: unless-stopped
+version: "3.7"
+
+services:
+
+  schema-registry:
+    image: confluentinc/cp-schema-registry:5.4.0
+    container_name: schema-registry
+    hostname: schema-registry
+    environment:
+      - SCHEMA_REGISTRY_HOST_NAME=schema-registry
+      - SCHEMA_REGISTRY_KAFKASTORE_CONNECTION_URL=zookeeper:2181
+    extra_hosts:
+      - zookeeper:10.0.0.21
+    restart: unless-stopped
+
+  kafka-rest:
+    image: confluentinc/cp-kafka-rest:5.4.0
+    container_name: kafka-rest
+    hostname: kafka-rest
+    ports:
+      - "8082:8082"
+    environment:
+      - KAFKA_REST_HOST_NAME=kafka-rest
+      - KAFKA_REST_ZOOKEEPER_CONNECT=zookeeper:2181
+      - KAFKA_REST_BOOTSTRAP_SERVERS=kafka:9092
+    extra_hosts:
+      - zookeeper:10.0.0.21
+      - kafka:10.0.0.21
+    restart: unless-stopped
