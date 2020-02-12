@@ -356,6 +356,7 @@ A collection of delicious docker recipes.
       - [x] vnc
     - selenoid-ui
 - [x] sentry
+- [x] atmoz/sftp
 - [x] scrapinghub/splash
 - [x] teamatldocker
     - [x] confluence
