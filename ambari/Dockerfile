@@ -5,7 +5,7 @@
 FROM ubuntu:18.04
 MAINTAINER EasyPi Software Foundation
 
-ENV AMBARI_VERSION=2.7.4.0
+ENV AMBARI_VERSION=2.7.5.0
 ENV AMBARI_SOURCE=http://public-repo-1.hortonworks.com/ambari/ubuntu18/2.x/updates/${AMBARI_VERSION}/ambari.list
 ENV JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 
