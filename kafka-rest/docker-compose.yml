@@ -13,6 +13,36 @@ services:
       - zookeeper:10.0.0.21
     restart: unless-stopped
 
+  kafka-connect:
+    container_name: kafka-connect
+    image: confluentinc/cp-server-connect:5.4.0
+    ports:
+      - 8083:8083
+    depends_on:
+      - zookeeper
+      - kafka
+      - schema-registry
+    environment:
+      - CONNECT_REST_PORT=8083
+      - CONNECT_REST_ADVERTISED_HOST_NAME=kafka-connect
+      - CONNECT_BOOTSTRAP_SERVERS=kafka:9092
+      - CONNECT_GROUP_ID=default
+      - CONNECT_CONFIG_STORAGE_TOPIC=default.config
+      - CONNECT_OFFSET_STORAGE_TOPIC=default.offsets
+      - CONNECT_STATUS_STORAGE_TOPIC=default.status
+      - CONNECT_CONFIG_STORAGE_REPLICATION_FACTOR=1
+      - CONNECT_OFFSET_STORAGE_REPLICATION_FACTOR=1
+      - CONNECT_STATUS_STORAGE_REPLICATION_FACTOR=1
+      - CONNECT_KEY_CONVERTER=io.confluent.connect.avro.AvroConverter
+      - CONNECT_KEY_CONVERTER_SCHEMA_REGISTRY_URL=http://schema-registry:8081
+      - CONNECT_VALUE_CONVERTER=io.confluent.connect.avro.AvroConverter
+      - CONNECT_VALUE_CONVERTER_SCHEMA_REGISTRY_URL=http://schema-registry:8081
+      - CONNECT_INTERNAL_KEY_CONVERTER=org.apache.kafka.connect.json.JsonConverter
+      - CONNECT_INTERNAL_VALUE_CONVERTER=org.apache.kafka.connect.json.JsonConverter
+      - CONNECT_LOG4J_ROOT_LOGLEVEL=INFO
+      - CONNECT_LOG4J_LOGGERS=org.apache.kafka.connect.runtime.rest=WARN,org.reflections=ERROR
+      - CONNECT_PLUGIN_PATH=/usr/share/java
+
   kafka-rest:
     image: confluentinc/cp-kafka-rest:5.4.0
     container_name: kafka-rest
