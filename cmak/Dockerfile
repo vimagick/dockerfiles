@@ -11,7 +11,7 @@ ENV CMAK_VERSION 3.0.0.1
 
 RUN set -xe \
     && apt update \
-    && apt install -y openjdk-11-jre-headless wget \
+    && apt install -y openjdk-11-jre-headless curl wget \
     && wget -q https://downloads.lightbend.com/scala/$SCALA_VERSION/scala-$SCALA_VERSION.deb -O scala.deb \
     && wget -q https://dl.bintray.com/sbt/debian/sbt-$SBT_VERSION.deb -O sbt.deb \
     && dpkg -i scala.deb sbt.deb \
@@ -22,7 +22,7 @@ WORKDIR /opt/cmak
 
 RUN set -xe \
     && mkdir src \
-    && wget -q -O- https://github.com/yahoo/CMAK/archive/$CMAK_VERSION.tar.gz | tar xz --strip 1 -C src \
+    && curl -sSL https://github.com/yahoo/CMAK/archive/$CMAK_VERSION.tar.gz | tar xz --strip 1 -C src \
     && cd src \
     && sbt clean universal:packageZipTarball \
     && cd .. \
@@ -34,4 +34,6 @@ VOLUME /opt/cmak/conf
 EXPOSE 9000
 
 ENTRYPOINT ["bin/cmak"]
-CMD ["-Dconfig.file=conf/application.conf", "-Dhttp.port=9000"]
+CMD ["-Dconfig.file=conf/application.conf", "-Dhttp.port=9000", "-Dpidfile.path=/dev/null"]
+
+HEALTHCHECK CMD curl -f http://127.0.0.1/api/health || exit 1
