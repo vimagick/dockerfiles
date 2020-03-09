@@ -4,4 +4,4 @@ dnscrypt-proxy:
   ports:
     - "2053:53/tcp"
     - "2053:53/udp"
-  restart: always
+  restart: unless-stopped

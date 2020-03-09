@@ -1,0 +1,14 @@
+dnscrypt-server:
+  image: jedisct1/dnscrypt-server
+  container_name: dnscrypt-server
+  # command: init -N easypi.pro -E 192.168.1.1:443
+  ports:
+    - "443:443/tcp"
+    - "443:443/udp"
+  volumes:
+    - ./data:/opt/encrypted-dns/etc/keys
+  ulimits:
+    nofile:
+      soft: 90000
+      hard: 90000
+  restart: unless-stopped

@@ -268,7 +268,8 @@ A collection of delicious docker recipes.
 - [x] chinadns
 - [x] dnscrypt
     - [x] dnscrypt-proxy
-    - [x] dnscrypt-wrapper
+    - [x] dnscrypt-server
+    - [x] ~dnscrypt-wrapper~
 - [x] dnsmasq
 - [x] dnsmasq-arm
 - [x] pdnsd
