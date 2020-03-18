@@ -2,10 +2,10 @@
 # Dockerfile for graphite
 #
 
-FROM alpine
+FROM alpine:3
 MAINTAINER EasyPi Software Foundation
 
-ENV GRAPHITE_VERSION=1.1.6
+ENV GRAPHITE_VERSION=1.1.7
 ENV GRAPHITE_CONF_DIR=/opt/graphite/conf
 ENV GRAPHITE_STORAGE_DIR=/opt/graphite/storage
 ENV PATH=$PATH:/opt/graphite/bin
