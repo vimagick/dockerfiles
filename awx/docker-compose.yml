@@ -7,7 +7,7 @@ version: '2'
 services:
 
   web:
-    image: ansible/awx_web:9.1.1
+    image: ansible/awx_web:9.3.0
     container_name: awx_web
     hostname: awxweb
     user: root
@@ -26,7 +26,7 @@ services:
     restart: unless-stopped
 
   task:
-    image: ansible/awx_task:9.1.1
+    image: ansible/awx_task:9.3.0
     container_name: awx_task
     hostname: awx
     user: root
