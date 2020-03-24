@@ -8,7 +8,8 @@ MAINTAINER EasyPi Software Foundation
 ENV GRAPHITE_VERSION=1.1.7
 ENV GRAPHITE_CONF_DIR=/opt/graphite/conf
 ENV GRAPHITE_STORAGE_DIR=/opt/graphite/storage
-ENV PATH=$PATH:/opt/graphite/bin
+ENV DJANGO_SETTINGS_MODULE=graphite.settings
+ENV PATH=/opt/graphite/bin:$PATH
 ENV PYTHONPATH=/opt/graphite/lib:/opt/graphite/webapp
 
 WORKDIR /opt/graphite
@@ -18,32 +19,36 @@ RUN set -xe \
     && apk add build-base \
                cairo \
                curl \
-               git \
                libffi-dev \
-               python \
-               python-dev \
-    && curl -sSL https://bootstrap.pypa.io/get-pip.py | python \
-    && pip install gunicorn scandir supervisor whisper==$GRAPHITE_VERSION \
-    && pip install -r https://github.com/graphite-project/graphite-web/raw/$GRAPHITE_VERSION/requirements.txt \
-    && pip install carbon==$GRAPHITE_VERSION --install-option="--install-lib=/opt/graphite/lib" \
-    && pip install graphite-web==$GRAPHITE_VERSION --install-option="--prefix=/opt/graphite" --install-option="--install-lib=/opt/graphite/webapp" \
-    && cd conf \
+               nginx \
+               python3 \
+               python3-dev \
+    && curl -sSL https://bootstrap.pypa.io/get-pip.py | python3 \
+    && pip3 install gunicorn supervisor \
+    && pip3 install --install-option=--prefix=/opt/graphite \
+                    --install-option=--install-lib=/opt/graphite/lib \
+                    whisper==$GRAPHITE_VERSION \
+                    carbon==$GRAPHITE_VERSION \
+    && pip3 install --install-option=--prefix=/opt/graphite \
+                    --install-option=--install-lib=/opt/graphite/webapp \
+                    graphite-web==$GRAPHITE_VERSION \
+    && cd ./webapp \
+    && echo "SECRET_KEY = '$(head -c 16 /dev/urandom | base64)'" >> graphite/local_settings.py \
+    && cd ../conf \
     && cp carbon.conf.example carbon.conf \
     && cp storage-schemas.conf.example storage-schemas.conf \
-    && cd ../webapp \
-    && echo "SECRET_KEY = '$(head -c 16 /dev/urandom | base64)'" > graphite/local_settings.py \
-    && curl -sSL https://github.com/graphite-project/graphite-web/raw/master/webapp/manage.py > manage.py \
-    && chmod +x manage.py \
-    && ./manage.py collectstatic --noinput --settings=graphite.settings \
-    && ./manage.py migrate --noinput --run-syncdb \
+    && cp aggregation-rules.conf.example aggregation-rules.conf \
+    && cd .. \
+    && django-admin collectstatic --noinput \
+    && django-admin migrate --noinput --run-syncdb \
     && apk del build-base \
                curl \
-               git \
                libffi-dev \
                python-dev \
     && rm -rf /root/.cache/pip \
               /var/cache/apk/*
 
+COPY nginx.conf /etc/nginx/conf.d/default.conf
 COPY supervisord.conf /etc/supervisor/
 
 VOLUME $GRAPHITE_CONF_DIR \

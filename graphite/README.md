@@ -24,26 +24,32 @@ graphite:
   volumes:
     - ./data/conf:/opt/graphite/conf
     - ./data/storage:/opt/graphite/storage
-  restart: always
+    - ./data/storage/log/webapp:/opt/graphite/storage/log/webapp
+  restart: unless-stopped
 ```
 
 ## Up and Running
 
 ```bash
 $ cd ~/fig/graphite
-$ mkdir -p data/storage/log/webapp
+
+$ docker-compose run --rm graphite sh
+>>> django-admin migrate --noinput --run-syncdb
+>>> django-admin createsuperuser
+>>> django-admin changepassword
+>>> exit
+
 $ docker-compose up -d
+
 $ docker-compose exec graphite sh
 >>> vi conf/storage-schemas.conf
->>> python webapp/manage.py migrate --noinput --run-syncdb
->>> python webapp/manage.py createsuperuser
->>> python webapp/manage.py changepassword
->>> supervisorctl restart
+>>> supervisorctl restart all
 >>> supervisorctl status
 carbon-aggregator   RUNNING   pid 9, uptime 0:00:13
 carbon-cache        RUNNING   pid 8, uptime 0:00:22
 graphite-webapp     RUNNING   pid 7, uptime 0:00:24
 >>> exit
+
 $ tree -F -L 4
 ├── data/
 │   ├── conf/
@@ -59,6 +65,7 @@ $ tree -F -L 4
 │       └── whisper/
 │           └── carbon/
 └── docker-compose.yml
+
 $ curl http://localhost:8080
 ```
 
