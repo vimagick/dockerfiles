@@ -6,4 +6,5 @@ hubot:
     - ./data:/home/hubot/scripts
   environment:
     - HUBOT_SLACK_TOKEN=xoxb-xxxxxxxxxxx-xxxxxxxxxxxxxxxxxxxxxxxx
-  restart: always
+    - HUBOT_AUTH_ADMIN=UXXXXXXXX
+  restart: unless-stopped
