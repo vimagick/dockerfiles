@@ -2,8 +2,8 @@
 # Dockerfile for hubot
 #
 
-FROM alpine
-MAINTAINER kev <noreply@easypi.pro>
+FROM alpine:3
+MAINTAINER EasyPi Software Foundation
 
 ENV HUBOT_NAME=Hubot
 ENV HUBOT_ADAPTER=slack
@@ -35,7 +35,7 @@ RUN set -xe \
 
 VOLUME /home/hobot \
        /usr/local/bin \
-       /usr/lib/python3.7/site-packages
+       /usr/lib/python3.8/site-packages
 
 EXPOSE 8080
 

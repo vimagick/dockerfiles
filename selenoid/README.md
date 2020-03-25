@@ -27,27 +27,27 @@ Required Images
 - aerokube/selenoid:latest-release
 - aerokube/selenoid-ui:latest-release
 - selenoid/video-recorder:latest-release
-- selenoid/chrome:79.0
-- selenoid/firefox:72.0
-- selenoid/vnc:chrome_79.0
-- selenoid/vnc:firefox_72.0
+- selenoid/chrome:80.0
+- selenoid/firefox:74.0
+- selenoid/vnc:chrome_80.0
+- selenoid/vnc:firefox_74.0
 
 ```json
 {
   "chrome": {
-    "default": "79.0",
+    "default": "80.0",
     "versions": {
-      "79.0": {
-        "image": "selenoid/vnc:chrome_79.0",
+      "80.0": {
+        "image": "selenoid/vnc:chrome_80.0",
         "port": "4444"
       }
     }
   },
   "firefox": {
-    "default": "72.0",
+    "default": "74.0",
     "versions": {
-      "72.0": {
-        "image": "selenoid/vnc:firefox_72.0",
+      "74.0": {
+        "image": "selenoid/vnc:firefox_74.0",
         "port": "4444"
       }
     }
@@ -62,7 +62,7 @@ from selenium import webdriver
 
 capabilities = {
     "browserName": "chrome",
-    "version": "79.0",
+    "version": "80.0",
     "enableVNC": True,
     "enableVideo": False
 }

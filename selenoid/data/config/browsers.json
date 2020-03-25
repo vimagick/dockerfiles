@@ -1,18 +1,18 @@
 {
   "chrome": {
-    "default": "79.0",
+    "default": "80.0",
     "versions": {
-      "79.0": {
-        "image": "selenoid/vnc:chrome_79.0",
+      "80.0": {
+        "image": "selenoid/vnc:chrome_80.0",
         "port": "4444"
       }
     }
   },
   "firefox": {
-    "default": "72.0",
+    "default": "74.0",
     "versions": {
-      "72.0": {
-        "image": "selenoid/vnc:firefox_72.0",
+      "74.0": {
+        "image": "selenoid/vnc:firefox_74.0",
         "port": "4444"
       }
     }

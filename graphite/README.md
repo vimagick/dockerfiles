@@ -58,6 +58,7 @@ $ tree -F -L 4
 │   │   ├── rewrite-rules.conf
 │   │   └── storage-schemas.conf
 │   └── storage/
+│       ├── carbon-aggregator-a.pid
 │       ├── carbon-cache-a.pid
 │       ├── graphite.db
 │       ├── log/
@@ -68,6 +69,9 @@ $ tree -F -L 4
 
 $ curl http://localhost:8080
 ```
+
+> :warning: Stale pid files may prevent services from starting.
+> Please delete these pid files manually before restarting or upgrading container.
 
 ## storage-schemas.conf
 
