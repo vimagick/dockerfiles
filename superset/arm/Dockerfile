@@ -6,7 +6,7 @@ FROM arm32v7/debian:buster
 MAINTAINER EasyPi Software Foundation
 
 # Configure environment
-ENV SUPERSET_VERSION=0.34.1 \
+ENV SUPERSET_VERSION=0.36.0 \
     SUPERSET_REPO=apache/incubator-superset \
     SUPERSET_HOME=/var/lib/superset \
     PYTHONPATH=/etc/superset:/home/superset:$PYTHONPATH

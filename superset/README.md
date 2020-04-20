@@ -22,3 +22,7 @@ Repeat for confirmation: ******
 
 $ curl http://localhost:8088
 ```
+
+## Upgrading Guide
+
+- <https://superset.apache.org/installation.html#upgrading>

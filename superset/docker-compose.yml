@@ -1,4 +1,4 @@
-version: '3.7'
+version: '3.8'
 
 services:
 
@@ -7,20 +7,20 @@ services:
     command: --save 900 1
     volumes:
       - ./data/redis:/data
-    restart: always
+    restart: unless-stopped
 
   postgres:
-    image: postgres:11-alpine
+    image: postgres:12-alpine
     volumes:
       - ./data/postgres:/var/lib/postgresql/data
     environment:
       POSTGRES_DB: superset
       POSTGRES_PASSWORD: superset
       POSTGRES_USER: superset
-    restart: always
+    restart: unless-stopped
 
   superset:
-    image: amancevice/superset:0.34.1
+    image: amancevice/superset:0.36.0
     ports:
       - "8088:8088"
     volumes:
@@ -30,10 +30,10 @@ services:
     depends_on:
       - postgres
       - redis
-    restart: always
+    restart: unless-stopped
 
   worker:
-    image: amancevice/superset:0.34.1
+    image: amancevice/superset:0.36.0
     command: celery worker
     volumes:
       - ./data/superset:/etc/superset
@@ -42,4 +42,4 @@ services:
     depends_on:
       - postgres
       - redis
-    restart: always
+    restart: unless-stopped
