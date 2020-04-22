@@ -1,0 +1,52 @@
+version: "3.8"
+
+services:
+
+  scheduler:
+    image: daskdev/dask
+    command: ["dask-scheduler"]
+    ports:
+      - "8786:8786"
+      - "8787:8787"
+    deploy:
+      replicas: 1
+      placement:
+        constraints:
+          - node.role == manager
+      restart_policy:
+        condition: on-failure
+
+  notebook:
+    image: daskdev/dask-notebook
+    ports:
+      - "8888:8888"
+    volumes:
+      - /home/presto/fig/dask/data/jupyter:/home/jovyan/.jupyter
+      - /home/presto/fig/dask/data/work:/home/jovyan/work
+      - /opt/conda/lib/python3.7/site-packages
+    environment:
+      - DASK_SCHEDULER_ADDRESS=tcp://scheduler:8786
+      - EXTRA_PIP_PACKAGES=dateparser parsel
+    depends_on:
+      - scheduler
+    deploy:
+      replicas: 1
+      placement:
+        constraints:
+          - node.role == manager
+      restart_policy:
+        condition: on-failure
+
+  worker:
+    image: daskdev/dask
+    command: ["dask-worker", "tcp://scheduler:8786"]
+    depends_on:
+      - scheduler
+    deploy:
+      replicas: 2
+      placement:
+        max_replicas_per_node: 1
+        constraints:
+          - node.role == worker
+      restart_policy:
+        condition: on-failure

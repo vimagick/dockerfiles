@@ -9,14 +9,16 @@ group.
 ## docker-compose.yml
 
 ```yaml
-polipo:
-  image: vimagick/polipo
-  command:
-    authCredentials=username:password
-    socksParentProxy=1.2.3.4:9050
-  ports:
-    - "8123:8123"
-  restart: always
+version: "3.8"
+services:
+  polipo:
+    image: vimagick/polipo
+    command:
+      authCredentials=username:password
+      socksParentProxy=1.2.3.4:9050
+    ports:
+      - "8123:8123"
+    restart: unless-stopped
 ```
 
 ## server

@@ -1,4 +1,4 @@
-version: "3.7"
+version: "3.8"
 
 services:
 
@@ -8,13 +8,6 @@ services:
     ports:
       - "8786:8786"
       - "8787:8787"
-    restart: unless-stopped
-
-  worker:
-    image: daskdev/dask
-    command: ["dask-worker", "tcp://scheduler:8786"]
-    depends_on:
-      - scheduler
     restart: unless-stopped
 
   notebook:
@@ -28,6 +21,13 @@ services:
     environment:
       - DASK_SCHEDULER_ADDRESS=tcp://scheduler:8786
       - EXTRA_PIP_PACKAGES=dateparser parsel
+    depends_on:
+      - scheduler
+    restart: unless-stopped
+
+  worker:
+    image: daskdev/dask
+    command: ["dask-worker", "tcp://scheduler:8786"]
     depends_on:
       - scheduler
     restart: unless-stopped
