@@ -3,9 +3,5 @@ notebook:
   ports:
     - "8888:8888"
   volumes:
-    - ./work:/home/jovyan/work
-#   - ./notebook.pem:/home/jovyan/.local/share/jupyter/notebook.pem
-# environment:
-#   - PASSWORD=YOURPASS
-#   - USE_HTTPS=yes
+    - ./data:/home/jovyan
   restart: unless-stopped
