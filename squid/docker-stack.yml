@@ -1,0 +1,20 @@
+version: "3.8"
+
+services:
+
+  squid:
+    image: vimagick/squid
+    networks:
+      - host_network
+    deploy:
+      mode: global
+      placement:
+        constraints:
+          - node.role == worker
+      restart_policy:
+        condition: on-failure
+
+networks:
+  host_network:
+    external: true
+    name: host

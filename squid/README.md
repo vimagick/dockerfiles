@@ -17,10 +17,6 @@ squid:
   ports:
     - "3128:3128/tcp"
     - "3130:3130/udp"
-  ulimits:
-    nofile:
-      soft: 65536
-      hard: 65536
   restart: unless-stopped
 ```
 
