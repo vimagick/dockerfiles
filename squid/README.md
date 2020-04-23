@@ -15,25 +15,25 @@ including Windows and is licensed under the GNU GPL.
 squid:
   image: vimagick/squid
   ports:
-    - "3128:3128"
-    - "3130:3130"
+    - "3128:3128/tcp"
+    - "3130:3130/udp"
   ulimits:
     nofile:
-      soft: 65535
-      hard: 65535
-  restart: always
+      soft: 65536
+      hard: 65536
+  restart: unless-stopped
 ```
 
-> You can mount `squid.conf` file.
+> You can mount `/etc/squid/squid.conf` file.
 
 ## Up and Running
 
-```
+```bash
 # server
 $ docker-compose up -d
 
 # client
-$ curl -x https://localhost:3128 https://www.google.com/
+$ curl -x https://127.0.0.1:3128 https://www.google.com/
 ```
 
 [1]: http://www.squid-cache.org/
