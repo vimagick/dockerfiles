@@ -201,6 +201,7 @@ A collection of delicious docker recipes.
 ## Security
 
 - [x] aircrack-ng-arm
+- [x] amass
 - [x] bro
 - [x] clamav
 - [x] dsniff

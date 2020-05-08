@@ -1,0 +1,7 @@
+amass:
+  image: caffix/amass
+  entrypoint: sleep
+  command: infinity
+  volumes:
+    - ./data:/.config/amass
+  restart: unless-stopped
