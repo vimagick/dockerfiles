@@ -2,9 +2,9 @@
 # Dockerfile for elastalert
 #
 
-FROM python:3.6-alpine
+FROM python:3-alpine
 
-ENV ELASTALERT_VERSION=v0.2.1
+ENV ELASTALERT_VERSION=v0.2.4
 ENV ELASTALERT_HOME=/opt/elastalert
 ENV TZ=UTC
 
