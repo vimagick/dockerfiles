@@ -8,7 +8,7 @@ setuid = stunnel
 setgid = stunnel
 socket = l:TCP_NODELAY=1
 socket = r:TCP_NODELAY=1
-cert = /etc/stunnel/stunnel.pem
+cert = ${CERT:=/etc/stunnel/stunnel.pem}
 client = ${CLIENT:-no}
 
 [${SERVICE}]
@@ -16,11 +16,11 @@ accept = ${ACCEPT}
 connect = ${CONNECT}
 _EOF_
 
-if ! [ -f stunnel.pem ]
+if ! [ -f "${CERT}" ]
 then
     openssl req -x509 -nodes -newkey rsa:2048 -days 3650 -subj '/CN=stunnel' \
-                -keyout stunnel.pem -out stunnel.pem
-    chmod 600 stunnel.pem
+                -keyout "${CERT}" -out "${CERT}"
+    chmod 600 "${CERT}"
 fi
 
 exec stunnel "$@"
