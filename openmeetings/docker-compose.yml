@@ -1,9 +1,9 @@
-version: '3.7'
+version: '3.8'
 
 services:
 
   openmeetings:
-    image: apache/openmeetings:min-5.0.0-M3
+    image: apache/openmeetings:min-5.0.0-M4
     ports:
       - "5080:5080"
     volumes:
