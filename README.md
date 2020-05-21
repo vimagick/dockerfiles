@@ -53,7 +53,6 @@ A collection of delicious docker recipes.
 - [x] prestodb (official)
 - [x] prestosql (community)
 - [x] superset-arm
-- [x] zookeeper-arm
 
 ## IoT
 
@@ -80,6 +79,7 @@ A collection of delicious docker recipes.
 - [x] ggr
 - [x] ggr-ui
 - [x] jsonwire-grid
+- [x] zookeeper-arm
 
 ## Monitor
 
@@ -297,6 +297,7 @@ A collection of delicious docker recipes.
 - [x] drupal
 - [x] elastichq/elasticsearch-hq
 - [x] elk
+- [x] quay.io/coreos/etcd
 - [x] flogo/flogo-docker
 - [x] mher/flower
 - [x] ghost
