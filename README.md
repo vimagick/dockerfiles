@@ -327,6 +327,7 @@ A collection of delicious docker recipes.
 - [x] metasploitframework/metasploit-framework :skull:
 - [x] minio/minio
 - [x] mongo
+- [x] ccrisan/motioneye
 - [x] neo4j
 - [x] erichough/nfs-server
 - [x] luzifer/nginx-sso

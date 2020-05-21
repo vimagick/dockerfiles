@@ -1,0 +1,11 @@
+version: "3.8"
+services:
+  motioneye:
+    image: ccrisan/motioneye:master-armhf
+    ports:
+      - "8765:8765"
+    volumes:
+      - ./data/etc:/etc/motioneye
+      - ./data/var:/var/lib/motioneye
+    hostname: motioneye
+    restart: unless-stopped
