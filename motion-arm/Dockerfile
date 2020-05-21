@@ -11,7 +11,11 @@ ENV MOTION_URL=https://github.com/Motion-Project/motion/releases/download/releas
 
 RUN set -xe \
     && apt-get update \
-    && apt-get install -y curl libraspberrypi0 mosquitto-clients \
+    && apt-get install -y curl gnupg mosquitto-clients openssh-client \
+    && echo "deb http://archive.raspberrypi.org/debian/ buster main" > /etc/apt/sources.list.d/raspi.list \
+    && curl -sSL "http://archive.raspberrypi.org/debian/raspberrypi.gpg.key" | apt-key add - \
+    && apt-get update \
+    && apt-get install -y libraspberrypi0 \
     && curl -sSL ${MOTION_URL} -o ${MOTION_FILE} \
     && (dpkg -i ${MOTION_FILE} || apt-get -f install -y) \
     && sed -i -e 's/^daemon on/daemon off/' \
