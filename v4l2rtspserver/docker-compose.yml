@@ -1,0 +1,10 @@
+version: "3.8"
+services:
+  v4l2rtspserver:
+    image: mpromonet/v4l2rtspserver
+    command: -H640 -W480 -P554
+    ports:
+      - "554:554"
+    devices:
+      - /dev/video0
+    restart: unless-stopped

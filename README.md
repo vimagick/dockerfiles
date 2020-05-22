@@ -13,7 +13,6 @@ A collection of delicious docker recipes.
 
 ## Affiliates
 
-[![](https://bandwagonhost.com/templates/organicbandwagon/images/logo.png)](https://bandwagonhost.com/aff.php?aff=21106)
 [![](https://www.vultr.com/media/banner_1.png)](https://www.vultr.com/?ref=6821947)
 
 ## Todo
@@ -152,16 +151,16 @@ A collection of delicious docker recipes.
 - [x] ffmpeg-arm
 - [x] ffserver :beetle:
 - [x] icecast
-- [x] live555
+- [x] live555 :camera:
 - [x] minidlna
 - [x] mpd
 - [x] murmur
-- [x] openmeetings
+- [x] openmeetings :camera:
 - [x] plex :moneybag:
 - [x] red5 :+1:
 - [x] red5-arm :construction:
 - [x] rtmp-client-arm :+1:
-- [x] rtmp-server
+- [x] rtmp-server :camera:
 - [x] shairplay-arm
 - [x] shoutcast
 - [x] tesseract
@@ -368,6 +367,7 @@ A collection of delicious docker recipes.
     - [x] jira
 - [x] amancevice/superset
 - [x] v2ray/official :cn:
+- [x] mpromonet/v4l2rtspserver :camera:
 - [x] centurylink/watchtower
 - [x] anapsix/webdis
 - [x] wekanteam/wekan
