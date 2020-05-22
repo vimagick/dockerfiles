@@ -62,6 +62,7 @@ A collection of delicious docker recipes.
 
 ## Automation
 
+- [x] cronicle
 - [x] drone-rsync-arm
 - [x] drone-scp-arm
 - [x] drone-ssh-arm

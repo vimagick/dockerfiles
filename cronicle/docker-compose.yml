@@ -1,0 +1,11 @@
+version: "3.8"
+services:
+  cronicle:
+    image: vimagick/cronicle
+    ports:
+      - "3012:3012"
+    volumes:
+      - ./data/conf:/opt/cronicle/conf
+      - ./data/data:/opt/cronicle/data
+    hostname: cronicle-master
+    restart: unless-stopped
