@@ -6,4 +6,7 @@ services:
       - "8888:8888"
     volumes:
       - ./data:/opt/ndscheduler
+    environment:
+      - PYTHONPATH=/opt/ndscheduler
+      - NDSCHEDULER_SETTINGS_MODULE=settings
     restart: unless-stopped
