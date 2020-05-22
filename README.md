@@ -114,6 +114,7 @@ A collection of delicious docker recipes.
 - [x] moodle :beetle:
 - [x] mosquitto
 - [x] motion-arm :+1:
+- [x] ndscheduler
 - [x] nginx
 - [x] ntopng
 - [x] nullmailer

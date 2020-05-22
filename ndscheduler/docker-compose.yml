@@ -1,0 +1,9 @@
+version: "3.8"
+services:
+  ndscheduler:
+    image: vimagick/ndscheduler
+    ports:
+      - "8888:8888"
+    volumes:
+      - ./data:/opt/ndscheduler
+    restart: unless-stopped
