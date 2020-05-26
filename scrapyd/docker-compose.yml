@@ -5,7 +5,7 @@ scrapyd:
   volumes:
     - ./data:/var/lib/scrapyd
     - /usr/local/lib/python2.7/dist-packages
-  restart: always
+  restart: unless-stopped
 
 scrapy:
   image: vimagick/scrapyd
@@ -13,7 +13,7 @@ scrapy:
   volumes:
     - .:/code
   working_dir: /code
-  restart: always
+  restart: unless-stopped
 
 scrapyrt:
   image: vimagick/scrapyd
@@ -23,4 +23,4 @@ scrapyrt:
   volumes:
     - .:/code
   working_dir: /code
-  restart: always
+  restart: unless-stopped

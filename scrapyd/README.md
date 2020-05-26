@@ -35,31 +35,31 @@ Please use this as base image for your own project.
 
 ```yaml
 scrapyd:
-  image: vimagick/scrapyd
+  image: vimagick/scrapyd:py3
   ports:
     - "6800:6800"
   volumes:
     - ./data:/var/lib/scrapyd
-    - /usr/local/lib/python2.7/dist-packages
-  restart: always
+    - /usr/local/lib/python3.7/dist-packages
+  restart: unless-stopped
 
 scrapy:
-  image: vimagick/scrapyd
+  image: vimagick/scrapyd:py3
   command: bash
   volumes:
     - .:/code
   working_dir: /code
-  restart: always
+  restart: unless-stopped
 
 scrapyrt:
-  image: vimagick/scrapyd
+  image: vimagick/scrapyd:py3
   command: scrapyrt -i 0.0.0.0 -p 9080
   ports:
     - "9080:9080"
   volumes:
     - .:/code
   working_dir: /code
-  restart: always
+  restart: unless-stopped
 ```
 
 ## Run it as background-daemon for scrapyd
@@ -75,7 +75,7 @@ $ tree items
 ```
 
 ```bash
-$ mkvirtualenv webbot
+$ mkvirtualenv -p python3 webbot
 $ pip install scrapy scrapyd-client
 
 $ scrapy startproject myproject
