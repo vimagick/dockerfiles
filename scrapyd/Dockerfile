@@ -2,8 +2,12 @@
 # Dockerfile for scrapyd
 #
 
-FROM debian:stretch
-MAINTAINER kev <noreply@easypi.pro>
+FROM debian:buster
+MAINTAINER EasyPi Software Foundation
+
+ENV SCRAPY_VERSION=1.8.0
+ENV SCRAPYD_VERSION=1.2.1
+ENV PILLOW_VERSION=6.2.2
 
 RUN set -xe \
     && apt-get update \
@@ -33,12 +37,12 @@ RUN set -xe \
                           zlib1g \
                           zlib1g-dev \
     && curl -sSL https://bootstrap.pypa.io/get-pip.py | python \
-    && pip install git+https://github.com/scrapy/scrapy.git \
-                   git+https://github.com/scrapy/scrapyd.git \
+    && pip install git+https://github.com/scrapy/scrapy.git@$SCRAPY_VERSION \
+                   git+https://github.com/scrapy/scrapyd.git@$SCRAPYD_VERSION \
                    git+https://github.com/scrapy/scrapyd-client.git \
                    git+https://github.com/scrapinghub/scrapy-splash.git \
                    git+https://github.com/scrapinghub/scrapyrt.git \
-                   git+https://github.com/python-pillow/Pillow.git \
+                   git+https://github.com/python-pillow/Pillow.git@$PILLOW_VERSION \
     && curl -sSL https://github.com/scrapy/scrapy/raw/master/extras/scrapy_bash_completion -o /etc/bash_completion.d/scrapy_bash_completion \
     && echo 'source /etc/bash_completion.d/scrapy_bash_completion' >> /root/.bashrc \
     && apt-get purge -y --auto-remove autoconf \

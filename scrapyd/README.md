@@ -18,7 +18,7 @@ utility which allows you to deploy your project to a Scrapyd server.
 
 [pillow][6] is the Python Imaging Library to support the ImagesPipeline.
 
-This image is based on `debian:stretch`, 6 latest python packages are installed:
+This image is based on `debian:buster`, 6 latest python packages are installed:
 
 - `scrapy`: git+https://github.com/scrapy/scrapy.git
 - `scrapyd`: git+https://github.com/scrapy/scrapyd.git
@@ -28,6 +28,8 @@ This image is based on `debian:stretch`, 6 latest python packages are installed:
 - `pillow`: git+https://github.com/python-pillow/Pillow.git
 
 Please use this as base image for your own project.
+
+:warning: Scrapy has dropped support for Python 2.7, which reached end-of-life on 2020-01-01.
 
 ## docker-compose.yml
 
