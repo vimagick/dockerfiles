@@ -47,6 +47,7 @@ RUN set -xe \
     && echo 'source /etc/bash_completion.d/scrapy_bash_completion' >> /root/.bashrc \
     && apt-get purge -y --auto-remove autoconf \
                                       build-essential \
+                                      curl \
                                       libffi-dev \
                                       libssl-dev \
                                       libtool \

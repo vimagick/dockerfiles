@@ -1,9 +1,9 @@
 #
-# Dockerfile for scrapyd-onbuild
+# Dockerfile for scrapyd-onbuild (python3)
 #
 
-FROM vimagick/scrapyd
-MAINTAINER kev <noreply@easypi.pro>
+FROM vimagick/scrapyd:py3
+MAINTAINER EasyPi Software Foundation
 
 ONBUILD ADD ./*.txt /etc/scrapyd/
 ONBUILD RUN cd /etc/scrapyd; \
