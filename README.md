@@ -292,6 +292,7 @@ A collection of delicious docker recipes.
 - [x] daskdev
   - [x] dask
   - [x] dask-notebook
+- [x] appbaseio/dejavu :mag:
 - [x] cachethq/docker
 - [x] snowzach/doods
 - [x] drone/drone

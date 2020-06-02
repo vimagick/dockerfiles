@@ -1,0 +1,5 @@
+dejavu:
+  image: appbaseio/dejavu
+  ports:
+    - "1358:1358"
+  restart: unless-stopped
