@@ -8,12 +8,12 @@ Bitly).
 ## docker-compose.yml
 
 ```yaml
-version: '3.1'
+version: '3.8'
 
 services:
 
   yourls:
-    image: yourls
+    image: yourls:1.7
     ports:
       - "8080:80"
     environment:
@@ -26,7 +26,7 @@ services:
       - YOURLS_SITE=https://yourls.easypi.pro
     depends_on:
       - mysql
-    restart: always
+    restart: unless-stopped
 
   mysql:
     image: mysql:5.7
@@ -35,7 +35,7 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD=root
       - MYSQL_DATABASE=yourls
-    restart: always
+    restart: unless-stopped
 ```
 
 ## Up and Running
@@ -70,5 +70,15 @@ $ docker-compose exec -T mysql mysqldump -uroot -proot yourls > yourls-$(date +%
 # restore
 $ docker exec -i yourls_mysql_1 mysql -uroot -proot yourls < yourls-$(date +%F -d yesterday).sql
 ```
+
+## Upgrade Image
+
+- backup config.php
+- backup plugins
+- remove container (with volume)
+- create container
+- restore plugins
+- restore config.php
+- restart container
 
 [1]: http://yourls.org/
