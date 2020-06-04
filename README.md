@@ -316,6 +316,7 @@ A collection of delicious docker recipes.
 - [x] jmxtrans/jmxtrans
 - [x] wurstmeister/kafka
 - [x] devopsfaith/krakend
+- [x] tootsuite/mastodon
 - [x] netdata/netdata
 - [x] nextcloud
 - [x] prom/prometheus
