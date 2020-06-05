@@ -18,7 +18,7 @@ openrefine:
     - "3333:3333"
   volumes:
     - ./data:/data
-  restart: always
+  restart: unless-stopped
 ```
 
 [1]: http://openrefine.org/index.html
