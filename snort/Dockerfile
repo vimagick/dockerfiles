@@ -3,18 +3,17 @@
 #
 
 FROM centos:7
-MAINTAINER kev <noreply@easypi.pro>
+MAINTAINER EasyPi Software Foundation
 
-ENV DAQ_VERSION 2.0.7
-ENV SNORT_VERSION 2.9.16
-ENV BASE_URL https://www.snort.org/downloads
+ENV SNORT_VERSION=2.9.16
+ENV SNORT_URL=https://www.snort.org/downloads/snort/snort-${SNORT_VERSION}-1.centos7.x86_64.rpm
+ENV RULES_URL=https://www.snort.org/downloads/community/community-rules.tar.gz
 
 RUN set -xe \
     && yum -y install epel-release libdnet \
-    && yum -y install ${BASE_URL}/snort/daq-${DAQ_VERSION}-1.centos7.x86_64.rpm \
-                      ${BASE_URL}/snort/snort-${SNORT_VERSION}-1.centos7.x86_64.rpm \
+    && yum -y install ${SNORT_URL} \
     && mkdir -p /etc/snort/rules \
-    && curl -sSL ${BASE_URL}/community/community-rules.tar.gz | \
+    && curl -sSL ${RULES_URL} | \
        tar xz --strip 1 -C /etc/snort/rules/ community-rules/community.rules \
     && touch /etc/snort/rules/local.rules \
              /etc/snort/rules/black_list.rules \
