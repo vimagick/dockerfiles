@@ -5,8 +5,8 @@
 FROM centos:7
 MAINTAINER kev <noreply@easypi.pro>
 
-ENV DAQ_VERSION 2.0.6
-ENV SNORT_VERSION 2.9.13
+ENV DAQ_VERSION 2.0.7
+ENV SNORT_VERSION 2.9.16
 ENV BASE_URL https://www.snort.org/downloads
 
 RUN set -xe \
