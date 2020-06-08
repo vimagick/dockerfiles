@@ -10,7 +10,7 @@ ENV SNORT_URL=https://www.snort.org/downloads/snort/snort-${SNORT_VERSION}-1.cen
 ENV RULES_URL=https://www.snort.org/downloads/community/community-rules.tar.gz
 
 RUN set -xe \
-    && yum -y install epel-release libdnet \
+    && yum -y install epel-release jq libdnet \
     && yum -y install ${SNORT_URL} \
     && mkdir -p /etc/snort/rules \
     && curl -sSL ${RULES_URL} | \
