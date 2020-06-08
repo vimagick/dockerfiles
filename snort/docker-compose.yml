@@ -1,8 +1,9 @@
 snort:
   image: vimagick/snort
-  command: -q -c /etc/snort/snort.conf -A fast -y -i eth0
+  command: -q -c /etc/snort/snort.conf -y -i eth0
   volumes:
     - ./data/snort.conf:/etc/snort/snort.conf
+    - ./data/u2json.conf:/etc/snort/u2json.conf
     - ./data/rules:/etc/snort/rules
     - ./data/log:/var/log/snort
   cap_add:

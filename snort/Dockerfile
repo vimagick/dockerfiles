@@ -22,9 +22,12 @@ RUN set -xe \
                 /etc/snort/preproc_rules \
                 /usr/local/lib/snort_dynamicrules \
     && ln -s /usr/lib64/libdnet.so.1 /usr/local/lib/libdnet.1 \
+    && curl -sSL https://bootstrap.pypa.io/get-pip.py | python \
+    && pip install idstools \
     && yum clean all
 
 COPY data/snort.conf /etc/snort/snort.conf
+COPY data/u2json.conf /etc/snort/u2json.conf
 
 ENTRYPOINT ["snort"]
 CMD ["--help"]
