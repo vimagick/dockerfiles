@@ -45,6 +45,7 @@ A collection of delicious docker recipes.
 - [x] airflow
 - [x] ambari
 - [x] cmak (~kafka-manager~)
+- [x] datax :cn:
 - [x] kafka-arm
 - [x] luigi
 - [x] nifi
