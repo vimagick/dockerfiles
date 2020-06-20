@@ -11,6 +11,7 @@ RUN set -xe \
                           openssl \
                           python3 \
                           aria2 \
+                          py-pip \
     && pip3 install youtube-dl
 
 # Try to run it so we know it works
