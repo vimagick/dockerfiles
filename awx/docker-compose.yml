@@ -1,5 +1,5 @@
 #
-# https://github.com/ansible/awx/raw/devel/installer/roles/local_docker/templates/docker-compose.yml.j2
+# https://github.com/ansible/awx/blob/12.0.0/installer/roles/local_docker/templates/docker-compose.yml.j2
 #
 
 version: '2'
@@ -7,54 +7,57 @@ version: '2'
 services:
 
   web:
-    image: ansible/awx_web:9.3.0
+    image: ansible/awx:12.0.0
     container_name: awx_web
     hostname: awxweb
     user: root
     ports:
       - "8052:8052"
     volumes:
+      - supervisor-socket:/var/run/supervisor
+      - rsyslog-socket:/var/run/awx-rsyslog
+      - rsyslog-config:/var/lib/awx/rsyslog
       - ./data/settings/SECRET_KEY:/etc/tower/SECRET_KEY
       - ./data/settings/environment.sh:/etc/tower/conf.d/environment.sh
       - ./data/settings/credentials.py:/etc/tower/conf.d/credentials.py
       - ./data/settings/nginx.conf:/etc/nginx/nginx.conf
-      - ./data/projects:/var/lib/awx/projects
+      - ./data/redis/redis_socket:/var/run/redis:rw
+      - ./data/projects:/var/lib/awx/projects:rw
     depends_on:
-      - rabbitmq
-      - memcached
       - postgres
+      - redis
     restart: unless-stopped
 
   task:
-    image: ansible/awx_task:9.3.0
+    image: ansible/awx:12.0.0
+    command: /usr/bin/launch_awx_task.sh
     container_name: awx_task
     hostname: awx
     user: root
     volumes:
+      - supervisor-socket:/var/run/supervisor
+      - rsyslog-socket:/var/run/awx-rsyslog
+      - rsyslog-config:/var/lib/awx/rsyslog
       - ./data/settings/SECRET_KEY:/etc/tower/SECRET_KEY
       - ./data/settings/environment.sh:/etc/tower/conf.d/environment.sh
       - ./data/settings/credentials.py:/etc/tower/conf.d/credentials.py
-      - ./data/projects:/var/lib/awx/projects
-    depends_on:
-      - rabbitmq
-      - memcached
-      - web
-      - postgres
-    restart: unless-stopped
-
-  rabbitmq:
-    image: ansible/awx_rabbitmq
-    container_name: awx_rabbitmq
+      - ./data/redis/redis_socket:/var/run/redis:rw
+      - ./data/projects:/var/lib/awx/projects:rw
     environment:
-      RABBITMQ_DEFAULT_VHOST: awx
-      RABBITMQ_DEFAULT_USER: guest
-      RABBITMQ_DEFAULT_PASS: guest
-      RABBITMQ_ERLANG_COOKIE: cookiemonster
+      - SUPERVISOR_WEB_CONFIG_PATH=/supervisor.conf
+    depends_on:
+      - postgres
+      - redis
+      - web
     restart: unless-stopped
 
-  memcached:
-    image: memcached:alpine
-    container_name: awx_memcached
+  redis:
+    image: redis:5-alpine
+    container_name: awx_redis
+    command: ["/usr/local/etc/redis/redis.conf"]
+    volumes:
+      - ./data/redis/redis.conf:/usr/local/etc/redis/redis.conf:ro
+      - ./data/redis/redis_socket:/var/run/redis:rw
     restart: unless-stopped
 
   postgres:
@@ -68,3 +71,8 @@ services:
       POSTGRES_DB: awx
       PGDATA: /var/lib/postgresql/data/pgdata
     restart: unless-stopped
+
+volumes:
+  supervisor-socket:
+  rsyslog-socket:
+  rsyslog-config:

@@ -12,10 +12,13 @@ data
 ├── projects
 │   └── example
 │       └── playbook.yml
+├── redis
+│   └── redis.conf
 └── settings
     ├── SECRET_KEY
     ├── credentials.py
-    └── environment.sh
+    ├── environment.sh
+    └── nginx.conf
 ```
 
 ## up and running
