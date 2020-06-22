@@ -13,6 +13,7 @@ data
 │   └── example
 │       └── playbook.yml
 ├── redis
+│   ├── redis_socket (mode:777)
 │   └── redis.conf
 └── settings
     ├── SECRET_KEY
@@ -23,15 +24,17 @@ data
 
 ## up and running
 
-```
+```bash
+$ mkdir -m 777 -p data/redis/redis_socket
 $ docker-compose up -d
 $ docker-compose exec web bash
 >>> awx-manage inventory_import --inventory-name=xxx --source=/path/to/inventory.ini
 INFO     Reading Ansible inventory source: /path/to/inventory.ini
 INFO     Loaded 1 groups, 30 hosts
 INFO     Inventory import completed for  (xxx - 13) in 1.0s
+>>> chown -R nginx:nginx /var/lib/nginx # XXX: https://github.com/ansible/awx/issues/5230
 >>> exit
-$ curl http://127.0.0.1:8052
+$ curl http://admin:password@127.0.0.1:8052
 ```
 
 [1]: https://github.com/ansible/awx
