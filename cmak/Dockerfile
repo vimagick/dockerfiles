@@ -7,7 +7,7 @@ MAINTAINER kev <noreply@easypi.pro>
 
 ENV SCALA_VERSION 2.12.10
 ENV SBT_VERSION 1.3.8
-ENV CMAK_VERSION 3.0.0.4
+ENV CMAK_VERSION 3.0.0.5
 
 RUN set -xe \
     && apt update \
