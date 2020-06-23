@@ -1,0 +1,19 @@
+version: "3.8"
+
+services:
+
+  ethercalc:
+    image: audreyt/ethercalc
+    ports:
+      - "8000:8000"
+    environment:
+      - REDIS_PORT_6379_TCP_ADDR=redis
+      - REDIS_PORT_6379_TCP_PORT=6379
+    restart: unless-stopped
+
+  redis:
+    image: redis:5-alpine
+    command: redis-server --appendonly yes
+    volumes:
+      - ./data:/data
+    restart: unless-stopped

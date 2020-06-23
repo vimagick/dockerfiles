@@ -301,6 +301,7 @@ A collection of delicious docker recipes.
 - [x] elastichq/elasticsearch-hq
 - [x] elk
 - [x] quay.io/coreos/etcd
+- [x] audreyt/ethercalc
 - [x] flogo/flogo-docker
 - [x] mher/flower
 - [x] ghost
