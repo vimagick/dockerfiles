@@ -10,6 +10,7 @@ RUN set -xe \
                           ffmpeg \
                           openssl \
                           python3 \
+                          py3-pip \
                           aria2 \
     && pip3 install youtube-dl
 
