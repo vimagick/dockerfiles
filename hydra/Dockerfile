@@ -5,7 +5,7 @@
 FROM alpine
 MAINTAINER EasyPi Software Foundation
 
-ENV HYDRA_VERSION=9.0
+ENV HYDRA_VERSION=9.1
 ENV HYDRA_URL=https://github.com/vanhauser-thc/thc-hydra/archive/v$HYDRA_VERSION.tar.gz
 
 RUN set -xe \
