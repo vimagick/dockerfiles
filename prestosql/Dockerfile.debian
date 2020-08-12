@@ -2,10 +2,10 @@
 # Dockerfile for prestosql
 #
 
-FROM openjdk:8-jre-slim-buster
-MAINTAINER kev <noreply@easypi.pro>
+FROM openjdk:16-jdk-slim-buster
+MAINTAINER EasyPi Software Foundation
 
-ENV PRESTO_VERSION=322
+ENV PRESTO_VERSION=340
 ENV PRESTO_SERVER_URL=https://repo1.maven.org/maven2/io/prestosql/presto-server/${PRESTO_VERSION}/presto-server-${PRESTO_VERSION}.tar.gz
 ENV PRESTO_CLI_URL=https://repo1.maven.org/maven2/io/prestosql/presto-cli/${PRESTO_VERSION}/presto-cli-${PRESTO_VERSION}-executable.jar
 ENV PRESTO_HOME=/opt/presto

@@ -23,10 +23,6 @@ $ ansible all -a 'mkdir -p /data'
 
 $ docker stack deploy -c docker-stack.yml prestosql
 
-$ docker service update --replicas-max-per-node=1 prestosql_worker
-
-$ docker service update --replicas=10 prestosql_worker
-
 $ docker ps | grep prestosql_coordinator | awk '{print $1}'
 4cc5c6c420d7
 
