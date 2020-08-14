@@ -2,7 +2,7 @@
 # Dockerfile for prestosql
 #
 
-FROM openjdk:16-jdk-slim-buster
+FROM openjdk:11-jdk-slim-buster
 MAINTAINER EasyPi Software Foundation
 
 ENV PRESTO_VERSION=340

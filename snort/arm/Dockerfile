@@ -2,7 +2,7 @@
 # Dockerfile for snort-arm
 #
 
-FROM easypi/alpine-arm
+FROM arm32v7/alpine:3
 MAINTAINER EasyPi Software Foundation
 
 RUN set -xe \
