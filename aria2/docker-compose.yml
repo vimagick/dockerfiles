@@ -1,18 +1,22 @@
-aria2:
-  image: vimagick/aria2
-  ports:
-    - "6800:6800"
-  volumes:
-    - "./data:/home/aria2"
-    - "./keys:/etc/aria2/keys"
-  environment:
-    - TOKEN=e6c3778f-6361-4ed0-b126-f2cf8fca06db
-  restart: always
+version: "3.8"
 
-yaaw:
-  image: vimagick/nginx
-  ports:
-    - "8080:80"
-  volumes:
-    - ./html:/usr/share/nginx/html
-  restart: always
+services:
+
+  aria2:
+    image: vimagick/aria2
+    ports:
+      - "6800:6800"
+    volumes:
+      - ./data:/home/aria2
+      - ./keys:/etc/aria2/keys
+    environment:
+      - TOKEN=e6c3778f-6361-4ed0-b126-f2cf8fca06db
+    restart: unless-stopped
+
+  yaaw:
+    image: nginx:alpine
+    ports:
+      - "8080:80"
+    volumes:
+      - ./html:/usr/share/nginx/html
+    restart: unless-stopped

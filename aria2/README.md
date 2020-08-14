@@ -30,31 +30,34 @@ aria2
 
 ## docker-compose.yml
 
-```
-aria2:
-  image: vimagick/aria2
-  ports:
-    - "6800:6800"
-  volumes:
-    - "./data:/home/aria2"
-    - "./keys:/etc/aria2/keys"
-#   - "./aria2.conf:/etc/aria2/aria2.conf"
-  environment:
-    - TOKEN=e6c3778f-6361-4ed0-b126-f2cf8fca06db
-  restart: always
+```yaml
+version: "3.8"
 
-yaaw:
-  image: vimagick/nginx
-  ports:
-    - "8080:80"
-  volumes:
-    - ./html:/usr/share/nginx/html
-  restart: always
+services:
+
+  aria2:
+    image: vimagick/aria2
+    ports:
+      - "6800:6800"
+    volumes:
+      - ./data:/home/aria2
+      - ./keys:/etc/aria2/keys
+    environment:
+      - TOKEN=e6c3778f-6361-4ed0-b126-f2cf8fca06db
+    restart: unless-stopped
+
+  yaaw:
+    image: nginx:alpine
+    ports:
+      - "8080:80"
+    volumes:
+      - ./html:/usr/share/nginx/html
+    restart: unless-stopped
 ```
 
 ## aria2.conf
 
-```
+```ini
 dir=/home/aria2
 disable-ipv6=true
 enable-rpc=true
@@ -73,7 +76,7 @@ seed-time=0
 
 ## server
 
-```
+```bash
 $ mkdir -p ~/fig/aria2/{html,keys}/
 $ cd ~/fig/aria2/
 $ ln -s /home/aria2 data
@@ -85,7 +88,7 @@ $ fig up -d
 
 ## client
 
-```
+```bash
 $ scp server:fig/aria2/keys/server.crt /usr/local/share/ca-certificates/
 $ update-ca-certificates --fresh
 
