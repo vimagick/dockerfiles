@@ -2,10 +2,10 @@
 # Dockerfile for airflow
 #
 
-FROM python:3.7-alpine
+FROM python:3.8-alpine
 
-ENV AIRFLOW_VERSION=1.10.5
-ENV AIRFLOW_EXTRAS=async,all_dbs,celery,crypto,devel_hadoop,jdbc,ldap,password,redis,s3,samba,slack,ssh,statsd
+ENV AIRFLOW_VERSION=1.10.11
+ENV AIRFLOW_EXTRAS=async,all_dbs,celery,crypto,devel_hadoop,jdbc,ldap,password,redis,s3,samba,ssh,statsd
 ENV AIRFLOW_HOME=/opt/airflow
 ENV AIRFLOW_CONFIG=/opt/airflow/airflow.cfg
 
@@ -22,7 +22,6 @@ RUN set -xe \
         python3-dev \
     && pip install cython numpy psycopg2-binary \
     && pip install apache-airflow[${AIRFLOW_EXTRAS}]==${AIRFLOW_VERSION} \
-    && pip install "websocket-client>=0.35,<0.55.0" \
     && apk del \
         build-base \
         cyrus-sasl-dev \

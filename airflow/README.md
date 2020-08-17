@@ -23,9 +23,6 @@ airflow
 
 ```bash
 $ docker stack deploy -c docker-stack.yaml airflow
-$ docker service update --replicas-max-per-node=1 airflow_worker
-$ docker service update --replicas 3 airflow_worker
-
 $ docker stack services airflow
 $ docker service ps airflow_webserver
 $ docker exec -it airflow_webserver.1.xxxxxx sh
@@ -44,7 +41,7 @@ $ curl http://localhost:5555/
 
 > :warning: You need to prepare nfs server with `airflow.cfg`.
 
-```
+```bash
 $ python -c 'from cryptography.fernet import Fernet; print(Fernet.generate_key().decode())'
 CD2wL7G0zt1SLuO4JQpLJuHtBaBEcXWKbQyvkvf2cZ8=
 ```

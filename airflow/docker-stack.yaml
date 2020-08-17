@@ -1,4 +1,4 @@
-version: "3.7"
+version: "3.8"
 
 services:
 
@@ -91,10 +91,11 @@ services:
     volumes:
       - airflow_data:/opt/airflow
     deploy:
-      replicas: 0
+      replicas: 3
       placement:
         constraints:
           - node.role == worker
+        max_replicas_per_node: 1
       restart_policy:
         condition: on-failure
     depends_on:
