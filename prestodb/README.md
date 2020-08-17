@@ -25,10 +25,6 @@ $ ansible all -a 'mkdir -p /data'
 
 $ docker stack deploy -c docker-stack.yml prestodb
 
-$ docker service update --replicas-max-per-node=1 prestodb_worker
-
-$ docker service update --replicas=10 prestodb_worker
-
 $ docker ps | grep prestodb_coordinator | awk '{print $1}'
 4cc5c6c420d7
 
