@@ -1,9 +1,9 @@
-version: '3.7'
+version: "3.8"
 
 services:
 
   elasticsearch:
-    image: docker.elastic.co/elasticsearch/elasticsearch:7.4.2
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.8.1
     ports:
       - "9200:9200"
     volumes:
@@ -21,7 +21,7 @@ services:
     restart: unless-stopped
 
   logstash:
-    image: docker.elastic.co/logstash/logstash:7.4.2
+    image: docker.elastic.co/logstash/logstash:7.8.1
     ports:
       - "5044:5044"
       - "9600:9600"
@@ -39,7 +39,7 @@ services:
     restart: unless-stopped
 
   kibana:
-    image: docker.elastic.co/kibana/kibana:7.4.2
+    image: docker.elastic.co/kibana/kibana:7.8.1
     ports:
       - "5601:5601"
     environment:
@@ -50,7 +50,7 @@ services:
     restart: unless-stopped
 
   apm-server:
-    image: docker.elastic.co/apm/apm-server:7.4.2
+    image: docker.elastic.co/apm/apm-server:7.8.1
     ports:
       - "8200:8200"
     volumes:

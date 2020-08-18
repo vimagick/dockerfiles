@@ -3,7 +3,7 @@ version: "3.8"
 services:
 
   nifi:
-    image: apache/nifi:1.10.0
+    image: apache/nifi:1.11.4
     ports:
       - "8080:8080"
     volumes:
@@ -22,7 +22,7 @@ services:
     restart: unless-stopped
 
   registry:
-    image: apache/nifi-registry:0.6.0
+    image: apache/nifi-registry:0.7.0
     ports:
       - "18080:18080"
     volumes:
