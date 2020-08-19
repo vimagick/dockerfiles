@@ -13,6 +13,7 @@ services:
       - cluster.name=docker-cluster
       - cluster.initial_master_nodes=es1
       - bootstrap.memory_lock=true
+      - script.painless.regex.enabled=true
       - ES_JAVA_OPTS=-Xms8g -Xmx8g
     ulimits:
       memlock:
