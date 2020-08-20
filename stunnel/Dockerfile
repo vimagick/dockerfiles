@@ -2,9 +2,9 @@
 # Dockerfile for stunnel
 #
 
-FROM alpine:edge
+FROM alpine:3
 
-MAINTAINER kev <noreply@easypi.pro>
+MAINTAINER EasyPi Software Foundation
 
 RUN apk add --no-cache stunnel libressl
 
