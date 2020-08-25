@@ -1,8 +1,8 @@
 statsd:
   image: vimagick/statsd
   ports:
-    - "8125:8125/udp"
     - "8126:8126/tcp"
+    - "8125:8125/udp"
   volumes:
     - ./data/config.js:/opt/statsd/config.js
   external_links:
