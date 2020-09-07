@@ -3,9 +3,9 @@
 #
 
 FROM openjdk:8-jre-alpine
-MAINTAINER kev <noreply@easypi.pro>
+MAINTAINER EasyPi Software Foundation
 
-ENV OPENREFINE_VERSION 3.4-beta
+ENV OPENREFINE_VERSION 3.4
 ENV OPENREFINE_FILE openrefine-linux-${OPENREFINE_VERSION}.tar.gz
 ENV OPENREFINE_URL https://github.com/OpenRefine/OpenRefine/releases/download/${OPENREFINE_VERSION}/${OPENREFINE_FILE}
 
