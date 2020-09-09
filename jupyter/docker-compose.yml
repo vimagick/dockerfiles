@@ -1,5 +1,6 @@
 notebook:
-  image: jupyter/minimal-notebook
+  image: jupyter/scipy-notebook
+  hostname: jupyter-notebook
   ports:
     - "8888:8888"
   volumes:

@@ -1,5 +1,5 @@
 #
-# https://github.com/ansible/awx/blob/14.0.0/installer/roles/local_docker/templates/docker-compose.yml.j2
+# https://github.com/ansible/awx/blob/14.1.0/installer/roles/local_docker/templates/docker-compose.yml.j2
 #
 
 version: '2'
@@ -7,7 +7,7 @@ version: '2'
 services:
 
   web:
-    image: ansible/awx:14.0.0
+    image: ansible/awx:14.1.0
     container_name: awx_web
     hostname: awxweb
     user: root
@@ -29,7 +29,7 @@ services:
     restart: unless-stopped
 
   task:
-    image: ansible/awx:14.0.0
+    image: ansible/awx:14.1.0
     command: /usr/bin/launch_awx_task.sh
     container_name: awx_task
     hostname: awx

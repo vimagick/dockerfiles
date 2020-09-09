@@ -5,9 +5,12 @@ Minimal Jupyter Notebook Stack
 
 ## docker-compose.yml
 
+[how to select an image](https://jupyter-docker-stacks.readthedocs.io/en/latest/using/selecting.html)
+
 ```yaml
 notebook:
-  image: jupyter/minimal-notebook
+  image: jupyter/scipy-notebook
+  hostname: jupyter-notebook
   ports:
     - "8888:8888"
   volumes:

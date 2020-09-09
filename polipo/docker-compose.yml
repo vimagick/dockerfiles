@@ -5,6 +5,7 @@ services:
     command:
       authCredentials=username:password
       socksParentProxy=1.2.3.4:9050
+      dnsNameServer=8.8.8.8
     ports:
       - "8123:8123"
     restart: unless-stopped
