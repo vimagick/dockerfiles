@@ -6,19 +6,23 @@ doods
 ## docker-stack.yaml
 
 ```yaml
-version: "3.7"
+version: "3.8"
 
 services:
 
   doods:
-    image: snowzach/doods:rpi
+    image: snowzach/doods:arm32
     ports:
       - "8080:8080"
     configs:
       - source: config.yaml
         target: /opt/doods/config.yaml
     deploy:
-      replicas: 3
+      replicas: 2
+      placement:
+        max_replicas_per_node: 1
+        constraints:
+          - node.role == worker
       restart_policy:
         condition: on-failure
 
@@ -32,9 +36,9 @@ configs:
 ```
 $ docker node ls
 ID                            HOSTNAME            STATUS              AVAILABILITY        MANAGER STATUS      ENGINE VERSION
-x1ytchflr5hx8od91d8sospdm *   pi1                 Ready               Active              Leader              19.03.5
-fa4q2xzyiggqrdp899umsb0bi     pi2                 Ready               Active                                  19.03.5
-qyfzcl94hxeatjj1qk03ip41n     pi3                 Ready               Active                                  19.03.5
+oy7dhxijdatpj8v6zntsin8l0 *   pi1                 Ready               Active              Leader              19.03.12
+7hkc4r7pr0mjpzxbei2y92voe     pi2                 Ready               Active                                  19.03.12
+rcp67rotibho0qxfdnpqwx71l     pi3                 Ready               Active                                  19.03.12
 
 $ docker stack deploy -c docker-stack.yml doods
 Creating network doods_default
@@ -42,7 +46,7 @@ Creating config doods_config.yaml
 Creating service doods_doods
 
 $ curl http://127.0.0.1:8080/version
-{"version":"v0.1.5-0-g99f5768"}
+{"version":"v0.2.2-0-gf87b48e-dirty"}
 
 $ curl http://127.0.0.1:8080/detectors
 {
@@ -65,6 +69,8 @@ $ curl http://127.0.0.1:8080/detectors
   ]
 }
 
+$ jq -n --arg data $(base64 -w0 image.jpg) '.detector_name="default" | .detect["*"]=50 | .data=$data' > data.json
+
 $ cat data.json
 {
   "detector_name": "default",
@@ -73,6 +79,8 @@ $ cat data.json
     "*": 50
   }
 }
+
+$ base64 -w0 image.jpg | http -I http://127.0.0.1:8080/detect detector_name=default detect:='{"*":50}' data=@/dev/stdin
 
 $ curl -X POST -H Content-Type:application/json http://127.0.0.1:8080/detect -d @data.json
 {

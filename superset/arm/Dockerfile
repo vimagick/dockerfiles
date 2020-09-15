@@ -6,18 +6,19 @@ FROM arm32v7/debian:buster
 MAINTAINER EasyPi Software Foundation
 
 # Configure environment
-ENV SUPERSET_VERSION=0.36.0 \
+ENV SUPERSET_VERSION=0.37.0 \
     SUPERSET_REPO=apache/incubator-superset \
     SUPERSET_HOME=/var/lib/superset \
-    PYTHONPATH=/etc/superset:/home/superset:$PYTHONPATH
+    PYTHONPATH=/etc/superset:/home/superset:$PYTHONPATH \
+    LANG=C.UTF-8 \
+    LC_ALL=C.UTF-8
 ENV GUNICORN_BIND=0.0.0.0:8088 \
     GUNICORN_LIMIT_REQUEST_FIELD_SIZE=0 \
     GUNICORN_LIMIT_REQUEST_LINE=0 \
     GUNICORN_TIMEOUT=60 \
-    GUNICORN_WORKERS=2 \
-    LANG=C.UTF-8 \
-    LC_ALL=C.UTF-8
-ENV GUNICORN_CMD_ARGS="-w${GUNICORN_WORKERS} -t${GUNICORN_TIMEOUT} -b${GUNICORN_BIND} --limit-request-line=0 --limit-request-field_size=0"
+    GUNICORN_WORKERS=3 \
+    GUNICORN_THREADS=4
+ENV GUNICORN_CMD_ARGS="--workers ${GUNICORN_WORKERS} --threads ${GUNICORN_THREADS} --timeout ${GUNICORN_TIMEOUT} --bind ${GUNICORN_BIND} --limit-request-line ${GUNICORN_LIMIT_REQUEST_LINE} --limit-request-field_size ${GUNICORN_LIMIT_REQUEST_FIELD_SIZE}"
 
 # Create superset user & install dependencies
 RUN set -xe \
@@ -74,7 +75,7 @@ VOLUME /home/superset \
        /var/lib/superset
 WORKDIR /home/superset
 
-# Deploy application
+# Finalize application
 EXPOSE 8088
 HEALTHCHECK CMD ["curl", "-f", "http://localhost:8088/health"]
 CMD ["gunicorn", "superset:app"]
