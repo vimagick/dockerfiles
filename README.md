@@ -215,6 +215,7 @@ A collection of delicious docker recipes.
 - [x] routersploit
 - [x] snort :beetle:
 - [x] sslsplit
+- [x] wafw00f
 - [x] webgoat
 
 ## Proxy
