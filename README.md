@@ -300,6 +300,7 @@ A collection of delicious docker recipes.
 - [x] drone/drone
 - [x] drupal
 - [x] elastichq/elasticsearch-hq
+- [x] elasticdump/elasticsearch-dump
 - [x] elk
 - [x] quay.io/coreos/etcd
 - [x] audreyt/ethercalc
