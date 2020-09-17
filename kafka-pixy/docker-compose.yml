@@ -1,0 +1,11 @@
+version: "3.8"
+services:
+  kafka-pixy:
+    image: mailgun/kafka-pixy
+    command: --config /etc/kafka-pixy/kafka-pixy.yaml
+    ports:
+      - "19091:19091"
+      - "19092:19092"
+    volumes:
+      - ./data:/etc/kafka-pixy
+    restart: unless-stopped

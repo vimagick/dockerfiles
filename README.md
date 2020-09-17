@@ -317,8 +317,10 @@ A collection of delicious docker recipes.
     - [ ] python
 - [x] gogs/gogs :cn:
 - [x] haproxy
+- [x] jenkins/jenkins
 - [x] jmxtrans/jmxtrans
 - [x] wurstmeister/kafka
+- [x] mailgun/kafka-pixy
 - [x] devopsfaith/krakend
 - [x] tootsuite/mastodon
 - [x] netdata/netdata
@@ -327,7 +329,6 @@ A collection of delicious docker recipes.
 - [x] sonatype/nexus3
 - [ ] jwilder/nginx-proxy
 - [x] jazzdd/phpvirtualbox
-- [x] jenkins
 - [x] sonatype/nexus3
 - [x] jupyter/notebook
 - [x] metabase/metabase
