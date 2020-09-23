@@ -1,17 +1,28 @@
-rocketchat:
-  image: rocket.chat
-  ports:
-    - "3000:3000"
-  links:
-    - mongo:db
-  environment:
-    - ROOT_URL=http://chat.easypi.pro
-  restart: always
+#
+# https://github.com/RocketChat/Rocket.Chat/blob/develop/docker-compose.yml
+#
 
-mongo:
-  image: mongo
-  ports:
-    - "27017:27017"
-  volumes:
-    - ./data:/data/db
-  restart: always
+version: "3.8"
+
+services:
+
+  rocketchat:
+    image: rocketchat/rocket.chat:3.6.1
+    ports:
+      - "3000:3000"
+    environment:
+      - ROOT_URL=https://chat.easypi.pro
+      - MONGO_URL=mongodb://mongo:27017/rocketchat
+      - MONGO_OPLOG_URL=mongodb://mongo:27017/local
+    depends_on:
+      - mongo
+    restart: unless-stopped
+
+  mongo:
+    image: mongo:4
+    command: mongod --oplogSize 128 --replSet rs0
+    ports:
+      - "27017:27017"
+    volumes:
+      - ./data/db:/data/db
+    restart: unless-stopped

@@ -317,7 +317,9 @@ A collection of delicious docker recipes.
     - [ ] python
 - [x] gogs/gogs :cn:
 - [x] haproxy
-- [x] jenkins/jenkins
+- [x] jenkins
+    - [x] inbound-agent
+    - [x] jenkins
 - [x] jmxtrans/jmxtrans
 - [x] wurstmeister/kafka
 - [x] mailgun/kafka-pixy
