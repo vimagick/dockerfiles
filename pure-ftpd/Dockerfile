@@ -16,4 +16,4 @@ EXPOSE 21
 VOLUME /home/ftpuser /etc/pure-ftpd
 
 ENTRYPOINT ["pure-ftpd"]
-CMD ["/etc/pure-ftpd/pureftpd.conf"]
+CMD ["/etc/pure-ftpd/pure-ftpd.conf"]
