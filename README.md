@@ -345,6 +345,7 @@ A collection of delicious docker recipes.
 - [x] osixia/openldap
 - [x] kylemanna/openvpn
 - [x] campbellsoftwaresolutions/osticket
+- [x] outlinewiki/outline
 - [x] owncloud
 - [x] phpmyadmin
 - [x] pihole/pihole

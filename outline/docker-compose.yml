@@ -1,0 +1,28 @@
+version: "3.8"
+
+services:
+
+  outline:
+    image: outlinewiki/outline
+    ports:
+      - "3000:3000"
+    env_file:
+      - env
+    restart: unless-stopped
+
+  postgres:
+    image: postgres:alpine
+    volumes:
+      - ./data/postgres:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=outline
+      - POSTGRES_PASSWORD=outline
+      - POSTGRES_DB=outline
+    restart: unless-stopped
+
+  redis:
+    image: redis:alpine
+    command: --save 900 1
+    volumes:
+      - ./data/redis:/data
+    restart: unless-stopped

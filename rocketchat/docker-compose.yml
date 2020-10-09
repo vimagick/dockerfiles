@@ -7,7 +7,7 @@ version: "3.8"
 services:
 
   rocketchat:
-    image: rocketchat/rocket.chat:3.6.3
+    image: rocketchat/rocket.chat:3.7.0
     ports:
       - "3000:3000"
     environment:
