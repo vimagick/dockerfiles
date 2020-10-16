@@ -24,6 +24,7 @@ RUN set -xe \
                           libxslt1-dev \
                           python3 \
                           python3-dev \
+                          python3-distutils \
                           vim-tiny \
     && apt-get install -y libtiff5 \
                           libtiff5-dev \
