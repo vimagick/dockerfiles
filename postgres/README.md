@@ -10,11 +10,13 @@ postgres:
   image: postgres:alpine
   ports:
     - "5432:5432"
+  volumes:
+    - ./data:/var/lib/postgresql/data
   environment:
-    - POSTGRES_USER=root
-    - POSTGRES_PASSWORD=root
+    - POSTGRES_USER=postgres
+    - POSTGRES_PASSWORD=postgres
     - POSTGRES_DB=postgres
-  restart: always
+  restart: unless-stopped
 ```
 
 ## up and running
@@ -22,7 +24,7 @@ postgres:
 ```bash
 $ docker-compose up -d
 
-$ docker-compose exec postgres psql -U root postgres
+$ docker-compose exec postgres psql -U postgres postgres
 >>> SELECT CURRENT_TIMESTAMP;
               now
 -------------------------------

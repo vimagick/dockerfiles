@@ -4,5 +4,5 @@ scrapyd:
     - "6800:6800"
   volumes:
     - ./data:/var/lib/scrapyd
-    - /usr/local/lib/python2.7/dist-packages
-  restart: always
+    - /usr/local/lib/python3.7/dist-packages
+  restart: unless-stopped
