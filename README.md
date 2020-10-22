@@ -414,3 +414,7 @@ __enter() {
 
 complete -F __enter enter
 ```
+
+## Stargazers over time
+
+[![Stargazers over time](https://starchart.cc/vimagick/dockerfiles.svg)](https://starchart.cc/vimagick/dockerfiles)
