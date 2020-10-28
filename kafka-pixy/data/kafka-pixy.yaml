@@ -92,7 +92,7 @@ proxies:
 
       # The type of compression to use on messages. Allowed values are:
       # none, gzip, snappy, and lz4.
-      compression: snappy
+      compression: none
 
       # The best-effort number of bytes needed to trigger a flush.
       flush_bytes: 1048576

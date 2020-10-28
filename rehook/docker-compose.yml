@@ -1,9 +1,11 @@
-rehook:
-  image: vimagick/rehook
-  ports:
-    - "9000:9000"
-    - "9001:9001"
-  volumes:
-    - "./data/etc:/opt/rehook/etc"
-    - "./data/log:/opt/rehook/log"
-  restart: unless-stopped
+version: "3.8"
+services:
+  rehook:
+    image: vimagick/rehook
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    volumes:
+      - "./data/etc:/opt/rehook/etc"
+      - "./data/log:/opt/rehook/log"
+    restart: unless-stopped

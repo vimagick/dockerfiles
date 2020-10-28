@@ -342,6 +342,7 @@ A collection of delicious docker recipes.
 - [x] neo4j
 - [x] erichough/nfs-server
 - [x] luzifer/nginx-sso
+- [x] n8nio/n8n
 - [x] odoo
 - [x] osixia/openldap
 - [x] kylemanna/openvpn
