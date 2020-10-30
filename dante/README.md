@@ -8,14 +8,18 @@ network connectivity.
 
 ## docker-compose.yml
 
-```
-dante:
-  image: vimagick/dante
-  ports:
-    - "1080:1080"
-  volumes:
-    - ./sockd.conf:/etc/sockd.conf
-  restart: always
+```yaml
+version: "3.8"
+services:
+  dante:
+    image: vimagick/dante
+    ports:
+      - "1080:1080"
+    volumes:
+      - ./data:/etc/dante
+    tmpfs:
+      - /run
+    restart: unless-stopped
 ```
 
 ## sockd.conf
@@ -44,7 +48,7 @@ socks pass {
 
 ## up and running
 
-```
+```bash
 $ docker-compose up -d
 
 # To enable username authentication, please uncomment `socksmethod: username`.

@@ -1,9 +1,9 @@
 version: "3.8"
 services:
   n8n:
-    image: n8nio/n8n:latest-rpi
+    image: n8nio/n8n:0.90.0-rpi
     ports:
       - "5678:5678"
     volumes:
-      - ./data:/root/.n8n
+      - ./data:/home/node/.n8n
     restart: unless-stopped
