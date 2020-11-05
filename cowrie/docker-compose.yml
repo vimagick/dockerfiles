@@ -1,9 +1,16 @@
-cowrie:
-  image: vimagick/cowrie
-  ports:
-    - "2222:2222"
-    - "2223:2223"
-  volumes:
-    - ./data/dl:/home/cowrie/dl
-    - ./data/log:/home/cowrie/log
-  restart: always
+version: "3.8"
+
+services:
+  cowrie:
+    image: cowrie/cowrie
+    ports:
+      - "2222:2222"
+      - "2223:2223"
+    volumes:
+      - cowrie-etc:/cowrie/cowrie-git/etc
+      - cowrie-var:/cowrie/cowrie-git/var
+    restart: unless-stopped
+
+volumes:
+  cowrie-etc:
+  cowrie-var:

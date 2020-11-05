@@ -2,7 +2,7 @@
 # Dockerfile for cowrie-arm
 #
 
-FROM easypi/alpine-arm
+FROM arm32v7/alpine:3
 MAINTAINER EasyPi Software Foundation
 
 RUN apk add -U bash \

@@ -11,31 +11,35 @@ Cowrie is directly based on [Kippo][2] by Upi Tamminen (desaster).
 ## docker-compose.yml
 
 ```yaml
-cowrie:
-  image: vimagick/cowrie
-  ports:
-    - "2222:2222"
-    - "2223:2223"
-  volumes:
-    - ./data/dl:/home/cowrie/dl
-    - ./data/log:/home/cowrie/log
-  restart: always
+version: "3.8"
+
+services:
+  cowrie:
+    image: cowrie/cowrie
+    ports:
+      - "2222:2222"
+      - "2223:2223"
+    volumes:
+      - cowrie-etc:/cowrie/cowrie-git/etc
+      - cowrie-var:/cowrie/cowrie-git/var
+    restart: unless-stopped
+
+volumes:
+  cowrie-etc:
+  cowrie-var:
 ```
 
 ## server
 
 ```bash
-$ cd ~/fig/cowrie
-$ mkdir -p data/dl data/log/tty
-$ chmod -R 777 data
-$ tree -F
-.
-├── docker-compose.yml
-├── dl/
-└── log/
-    └── tty/
 $ docker-compose up -d
-$ tail -f log/cowrie.log
+$ docker volume ls
+$ docker volume inspect cowrie_cowrie-var
+$ cd /var/lib/docker/volumes/cowrie_cowrie-etc/_data
+$ cp cowrie.cfg.dist cowrie.cfg
+$ cp userdb.example userdb.txt
+$ cd /var/lib/docker/volumes/cowrie_cowrie-var/_data
+$ tail -f log/cowrie/cowrie.json
 ```
 
 ## client

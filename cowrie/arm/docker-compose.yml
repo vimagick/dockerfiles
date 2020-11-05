@@ -1,9 +1,11 @@
-cowrie:
-  image: easypi/cowrie-arm
-  ports:
-    - "2222:2222"
-    - "2223:2223"
-  volumes:
-    - ./data/dl:/home/cowrie/dl
-    - ./data/log:/home/cowrie/log
-  restart: always
+version: "3.8"
+services:
+  cowrie:
+    image: easypi/cowrie-arm
+    ports:
+      - "2222:2222"
+      - "2223:2223"
+    volumes:
+      - ./data/dl:/home/cowrie/dl
+      - ./data/log:/home/cowrie/log
+    restart: unless-stopped

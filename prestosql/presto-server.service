@@ -1,0 +1,16 @@
+[Unit]
+Description=Presto Standalone Server
+After=network.target
+
+[Service]
+Type=forking
+User=presto
+Group=presto
+ExecStart=/opt/presto-server/bin/launcher start
+PIDFile=/opt/presto-server/data/var/run/launcher.pid
+LimitNOFILE=65536
+Restart=on-failure
+RestartSec=5s
+
+[Install]
+WantedBy=multi-user.target
