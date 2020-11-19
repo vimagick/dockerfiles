@@ -1,0 +1,12 @@
+version: "3.8"
+services:
+  classifier:
+    image: notaitech/nudenet:classifier
+    ports:
+      - "8080:8080"
+    restart: unless-stopped
+  detector:
+    image: notaitech/nudenet:detector
+    ports:
+      - "8081:8080"
+    restart: unless-stopped
