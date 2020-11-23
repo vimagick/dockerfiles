@@ -1,5 +1,5 @@
 #
-# https://github.com/ansible/awx/blob/14.1.0/installer/roles/local_docker/templates/docker-compose.yml.j2
+# https://github.com/ansible/awx/blob/15.0.1/installer/roles/local_docker/templates/docker-compose.yml.j2
 #
 
 version: '2'
@@ -7,7 +7,7 @@ version: '2'
 services:
 
   web:
-    image: ansible/awx:14.1.0
+    image: ansible/awx:15.0.1
     container_name: awx_web
     hostname: awxweb
     user: root
@@ -29,7 +29,7 @@ services:
     restart: unless-stopped
 
   task:
-    image: ansible/awx:14.1.0
+    image: ansible/awx:15.0.1
     command: /usr/bin/launch_awx_task.sh
     container_name: awx_task
     hostname: awx
@@ -61,7 +61,7 @@ services:
     restart: unless-stopped
 
   postgres:
-    image: postgres:12-alpine
+    image: postgres:13-alpine
     container_name: awx_postgres
     volumes:
       - ./data/postgres:/var/lib/postgresql/data/pgdata:Z
