@@ -1,5 +1,5 @@
 krakend:
-  image: devopsfaith/krakend
+  image: devopsfaith/krakend:alpine
   ports:
     - "8080:8080"
   volumes:
