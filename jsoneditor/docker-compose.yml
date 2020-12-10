@@ -1,0 +1,7 @@
+version: "3.8"
+services:
+  jsoneditor:
+    image: djmattyg007/jsoneditor
+    ports:
+      - "8080:80"
+    restart: unless-stopped

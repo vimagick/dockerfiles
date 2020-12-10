@@ -322,6 +322,7 @@ A collection of delicious docker recipes.
     - [x] inbound-agent
     - [x] jenkins
 - [x] jmxtrans/jmxtrans
+- [x] djmattyg007/jsoneditor
 - [x] wurstmeister/kafka
 - [x] mailgun/kafka-pixy
 - [x] devopsfaith/krakend
