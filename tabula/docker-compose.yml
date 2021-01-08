@@ -1,0 +1,7 @@
+version: "3.8"
+services:
+  tabula:
+    image: vimagick/tabula
+    ports:
+      - "9292:9292"
+    restart: unless-stopped

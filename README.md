@@ -192,6 +192,7 @@ A collection of delicious docker recipes.
 - [x] phpvirtualbox-arm
 - [x] piwik
 - [x] revive
+- [x] tabula
 - [x] tiddlywiki
 - [x] zoneminder :+1:
 
