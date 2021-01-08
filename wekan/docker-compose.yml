@@ -1,18 +1,33 @@
-wekan:
-  image: wekanteam/wekan
-  ports:
-    - "8081:80"
-  links:
-    - mongo
-  environment:
-    - MONGO_URL=mongodb://mongo/wekan
-    - ROOT_URL=https://todo.easypi.pro
-  restart: always
+#
+# https://raw.githubusercontent.com/wekan/wekan/master/docker-compose.yml
+#
 
-mongo:
-  image: mongo
-  ports:
-   - "27017:27017"
-  volumes:
-    - ./data:/data/db
-  restart: always
+version: "3.8"
+
+sevices:
+
+  wekan:
+    image: wekanteam/wekan
+    ports:
+      - "8080:8080"
+    environment:
+      - MONGO_URL=mongodb://mongo/wekan
+      - ROOT_URL=https://wekan.easypi.pro
+      - MAIL_URL=smtp://user:pass@mailserver.example.com:25/
+      - MAIL_FROM=noreply.wekan@mydomain.com
+      - WITH_API=true
+      - RICHER_CARD_COMMENT_EDITOR=false
+      - CARD_OPENED_WEBHOOK_ENABLED=false
+      - BIGEVENTS_PATTERN=NONE
+      - BROWSER_POLICY_ENABLED=true
+    depends_on:
+      - mongo
+    restart: unless-stopped
+
+  mongo:
+    image: mongo
+    ports:
+     - "27017:27017"
+    volumes:
+      - ./data:/data/mongo
+    restart: unless-stopped

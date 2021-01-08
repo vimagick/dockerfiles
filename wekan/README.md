@@ -6,34 +6,11 @@ wekan
 [Wekan][1] is an open-source kanban board which allows a card-based task and
 to-do management, similar to tools like WorkFlowy or Trello.
 
-## docker-compose.yml
-
-```yaml
-wekan:
-  image: wekanteam/wekan
-  ports:
-    - "8081:80"
-  links:
-    - mongo
-  environment:
-    - MONGO_URL=mongodb://mongo/wekan
-    - ROOT_URL=https://todo.easypi.pro
-  restart: always
-
-mongo:
-   image: mongo
-   ports:
-    - "27017:27017"
-   volumes:
-     - ./data:/data/db
-  restart: always
-```
-
 ## Up and Running
 
 ```bash
 $ docker-compose up -d
-$ curl http://localhost:8081
+$ curl http://localhost:8080
 ```
 
 ## Admin Panel » Settings
