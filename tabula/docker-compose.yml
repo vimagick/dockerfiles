@@ -4,4 +4,6 @@ services:
     image: vimagick/tabula
     ports:
       - "9292:9292"
+    volumes:
+      - ./data:/root/.tabula
     restart: unless-stopped

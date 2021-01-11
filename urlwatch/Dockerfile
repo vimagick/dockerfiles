@@ -2,8 +2,8 @@
 # Dockerfile for urlwatch
 #
 
-FROM alpine
-MAINTAINER kev <noreply@easypi.pro>
+FROM alpine:3
+MAINTAINER EasyPi Software Foundation
 
 RUN set -xe \
     && apk add --no-cache ca-certificates \
@@ -14,17 +14,18 @@ RUN set -xe \
                           libxslt         \
                           libxslt-dev     \
                           openssl-dev     \
+                          py3-pip         \
                           python3         \
                           python3-dev     \
-    && python3 -m pip install appdirs   \
-                              cssselect \
-                              keyring   \
-                              lxml      \
-                              minidb    \
-                              pyyaml    \
-                              requests  \
-                              chump     \
-                              urlwatch  \
+    && pip3 install appdirs   \
+                    cssselect \
+                    keyring   \
+                    lxml      \
+                    minidb    \
+                    pyyaml    \
+                    requests  \
+                    chump     \
+                    urlwatch  \
     && apk del build-base  \
                libffi-dev  \
                libxml2-dev \
