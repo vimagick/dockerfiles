@@ -2,7 +2,7 @@
 # Dockerfile for ntopng
 #
 
-FROM ubuntu:18.04
+FROM ubuntu:20.04
 MAINTAINER EasyPi Software Foundation
 
 RUN set -xe \
@@ -10,8 +10,8 @@ RUN set -xe \
     && apt install -y curl gnupg libjson-c3 \
     && curl -sSL http://packages.ntop.org/apt-stable/ntop.key | apt-key add - \
     && { \
-         echo "deb http://packages.ntop.org/apt/18.04/ x64/"; \
-         echo "deb http://packages.ntop.org/apt/18.04/ all/"; \
+         echo "deb http://packages.ntop.org/apt/20.04/ x64/"; \
+         echo "deb http://packages.ntop.org/apt/20.04/ all/"; \
        } > /etc/apt/sources.list.d/ntop.list \
     && apt update \
     && apt install -y ntopng \
