@@ -377,6 +377,7 @@ A collection of delicious docker recipes.
     - selenoid-ui
 - [x] sentry
 - [x] atmoz/sftp
+- [x] snipe/snipe-it
 - [x] scrapinghub/splash
 - [x] teamatldocker
     - [x] confluence
