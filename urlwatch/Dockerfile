@@ -3,7 +3,7 @@
 #
 
 FROM alpine:3
-MAINTAINER EasyPi Software Foundation
+LABEL maintainer="EasyPi Software Foundation"
 
 RUN set -xe \
     && apk add --no-cache ca-certificates \
