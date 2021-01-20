@@ -388,6 +388,7 @@ A collection of delicious docker recipes.
 - [x] centurylink/watchtower
 - [x] anapsix/webdis
 - [x] wekanteam/wekan
+- [x] requarks/wiki
 - [x] yourls
 - [x] zookeeper
 - [x] elkozmon/zoonavigator

@@ -1,0 +1,28 @@
+version: "3.8"
+
+services:
+
+  wiki:
+    image: requarks/wiki:2
+    ports:
+      - "3000:3000"
+    environment:
+      - DB_TYPE=postgres
+      - DB_HOST=postgres
+      - DB_PORT=5432
+      - DB_USER=wiki
+      - DB_PASS=wiki
+      - DB_NAME=wiki
+    depends_on:
+      - postgres
+    restart: unless-stopped
+
+  postgres:
+    image: postgres:11-alpine
+    volumes:
+      - ./data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=wiki
+      - POSTGRES_PASSWORD=wiki
+      - POSTGRES_USER=wiki
+    restart: unless-stopped
