@@ -49,3 +49,25 @@ v3.2.5
 ```
 
 [1]: https://thp.io/2008/urlwatch/
+
+## customizing cron schedule
+
+### Create a crontab file
+
+```
+*/30 * * * * cd /root/.urlwatch && urlwatch --urls urls.yaml --config urlwatch.yaml --hooks hooks.py --cache cache.db
+*/15 * * * * cd /root/.urlwatch && urlwatch --urls urls-every-15m.yaml --config urlwatch.yaml --hooks hooks.py --cache cache.db
+```
+
+See the [crontab manpage for details on format](https://man7.org/linux/man-pages/man5/crontab.5.html#DESCRIPTION).
+
+### Mount the crontab file as a docker volume
+
+```yaml
+urlwatch:
+  image: vimagick/urlwatch
+  volumes:
+    - ./data:/root/.urlwatch
+    - ./crontabs/root:/etc/crontabs/root
+  restart: unless-stopped
+```
