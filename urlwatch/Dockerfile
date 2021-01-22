@@ -3,7 +3,7 @@
 #
 
 FROM alpine:3
-MAINTAINER EasyPi Software Foundation
+LABEL maintainer="EasyPi Software Foundation"
 
 RUN set -xe \
     && apk add --no-cache ca-certificates \
@@ -38,3 +38,5 @@ VOLUME /root/.urlwatch
 WORKDIR /root/.urlwatch
 
 CMD ["crond", "-f", "-L", "/dev/stdout"]
+
+VOLUME /etc/crontabs/root
