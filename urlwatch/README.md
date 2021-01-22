@@ -68,6 +68,6 @@ urlwatch:
   image: vimagick/urlwatch
   volumes:
     - ./data:/root/.urlwatch
-    - ./crontabs/root:/etc/crontabs/root
+    - ./data/crontab:/etc/crontabs/root
   restart: unless-stopped
 ```

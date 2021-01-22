@@ -38,5 +38,3 @@ VOLUME /root/.urlwatch
 WORKDIR /root/.urlwatch
 
 CMD ["crond", "-f", "-L", "/dev/stdout"]
-
-VOLUME /etc/crontabs/root
