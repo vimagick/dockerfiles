@@ -9,10 +9,10 @@ Automated Build for Docker Compose on Raspberry Pi
 $ docker build -t easypi/docker-compose-arm .
 
 $ docker run --name compose easypi/docker-compose-arm version
-docker-compose version 1.12.0, build b31ff33
-docker-py version: 2.2.1
-CPython version: 3.4.2
-OpenSSL version: OpenSSL 1.0.1t  3 May 2016
+docker-compose version 1.28.0, build
+docker-py version: 4.4.1
+CPython version: 3.7.3
+OpenSSL version: OpenSSL 1.1.1d  10 Sep 2019
 
 $ docker cp compose:/usr/local/bin/docker-compose .
 
