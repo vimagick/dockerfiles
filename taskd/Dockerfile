@@ -11,6 +11,7 @@ RUN apk add --update build-base \
                      cmake \
                      gnutls \
                      gnutls-dev \
+                     gnutls-utils \
                      libstdc++ \
     && wget -O- http://downloads.sourceforge.net/project/libuuid/libuuid-1.0.3.tar.gz | tar xz \
         && cd libuuid-1.0.3 \
