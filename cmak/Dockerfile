@@ -36,4 +36,4 @@ EXPOSE 9000
 ENTRYPOINT ["bin/cmak"]
 CMD ["-Dconfig.file=conf/application.conf", "-Dhttp.port=9000", "-Dpidfile.path=/dev/null"]
 
-HEALTHCHECK CMD curl -f http://127.0.0.1/api/health || exit 1
+HEALTHCHECK CMD curl -f http://127.0.0.1:9000/api/health || exit 1
