@@ -2,13 +2,13 @@
 # Dockerfile for dnsmasq-arm
 #
 
-FROM easypi/alpine-arm
+FROM arm32v7/alpine:3
 
 MAINTAINER EasyPi Software Foundation
 
 RUN set -xe \
-    && apk add --no-cache dnsmasq \
-    && echo "conf-dir=/etc/dnsmasq.d/,*.conf" >> /etc/dnsmasq.conf
+    && apk add --no-cache dnsmasq-dnssec \
+    && echo "conf-dir=/etc/dnsmasq.d,*.conf" >> /etc/dnsmasq.conf
 
 VOLUME /etc/dnsmasq.d
 
