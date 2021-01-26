@@ -8,7 +8,7 @@ MAINTAINER kev <norelply@easypi.pro>
 
 RUN set -xe \
     && apk add --no-cache dnsmasq-dnssec \
-    && echo "conf-dir=/etc/dnsmasq.d/,*.conf" >> /etc/dnsmasq.conf
+    && echo "conf-dir=/etc/dnsmasq.d,*.conf" >> /etc/dnsmasq.conf
 
 VOLUME /etc/dnsmasq.d
 
