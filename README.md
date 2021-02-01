@@ -190,7 +190,6 @@ A collection of delicious docker recipes.
 - [x] phpbb
 - [x] phpmyadmin-arm
 - [x] phpvirtualbox-arm
-- [x] piwik
 - [x] revive
 - [x] tabula
 - [x] tiddlywiki
@@ -336,6 +335,7 @@ A collection of delicious docker recipes.
 - [x] jazzdd/phpvirtualbox
 - [x] sonatype/nexus3
 - [x] jupyter/notebook
+- [x] matomo
 - [x] metabase/metabase
 - [x] metasploitframework/metasploit-framework :skull:
 - [x] minio/minio

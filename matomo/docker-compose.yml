@@ -1,0 +1,32 @@
+version: "3.8"
+
+x-matomo-environment: &matomo_environment
+  - MATOMO_DATABASE_HOST=mysql
+  - MATOMO_DATABASE_ADAPTER=mysql
+  - MATOMO_DATABASE_TABLES_PREFIX=matomo_
+  - MATOMO_DATABASE_USERNAME=matomo
+  - MATOMO_DATABASE_PASSWORD=matomo
+  - MATOMO_DATABASE_DBNAME=matomo
+
+x-mysql-environment: &mysql_environment
+  - MYSQL_PASSWORD=matomo
+  - MYSQL_DATABASE=matomo
+  - MYSQL_USER=matomo
+
+services:
+
+  matomo:
+    image: matomo
+    ports:
+      - "8000:80"
+    environment: *matomo_environment
+    depends:
+      - mysql
+    restart: unless-stopped
+  
+  mysql:
+    image: mysql
+    volumes:
+      - ./data/mysql:/var/lib/mysql
+    environment: *mysql_environment
+    restart: unless-stopped
