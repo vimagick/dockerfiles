@@ -31,4 +31,5 @@ RESULTS_BACKEND = RedisCache(
     port=6379,
     key_prefix='superset_results'
 )
+
 ENABLE_PROXY_FIX = True

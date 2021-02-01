@@ -5,4 +5,4 @@ superset:
   volumes:
     - ./data:/var/lib/superset
     - ./data/superset_config.py:/etc/superset/superset_config.py:ro
-  restart: always
+  restart: unless-stopped
