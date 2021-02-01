@@ -7,7 +7,7 @@ MAINTAINER EasyPi Software Foundation
 
 ENV SCRAPY_VERSION=2.4.1
 ENV SCRAPYD_VERSION=1.2.1
-ENV PILLOW_VERSION=8.0.1
+ENV PILLOW_VERSION=8.1.0
 
 RUN set -xe \
     && apt-get update \

@@ -5,9 +5,9 @@
 FROM arm32v7/debian:buster
 MAINTAINER EasyPi Software Foundation
 
-ENV SCRAPY_VERSION=2.4.0
+ENV SCRAPY_VERSION=2.4.1
 ENV SCRAPYD_VERSION=1.2.1
-ENV PILLOW_VERSION=7.2.0
+ENV PILLOW_VERSION=8.1.0
 
 RUN set -xe \
     && apt-get update \
