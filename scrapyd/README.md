@@ -121,16 +121,16 @@ class StackOverflowSpider(scrapy.Spider):
     def parse_question(self, response):
         yield {
             'title': response.css('h1 a::text').extract()[0],
-            'votes': response.css('.question .vote-count-post::text').extract()[0],
-            'body': response.css('.question .post-text').extract()[0],
+            'votes': response.css('.question div[itemprop="upvoteCount"]::text').extract()[0],
+            'body': response.css('.question .postcell').extract()[0],
             'tags': response.css('.question .post-tag::text').extract(),
             'link': response.url,
         }
 _EOF_
 
 $ docker-compose run --rm scrapy
->>> scrapy runspider stackoverflow_spider.py -o top-stackoverflow-questions.json
->>> cat top-stackoverflow-questions.json
+>>> scrapy runspider stackoverflow_spider.py -o top-stackoverflow-questions.jl
+>>> cat top-stackoverflow-questions.jl
 >>> exit
 ```
 
