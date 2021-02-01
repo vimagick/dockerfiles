@@ -1,0 +1,11 @@
+version: "3.8"
+services:
+  owncast:
+    image: easypi/owncast-arm
+    command: /app/owncast --configFile=/data/config.yaml --database=/data/chat.db
+    ports:
+      - "1935:1935"
+      - "8080:8080"
+    volumes:
+      - ./data:/data
+    restart: unless-stopped
