@@ -5,4 +5,4 @@ rocketchat:
   environment:
     - ROOT_URL=http://chat.easypi.pro
     - MONGO_URL=mongodb://mongo.easypi.pro/rocketchat
-  restart: always
+  restart: unless-stopped
