@@ -1,9 +1,9 @@
-version: "3.7"
+version: "3.8"
 
 services:
 
   drone:
-    image: drone/drone:1.6-linux-amd64
+    image: drone/drone:1.10-linux-amd64
     ports:
       -  "8080:80"
     volumes:
@@ -17,12 +17,12 @@ services:
       - DRONE_GOGS_SERVER=http://gogs:3000
       - DRONE_AGENTS_ENABLED=true
     depends_on:
-      - postgres
       - gogs
-    restart: always
+      - postgres
+    restart: unless-stopped
 
   agent:
-    image: drone/agent:1.6-linux-amd64
+    image: drone/agent:1.10-linux-amd64
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     environment:
@@ -33,10 +33,10 @@ services:
       - DRONE_RUNNER_CAPACITY=2
     depends_on:
       - drone
-    restart: always
+    restart: unless-stopped
 
   postgres:
-    image: postgres:12-alpine
+    image: postgres:13-alpine
     ports:
       - "5432:5432"
     volumes:
@@ -45,7 +45,7 @@ services:
       - POSTGRES_USER=drone
       - POSTGRES_PASSWORD=drone
       - POSTGRES_DB=drone
-    restart: always
+    restart: unless-stopped
 
   gogs:
     image: gogs/gogs
@@ -54,4 +54,4 @@ services:
       - "3000:3000"
     volumes:
       - ./data/gogs:/data
-    restart: always
+    restart: unless-stopped

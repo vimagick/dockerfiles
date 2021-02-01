@@ -69,7 +69,7 @@ File: secrets.yml
 environment:
   DOCKER_USER: noreply
   DOCKER_PASS: ********
-  DOCKER_EMAIL: noreply@easypi.info
+  DOCKER_EMAIL: noreply@easypi.pro
 ```
 
 ## read more
