@@ -5,8 +5,8 @@
 FROM arm32v7/alpine:3
 MAINTAINER EasyPi Software Foundation
 
-ENV GOSU_VERSION 1.11
-ENV GOGS_VERSION 0.11.91
+ENV GOSU_VERSION 1.12
+ENV GOGS_VERSION 0.12.3
 ENV GOGS_CUSTOM /data/gogs
 
 RUN apk add --no-cache \
