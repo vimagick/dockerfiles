@@ -351,6 +351,7 @@ A collection of delicious docker recipes.
 - [x] kylemanna/openvpn
 - [x] campbellsoftwaresolutions/osticket
 - [x] outlinewiki/outline
+- [x] gabekangas/owncast
 - [x] owncloud
 - [x] phpmyadmin
 - [x] pihole/pihole
