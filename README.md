@@ -281,6 +281,7 @@ A collection of delicious docker recipes.
 
 ## 3rd-party (sorted by basename)
 
+- [x] archivebox/archivebox
 - [x] docker.bintray.io/jfrog/artifactory-oss
 - [x] tutum/builder
 - [x] browserless/chrome
