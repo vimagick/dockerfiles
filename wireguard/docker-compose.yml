@@ -1,12 +1,26 @@
-wireguard:
-  image: easypi/wireguard-arm
-  command: ["sh", "-c", "wg-quick up wg0 && sleep infinity"]
-  ports:
-    - "51820:51820/udp"
-  volumes:
-    - ./data:/etc/wireguard
-    - /lib/modules:/lib/modules
-  cap_add:
-    - NET_ADMIN
-    - SYS_MODULE
-  restart: unless-stopped
+version: "3.8"
+services:
+  wireguard:
+    image: ghcr.io/linuxserver/wireguard
+    container_name: wireguard
+    cap_add:
+      - NET_ADMIN
+      - SYS_MODULE
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=UTC
+      - SERVERURL=easypi.duckdns.org
+      - SERVERPORT=51820
+      - PEERS=3
+      - PEERDNS=auto
+      - INTERNAL_SUBNET=10.18.18.0
+      - ALLOWEDIPS=0.0.0.0/0
+    volumes:
+      - ./data:/config
+      - /lib/modules:/lib/modules
+    ports:
+      - 51820:51820/udp
+    sysctls:
+      - net.ipv4.conf.all.src_valid_mark=1
+    restart: unless-stopped
