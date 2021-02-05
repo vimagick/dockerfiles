@@ -5,7 +5,10 @@
 FROM arm32v7/alpine:3
 MAINTAINER EasyPi Software Foundation
 
-RUN apk add --no-cache mpd mpc
+RUN set -xe \
+    && apk add --no-cache mpd mpc \
+    && setcap -r /usr/bin/mpd
+
 COPY mpd.conf /etc/mpd.conf
 VOLUME /var/lib/mpd
 
