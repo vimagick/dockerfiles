@@ -2,9 +2,9 @@
 # Dockerfile for icecast
 #
 
-FROM alpine
+FROM alpine:3
 
-MAINTAINER kev <noreply@easypi.pro>
+MAINTAINER EasyPi Software Foundation
 
 RUN apk add --no-cache icecast
 
