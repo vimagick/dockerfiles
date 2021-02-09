@@ -10,7 +10,6 @@ RUN set -xe \
     && apt-get install -y mpd mpc \
     && rm -rf /var/lib/apt/lists/*
 
-COPY mpd.conf /etc/mpd.conf
 VOLUME /var/lib/mpd
 
 EXPOSE 6600

@@ -1,4 +1,4 @@
-version: "3.7"
+version: "3.8"
 
 services:
 
@@ -8,17 +8,17 @@ services:
       - "6600:6600"
       - "8800:8800"
     volumes:
-      - ./mpd.conf:/etc/mpd.conf
-      - ./music:/var/lib/mpd/music
-      - ./playlists:/var/lib/mpd/playlists
+      - ./data/config:/root/.config
+      - ./data/music:/var/lib/mpd/music
+      - ./data/playlists:/var/lib/mpd/playlists
     devices:
       - /dev/snd
-    depends_on:
-      - icecast
+#   depends_on:
+#     - icecast
     restart: unless-stopped
 
-  icecast:
-    image: vimagick/icecast
-    ports:
-      - "8000:8000"
-    restart: unless-stopped
+# icecast:
+#   image: vimagick/icecast
+#   ports:
+#     - "8000:8000"
+#   restart: unless-stopped

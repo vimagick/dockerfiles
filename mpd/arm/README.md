@@ -1,7 +1,11 @@
 Music Player Daemon
 ===================
 
-## Enable Audio Device (ArchLinuxArm)
+## Raspberry Pi OS
+
+Audio is enabled by default
+
+## ArchLinuxArm
 
 ```bash
 $ echo 'snd-bcm2835' > /etc/modules-load.d/raspberrypi.conf
