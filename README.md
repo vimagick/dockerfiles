@@ -101,7 +101,6 @@ A collection of delicious docker recipes.
 - [x] alpine-arm :+1:
 - [x] apacheds
 - [x] aria2 :+1:
-- [x] audiowaveform
 - [x] cadvisor
 - [x] casperjs :+1:
 - [x] freegeoip
@@ -170,6 +169,11 @@ A collection of delicious docker recipes.
 - [x] vnc2flv
 - [x] youtube-dl
 - [x] youtube-worker :beetle:
+
+## Audio
+
+- [x] audiowaveform
+- [x] demucs
 
 ## Web
 
