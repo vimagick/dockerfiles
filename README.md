@@ -385,6 +385,7 @@ A collection of delicious docker recipes.
 - [x] atmoz/sftp
 - [x] snipe/snipe-it
 - [x] scrapinghub/splash
+- [x] deezer/spleeter
 - [x] teamatldocker
     - [x] confluence
     - [x] jira
