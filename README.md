@@ -398,6 +398,7 @@ A collection of delicious docker recipes.
 - [x] requarks/wiki
 - [x] yourls
 - [x] ghcr.io/linuxserver/wireguard
+- [x] apache/zeppelin
 - [x] zookeeper
 - [x] elkozmon/zoonavigator
 
