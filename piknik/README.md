@@ -11,16 +11,17 @@ piknik:
   ports:
     - "8075:8075"
   volumes:
-    - ./piknik.toml:/etc/piknik.toml
-  restart: always
+    - ./data:/etc/piknik
+  restart: unless-stopped
 ```
 
 ## Server Setup
 
 ```bash
-$ touch piknik.toml
-$ docker-compose run --rm piknik -genkeys > piknik.toml
-$ vim piknik.toml
+$ mkdir -p data
+$ touch data/piknik.toml
+$ docker-compose run --rm piknik -genkeys > data/piknik.toml
+$ vim data/piknik.toml
 $ docker-compose up -d
 ```
 

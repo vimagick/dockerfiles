@@ -3,5 +3,5 @@ piknik:
   ports:
     - "8075:8075"
   volumes:
-    - ./piknik.toml:/etc/piknik.toml
-  restart: always
+    - ./data:/etc/piknik
+  restart: unless-stopped
