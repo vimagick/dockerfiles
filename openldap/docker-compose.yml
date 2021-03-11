@@ -1,11 +1,11 @@
-version: "3.7"
+version: "3.8"
 
 services:
 
   openldap:
     image: osixia/openldap
     command: "--loglevel debug"
-    hostname: ldap.easypi.pro
+    hostname: ldap.easypi.duckdns.org
     ports:
       - "389:389"
       - "636:636"
@@ -16,7 +16,7 @@ services:
       - ./data/run:/container/run
     environment:
       - LDAP_ORGANISATION=EasyPi
-      - LDAP_DOMAIN=ldap.easypi.pro
+      - LDAP_DOMAIN=ldap.easypi.duckdns.org
       - LDAP_ADMIN_PASSWORD=admin
       - LDAP_CONFIG_PASSWORD=config
       - LDAP_TLS=true
@@ -25,20 +25,20 @@ services:
       - LDAP_TLS_KEY_FILENAME=ldap.key
       - LDAP_TLS_VERIFY_CLIENT=try
       - LDAP_TLS_ENFORCE=true
-    restart: always
+    restart: unless-stopped
   
-  phpldapadmin:
-    image: osixia/phpldapadmin
-    command: "--loglevel debug"
-    ports:
-      - "8080:80"
-    environment:
-      # PHPLDAPADMIN_LDAP_HOSTS=#PYTHON2BASH:[{'ldap.easypi.pro':[{'server':[{'tls':True}]}]}]
-      - PHPLDAPADMIN_LDAP_HOSTS=ldaps://ldap.easypi.pro/
-      - PHPLDAPADMIN_HTTPS=false
-      - PHPLDAPADMIN_TRUST_PROXY_SSL=true
-    extra_hosts:
-      - ldap.easypi.pro:x.x.x.x
-    depends_on:
-      - openldap
-    restart: always
+# phpldapadmin:
+#   image: osixia/phpldapadmin
+#   command: "--loglevel debug"
+#   ports:
+#     - "8080:80"
+#   environment:
+#     # PHPLDAPADMIN_LDAP_HOSTS=#PYTHON2BASH:[{'ldap.easypi.duckdns.org':[{'server':[{'tls':True}]}]}]
+#     - PHPLDAPADMIN_LDAP_HOSTS=ldaps://ldap.easypi.duckdns.org/
+#     - PHPLDAPADMIN_HTTPS=false
+#     - PHPLDAPADMIN_TRUST_PROXY_SSL=true
+#   extra_hosts:
+#     - ldap.easypi.duckdns.org:x.x.x.x
+#   depends_on:
+#     - openldap
+#   restart: unless-stopped

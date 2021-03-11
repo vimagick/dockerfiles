@@ -29,14 +29,14 @@ OpenLDAP Software is an open source implementation of the Lightweight Directory 
 ## docker-compose.yml
 
 ```yaml
-version: "3.7"
+version: "3.8"
 
 services:
 
   openldap:
     image: osixia/openldap
     command: "--loglevel debug"
-    hostname: ldap.easypi.pro
+    hostname: ldap.easypi.duckdns.org
     ports:
       - "389:389"
       - "636:636"
@@ -47,7 +47,7 @@ services:
       - ./data/run:/container/run
     environment:
       - LDAP_ORGANISATION=EasyPi
-      - LDAP_DOMAIN=ldap.easypi.pro
+      - LDAP_DOMAIN=ldap.easypi.duckdns.org
       - LDAP_ADMIN_PASSWORD=admin
       - LDAP_CONFIG_PASSWORD=config
       - LDAP_TLS=true
@@ -56,23 +56,23 @@ services:
       - LDAP_TLS_KEY_FILENAME=ldap.key
       - LDAP_TLS_VERIFY_CLIENT=try
       - LDAP_TLS_ENFORCE=true
-    restart: always
+    restart: unless-stopped
   
-  phpldapadmin:
-    image: osixia/phpldapadmin
-    command: "--loglevel debug"
-    ports:
-      - "8080:80"
-    environment:
-      # PHPLDAPADMIN_LDAP_HOSTS=#PYTHON2BASH:[{'ldap.easypi.pro':[{'server':[{'tls':True}]}]}]
-      - PHPLDAPADMIN_LDAP_HOSTS=ldaps://ldap.easypi.pro/
-      - PHPLDAPADMIN_HTTPS=false
-      - PHPLDAPADMIN_TRUST_PROXY_SSL=true
-    extra_hosts:
-      - ldap.easypi.pro:x.x.x.x
-    depends_on:
-      - openldap
-    restart: always
+# phpldapadmin:
+#   image: osixia/phpldapadmin
+#   command: "--loglevel debug"
+#   ports:
+#     - "8080:80"
+#   environment:
+#     # PHPLDAPADMIN_LDAP_HOSTS=#PYTHON2BASH:[{'ldap.easypi.duckdns.org':[{'server':[{'tls':True}]}]}]
+#     - PHPLDAPADMIN_LDAP_HOSTS=ldaps://ldap.easypi.duckdns.org/
+#     - PHPLDAPADMIN_HTTPS=false
+#     - PHPLDAPADMIN_TRUST_PROXY_SSL=true
+#   extra_hosts:
+#     - ldap.easypi.duckdns.org:x.x.x.x
+#   depends_on:
+#     - openldap
+#   restart: unless-stopped
 ```
 
 > :warnning: I haven't figured out how to connect [phpldapadmin][1] to openladp via STARTTLS:
@@ -88,12 +88,12 @@ services:
 ```bash
 openssl req \
   -x509 -nodes -days 3650 -sha256 \
-  -subj '/C=US/ST=Oregon/L=Portland/CN=easypi.pro' \
+  -subj '/C=US/ST=Oregon/L=Portland/CN=easypi.duckdns.org' \
   -newkey rsa:2048 -keyout ca.key -out ca.crt
 
 openssl req \
   -new -sha256 -newkey rsa:2048 -nodes \
-  -subj '/CN=ldap.easypi.pro/O=EasyPi/C=US/ST=Oregon/L=Portland' \
+  -subj '/CN=ldap.easypi.duckdns.org/O=EasyPi/C=US/ST=Oregon/L=Portland' \
   -keyout ldap.key -out ldap.csr
 
 openssl x509 \
@@ -106,11 +106,11 @@ openssl x509 \
 
 ```bash
 $ docker-compose exec openldap bash
->>> ldapwhoami -H ldap://ldap.easypi.pro -x -ZZ
+>>> ldapwhoami -H ldap://ldap.easypi.duckdns.org -x -ZZ
 anonymous
->>> ldapwhoami -H ldaps://ldap.easypi.pro -x -D cn=admin,dc=ldap,dc=easypi,dc=pro -w admin
-dn:cn=admin,dc=ldap,dc=easypi,dc=pro
->>> ldapsearch -H ldaps://ldap.easypi.pro -b dc=ldap,dc=easypi,dc=pro -D cn=admin,dc=ldap,dc=easypi,dc=pro -w admin
+>>> ldapwhoami -H ldaps://ldap.easypi.duckdns.org -x -D cn=admin,dc=ldap,dc=easypi,dc=duckdns,dc=org -w admin
+dn:cn=admin,dc=ldap,dc=easypi,dc=duckdns,dc=org
+>>> ldapsearch -H ldaps://ldap.easypi.duckdns.org -b dc=ldap,dc=easypi,dc=duckdns,dc=org -D cn=admin,dc=ldap,dc=easypi,dc=duckdns,dc=org -w admin
 ...
 ```
 
