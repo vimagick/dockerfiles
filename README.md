@@ -152,10 +152,10 @@ A collection of delicious docker recipes.
 - [x] ffmpeg
 - [x] ffmpeg-arm
 - [x] ffserver :beetle:
-- [x] icecast
+- [x] icecast :musical_note:
 - [x] live555 :camera:
 - [x] minidlna
-- [x] mpd
+- [x] mpd :musical_note:
 - [x] murmur
 - [x] openmeetings :camera:
 - [x] plex :moneybag:
@@ -164,7 +164,7 @@ A collection of delicious docker recipes.
 - [x] rtmp-client-arm :+1:
 - [x] rtmp-server :camera:
 - [x] shairplay-arm
-- [x] shoutcast
+- [x] shoutcast :musical_note:
 - [x] tesseract
 - [x] vnc2flv
 - [x] youtube-dl
@@ -285,6 +285,7 @@ A collection of delicious docker recipes.
 
 ## 3rd-party (sorted by basename)
 
+- [x] ghcr.io/linuxserver/airsonic :musical_note:
 - [x] archivebox/archivebox
 - [x] docker.bintray.io/jfrog/artifactory-oss
 - [x] tutum/builder

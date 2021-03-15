@@ -1,0 +1,22 @@
+version: "3.8"
+services:
+  airsonic:
+    image: ghcr.io/linuxserver/airsonic:amd64-latest
+    container_name: airsonic
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Asia/Shanghai
+      # CONTEXT_PATH=<URL_BASE> #optional
+      # JAVA_OPTS=<options> #optional
+    volumes:
+      - ./data/config:/config
+      - ./data/music:/music
+      - ./data/playlists:/playlists
+      - ./data/podcasts:/podcasts
+      - ./data/media:/media
+    ports:
+      - 4040:4040
+    devices:
+      - /dev/snd:/dev/snd
+    restart: unless-stopped
