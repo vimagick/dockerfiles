@@ -252,7 +252,6 @@ A collection of delicious docker recipes.
 - [x] stunnel-arm
 - [x] tinyproxy
 - [x] tor
-- [x] traefik-arm
 
 ## VPN
 
@@ -392,6 +391,7 @@ A collection of delicious docker recipes.
     - [x] jira
 - [x] amancevice/superset
 - [x] v2ray/official :cn:
+- [x] traefik
 - [x] mpromonet/v4l2rtspserver :camera:
 - [x] centurylink/watchtower
 - [x] anapsix/webdis

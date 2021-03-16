@@ -1,0 +1,25 @@
+version: "3.8"
+
+services:
+
+  traefik:
+    image: "traefik:v2.4"
+    container_name: "traefik"
+    command:
+      - "--api.insecure=true"
+      - "--providers.docker=true"
+      - "--providers.docker.exposedbydefault=false"
+      - "--entrypoints.web.address=:80"
+      - "--entrypoints.websecure.address=:443"
+      - "--certificatesresolvers.le.acme.httpchallenge=true"
+      - "--certificatesresolvers.le.acme.httpchallenge.entrypoint=web"
+      - "--certificatesresolvers.le.acme.email=username@gmail.com"
+      - "--certificatesresolvers.le.acme.storage=/etc/traefik/acme.json"
+    ports:
+      - "80:80"
+      - "443:443"
+      - "8080:8080"
+    volumes:
+      - ./data:/etc/traefik
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    restart: unless-stopped
