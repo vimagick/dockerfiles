@@ -9,7 +9,7 @@
             <name>Example stream name</name>
             <genre>Example genre</genre>
             <description>A short description of your stream</description>
-            <url>http://easypi.info</url>
+            <url>https://easypi.duckdns.org</url>
         </metadata>
         <input>
             <module>alsa</module>
