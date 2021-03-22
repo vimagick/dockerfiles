@@ -284,6 +284,7 @@ A collection of delicious docker recipes.
 
 ## 3rd-party (sorted by basename)
 
+- [x] adguard/adguardhome
 - [x] ghcr.io/linuxserver/airsonic :musical_note:
 - [x] archivebox/archivebox
 - [x] docker.bintray.io/jfrog/artifactory-oss
