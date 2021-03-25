@@ -1,4 +1,4 @@
-version: "3.7"
+version: "3.8"
 
 services:
 
@@ -37,4 +37,6 @@ services:
       - KAFKA_MANAGER_PASSWORD=admin
     depends_on:
       - zookeeper
+    healthcheck:
+      test: curl -f http://127.0.0.1:9000/api/health || exit 1
     restart: unless-stopped
