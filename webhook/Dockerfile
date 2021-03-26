@@ -11,7 +11,7 @@ RUN apk add --no-cache git
 RUN go get -d -v github.com/adnanh/webhook
 RUN go build --ldflags '-s -extldflags "-static"' -i -o webhook github.com/adnanh/webhook
 
-FROM alpine
+FROM alpine:3
 MAINTAINER EasyPi Software Foundation
 RUN apk add --no-cache bash coreutils curl jq
 COPY --from=build /go/bin/webhook /usr/local/bin/
@@ -19,4 +19,5 @@ WORKDIR /etc/webhook
 VOLUME /etc/webhook
 EXPOSE 9000
 ENTRYPOINT ["webhook"]
-CMD ["-hooks", "hooks.json", "-hotreload", "-template", "-verbose"]
+# Doc: https://github.com/adnanh/webhook/blob/master/docs/Webhook-Parameters.md
+CMD ["-hooks", "hooks.json", "-hooks", "hooks.yaml", "-hotreload", "-template", "-verbose"]
