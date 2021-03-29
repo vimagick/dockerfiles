@@ -7,6 +7,7 @@ MAINTAINER EasyPi Software Foundation
 
 ENV SCRAPY_VERSION=1.8.0
 ENV SCRAPYD_VERSION=1.2.1
+ENV SCRAPYRT_VERSION=0.11.0
 ENV PILLOW_VERSION=6.2.2
 
 RUN set -xe \
@@ -41,7 +42,7 @@ RUN set -xe \
                    git+https://github.com/scrapy/scrapyd.git@$SCRAPYD_VERSION \
                    git+https://github.com/scrapy/scrapyd-client.git \
                    git+https://github.com/scrapinghub/scrapy-splash.git \
-                   git+https://github.com/scrapinghub/scrapyrt.git \
+                   git+https://github.com/scrapinghub/scrapyrt.git@$SCRAPYRT_VERSION \
                    git+https://github.com/python-pillow/Pillow.git@$PILLOW_VERSION \
     && curl -sSL https://github.com/scrapy/scrapy/raw/master/extras/scrapy_bash_completion -o /etc/bash_completion.d/scrapy_bash_completion \
     && echo 'source /etc/bash_completion.d/scrapy_bash_completion' >> /root/.bashrc \
