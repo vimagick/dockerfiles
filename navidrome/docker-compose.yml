@@ -1,0 +1,17 @@
+version: "3.8"
+
+services:
+
+  navidrome:
+    image: deluan/navidrome
+    ports:
+      - "4533:4533"
+    volumes:
+      - ./data:/data
+      - /path/to/your/music/folder:/music:ro
+    environment:
+      - ND_SCANINTERVAL=1h
+      - ND_SESSIONTIMEOUT=24h
+      - ND_LOGLEVEL=info
+      - ND_BASEURL=
+    restart: unless-stopped

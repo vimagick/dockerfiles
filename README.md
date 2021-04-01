@@ -333,9 +333,9 @@ A collection of delicious docker recipes.
 - [x] mailgun/kafka-pixy
 - [x] devopsfaith/krakend
 - [x] tootsuite/mastodon
+- [x] deluan/navidrome :musical_note:
 - [x] netdata/netdata
 - [x] nextcloud
-- [x] prom/prometheus
 - [x] sonatype/nexus3
 - [ ] jwilder/nginx-proxy
 - [x] jazzdd/phpvirtualbox
@@ -364,6 +364,7 @@ A collection of delicious docker recipes.
 - [x] portainer/portainer :+1:
 - [x] postgres
 - [x] postgrest/postgrest
+- [x] prom/prometheus
 - [x] prosody/prosody
 - [x] registry
 - [x] restic/rest-server
