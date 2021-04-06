@@ -2,13 +2,11 @@
 # Dockerfile for openconnect-arm
 #
 
-FROM easypi/alpine-arm:edge
+FROM arm32v7/alpine:edge
 MAINTAINER EasyPi Software Foundation
 
 RUN set -xe \
-    && apk add --no-cache \
-               --repository http://dl-cdn.alpinelinux.org/alpine/edge/testing/ \
-               openconnect \
+    && apk add --no-cache openconnect \
     && mkdir -p /etc/openconnect \
     && touch /etc/openconnect/openconnect.conf
 

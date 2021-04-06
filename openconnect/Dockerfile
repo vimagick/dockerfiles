@@ -6,9 +6,7 @@ FROM alpine:edge
 MAINTAINER kev <noreply@easypi.pro>
 
 RUN set -xe \
-    && apk add --no-cache \
-               --repository http://dl-cdn.alpinelinux.org/alpine/edge/testing/ \
-               openconnect \
+    && apk add --no-cache openconnect \
     && mkdir -p /etc/openconnect \
     && touch /etc/openconnect/openconnect.conf
 
