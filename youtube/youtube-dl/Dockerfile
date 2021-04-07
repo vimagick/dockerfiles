@@ -2,14 +2,13 @@
 # Dockerfile for youtube-dl
 #
 
-FROM alpine
+FROM python:3.9-alpine
 MAINTAINER kev <noreply@easypi.pro>
 
 RUN set -xe \
     && apk add --no-cache ca-certificates \
                           ffmpeg \
                           openssl \
-                          python3 \
                           aria2 \
     && pip3 install youtube-dl
 
