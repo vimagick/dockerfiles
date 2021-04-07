@@ -1,0 +1,42 @@
+######
+# This is example of config file for slacker.
+# There are two sections:
+#   * default: this is default options for sending message to slack.
+#   * rules: list of rules for matching email message. Currently 'from',
+#            'to' and 'subject' fields are supported. Their values can be
+#            regexp to match corresponding email field.
+#
+# Each rule in list tested in order. First matched rule is used to update
+# values from 'default' section with its 'options' subsection.
+######
+
+default:
+    channel: '#general'
+    username: slacker
+    icon_url: ''
+    slack_token: xoxb-00000000000-aaaaaaaaaaaaaaaaaaaaaaaa
+    debug: false
+    format: "subject: %(subject)s; body: %(body)s"  ## default slack message format
+
+
+rules:
+    - name: Monit rule
+      from: monit@.*
+
+      options:
+          username: monit
+          channel: '#monit'
+          icon_url: 'https://bitbucket.org/tildeslash/monit/avatar/128'
+          debug: false
+
+
+    - name: Cron rule
+      from: root@localhost
+      subject: Cron.*
+
+      options:
+          username: cron
+          channel: '#cron'
+          icon_url: ''
+          debug: true  ## will output full email with all headers
+          format: "email body is: %(body)s"  ## custom message format

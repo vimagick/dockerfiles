@@ -1,0 +1,11 @@
+version: "3.8"
+services:
+  slacker:
+    image: vimagick/slacker
+    ports:
+    - "8025:8025"
+    volumes:
+    - ./data:/etc/slacker
+    environment:
+    - CONFIG=/etc/slacker/config.yml
+    restart: unless-stopped
