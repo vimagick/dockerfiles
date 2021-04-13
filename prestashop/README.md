@@ -8,23 +8,28 @@ free.
 ## docker-compose.yml
 
 ```yaml
-prestashop:
-  image: prestashop/prestashop:1.7-7.2-apache
-  ports:
-    - "8080:80"
-  links:
-    - mysql
-  volumes:
-    - ./data:/var/www/html
-  restart: unless-stopped
+version: "3.8"
 
-mysql:
-  image: mysql:8
-  command: --default-authentication-plugin=mysql_native_password
-  environment:
-    - MYSQL_ROOT_PASSWORD=root
-    - MYSQL_DATABASE=prestashop
-  restart: unless-stopped
+services:
+
+  prestashop:
+    image: prestashop/prestashop:1.7-apache
+    ports:
+      - "8080:80"
+    volumes:
+      - ./data/prestashop:/var/www/html
+    depends_on:
+      - mysql
+    restart: unless-stopped
+
+  mysql:
+    image: mariadb:10
+    volumes:
+      - ./data/mysql:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=prestashop
+    restart: unless-stopped
 ```
 
 ## Nginx Config
