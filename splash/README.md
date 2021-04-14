@@ -10,12 +10,12 @@ It's fast, lightweight and state-less which makes it easy to distribute.
 ## docker-compose.yml
 
 ```yaml
-version: '3.7'
+version: '3.8'
 
 services:
 
   splash:
-    image: scrapinghub/splash:3.4
+    image: scrapinghub/splash:3.5.0
     command: --maxrss 2048 --max-timeout 300 --disable-lua-sandbox --verbosity 1
     ports:
       - "8050:8050"
