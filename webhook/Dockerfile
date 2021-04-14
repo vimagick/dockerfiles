@@ -6,6 +6,7 @@ FROM golang:alpine AS build
 ENV CGO_ENABLED=0
 ENV GOOS=linux
 ENV GOARCH=amd64
+ENV GO111MODULE=off
 WORKDIR /go/bin
 RUN apk add --no-cache git
 RUN go get -d -v github.com/adnanh/webhook
