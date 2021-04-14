@@ -220,6 +220,7 @@ A collection of delicious docker recipes.
 - [x] kismet
 - [x] routersploit
 - [x] snort :beetle:
+- [x] snort3 :beetle:
 - [x] sslsplit
 - [x] wafw00f
 - [x] webgoat
