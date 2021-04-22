@@ -2,10 +2,10 @@
 # Dockerfile for nodebb
 #
 
-FROM alpine
-MAINTAINER kev <noreply@easypi.pro>
+FROM alpine:3
+MAINTAINER EasyPi Software Foundation
 
-ENV BB_VER=1.12.2
+ENV BB_VER=1.17.0
 ENV BB_URL=https://github.com/NodeBB/NodeBB/archive/v$BB_VER.tar.gz
 ENV BB_SOURCE=/usr/src/nodebb
 ENV BB_CONTENT=/var/lib/nodebb
