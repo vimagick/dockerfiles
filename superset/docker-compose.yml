@@ -20,7 +20,7 @@ services:
     restart: unless-stopped
 
   superset:
-    image: amancevice/superset:1.0.0
+    image: amancevice/superset:1.1.0
     ports:
       - "8088:8088"
     volumes:
@@ -33,7 +33,7 @@ services:
     restart: unless-stopped
 
   worker:
-    image: amancevice/superset:1.0.0
+    image: amancevice/superset:1.1.0
     command: celery worker
     volumes:
       - ./data/superset:/etc/superset
