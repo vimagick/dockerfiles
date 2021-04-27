@@ -3,21 +3,27 @@ version: "3.8"
 services:
 
   strapi:
+    container_name: strapi
     image: strapi/strapi:3.6.0-alpine
+    command: "strapi start"
     ports:
       - "1337:1337"
     volumes:
       - ./data/strapi:/srv/app
     environment:
+      - NODE_ENV=production
       - DATABASE_CLIENT=postgres
       - DATABASE_HOST=postgres
       - DATABASE_PORT=5432
       - DATABASE_USERNAME=strapi
       - DATABASE_PASSWORD=strapi
       - DATABASE_NAME=strapi
+    depends_on:
+      - postgres
     restart: unless-stopped
 
   postgres:
+    container_name: postgres
     image: postgres:13.2-alpine
     ports:
       - "5432:5432"
