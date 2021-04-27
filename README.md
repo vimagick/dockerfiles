@@ -393,6 +393,7 @@ A collection of delicious docker recipes.
 - [x] teamatldocker
     - [x] confluence
     - [x] jira
+- [x] strapi/strapi
 - [x] amancevice/superset
 - [x] v2ray/official :cn:
 - [x] traefik
