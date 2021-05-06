@@ -18,16 +18,17 @@ RUN set -xe \
                           py3-pip          \
                           python3          \
                           python3-dev      \
-    && pip3 install appdirs       \
-                    cssselect     \
-                    keyring       \
-                    lxml          \
-                    minidb        \
-                    pyyaml        \
-                    requests      \
-                    chump         \
-                    pushbullet.py \
-                    urlwatch      \
+    && pip3 install appdirs        \
+                    cssselect      \
+                    keyring        \
+                    lxml           \
+                    minidb         \
+                    pyyaml         \
+                    requests       \
+                    chump          \
+                    beautifulsoup4 \
+                    pushbullet.py  \
+                    urlwatch       \
     && apk del build-base  \
                libffi-dev  \
                libxml2-dev \
