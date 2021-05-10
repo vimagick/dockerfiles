@@ -1,0 +1,29 @@
+{
+  "redis_host": "redis",
+  "redis_port": 6379,
+  "redis_auth": null,
+  "http_host": "0.0.0.0",
+  "http_port": 7379,
+  "threads": 5,
+  "pool_size": 10,
+  "daemonize": false,
+  "websockets": false,
+  "database": 0,
+  "acl": [
+    {
+      "disabled": [
+        "DEBUG",
+        "FLUSHDB",
+        "FLUSHALL"
+      ]
+    },
+    {
+      "http_basic_auth": "username:password",
+      "enabled": [
+        "DEBUG"
+      ]
+    }
+  ],
+  "verbosity": 99,
+  "logfile": "/dev/stdout"
+}

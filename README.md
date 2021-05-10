@@ -143,6 +143,7 @@ A collection of delicious docker recipes.
 - [x] tmail :beetle:
 - [x] twemproxy
 - [x] vsftpd
+- [x] webdis
 - [x] webhook
 - [x] webkit :beetle:
 
@@ -399,7 +400,6 @@ A collection of delicious docker recipes.
 - [x] traefik
 - [x] mpromonet/v4l2rtspserver :camera:
 - [x] centurylink/watchtower
-- [x] anapsix/webdis
 - [x] wekanteam/wekan
 - [x] requarks/wiki
 - [x] yourls
