@@ -371,6 +371,7 @@ A collection of delicious docker recipes.
 - [x] prosody/prosody
 - [x] registry
 - [x] restic/rest-server
+- [x] rocker/rstudio
 - [x] rocket.chat
 - [x] rundeck/rundeck
 - [x] wonderfall/searx

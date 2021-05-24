@@ -1,0 +1,15 @@
+version: "3.8"
+
+services:
+
+  rocker:
+    image: rocker/rstudio:4.1.0
+    ports:
+      - "3838:3838"
+      - "8787:8787"
+    volumes:
+      - ./data:/home/rstudio
+    environment:
+      - ADD=shiny
+      - DISABLE_AUTH=true
+    restart: unless-stopped
