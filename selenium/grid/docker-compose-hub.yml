@@ -1,9 +1,9 @@
-version: '3'
+version: '3.8'
 
 services:
 
-  selenium-hub:
-    image: selenium/hub:3.141.59-neon
+  hub:
+    image: selenium/hub:3.141.59
     ports:
       - "4444:4444"
     volumes:

@@ -1,9 +1,9 @@
-version: '3.7'
+version: '3.8'
 
 services:
 
   hub:
-    image: selenium/hub:3.141.59-selenium
+    image: selenium/hub:3.141.59
     ports:
       - "4444:4444"
     volumes:
@@ -23,7 +23,7 @@ services:
         condition: on-failure
 
   firefox:
-    image: selenium/node-firefox:3.141.59-selenium
+    image: selenium/node-firefox:3.141.59
     entrypoint: bash -c 'REMOTE_HOST=http://$$HOSTNAME:5555 /opt/bin/entry_point.sh'
     volumes:
       - /dev/shm:/dev/shm
@@ -44,7 +44,7 @@ services:
         condition: on-failure
 
   chrome:
-    image: selenium/node-chrome:3.141.59-selenium
+    image: selenium/node-chrome:3.141.59
     entrypoint: bash -c 'REMOTE_HOST=http://$$HOSTNAME:5555 /opt/bin/entry_point.sh'
     volumes:
       - /dev/shm:/dev/shm

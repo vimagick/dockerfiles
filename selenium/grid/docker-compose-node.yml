@@ -1,5 +1,5 @@
 chrome:
-  image: selenium/node-chrome:3.141.59-neon
+  image: selenium/node-chrome:3.141.59
   ports:
     - "5555:5555"
   volumes:
