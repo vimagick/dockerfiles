@@ -306,6 +306,7 @@ A collection of delicious docker recipes.
   - [x] dask-notebook
 - [x] appbaseio/dejavu :mag:
 - [x] cachethq/docker
+- [x] satishweb/doh-server
 - [x] snowzach/doods
 - [x] drone/drone
 - [x] drupal

@@ -22,7 +22,7 @@ services:
         condition: on-failure
 
   chrome:
-    image: selenium/standalone-chrome:3.141.59-20210311
+    image: selenium/standalone-chrome:3.141.59
     volumes:
       - /dev/shm:/dev/shm
     environment:

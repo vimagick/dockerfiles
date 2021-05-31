@@ -1,0 +1,14 @@
+version: "3.8"
+services:
+  doh-server:
+    image: satishweb/doh-server
+    ports:
+      - "8053:8053"
+    environment:
+      - UPSTREAM_DNS_SERVER=udp:8.8.8.8:53
+      - DOH_HTTP_PREFIX=/dns-query
+      - DOH_SERVER_LISTEN=:8053
+      - DOH_SERVER_TIMEOUT=10
+      - DOH_SERVER_TRIES=3
+      - DOH_SERVER_VERBOSE=false
+    restart: unless-stopped
