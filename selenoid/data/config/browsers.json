@@ -1,18 +1,27 @@
 {
   "chrome": {
-    "default": "90.0",
+    "default": "91.0",
     "versions": {
-      "90.0": {
-        "image": "selenoid/vnc:chrome_90.0",
+      "91.0": {
+        "image": "selenoid/vnc:chrome_91.0",
         "port": "4444"
       }
     }
   },
   "firefox": {
-    "default": "87.0",
+    "default": "88.0",
     "versions": {
-      "87.0": {
-        "image": "selenoid/vnc:firefox_87.0",
+      "88.0": {
+        "image": "selenoid/vnc:firefox_88.0",
+        "port": "4444"
+      }
+    }
+  },
+  "opera": {
+    "default": "76.0",
+    "versions": {
+      "76.0": {
+        "image": "selenoid/vnc:opera_76.0",
         "port": "4444"
       }
     }

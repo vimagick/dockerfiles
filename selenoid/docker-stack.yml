@@ -33,7 +33,7 @@ services:
       - "8888:8888"
     environment:
       - BROWSER_NAME=chrome
-      - BROWSER_VERSION=79.0
+      - BROWSER_VERSION=91.0
       - BROWSER_REGION=1
       - BROWSER_HOSTS=tasks.selenoid
       - BROWSER_PORT=4444
