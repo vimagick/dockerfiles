@@ -10,7 +10,9 @@ tinyproxy:
   image: vimagick/tinyproxy
   ports:
     - "8888:8888"
-  restart: always
+  volumes:
+    - ./data:/etc/tinyproxy
+  restart: unless-stopped
 ```
 
 ## Server Setup

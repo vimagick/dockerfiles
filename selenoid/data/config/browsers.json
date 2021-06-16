@@ -13,7 +13,8 @@
     "versions": {
       "88.0": {
         "image": "selenoid/vnc:firefox_88.0",
-        "port": "4444"
+        "port": "4444",
+        "path": "/wd/hub"
       }
     }
   },
