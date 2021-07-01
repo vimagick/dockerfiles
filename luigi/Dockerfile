@@ -14,7 +14,7 @@ WORKDIR $LUIGI_HOME_DIR
 
 RUN set -xe \
     && apk add --no-cache python3 \
-    && pip3 install luigi \
+    && pip3 install --no-cache-dir luigi \
     && mkdir -p etc log run var \
     && touch $LUIGI_CONFIG_PATH
 

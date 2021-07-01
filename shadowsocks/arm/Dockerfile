@@ -8,7 +8,7 @@ MAINTAINER kev <noreply@easypi.pro>
 RUN set -ex \
     && apk add -U curl libsodium python \
     && curl -sSL https://bootstrap.pypa.io/get-pip.py | python \
-    && pip install shadowsocks \
+    && pip install --no-cache-dir shadowsocks \
     && apk del curl \
     && rm -rf /var/cache/apk/*
 

@@ -5,7 +5,7 @@
 FROM vimagick/python:3
 MAINTAINER kev <noreply@easypi.pro>
 
-RUN pip install gunicorn httpbin
+RUN pip install --no-cache-dir gunicorn httpbin
 
 EXPOSE 80
 

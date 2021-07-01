@@ -10,7 +10,7 @@ RUN set -xe \
                           python \
                           python-dev \
                           py-pip \
-    && pip install vnc2flv \
+    && pip install --no-cache-dir vnc2flv \
     && apk del --purge build-base \
                        python-dev \
                        py-pip

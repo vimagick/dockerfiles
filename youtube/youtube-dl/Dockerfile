@@ -10,7 +10,7 @@ RUN set -xe \
                           ffmpeg \
                           openssl \
                           aria2 \
-    && pip3 install youtube-dl
+    && pip3 install --no-cache-dir youtube-dl
 
 # Try to run it so we know it works
 RUN youtube-dl --version

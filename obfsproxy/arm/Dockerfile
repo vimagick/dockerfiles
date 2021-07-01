@@ -8,7 +8,7 @@ MAINTAINER EasyPi Software Foundation
 RUN set -xe \
     && apk add --no-cache build-base curl python python-dev \
     && curl -sSL https://bootstrap.pypa.io/get-pip.py | python \
-    && pip install obfsproxy \
+    && pip install --no-cache-dir obfsproxy \
     && apk del build-base curl python-dev
 
 ENV LOG_MIN_SEVERITY info

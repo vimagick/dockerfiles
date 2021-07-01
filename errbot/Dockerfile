@@ -14,8 +14,8 @@ RUN set -xe \
                           openssl-dev \
                           python3 \
                           python3-dev \
-    && pip3 install -U pip \
-    && pip3 install errbot \
+    && pip3 install --no-cache-dir -U pip \
+    && pip3 install --no-cache-dir errbot \
                     hypchat \
                     irc \
                     pyasn1 \

@@ -10,7 +10,7 @@ RUN apt-get update \
     && curl -sSL https://bootstrap.saltstack.com | bash -s -- -M -N -S -X \
     && apt-get install -y salt-ssh \
     && curl -sSL https://bootstrap.pypa.io/get-pip.py | python \
-    && pip install httpie ipython \
+    && pip install --no-cache-dir httpie ipython \
     && rm -rf /var/lib/apt/lists/*
 
 VOLUME /etc/salt /srv/salt

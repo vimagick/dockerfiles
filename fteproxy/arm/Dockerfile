@@ -13,7 +13,7 @@ RUN set -xe \
                   python \
                   python-dev \
                   py-pip \
-    && pip install fteproxy \
+    && pip install --no-cache-dir fteproxy \
     && apk del build-base \
                gmp-dev \
                python-dev \

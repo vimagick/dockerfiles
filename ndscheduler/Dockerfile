@@ -7,7 +7,7 @@ MAINTAINER EasyPi Software Foundation
 
 RUN set -xe \
     && apk add --no-cache bash sqlite \
-    && pip install ndscheduler requests
+    && pip install --no-cache-dir ndscheduler requests
 
 WORKDIR /opt/ndscheduler
 VOLUME /opt/ndscheduler

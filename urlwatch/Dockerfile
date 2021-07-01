@@ -18,7 +18,7 @@ RUN set -xe \
                           py3-pip          \
                           python3          \
                           python3-dev      \
-    && pip3 install appdirs        \
+    && pip3 install --no-cache-dir appdirs        \
                     cssselect      \
                     keyring        \
                     lxml           \

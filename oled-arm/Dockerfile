@@ -16,7 +16,7 @@ RUN set -xe \
                           jpeg \
                           jpeg-dev \
     && curl https://bootstrap.pypa.io/get-pip.py | python \
-    && pip install luma.oled \
+    && pip install --no-cache-dir luma.oled \
     && apk del --purge build-base \
                        curl \
                        linux-headers \

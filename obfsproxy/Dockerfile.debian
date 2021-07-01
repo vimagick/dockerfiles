@@ -9,7 +9,7 @@ RUN set -xe \
     && apt-get update \
     && apt-get install -y build-essential curl python python-dev \
     && curl https://bootstrap.pypa.io/get-pip.py | python \
-    && pip install obfsproxy \
+    && pip install --no-cache-dir obfsproxy \
     && apt-get purge -y build-essential python-dev \
     && apt-get autoremove -y \
     && apt-get clean -y \

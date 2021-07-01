@@ -10,7 +10,7 @@ RUN apk add --update build-base \
                      python-dev \
                      openssl    \
     && wget -O- https://bootstrap.pypa.io/get-pip.py | python \
-    && pip install twisted \
+    && pip install --no-cache-dir twisted \
     && apk del --purge build-base \
                        python-dev \
                        openssl    \
