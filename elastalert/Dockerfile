@@ -25,7 +25,7 @@ RUN set -xe \
         musl-dev \
         openssl-dev \
         python3-dev \
-    && pip install elastalert==${ELASTALERT_VERSION} \
+    && pip install --no-cache-dir elastalert==${ELASTALERT_VERSION} \
     && mkdir -p rules \
     && curl -sSL https://github.com/Yelp/elastalert/raw/${ELASTALERT_VERSION}/config.yaml.example > config.yaml \
     && apk del .build-deps

@@ -18,7 +18,7 @@ RUN set -xe \
                           upx-ucl \
                           zlib1g-dev \
     && curl https://bootstrap.pypa.io/get-pip.py | python3 \
-    && pip install docker-compose==$DOCKER_COMPOSE_VERSION \
+    && pip install --no-cache-dir docker-compose==$DOCKER_COMPOSE_VERSION \
                    pyinstaller==$PYINSTALLER_VERSION \
     && cd /usr/local/lib/python3.7/dist-packages \
     && mkdir -p bin \

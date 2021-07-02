@@ -24,7 +24,7 @@ ADD http://download.dnscrypt.org/dnscrypt-proxy/dnscrypt-proxy-1.4.3.tar.gz /tmp
 WORKDIR /tmp/pkgs/
 RUN chmod +x /usr/local/bin/jq
 RUN python get-pip.py
-RUN pip install supervisor shadowsocks
+RUN pip install --no-cache-dir supervisor shadowsocks
 RUN tar xzf libsodium-1.0.2.tar.gz && \
     cd libsodium-1.0.2 && \
     ./configure && \

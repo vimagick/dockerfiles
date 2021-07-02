@@ -61,7 +61,7 @@ RUN set -xe \
     && ./configure \
     && make \
     && bin/easy_install flup==1.0.3.dev-20110405 \
-    && bin/pip install scikits.audiolab \
+    && bin/pip install --no-cache-dir scikits.audiolab \
     && ln -s /var/lib/mediagoblin user_dev \
     && cp -av mediagoblin.ini mediagoblin_local.ini \
     && cp -av paste.ini paste_local.ini \

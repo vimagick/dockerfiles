@@ -9,7 +9,7 @@ WORKDIR /app
 
 RUN set -xe \
     && apk add -U py-pillow tzdata \
-    && pip install djangocms-installer \
+    && pip install --no-cache-dir djangocms-installer \
     && mkdir -p data \
     && djangocms --db sqlite://localhost/data/project.db \
                  --filer \

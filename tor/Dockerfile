@@ -16,7 +16,7 @@ RUN set -xe \
                           python-dev \
                           tor \
     && curl -sSL https://bootstrap.pypa.io/get-pip.py | python \
-    && pip install fteproxy \
+    && pip install --no-cache-dir fteproxy \
                    obfsproxy \
     && GOPATH=/tmp/obfs4 go get git.torproject.org/pluggable-transports/obfs4.git/obfs4proxy \
         && mv /tmp/obfs4/bin/obfs4proxy /usr/bin \

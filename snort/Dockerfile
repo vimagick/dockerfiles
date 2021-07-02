@@ -23,7 +23,7 @@ RUN set -xe \
                 /usr/local/lib/snort_dynamicrules \
     && ln -s /usr/lib64/libdnet.so.1 /usr/local/lib/libdnet.1 \
     && curl -sSL https://bootstrap.pypa.io/get-pip.py | python \
-    && pip install idstools \
+    && pip install --no-cache-dir idstools \
     && yum clean all
 
 COPY data/snort.conf /etc/snort/snort.conf

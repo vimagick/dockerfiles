@@ -20,7 +20,7 @@ RUN set -xe \
                   tar \
     && curl -sSL https://bootstrap.pypa.io/get-pip.py | python \
     && curl -sSL https://github.com/reverse-shell/routersploit/archive/master.tar.gz | tar xz --strip 1 \
-    && pip install -r requirements.txt \
+    && pip install --no-cache-dir -r requirements.txt \
     && apk del bash \
                build-base \
                curl \

@@ -7,7 +7,7 @@ MAINTAINER EasyPi Software Foundation
 
 RUN set -xe \
  && apk add --no-cache curl \
- && pip install aiosmtpd atpublic pyslack pyyaml requests \
+ && pip install --no-cache-dir aiosmtpd atpublic pyslack pyyaml requests \
  && cd /usr/local/lib/python3.9/site-packages/ \
  && wget https://github.com/ont/slacker/raw/master/handler.py
 

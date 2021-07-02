@@ -7,7 +7,7 @@ MAINTAINER kev <noreplay@easypi.pro>
 
 RUN apk add -U ca-certificates py-pip \
     && rm -rf /var/cache/apk/* \
-    && pip install redis youtube-dl
+    && pip install --no-cache-dir redis youtube-dl
 
 COPY worker.py /code/
 VOLUME /data

@@ -19,7 +19,7 @@ RUN set -xe \
                           python-dev \
                           wireless-tools \
     && curl -sSL https://bootstrap.pypa.io/get-pip.py | python \
-    && pip install "glances[action,batinfo,browser,cpuinfo,chart,docker,export,folders,gpu,ip,raid,snmp,web,wifi]" \
+    && pip install --no-cache-dir "glances[action,batinfo,browser,cpuinfo,chart,docker,export,folders,gpu,ip,raid,snmp,web,wifi]" \
     && apt-get remove -y build-essential \
                          curl \
                          libfreetype6-dev \

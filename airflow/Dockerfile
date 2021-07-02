@@ -20,8 +20,8 @@ RUN set -xe \
         mariadb-dev \
         postgresql-dev \
         python3-dev \
-    && pip install cython numpy psycopg2-binary \
-    && pip install apache-airflow[${AIRFLOW_EXTRAS}]==${AIRFLOW_VERSION} \
+    && pip install --no-cache-dir cython numpy psycopg2-binary \
+    && pip install --no-cache-dir apache-airflow[${AIRFLOW_EXTRAS}]==${AIRFLOW_VERSION} \
     && apk del \
         build-base \
         cyrus-sasl-dev \

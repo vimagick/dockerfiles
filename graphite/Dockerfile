@@ -24,12 +24,12 @@ RUN set -xe \
                python3 \
                python3-dev \
     && curl -sSL https://bootstrap.pypa.io/get-pip.py | python3 \
-    && pip3 install gunicorn supervisor \
-    && pip3 install --install-option=--prefix=/opt/graphite \
+    && pip3 install --no-cache-dir gunicorn supervisor \
+    && pip3 install --no-cache-dir --install-option=--prefix=/opt/graphite \
                     --install-option=--install-lib=/opt/graphite/lib \
                     whisper==$GRAPHITE_VERSION \
                     carbon==$GRAPHITE_VERSION \
-    && pip3 install --install-option=--prefix=/opt/graphite \
+    && pip3 install --no-cache-dir --install-option=--prefix=/opt/graphite \
                     --install-option=--install-lib=/opt/graphite/webapp \
                     graphite-web==$GRAPHITE_VERSION \
     && cd ./webapp \
