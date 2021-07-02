@@ -4,7 +4,7 @@ services:
 
   strapi:
     container_name: strapi
-    image: strapi/strapi:3.6.0-alpine
+    image: strapi/strapi:3.6.5-alpine
     command: "strapi start"
     ports:
       - "1337:1337"
@@ -24,7 +24,7 @@ services:
 
   postgres:
     container_name: postgres
-    image: postgres:13.2-alpine
+    image: postgres:13.3-alpine
     ports:
       - "5432:5432"
     volumes:
