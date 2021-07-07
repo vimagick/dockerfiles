@@ -1,4 +1,4 @@
-version: "3.7"
+version: "3.8"
 
 services:
 
@@ -19,10 +19,10 @@ services:
       - DB_PASSWD=gitea
     depends_on:
       - postgres
-    restart: always
+    restart: unless-stopped
 
   postgres:
-    image: postgres:12-alpine
+    image: postgres:13-alpine
     ports:
       - "5432:5432"
     volumes:
@@ -31,4 +31,4 @@ services:
       - POSTGRES_USER=gitea
       - POSTGRES_PASSWORD=gitea
       - POSTGRES_DB=gitea
-    restart: always
+    restart: unless-stopped
