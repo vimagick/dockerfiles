@@ -15,11 +15,11 @@ RUN go build --ldflags '-s -extldflags "-static"' -i -o rehook github.com/jstemm
 FROM alpine:3
 MAINTAINER EasyPi Software Foundation
 WORKDIR /opt/rehook
-RUN mkdir -p bin etc log
+RUN mkdir -p bin log var
 RUN apk add --no-cache bash coreutils curl jq
 COPY --from=build /go/src/github.com/jstemmer/rehook/public public
 COPY --from=build /go/src/github.com/jstemmer/rehook/views views
 COPY --from=build /go/bin/rehook bin
 EXPOSE 9000 9001
 ENTRYPOINT ["bin/rehook"]
-CMD ["-db", "etc/rehook.db", "-http", ":9000", "-admin", ":9001"]
+CMD ["-db", "var/rehook.db", "-http", ":9000", "-admin", ":9001"]
