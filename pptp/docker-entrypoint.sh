@@ -1,5 +1,7 @@
 #!/bin/sh
 
+ROUTES=${ROUTES:-0.0.0.0/1 128.0.0.0/1}
+
 cat > /etc/ppp/peers/${TUNNEL} <<_EOF_
 pty "pptp ${SERVER} --nolaunchpppd"
 name "${USERNAME}"
@@ -10,16 +12,14 @@ file /etc/ppp/options.pptp
 ipparam "${TUNNEL}"
 _EOF_
 
-cat > /etc/ppp/ip-up <<"_EOF_"
-#!/bin/sh
-ip route add 0.0.0.0/1 dev $1
-ip route add 128.0.0.0/1 dev $1
-_EOF_
+echo "#!/bin/sh" > /etc/ppp/ip-up
+for route in $ROUTES; do
+    echo "ip route add ${route} dev \$1" >> /etc/ppp/ip-up
+done
 
-cat > /etc/ppp/ip-down <<"_EOF_"
-#!/bin/sh
-ip route del 0.0.0.0/1 dev $1
-ip route del 128.0.0.0/1 dev $1
-_EOF_
+echo "#!/bin/sh" > /etc/ppp/ip-down
+for route in $ROUTES; do
+    echo "ip route del ${route} dev \$1" >> /etc/ppp/ip-down
+done
 
 exec pon ${TUNNEL} debug dump logfd 2 nodetach persist "$@"
