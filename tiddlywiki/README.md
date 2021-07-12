@@ -25,7 +25,7 @@ tiddlywiki:
 
 ```bash
 # initialize wiki
-$ docker-compose run --rm tiddlywiki . --init server
+$ docker-compose run --rm --entrypoint tiddlywiki tiddlywiki . --init server
 
 # serves wiki over http
 $ docker-compose up -d
