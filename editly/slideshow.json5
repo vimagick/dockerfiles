@@ -1,0 +1,17 @@
+{
+  width: 400,
+  height: 300,
+  outPath: './output.mp4',
+  allowRemoteRequests: true,
+  defaults: {
+    duration: 3,
+  },
+  clips: [
+    { layers: [{ type: 'image', path: 'https://github.com/mifi/editly-assets/raw/main/pano.jpg' }] },
+    { layers: [{ type: 'image', path: 'https://github.com/mifi/editly-assets/raw/main/vertical.jpg' }] },
+    { layers: [{ type: 'image', path: 'https://github.com/mifi/editly-assets/raw/main/pano.jpg', resizeMode: 'cover' }] },
+    { layers: [{ type: 'image', path: 'https://github.com/mifi/editly-assets/raw/main/vertical.jpg', resizeMode: 'cover' }] },
+    { layers: [{ type: 'image', path: 'https://github.com/mifi/editly-assets/raw/main/pano.jpg', resizeMode: 'stretch' }] },
+    { layers: [{ type: 'image', path: 'https://github.com/mifi/editly-assets/raw/main/vertical.jpg', resizeMode: 'stretch' }] },
+  ],
+}

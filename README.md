@@ -151,6 +151,7 @@ A collection of delicious docker recipes.
 
 - [x] cmus
 - [x] cmus-arm
+- [x] editly :tv:
 - [x] ffmpeg
 - [x] ffmpeg-arm
 - [x] ffserver :beetle:
