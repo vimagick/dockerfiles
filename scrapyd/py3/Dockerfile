@@ -45,6 +45,7 @@ RUN set -xe \
                    git+https://github.com/scrapinghub/scrapy-splash.git \
                    git+https://github.com/scrapinghub/scrapyrt.git@$SCRAPYRT_VERSION \
                    git+https://github.com/python-pillow/Pillow.git@$PILLOW_VERSION \
+    && sed -i 's/^from scrapy.utils.http/from w3lib.http/' /usr/local/lib/python3.7/dist-packages/scrapyd_client/deploy.py \
     && curl -sSL https://github.com/scrapy/scrapy/raw/master/extras/scrapy_bash_completion -o /etc/bash_completion.d/scrapy_bash_completion \
     && echo 'source /etc/bash_completion.d/scrapy_bash_completion' >> /root/.bashrc \
     && apt-get purge -y --auto-remove autoconf \
