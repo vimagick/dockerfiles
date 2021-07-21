@@ -7,7 +7,7 @@ MAINTAINER EasyPi Software Foundation
 
 RUN set -xe \
  && apt update \
- && apt install -y dumb-init ffmpeg xvfb \
+ && apt install -y dumb-init ffmpeg fonts-noto-cjk xvfb \
  && rm -rf /var/lib/apt/lists/*
 
 RUN npm install --global --unsafe-perm editly
