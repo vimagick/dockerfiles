@@ -11,7 +11,7 @@ applications.
 ### Run
 
     $ docker pull vimagick/audiowaveform
-    $ alias awf='docker run --rm -v `pwd`:/work -w /work vimagick/audiowaveform'
+    $ alias awf='docker run --rm -v `pwd`:/data -w /data vimagick/audiowaveform'
     $ awf -i input.mp3 -o output.png
 
 ## Command line options
