@@ -27,38 +27,38 @@ Required Images
 - aerokube/selenoid:latest-release
 - aerokube/selenoid-ui:latest-release
 - selenoid/video-recorder:latest-release
-- selenoid/chrome:91.0
-- selenoid/firefox:88.0
-- selenoid/opera:76.0
-- selenoid/vnc:chrome_91.0
-- selenoid/vnc:firefox_88.0
-- selenoid/vnc:opera_76.0
+- selenoid/chrome:92.0
+- selenoid/firefox:90.0
+- selenoid/opera:77.0
+- selenoid/vnc:chrome_92.0
+- selenoid/vnc:firefox_90.0
+- selenoid/vnc:opera_77.0
 
 ```json
 {
   "chrome": {
-    "default": "91.0",
+    "default": "92.0",
     "versions": {
-      "91.0": {
-        "image": "selenoid/vnc:chrome_91.0",
+      "92.0": {
+        "image": "selenoid/vnc:chrome_92.0",
         "port": "4444"
       }
     }
   },
   "firefox": {
-    "default": "88.0",
+    "default": "90.0",
     "versions": {
-      "88.0": {
-        "image": "selenoid/vnc:firefox_88.0",
+      "90.0": {
+        "image": "selenoid/vnc:firefox_90.0",
         "port": "4444"
       }
     }
   },
   "opera": {
-    "default": "76.0",
+    "default": "77.0",
     "versions": {
-      "76.0": {
-        "image": "selenoid/vnc:opera_76.0",
+      "77.0": {
+        "image": "selenoid/vnc:opera_77.0",
         "port": "4444"
       }
     }
@@ -73,7 +73,7 @@ from selenium import webdriver
 
 capabilities = {
     "browserName": "chrome",
-    "version": "91.0",
+    "version": "92.0",
     "enableVNC": True,
     "enableVideo": False
 }
