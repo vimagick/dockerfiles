@@ -74,8 +74,13 @@ from selenium import webdriver
 capabilities = {
     "browserName": "chrome",
     "version": "92.0",
-    "enableVNC": True,
-    "enableVideo": False
+    "selenoid:options": {
+        "enableVNC": True,
+        "enableVideo": False,
+    },
+    "goog:chromeOptions": {
+        "args": ["--disable-gpu"],
+    },
 }
 
 driver = webdriver.Remote(
