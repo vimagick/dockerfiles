@@ -1,0 +1,15 @@
+playwright:
+  image: mcr.microsoft.com/playwright:focal
+  command: sleep inf
+  container_name: playwright
+  user: pwuser
+  ipc: host
+  security_opt:
+  - seccomp=unconfined
+  volumes:
+  - ./data:/data
+  - /usr/lib/node_modules
+  environment:
+  - NODE_PATH=/usr/lib/node_modules
+  working_dir: /data
+  restart: unless-stopped
