@@ -17,7 +17,7 @@ selenoid/
 │   ├── config/
 │   │   └── browsers.json
 │   ├── logs/
-│   └── video/
+│   └── videos/
 └── docker-compose.yml
 ```
 
@@ -76,7 +76,8 @@ capabilities = {
     "version": "92.0",
     "selenoid:options": {
         "enableVNC": True,
-        "enableVideo": False,
+        "enableVideo": True,
+        "videoName": "test.mp4",
     },
     "goog:chromeOptions": {
         "args": ["--disable-gpu"],

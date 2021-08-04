@@ -6,7 +6,7 @@ services:
     image: aerokube/selenoid:latest-release
     command: |
       -conf config/browsers.json
-      -video-output-dir video
+      -video-output-dir videos
       -log-output-dir logs
       -limit 4
       -timeout 5m
@@ -19,7 +19,7 @@ services:
       - ./data:/opt/selenoid
     environment:
       - TZ=UTC
-      - OVERRIDE_VIDEO_OUTPUT_DIR=$PWD/data/video
+      - OVERRIDE_VIDEO_OUTPUT_DIR=$PWD/data/videos
     working_dir: /opt/selenoid
     restart: unless-stopped
 
