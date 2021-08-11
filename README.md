@@ -393,6 +393,7 @@ A collection of delicious docker recipes.
 - [x] sentry
 - [x] atmoz/sftp
 - [x] snipe/snipe-it
+- [x] valeriansaliou/sonic
 - [x] scrapinghub/splash
 - [x] deezer/spleeter
 - [x] teamatldocker

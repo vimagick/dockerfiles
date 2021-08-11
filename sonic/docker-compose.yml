@@ -1,0 +1,11 @@
+version: "3.8"
+services:
+  sonic:
+    image: valeriansaliou/sonic:v1.3.0
+    command: ["sonic", "-c", "/etc/sonic/config.cfg"]
+    ports:
+    - "1491:1491"
+    volumes:
+    - ./data/etc:/etc/sonic
+    - ./data/var:/var/lib/sonic/store
+    restart: unless-stopped
