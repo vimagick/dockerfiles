@@ -1,0 +1,19 @@
+version: "3.8"
+services:
+  meilisearch:
+    image: getmeili/meilisearch
+    ports:
+      - "7700:7700"
+    volumes:
+      - ./data:/opt/meilisearch
+    environment:
+      - MEILI_ENV=development
+      - MEILI_HTTP_ADDR=0.0.0.0:7700
+      - MEILI_MASTER_KEY=xxxxxx
+      - MEILI_NO_ANALYTICS=true
+      - MEILI_NO_SENTRY=true
+      - MEILI_DB_PATH=data.ms/
+      - MEILI_DUMPS_DIR=dumps/
+      - MEILI_SNAPSHOT_DIR=snapshots/
+    working_dir: /opt/meilisearch
+    restart: unless-stopped

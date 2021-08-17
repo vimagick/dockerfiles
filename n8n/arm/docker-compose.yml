@@ -1,7 +1,7 @@
 version: "3.8"
 services:
   n8n:
-    image: n8nio/n8n:0.90.0-rpi
+    image: n8nio/n8n:latest-rpi
     ports:
       - "5678:5678"
     volumes:

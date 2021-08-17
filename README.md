@@ -311,8 +311,8 @@ A collection of delicious docker recipes.
 - [x] snowzach/doods
 - [x] drone/drone
 - [x] drupal
-- [x] elastichq/elasticsearch-hq
-- [x] elasticdump/elasticsearch-dump
+- [x] elastichq/elasticsearch-hq :mag:
+- [x] elasticdump/elasticsearch-dump :mag:
 - [x] elk
 - [x] quay.io/coreos/etcd
 - [x] audreyt/ethercalc
@@ -338,6 +338,7 @@ A collection of delicious docker recipes.
 - [x] mailgun/kafka-pixy
 - [x] devopsfaith/krakend
 - [x] tootsuite/mastodon
+- [x] getmeili/meilisearch :mag:
 - [x] deluan/navidrome :musical_note:
 - [x] netdata/netdata
 - [x] nextcloud
