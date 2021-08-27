@@ -3,7 +3,7 @@ version: '3.8'
 services:
 
   yourls:
-    image: yourls:1.7
+    image: yourls:1.8
     ports:
       - "8080:80"
     environment:

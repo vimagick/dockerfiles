@@ -1,0 +1,10 @@
+version: "3.8"
+services:
+  openresty:
+    image: openresty/openresty:alpine
+    ports:
+      - "8000:80"
+    volumes:
+      - ./data/conf.d:/etc/nginx/conf.d
+      - ./data/lualib:/usr/local/openresty/site/lualib
+    restart: unless-stopped

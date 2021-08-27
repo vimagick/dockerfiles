@@ -1,11 +1,30 @@
-nextcloud:
-  image: arm32v7/nextcloud
-  ports:
-    - "8080:80"
-  volumes:
-    - ./data:/var/www/html
-  environment:
-    - SQLITE_DATABASE=/var/www/html/data/nextcloud.db
-    - NEXTCLOUD_ADMIN_USER=admin
-    - NEXTCLOUD_ADMIN_PASSWORD=admin
-  restart: always
+version: "3.8"
+
+services:
+
+  nextcloud:
+    image: arm32v7/nextcloud:22
+    ports:
+      - "8080:80"
+    volumes:
+      - ./data/nextcloud:/var/www/html
+    environment:
+      - POSTGRES_HOST=postgres
+      - POSTGRES_DB=nextcloud
+      - POSTGRES_USER=nextcloud
+      - POSTGRES_PASSWORD=nextcloud
+    depends_on:
+      - postgres
+    restart: unless-stopped
+
+  postgres:
+    image: arm32v7/postgres:13-alpine
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./data/postgres:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=nextcloud
+      - POSTGRES_PASSWORD=nextcloud
+      - POSTGRES_DB=nextcloud
+    restart: unless-stopped

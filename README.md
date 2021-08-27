@@ -360,6 +360,7 @@ A collection of delicious docker recipes.
 - [x] notaitech/nudenet
 - [x] odoo
 - [x] osixia/openldap
+- [x] openresty/openresty
 - [x] kylemanna/openvpn
 - [x] campbellsoftwaresolutions/osticket
 - [x] outlinewiki/outline
