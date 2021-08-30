@@ -329,6 +329,7 @@ A collection of delicious docker recipes.
     - [ ] python
 - [x] gogs/gogs :cn:
 - [x] haproxy
+- [x] jellyfin/jellyfin
 - [x] jenkins
     - [x] inbound-agent
     - [x] jenkins

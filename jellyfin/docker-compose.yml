@@ -1,0 +1,13 @@
+version: "3.8"
+services:
+  jellyfin:
+    image: jellyfin/jellyfin
+    container_name: jellyfin
+    volumes:
+      - ./data/config:/config
+      - ./data/cache:/cache
+      - ./data/media:/media
+      - ./data/media2:/media2:ro
+    user: 1000:1000
+    network_mode: host
+    restart: unless-stopped
