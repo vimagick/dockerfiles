@@ -360,6 +360,9 @@ A collection of delicious docker recipes.
 - [x] n8nio/n8n
 - [x] notaitech/nudenet
 - [x] odoo
+- [x] ohmyform
+    - [x] ohmyform/api
+    - [x] ohmyform/ui
 - [x] osixia/openldap
 - [x] openresty/openresty
 - [x] kylemanna/openvpn

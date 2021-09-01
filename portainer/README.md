@@ -6,14 +6,17 @@ portainer
 ## docker-compose.yml
 
 ```yaml
-portainer:
-  image: portainer/portainer
-  ports:
-    - "9000:9000"
-  volumes:
-    - ./data:/data
-    - /var/run/docker.sock:/var/run/docker.sock
-  restart: always
+version: "3.8"
+services:
+  portainer:
+    image: portainer/portainer-ce
+    ports:
+      - "8000:8000"
+      - "9000:9000"
+    volumes:
+      - ./data:/data
+      - /var/run/docker.sock:/var/run/docker.sock
+    restart: unless-stopped
 ```
 
-[1]: http://portainer.io/
+[1]: https://documentation.portainer.io/v2.0/deploy/ceinstalldocker/
