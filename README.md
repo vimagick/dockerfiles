@@ -338,6 +338,7 @@ A collection of delicious docker recipes.
 - [x] wurstmeister/kafka
 - [x] mailgun/kafka-pixy
 - [x] devopsfaith/krakend
+- [x] mailhog/mailhog
 - [x] tootsuite/mastodon
 - [x] getmeili/meilisearch :mag:
 - [x] deluan/navidrome :musical_note:
