@@ -14,11 +14,11 @@ RUN set -xe \
     && adduser -D aria2
 
 COPY ./data/aria2.conf /etc/aria2/
-VOLUME /home/aria2 /etc/aria2
-WORKDIR /home/aria2
+VOLUME /data /etc/aria2
+WORKDIR /data
 
 EXPOSE 6800
 CMD set -xe \
-    && chown -R aria2:aria2 /home/aria2 \
+    && chown -R aria2:aria2 /data \
     && gosu aria2 aria2c --conf-path=/etc/aria2/aria2.conf \
                          --rpc-secret=${TOKEN}

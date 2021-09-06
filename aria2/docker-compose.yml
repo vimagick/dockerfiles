@@ -7,16 +7,18 @@ services:
     ports:
       - "6800:6800"
     volumes:
-      - ./data/var:/home/aria2
-      - ./data/keys:/etc/aria2/keys
+      - ./data/aria2.conf:/etc/aria2/aria2.conf
+      - ./data/disk:/data
     environment:
       - TOKEN=e6c3778f-6361-4ed0-b126-f2cf8fca06db
     restart: unless-stopped
 
-  yaaw:
+  webui:
     image: nginx:alpine
     ports:
       - "8080:80"
     volumes:
       - ./data/html:/usr/share/nginx/html
+      - ./data/default.conf:/etc/nginx/conf.d/default.conf
+      - ./data/disk:/data
     restart: unless-stopped
