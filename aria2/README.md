@@ -11,21 +11,21 @@ aria2
 ```
 ~/fig/aria2/
 ├── docker-compose.yml
-├── html/
-│   ├── README.md
-│   ├── TODO.md
-│   ├── css/...
-│   ├── img/...
-│   ├── index.html
-│   ├── js/...
-│   └── offline.appcache
-├── data -> /home/aria2/
-└── keys/
-    ├── server.crt
-    └── server.key
+└── data/
+    ├── html/
+    │   ├── css/...
+    │   ├── img/...
+    │   ├── index.html
+    │   ├── js/...
+    │   └── offline.appcache
+    ├── keys/
+    │   ├── server.crt
+    │   └── server.key
+    ├── disk/ -> /mnt/usb/
+    └── aria2.conf
 ```
 
-> You may make `data` a symbolic link to `/home/aria2` or somewhere else.  
+> You may make `disk` a symbolic link to `/mnt/usb` or somewhere else.
 > To implement disk quota, you can even create a [virtual disk][1].
 
 ## docker-compose.yml
@@ -40,8 +40,8 @@ services:
     ports:
       - "6800:6800"
     volumes:
-      - ./data:/home/aria2
-      - ./keys:/etc/aria2/keys
+      - ./data/disk:/home/aria2
+      - ./data/keys:/etc/aria2/keys
     environment:
       - TOKEN=e6c3778f-6361-4ed0-b126-f2cf8fca06db
     restart: unless-stopped
@@ -77,9 +77,9 @@ seed-time=0
 ## server
 
 ```bash
-$ mkdir -p ~/fig/aria2/{html,keys}/
-$ cd ~/fig/aria2/
-$ ln -s /home/aria2 data
+$ mkdir -p ~/fig/aria2/data/{html,keys}/
+$ cd ~/fig/aria2/data
+$ ln -s /mnt/usb disk
 $ curl -sSL https://github.com/binux/yaaw/archive/master.tar.gz | tar xz --strip 1 -C html
 $ openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout keys/server.key -out keys/server.crt
 $ vim docker-compose.yml
