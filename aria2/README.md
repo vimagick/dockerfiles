@@ -13,11 +13,6 @@ aria2
 ~/fig/aria2/
 ├── docker-compose.yml
 └── data/
-    ├── html/
-    │   ├── css/
-    │   ├── img/
-    │   ├── js/
-    │   └── index.html
     ├── disk/ -> /mnt/usb/
     ├── default.conf
     └── aria2.conf
@@ -45,13 +40,9 @@ services:
     restart: unless-stopped
 
   webui:
-    image: nginx:alpine
+    image: vimagick/ariang
     ports:
       - "8080:80"
-    volumes:
-      - ./data/html:/usr/share/nginx/html
-      - ./data/default.conf:/etc/nginx/conf.d/default.conf
-      - ./data/disk:/data
     restart: unless-stopped
 ```
 

@@ -1,0 +1,7 @@
+version: "3.8"
+services:
+  ariang:
+    image: vimagick/ariang
+    ports:
+      - "8080:80"
+    restart: unless-stopped
