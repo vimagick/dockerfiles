@@ -1,0 +1,7 @@
+version: "3.8"
+services:
+  ariang:
+    image: easypi/ariang-arm
+    ports:
+      - "8080:80"
+    restart: unless-stopped

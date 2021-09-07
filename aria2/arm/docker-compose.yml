@@ -1,0 +1,19 @@
+version: "3.8"
+
+services:
+
+  aria2:
+    image: easypi/aria2-arm
+    ports:
+      - "6800:6800"
+    volumes:
+      - ./data/disk:/data
+    environment:
+      - TOKEN=e6c3778f-6361-4ed0-b126-f2cf8fca06db
+    restart: unless-stopped
+
+  webui:
+    image: easypi/ariang-arm
+    ports:
+      - "8080:80"
+    restart: unless-stopped
