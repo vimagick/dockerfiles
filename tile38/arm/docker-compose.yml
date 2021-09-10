@@ -1,0 +1,9 @@
+version: "3.8"
+services:
+  tile38:
+    image: easypi/tile38-arm
+    ports:
+      - "9851:9851"
+    volumes:
+      - ./data:/data
+    restart: unless-stopped

@@ -59,6 +59,7 @@ A collection of delicious docker recipes.
 - [x] hbdg :+1:
 - [x] node-red :+1:
 - [x] mosquitto :+1:
+- [x] tile38-arm :+1:
 
 ## Automation
 
