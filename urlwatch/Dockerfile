@@ -14,15 +14,17 @@ RUN set -xe \
 RUN echo '*/30 * * * * cd /root/.urlwatch && urlwatch --urls urls.yaml --config urlwatch.yaml --hooks hooks.py --cache cache.db' | crontab -
 
 RUN set -xe \
-    && pip3 install --no-cache-dir appdirs        \
-                    cssselect      \
-                    keyring        \
-                    lxml           \
-                    minidb         \
-                    pyyaml         \
-                    requests       \
-                    chump          \
+    && pip3 install --no-cache-dir \
+                    aioxmpp        \
                     beautifulsoup4 \
+                    chump          \
+                    cssbeautifier  \
+                    html2text      \
+                    jq             \
+                    jsbeautifier   \
+                    keyrings.alt   \
+                    markdown2      \
+                    matrix_client  \
                     pushbullet.py  \
                     urlwatch
 
