@@ -5,6 +5,12 @@
 FROM python:slim
 LABEL maintainer="EasyPi Software Foundation"
 
+LABEL org.opencontainers.image.title="urlwatch"
+LABEL org.opencontainers.image.description="urlwatch is a tool for monitoring webpages for updates."
+LABEL org.opencontainers.image.url="https://hub.docker.com/r/vimagick/urlwatch"
+LABEL org.opencontainers.image.documentation="https://hub.docker.com/r/vimagick/urlwatch"
+LABEL org.opencontainers.image.source="https://www.github.com/vimagick/dockerfiles"
+
 RUN set -xe \
     && apt-get update  \
     && apt-get -y install cron \
