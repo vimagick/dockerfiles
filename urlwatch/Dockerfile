@@ -37,4 +37,4 @@ RUN set -xe \
 VOLUME /root/.urlwatch
 WORKDIR /root/.urlwatch
 
-CMD ["crond", "-f", "-L", "/dev/stdout"]
+CMD ["cron", "-f", "-L", "/dev/stdout"]
