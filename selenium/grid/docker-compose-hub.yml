@@ -6,8 +6,6 @@ services:
     image: selenium/hub:3.141.59
     ports:
       - "4444:4444"
-    volumes:
-      - /dev/shm:/dev/shm
     environment:
       - JAVA_OPTS=-Xmx512m
       - GRID_TIMEOUT=60
