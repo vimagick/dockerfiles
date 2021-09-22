@@ -12,12 +12,15 @@ services:
       - CONNECTION_TIMEOUT=300000
       - MAX_QUEUE_LENGTH=10
       - ENABLE_CORS=true
+      - ENABLE_DEBUG_VIEWER=false
       - EXIT_ON_HEALTH_FAILURE=true
     deploy:
       resources:
         limits:
           memory: 1024M
       replicas: 56
+      placement:
+        max_replicas_per_node: 4
       restart_policy:
         condition: on-failure
 
