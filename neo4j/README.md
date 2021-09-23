@@ -5,28 +5,9 @@ neo4j
 relationships as first-class entities, helping enterprises build intelligent
 applications to meet today’s evolving data challenges.
 
-## docker-compose
-
-```yaml
-neo4j:
-  image: neo4j
-  ports:
-    - "7474:7474"
-    - "7687:7687"
-  volumes:
-    - ./data:/data
-  environment:
-    - NEO4J_CACHE_MEMORY=4G
-  ulimits:
-    nofile:
-      soft: 65535
-      hard: 65535
-  restart: always
-```
-
 ## up and running
 
-```
+```bash
 $ docker-compose up -d
 
 $ docker-compose exec neo4j bin/neo4j-shell
@@ -37,6 +18,8 @@ $ docker-compose exec neo4j bin/neo4j-shell
 >>> create (p:Person {id: {person_id}}) return p;
 >>> match (p:Person {id: {person_id}}) return p;
 >>> exit
+
+$ curl http://localhost:7474/browser/
 ```
 
 [1]: http://neo4j.com/

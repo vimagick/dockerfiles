@@ -1,14 +1,30 @@
-neo4j:
-  image: neo4j
-  ports:
-    - "7474:7474"
-    - "7687:7687"
-  volumes:
-    - ./data:/data
-  environment:
-    - NEO4J_CACHE_MEMORY=4G
-  ulimits:
-    nofile:
-      soft: 65535
-      hard: 65535
-  restart: always
+# 
+# References:
+# - https://neo4j.com/docs/operations-manual/current/docker/
+# - https://neo4j.com/docs/operations-manual/current/docker/ref-settings/
+# - https://neo4j.com/docs/operations-manual/current/reference/configuration-settings/
+#
+
+version: "3.8"
+services:
+  neo4j:
+    image: neo4j
+    ports:
+      - "7474:7474"
+      - "7687:7687"
+    volumes:
+      - ./data/conf:/conf
+      - ./data/data:/data
+      - ./data/import:/import
+      - ./data/logs:/logs
+      - ./data/plugins:/plugins
+    environment:
+      - NEO4J_AUTH=none
+      - NEO4J_dbms.memory.heap.initial_size=5g
+      - NEO4J_dbms_memory_heap_max__size=5g
+      - NEO4J_dbms_memory_pagecache_size=7g
+    ulimits:
+      nofile:
+        soft: 65535
+        hard: 65535
+    restart: unless-stopped
