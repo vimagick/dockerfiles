@@ -1,0 +1,12 @@
+version: "3.8"
+services:
+  gotify:
+    image: gotify/server
+    ports:
+      - "8080:80"
+    volumes:
+      - ./data:/app/data
+    environment:
+      - GOTIFY_DEFAULTUSER_NAME=admin
+      - GOTIFY_DEFAULTUSER_PASS=secret
+    restart: unless-stopped
