@@ -329,6 +329,7 @@ A collection of delicious docker recipes.
     - [ ] bash
     - [ ] python
 - [x] gogs/gogs :cn:
+- [x] gotify/server
 - [x] haproxy
 - [x] jellyfin/jellyfin
 - [x] jenkins
