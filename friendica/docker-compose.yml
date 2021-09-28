@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+
+  friendica:
+    image: friendica
+    volumes:
+      - ./data/friendica:/var/www/html
+    ports:
+      - "8080:80"
+    environment:
+      - MYSQL_HOST=mysql
+      - MYSQL_DATABASE=friendica
+      - MYSQL_USER=friendica
+      - MYSQL_PASSWORD=friendica
+      - FRIENDICA_ADMIN_MAIL=username@gmail.com
+    depends_on:
+      - mysql
+    restart: unless-stopped
+
+  mysql:
+    image: mariadb
+    volumes:
+      - ./data/mysql:/var/lib/mysql
+    environment:
+       - MYSQL_DATABASE=friendica
+       - MYSQL_USER=friendica
+       - MYSQL_PASSWORD=friendica
+    restart: unless-stopped

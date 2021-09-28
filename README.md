@@ -319,6 +319,7 @@ A collection of delicious docker recipes.
 - [x] audreyt/ethercalc
 - [x] flogo/flogo-docker
 - [x] mher/flower
+- [x] friendica
 - [x] ghost
 - [x] gitlab/gitlab-ce
 - [x] atlassianlabs/gostatsd
