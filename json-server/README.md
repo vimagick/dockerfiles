@@ -8,15 +8,20 @@ Get a full fake REST API with zero coding in less than 30 seconds (seriously) wi
 ## docker-compose.yml
 
 ```yaml
-json-server:
-  image: vimagick/json-server
-  command: -H 0.0.0.0 -p 3000 -w db.json
-  ports:
-    - "3000:3000"
-  volumes:
-    - ./data:/data
-  restart: always
+version: "3.8"
+services:
+  json-server:
+    image: vimagick/json-server
+    command: -H 0.0.0.0 -p 3000 -w db.json
+    init: true
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./data:/data
+    restart: unless-stopped
 ```
+
+>> :warning: `init: true` is required. [read more][2]
 
 ## data/db.json
 
@@ -48,3 +53,4 @@ http GET :3000/db
 ```
 
 [1]: https://github.com/typicode/json-server
+[2]: https://developpaper.com/avoid-running-nodejs-as-pid-1-under-the-docker-image/
