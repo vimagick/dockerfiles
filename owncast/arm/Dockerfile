@@ -5,7 +5,7 @@
 FROM arm32v7/alpine:3
 MAINTAINER EasyPi Software Foundation
 
-ENV OWNCAST_VERSION=0.0.8
+ENV OWNCAST_VERSION=0.0.10
 ENV OWNCAST_FILE=owncast-${OWNCAST_VERSION}-linux-arm7.zip
 ENV OWNCAST_URL=https://github.com/owncast/owncast/releases/download/v${OWNCAST_VERSION}/${OWNCAST_FILE}
 

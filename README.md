@@ -162,6 +162,7 @@ A collection of delicious docker recipes.
 - [x] mpd :musical_note:
 - [x] murmur
 - [x] openmeetings :camera:
+- [x] paddle-ocr
 - [x] plex :moneybag:
 - [x] red5 :+1:
 - [x] red5-arm :construction:
@@ -306,6 +307,7 @@ A collection of delicious docker recipes.
 - [x] daskdev
   - [x] dask
   - [x] dask-notebook
+- [x] deepquestai/deepstack
 - [x] appbaseio/dejavu :mag:
 - [x] cachethq/docker
 - [x] satishweb/doh-server

@@ -1,0 +1,26 @@
+version: "3.8"
+
+services:
+
+  deepstack-ui:
+    image: robmarkcole/deepstack-ui
+    ports:
+      - "8501:8501"
+    environment:
+      - DEEPSTACK_IP=deepstack
+      - DEEPSTACK_PORT=5000
+      - DEEPSTACK_TIMEOUT=20
+    restart: unless-stopped
+
+  deepstack:
+    image: deepquestai/deepstack
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./data:/datastore
+    environment:
+      - MODE=Medium
+      - VISION-DETECTION=True
+      - VISION-FACE=True
+      - VISION-SCENE=True
+    restart: unless-stopped
