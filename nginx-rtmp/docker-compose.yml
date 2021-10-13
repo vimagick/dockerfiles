@@ -1,0 +1,7 @@
+version: "3.8"
+services:
+  nginx-rtmp:
+    image: tiangolo/nginx-rtmp
+    ports:
+      - "1935:1935"
+    restart: unless-stopped

@@ -164,8 +164,8 @@ A collection of delicious docker recipes.
 - [x] openmeetings :camera:
 - [x] paddle-ocr
 - [x] plex :moneybag:
-- [x] red5 :+1:
-- [x] red5-arm :construction:
+- [x] red5 :+1: :camera:
+- [x] red5-arm :construction: :camera:
 - [x] rtmp-client-arm :+1:
 - [x] rtmp-server :camera:
 - [x] shairplay-arm
@@ -352,6 +352,7 @@ A collection of delicious docker recipes.
 - [x] nextcloud
 - [x] sonatype/nexus3
 - [ ] jwilder/nginx-proxy
+- [x] tiangolo/nginx-rtmp :camera:
 - [x] jazzdd/phpvirtualbox
 - [x] sonatype/nexus3
 - [x] jupyter/notebook
