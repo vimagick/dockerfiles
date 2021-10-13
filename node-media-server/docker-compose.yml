@@ -1,0 +1,8 @@
+version: "3.8"
+services:
+  node-media-server:
+    image: illuspas/node-media-server
+    ports:
+      - "1935:1935"
+      - "8000:8000"
+    restart: unless-stopped
