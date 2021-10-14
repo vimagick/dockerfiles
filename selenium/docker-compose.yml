@@ -8,13 +8,13 @@ services:
       - "4442:4442"
       - "4443:4443"
       - "4444:4444"
-    shm_size: 2gb
     restart: unless-stopped
 
   chrome:
     image: selenium/node-chrome:4
     ports:
       - "5900:5900"
+      - "7900:7900"
     environment:
       - SE_EVENT_BUS_HOST=hub
       - SE_EVENT_BUS_PUBLISH_PORT=4442
@@ -30,10 +30,10 @@ services:
     image: selenium/video
     volumes:
       - ./data:/videos
-    depends_on:
-      - chrome
     environment:
       - DISPLAY_CONTAINER_NAME=chrome
       - FILE_NAME=output.mp4
     shm_size: 2gb
+    depends_on:
+      - chrome
     restart: unless-stopped

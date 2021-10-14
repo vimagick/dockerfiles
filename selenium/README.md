@@ -155,6 +155,7 @@ driver.quit();
 ```bash
 # VNC
 $ open vnc://:secret@127.0.0.1:5900
+$ open http://127.0.0.1:7900
 
 # PYTHON
 $ pip3 install selenium
