@@ -2,7 +2,7 @@
 # Dockerfile for squid-arm
 #
 
-FROM arm32v7/alpine:3
+FROM alpine:3
 
 MAINTAINER EasyPi Software Foundation
 
