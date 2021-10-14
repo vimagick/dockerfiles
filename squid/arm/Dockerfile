@@ -10,4 +10,4 @@ RUN apk add --no-cache squid
 
 EXPOSE 3128/tcp 3130/udp
 
-ENTRYPOINT ["/usr/sbin/squid", "-NYCd1"]
+ENTRYPOINT ["/usr/sbin/squid", "--foreground", "-YCd1"]

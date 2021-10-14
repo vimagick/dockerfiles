@@ -10,6 +10,8 @@ services:
       - DEEPSTACK_IP=deepstack
       - DEEPSTACK_PORT=5000
       - DEEPSTACK_TIMEOUT=20
+    depends_on:
+      - deepstack
     restart: unless-stopped
 
   deepstack:
