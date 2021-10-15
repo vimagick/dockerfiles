@@ -25,32 +25,43 @@ In the following example, I will setup a server/client pair to connect www.googl
 ## Create a docker-compose.yml
 
 ```yaml
-server:
-  image: vimagick/fteproxy
-  ports:
-    - "80"
-  environment:
-    - MODE=server
-    - SERVER_IP=0.0.0.0
-    - SERVER_PORT=80
-    - PROXY_IP=www.google.com
-    - PROXY_PORT=80
-    - KEY=CB2FBA2BC70490526E749E01BB050F6B555964290DFF58CF24785B4A093F7B18
+version: "3.8"
 
-client:
-  image: vimagick/fteproxy
-  ports:
-    - "9009:80"
-  links:
-    - server
-  environment:
-    - MODE=client
-    - SERVER_IP=server
-    - SERVER_PORT=80
-    - CLIENT_IP=0.0.0.0
-    - CLIENT_PORT=80
-    - KEY=CB2FBA2BC70490526E749E01BB050F6B555964290DFF58CF24785B4A093F7B18
+services:
+
+  server:
+    image: vimagick/fteproxy
+    ports:
+      - "4911:4911"
+    environment:
+      - MODE=server
+      - SERVER_IP=0.0.0.0
+      - SERVER_PORT=4911
+      - PROXY_IP=openvpn
+      - PROXY_PORT=1194
+      - KEY=66754b8113ea7a218b7613f73f7e13b1e91790216f659b5f78b903b34c654741
+    extra_hosts:
+      - openvpn:1.2.3.4
+    restart: unless-stopped
+
+  client:
+    image: vimagick/fteproxy
+    ports:
+      - "1194:1194"
+    environment:
+      - MODE=client
+      - SERVER_IP=openvpn.easypi.pro
+      - SERVER_PORT=4911
+      - CLIENT_IP=0.0.0.0
+      - CLIENT_PORT=1194
+      - KEY=66754b8113ea7a218b7613f73f7e13b1e91790216f659b5f78b903b34c654741
+    restart: unless-stopped
 ```
+
+You need to split the docker-compose.yml into two parts:
+
+- server: to mask a tcp service
+- client: to unmask the service
 
 > To generate random key:  
 > `xxd -u -p -c32 /dev/urandom | head -n1`
