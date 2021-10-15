@@ -6,6 +6,7 @@ services:
       - "3128:3128/tcp"
       - "3130:3130/udp"
     volumes:
+      - ./data/etc/squid.conf:/etc/squid/squid.conf
       - ./data/cache:/var/cache/squid
       - ./data/log:/var/log/squid
     stop_signal: SIGKILL
