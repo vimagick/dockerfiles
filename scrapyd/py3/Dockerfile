@@ -2,13 +2,14 @@
 # Dockerfile for scrapyd:py3
 #
 
-FROM debian:buster
+FROM debian:bullseye
 MAINTAINER EasyPi Software Foundation
 
-ENV SCRAPY_VERSION=2.5.0
+ENV SCRAPY_VERSION=2.5.1
 ENV SCRAPYD_VERSION=1.2.1
+ENV SCRAPYD_CLIENT_VERSION=v1.2.0
 ENV SCRAPYRT_VERSION=v0.12
-ENV PILLOW_VERSION=8.2.0
+ENV PILLOW_VERSION=8.3.2
 
 RUN set -xe \
     && apt-get update \
@@ -42,11 +43,10 @@ RUN set -xe \
     && pip install --no-cache-dir ipython \
                    git+https://github.com/scrapy/scrapy.git@$SCRAPY_VERSION \
                    git+https://github.com/scrapy/scrapyd.git@$SCRAPYD_VERSION \
-                   git+https://github.com/scrapy/scrapyd-client.git \
+                   git+https://github.com/scrapy/scrapyd-client.git@$SCRAPYD_CLIENT_VERSION \
                    git+https://github.com/scrapinghub/scrapy-splash.git \
                    git+https://github.com/scrapinghub/scrapyrt.git@$SCRAPYRT_VERSION \
                    git+https://github.com/python-pillow/Pillow.git@$PILLOW_VERSION \
-    && sed -i 's/^from scrapy.utils.http/from w3lib.http/' /usr/local/lib/python3.7/dist-packages/scrapyd_client/deploy.py \
     && curl -sSL https://github.com/scrapy/scrapy/raw/master/extras/scrapy_bash_completion -o /etc/bash_completion.d/scrapy_bash_completion \
     && echo 'source /etc/bash_completion.d/scrapy_bash_completion' >> /root/.bashrc \
     && apt-get purge -y --auto-remove autoconf \
