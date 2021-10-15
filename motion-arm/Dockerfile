@@ -5,7 +5,7 @@
 FROM arm32v7/debian:buster
 MAINTAINER EasyPi Software Foundation
 
-ENV MOTION_VERSION=4.3.1
+ENV MOTION_VERSION=4.3.2
 ENV MOTION_FILE=pi_buster_motion_${MOTION_VERSION}-1_armhf.deb
 ENV MOTION_URL=https://github.com/Motion-Project/motion/releases/download/release-${MOTION_VERSION}/${MOTION_FILE}
 
