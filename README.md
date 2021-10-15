@@ -239,6 +239,7 @@ A collection of delicious docker recipes.
 - [x] haproxy-arm
 - [x] i2pd :ru:
 - [x] kcptun :cn:
+- [x] microsocks
 - [x] mtproxy
 - [x] mysql-proxy
 - [x] ngrok :+1:
