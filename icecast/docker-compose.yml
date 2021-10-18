@@ -1,5 +1,10 @@
-icecast:
-  image: vimagick/icecast
-  ports:
-    - "8000:8000"
-  restart: unless-stopped
+version: "3.8"
+services:
+  icecast:
+    image: vimagick/icecast
+    ports:
+      - "8000:8000"
+    volumes:
+      # ./data/etc:/etc/icecast:ro
+      - ./data/log:/var/log/icecast:rw
+    restart: unless-stopped
