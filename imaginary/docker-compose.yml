@@ -1,0 +1,10 @@
+version: "3.8"
+services:
+  imaginary:
+    image: h2non/imaginary
+    command: -p 9000 -cors -enable-url-source -mount /data
+    ports:
+      - "9000:9000"
+    volumes:
+      - ./data:/data
+    restart: unless-stopped
