@@ -201,6 +201,7 @@ A collection of delicious docker recipes.
 - [x] phpvirtualbox-arm
 - [x] revive
 - [x] tabula
+- [x] teleprompter
 - [x] tiddlywiki
 - [x] zoneminder :+1:
 
