@@ -1,7 +1,11 @@
 version: "3.8"
 services:
   teleprompter:
-    image: easypi/teleprompter-arm64
+    image: teleprompter
+    build:
+      context: .
+      args:
+        - APP_DOMAIN=easypi.tv
     init: true
     ports:
       - "3000:3000"
