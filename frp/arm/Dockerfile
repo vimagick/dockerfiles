@@ -2,10 +2,10 @@
 # Dockerfile for frp-arm
 #
 
-FROM arm32v7/alpine:3
+FROM alpine:3
 MAINTAINER EasyPi Software Foundation
 
-ENV FRP_VERSION=0.36.2
+ENV FRP_VERSION=0.37.1
 ENV FRP_FILE=frp_${FRP_VERSION}_linux_arm.tar.gz
 ENV FRP_URL=https://github.com/fatedier/frp/releases/download/v${FRP_VERSION}/${FRP_FILE}
 
