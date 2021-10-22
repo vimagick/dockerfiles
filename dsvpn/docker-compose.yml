@@ -1,10 +1,12 @@
-dsvpn:
-  image: vimagick/dsvpn
-  command: server vpn.key auto 443
-  ports:
-    - "443:443"
-  volumes:
-    - ./data:/etc/dsvpn
-  tty: true
-  privileged: true
-  restart: unless-stopped
+version: "3.8"
+services:
+  dsvpn:
+    image: vimagick/dsvpn
+    command: server vpn.key auto 443
+    ports:
+      - "443:443"
+    volumes:
+      - ./data:/etc/dsvpn
+    tty: true
+    privileged: true
+    restart: unless-stopped

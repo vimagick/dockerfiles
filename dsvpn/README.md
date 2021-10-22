@@ -9,16 +9,18 @@ docker-compose.yml
 ------------------
 
 ```yaml
-dsvpn:
-  image: vimagick/dsvpn
-  command: server vpn.key auto 443
-  ports:
-    - "443:443"
-  volumes:
-    - ./data:/etc/dsvpn
-  tty: true
-  privileged: true
-  restart: unless-stopped
+version: "3.8"
+services:
+  dsvpn:
+    image: vimagick/dsvpn
+    command: server vpn.key auto 443
+    ports:
+      - "443:443"
+    volumes:
+      - ./data:/etc/dsvpn
+    tty: true
+    privileged: true
+    restart: unless-stopped
 ```
 
 server
@@ -35,7 +37,7 @@ client
 ------
 
 ```bash
-$ sudo dsvpn vpn.key 1.2.3.4 1959
+$ sudo dsvpn vpn.key 1.2.3.4 443
 $ ifconfig tun0
 $ ping 192.168.192.254
 ```

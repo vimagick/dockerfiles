@@ -1,4 +1,4 @@
-FROM alpine AS builder
+FROM alpine:3 AS builder
 
 ENV DSVPN_VERSION=0.1.4
 ENV DSVPN_URL=https://github.com/jedisct1/dsvpn/archive/${DSVPN_VERSION}.tar.gz
@@ -13,7 +13,7 @@ RUN set -xe \
 # Dockerfile for dsvpn
 #
 
-FROM alpine
+FROM alpine:3
 MAINTAINER EasyPi Software Foundation
 
 RUN apk add --no-cache iproute2
