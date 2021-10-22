@@ -152,6 +152,7 @@ A collection of delicious docker recipes.
 
 - [x] cmus
 - [x] cmus-arm
+- [x] darkice :musical_note:
 - [x] editly :tv:
 - [x] ffmpeg
 - [x] ffmpeg-arm
