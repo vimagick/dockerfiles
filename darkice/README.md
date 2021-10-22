@@ -10,6 +10,7 @@ darkice
 +---------+   +----------+
 ```
 
-:warning: Please edit darkice.cfg before running!
+:warning: Please edit [darkice.cfg][2] before running!
 
 [1]: http://www.darkice.org/
+[2]: https://github.com/vimagick/dockerfiles/blob/master/darkice/data/etc/darkice.cfg#L13-L17
