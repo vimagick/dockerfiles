@@ -1,15 +1,18 @@
 ---
 
-url: "https://github.com/thp/urlwatch/releases/latest"
+name: urlwatch
+url: "https://github.com/thp/urlwatch/tags"
 filter:
-- xpath: '(//div[contains(@class,"release-timeline-tags")]//h4)[1]/a'
+- xpath: '(//h4[@data-test-selector="tag-title"]/a)[1]'
 - html2text: re
+- strip:
 
 ---
 
+name: shadowsocks-libev
 url: "https://github.com/shadowsocks/shadowsocks-libev/releases/latest"
 filter:
-- css: 'div.f1>a'
+- css: "div.flex-1>h1"
 - html2text: re
 
 ...

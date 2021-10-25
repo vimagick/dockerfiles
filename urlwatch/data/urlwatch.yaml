@@ -1,3 +1,8 @@
+job_defaults:
+  url:
+    ignore_connection_errors: true
+    ignore_http_error_codes: 4xx, 5xx
+
 report:
   text:
     footer: false

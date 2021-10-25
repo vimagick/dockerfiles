@@ -5,7 +5,7 @@ obs-web
 
 ```bash
 $ docker-compose up -d
-$ curl http://127.0.0.1:5000
+$ curl http://127.0.0.1:5000#localhost:4444
 ```
 
 [1]: https://github.com/Niek/obs-web
