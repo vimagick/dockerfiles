@@ -1,0 +1,7 @@
+version: "3.8"
+services:
+  obs-web:
+    image: easypi/obs-web-arm
+    ports:
+      - "5000:80"
+    restart: unless-stopped

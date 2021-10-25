@@ -163,6 +163,7 @@ A collection of delicious docker recipes.
 - [x] mpd :musical_note:
 - [x] murmur
 - [x] node-media-server-arm :camera: :cn:
+- [x] obs-web-arm :joystick:
 - [x] openmeetings :camera:
 - [x] paddle-ocr
 - [x] plex :moneybag:
@@ -409,7 +410,7 @@ A collection of delicious docker recipes.
       - [x] chrome
       - [x] firefox
       - [x] vnc
-    - selenoid-ui
+    - [x] selenoid-ui
 - [x] sentry
 - [x] atmoz/sftp
 - [x] snipe/snipe-it
