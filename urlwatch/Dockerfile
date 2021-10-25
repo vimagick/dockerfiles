@@ -3,32 +3,34 @@
 #
 
 FROM alpine:3
-LABEL maintainer="EasyPi Software Foundation"
+MAINTAINER EasyPi Software Foundation
+
+ENV CRYPTOGRAPHY_DONT_BUILD_RUST=1
 
 RUN set -xe \
-    && apk add --no-cache ca-certificates  \
-                          build-base       \
-                          libffi-dev       \
-                          libxml2          \
-                          libxml2-dev      \
-                          libxslt          \
-                          libxslt-dev      \
-                          openssl-dev      \
-                          py3-cryptography \
-                          py3-pip          \
-                          python3          \
-                          python3-dev      \
-    && pip3 install --no-cache-dir appdirs        \
-                    cssselect      \
-                    keyring        \
-                    lxml           \
-                    minidb         \
-                    pyyaml         \
-                    requests       \
-                    chump          \
-                    beautifulsoup4 \
-                    pushbullet.py  \
-                    urlwatch       \
+    && apk add --no-cache ca-certificates \
+                          bash            \
+                          build-base      \
+                          curl            \
+                          jq              \
+                          libffi-dev      \
+                          libxml2         \
+                          libxml2-dev     \
+                          libxslt         \
+                          libxslt-dev     \
+                          openssl-dev     \
+                          python3         \
+                          python3-dev     \
+    && curl -sSL https://bootstrap.pypa.io/get-pip.py | python3 \
+    && pip3 install appdirs   \
+                    cssselect \
+                    keyring   \
+                    lxml      \
+                    minidb    \
+                    pyyaml    \
+                    requests  \
+                    chump     \
+                    urlwatch  \
     && apk del build-base  \
                libffi-dev  \
                libxml2-dev \

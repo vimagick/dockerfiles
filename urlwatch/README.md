@@ -6,11 +6,13 @@ urlwatch
 ## docker-compose.yml
 
 ```yaml
-urlwatch:
-  image: vimagick/urlwatch
-  volumes:
-    - ./data:/root/.urlwatch
-  restart: unless-stopped
+version: "3.8"
+services:
+  urlwatch:
+    image: vimagick/urlwatch
+    volumes:
+      - ./data:/root/.urlwatch
+    restart: unless-stopped
 ```
 
 ## urls.yaml
@@ -18,16 +20,19 @@ urlwatch:
 ```yaml
 ---
 
-url: "https://github.com/thp/urlwatch/releases/latest"
+name: urlwatch
+url: "https://github.com/thp/urlwatch/tags"
 filter:
-- xpath: '(//div[contains(@class,"release-timeline-tags")]//h4)[1]/a'
+- xpath: '(//h4[@data-test-selector="tag-title"]/a)[1]'
 - html2text: re
+- strip:
 
 ---
 
+name: shadowsocks-libev
 url: "https://github.com/shadowsocks/shadowsocks-libev/releases/latest"
 filter:
-- css: 'div.f1>a'
+- css: "div.flex-1>h1"
 - html2text: re
 
 ...
@@ -44,7 +49,7 @@ Successfully sent message to Slack
 1: https://github.com/thp/urlwatch/releases/latest
 2: https://github.com/shadowsocks/shadowsocks-libev/releases/latest
 >>> urlwatch --test-filter 2
-v3.2.5
+v3.3.5
 >>> exit
 ```
 
@@ -64,10 +69,12 @@ See the [crontab manpage for details on format](https://man7.org/linux/man-pages
 ### Mount the crontab file as a docker volume
 
 ```yaml
-urlwatch:
-  image: vimagick/urlwatch
-  volumes:
-    - ./data:/root/.urlwatch
-    - ./data/crontab:/etc/crontabs/root
-  restart: unless-stopped
+version: "3.8"
+services:
+  urlwatch:
+    image: vimagick/urlwatch
+    volumes:
+      - ./data:/root/.urlwatch
+      - ./data/crontab:/etc/crontabs/root
+    restart: unless-stopped
 ```
