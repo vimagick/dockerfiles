@@ -304,6 +304,7 @@ A collection of delicious docker recipes.
 - [x] browserless/chrome
 - [x] certbot
 - [x] codercom/code-server
+- [ ] registry.gitlab.com/commento/commento
 - [x] confluentinc
   - [x] cp-kafka-mqtt
   - [x] cp-kafka-rest
