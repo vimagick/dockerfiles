@@ -5,8 +5,6 @@
 FROM alpine:3
 MAINTAINER EasyPi Software Foundation
 
-ENV CRYPTOGRAPHY_DONT_BUILD_RUST=1
-
 RUN set -xe \
     && apk add --no-cache ca-certificates \
                           bash            \

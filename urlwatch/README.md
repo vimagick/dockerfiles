@@ -12,6 +12,8 @@ services:
     image: vimagick/urlwatch
     volumes:
       - ./data:/root/.urlwatch
+    environment:
+      - EDITOR=/usr/bin/vi
     restart: unless-stopped
 ```
 
@@ -21,7 +23,7 @@ services:
 ---
 
 name: urlwatch
-url: "https://github.com/thp/urlwatch/tags"
+url: https://github.com/thp/urlwatch/tags
 filter:
 - xpath: '(//h4[@data-test-selector="tag-title"]/a)[1]'
 - html2text: re
@@ -30,10 +32,10 @@ filter:
 ---
 
 name: shadowsocks-libev
-url: "https://github.com/shadowsocks/shadowsocks-libev/releases/latest"
+url: https://api.github.com/repos/shadowsocks/shadowsocks-libev/releases/latest
 filter:
-- css: "div.flex-1>h1"
-- html2text: re
+- shellpipe: 'jq -r .tag_name'
+- strip:
 
 ...
 ```
