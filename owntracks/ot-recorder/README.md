@@ -7,7 +7,7 @@ location data published via MQTT (or HTTP) by the OwnTracks apps.
 ## docker-compose.yml
 
 ```yaml
-version: "3.7"
+version: "3.8"
 
 services:
 
@@ -15,6 +15,7 @@ services:
     image: vimagick/ot-recorder
     ports:
       - "8083:8083"
+      - "8085:8085"
     volumes:
       - ./data:/var/spool/owntracks/recorder/store
     environment:
@@ -23,8 +24,7 @@ services:
       - OTR_USER=username
       - OTR_PASS=password
       - OTR_TOPICS=owntracks/#
-      # OTR_CAFILE=/etc/ssl/certs/DST_Root_CA_X3.pem
-      # OTR_BROWSERAPIKEY=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+      # OTR_CAPATH=/etc/ssl/certs/
       # OTR_OPTIONS=--debug
     restart: unless-stopped
 
@@ -47,7 +47,6 @@ Click [this][2] to generate a google map api key.
 
 ```bash
 $ docker-compse up -d
-$ tree data
 $ docker-compose exec recorder bash
 >>> ocat --list
 {"results":["foo"]}

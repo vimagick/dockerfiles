@@ -26,4 +26,4 @@ VOLUME $OTR_STORAGEDIR
 COPY docker-entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
 
-EXPOSE 8083
+EXPOSE 8083 8085

@@ -6,6 +6,7 @@ services:
     image: easypi/ot-recorder-arm
     ports:
       - "8083:8083"
+      - "8085:8085"
     volumes:
       - ./data:/var/spool/owntracks/recorder/store
     environment:
@@ -15,7 +16,6 @@ services:
       - OTR_PASS=password
       - OTR_TOPICS=owntracks/#
       - OTR_CAPATH=/etc/ssl/certs/
-      # OTR_BROWSERAPIKEY=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
       # OTR_OPTIONS=--debug
     restart: unless-stopped
 
