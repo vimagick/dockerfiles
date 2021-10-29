@@ -109,8 +109,6 @@ A collection of delicious docker recipes.
 - [x] frp :cn:
 - [x] h2o
 - [x] httpbin :+1:
-- [x] mariadb
-- [x] mariadb-arm
 - [x] monit
 - [x] moodle :beetle:
 - [x] mosquitto
@@ -364,6 +362,7 @@ A collection of delicious docker recipes.
 - [x] jazzdd/phpvirtualbox
 - [x] sonatype/nexus3
 - [x] jupyter/notebook
+- [x] mariadb
 - [x] matomo
 - [x] metabase/metabase
 - [x] metasploitframework/metasploit-framework :skull:
@@ -431,6 +430,7 @@ A collection of delicious docker recipes.
 - [x] centurylink/watchtower
 - [x] wekanteam/wekan
 - [x] requarks/wiki
+- [x] wordpress
 - [x] yourls
 - [x] ghcr.io/linuxserver/wireguard
 - [x] apache/zeppelin
