@@ -5,7 +5,7 @@ services:
   wordpress:
     image: wordpress:apache
     ports:
-      - 8080:8080
+      - "8080:80"
     volumes:
       - ./data/wordpress:/var/www/html
     environment:
