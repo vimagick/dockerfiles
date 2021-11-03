@@ -1,5 +1,5 @@
 #
-# Dockerfile for scrapyd (python2)
+# Dockerfile for scrapyd (python2) [deprecated]
 #
 
 FROM debian:buster

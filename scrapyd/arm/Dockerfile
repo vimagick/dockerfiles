@@ -15,6 +15,7 @@ RUN set -xe \
     && apt-get update \
     && apt-get install -y autoconf \
                           build-essential \
+                          cargo \
                           curl \
                           git \
                           libffi-dev \
@@ -51,6 +52,7 @@ RUN set -xe \
     && echo 'source /etc/bash_completion.d/scrapy_bash_completion' >> /root/.bashrc \
     && apt-get purge -y --auto-remove autoconf \
                                       build-essential \
+                                      cargo \
                                       curl \
                                       libffi-dev \
                                       libssl-dev \

@@ -1,8 +1,10 @@
-scrapyd:
-  image: easypi/scrapyd-arm
-  ports:
-    - "6800:6800"
-  volumes:
-    - ./data:/var/lib/scrapyd
-    - /usr/local/lib/python3.7/dist-packages
-  restart: unless-stopped
+version: "3.8"
+services:
+  scrapyd:
+    image: easypi/scrapyd-arm
+    ports:
+      - "6800:6800"
+    volumes:
+      - ./data:/var/lib/scrapyd
+      - /usr/local/lib/python3.9/dist-packages
+    restart: unless-stopped
