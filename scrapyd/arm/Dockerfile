@@ -9,7 +9,7 @@ ENV SCRAPY_VERSION=2.5.1
 ENV SCRAPYD_VERSION=1.2.1
 ENV SCRAPYD_CLIENT_VERSION=v1.2.0
 ENV SCRAPYRT_VERSION=v0.12
-ENV PILLOW_VERSION=8.3.2
+ENV PILLOW_VERSION=8.4.0
 
 RUN set -xe \
     && apt-get update \
@@ -40,7 +40,8 @@ RUN set -xe \
                           zlib1g \
                           zlib1g-dev \
     && curl -sSL https://bootstrap.pypa.io/get-pip.py | python3 \
-    && pip install --no-cache-dir git+https://github.com/scrapy/scrapy.git@$SCRAPY_VERSION \
+    && pip install --no-cache-dir ipython \
+                   git+https://github.com/scrapy/scrapy.git@$SCRAPY_VERSION \
                    git+https://github.com/scrapy/scrapyd.git@$SCRAPYD_VERSION \
                    git+https://github.com/scrapy/scrapyd-client.git@$SCRAPYD_CLIENT_VERSION \
                    git+https://github.com/scrapinghub/scrapy-splash.git \
