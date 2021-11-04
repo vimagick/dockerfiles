@@ -1,0 +1,9 @@
+version: "3.8"
+services:
+  esphome:
+    image: esphome/esphome
+    ports:
+      - "6052:6052"
+    volumes:
+      - ./data:/config
+    restart: unless-stopped

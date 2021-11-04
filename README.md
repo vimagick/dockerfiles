@@ -322,6 +322,7 @@ A collection of delicious docker recipes.
 - [x] elastichq/elasticsearch-hq :mag:
 - [x] elasticdump/elasticsearch-dump :mag:
 - [x] elk
+- [x] esphome/esphome
 - [x] quay.io/coreos/etcd
 - [x] audreyt/ethercalc
 - [x] flogo/flogo-docker
