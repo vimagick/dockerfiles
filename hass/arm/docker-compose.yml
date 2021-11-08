@@ -4,6 +4,6 @@ services:
     image: easypi/hass-arm
     volumes:
       - ./data:/etc/hass
-    net: host
+    network_mode: host
     privileged: yes
     restart: unless-stopped
