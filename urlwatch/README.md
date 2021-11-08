@@ -24,6 +24,7 @@ services:
 
 name: urlwatch
 url: https://github.com/thp/urlwatch/tags
+user_visible_url: https://github.com/thp/urlwatch
 filter:
 - xpath: '(//h4[@data-test-selector="tag-title"]/a)[1]'
 - html2text: re
@@ -33,6 +34,7 @@ filter:
 
 name: shadowsocks-libev
 url: https://api.github.com/repos/shadowsocks/shadowsocks-libev/releases/latest
+user_visible_url: https://github.com/shadowsocks/shadowsocks-libev
 filter:
 - shellpipe: 'jq -r .tag_name'
 - strip:
