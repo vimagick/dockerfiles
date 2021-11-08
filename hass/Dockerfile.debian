@@ -2,7 +2,7 @@
 # Dockerfile for hass (Home Assistant)
 #
 
-FROM debian:jessie
+FROM debian:bullseye
 MAINTAINER EasyPi Software Foundation
 
 RUN set -xe \
@@ -23,7 +23,7 @@ RUN set -xe \
     && pip3 install --no-cache-dir gattlib \
                                    homeassistant \
                                    pybluez \
-    && setcap 'cap_net_raw,cap_net_admin+eip' /usr/bin/python3.4 \
+    && setcap 'cap_net_raw,cap_net_admin+eip' /usr/bin/python3.9 \
     && apt-get remove -y curl \
                          libbluetooth-dev \
                          libboost-python-dev \

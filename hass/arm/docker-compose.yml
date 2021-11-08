@@ -1,15 +1,9 @@
-hass:
-  image: easypi/hass-arm
-  volumes:
-    - ./data:/etc/hass
-  net: host
-  privileged: yes
-  restart: unless-stopped
-
-hcfg:
-  image: easypi/hcfg-arm
-  volumes:
-    - ./data:/etc/hass
-  net: host
-  working_dir: /etc/hass
-  restart: unless-stopped
+version: "3.8"
+services:
+  hass:
+    image: easypi/hass-arm
+    volumes:
+      - ./data:/etc/hass
+    net: host
+    privileged: yes
+    restart: unless-stopped

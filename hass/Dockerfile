@@ -5,9 +5,10 @@
 FROM alpine:3
 MAINTAINER EasyPi Software Foundation
 
-ENV HASS_VERSION=0.102.1
-ENV HASS_CLI_VERSION=3.1.0
-ENV HASS_CLI_ARCH=amd64
+ENV HASS_VERSION=2021.11.1
+ENV HASS_CLI_VERSION=4.14.0
+
+ARG HASS_CLI_ARCH=amd64
 
 RUN set -xe \
     && apk update \
@@ -19,9 +20,10 @@ RUN set -xe \
         openssl-dev \
         python3 \
         python3-dev \
+    && curl https://bootstrap.pypa.io/get-pip.py | python3 \
     && pip3 install --no-cache-dir homeassistant==${HASS_VERSION} \
-    && wget https://github.com/home-assistant/hassio-cli/releases/download/${HASS_CLI_VERSION}/hassio_${HASS_CLI_ARCH} -O /usr/local/bin/hassio \
-    && chmod +x /usr/local/bin/hassio
+    && wget https://github.com/home-assistant/cli/releases/download/${HASS_CLI_VERSION}/ha_${HASS_CLI_ARCH} -O /usr/local/bin/ha \
+    && chmod +x /usr/local/bin/ha
 
 VOLUME /etc/hass
 EXPOSE 8123
