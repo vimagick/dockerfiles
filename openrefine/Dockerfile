@@ -2,18 +2,16 @@
 # Dockerfile for openrefine
 #
 
-FROM openjdk:8-jre-alpine
+FROM openjdk:11
 MAINTAINER EasyPi Software Foundation
 
-ENV OPENREFINE_VERSION 3.4.1
-ENV OPENREFINE_FILE openrefine-linux-${OPENREFINE_VERSION}.tar.gz
-ENV OPENREFINE_URL https://github.com/OpenRefine/OpenRefine/releases/download/${OPENREFINE_VERSION}/${OPENREFINE_FILE}
+ENV OPENREFINE_VERSION=3.5.0
+ENV OPENREFINE_FILE=openrefine-linux-${OPENREFINE_VERSION}.tar.gz
+ENV OPENREFINE_URL=https://github.com/OpenRefine/OpenRefine/releases/download/${OPENREFINE_VERSION}/${OPENREFINE_FILE}
 
 WORKDIR /app
 
-RUN set -xe \
-    && apk add --no-cache bash curl tar \
-    && curl -sSL ${OPENREFINE_URL} | tar xz --strip 1
+RUN curl -sSL ${OPENREFINE_URL} | tar xz --strip 1
 
 VOLUME /data
 WORKDIR /data

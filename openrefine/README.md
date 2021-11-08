@@ -12,13 +12,15 @@ Please read the [wiki][2] to learn more.
 ### docker-compose.yml
 
 ```yaml
-openrefine:
-  image: vimagick/openrefine
-  ports:
-    - "3333:3333"
-  volumes:
-    - ./data:/data
-  restart: unless-stopped
+version: "3.8"
+services:
+  openrefine:
+    image: vimagick/openrefine
+    ports:
+      - "3333:3333"
+    volumes:
+      - ./data:/data
+    restart: unless-stopped
 ```
 
 [1]: http://openrefine.org/index.html
