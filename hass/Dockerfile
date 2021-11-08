@@ -14,6 +14,7 @@ RUN set -xe \
     && apk update \
     && apk add --no-cache \
         ca-certificates \
+        curl \
         build-base \
         libffi-dev \
         linux-headers \
