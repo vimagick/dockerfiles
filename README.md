@@ -298,6 +298,7 @@ A collection of delicious docker recipes.
 - [x] ghcr.io/linuxserver/airsonic :musical_note:
 - [x] archivebox/archivebox
 - [x] docker.bintray.io/jfrog/artifactory-oss
+- [x] jeffail/benthos
 - [x] tutum/builder
 - [x] browserless/chrome
 - [x] certbot

@@ -1,0 +1,10 @@
+version: "3.8"
+services:
+  benthos:
+    image: jeffail/benthos
+    command: -c /etc/benthos/config.yaml
+    ports:
+      - "4195:4195"
+    volumes:
+      - ./data:/etc/benthos
+    restart: unless-stopped
