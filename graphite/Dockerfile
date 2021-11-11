@@ -33,6 +33,7 @@ RUN set -xe \
     && pip3 install --no-cache-dir --install-option=--prefix=/opt/graphite \
                     --install-option=--install-lib=/opt/graphite/webapp \
                     graphite-web==$GRAPHITE_VERSION \
+    && pip3 install pyparsing==2.4.7 \
     && cd ./webapp \
     && echo "SECRET_KEY = '$(head -c 16 /dev/urandom | base64)'" >> graphite/local_settings.py \
     && cd ../conf \
@@ -49,7 +50,7 @@ RUN set -xe \
     && rm -rf /root/.cache/pip \
               /var/cache/apk/*
 
-COPY nginx.conf /etc/nginx/conf.d/default.conf
+COPY nginx.conf /etc/nginx/http.d/default.conf
 COPY supervisord.conf /etc/supervisor/
 
 VOLUME $GRAPHITE_CONF_DIR \
