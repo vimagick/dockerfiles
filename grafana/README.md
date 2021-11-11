@@ -1,8 +1,6 @@
 grafana
 =======
 
-![](https://badge.imagelayers.io/vimagick/grafana:latest.svg)
-
 [Grafana][1] is a leading open source application for visualizing large-scale
 measurement data.
 

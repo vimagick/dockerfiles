@@ -87,7 +87,6 @@ A collection of delicious docker recipes.
 - [x] collectd
 - [x] elastalert
 - [x] glances
-- [x] grafana
 - [x] graphite
 - [x] influxdb
 - [x] logstash
@@ -340,6 +339,7 @@ A collection of delicious docker recipes.
     - [ ] python
 - [x] gogs/gogs :cn:
 - [x] gotify/server
+- [x] grafana/grafana
 - [x] haproxy
 - [x] h2non/imaginary
 - [x] jellyfin/jellyfin

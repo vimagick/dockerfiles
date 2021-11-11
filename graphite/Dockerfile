@@ -24,6 +24,7 @@ RUN set -xe \
                python3 \
                python3-dev \
     && curl -sSL https://bootstrap.pypa.io/get-pip.py | python3 \
+    && pip3 install pip==20.1 \
     && pip3 install --no-cache-dir gunicorn supervisor \
     && pip3 install --no-cache-dir --install-option=--prefix=/opt/graphite \
                     --install-option=--install-lib=/opt/graphite/lib \
@@ -44,7 +45,7 @@ RUN set -xe \
     && apk del build-base \
                curl \
                libffi-dev \
-               python-dev \
+               python3-dev \
     && rm -rf /root/.cache/pip \
               /var/cache/apk/*
 
