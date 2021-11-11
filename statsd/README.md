@@ -8,14 +8,22 @@ to one or more pluggable backend services (e.g., [Graphite][2]).
 ## docker-compose.yml
 
 ```yaml
-statsd:
-  image: vimagick/statsd
-  ports:
-    - "8125:8125/udp"
-    - "8126:8126/tcp"
-  external_links:
-    - graphite_graphite_1:graphite
-  restart: always
+version: "3.8"
+
+services:
+  statsd:
+    image: vimagick/statsd
+    ports:
+      - "8126:8126/tcp"
+      - "8125:8125/udp"
+    volumes:
+      - ./data/config.js:/opt/statsd/config.js
+    restart: unless-stopped
+
+networks:
+  default:
+    external: true
+    name: graphite_default
 ```
 
 ## python client
