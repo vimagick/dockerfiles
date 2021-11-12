@@ -20,16 +20,17 @@ RUN set -xe \
                           python3         \
                           python3-dev     \
     && curl -sSL https://bootstrap.pypa.io/get-pip.py | python3 \
-    && pip3 install appdirs      \
-                    cssselect    \
-                    keyring      \
-                    keyrings.alt \
-                    lxml         \
-                    minidb       \
-                    pyyaml       \
-                    requests     \
-                    chump        \
-                    urlwatch     \
+    && pip3 install --no-binary lxml         \
+                                appdirs      \
+                                cssselect    \
+                                keyring      \
+                                keyrings.alt \
+                                lxml         \
+                                minidb       \
+                                pyyaml       \
+                                requests     \
+                                chump        \
+                                urlwatch     \
     && apk del build-base  \
                libffi-dev  \
                libxml2-dev \
