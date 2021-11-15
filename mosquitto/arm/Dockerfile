@@ -2,7 +2,7 @@
 # Dockerfile for mosquitto-arm
 #
 
-FROM easypi/alpine-arm
+FROM alpine:3
 MAINTAINER EasyPi Software Foundation
 
 RUN apk add --no-cache ca-certificates mosquitto

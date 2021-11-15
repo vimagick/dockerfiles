@@ -1,11 +1,10 @@
-mosquitto:
-  image: vimagick/mosquitto
-  ports:
-    - "1883:1883"
-    - "8080:8080"
-    - "8883:8883"
-  volumes:
-    - ./data/mosquitto.conf:/etc/mosquitto/mosquitto.conf
-    - ./data/pwfile:/etc/mosquitto/pwfile
-    - ./data:/var/lib/mosquitto
-  restart: always
+version: "3.8"
+services:
+  mosquitto:
+    image: vimagick/mosquitto
+    ports:
+      - "1883:1883"
+    volumes:
+      - ./data/etc:/etc/mosquitto
+      - ./data/var:/var/lib/mosquitto
+    restart: unless-stopped

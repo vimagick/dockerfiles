@@ -2,8 +2,8 @@
 # Dockerfile for mosquitto
 #
 
-FROM alpine
-MAINTAINER kev <noreply@easypi.pro>
+FROM alpine:3
+MAINTAINER EasyPi Software Foundation
 
 RUN apk add --no-cache ca-certificates mosquitto
 

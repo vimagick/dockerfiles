@@ -4,33 +4,35 @@ mosquitto
 ![](https://badge.imagelayers.io/vimagick/mosquitto:latest.svg)
 
 [Mosquitto][1] is an open source (BSD licensed) message broker that implements
-the MQ Telemetry Transport protocol versions 3.1 and 3.1.1.
+the MQTT protocol versions 3.1 and 3.1.1.
 
 ## docker-compose.yml
 
 ```yaml
-mosquitto:
-  image: vimagick/mosquitto
-  ports:
-    - "1883:1883"
-    - "8080:8080"
-    - "8883:8883"
-  volumes:
-    - ./data/mosquitto.conf:/etc/mosquitto/mosquitto.conf
-    - ./data/pwfile:/etc/mosquitto/pwfile
-    - ./data:/var/lib/mosquitto
-  restart: always
+version: "3.8"
+services:
+  mosquitto:
+    image: vimagick/mosquitto
+    ports:
+      - "1883:1883"
+    volumes:
+      - ./data/etc:/etc/mosquitto
+      - ./data/var:/var/lib/mosquitto
+    restart: unless-stopped
 ```
 
 ## mosquitto.conf
 
 ```ini
-port 1883
+listener 1883
 log_dest stdout
 allow_anonymous false
 password_file /etc/mosquitto/pwfile
 persistence true
 persistence_location /var/lib/mosquitto
+persistence_file mosquitto.db
+#plugin /usr/lib/mosquitto_dynamic_security.so
+#plugin_opt_config_file /etc/mosquitto/dynamic-security.json
 
 ###### ENABLE TLS ######
 listener 8883
@@ -51,9 +53,10 @@ require_certificate false
 ## server
 
 ```bash
-$ mkdir -m 777 data
-$ touch data/mosquitto.conf data/pwfile
-$ vi data/mosquitto.conf
+$ mkdir -p data/{etc,var}
+$ chmod -R 777 data
+$ touch data/etc/mosquitto.conf data/etc/pwfile
+$ vi data/etc/mosquitto.conf
 $ docker-compose up -d
 $ docker-compose exec mosquitto sh
 >>> cd /etc/mosquitto
