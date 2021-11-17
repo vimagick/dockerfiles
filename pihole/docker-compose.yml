@@ -1,7 +1,7 @@
-version: "3.7"
+version: "3.8"
 services:
   pihole:
-    image: pihole/pihole:v4.4-armhf
+    image: pihole/pihole
     ports:
       - "53:53/udp"
       - "80:80/tcp"
@@ -11,6 +11,5 @@ services:
     environment:
       - TZ=Asia/Shanghai
       - WEBPASSWORD=******
-      - DNS1=172.18.0.1#5300
-      - DNS2=no
+      - PIHOLE_DNS_=8.8.8.8#53;8.8.4.4#53
     restart: unless-stopped
