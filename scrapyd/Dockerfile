@@ -37,7 +37,7 @@ RUN set -xe \
                           libwebp-dev \
                           zlib1g \
                           zlib1g-dev \
-    && curl -sSL https://bootstrap.pypa.io/get-pip.py | python \
+    && curl -sSL https://bootstrap.pypa.io/pip/2.7/get-pip.py | python \
     && pip install --no-cache-dir git+https://github.com/scrapy/scrapy.git@$SCRAPY_VERSION \
                    git+https://github.com/scrapy/scrapyd.git@$SCRAPYD_VERSION \
                    git+https://github.com/scrapy/scrapyd-client.git \
