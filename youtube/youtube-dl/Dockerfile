@@ -3,7 +3,7 @@
 #
 
 FROM python:3.9-alpine
-MAINTAINER kev <noreply@easypi.pro>
+MAINTAINER EasyPi Software Foundation
 
 RUN set -xe \
     && apk add --no-cache ca-certificates \
