@@ -55,9 +55,10 @@ A collection of delicious docker recipes.
 
 ## IoT
 
-- [x] hass :+1:
-- [x] hbdg :+1:
+- [x] hass
+- [x] hbdg
 - [x] node-red :+1:
+- [x] mqtt-io-arm
 - [x] mosquitto :+1:
 - [x] tile38-arm :+1:
 

@@ -1,0 +1,8 @@
+version: "3.8"
+services:
+  mqtt-io:
+    image: easypi/mqtt-io-arm
+    volumes:
+      - ./data:/app
+    privileged: true
+    restart: unless-stopped

@@ -1,0 +1,20 @@
+# Doc: https://mqtt-io.app/
+
+mqtt:
+  host: test.mosquitto.org
+  port: 1883
+  topic_prefix: easypi
+
+gpio_modules:
+  - name: rpi
+    module: raspberrypi
+
+digital_inputs:
+  - name: doorbell
+    module: rpi
+    pin: 21
+
+digital_outputs:
+  - name: light
+    module: rpi
+    pin: 22
