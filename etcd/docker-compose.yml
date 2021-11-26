@@ -1,9 +1,9 @@
-# https://etcd.io/docs/v3.4.0/op-guide/container/
+# https://etcd.io/docs/v3.5/op-guide/container/
 
 version: "3.8"
 services:
   etcd:
-    image: quay.io/coreos/etcd:v3.4.8
+    image: quay.io/coreos/etcd:v3.5.1
     command: >
       etcd --name=node1
            --data-dir=/data
@@ -12,9 +12,16 @@ services:
            --advertise-client-urls=http://1.2.3.4:2379
            --listen-client-urls=http://0.0.0.0:2379
            --initial-cluster=node1=http://1.2.3.4:2380
+           --initial-cluster-token=my-etcd-token
     ports:
       - "2379:2379"
       - "2380:2380"
     volumes:
       - ./data:/data
+    environment:
+      - ETCDCTL_API=3
+      - ETCD_LOGGER=zap
+      - ETCD_LOG_LEVEL=info
+      - ETCD_LOG_OUTPUTS=/data/etcd.log
+      - ETCD_ENABLE_LOG_ROTATION=true
     restart: unless-stopped
