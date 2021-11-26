@@ -1,22 +1,24 @@
-zookeeper:
-  image: zookeeper:3.5.6
-  ports:
-    - "2181:2181"
-    - "2888:2888"
-    - "3888:3888"
-  hostname: zookeeper1
-  volumes:
-    - /data/zookeeper/data:/data
-    - /data/zookeeper/datalog:/datalog
-    - /data/zookeeper/logs:/logs
-  environment:
-    - ZOO_MY_ID=1
-    - ZOO_SERVERS=quorumListenOnAllIPs=true server.1=zookeeper1:2888:3888;2181 server.2=zookeeper2:2888:3888;2181 server.3=zookeeper3:2888:3888;2181
-    - ZOO_LOG4J_PROP=INFO,ROLLINGFILE
-    - ZOO_4LW_COMMANDS_WHITELIST=*
-    - ZOO_STANDALONE_ENABLED=false
-  extra_hosts:
-    - zookeeper1:10.0.0.21
-    - zookeeper2:10.0.0.22
-    - zookeeper3:10.0.0.23
-  restart: always
+version: "3.8"
+services:
+  zookeeper:
+    image: zookeeper:3.7
+    ports:
+      - "2181:2181"
+      - "2888:2888"
+      - "3888:3888"
+    hostname: zookeeper1
+    volumes:
+      - /data/zookeeper/data:/data
+      - /data/zookeeper/datalog:/datalog
+      - /data/zookeeper/logs:/logs
+    environment:
+      - ZOO_MY_ID=1
+      - ZOO_SERVERS=quorumListenOnAllIPs=true server.1=zookeeper1:2888:3888;2181 server.2=zookeeper2:2888:3888;2181 server.3=zookeeper3:2888:3888;2181
+      - ZOO_LOG4J_PROP=INFO,ROLLINGFILE
+      - ZOO_4LW_COMMANDS_WHITELIST=*
+      - ZOO_STANDALONE_ENABLED=false
+    extra_hosts:
+      - zookeeper1:10.0.0.21
+      - zookeeper2:10.0.0.22
+      - zookeeper3:10.0.0.23
+    restart: unless-stopped

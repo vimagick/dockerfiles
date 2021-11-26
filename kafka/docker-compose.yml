@@ -1,38 +1,42 @@
-zookeeper:
-  image: zookeeper:3.5.6
-  ports:
-    - "2181:2181"
-  volumes:
-    - ./data/zookeeper/data:/data
-    - ./data/zookeeper/datalog:/datalog
-  restart: always
+version: "3.8"
 
-kafka:
-  image: wurstmeister/kafka:2.12-2.4.0
-  ports:
-    - "9092:9092"
-  hostname: kafka
-  volumes:
-    - ./data/kafka:/kafka
-    - /var/run/docker.sock:/var/run/docker.sock
-  environment:
-    - KAFKA_ADVERTISED_HOST_NAME=kafka
-    - KAFKA_ADVERTISED_PORT=9092
-    - KAFKA_ZOOKEEPER_CONNECT=zookeeper:2181
-  links:
-    - zookeeper
-  restart: always
+services:
 
-kafka-manager:
-  image: vimagick/kafka-manager
-  ports:
-    - "9000:9000"
-  environment:
-    - ZK_HOSTS=zookeeper:2181
-    - KAFKA_MANAGER_AUTH_ENABLED=true
-    - KAFKA_MANAGER_USERNAME=admin
-    - KAFKA_MANAGER_PASSWORD=admin
-  links:
-    - zookeeper
-    - kafka
-  restart: always
+  zookeeper:
+    image: zookeeper:3.7
+    ports:
+      - "2181:2181"
+    volumes:
+      - ./data/zookeeper/data:/data
+      - ./data/zookeeper/datalog:/datalog
+    restart: unless-stopped
+
+  kafka:
+    image: wurstmeister/kafka:2.12-2.5.0
+    ports:
+      - "9092:9092"
+    volumes:
+      - ./data/kafka:/kafka
+    environment:
+      - KAFKA_ADVERTISED_HOST_NAME=kafka
+      - KAFKA_ADVERTISED_PORT=9092
+      - KAFKA_ZOOKEEPER_CONNECT=zookeeper:2181
+      - JMX_PORT=9999
+    depends_on:
+      - zookeeper
+    restart: unless-stopped
+
+  cmak:
+    image: vimagick/cmak
+    ports:
+      - "9000:9000"
+    environment:
+      - ZK_HOSTS=zookeeper:2181
+      - KAFKA_MANAGER_AUTH_ENABLED=true
+      - KAFKA_MANAGER_USERNAME=admin
+      - KAFKA_MANAGER_PASSWORD=admin
+    depends_on:
+      - zookeeper
+    healthcheck:
+      test: curl -f http://127.0.0.1:9000/api/health || exit 1
+    restart: unless-stopped

@@ -10,18 +10,20 @@ which enables highly reliable distributed coordination.
 ## docker-compose.yml
 
 ```yaml
-zookeeper:
-  image: zookeeper
-  ports:
-    - "2181:2181"
-  volumes:
-    - ./data/data:/data
-    - ./data/datalog:/datalog
-    - ./data/logs:/logs
-  environment:
-    - ZOO_LOG4J_PROP=INFO,ROLLINGFILE
-    - ZOO_STANDALONE_ENABLED=true
-  restart: always
+version: "3.8"
+services:
+  zookeeper:
+    image: zookeeper
+    ports:
+      - "2181:2181"
+    volumes:
+      - ./data/data:/data
+      - ./data/datalog:/datalog
+      - ./data/logs:/logs
+    environment:
+      - ZOO_LOG4J_PROP=INFO,ROLLINGFILE
+      - ZOO_STANDALONE_ENABLED=true
+    restart: unless-stopped
 ```
 
 ## Standalone Mode
