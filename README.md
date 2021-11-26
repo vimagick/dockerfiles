@@ -428,6 +428,7 @@ A collection of delicious docker recipes.
 - [x] amancevice/superset
 - [x] tile38/tile38
 - [x] traefik
+- [x] trinodb/trino
 - [x] v2ray/official :cn:
 - [x] mpromonet/v4l2rtspserver :camera:
 - [x] centurylink/watchtower
