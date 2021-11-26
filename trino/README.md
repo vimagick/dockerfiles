@@ -5,8 +5,7 @@ trino
 distributed over one or more heterogeneous data sources.
 
 ```bash
-$ mkdir -p data/{etc,var}
-$ chown -R 1000:1000 data
+$ mkdir -m 777 data
 $ docker-compose up -d
 $ docker-compose exec trino trino
 >>> show catalogs;
