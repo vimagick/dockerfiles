@@ -12,7 +12,7 @@ services:
     restart: unless-stopped
   
   kafka:
-    image: wurstmeister/kafka:2.12-2.5.0
+    image: wurstmeister/kafka:2.13-2.7.1
     ports:
       - "9092:9092"
     volumes:
