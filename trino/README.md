@@ -5,13 +5,14 @@ trino
 distributed over one or more heterogeneous data sources.
 
 ```bash
-$ mkdir -m 777 data
+$ mkdir data/{etc,data}
+$ chown -R 1000:1000 data
 $ docker-compose up -d
 $ docker-compose exec trino trino
 >>> show catalogs;
->>> show schemas from jmx;
->>> show tables from jmx.current;
->>> select * from jmx.current."java.lang:type=operatingsystem";
+>>> show schemas from system;
+>>> show tables from system.runtime;
+>>> select * from system.runtime.queries;
 >>> quit
 ```
 

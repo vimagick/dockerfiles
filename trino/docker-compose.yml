@@ -2,10 +2,11 @@ version: "3.8"
 services:
   trino:
     image: trinodb/trino
-    command: ["/usr/lib/trino/bin/launcher", "run", "--etc-dir", "etc", "--data-dir", "data"]
+    command: ["bin/launcher", "run", "--etc-dir", "etc", "--data-dir", "data"]
     ports:
       - "8080:8080"
     volumes:
-      - ./data:/opt/trino
-    working_dir: /opt/trino
+      - ./data/etc:/usr/lib/trino/etc
+      - ./data/data:/usr/lib/trino/data
+    working_dir: /usr/lib/trino
     restart: unless-stopped

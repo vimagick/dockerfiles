@@ -1,0 +1,20 @@
+mappings:
+- match: test.dispatcher.*.*.*
+  name: dispatcher_events_total
+  labels:
+    action: $2
+    job: test_dispatcher
+    outcome: $3
+    processor: $1
+- match: '*.signup.*.*'
+  name: signup_events_total
+  labels:
+    job: ${1}_server
+    outcome: $3
+    provider: $2
+- match: 'servers\.(.*)\.networking\.subnetworks\.transmissions\.([a-z0-9-]+)\.(.*)'
+  match_type: regex
+  name: 'servers_networking_transmissions_${3}'
+  labels: 
+    hostname: ${1}
+    device: ${2}
