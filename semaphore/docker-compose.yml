@@ -9,11 +9,12 @@ services:
     volumes:
       - ./data/semaphore:/etc/semaphore
     environment:
+      SEMAPHORE_DB_DIALECT: postgres
       SEMAPHORE_DB_USER: semaphore
       SEMAPHORE_DB_PASS: semaphore
       SEMAPHORE_DB_HOST: postgres
-      SEMAPHORE_DB_PORT: 3306
-      SEMAPHORE_DB: semaphore
+      SEMAPHORE_DB_PORT: 5432
+      SEMAPHORE_DB: semaphore?sslmode=disable
       SEMAPHORE_PLAYBOOK_PATH: /tmp/semaphore/
       SEMAPHORE_ADMIN: admin
       SEMAPHORE_ADMIN_NAME: admin
