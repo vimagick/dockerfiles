@@ -9,6 +9,7 @@ ENV SCRAPY_VERSION=2.5.1
 ENV SCRAPYD_VERSION=1.2.1
 ENV SCRAPYD_CLIENT_VERSION=v1.2.0
 ENV SCRAPYRT_VERSION=v0.12
+ENV SPIDERMON_VERSION=1.15.2
 ENV PILLOW_VERSION=8.4.0
 
 RUN set -xe \
@@ -47,6 +48,7 @@ RUN set -xe \
                    git+https://github.com/scrapy/scrapyd-client.git@$SCRAPYD_CLIENT_VERSION \
                    git+https://github.com/scrapinghub/scrapy-splash.git \
                    git+https://github.com/scrapinghub/scrapyrt.git@$SCRAPYRT_VERSION \
+                   git+https://github.com/scrapinghub/spidermon.git@$SPIDERMON_VERSION \
                    git+https://github.com/python-pillow/Pillow.git@$PILLOW_VERSION \
     && curl -sSL https://github.com/scrapy/scrapy/raw/master/extras/scrapy_bash_completion -o /etc/bash_completion.d/scrapy_bash_completion \
     && echo 'source /etc/bash_completion.d/scrapy_bash_completion' >> /root/.bashrc \
