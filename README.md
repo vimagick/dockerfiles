@@ -415,6 +415,7 @@ A collection of delicious docker recipes.
       - [x] firefox
       - [x] vnc
     - [x] selenoid-ui
+- [x] ansiblesemaphore/semaphore
 - [x] sentry
 - [x] atmoz/sftp
 - [x] snipe/snipe-it

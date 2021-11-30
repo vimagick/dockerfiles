@@ -52,7 +52,7 @@ services:
     restart: unless-stopped
 
   redis:
-    image: redis:5-alpine
+    image: redis:6-alpine
     container_name: awx_redis
     command: ["/usr/local/etc/redis/redis.conf"]
     volumes:
@@ -61,7 +61,7 @@ services:
     restart: unless-stopped
 
   postgres:
-    image: postgres:13-alpine
+    image: postgres:14-alpine
     container_name: awx_postgres
     volumes:
       - ./data/postgres:/var/lib/postgresql/data/pgdata:Z
