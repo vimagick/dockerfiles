@@ -1,9 +1,26 @@
-mongo:
-  image: mongo
-  command: --auth
-  container_name: mongo
-  ports:
-    - "27017:27017"
-  volumes:
-    - ./data:/data/db
-  restart: always
+version: "3.8"
+
+services:
+
+  mongo:
+    image: mongo:5
+    ports:
+      - "27017:27017"
+    volumes:
+      - ./data:/data/db
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: root
+    restart: unless-stopped
+
+  mongo-express:
+    image: mongo-express
+    ports:
+      - "8081:8081"
+    environment:
+      ME_CONFIG_MONGODB_URL: mongodb://root:root@mongo:27017
+      ME_CONFIG_BASICAUTH_USERNAME: admin
+      ME_CONFIG_BASICAUTH_PASSWORD: admin
+    depends_on:
+      - mongo
+    restart: unless-stopped
