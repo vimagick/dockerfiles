@@ -3,13 +3,13 @@ version: "3.8"
 services:
 
   oss:
-    image: minio/minio:RELEASE.2019-10-12T01-39-57Z
+    image: minio/minio:RELEASE.2020-04-15T19-42-18Z
     command: gateway oss https://oss-cn-beijing.aliyuncs.com
     ports:
       - "9000:9000"
     environment:
-      - MINIO_ACCESS_KEY=ossaccesskey
-      - MINIO_SECRET_KEY=osssecretkey
+      - MINIO_ACCESS_KEY=oss_access_key
+      - MINIO_SECRET_KEY=oss_secret_key
     restart: unless-stopped
 
   s3:
@@ -18,8 +18,8 @@ services:
     ports:
       - "9001:9000"
     environment:
-      - MINIO_ACCESS_KEY=awsaccesskey
-      - MINIO_SECRET_KEY=awssecretkey
+      - MINIO_ROOT_USER=aws_s3_access_key
+      - MINIO_ROOT_PASSWORD=aws_s3_secret_key
     restart: unless-stopped
 
   nas:
@@ -30,6 +30,6 @@ services:
     volumes:
       - ./data:/data
     environment:
-      - MINIO_ACCESS_KEY=nasaccesskey
-      - MINIO_SECRET_KEY=nassecretkey
+      - MINIO_ROOT_USER=nas_access_key
+      - MINIO_ROOT_PASSWORD=nas_secret_key
     restart: unless-stopped

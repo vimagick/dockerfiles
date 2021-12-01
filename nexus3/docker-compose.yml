@@ -1,9 +1,9 @@
-version: "3.7"
+version: "3.8"
 
 services:
 
   nexus3:
-    image: sonatype/nexus3
+    image: sonatype/nexus3:3.37.0
     ports:
       - "8081:8081"
     volumes:
@@ -13,10 +13,10 @@ services:
     restart: unless-stopped
 
   minio:
-    image: minio/minio
+    image: minio/minio:RELEASE.2020-04-15T19-42-18Z
     command: gateway oss https://oss-cn-beijing.aliyuncs.com
     expose:
-      - "9000"
+      - "9000:9000"
     environment:
       - MINIO_ACCESS_KEY=xxxxxxxxxxxxxxxx
       - MINIO_SECRET_KEY=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx

@@ -11,7 +11,7 @@ Aedahwa7
 
 $ docker-compose up -d
 
-$ docker cp mongo:/usr/bin/mongo /usr/local/bin/
+$ docker-compose cp mongo:/usr/bin/mongo /usr/local/bin/
 
 $ mongo mongodb://root:root@localhost:27017/admin
 >>> use mydb
