@@ -2,7 +2,7 @@
 # Dockerfile for mpd
 #
 
-FROM alpine:3.12
+FROM alpine:3.14
 MAINTAINER EasyPi Software Foundation
 
 RUN set -xe \
