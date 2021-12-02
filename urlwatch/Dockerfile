@@ -21,6 +21,7 @@ RUN set -xe \
                           python3-dev     \
     && curl -sSL https://bootstrap.pypa.io/get-pip.py | python3 \
     && pip3 install --no-binary lxml         \
+                                aioxmpp      \
                                 appdirs      \
                                 cssselect    \
                                 keyring      \
