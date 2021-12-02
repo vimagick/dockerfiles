@@ -2,7 +2,7 @@
 # Dockerfile for mpd-arm
 #
 
-FROM arm32v7/alpine:3.12
+FROM alpine:3
 MAINTAINER EasyPi Software Foundation
 
 RUN set -xe \
