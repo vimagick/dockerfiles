@@ -1,0 +1,31 @@
+version: "3.8"
+
+services:
+
+  shlink:
+    image: shlinkio/shlink:stable
+    ports:
+      - "8080:8080"
+    environment:
+      - DEFAULT_DOMAIN=shlink.easypi.duckdns.org
+      - USE_HTTPS=true
+      - GEOLITE_LICENSE_KEY=kjh23ljkbndskj345
+      - DB_DRIVER=postgres
+      - DB_HOST=postgres
+      - DB_USER=shlink
+      - DB_PASSWORD=shlink
+    depends_on:
+      - postgres
+    restart: unless-stopped
+
+  postgres:
+    image: postgres:alpine
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=shlink
+      - POSTGRES_PASSWORD=shlink
+      - POSTGRES_DB=shlink
+    restart: unless-stopped
