@@ -418,6 +418,7 @@ A collection of delicious docker recipes.
 - [x] ansiblesemaphore/semaphore
 - [x] sentry
 - [x] atmoz/sftp
+- [x] shlinkio/shlink
 - [x] snipe/snipe-it
 - [x] valeriansaliou/sonic
 - [x] scrapinghub/splash
@@ -430,6 +431,7 @@ A collection of delicious docker recipes.
 - [x] tile38/tile38
 - [x] traefik
 - [x] trinodb/trino
+- [x] louislam/uptime-kuma
 - [x] v2ray/official :cn:
 - [x] mpromonet/v4l2rtspserver :camera:
 - [x] centurylink/watchtower

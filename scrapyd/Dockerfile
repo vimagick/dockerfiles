@@ -25,6 +25,7 @@ RUN set -xe \
                           libxslt1-dev \
                           python \
                           python-dev \
+                          tini \
                           vim-tiny \
     && apt-get install -y libtiff5 \
                           libtiff5-dev \
@@ -67,4 +68,5 @@ COPY ./scrapyd.conf /etc/scrapyd/
 VOLUME /etc/scrapyd/ /var/lib/scrapyd/
 EXPOSE 6800
 
+ENTRYPOINT ["tini", "--"]
 CMD ["scrapyd", "--pidfile="]
