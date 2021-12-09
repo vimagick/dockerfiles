@@ -2,12 +2,12 @@
 # Dockerfile for kcptun
 #
 
-FROM alpine
-MAINTAINER kev <noreply@easypi.pro>
+FROM alpine:3
+MAINTAINER EasyPi Software Foundation
 
-ENV KCPTUN_VERSION 20171201
-ENV KCPTUN_FILE kcptun-linux-amd64-${KCPTUN_VERSION}.tar.gz
-ENV KCPTUN_URL https://github.com/xtaci/kcptun/releases/download/v${KCPTUN_VERSION}/${KCPTUN_FILE}
+ENV KCPTUN_VERSION=20210922
+ENV KCPTUN_FILE=kcptun-linux-amd64-${KCPTUN_VERSION}.tar.gz
+ENV KCPTUN_URL=https://github.com/xtaci/kcptun/releases/download/v${KCPTUN_VERSION}/${KCPTUN_FILE}
 
 RUN set -xe \
     && apk add --no-cache curl \

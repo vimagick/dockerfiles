@@ -1,26 +1,30 @@
-server:
-  image: vimagick/kcptun
-  command:
-    --listen :29900
-    --target google-public-dns-a.google.com:53
-    --crypt aes
-    --mode fast
-  ports:
-    - "29900:29900/udp"
-  environment:
-    - KCPTUN_KEY=******
-  restart: always
+version: "3.8"
 
-client:
-  image: vimagick/kcptun
-  entrypoint: client_linux_amd64
-  command:
-    --localaddr :12948
-    --remoteaddr easypi.pro:29900
-    --crypt aes
-    --mode fast
-  ports:
-    - "12948:12948/tcp"
-  environment:
-    - KCPTUN_KEY=******
-  restart: always
+services:
+
+  server:
+    image: vimagick/kcptun
+    command:
+      --listen :29900
+      --target google-public-dns-a.google.com:53
+      --crypt aes
+      --mode fast
+    ports:
+      - "29900:29900/udp"
+    environment:
+      - KCPTUN_KEY=******
+    restart: unless-stopped
+
+  client:
+    image: vimagick/kcptun
+    entrypoint: client_linux_amd64
+    command:
+      --localaddr :12948
+      --remoteaddr easypi.pro:29900
+      --crypt aes
+      --mode fast
+    ports:
+      - "12948:12948/tcp"
+    environment:
+      - KCPTUN_KEY=******
+    restart: unless-stopped
