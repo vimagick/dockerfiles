@@ -1,6 +1,8 @@
 node-red
 ========
 
+> :warning: THIS PROJECT WAS MOVED TO: https://github.com/EasyPi/docker-node-red
+
 <img src="https://nodered.org/about/resources/media/node-red-icon-2.png" width="100">
 
 [Node-RED][1] is a tool for wiring together hardware devices, APIs and online

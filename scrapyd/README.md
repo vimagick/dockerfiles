@@ -1,6 +1,8 @@
 scrapyd
 =======
 
+> :warning: THIS PROJECT WAS MOVED TO: https://github.com/EasyPi/docker-scrapyd
+
 ![](http://dockeri.co/image/vimagick/scrapyd)
 
 [scrapy][1] is an open source and collaborative framework for extracting the
