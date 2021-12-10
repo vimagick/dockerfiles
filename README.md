@@ -428,6 +428,8 @@ A collection of delicious docker recipes.
     - [x] jira
 - [x] strapi/strapi
 - [x] amancevice/superset
+- [x] tensorflow
+    - [x] serving
 - [x] tile38/tile38
 - [x] traefik
 - [x] trinodb/trino

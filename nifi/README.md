@@ -6,7 +6,6 @@ and distribute data.
 
 ![](https://nifi.apache.org/assets/images/flow-th.png)
 
-
 ## up and running
 
 ```bash
@@ -17,5 +16,7 @@ $ docker-compose up -d
 $ curl http://127.0.0.1:8080/nifi/
 $ curl http://127.0.0.1:18080/nifi-registry/
 ```
+
+> :warning: upgrade seems very hard
 
 [1]: https://nifi.apache.org

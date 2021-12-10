@@ -3,7 +3,7 @@ version: "3.8"
 services:
 
   nifi:
-    image: apache/nifi:1.12.1
+    image: apache/nifi:1.15.0
     ports:
       - "8080:8080"
     volumes:
@@ -16,17 +16,19 @@ services:
       - ./data/nifi/logs:/opt/nifi/nifi-current/logs
     environment:
       - NIFI_WEB_HTTP_PORT=8080
+      - NIFI_WEB_PROXY_CONTEXT_PATH=// # FIX BUG
       - NIFI_JVM_HEAP_INIT=8g
       - NIFI_JVM_HEAP_MAX=16g
     hostname: nifi
     restart: unless-stopped
 
   registry:
-    image: apache/nifi-registry:0.8.0
+    image: apache/nifi-registry:1.15.0
     ports:
       - "18080:18080"
     volumes:
       - ./data/registry/database:/opt/nifi-registry/nifi-registry-current/database
       - ./data/registry/flow_storage:/opt/nifi-registry/nifi-registry-current/flow_storage
       - ./data/registry/logs:/opt/nifi-registry/nifi-registry-current/logs
+    hostname: registry
     restart: unless-stopped

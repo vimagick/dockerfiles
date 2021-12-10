@@ -1,0 +1,12 @@
+version: "3.8"
+services:
+  serving:
+    image: tensorflow/serving
+    ports:
+      - "8501:8501"
+    volumes:
+      - ./data/saved_model_half_plus_two_cpu:/models/half_plus_two
+    environment:
+      - MODEL_BASE_PATH=/models
+      - MODEL_NAME=half_plus_two
+    restart: unless-stopped
