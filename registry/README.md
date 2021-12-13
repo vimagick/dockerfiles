@@ -6,39 +6,36 @@ registry
 ## docker-compose.yml
 
 ```yaml
-registry:
-  image: registry:2
-  ports:
-    - "5000:5000"
-  volumes:
-    - /etc/docker/registry
-    - ./data:/var/lib/registry
-    - ./certs:/certs
-    - ./auth:/auth
-  environment:
-    - REGISTRY_HTTP_TLS_CERTIFICATE=/certs/domain.crt
-    - REGISTRY_HTTP_TLS_KEY=/certs/domain.key
-    - REGISTRY_AUTH=htpasswd
-    - REGISTRY_AUTH_HTPASSWD_REALM=Registry Realm
-    - REGISTRY_AUTH_HTPASSWD_PATH=/auth/htpasswd
-  restart: always
+version: "3.8"
+services:
+  registry:
+    image: registry:2
+    ports:
+      - "5000:5000"
+    volumes:
+      - /etc/docker/registry
+      - ./data:/var/lib/registry
+      - ./certs:/certs
+      - ./auth:/auth
+    environment:
+      - REGISTRY_HTTP_TLS_CERTIFICATE=/certs/domain.crt
+      - REGISTRY_HTTP_TLS_KEY=/certs/domain.key
+      - REGISTRY_AUTH=htpasswd
+      - REGISTRY_AUTH_HTPASSWD_REALM=Registry Realm
+      - REGISTRY_AUTH_HTPASSWD_PATH=/auth/htpasswd
+    restart: unless-stopped
 
-frontend:
-  image: konradkleine/docker-registry-frontend:v2
-  ports:
-    - "8080:80"
-    - "8443:443"
-  links:
-    - registry
-  volume:
-    - ./certs/domain.crt:/etc/apache2/domain.crt
-    - ./certs/domain.key:/etc/apache2/domain.key
-  environment:
-    - ENV_DOCKER_REGISTRY_HOST=registry
-    - ENV_DOCKER_REGISTRY_PORT=5000
-    - ENV_DOCKER_REGISTRY_USE_SSL=1
-    - ENV_USE_SSL=yes
-  restart: always
+  webui:
+    image: joxit/docker-registry-ui:2
+    ports:
+      - "5080:80"
+    environment:
+      - NGINX_PROXY_PASS_URL=http://registry:5000
+      - REGISTRY_TITLE=EasyPi Docker Registry
+      - DELETE_IMAGES=true
+    depends_on:
+      - registry
+    restart: unless-stopped
 ```
 
 ## Server Setup
