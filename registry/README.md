@@ -97,6 +97,10 @@ $ curl -k -u username:password https://registry.easypi.pro:5000/v2/alpine/tags/l
 
 > :warning: Docker will connect [insecure-registries][2] via HTTPS first (ignore TLS error), then try HTTP.
 
+## Cleanup Outdated Images
+
+- https://github.com/vimagick/dockerfiles/tree/master/registry-cli
+
 ## Read More
 
 - https://github.com/docker/distribution/blob/master/docs/deploying.md
