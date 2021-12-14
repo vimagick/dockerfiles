@@ -7,7 +7,8 @@ services:
     ports:
       - "8080:8080"
     volumes:
-      - ./data/nifi/conf/archive:/opt/nifi/nifi-current/conf/archive
+      # ./data/nifi/conf:/tmp # docker-compose run --rm --entrypoint bash nifi
+      - ./data/nifi/conf:/opt/nifi/nifi-current/conf
       - ./data/nifi/database_repository:/opt/nifi/nifi-current/database_repository
       - ./data/nifi/flowfile_repository:/opt/nifi/nifi-current/flowfile_repository
       - ./data/nifi/content_repository:/opt/nifi/nifi-current/content_repository
@@ -17,6 +18,7 @@ services:
     environment:
       - NIFI_WEB_HTTP_PORT=8080
       - NIFI_WEB_PROXY_CONTEXT_PATH=// # FIX BUG
+      - NIFI_SENSITIVE_PROPS_KEY=00000000-0000-0000-0000-000000000000
       - NIFI_JVM_HEAP_INIT=8g
       - NIFI_JVM_HEAP_MAX=16g
     hostname: nifi
