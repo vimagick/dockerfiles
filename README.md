@@ -146,6 +146,10 @@ A collection of delicious docker recipes.
 - [x] webhook
 - [x] webkit :beetle:
 
+## Utility
+
+- [x] registry-cli
+
 ## Media
 
 - [x] aircast-arm :musical_note:
