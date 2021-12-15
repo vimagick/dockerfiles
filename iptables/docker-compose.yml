@@ -1,0 +1,30 @@
+version: "3.8"
+
+services:
+
+  shadowsocks:
+    container_name: shadowsocks
+    image: easypi/shadowsocks-libev
+    environment:
+      - DNS_ADDR=8.8.8.8
+      - METHOD=chacha20-ietf-poly1305
+      - PASSWORD=ieZaid9soh
+    network_mode: container:iptables
+    depends_on:
+      - iptables
+    restart: unless-stopped
+
+  iptables:
+    container_name: iptables
+    image: vimagick/iptables
+    ports:
+      - "8388:8388"
+    environment:
+      - TCP_PORTS=80,443
+      - UDP_PORTS=53
+      - RATE=4mbit
+      - BURST=4kb
+      - DEVICE=eth0
+    cap_add:
+      - NET_ADMIN
+    restart: unless-stopped

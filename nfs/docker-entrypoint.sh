@@ -24,6 +24,7 @@ init_rpc() {
     echo "* Starting rpcbind"
     if [ ! -x /run/rpcbind ] ; then
         install -m755 -g 32 -o 32 -d /run/rpcbind
+        install -m755 -g 32 -o 32 -d /run/rpc_pipefs/nfs
     fi
     rpcbind || return 0
     rpc.statd -L || return 0

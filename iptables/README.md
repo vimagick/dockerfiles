@@ -3,48 +3,42 @@ iptables
 
 ![](https://badge.imagelayers.io/vimagick/iptables:latest.svg)
 
-- _iptables_: filter ports (allow: 53/UDP, 80/TCP, 443/TCP)
-- _tc_: control traffic via [tbf][1]
+- iptables: filter ports (allow: 53/UDP, 80/TCP, 443/TCP)
+- tc: control traffic via [tbf][1]
 
-## docker-compose.yml
+## Server
 
-```
-shadowsocks:
-  image: vimagick/shadowsocks-libev
-  environment:
-    - DNS_ADDR=8.8.8.8
-    - METHOD=chacha20
-    - PASSWORD=9MLSpPmNt
-  net: container:iptables
-  restart: always
-
-iptables:
-  image: vimagick/iptables
-  ports:
-    - "8388:8388"
-  environment:
-    - TCP_PORTS=80,443
-    - UDP_PORTS=53
-    - RATE=4mbit
-    - BURST=4kb
-  cap_add:
-    - NET_ADMIN
-  restart: always
-```
-
-## Up and Running
-
-```
+```bash
 $ docker-compose up -d
-Creating shadowsocks_iptables_1...
-Creating shadowsocks_shadowsocks_1...
+[+] Running 3/3
+ ⠿ Network iptables_default  Created
+ ⠿ Container iptables        Started
+ ⠿ Container shadowsocks     Started
 
-$ docker-compose logs
-Every 60s: tc -s qdisc ls dev eth0                          2015-09-27 02:27:57
-iptables_1    |
-iptables_1    | qdisc tbf 8012: root refcnt 2 rate 4Mbit burst 4Kb lat 50.0ms
-iptables_1    |  Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0)
-iptables_1    |  backlog 0b 0p requeues 0
+$ docker-compose logs -f iptables
+Every 60.0s: tc -s qdisc ls dev eth0                2021-12-15 09:55:38
+iptables  |
+iptables  | qdisc tbf 8004: root refcnt 2 rate 4Mbit burst 4Kb lat 50ms
+iptables  |  Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0)
+iptables  |  backlog 0b 0p requeues 0
+```
+
+## Client
+
+```bash
+$ ss-local -s x.x.x.x -p 8388 -b 0.0.0.0 -l 1080 -u -m chacha20-ietf-poly1305 -k ieZaid9soh
+INFO: initializing ciphers...
+INFO: listening at 0.0.0.0:1080
+INFO: udprelay enabled
+
+$ curl -x socks5h://127.0.0.1:1080 http://ifconfig.co
+x.x.x.x
+
+$ curl -x socks5h://127.0.0.1:1080 https://ifconfig.co
+x.x.x.x
+
+$ curl -x socks5h://127.0.0.1:1080 http://samsung.u-vis.com:8080
+curl: (52) Empty reply from server
 ```
 
 [1]: http://linux.die.net/man/8/tc-tbf
