@@ -1,10 +1,13 @@
 #!/bin/bash
+#
+# https://github.com/janeczku/docker-nfs-ganesha/blob/master/rootfs/opt/start_nfs.sh
+#
 
 set -e
 
 # environment variables
 
-: ${EXPORT_PATH:="/data"}
+: ${EXPORT_PATH:="/data/nfs"}
 : ${PSEUDO_PATH:="/"}
 : ${EXPORT_ID:=0}
 : ${PROTOCOLS:=4}
@@ -52,13 +55,16 @@ bootstrap_config() {
     echo "* Writing configuration"
     cat <<END >${GANESHA_CONFIG}
 
-NFSV4 { Graceless = ${GRACELESS}; }
-EXPORT{
+NFSV4 {
+    Graceless = ${GRACELESS};
+}
+
+EXPORT {
     Export_Id = ${EXPORT_ID};
     Path = "${EXPORT_PATH}";
     Pseudo = "${PSEUDO_PATH}";
     FSAL {
-        name = VFS;
+        Name = VFS;
     }
     Access_type = RW;
     Disable_ACL = true;
@@ -66,7 +72,7 @@ EXPORT{
     Protocols = ${PROTOCOLS};
 }
 
-EXPORT_DEFAULTS{
+EXPORT_DEFAULTS {
     Transports = ${TRANSPORTS};
     SecType = ${SEC_TYPE};
 }

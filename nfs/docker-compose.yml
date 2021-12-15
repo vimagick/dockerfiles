@@ -1,12 +1,13 @@
 version: "3.8"
 services:
   nfs:
-    build: .
-    image: vimagick/nfs
-    ports:
-      - "2049:2049"
+    image: easypi/nfs
     volumes:
       - ./data:/data
     environment:
+      - EXPORT_ID=0
       - EXPORT_PATH=/data
+      - PSEUDO_PATH=/
+    privileged: true
+    network_mode: host
     restart: unless-stopped

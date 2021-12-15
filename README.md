@@ -114,6 +114,7 @@ A collection of delicious docker recipes.
 - [x] mosquitto
 - [x] motion-arm :+1:
 - [x] ndscheduler
+- [x] nfs
 - [x] nginx
 - [x] ntopng
 - [x] nullmailer
@@ -378,7 +379,6 @@ A collection of delicious docker recipes.
 - [x] mongo
 - [x] ccrisan/motioneye
 - [x] neo4j
-- [x] erichough/nfs-server
 - [x] luzifer/nginx-sso
 - [x] n8nio/n8n
 - [x] illuspas/node-media-server :cn:
