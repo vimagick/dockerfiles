@@ -3,11 +3,11 @@ version: "3.8"
 services:
 
   nifi:
-    image: apache/nifi:1.15.0
+    image: apache/nifi:1.15.1
     ports:
       - "8080:8080"
     volumes:
-      # ./data/nifi/conf:/tmp # docker-compose run --rm --entrypoint bash nifi
+      # ./data/nifi/conf:/tmp
       - ./data/nifi/conf:/opt/nifi/nifi-current/conf
       - ./data/nifi/database_repository:/opt/nifi/nifi-current/database_repository
       - ./data/nifi/flowfile_repository:/opt/nifi/nifi-current/flowfile_repository
@@ -25,7 +25,7 @@ services:
     restart: unless-stopped
 
   registry:
-    image: apache/nifi-registry:1.15.0
+    image: apache/nifi-registry:1.15.1
     ports:
       - "18080:18080"
     volumes:
