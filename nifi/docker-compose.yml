@@ -17,7 +17,6 @@ services:
       - ./data/nifi/logs:/opt/nifi/nifi-current/logs
     environment:
       - NIFI_WEB_HTTP_PORT=8080
-      - NIFI_WEB_PROXY_CONTEXT_PATH=// # FIX BUG
       - NIFI_SENSITIVE_PROPS_KEY=00000000-0000-0000-0000-000000000000
       - NIFI_JVM_HEAP_INIT=8g
       - NIFI_JVM_HEAP_MAX=16g
