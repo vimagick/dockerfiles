@@ -347,6 +347,7 @@ A collection of delicious docker recipes.
 - [x] gogs/gogs :cn:
 - [x] gotify/server
 - [x] grafana/grafana
+- [x] hasura/graphql-engine
 - [x] haproxy
 - [x] h2non/imaginary
 - [x] jellyfin/jellyfin
