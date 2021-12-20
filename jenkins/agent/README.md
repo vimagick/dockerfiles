@@ -19,8 +19,8 @@ for (aSlave in hudson.model.Hudson.instance.slaves){
 ## up and running
 
 ```bash
-$ mkdir -p data
-$ chown 1000:1000 data
+$ mkdir -p data/agent
+$ chown -R 1000:1000 data
 $ docker-compose up -d
 ```
 

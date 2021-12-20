@@ -8,6 +8,7 @@ services:
     container_name: docker-inbound-agent
     volumes:
       - ./data:/home/jenkins
+      - ./data/agent:/home/jenkins/agent
     environment:
       - JENKINS_URL=http://jenkins.easypi.pro:8080
       - JENKINS_SECRET=***************************
