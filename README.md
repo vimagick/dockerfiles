@@ -55,7 +55,7 @@ A collection of delicious docker recipes.
 
 ## IoT
 
-- [x] hass
+- [x] ~hass~
 - [x] hbdg
 - [x] node-red :+1:
 - [x] mqtt-io-arm
@@ -349,6 +349,7 @@ A collection of delicious docker recipes.
 - [x] grafana/grafana
 - [x] hasura/graphql-engine
 - [x] haproxy
+- [x] homeassistant/home-assistant
 - [x] h2non/imaginary
 - [x] jellyfin/jellyfin
 - [x] jenkins

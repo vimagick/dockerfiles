@@ -1,9 +1,12 @@
 version: "3.8"
 services:
   hass:
-    image: vimagick/hass:debian
+    container_name: hass
+    image: homeassistant/home-assistant:stable
     volumes:
-      - ./data:/etc/hass
+      - ./data:/config
+      - /dev/bus/usb:/dev/bus/usb
+      - /var/run/dbus:/var/run/dbus
     network_mode: host
-    privileged: yes
+    privileged: true
     restart: unless-stopped
