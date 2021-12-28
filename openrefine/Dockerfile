@@ -2,7 +2,7 @@
 # Dockerfile for openrefine
 #
 
-FROM openjdk:11
+FROM openjdk:17-bullseye
 MAINTAINER EasyPi Software Foundation
 
 ENV OPENREFINE_VERSION=3.5.1
@@ -19,4 +19,3 @@ WORKDIR /data
 EXPOSE 3333
 
 ENTRYPOINT ["/app/refine"]
-CMD ["-i", "0.0.0.0", "-d", "/data"]
