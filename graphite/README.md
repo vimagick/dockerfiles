@@ -7,6 +7,8 @@ graphite
 - Chew bubblegum.
 - Make it easy to store and graph metrics.
 
+![](https://github.com/graphite-project/graphite-web/raw/master/webapp/content/img/overview.png)
+
 ## docker-compose.yml
 
 ```yaml

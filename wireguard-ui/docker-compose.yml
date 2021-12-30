@@ -1,0 +1,16 @@
+version: "3"
+services:
+  wgui:
+    image: ngoduykhanh/wireguard-ui
+    command: ["-bind-address", "0.0.0.0:5000"]
+    volumes:
+      - ./data:/app/db
+      - /etc/wireguard:/etc/wireguard
+    environment:
+      - WGUI_USERNAME=admin
+      - WGUI_PASSWORD=admin
+      - SESSION_SECRET=141a0668-fd9b-4f4e-b5d0-1b0aa8202c5b
+    network_mode: host
+    cap_add:
+      - NET_ADMIN
+    restart: unless-stopped
