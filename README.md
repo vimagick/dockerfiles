@@ -306,6 +306,7 @@ A collection of delicious docker recipes.
 - [x] docker.bintray.io/jfrog/artifactory-oss
 - [x] jeffail/benthos
 - [x] tutum/builder
+- [x] calendso/calendso
 - [x] browserless/chrome
 - [x] certbot
 - [x] codercom/code-server

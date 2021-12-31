@@ -1,0 +1,48 @@
+version: "3.8"
+
+x-env-vars: &env-vars
+  POSTGRES_USER: calendso
+  POSTGRES_PASSWORD: calendso
+  POSTGRES_DB: calendso
+  DATABASE_URL: postgresql://calendso:calendso@postgres:5432/calendso
+  BASE_URL: http://localhost:3000
+  NEXT_PUBLIC_APP_URL: http://localhost:3000
+  EMAIL_FROM: user@gmail.com
+  EMAIL_SERVER_HOST: smtp.gmail.com
+  EMAIL_SERVER_PORT: 587
+  EMAIL_SERVER_USER: user
+  EMAIL_SERVER_PASSWORD: ******
+  CALENDSO_ENCRYPTION_KEY: 74964341d4f1fa985943ad438f8a9ff8
+  JWT_SECRET: 46ae96b5c068058a3dbe3235966f157f
+  NODE_ENV: production
+
+services:
+
+  calendso:
+    image: calendso/calendso
+    ports:
+      - "3000:3000"
+    environment:
+      <<: *env-vars
+    depends_on:
+      - postgres
+    restart: unless-stopped
+
+  postgres:
+    image: postgres:14-alpine
+    volumes:
+      - ./data:/var/lib/postgresql/data
+    environment:
+      <<: *env-vars
+    restart: unless-stopped
+
+  studio:
+    image: calendso/calendso
+    command: [npx, prisma, studio]
+    ports:
+      - "5555:5555"
+    environment:
+      <<: *env-vars
+    depends_on:
+      - postgres
+    restart: unless-stopped
