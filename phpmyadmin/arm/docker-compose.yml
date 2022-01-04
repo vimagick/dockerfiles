@@ -1,19 +1,9 @@
-phpmyadmin:
-  image: easypi/phpmyadmin-arm
-  ports:
-    - "8080:80"
-  environment:
-    - PMA_HOST=mysql
-    - PMA_PORT=3306
-  links:
-    - mysql
-  restart: always
-
-mysql:
-  image: easypi/mariadb-arm
-  ports:
-    - "3306:3306"
-  environment:
-    - MYSQL_ROOT_PASSWORD=root
-    - MYSQL_DATABASE=wordpress
-  restart: always
+version: "3.8"
+services:
+  phpmyadmin:
+    image: easypi/phpmyadmin-arm64
+    ports:
+      - "8080:80"
+    environment:
+      - PMA_ARBITRARY=1
+    restart: unless-stopped

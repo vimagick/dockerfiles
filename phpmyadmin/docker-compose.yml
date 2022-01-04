@@ -1,8 +1,9 @@
-phpmyadmin:
-  image: phpmyadmin/phpmyadmin
-  ports:
-    - "8080:80"
-  environment:
-    - PMA_HOST=dbhost
-    - PMA_PORT=3306
-  restart: always
+version: "3.8"
+services:
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    ports:
+      - "8080:80"
+    environment:
+      - PMA_ARBITRARY=1
+    restart: unless-stopped
