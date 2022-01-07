@@ -8,13 +8,16 @@ redis
 ## docker-compose.yml
 
 ```yaml
-redis:
-  image: redis:alpine
-  ports:
-    - "127.0.0.1:6379:6379"
-  volumes:
-    - ./data:/data
-  restart: always
+version: "3.8"
+services:
+  redis:
+    image: redis:6-alpine
+    command: --save 900 1
+    ports:
+      - "6379:6379"
+    volumes:
+      - ./data:/data
+    restart: unless-stopped
 ```
 
 [1]: https://redis.io/

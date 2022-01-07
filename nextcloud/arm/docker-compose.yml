@@ -3,7 +3,7 @@ version: "3.8"
 services:
 
   nextcloud:
-    image: arm32v7/nextcloud:22
+    image: nextcloud:stable
     ports:
       - "8080:80"
     volumes:
@@ -13,18 +13,25 @@ services:
       - POSTGRES_DB=nextcloud
       - POSTGRES_USER=nextcloud
       - POSTGRES_PASSWORD=nextcloud
+      - REDIS_HOST=redis
     depends_on:
       - postgres
+      - redis
     restart: unless-stopped
 
   postgres:
-    image: arm32v7/postgres:13-alpine
-    ports:
-      - "5432:5432"
+    image: postgres:14-alpine
     volumes:
       - ./data/postgres:/var/lib/postgresql/data
     environment:
       - POSTGRES_USER=nextcloud
       - POSTGRES_PASSWORD=nextcloud
       - POSTGRES_DB=nextcloud
+    restart: unless-stopped
+
+  redis:
+    image: redis:6-alpine
+    command: --save 900 1
+    volumes:
+      - ./data/redis:/data
     restart: unless-stopped
