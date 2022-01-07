@@ -1,0 +1,34 @@
+#
+# See: https://github.com/tinode/chat/blob/master/docker/README.md
+#
+
+version: "3.8"
+
+services:
+
+  tinode:
+    image: tinode/tinode
+    ports:
+      - "6060:6060"
+    environment:
+      STORE_USE_ADAPTER: "mysql"
+      PPROF_URL: "/pprof"
+      WAIT_FOR: "mysql:3306"
+      TNPG_PUSH_ENABLED: "false"
+      FCM_PUSH_ENABLED: "false"
+      FCM_API_KEY: "AIzaSyD6X4ULR-RUsobvs1zZ2bHdJuPz39q2tbQ"
+      FCM_APP_ID: "1:114126160546:web:aca6ea2981feb81fb44dfb"
+      FCM_PROJECT_ID: "tinode-1000"
+      FCM_SENDER_ID: 114126160546
+      FCM_VAPID_KEY: "BOgQVPOMzIMXUpsYGpbVkZoEBc0ifKY_f2kSU5DNDGYI6i6CoKqqxDd7w7PJ3FaGRBgVGJffldETumOx831jl58"
+    depends_on:
+      - mysql
+    restart: unless-stopped
+
+  mysql:
+    image: mariadb:10
+    volumes:
+      - ./data:/var/lib/mysql
+    environment:
+      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+    restart: unless-stopped
