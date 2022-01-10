@@ -20,18 +20,25 @@ RUN set -xe \
                           python3         \
                           python3-dev     \
     && curl -sSL https://bootstrap.pypa.io/get-pip.py | python3 \
-    && pip3 install --no-binary lxml         \
-                                aioxmpp      \
-                                appdirs      \
-                                cssselect    \
-                                keyring      \
-                                keyrings.alt \
-                                lxml         \
-                                minidb       \
-                                pyyaml       \
-                                requests     \
-                                chump        \
-                                urlwatch     \
+    && pip3 install --no-binary lxml           \
+                                aioxmpp        \
+                                appdirs        \
+                                beautifulsoup4 \
+                                chump          \
+                                cssbeautifier  \
+                                cssselect      \
+                                jsbeautifier   \
+                                keyring        \
+                                keyrings.alt   \
+                                lxml           \
+                                markdown2      \
+                                matrix_client  \
+                                minidb         \
+                                pushbullet.py  \
+                                pyppeteer      \
+                                pyyaml         \
+                                requests       \
+                                urlwatch       \
     && apk del build-base  \
                libffi-dev  \
                libxml2-dev \
