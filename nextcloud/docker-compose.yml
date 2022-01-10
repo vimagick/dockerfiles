@@ -7,7 +7,7 @@ services:
     ports:
       - "8080:80"
     volumes:
-      - ./data/nextcloud:/var/www/html/data
+      - ./data/nextcloud:/var/www/html
     environment:
       - POSTGRES_HOST=postgres
       - POSTGRES_DB=nextcloud
