@@ -1,40 +1,21 @@
+#
+# https://github.com/SeleniumHQ/docker-selenium/blob/trunk/docker-compose-v3-swarm.yml
+#
+# cluster:
+# - manger: 1  (4vCPU, 4GiB MEM)
+# - worker: 10 (8vCPU, 8GiB MEM)
+#
+
 version: '3.8'
 
 services:
 
   hub:
-    image: selenium/hub:3.141.59
+    image: selenium/hub:4
     ports:
+      - "4442:4442"
+      - "4443:4443"
       - "4444:4444"
-    volumes:
-      - /dev/shm:/dev/shm
-    environment:
-      - JAVA_OPTS=-Xmx2g
-      - GRID_TIMEOUT=200
-      - GRID_BROWSER_TIMEOUT=180
-      - GRID_CLEAN_UP_CYCLE=5000
-      - GRID_MAX_SESSION=9999
-    deploy:
-      replicas: 1
-      placement:
-        constraints:
-          - node.role == manager
-      restart_policy:
-        condition: on-failure
-
-  firefox:
-    image: selenium/node-firefox:3.141.59
-    entrypoint: bash -c 'REMOTE_HOST=http://$$HOSTNAME:5555 /opt/bin/entry_point.sh'
-    volumes:
-      - /dev/shm:/dev/shm
-    environment:
-      - HUB_HOST=hub
-      - HUB_PORT=4444
-      - NODE_MAX_INSTANCES=4
-      - NODE_MAX_SESSION=4
-      - NODE_UNREGISTER_IF_STILL_DOWN_AFTER=30000
-    depends_on:
-      - hub
     deploy:
       replicas: 1
       placement:
@@ -44,21 +25,27 @@ services:
         condition: on-failure
 
   chrome:
-    image: selenium/node-chrome:3.141.59
-    entrypoint: bash -c 'REMOTE_HOST=http://$$HOSTNAME:5555 /opt/bin/entry_point.sh'
+    image: selenium/node-chrome:4
+    entrypoint: bash -c 'SE_OPTS="--host $$HOSTNAME" /opt/bin/entry_point.sh'
     volumes:
-      - /dev/shm:/dev/shm
+      - type: tmpfs
+        target: /dev/shm
+        tmpfs:
+          size: 2147483648 # numfmt --from=iec 2G
     environment:
-      - HUB_HOST=hub
-      - HUB_PORT=4444
-      - NODE_MAX_INSTANCES=8
-      - NODE_MAX_SESSION=8
-      - NODE_UNREGISTER_IF_STILL_DOWN_AFTER=30000
+      - SE_EVENT_BUS_HOST=hub
+      - SE_EVENT_BUS_PUBLISH_PORT=4442
+      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
+      - SE_NODE_OVERRIDE_MAX_SESSIONS=true
+      - SE_NODE_MAX_SESSIONS=8
+      - SE_NODE_SESSION_TIMEOUT=180
+      - START_XVFB=true
     depends_on:
       - hub
     deploy:
-      replicas: 8
+      replicas: 10
       placement:
+        max_replicas_per_node: 1
         constraints:
           - node.role == worker
       restart_policy:
