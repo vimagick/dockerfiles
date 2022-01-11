@@ -3,17 +3,14 @@ version: '3.8'
 services:
 
   hub:
-    image: selenium/hub:3.141.59
+    image: selenium/hub:4
     ports:
+      - "4442:4442"
+      - "4443:4443"
       - "4444:4444"
-    environment:
-      - JAVA_OPTS=-Xmx512m
-      - GRID_TIMEOUT=60
-      - GRID_BROWSER_TIMEOUT=30
     healthcheck:
       test: ["CMD", "/opt/bin/check-grid.sh", "--host", "127.0.0.1", "--port", "4444"]
       interval: 15s
       timeout: 30s
       retries: 5
-    shm_size: 2gb
     restart: unless-stopped

@@ -40,6 +40,8 @@ services:
       - SE_NODE_MAX_SESSIONS=8
       - SE_NODE_SESSION_TIMEOUT=180
       - START_XVFB=true
+      - VNC_NO_PASSWORD=1
+      - VNC_VIEW_ONLY=1
     depends_on:
       - hub
     deploy:

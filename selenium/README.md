@@ -8,73 +8,9 @@ Watch [this][2] video to get started.
 
 ## Server
 
-docker-compose.yml
-
-```yaml
-firefox:
-  image: selenium/standalone-firefox-debug
-  ports:
-    - "4444:4444"
-    - "5900:5900"
-  environment:
-    - JAVA_OPTS=-Xmx512m
-  restart: always
-```
-
-docker-compose-grid.yml
-
-```yaml
-hub:
-  image: selenium/hub
-  container_name: hub
-  ports:
-    - "4444:4444"
-  environment:
-    - GRID_TIMEOUT=60
-    - GRID_BROWSER_TIMEOUT=30
-  restart: always
-
-chrome:
-  image: selenium/node-chrome
-  container_name: chrome
-  ports:
-    - "5555"
-  links:
-    - hub
-  restart: always
-
-firefox:
-  image: selenium/node-firefox
-  container_name: firefox
-  ports:
-    - "5555"
-  links:
-    - hub
-  restart: always
-```
-
-> Access grid console at <http://127.0.0.1:4444/grid/console>
-
-docker-compose-node.yml
-
-```yaml
-firefox:
-  image: selenium/node-firefox
-  ports:
-    - "5555:5555"
-    - "5900:5900"
-  environment:
-    - JAVA_OPTS=-Xmx512m
-    - NODE_MAX_INSTANCES=2
-    - NODE_MAX_SESSION=2
-    - SE_OPTS=-host 5.6.7.8 -port 5555
-    - HUB_PORT_4444_TCP_ADDR=1.2.3.4
-    - HUB_PORT_4444_TCP_PORT=4444
-  restart: always
-```
-
 ```bash
 $ docker-compose up -d
+$ curl http://127.0.0.1:4444/
 ```
 
 > Another way to start selenium server:
@@ -154,7 +90,7 @@ driver.quit();
 
 ```bash
 # VNC
-$ open vnc://:secret@127.0.0.1:5900
+$ open vnc://127.0.0.1:5900
 $ open http://127.0.0.1:7900
 
 # PYTHON

@@ -3,14 +3,21 @@ version: '3.8'
 services:
 
   chrome:
-    image: selenium/node-chrome:3.141.59
+    image: selenium/node-chrome:4
     ports:
-      - "5555:5555"
+      - "5900:5900"
+      - "7900:7900"
     environment:
-      - HUB_HOST=10.0.0.21
-      - HUB_PORT=4444
-      - REMOTE_HOST=http://10.0.0.22:5555
-      - NODE_MAX_INSTANCES=2
-      - NODE_MAX_SESSION=2
+      - SE_EVENT_BUS_HOST=hub
+      - SE_EVENT_BUS_PUBLISH_PORT=4442
+      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
+      - SE_NODE_OVERRIDE_MAX_SESSIONS=true
+      - SE_NODE_MAX_SESSIONS=4
+      - SE_NODE_SESSION_TIMEOUT=180
+      - START_XVFB=true
+      - VNC_NO_PASSWORD=1
+      - VNC_VIEW_ONLY=1
+    extra_hosts:
+      - hub:x.x.x.x
     shm_size: 2gb
     restart: unless-stopped
