@@ -1,10 +1,12 @@
-prosody:
-  image: easypi/prosody-arm
-  ports:
-    - "5222:5222"
-    - "5280:5280"
-  volumes:
-    - ./data/etc:/etc/prosody:ro
-    - ./data/log:/var/log/prosody:rw
-    - ./data/var:/var/lib/prosody:rw
-  restart: unless-stopped
+version: "3.8"
+services:
+  prosody:
+    image: easypi/prosody-arm
+    ports:
+      - "5222:5222"
+      - "5280:5280"
+    volumes:
+      - ./data/etc:/etc/prosody:ro
+      - ./data/log:/var/log/prosody:rw
+      - ./data/var:/var/lib/prosody:rw
+    restart: unless-stopped
