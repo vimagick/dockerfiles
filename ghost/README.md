@@ -6,17 +6,19 @@ ghost
 ## docker-compose.yml
 
 ```yaml
-ghost:
-  image: ghost:alpine
-  ports:
-    - "127.0.0.1:2368:2368"
-  volumes:
-    - ./data:/var/lib/ghost/content
-  environment:
-    - url=https://blog.easypi.duckdns.org
-    - database__client=sqlite3
-    - database__connection__filename=/var/lib/ghost/content/data/ghost.db
-  restart: unless-stopped
+version: "3.8"
+services:
+  ghost:
+    image: ghost:alpine
+    ports:
+      - "2368:2368"
+    volumes:
+      - ./data:/var/lib/ghost/content
+    environment:
+      - url=https://blog.easypi.duckdns.org
+      - database__client=sqlite3
+      - database__connection__filename=/var/lib/ghost/content/data/ghost.db
+    restart: unless-stopped
 ```
 
 ## Up and Running
