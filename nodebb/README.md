@@ -16,6 +16,7 @@ services:
 
   nodebb:
     image: vimagick/nodebb
+    init: true
     ports:
       - "4567:4567"
     volumes:

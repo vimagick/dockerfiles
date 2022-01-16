@@ -18,14 +18,14 @@ RUN set -ex \
                   icu \
                   imagemagick \
                   nodejs \
-                  nodejs-npm \
+                  npm \
                   openssl \
     && apk add -t TMP build-base \
                       curl \
                       git \
                       icu-dev \
                       openssl-dev \
-                      python \
+                      python3 \
                       tar \
     && curl -sSL $BB_URL | tar xz --strip 1 \
     && ./nodebb setup \
