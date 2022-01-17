@@ -7,40 +7,13 @@ nodebb
 
 Read the [docs][2].
 
-## docker-compose.yml
-
-```yaml
-version: "3.8"
-
-services:
-
-  nodebb:
-    image: vimagick/nodebb
-    init: true
-    ports:
-      - "4567:4567"
-    volumes:
-      - ./data:/var/lib/nodebb
-      - /usr/src/nodebb/build
-      - /usr/src/nodebb/node_modules
-      - /usr/src/nodebb/public/uploads
-    depends_on:
-      - redis
-    restart: unless-stopped
-
-  redis:
-    image: redis:6-alpine
-    volumes:
-      - ./data:/data
-    restart: unless-stopped
-```
-
 ## up and running
 
 ```bash
+$ docker-compose run --rm --service-ports nodebb bash
+>>> ./nodebb --config config/config.json setup
+>>> exit
 $ docker-compose up -d
-$ vim data/config.json
-$ docker-compose restart nodebb
 $ firefox http://localhost:4567
 ```
 
@@ -50,7 +23,7 @@ $ firefox http://localhost:4567
 
 ```bash
 $ docker-compose pull nodebb
-$ docker-compose exec nodebb sh
+$ docker-compose exec nodebb bash
 >>> ./nodebb upgrade
 >>> exit
 ```
