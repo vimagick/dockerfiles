@@ -32,6 +32,9 @@ $ curl http://127.0.0.1:8080/nifi/
 $ curl http://127.0.0.1:18080/nifi-registry/
 ```
 
-> I copied config files from a temporary container. Maybe there are better ways.
+Maybe there are better ways to populate a volume:
+
+- named volumes
+- anonymous volumes
 
 [1]: https://nifi.apache.org
