@@ -1,7 +1,9 @@
-phpbb:
-  image: vimagick/phpbb
-  ports:
-    - "8000:80"
-  volumes:
-    - ./data:/var/www/store
-  restart: always
+version: "3.8"
+services:
+  phpbb:
+    image: vimagick/phpbb
+    ports:
+      - "8000:80"
+    volumes:
+      - ./data:/var/www/store
+    restart: unless-stopped

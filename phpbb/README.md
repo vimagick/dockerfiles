@@ -12,13 +12,15 @@ And it has no volumes, please use phpBB control panel to backup database.
 ## docker-compose.yml
 
 ```yaml
-phpbb:
-  image: vimagick/phpbb
-  ports:
-    - "8000:80"
-  volumes:
-    - ./data:/var/www/store
-  restart: always
+version: "3.8"
+services:
+  phpbb:
+    image: vimagick/phpbb
+    ports:
+      - "8000:80"
+    volumes:
+      - ./data:/var/www/store
+    restart: unless-stopped
 ```
 
 # up and running
