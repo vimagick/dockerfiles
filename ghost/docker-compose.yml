@@ -21,6 +21,7 @@ services:
     environment:
       - BACKUP_FILENAME=backup-ghost-%Y-%m-%dT%H-%M-%S.tar.gz
       - BACKUP_PRUNING_PREFIX=backup-ghost-
+      - BACKUP_LATEST_SYMLINK=backup-ghost-latest.tar.gz
       - BACKUP_RETENTION_DAYS=30
     volumes:
       - ./data:/backup/ghost:ro

@@ -3,16 +3,16 @@ discuz
 
 [Discuz!][1] is an internet forum software written in PHP and developed by a chinese company.
 
-:-1: Discuz! is not a open source software.
+:-1: Discuz! is not a open source software. :skull:
 
 - Initial release: March 2002
 - Stable release: X3.2 (September 23, 2013; 2 years ago)
 - License: proprietary (costs about ¥3000)
 
-:+1: Try open source softwares:
+:+1: Try open source softwares: :angel:
 
 - [discourse](https://hub.docker.com/r/discourse/discourse/)
-- [nodebb](https://hub.docker.com/r/vimagick/phpbb/)
+- [nodebb](https://hub.docker.com/r/vimagick/nodebb/)
 - [phpbb](https://hub.docker.com/r/vimagick/phpbb/)
 
 ## docker-compose.yml

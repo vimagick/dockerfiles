@@ -190,7 +190,7 @@ A collection of delicious docker recipes.
 
 ## Web
 
-- [x] discuz :cn:
+- [x] ~discuz~ :cn: :skull:
 - [x] django-cms
 - [x] dokuwiki :+1:
 - [x] dokuwiki-arm :+1:
