@@ -1,7 +1,9 @@
-monit:
-  image: vimagick/monit
-  volumes:
-    - ./data:/etc/monit
-  pid: host
-  net: host
-  restart: always
+version: "3.8"
+services:
+  monit:
+    image: vimagick/monit
+    volumes:
+      - ./data:/etc/monit
+    pid: host
+    net: host
+    restart: unless-stopped

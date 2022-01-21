@@ -24,13 +24,15 @@ directories and filesystems on a Unix system.
 ## docker-compose.yml
 
 ```yaml
-monit:
-  image: vimagick/monit
-  volumes:
-    - ./data:/etc/monit
-  pid: host
-  net: host
-  restart: always
+version: "3.8"
+services:
+  monit:
+    image: vimagick/monit
+    volumes:
+      - ./data:/etc/monit
+    pid: host
+    net: host
+    restart: unless-stopped
 ```
 
 > The control file `/etc/monit/monitrc` must have permissions no more than
