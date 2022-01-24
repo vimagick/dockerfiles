@@ -1,5 +1,7 @@
-dokuwiki:
-  image: vimagick/dokuwiki
-  ports:
-    - "8000:80"
-  restart: always
+version: "3.8"
+services:
+  dokuwiki:
+    image: vimagick/dokuwiki
+    ports:
+      - "8000:80"
+    restart: unless-stopped

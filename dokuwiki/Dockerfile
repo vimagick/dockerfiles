@@ -13,13 +13,14 @@ RUN set -xe \
         gzip \
         nginx \
         openssl \
-        php7-fpm \
-        php7-json \
-        php7-openssl \
-        php7-pdo_sqlite \
-        php7-sqlite3 \
-        php7-xml \
-        php7-zlib \
+        php8-fpm \
+        php8-json \
+        php8-openssl \
+        php8-pdo_sqlite \
+        php8-session \
+        php8-sqlite3 \
+        php8-xml \
+        php8-zlib \
         tar \
     && wget -O- http://download.dokuwiki.org/src/dokuwiki/dokuwiki-stable.tgz | tar xz --strip 1 \
     && chown -R nobody:nobody .
@@ -37,4 +38,4 @@ VOLUME /var/www/html/conf \
 
 EXPOSE 80
 
-CMD php-fpm7 && nginx -g 'daemon off;'
+CMD php-fpm8 && nginx -g 'daemon off;'
