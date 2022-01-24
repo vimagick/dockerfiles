@@ -9,6 +9,7 @@ dokuwiki
 
 ```bash
 $ docker run -d -p 8000:80 --restart always --name dokuwiki vimagick/dokuwiki
+$ curl http://localhost:8000/install.php
 ```
 
 ## Backup
