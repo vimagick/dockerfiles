@@ -1,16 +1,20 @@
+#
+# https://github.com/amancevice/docker-superset/blob/main/examples/celery/docker-compose.yml
+#
+
 version: '3.8'
 
 services:
 
   redis:
-    image: redis:5-alpine
+    image: redis:6-alpine
     command: --save 900 1
     volumes:
       - ./data/redis:/data
     restart: unless-stopped
 
   postgres:
-    image: postgres:12-alpine
+    image: postgres:14-alpine
     volumes:
       - ./data/postgres:/var/lib/postgresql/data
     environment:
@@ -20,7 +24,7 @@ services:
     restart: unless-stopped
 
   superset:
-    image: amancevice/superset:1.1.0
+    image: amancevice/superset:1.4.0
     ports:
       - "8088:8088"
     volumes:
@@ -33,7 +37,7 @@ services:
     restart: unless-stopped
 
   worker:
-    image: amancevice/superset:1.1.0
+    image: amancevice/superset:1.4.0
     command: celery worker
     volumes:
       - ./data/superset:/etc/superset
