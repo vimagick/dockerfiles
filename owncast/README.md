@@ -5,6 +5,22 @@ owncast
 existing popular broadcasting software. Point your live stream at a server you
 personally control and regain ownership over your content.
 
+## Up and Running
+
+```yaml
+version: "3.8"
+services:
+  owncast:
+    image: gabekangas/owncast
+    command: /app/owncast -backupdir=/data -database=/data/database.db
+    ports:
+      - "1935:1935"
+      - "8080:8080"
+    volumes:
+      - ./data:/data
+    restart: unless-stopped
+```
+
 ## Using with OBS / Streamlabs
 
 OBS is a pretty good piece of free software that will get you streaming from your own computer right away.

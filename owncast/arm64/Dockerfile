@@ -2,18 +2,17 @@
 # Dockerfile for owncast-arm
 #
 
-FROM arm32v7/alpine:3
+FROM alpine:3
 MAINTAINER EasyPi Software Foundation
 
 ENV OWNCAST_VERSION=0.0.10
-ENV OWNCAST_FILE=owncast-${OWNCAST_VERSION}-linux-arm7.zip
+ENV OWNCAST_FILE=owncast-${OWNCAST_VERSION}-linux-arm64.zip
 ENV OWNCAST_URL=https://github.com/owncast/owncast/releases/download/v${OWNCAST_VERSION}/${OWNCAST_FILE}
 
 WORKDIR /app
 
 RUN set -xe \
-  && apk add --no-cache curl ffmpeg ffmpeg-libs \
-  && ln -s /lib/libc.musl-armv7.so.1 /lib/ld-linux-armhf.so.3 \
+  && apk add --no-cache curl ffmpeg ffmpeg-libs gcompat \
   && curl -sSLO ${OWNCAST_URL} \
   && unzip ${OWNCAST_FILE} \
   && rm ${OWNCAST_FILE}
