@@ -1,6 +1,8 @@
 OpenRefine
 ==========
 
+> ⚠️ THIS PROJECT WAS MOVED TO: https://github.com/EasyPi/docker-openrefine
+
 ![](https://badge.imagelayers.io/vimagick/openrefine:latest.svg)
 
 [OpenRefine][1] (formerly Google Refine) is a powerful tool for working with messy

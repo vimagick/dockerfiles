@@ -1,6 +1,8 @@
 urlwatch
 ========
 
+> ⚠️ THIS PROJECT WAS MOVED TO: https://github.com/EasyPi/docker-urlwatch
+
 [urlwatch][1] is a tool for monitoring webpages for updates.
 
 ## docker-compose.yml
