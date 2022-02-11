@@ -10,18 +10,20 @@ other words, it can detect motion.
 ## docker-compose.yml
 
 ```yaml
-motion:
-  image: easypi/motion-arm
-  ports:
-    - "8080:8080"
-    - "8081:8081"
-  volumes:
-    - ./motion.conf:/etc/motion/motion.conf
-    - ./data:/var/lib/motion
-    - /etc/localtime:/etc/localtime
-  devices:
-    - /dev/video0:/dev/video0
-  restart: always
+version: "3.8"
+services:
+  motion:
+    image: easypi/motion-arm
+    ports:
+      - "8080:8080"
+      - "8081:8081"
+    volumes:
+      - ./data/etc/motion.conf:/etc/motion/motion.conf
+      - ./data/var:/var/lib/motion
+      - /etc/localtime:/etc/localtime
+    devices:
+      - /dev/video0:/dev/video0
+    restart: unless-stopped
 ```
 
 You can edit `motion.conf` to customize motion.
