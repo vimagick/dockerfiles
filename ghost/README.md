@@ -12,7 +12,6 @@ services:
 
   ghost:
     image: ghost:alpine
-    container_name: ghost
     ports:
       - "2368:2368"
     volumes:
@@ -25,10 +24,14 @@ services:
 
   backup:
     image: offen/docker-volume-backup
-    container_name: backup
     environment:
+      # AWS_BUCKET_NAME=backups
+      # AWS_S3_PATH=ghost
+      # AWS_ACCESS_KEY_ID=******
+      # AWS_SECRET_ACCESS_KEY=******
       - BACKUP_FILENAME=backup-ghost-%Y-%m-%dT%H-%M-%S.tar.gz
       - BACKUP_PRUNING_PREFIX=backup-ghost-
+      - BACKUP_LATEST_SYMLINK=backup-ghost-latest.tar.gz
       - BACKUP_RETENTION_DAYS=30
     volumes:
       - ./data:/backup/ghost:ro
