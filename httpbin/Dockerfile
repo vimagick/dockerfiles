@@ -2,11 +2,14 @@
 # Dockerfile for httpbin
 #
 
-FROM vimagick/python:3
-MAINTAINER kev <noreply@easypi.pro>
+FROM alpine:3
+MAINTAINER EasyPi Software Foundation
 
-RUN pip install --no-cache-dir gunicorn httpbin
+RUN set -xe \
+ && apk add --no-cache build-base libffi-dev python3 python3-dev \
+ && python3 -m ensurepip \
+ && pip3 install --no-cache-dir gunicorn httpbin \
+ && apk del build-base libffi-dev python3-dev
 
-EXPOSE 80
-
-CMD ["gunicorn", "--bind", "0.0.0.0:80", "httpbin:app"]
+EXPOSE 8000
+CMD ["gunicorn", "--bind", "0.0.0.0:8000", "httpbin:app"]
