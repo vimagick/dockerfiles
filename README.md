@@ -360,6 +360,7 @@ A collection of delicious docker recipes.
 - [x] wurstmeister/kafka
 - [x] mailgun/kafka-pixy
 - [x] devopsfaith/krakend
+- [x] heartexlabs/label-studio
 - [x] mailhog/mailhog
 - [x] tootsuite/mastodon
 - [x] getmeili/meilisearch :mag:

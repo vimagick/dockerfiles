@@ -1,0 +1,32 @@
+version: "3.8"
+
+services:
+
+  app:
+    image: heartexlabs/label-studio
+    ports:
+      - "8080:8080"
+    environment:
+      - DJANGO_DB=default
+      - POSTGRE_NAME=postgres
+      - POSTGRE_USER=postgres
+      - POSTGRE_PASSWORD=postgres
+      - POSTGRE_PORT=5432
+      - POSTGRE_HOST=db
+    volumes:
+      - ./data/app:/label-studio/data
+    depends_on:
+      - db
+    stdin_open: true
+    tty: true
+    restart: unless-stopped
+
+  db:
+    image: postgres:alpine-14
+    volumes:
+      - ./data/postgres:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=postgres
+    restart: unless-stopped
