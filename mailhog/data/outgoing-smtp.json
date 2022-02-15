@@ -1,0 +1,11 @@
+{
+  "gmail": {
+    "name": "gmail",
+    "host": "smtp.gmail.com",
+    "port": "587",
+    "email": "username@gmail.com",
+    "username": "username",
+    "password": "password",
+    "mechanism": "PLAIN"
+  }
+}

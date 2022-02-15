@@ -4,10 +4,11 @@ services:
     image: mailhog/mailhog
     ports:
       - "1025:1025"
-      - "9025:8025"
+      - "8025:8025"
     volumes:
       - ./data:/data
     environment:
       - MH_STORAGE=maildir
       - MH_MAILDIR_PATH=/data
+      - MH_OUTGOING_SMTP=/data/outgoing-smtp.json
     restart: unless-stopped

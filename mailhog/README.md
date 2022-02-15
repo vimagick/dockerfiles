@@ -7,7 +7,7 @@ mailhog
 - View messages in the web UI, or retrieve them with the JSON API
 - Optionally release messages to real SMTP servers for delivery
 
-```
+```bash
 $ mkdir data
 $ chown 1000:1000 data
 $ docker-compose up -d
