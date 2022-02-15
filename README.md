@@ -398,6 +398,7 @@ A collection of delicious docker recipes.
 - [x] gabekangas/owncast
 - [x] owncloud
 - [x] dpage/pgadmin4
+- [x] phplist/phplist
 - [x] phpmyadmin
 - [x] pihole/pihole
 - [x] mcr.microsoft.com/playwright

@@ -1,0 +1,50 @@
+version: "3.8"
+
+services:
+
+  phplist:
+    image: phplist/phplist
+    ports:
+      - "8000:80"
+    volumes:
+      - ./data/phplist/config.php:/var/www/phpList3/config.php
+      - ./data/phplist/images:/var/www/phpList3/public_html/images
+      - ./data/phplist/plugins:/var/www/phpList3/public_html/lists/admin/plugins
+    environment:
+      DB_HOST: mysql
+      DB_NAME: phplist
+      DB_USERNAME: phplist
+      DB_PASSWORD: phplist
+      ADMIN_NAME: admin
+      ADMIN_PASSWORD: admin
+      ADMIN_EMAIL: admin@gmail.com
+      SMTP_HOST: mailhog
+      SMTP_PORT: 1025
+      SMTP_SECURE: false
+    depends_on:
+      - mysql
+      - mailhog
+    restart: unless-stopped
+
+  mailhog:
+    image: mailhog/mailhog
+    ports:
+      - "1025:1025"
+      - "8025:8025"
+    volumes:
+      - ./data/mailhog:/data
+    environment:
+      MH_STORAGE: maildir
+      MH_MAILDIR_PATH: /data
+    restart: unless-stopped
+
+  mysql:
+    image: mariadb:10
+    volumes:
+      - ./data/mysql:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: phplist
+      MYSQL_USER: phplist
+      MYSQL_PASSWORD: phplist
+    restart: unless-stopped
