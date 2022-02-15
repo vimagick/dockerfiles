@@ -23,13 +23,16 @@ A very fast network logon cracker which support many different services.
 ## docker-compose.yml
 
 ```yaml
-hydra:
-  image: vimagick/hydra
-  command: sleep infinity
-  volumes:
-    - ./data:/data
-  working_dir: /data
-  restart: unless-stopped
+version: "3.8"
+services:
+  hydra:
+    image: vimagick/hydra
+    entrypoint: sleep
+    command: infinity
+    volumes:
+      - ./data:/data
+    working_dir: /data
+    restart: unless-stopped
 ```
 
 # up and running
@@ -47,9 +50,9 @@ $ docker-compose exec hydra bash
 >>> hydra -l admin -P passwd.txt -o hacked.txt http://www.target.com/login.php
     [DATA] max 1 task per 1 server, overall 64 tasks, 3 login try (l:1/p:1), ~0 tries per task
     [DATA] attacking service http-get on port 2812
-    [2812][http-get] host: ss.easypi.info   login: admin   password: admin
+    [2812][http-get] host: www.target.com   login: admin   password: admin
     1 of 1 target successfully completed, 1 valid password found
 
 >>> cat hacked.txt
-    [2812][http-get] host: ss.easypi.info   login: admin   password: admin
+    [2812][http-get] host: www.target.com   login: admin   password: admin
 ```
