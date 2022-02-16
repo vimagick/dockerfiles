@@ -1,7 +1,7 @@
 youtube-dl
 ==========
 
-[`youtube-dl`][1] is a small command-line program to download videos from
+[youtube-dl][1] is a small command-line program to download videos from
 <https://www.youtube.com/> and a few more sites.
 
 ## Tutorial

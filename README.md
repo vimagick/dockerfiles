@@ -158,6 +158,7 @@ A collection of delicious docker recipes.
 - [x] cmus-arm
 - [x] darkice :musical_note:
 - [x] deface
+- [x] dvr-scan :tv:
 - [x] editly :tv:
 - [x] ffmpeg
 - [x] ffmpeg-arm
@@ -180,7 +181,7 @@ A collection of delicious docker recipes.
 - [x] shoutcast :musical_note:
 - [x] tesseract
 - [x] vnc2flv
-- [x] youtube-dl
+- [x] youtube-dl :tv:
 - [x] youtube-worker :beetle:
 
 ## Audio
