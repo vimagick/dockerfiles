@@ -2,8 +2,8 @@
 # Dockerfile for tesseract CJK
 #
 
-FROM alpine
-MAINTAINER kev <noreply@easypi.pro>
+FROM alpine:3
+MAINTAINER EasyPi Software Foundation
 
 RUN set -xe \
     && apk add --no-cache \

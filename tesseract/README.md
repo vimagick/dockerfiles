@@ -13,8 +13,8 @@ Tesseract doesn't have a built-in GUI, but there are several available from the
 Quick Start
 -----------
 
-```
-$ alias tesseract='docker run --rm -v `pwd`:/data -w /data vimagick/tesseract'
+```bash
+$ alias tesseract='docker run --rm -u $(id -u):$(id -g) -v `pwd`:/data -w /data vimagick/tesseract'
 
 $ tesseract input.png output -l eng --psm 3
 $ cat output.txt
