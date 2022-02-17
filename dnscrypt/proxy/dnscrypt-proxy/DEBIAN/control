@@ -1,9 +1,0 @@
-Package: dnscrypt-proxy
-Version: 1.6.1-1
-Maintainer: noreply@easypi.info
-Depends:
-Homepage: https://dnscrypt.org/
-Architecture: armhf
-Priority: optional
-Section: net
-Description: A tool for securing communications between a client and a DNS resolver

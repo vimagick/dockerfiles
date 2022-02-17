@@ -1,0 +1,10 @@
+version: "3.8"
+services:
+  dnscrypt-proxy:
+    image: vimagick/dnscrypt-proxy
+    ports:
+      - "53:53/tcp"
+      - "53:53/udp"
+    volumes:
+      - ./data:/etc/dnscrypt-proxy
+    restart: unless-stopped

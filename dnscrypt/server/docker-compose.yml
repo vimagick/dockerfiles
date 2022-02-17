@@ -1,15 +1,13 @@
-dnscrypt-server:
-  image: jedisct1/dnscrypt-server
-  container_name: dnscrypt-server
-  # command: init -N easypi.pro -E 192.168.1.1:443 -M 0.0.0.0:9100 -A
-  ports:
-    - "443:443/tcp"
-    - "443:443/udp"
-    - "9100:9100/tcp"
-  volumes:
-    - ./data:/opt/encrypted-dns/etc/keys
-  ulimits:
-    nofile:
-      soft: 90000
-      hard: 90000
-  restart: unless-stopped
+version: "3.8"
+services:
+  dnscrypt-server:
+    image: jedisct1/dnscrypt-server
+    command: init -N easypi.duckdns.org -E 192.168.1.1:443 -M 0.0.0.0:9100 -A
+    ports:
+      - "443:443/tcp"
+      - "443:443/udp"
+      - "9100:9100/tcp"
+    volumes:
+      - ./data/keys:/opt/encrypted-dns/etc/keys
+      - ./data/lists:/opt/encrypted-dns/etc/lists
+    restart: unless-stopped
