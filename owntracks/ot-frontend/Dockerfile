@@ -2,14 +2,14 @@
 # Dockerfile for ot-frontend-arm
 #
 
-FROM arm32v7/node:10 AS build
+FROM node:14 AS build
 WORKDIR /usr/src/app
 RUN curl -sSL https://github.com/owntracks/frontend/archive/master.tar.gz | tar xz --strip-components=1
 RUN yarn install
 RUN yarn build
 
 
-FROM arm32v7/nginx:alpine
+FROM nginx:alpine
 MAINTAINER EasyPi Software Foundation
 
 COPY --from=build /usr/src/app/dist /usr/share/nginx/html
