@@ -428,6 +428,7 @@ A collection of delicious docker recipes.
 - [x] ansiblesemaphore/semaphore
 - [x] sentry
 - [x] atmoz/sftp
+- [x] quay.io/outline/shadowbox
 - [x] shlinkio/shlink
 - [x] snipe/snipe-it
 - [x] valeriansaliou/sonic

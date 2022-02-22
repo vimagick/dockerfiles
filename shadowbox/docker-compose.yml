@@ -1,0 +1,24 @@
+version: "3.8"
+services:
+  shadowbox:
+    image: quay.io/outline/shadowbox:stable
+    ports:
+      - "127.0.0.1:8081:8081/tcp"
+      - "8443:8443/tcp"
+      - "8443:8443/udp"
+    volumes:
+      - ./data/certs:/opt/outline-server/certs
+      - ./data/state:/opt/outline-server/state
+    environment:
+      - LOG_LEVEL=debug
+      - SB_STATE_DIR=/opt/outline-server/state
+      - SB_API_PORT=8081
+      - SB_API_PREFIX=easypi
+      # openssl req -x509 -nodes -days 365 -newkey rsa:2048 -subj '/CN=localhost' -keyout easypi.key -out easypi.crt
+      # openssl x509 -in easypi.crt -noout -sha256 -fingerprint | cut -d= -f2 | tr -d :
+      - SB_CERTIFICATE_FILE=/opt/outline-server/certs/easypi.crt
+      - SB_PRIVATE_KEY_FILE=/opt/outline-server/certs/easypi.key
+      - SB_METRICS_URL=
+      - SB_DEFAULT_SERVER_NAME=EasyPi
+    stop_signal: SIGKILL
+    restart: unless-stopped
