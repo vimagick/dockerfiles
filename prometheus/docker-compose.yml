@@ -3,7 +3,7 @@ version: "3.8"
 services:
 
   prometheus:
-    image: prom/prometheus:v2.31.1
+    image: prom/prometheus:v2.33.4
     command:
       - "--config.file=/etc/prometheus/prometheus.yml"
       - "--storage.tsdb.path=/var/lib/prometheus"
@@ -11,11 +11,25 @@ services:
       - "--web.console.templates=/usr/share/prometheus/consoles"
       - "--web.external-url=http://127.0.0.1:9090"
       - "--storage.tsdb.retention.time=1y"
+      - "--web.enable-lifecycle"
     ports:
       - "9090:9090"
     volumes:
-      - ./data/etc:/etc/prometheus
-      - ./data/var:/var/lib/prometheus
+      - ./data/prometheus/etc:/etc/prometheus
+      - ./data/prometheus/var:/var/lib/prometheus
+    restart: unless-stopped
+
+  alertmanager:
+    image: prom/alertmanager:v0.23.0
+    command:
+      - "--config.file=/etc/alertmanager/alertmanager.yml"
+      - "--storage.path=/var/lib/alertmanager"
+      - "--web.external-url=http://127.0.0.1:9093"
+    ports:
+      - "9093:9093"
+    volumes:
+      - ./data/alertmanager/etc:/etc/alertmanager
+      - ./data/alertmanager/var:/var/lib/alertmanager
     restart: unless-stopped
 
   graphite:
