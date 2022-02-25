@@ -1,0 +1,33 @@
+version: '3.8'
+services:
+  emailengine:
+    image: andris9/emailengine:v2
+    ports:
+      - '2525:2525'
+      - '3000:3000'
+    depends_on:
+      - redis
+    environment:
+      # see: https://emailengine.app/configuration
+      EENGINE_SETTINGS: >
+        {
+          "smtpServerEnabled": true,
+          "smtpServerPort": 2525,
+          "smtpServerHost": "0.0.0.0",
+          "smtpServerAuthEnabled": true,
+          "smtpServerPassword": "passw0rd"
+        }
+      EENGINE_SECRET: 'secret'
+      EENGINE_REDIS: 'redis://redis:6379/2'
+      EENGINE_WORKERS: 4
+      EENGINE_WORKERS_WEBHOOKS: 1
+    restart: unless-stopped
+
+  redis:
+    image: redis:6-alpine
+    command: --save 900 1
+    ports:
+      - "6379:6379"
+    volumes:
+      - ./data:/data
+    restart: unless-stopped
