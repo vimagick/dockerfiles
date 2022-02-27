@@ -487,6 +487,7 @@ __enter() {
 complete -F __enter enter
 ```
 
-## Stargazers over time
+## Star History
 
-[![Stargazers over time](https://starchart.cc/vimagick/dockerfiles.svg)](https://starchart.cc/vimagick/dockerfiles)
+[![Star History Chart](https://api.star-history.com/svg?repos=vimagick/dockerfiles&type=Timeline)](https://star-history.com/#vimagick/dockerfiles&Timeline)
+
