@@ -5,12 +5,12 @@
 FROM debian:bullseye
 MAINTAINER EasyPi Software Foundation
 
-ENV APP_VERSION=2.8.22
-ENV APP_ARCH=arm64
-ENV APP_FILE=semaphore_${APP_VERSION}_linux_${APP_ARCH}.deb
-ENV APP_URL=https://github.com/ansible-semaphore/semaphore
-ENV APP_PACKAGE_URL=${APP_URL}/releases/download/v${APP_VERSION}/${APP_FILE}
-ENV APP_WRAPPER_URL=${APP_URL}/raw/v${APP_VERSION}/deployment/docker/common/semaphore-wrapper
+ARG APP_VERSION=2.8.53
+ARG APP_ARCH=arm64
+ARG APP_FILE=semaphore_${APP_VERSION}_linux_${APP_ARCH}.deb
+ARG APP_URL=https://github.com/ansible-semaphore/semaphore
+ARG APP_PACKAGE_URL=${APP_URL}/releases/download/v${APP_VERSION}/${APP_FILE}
+ARG APP_WRAPPER_URL=${APP_URL}/raw/v${APP_VERSION}/deployment/docker/common/semaphore-wrapper
 
 RUN set -xe \
  && apt update \
