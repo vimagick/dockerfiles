@@ -4,8 +4,8 @@
 
 FROM alpine:3
 
-ENV TWEMPROXY_VERSION=0.4.1
-ENV TWEMPROXY_URL=https://github.com/twitter/twemproxy/archive/v${TWEMPROXY_VERSION}.tar.gz
+ENV TWEMPROXY_VERSION=0.5.0
+ENV TWEMPROXY_URL=https://github.com/twitter/twemproxy/releases/download/${TWEMPROXY_VERSION}/twemproxy-${TWEMPROXY_VERSION}.tar.gz
 ENV TWEMPROXY_HOME=/opt/twemproxy
 
 WORKDIR ${TWEMPROXY_HOME}
