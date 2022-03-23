@@ -1,0 +1,12 @@
+version: "3.8"
+services:
+  healthchecks:
+    image: healthchecks/healthchecks
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./data:/data
+    environment:
+      - DEBUG=False
+      - DB_NAME=/data/hc.db
+    restart: unless-stopped

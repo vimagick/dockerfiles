@@ -350,6 +350,7 @@ A collection of delicious docker recipes.
 - [x] grafana/grafana
 - [x] hasura/graphql-engine
 - [x] haproxy
+- [x] healthchecks/healthchecks
 - [x] homeassistant/home-assistant
 - [x] h2non/imaginary
 - [x] jellyfin/jellyfin
