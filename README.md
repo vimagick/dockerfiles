@@ -444,6 +444,7 @@ A collection of delicious docker recipes.
 - [x] tensorflow
     - [x] serving
 - [x] tile38/tile38
+- [x] traccar/traccar
 - [x] traefik
 - [x] trinodb/trino
 - [x] louislam/uptime-kuma
