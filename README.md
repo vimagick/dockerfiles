@@ -394,6 +394,7 @@ A collection of delicious docker recipes.
     - [x] ohmyform/ui
 - [x] osixia/openldap
 - [x] openresty/openresty
+- [x] opensearchproject/opensearch
 - [x] kylemanna/openvpn
 - [x] campbellsoftwaresolutions/osticket
 - [x] outlinewiki/outline
