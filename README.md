@@ -400,6 +400,7 @@ A collection of delicious docker recipes.
 - [x] outlinewiki/outline
 - [x] gabekangas/owncast
 - [x] owncloud
+- [x] chocobozzz/peertube
 - [x] dpage/pgadmin4
 - [x] phplist/phplist
 - [x] phpmyadmin
