@@ -1,10 +1,12 @@
-hubot:
-  image: vimagick/hubot
-  ports:
-    - "8080:8080"
-  volumes:
-    - ./data:/home/hubot/scripts
-  environment:
-    - HUBOT_SLACK_TOKEN=xoxb-xxxxxxxxxxx-xxxxxxxxxxxxxxxxxxxxxxxx
-    - HUBOT_AUTH_ADMIN=UXXXXXXXX
-  restart: unless-stopped
+version: "3.8"
+services:
+  hubot:
+    image: vimagick/hubot
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./data:/home/hubot/scripts
+    environment:
+      - HUBOT_SLACK_TOKEN=xoxb-xxxxxxxxxxx-xxxxxxxxxxxxxxxxxxxxxxxx
+      - HUBOT_AUTH_ADMIN=UXXXXXXXX
+    restart: unless-stopped

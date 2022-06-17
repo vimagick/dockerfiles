@@ -9,16 +9,18 @@ Hubot's power comes through [scripts][2].
 ## docker-compse.yml
 
 ```yaml
-hubot:
-  image: vimagick/hubot
-  ports:
-    - "8080:8080"
-  volumes:
-    - ./data:/home/hubot/scripts
-  environment:
-    - HUBOT_SLACK_TOKEN=xoxb-xxxxxxxxxxxx-xxxxxxxxxxxxxxxxxxxxxxxx
-    - HUBOT_AUTH_ADMIN=UXXXXXXXX
-  restart: always
+version: "3.8"
+services:
+  hubot:
+    image: vimagick/hubot
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./data:/home/hubot/scripts
+    environment:
+      - HUBOT_SLACK_TOKEN=xoxb-xxxxxxxxxxx-xxxxxxxxxxxxxxxxxxxxxxxx
+      - HUBOT_AUTH_ADMIN=UXXXXXXXX
+    restart: unless-stopped
 ```
 
 - Click [this][3] to generate `HUBOT_SLACK_TOKEN`.

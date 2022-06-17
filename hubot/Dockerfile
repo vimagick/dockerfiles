@@ -2,7 +2,7 @@
 # Dockerfile for hubot
 #
 
-FROM alpine:3
+FROM alpine:3.16
 MAINTAINER EasyPi Software Foundation
 
 ENV HUBOT_NAME=Hubot
@@ -11,9 +11,9 @@ ENV HUBOT_DESCRIPTION=$HUBOT_NAME-$HUBOT_ADAPTER
 ENV HUBOT_SLACK_TOKEN=
 
 RUN set -xe \
-    && apk add --update ca-certificates nodejs nodejs-npm python3 \
+    && apk add --update bash ca-certificates nodejs npm python3 \
     && npm install -g yo generator-hubot \
-    && adduser -s /bin/sh -D hubot
+    && adduser -s /bin/bash -D hubot
 
 USER hubot
 WORKDIR /home/hubot
@@ -35,7 +35,7 @@ RUN set -xe \
 
 VOLUME /home/hobot \
        /usr/local/bin \
-       /usr/lib/python3.8/site-packages
+       /usr/lib/python3.10/site-packages
 
 EXPOSE 8080
 
