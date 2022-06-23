@@ -1,0 +1,13 @@
+version: "3.8"
+services:
+  traccar:
+    image: traccar/traccar:5-alpine
+    ports:
+      - "8082:8082"
+      - "5000-5150:5000-5150/tcp"
+      - "5000-5150:5000-5150/udp"
+    volumes:
+      - ./data/conf:/opt/traccar/conf
+      - ./data/data:/opt/traccar/data
+      - ./data/logs:/opt/traccar/logs
+    restart: unless-stopped

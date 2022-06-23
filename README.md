@@ -350,6 +350,7 @@ A collection of delicious docker recipes.
 - [x] grafana/grafana
 - [x] hasura/graphql-engine
 - [x] haproxy
+- [x] healthchecks/healthchecks
 - [x] homeassistant/home-assistant
 - [x] h2non/imaginary
 - [x] jellyfin/jellyfin
@@ -393,11 +394,13 @@ A collection of delicious docker recipes.
     - [x] ohmyform/ui
 - [x] osixia/openldap
 - [x] openresty/openresty
+- [x] opensearchproject/opensearch
 - [x] kylemanna/openvpn
 - [x] campbellsoftwaresolutions/osticket
 - [x] outlinewiki/outline
 - [x] gabekangas/owncast
 - [x] owncloud
+- [x] chocobozzz/peertube
 - [x] dpage/pgadmin4
 - [x] phplist/phplist
 - [x] phpmyadmin
@@ -443,6 +446,7 @@ A collection of delicious docker recipes.
 - [x] tensorflow
     - [x] serving
 - [x] tile38/tile38
+- [x] traccar/traccar
 - [x] traefik
 - [x] trinodb/trino
 - [x] louislam/uptime-kuma

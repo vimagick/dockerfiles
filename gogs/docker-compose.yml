@@ -1,8 +1,10 @@
-gogs:
-  image: gogs/gogs
-  ports:
-    - "2222:22"
-    - "3000:3000"
-  volumes:
-    - ./data:/data
-  restart: always
+version: "3.8"
+services:
+  gogs:
+    image: gogs/gogs
+    ports:
+      - "2222:22"
+      - "3000:3000"
+    volumes:
+      - ./data:/data
+    restart: unless-stopped

@@ -2,19 +2,19 @@
 # Dockerfile for snort3
 #
 
-FROM ubuntu:20.04
+FROM ubuntu:22.04
 MAINTAINER EasyPi Software Foundation
 
-ARG SNORT_VERSION=3.1.23.0
-ARG LIBDAQ_VERSION=3.0.6
-ARG LIBDNET_VERSION=1.14
+ARG SNORT_VERSION=3.1.32.0
+ARG LIBDAQ_VERSION=3.0.8
+ARG LIBDNET_VERSION=1.16.1
 
 ARG DEBIAN_FRONTEND=noninteractive
 
 RUN set -xe \
     && apt-get update \
     && apt-get -y install \
-        build-essential autoconf pkg-config libtool tzdata bison cmake flex curl git \
+        build-essential autoconf check pkg-config libtool tzdata bison cmake flex curl git \
         libpcap-dev libhwloc-dev libluajit-5.1-dev libssl-dev libpcre3-dev zlib1g-dev liblzma-dev \
     && rm -rf /var/lib/apt/lists/*
 

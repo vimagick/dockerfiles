@@ -1,0 +1,60 @@
+version: "3.8"
+
+services:
+
+  peertube:
+    image: chocobozzz/peertube:production-bullseye
+    ports:
+     - "1935:1935"
+     - "9000:9000"
+    volumes:
+      - ./data/peertube/assets:/app/client/dist
+      - ./data/peertube/data:/data
+      - ./data/peertube/config:/config
+    environment:
+      PEERTUBE_DB_USERNAME: peertube
+      PEERTUBE_DB_PASSWORD: peertube
+      PEERTUBE_DB_SSL: 'false'
+      PEERTUBE_DB_HOSTNAME: 'postgres'
+      PEERTUBE_WEBSERVER_HOSTNAME: 'peertube.easypi.duckdns.org'
+    # PEERTUBE_WEBSERVER_PORT: '80'
+    # PEERTUBE_WEBSERVER_HTTPS: 'false'
+      PEERTUBE_TRUST_PROXY: '["127.0.0.1", "loopback", "172.18.0.0/16"]'
+      PEERTUBE_SMTP_USERNAME: username
+      PEERTUBE_SMTP_PASSWORD: password
+      PEERTUBE_SMTP_HOSTNAME: smtp.gmail.com
+      PEERTUBE_SMTP_PORT: 465
+      PEERTUBE_SMTP_FROM: noreply@gmail.com
+      PEERTUBE_SMTP_TLS: 'true'
+      PEERTUBE_SMTP_DISABLE_STARTTLS: 'false'
+      PEERTUBE_ADMIN_EMAIL: admin@gmail.com
+    networks:
+      default:
+        ipv4_address: 172.18.0.42
+    depends_on:
+      - postgres
+      - redis
+    restart: unless-stopped
+
+  postgres:
+    image: postgres:14-alpine
+    volumes:
+      - ./data/postgres:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=peertube
+      - POSTGRES_PASSWORD=peertube
+      - POSTGRES_DB=peertube
+    restart: unless-stopped
+
+  redis:
+    image: redis:7-alpine
+    volumes:
+      - ./data/redis:/data
+    restart: unless-stopped
+
+networks:
+  default:
+    ipam:
+      driver: default
+      config:
+      - subnet: 172.18.0.0/16
