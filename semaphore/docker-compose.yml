@@ -3,7 +3,7 @@ version: "3.8"
 services:
 
   semaphore:
-    image: ansiblesemaphore/semaphore:v2.8.22
+    image: ansiblesemaphore/semaphore:v2.8.53
     ports:
       - "3000:3000"
     volumes:
