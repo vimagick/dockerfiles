@@ -19,21 +19,25 @@ docker-compose.yml
 ------------------
 
 ```yaml
-ices:
-  image: easypi/ices-arm
-  volumes:
-    - ./data:/etc/ices
-  devices:
-    - /dev/snd
-  links:
-    - icecast
-  restart: always
+version: "3.8"
 
-icecast:
-  image: easypi/icecast-arm
-  ports:
-    - "8000:8000"
-  restart: always
+services:
+
+  ices:
+    image: vimagick/ices
+    volumes:
+      - ./data:/etc/ices
+    devices:
+      - /dev/snd
+    depends_on:
+      - icecast
+    restart: unless-stopped
+  
+  icecast:
+    image: vimagick/icecast
+    ports:
+      - "8000:8000"
+    restart: unless-stopped
 ```
 
 ices.xml
