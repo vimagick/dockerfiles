@@ -31,7 +31,7 @@ services:
   frontend:
     image: owntracks/frontend
     ports:
-      - 8080:80
+      - "8080:80"
     environment:
       - SERVER_HOST=recorder
       - SERVER_PORT=8083
