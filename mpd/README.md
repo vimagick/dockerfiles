@@ -54,6 +54,7 @@ $ docker-compose exec mpd sh
 >>> mpc help
 >>> mpc update
 >>> mpc ls | mpc add
+>>> mpc playlist
 >>> mpc repeat on
 >>> mpc random on
 >>> mpc
