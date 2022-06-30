@@ -50,6 +50,7 @@ alsa://plughw:1,0
 _EOF_
 
 $ docker-compose up -d
+
 $ docker-compose exec mpd sh
 >>> mpc help
 >>> mpc update
@@ -63,6 +64,13 @@ $ docker-compose exec mpd sh
 >>> mpc load shoutcast
 >>> mpc play
 >>> exit
+
+$ docker-compose exec mpd ncmpcpp
+...........
+...........
+... TUI ...
+...........
+...........
 ```
 
 ## Client Setup
