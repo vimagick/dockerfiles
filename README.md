@@ -411,6 +411,7 @@ A collection of delicious docker recipes.
 - [x] postgrest/postgrest
 - [x] prom/prometheus
 - [x] prosody/prosody
+- [x] redis/redis-stack
 - [x] registry
 - [x] restic/rest-server
 - [x] rocker/rstudio

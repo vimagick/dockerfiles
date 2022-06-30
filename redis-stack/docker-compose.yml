@@ -1,0 +1,13 @@
+version: "3.8"
+services:
+  redis-stack:
+    image: redis/redis-stack-server
+    ports:
+      - "6379:6379"
+      - "8001:8001"
+    volumes:
+      - ./data:/data
+    environment:
+      REDIS_ARGS: "--save 900 1"
+      REDISTIMESERIES_ARGS: "RETENTION_POLICY=20"
+    restart: unless-stopped
