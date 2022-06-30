@@ -12,4 +12,4 @@ RUN set -xe \
 VOLUME /var/lib/mpd
 
 EXPOSE 6600
-CMD ["mpd", "--stdout", "--no-daemon"]
+CMD ["mpd", "--stdout", "--no-daemon", "/etc/mpd/mpd.conf"]

@@ -1,0 +1,28 @@
+music_directory    "/var/lib/mpd/music"
+playlist_directory "/var/lib/mpd/playlists"
+db_file            "/var/lib/mpd/database"
+log_file           "/var/log/mpd/mpd.log"
+pid_file           "/var/run/mpd.pid"
+state_file         "/var/lib/mpd/state"
+sticker_file       "/var/lib/mpd/sticker.sql"
+
+audio_output {
+  type            "shout"
+  name            "RasPi MPD Stream"
+  description     "MPD stream on Raspberry Pi"
+  host            "x.x.x.x"
+  port            "8000"
+  mount           "/mpd"
+  password        "hackme"
+  bitrate         "128"
+  format          "44100:16:2"
+  encoding        "mp3"
+}
+
+audio_output {
+  type            "alsa"
+  name            "My ALSA Device"
+  device          "hw:CARD=Headphones,DEV=0"
+  mixer_control   "Headphone"
+  mixer_index     "0"
+}
