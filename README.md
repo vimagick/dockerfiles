@@ -363,6 +363,7 @@ A collection of delicious docker recipes.
 - [x] mailgun/kafka-pixy
 - [x] devopsfaith/krakend
 - [x] heartexlabs/label-studio
+- [x] martialblog/limesurvey
 - [x] mailhog/mailhog
 - [x] tootsuite/mastodon
 - [x] getmeili/meilisearch :mag:

@@ -8,5 +8,6 @@ services:
       - ./data:/data
     environment:
       - DEBUG=False
+      - DB=sqlite
       - DB_NAME=/data/hc.db
     restart: unless-stopped

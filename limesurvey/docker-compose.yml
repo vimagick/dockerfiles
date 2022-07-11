@@ -1,0 +1,29 @@
+version: "3.8"
+
+services:
+
+  limesurvey:
+    image: martialblog/limesurvey
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./data/surveys:/var/www/html/upload/surveys
+    environment:
+      - "DB_TYPE=pgsql"
+      - "DB_PORT=5432"
+      - "DB_HOST=postgres"
+      - "DB_PASSWORD=limesurvey"
+      - "ADMIN_PASSWORD=admin"
+    depends_on:
+      - postgres
+    restart: unless-stopped
+
+  postgres:
+    image: postgres:14-alpine
+    volumes:
+      - ./data/postgres:/var/lib/postgresql/data
+    environment:
+      - "POSTGRES_DB=limesurvey"
+      - "POSTGRES_USER=limesurvey"
+      - "POSTGRES_PASSWORD=limesurvey"
+    restart: unless-stopped
