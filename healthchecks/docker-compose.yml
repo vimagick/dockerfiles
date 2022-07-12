@@ -1,8 +1,13 @@
+#
+# https://github.com/healthchecks/healthchecks/blob/master/docker/.env.example
+#
+
 version: "3.8"
 services:
   healthchecks:
     image: healthchecks/healthchecks
     ports:
+      - "2525:2525"
       - "8000:8000"
     volumes:
       - ./data:/data
@@ -10,4 +15,12 @@ services:
       - DEBUG=False
       - DB=sqlite
       - DB_NAME=/data/hc.db
+      # EMAIL_HOST=smtp.gmail.com
+      # EMAIL_PORT=587
+      # EMAIL_USE_TLS=True
+      # EMAIL_HOST_USER=easypi
+      # EMAIL_HOST_PASSWORD=secret
+      # DEFAULT_FROM_EMAIL=easypi@gmail.com
+      - SITE_ROOT=http://192.168.1.234:8000
+      - SECRET_KEY=00000000-0000-0000-0000-000000000000
     restart: unless-stopped
