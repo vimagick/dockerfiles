@@ -71,8 +71,8 @@ $ ln -s /mnt/usb disk
 $ cd html
 $ curl -sSL https://github.com/binux/yaaw/archive/master.tar.gz | tar xz --strip 1
 ####################################################################################
-# wget https://github.com/mayswind/AriaNg/releases/download/1.2.2/AriaNg-1.2.2.zip #
-# unzip AriaNg-1.2.2.zip                                                           #
+# wget https://github.com/mayswind/AriaNg/releases/download/1.2.4/AriaNg-1.2.4.zip #
+# unzip AriaNg-1.2.4.zip                                                           #
 ####################################################################################
 $ vim docker-compose.yml
 $ docker-compose up -d

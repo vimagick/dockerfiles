@@ -101,7 +101,7 @@ A collection of delicious docker recipes.
 - [x] alpine-arm :+1:
 - [x] apacheds
 - [x] aria2 :+1:
-- [x] ariang
+- [x] ariang :cn:
 - [x] cadvisor
 - [x] casperjs :+1:
 - [x] freegeoip
