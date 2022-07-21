@@ -414,6 +414,7 @@ A collection of delicious docker recipes.
 - [x] prosody/prosody
 - [x] redis/redis-stack
 - [x] registry
+- [x] datarhei/restreamer
 - [x] restic/rest-server
 - [x] rocker/rstudio
 - [x] rocket.chat

@@ -1,0 +1,12 @@
+version: "3.8"
+services:
+  restreamer:
+    image: datarhei/restreamer:rpi-latest
+    ports:
+      - "1935:1935"
+      - "8080:8080"
+    volumes:
+      - ./data/config:/core/config
+      - ./data/data:/core/data
+    privileged: true
+    restart: unless-stopped
