@@ -5,13 +5,12 @@
 FROM openjdk:17-bullseye
 MAINTAINER EasyPi Software Foundation
 
-ENV OPENREFINE_VERSION=3.5.1
-ENV OPENREFINE_FILE=openrefine-linux-${OPENREFINE_VERSION}.tar.gz
-ENV OPENREFINE_URL=https://github.com/OpenRefine/OpenRefine/releases/download/${OPENREFINE_VERSION}/${OPENREFINE_FILE}
+ARG OPENREFINE_VERSION=3.6.0
+ARG OPENREFINE_URL=https://oss.sonatype.org/service/local/artifact/maven/content?r=releases&g=org.openrefine&a=openrefine&v=${OPENREFINE_VERSION}&c=linux&p=tar.gz
 
 WORKDIR /app
 
-RUN curl -sSL ${OPENREFINE_URL} | tar xz --strip 1
+RUN curl -sSL "${OPENREFINE_URL}" | tar xz --strip 1
 
 VOLUME /data
 WORKDIR /data
