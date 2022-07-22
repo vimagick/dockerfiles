@@ -351,6 +351,7 @@ A collection of delicious docker recipes.
 - [x] hasura/graphql-engine
 - [x] haproxy
 - [x] healthchecks/healthchecks
+- [x] hivemq/hivemq-ce
 - [x] homeassistant/home-assistant
 - [x] h2non/imaginary
 - [x] jellyfin/jellyfin

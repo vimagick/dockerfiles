@@ -1,0 +1,12 @@
+version: "3.8"
+services:
+  hivemq:
+    image: hivemq/hivemq-ce
+    ports:
+      - "1883:1883"
+    volumes:
+      - ./data/var:/opt/hivemq/data
+      - ./data/log:/opt/hivemq/log
+    environment:
+      - HIVEMQ_LOG_LEVEL=INFO
+    restart: unless-stopped
