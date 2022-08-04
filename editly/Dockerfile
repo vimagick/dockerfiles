@@ -5,11 +5,14 @@
 FROM node:lts-bullseye
 MAINTAINER EasyPi Software Foundation
 
+ARG FFMPEG_VERSION=5.0.1
+ARG FFMPEG_URL=https://johnvansickle.com/ffmpeg/releases/ffmpeg-release-amd64-static.tar.xz
+
 RUN set -xe \
  && apt update \
  && apt install -y curl dumb-init fonts-noto-cjk xvfb xz-utils \
- && curl -sSL https://johnvansickle.com/ffmpeg/releases/ffmpeg-release-amd64-static.tar.xz \
-    | tar xJC /usr/bin/ ffmpeg-4.4.1-amd64-static/ffprobe ffmpeg-4.4.1-amd64-static/ffmpeg --strip 1 \
+ && curl -sSL ${FFMPEG_URL} \
+    | tar xJC /usr/bin/ ffmpeg-${FFMPEG_VERSION}-amd64-static/ffprobe ffmpeg-${FFMPEG_VERSION}-amd64-static/ffmpeg --strip 1 \
  && ffmpeg -version \
  && ffprobe -version \
  && rm -rf /var/lib/apt/lists/*
