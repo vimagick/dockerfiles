@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 const NodeMediaServer = require('node-media-server');
 
 const config = {
@@ -6,16 +8,17 @@ const config = {
     chunk_size: 60000,
     gop_cache: true,
     ping: 30,
-    ping_timeout: 60
+    ping_timeout: 60,
   },
   http: {
     port: 8000,
-    allow_origin: '*'
+    allow_origin: '*',
+    api: true,
   },
   auth: {
-    api : true,
-    api_user: 'admin',
-    api_pass: 'admin',
+    api: true,
+    api_user: process.env.USERNAME || 'admin',
+    api_pass: process.env.PASSWORD || 'admin',
   },
 };
 

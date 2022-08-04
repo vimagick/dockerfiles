@@ -5,4 +5,7 @@ services:
     ports:
       - "1935:1935"
       - "8000:8000"
+    environment:
+      - USERNAME=admin
+      - PASSWORD=admin
     restart: unless-stopped
