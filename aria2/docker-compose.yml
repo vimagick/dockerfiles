@@ -7,10 +7,10 @@ services:
     ports:
       - "6800:6800"
     volumes:
-      - ./data/aria2.conf:/etc/aria2/aria2.conf
-      - ./data/disk:/data
+      - ./data/etc:/etc/aria2/
+      - ./data/var:/data
     environment:
-      - TOKEN=e6c3778f-6361-4ed0-b126-f2cf8fca06db
+      - TOKEN=0d5e0e73-96f7-4936-b125-e8f5f2296b08
     restart: unless-stopped
 
   webui:
