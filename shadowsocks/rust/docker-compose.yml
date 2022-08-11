@@ -1,0 +1,12 @@
+version: "3.8"
+services:
+  shadowsocks:
+    image: vimagick/shadowsocks-rust
+    ports:
+      - "8388:8388/tcp"
+      - "8388:8388/udp"
+    environment:
+      - SERVER_PORT=8388
+      - METHOD=chacha20-ietf-poly1305
+      - PASSWORD=9MLSpPmNt
+    restart: unless-stopped
