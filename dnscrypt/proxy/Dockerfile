@@ -5,7 +5,7 @@
 FROM alpine:3
 MAINTAINER EasyPi Software Foundation
 
-ARG DNSCRYPT_PROXY_VERSION=2.1.1
+ARG DNSCRYPT_PROXY_VERSION=2.1.2
 ARG DNSCRYPT_PROXY_FILE=dnscrypt-proxy-linux_x86_64-${DNSCRYPT_PROXY_VERSION}.tar.gz
 ARG DNSCRYPT_PROXY_URL=https://github.com/DNSCrypt/dnscrypt-proxy/releases/download/${DNSCRYPT_PROXY_VERSION}/${DNSCRYPT_PROXY_FILE}
 
