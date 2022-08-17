@@ -3,9 +3,11 @@ services:
   cronicle:
     image: vimagick/cronicle
     ports:
-      - "3012:3012"
+      - "3012:3012/tcp"
+      - "3014:3014/udp"
     volumes:
       - ./data/conf:/opt/cronicle/conf
       - ./data/data:/opt/cronicle/data
+      - ./data/logs:/opt/cronicle/logs
     hostname: cronicle-master
     restart: unless-stopped

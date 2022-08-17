@@ -10,7 +10,7 @@ of slave servers, with real-time stats and live log viewer.
 Written in Node.js, proudly open source and MIT licensed.
 
 ```bash
-$ mkdir -p data/{conf,data}
+$ mkdir -p data/{conf,data,logs}
 $ wget -P data https://github.com/jhuckaby/Cronicle/raw/master/sample_conf/config.json
 $ wget -P data https://github.com/jhuckaby/Cronicle/raw/master/sample_conf/setup.json
 $ docker-compose run --rm cronicle setup
