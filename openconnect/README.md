@@ -7,19 +7,6 @@ openconnect
 AnyConnect SSL VPN. It has since been ported to support the Juniper SSL VPN
 which is now known as Pulse Connect Secure.
 
-## docker-compose.yml
-
-```yaml
-openconnect:
-  image: vimagick/openconnect
-  command: https://vpn.easypi.info:4443
-  net: host
-  volumes:
-    - ./data:/etc/openconnect
-  stop_signal: SIGINT
-  privileged: yes
-```
-
 ## up and running
 
 ```bash

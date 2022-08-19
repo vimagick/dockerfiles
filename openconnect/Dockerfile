@@ -2,14 +2,11 @@
 # Dockerfile for openconnect
 #
 
-FROM alpine:3.12
+FROM alpine:3
 MAINTAINER EasyPi Software Foundation
 
 RUN set -xe \
-    && apk add --no-cache nettle \
-    && apk add --no-cache \
-               --repository http://dl-cdn.alpinelinux.org/alpine/edge/community/ \
-               openconnect \
+    && apk add --no-cache nettle openconnect \
     && mkdir -p /etc/openconnect \
     && touch /etc/openconnect/openconnect.conf
 
