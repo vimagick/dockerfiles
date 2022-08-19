@@ -2,7 +2,7 @@
 # Dockerfile for youtube-dl
 #
 
-FROM python:3.9-alpine
+FROM python:3-alpine
 MAINTAINER EasyPi Software Foundation
 
 RUN set -xe \
@@ -10,10 +10,8 @@ RUN set -xe \
                           ffmpeg \
                           openssl \
                           aria2 \
-    && pip3 install --no-cache-dir youtube-dl
-
-# Try to run it so we know it works
-RUN youtube-dl --version
+    && pip3 install --no-cache-dir youtube-dl \
+    && youtube-dl --version
 
 WORKDIR /data
 
