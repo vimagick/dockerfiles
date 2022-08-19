@@ -2,9 +2,9 @@
 # Dockerfile for dnsmasq
 #
 
-FROM alpine
+FROM alpine:3
 
-MAINTAINER kev <norelply@easypi.pro>
+MAINTAINER EasyPi Software Foundation
 
 RUN set -xe \
     && apk add --no-cache dnsmasq-dnssec \
