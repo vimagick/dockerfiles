@@ -225,6 +225,7 @@ A collection of delicious docker recipes.
 - [x] amass
 - [x] bro
 - [x] clamav
+- [x] dirsearch
 - [x] dsniff
 - [x] ferm
 - [x] grr
