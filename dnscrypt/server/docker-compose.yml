@@ -10,4 +10,5 @@ services:
     volumes:
       - ./data/keys:/opt/encrypted-dns/etc/keys
       - ./data/lists:/opt/encrypted-dns/etc/lists
+      - ./data/zones:/opt/unbound/etc/unbound/zones
     restart: unless-stopped
