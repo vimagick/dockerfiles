@@ -355,6 +355,7 @@ A collection of delicious docker recipes.
 - [x] hivemq/hivemq-ce
 - [x] homeassistant/home-assistant
 - [x] h2non/imaginary
+- [x] linuxserver/jackett
 - [x] jellyfin/jellyfin
 - [x] jenkins
     - [x] inbound-agent

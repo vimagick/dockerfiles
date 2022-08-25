@@ -1,0 +1,15 @@
+version: "3.8"
+services:
+  jackett:
+    image: linuxserver/jackett
+    volumes:
+      - ./data/etc:/config
+      - ./data/var:/downloads
+    ports:
+      - "9117:9117"
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=UTC
+      - AUTO_UPDATE=true
+    restart: unless-stopped
