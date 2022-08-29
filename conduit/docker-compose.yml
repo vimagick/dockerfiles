@@ -1,0 +1,22 @@
+version: '3.8'
+services:
+  conduit:
+    image: matrixconduit/matrix-conduit
+    ports:
+      - '6167:6167'
+    volumes:
+      - ./data:/data
+    environment:
+      CONDUIT_SERVER_NAME: conduit.easypi.duckdns.org
+      CONDUIT_DATABASE_PATH: /data
+      CONDUIT_DATABASE_BACKEND: rocksdb
+      CONDUIT_PORT: 6167
+      CONDUIT_MAX_REQUEST_SIZE: 20_000_000
+      CONDUIT_ALLOW_REGISTRATION: 'true'
+      CONDUIT_ALLOW_FEDERATION: 'true'
+      CONDUIT_TRUSTED_SERVERS: '["matrix.org"]'
+      CONDUIT_MAX_CONCURRENT_REQUESTS: 100
+      CONDUIT_LOG: info,rocket=off,_=off,sled=off
+      CONDUIT_ADDRESS: 0.0.0.0
+      CONDUIT_CONFIG: ''
+    restart: unless-stopped

@@ -369,6 +369,7 @@ A collection of delicious docker recipes.
 - [x] martialblog/limesurvey
 - [x] mailhog/mailhog
 - [x] tootsuite/mastodon
+- [x] matrixconduit/matrix-conduit
 - [x] getmeili/meilisearch :mag:
 - [x] mitmproxy/mitmproxy
 - [x] deluan/navidrome :musical_note:
