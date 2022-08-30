@@ -1,0 +1,32 @@
+version: "3.8"
+
+services:
+
+  mysql:
+    image: mariadb:10.5
+    volumes:
+      - ./data/mysql:/var/lib/mysql
+    environment:
+      - MYSQL_DATABASE=photoview
+      - MYSQL_USER=photoview
+      - MYSQL_PASSWORD=photoview
+      - MYSQL_RANDOM_ROOT_PASSWORD=1
+    restart: unless-stopped
+
+  photoview:
+    image: viktorstrate/photoview:2
+    ports:
+      - "8000:80"
+    environment:
+      - PHOTOVIEW_DATABASE_DRIVER=mysql
+      - PHOTOVIEW_MYSQL_URL=photoview:photoview@tcp(mysql)/photoview
+      - PHOTOVIEW_LISTEN_IP=photoview
+      - PHOTOVIEW_LISTEN_PORT=80
+      - PHOTOVIEW_MEDIA_CACHE=/app/cache
+      # MAPBOX_TOKEN=<YOUR TOKEN HERE>
+    volumes:
+      - ./data/cache:/app/cache
+      - ./data/photos:/photos:ro
+    depends_on:
+      - mysql
+    restart: unless-stopped

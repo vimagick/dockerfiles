@@ -407,6 +407,7 @@ A collection of delicious docker recipes.
 - [x] owncloud
 - [x] chocobozzz/peertube
 - [x] dpage/pgadmin4
+- [x] viktorstrate/photoview
 - [x] phplist/phplist
 - [x] phpmyadmin
 - [x] pihole/pihole
