@@ -451,6 +451,7 @@ A collection of delicious docker recipes.
     - [x] jira
 - [x] strapi/strapi
 - [x] amancevice/superset
+- [x] syncthing/syncthing
 - [x] tensorflow
     - [x] serving
 - [x] tile38/tile38

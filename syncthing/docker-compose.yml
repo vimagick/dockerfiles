@@ -1,0 +1,16 @@
+version: "3.8"
+services:
+  syncthing:
+    image: syncthing/syncthing
+    ports:
+      - "8384:8384"       # Web UI
+      - "22000:22000/tcp" # TCP file transfers
+      - "22000:22000/udp" # QUIC file transfers
+      - "21027:21027/udp" # Receive local discovery broadcasts
+    volumes:
+      - ./data:/var/syncthing
+    environment:
+      - PUID=1000
+      - PGID=1000
+    hostname: syncthing
+    restart: unless-stopped
