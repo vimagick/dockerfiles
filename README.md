@@ -102,6 +102,7 @@ A collection of delicious docker recipes.
 - [x] apacheds
 - [x] aria2 :+1:
 - [x] ariang :cn:
+- [x] bittorrent-tracker
 - [x] cadvisor
 - [x] casperjs :+1:
 - [x] freegeoip

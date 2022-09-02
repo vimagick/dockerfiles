@@ -1,0 +1,8 @@
+version: "3.8"
+services:
+  bittorrent-tracker:
+    image: vimagick/bittorrent-tracker
+    init: true
+    ports:
+      - "8000:8000"
+    restart: unless-stopped
