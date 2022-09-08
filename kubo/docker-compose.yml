@@ -1,0 +1,15 @@
+version: "3.8"
+services:
+  kubo:
+    image: ipfs/kubo
+    ports:
+      - "4001:4001/tcp"
+      - "4001:4001/udp"
+      - "5001:5001"
+      - "8080:8080"
+    volumes:
+      - ./data/export:/export
+      - ./data/ipfs:/data/ipfs
+    environment:
+      - IPFS_PROFILE=server
+    restart: unless-stopped

@@ -366,6 +366,7 @@ A collection of delicious docker recipes.
 - [x] wurstmeister/kafka
 - [x] mailgun/kafka-pixy
 - [x] devopsfaith/krakend
+- [x] ipfs/kubo
 - [x] heartexlabs/label-studio
 - [x] martialblog/limesurvey
 - [x] mailhog/mailhog
