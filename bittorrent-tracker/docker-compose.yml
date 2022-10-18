@@ -4,5 +4,6 @@ services:
     image: vimagick/bittorrent-tracker
     init: true
     ports:
-      - "8000:8000"
+      - "8000:8000/tcp"
+      - "8000:8000/udp"
     restart: unless-stopped

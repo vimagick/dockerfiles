@@ -8,6 +8,12 @@ list that helps the client participate in the torrent swarm.
 
 ```bash
 $ docker-compose up -d
+
+$ docker-compose logs
+http server listening on 8000
+udp server listening on 8000
+ws server listening on 8000
+
 $ curl http://127.0.0.1:8000/stats.json
 {
   "torrents": 0,
