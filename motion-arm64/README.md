@@ -54,7 +54,7 @@ timelapse_filename %Y%m%d-timelapse
 
 Motion can work with Home-Assistant via [External Commands][2].
 
-``yaml
+```yaml
 binary_sensor:
   - platform: mqtt
     name: Motion
