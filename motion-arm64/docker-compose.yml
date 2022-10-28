@@ -1,7 +1,7 @@
 version: "3.8"
 services:
   motion:
-    image: easypi/motion-arm
+    image: easypi/motion-arm64
     ports:
       - "8080:8080"
       - "8081:8081"

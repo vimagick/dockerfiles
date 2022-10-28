@@ -113,7 +113,7 @@ A collection of delicious docker recipes.
 - [x] monit
 - [x] moodle :beetle:
 - [x] mosquitto
-- [x] motion-arm :+1:
+- [x] motion-arm64 :+1:
 - [x] ndscheduler
 - [x] nfs
 - [x] nginx

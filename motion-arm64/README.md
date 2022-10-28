@@ -13,7 +13,7 @@ other words, it can detect motion.
 version: "3.8"
 services:
   motion:
-    image: easypi/motion-arm
+    image: easypi/motion-arm64
     ports:
       - "8080:8080"
       - "8081:8081"
@@ -36,7 +36,7 @@ width 640
 height 480
 
 # set frame rate
-framerate 5
+framerate 15
 
 # disable image output
 output_pictures off
@@ -45,7 +45,11 @@ output_pictures off
 ffmpeg_output_movies off
 
 # encode timelapse movie
-ffmpeg_timelapse 60
+timelapse_interval 60
+timelapse_mode daily
+timelapse_fps 30
+timelapse_codec mpg
+timelapse_filename %Y%m%d-timelapse
 ```
 
 Motion can work with Home-Assistant via [External Commands][2].
@@ -77,7 +81,6 @@ binary_sensor:
 ;on_movie_end curl -s -H 'X-HA-Access: ******' -H 'Content-Type: application/json' -d '{"state": "off", "attributes": {"friendly_name": "Motion", "device_class": "motion"}}' http://hass.easypi.pro:8123/api/states/binary_sensor.motion
 # MQTT
 ;on_movie_end mosquitto_pub -h mqtt.easypi.pro -u username -P password -r -t /pi/sensor/motion -m OFF
-
 ```
 
 Please read [this][3] to enable raspberry pi camera module.

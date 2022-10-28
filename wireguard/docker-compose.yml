@@ -1,7 +1,7 @@
 version: "3.8"
 services:
   wireguard:
-    image: ghcr.io/linuxserver/wireguard
+    image: linuxserver/wireguard
     container_name: wireguard
     cap_add:
       - NET_ADMIN
@@ -14,8 +14,9 @@ services:
       - SERVERPORT=51820
       - PEERS=3
       - PEERDNS=auto
-      - INTERNAL_SUBNET=10.18.18.0
+      - INTERNAL_SUBNET=10.13.13.0
       - ALLOWEDIPS=0.0.0.0/0
+      - LOG_CONFS=true
     volumes:
       - ./data:/config
       - /lib/modules:/lib/modules
