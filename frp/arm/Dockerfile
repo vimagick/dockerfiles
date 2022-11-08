@@ -5,9 +5,9 @@
 FROM alpine:3
 MAINTAINER EasyPi Software Foundation
 
-ENV FRP_VERSION=0.38.0
-ENV FRP_FILE=frp_${FRP_VERSION}_linux_arm.tar.gz
-ENV FRP_URL=https://github.com/fatedier/frp/releases/download/v${FRP_VERSION}/${FRP_FILE}
+ARG FRP_VERSION=0.45.0
+ARG FRP_FILE=frp_${FRP_VERSION}_linux_arm.tar.gz
+ARG FRP_URL=https://github.com/fatedier/frp/releases/download/v${FRP_VERSION}/${FRP_FILE}
 
 WORKDIR /opt/frp
 
