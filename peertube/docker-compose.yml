@@ -28,6 +28,7 @@ services:
       PEERTUBE_SMTP_TLS: 'true'
       PEERTUBE_SMTP_DISABLE_STARTTLS: 'false'
       PEERTUBE_ADMIN_EMAIL: admin@gmail.com
+      PEERTUBE_SECRET: 'xxxxxx' # openssl rand -hex 32
     networks:
       default:
         ipv4_address: 172.18.0.42
@@ -41,9 +42,9 @@ services:
     volumes:
       - ./data/postgres:/var/lib/postgresql/data
     environment:
-      - POSTGRES_USER=peertube
-      - POSTGRES_PASSWORD=peertube
-      - POSTGRES_DB=peertube
+      POSTGRES_USER: peertube
+      POSTGRES_PASSWORD: peertube
+      POSTGRES_DB: peertube
     restart: unless-stopped
 
   redis:
