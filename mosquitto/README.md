@@ -6,42 +6,9 @@ mosquitto
 [Mosquitto][1] is an open source (BSD licensed) message broker that implements
 the MQTT protocol versions 3.1 and 3.1.1.
 
-## docker-compose.yml
+## server
 
-```yaml
-version: "3.8"
-services:
-  mosquitto:
-    image: vimagick/mosquitto
-    ports:
-      - "1883:1883"
-    volumes:
-      - ./data/etc:/etc/mosquitto
-      - ./data/var:/var/lib/mosquitto
-    restart: unless-stopped
-```
-
-## mosquitto.conf
-
-```ini
-listener 1883
-log_dest stdout
-allow_anonymous false
-password_file /etc/mosquitto/pwfile
-persistence true
-persistence_location /var/lib/mosquitto
-persistence_file mosquitto.db
-#plugin /usr/lib/mosquitto_dynamic_security.so
-#plugin_opt_config_file /etc/mosquitto/dynamic-security.json
-
-###### ENABLE TLS ######
-listener 8883
-protocol mqtt
-capath /etc/ssl/certs
-certfile /var/lib/mosquitto/fullchain.pem
-keyfile /var/lib/mosquitto/privkey.pem
-require_certificate false
-```
+Sample config file: [mosquitto.conf](https://github.com/vimagick/dockerfiles/blob/master/mosquitto/data/etc/mosquitto.conf)
 
 - `pwfile` is managed by [mosquitto_passwd][3].
 - Two methods to support TLS:
@@ -50,10 +17,8 @@ require_certificate false
 
 > It is important to use different certificate subject parameters for your self-signed CA, server and clients.
 
-## server
-
 ```bash
-$ mkdir -p data/{etc,var}
+$ mkdir -p data/{etc,var,log}
 $ chmod -R 777 data
 $ touch data/etc/mosquitto.conf data/etc/pwfile
 $ vi data/etc/mosquitto.conf
@@ -65,16 +30,15 @@ $ docker-compose exec mosquitto sh
 username:$6$IuF7JUzS1k/QoF3y$YpiClom7/==
 >>> exit
 $ docker-compose restart
-$ docker-compose logs -f
-Attaching to mosquitto_mosquitto_1
-mosquitto_1  | 1478107412: mosquitto version 1.4.8 (build date 2016-05-16 14:17:19+0000) starting
-mosquitto_1  | 1478107412: Config loaded from /etc/mosquitto/mosquitto.conf.
-mosquitto_1  | 1478107412: Opening ipv4 listen socket on port 8883.
-mosquitto_1  | 1478107412: Opening ipv6 listen socket on port 8883.
-mosquitto_1  | 1478107437: New connection from 192.168.31.102 on port 8883.
-mosquitto_1  | 1478107437: New client connected from 192.168.31.102 as mosqsub/38158-Kevins-Ma (c1, k60).
-mosquitto_1  | 1478107585: New client connected from 192.168.31.102 as mosqpub/38324-Kevins-Ma (c1, k60).
-mosquitto_1  | 1478107585: Client mosqpub/38324-Kevins-Ma disconnected.
+$ tails -f data/log/mosquitto.log
+2022-12-08T06:59:00: mosquitto version 1.4.8 (build date 2016-05-16 14:17:19+0000) starting
+2022-12-08T06:59:01: Config loaded from /etc/mosquitto/mosquitto.conf.
+2022-12-08T06:59:02: Opening ipv4 listen socket on port 8883.
+2022-12-08T06:59:03: Opening ipv6 listen socket on port 8883.
+2022-12-08T06:59:04: New connection from 192.168.31.102 on port 8883.
+2022-12-08T06:59:05: New client connected from 192.168.31.102 as mosqsub/38158-Kevins-Ma (c1, k60).
+2022-12-08T06:59:06: New client connected from 192.168.31.102 as mosqpub/38324-Kevins-Ma (c1, k60).
+2022-12-08T06:59:07: Client mosqpub/38324-Kevins-Ma disconnected.
 ```
 
 ## client

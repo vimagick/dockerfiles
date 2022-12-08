@@ -7,4 +7,5 @@ services:
     volumes:
       - ./data/etc:/etc/mosquitto
       - ./data/var:/var/lib/mosquitto
+      - ./data/log:/var/log/mosquitto
     restart: unless-stopped
