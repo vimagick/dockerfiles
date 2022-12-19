@@ -11,7 +11,7 @@ services:
   frps:
     image: vimagick/frp
     volumes:
-      - ./data/frps.ini:/opt/frp/frps.ini
+      - ./data:/opt/frp/etc
     healthcheck:
       test: ["CMD", "curl", "-f", "-u", "admin:admin", "http://127.0.0.1:7500/healthz"]
       interval: 1m

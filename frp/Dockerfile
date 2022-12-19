@@ -14,9 +14,9 @@ WORKDIR /opt/frp
 
 RUN set -xe \
     && apk add --no-cache curl tar \
-    && curl -sSL $FRP_URL | tar xz --strip 1 \
-    && apk del curl tar
+    && mkdir -p bin etc \
+    && curl -sSL ${FRP_URL} | tar xz --strip 1 -C bin
 
 EXPOSE 7000/tcp 7000/udp 7500/tcp
 
-CMD ["./frps", "-c", "frps.ini"]
+CMD ["./bin/frps", "-c", "./etc/frps.ini"]
