@@ -3,7 +3,7 @@ version: '3.8'
 services:
 
   openmeetings:
-    image: apache/openmeetings:min-5.1.0
+    image: apache/openmeetings:min-6.3.0
     ports:
       - "5080:5080"
     volumes:
@@ -22,13 +22,13 @@ services:
     restart: unless-stopped
 
   kurento:
-    image: kurento/kurento-media-server
+    image: kurento/kurento-media-server:6
     ports:
       - "8888:8888"
     restart: unless-stopped
 
   postgresql:
-    image: postgres:alpine
+    image: postgres:15-alpine
     volumes:
       - ./data/postgresql:/var/lib/postgresql/data
     environment:

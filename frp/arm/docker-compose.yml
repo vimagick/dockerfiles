@@ -1,9 +1,0 @@
-version: "3.8"
-services:
-  frpc:
-    image: easypi/frp-arm
-    command: ./frpc -c frpc.ini
-    volumes:
-      - ./data/frpc.ini:/opt/frp/frpc.ini
-    network_mode: host
-    restart: unless-stopped
