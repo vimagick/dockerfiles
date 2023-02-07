@@ -1,0 +1,41 @@
+version: "3.8"
+
+services:
+
+  nostream:
+    image: jorijn/nostream:v1.19.0
+    ports:
+      - "8008:8008"
+    volumes:
+      - ./data/nostream:/app/etc
+    environment:
+      - NOSTR_CONFIG_DIR=/app/etc
+      - RELAY_PORT=8008
+      - SECRET=hackme
+      - DB_URI=postgresql://nostream:nostream@postgres:5432/nostream
+      # REDIS_URI=redis://default:nostream@redis:6379
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - REDIS_USER=default
+      - REDIS_PASSWORD=nostream
+    depends_on:
+      - redis
+      - postgres
+    restart: unless-stopped
+
+  redis:
+    image: redis:6-alpine
+    command: --save 900 1 --requirepass nostream
+    volumes:
+      - ./data/redis:/data
+    restart: unless-stopped
+
+  postgres:
+    image: postgres:14-alpine
+    volumes:
+      - ./data/postgres:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=nostream
+      - POSTGRES_PASSWORD=nostream
+      - POSTGRES_DB=nostream
+    restart: unless-stopped

@@ -407,6 +407,7 @@ A collection of delicious docker recipes.
 - [x] outlinewiki/outline
 - [x] gabekangas/owncast
 - [x] owncloud
+- [x] jorijn/nostream
 - [x] chocobozzz/peertube
 - [x] dpage/pgadmin4
 - [x] viktorstrate/photoview
