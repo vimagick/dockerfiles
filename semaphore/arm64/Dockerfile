@@ -5,7 +5,7 @@
 FROM debian:bullseye
 MAINTAINER EasyPi Software Foundation
 
-ARG APP_VERSION=2.8.53
+ARG APP_VERSION=2.8.77
 ARG APP_ARCH=arm64
 ARG APP_FILE=semaphore_${APP_VERSION}_linux_${APP_ARCH}.deb
 ARG APP_URL=https://github.com/ansible-semaphore/semaphore
