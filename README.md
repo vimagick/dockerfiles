@@ -408,6 +408,7 @@ A collection of delicious docker recipes.
 - [x] gabekangas/owncast
 - [x] owncloud
 - [x] jorijn/nostream
+- [x] scsibug/nostr-rs-relay
 - [x] chocobozzz/peertube
 - [x] dpage/pgadmin4
 - [x] viktorstrate/photoview

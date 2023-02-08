@@ -1,0 +1,154 @@
+# Nostr-rs-relay configuration
+
+[info]
+# The advertised URL for the Nostr websocket.
+relay_url = "wss://nostr.example.com/"
+
+# Relay information for clients.  Put your unique server name here.
+name = "nostr-rs-relay"
+
+# Description
+description = "A newly created nostr-rs-relay.\n\nCustomize this with your own info."
+
+# Administrative contact pubkey
+#pubkey = "0c2d168a4ae8ca58c9f1ab237b5df682599c6c7ab74307ea8b05684b60405d41"
+
+# Administrative contact URI
+#contact = "mailto:contact@example.com"
+
+[diagnostics]
+# Enable tokio tracing (for use with tokio-console)
+#tracing = false
+
+[database]
+# Database engine (sqlite/postgres).  Defaults to sqlite.
+# Support for postgres is currently experimental.
+#engine = "sqlite"
+
+# Directory for SQLite files.  Defaults to the current directory.  Can
+# also be specified (and overriden) with the "--db dirname" command
+# line option.
+#data_directory = "."
+
+# Use an in-memory database instead of 'nostr.db'.
+# Requires sqlite engine.
+# Caution; this will not survive a process restart!
+#in_memory = false
+
+# Database connection pool settings for subscribers:
+
+# Minimum number of SQLite reader connections
+#min_conn = 4
+
+# Maximum number of SQLite reader connections.  Recommend setting this
+# to approx the number of cores.
+#max_conn = 8
+
+# Database connection string.  Required for postgres; not used for
+# sqlite.
+#connection = "postgresql://postgres:nostr@localhost:7500/nostr"
+
+[network]
+# Bind to this network address
+address = "0.0.0.0"
+
+# Listen on this port
+port = 8080
+
+# If present, read this HTTP header for logging client IP addresses.
+# Examples for common proxies, cloudflare:
+#remote_ip_header = "x-forwarded-for"
+#remote_ip_header = "cf-connecting-ip"
+
+# Websocket ping interval in seconds, defaults to 5 minutes
+#ping_interval = 300
+
+[options]
+# Reject events that have timestamps greater than this many seconds in
+# the future.  Recommended to reject anything greater than 30 minutes
+# from the current time, but the default is to allow any date.
+reject_future_seconds = 1800
+
+[limits]
+# Limit events created per second, averaged over one minute.  Must be
+# an integer.  If not set (or set to 0), there is no limit.  Note:
+# this is for the server as a whole, not per-connection.
+#
+# Limiting event creation is highly recommended if your relay is
+# public!
+#
+#messages_per_sec = 5
+
+# Limit client subscriptions created, averaged over one minute.  Must
+# be an integer.  If not set (or set to 0), defaults to unlimited.
+# Strongly recommended to set this to a low value such as 10 to ensure
+# fair service.
+#subscriptions_per_min = 0
+
+# UNIMPLEMENTED...
+# Limit how many concurrent database connections a client can have.
+# This prevents a single client from starting too many expensive
+# database queries.  Must be an integer.  If not set (or set to 0),
+# defaults to unlimited (subject to subscription limits).
+#db_conns_per_client = 0
+
+# Limit blocking threads used for database connections.  Defaults to 16.
+#max_blocking_threads = 16
+
+# Limit the maximum size of an EVENT message.  Defaults to 128 KB.
+# Set to 0 for unlimited.
+#max_event_bytes = 131072
+
+# Maximum WebSocket message in bytes.  Defaults to 128 KB.
+#max_ws_message_bytes = 131072
+
+# Maximum WebSocket frame size in bytes.  Defaults to 128 KB.
+#max_ws_frame_bytes = 131072
+
+# Broadcast buffer size, in number of events.  This prevents slow
+# readers from consuming memory.
+#broadcast_buffer = 16384
+
+# Event persistence buffer size, in number of events.  This provides
+# backpressure to senders if writes are slow.
+#event_persist_buffer = 4096
+
+# Event kind blacklist. Events with these kinds will be discarded.
+#event_kind_blacklist = [
+#    70202,
+#]
+
+[authorization]
+# Pubkey addresses in this array are whitelisted for event publishing.
+# Only valid events by these authors will be accepted, if the variable
+# is set.
+#pubkey_whitelist = [
+#  "35d26e4690cbe1a898af61cc3515661eb5fa763b57bd0b42e45099c8b32fd50f",
+#  "887645fef0ce0c3c1218d2f5d8e6132a19304cdc57cd20281d082f38cfea0072",
+#]
+
+[verified_users]
+# NIP-05 verification of users.  Can be "enabled" to require NIP-05
+# metadata for event authors, "passive" to perform validation but
+# never block publishing, or "disabled" to do nothing.
+#mode = "disabled"
+
+# Domain names that will be prevented from publishing events.
+#domain_blacklist = ["wellorder.net"]
+
+# Domain names that are allowed to publish events.  If defined, only
+# events NIP-05 verified authors at these domains are persisted.
+#domain_whitelist = ["example.com"]
+
+# Consider an pubkey "verified" if we have a successful validation
+# from the NIP-05 domain within this amount of time.  Note, if the
+# domain provides a successful response that omits the account,
+# verification is immediately revoked.
+#verify_expiration = "1 week"
+
+# How long to wait between verification attempts for a specific author.
+#verify_update_frequency = "24 hours"
+
+# How many consecutive failed checks before we give up on verifying
+# this author.
+#max_consecutive_failures = 20
