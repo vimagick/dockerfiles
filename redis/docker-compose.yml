@@ -1,7 +1,7 @@
 version: "3.8"
 services:
   redis:
-    image: redis:6-alpine
+    image: redis:7-alpine
     command: --save 900 1
     ports:
       - "6379:6379"

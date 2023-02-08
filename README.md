@@ -370,7 +370,7 @@ A collection of delicious docker recipes.
 - [x] heartexlabs/label-studio
 - [x] martialblog/limesurvey
 - [x] mailhog/mailhog
-- [x] tootsuite/mastodon
+- [x] linuxserver/mastodon
 - [x] matrixconduit/matrix-conduit
 - [x] getmeili/meilisearch :mag:
 - [x] mitmproxy/mitmproxy
