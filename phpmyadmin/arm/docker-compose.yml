@@ -1,9 +1,0 @@
-version: "3.8"
-services:
-  phpmyadmin:
-    image: easypi/phpmyadmin-arm64
-    ports:
-      - "8080:80"
-    environment:
-      - PMA_ARBITRARY=1
-    restart: unless-stopped
