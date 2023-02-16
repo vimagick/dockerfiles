@@ -342,6 +342,7 @@ A collection of delicious docker recipes.
 - [x] gitlab/gitlab-ce
 - [x] atlassianlabs/gostatsd
 - [x] gitea/gitea :cn:
+- [x] gladysassistant/gladys
 - [x] gliderlabs/logspout
 - [x] gliderlabs/registrator
 - [ ] glot
