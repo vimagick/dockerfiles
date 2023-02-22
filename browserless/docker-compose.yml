@@ -1,14 +1,15 @@
-browserless:
-  image: browserless/chrome:1-chrome-stable
-  ports:
-    - "3000:3000"
-  environment:
-    - DEBUG=browserless/chrome
-    - MAX_CONCURRENT_SESSIONS=10
-    - CONNECTION_TIMEOUT=600000
-    - MAX_QUEUE_LENGTH=10
-    - CHROME_REFRESH_TIME=3600000
-    - ENABLE_CORS=true
-    - EXIT_ON_HEALTH_FAILURE=true
-  shm_size: 2gb
-  restart: always
+version: '3.8'
+services:
+  browserless:
+    image: browserless/chrome:1-chrome-stable
+    ports:
+      - "3000:3000"
+    environment:
+      - DEBUG=browserless/chrome
+      - MAX_CONCURRENT_SESSIONS=100
+      - CONNECTION_TIMEOUT=300000
+      - MAX_QUEUE_LENGTH=100
+      - ENABLE_CORS=true
+      - ENABLE_DEBUG_VIEWER=true
+      - EXIT_ON_HEALTH_FAILURE=true
+    restart: unless-stopped
