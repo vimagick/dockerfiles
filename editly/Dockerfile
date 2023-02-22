@@ -5,7 +5,7 @@
 FROM node:lts-bullseye
 MAINTAINER EasyPi Software Foundation
 
-ARG EDITLY_VERSION=0.14.1
+ARG EDITLY_VERSION=0.14.2
 ARG FFMPEG_VERSION=5.1.1
 
 RUN set -xe \
