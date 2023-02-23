@@ -1,0 +1,9 @@
+version: "3.8"
+services:
+  croc:
+    image: schollz/croc
+    ports:
+      - "9009-9013:9009-9013"
+    environment:
+      - CROC_PASS=hackme
+    restart: unless-stopped
