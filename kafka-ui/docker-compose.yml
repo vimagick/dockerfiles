@@ -28,4 +28,6 @@ services:
       - KAFKA_CLUSTERS_1_NAME=local
       - KAFKA_CLUSTERS_1_BOOTSTRAPSERVERS=kafka:9092
       # KAFKA_CLUSTERS_1_READONLY=true
+    depends_on:
+      - kafka
     restart: unless-stopped
