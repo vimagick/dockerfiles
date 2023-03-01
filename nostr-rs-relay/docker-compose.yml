@@ -2,11 +2,13 @@ version: "3.8"
 services:
   nostr-rs-relay:
     image: scsibug/nostr-rs-relay
+    command: "./nostr-rs-relay  --config etc/config.toml --db var"
     ports:
-      - "8080:8080"
+      - "8008:8008"
     volumes:
-      - ./data/etc/config.toml:/usr/src/app/config.toml:ro
-      - ./data/var:/usr/src/app/db
+      - ./data/etc:/usr/src/app/etc
+      - ./data/var:/usr/src/app/var
     environment:
       - RUST_LOG=info,nostr_rs_relay=info
+    privileged: true
     restart: unless-stopped
