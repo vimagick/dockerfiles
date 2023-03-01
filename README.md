@@ -367,6 +367,7 @@ A collection of delicious docker recipes.
 - [x] djmattyg007/jsoneditor
 - [x] wurstmeister/kafka
 - [x] mailgun/kafka-pixy
+- [x] provectuslabs/kafka-ui
 - [x] devopsfaith/krakend
 - [x] ipfs/kubo
 - [x] heartexlabs/label-studio
