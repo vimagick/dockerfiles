@@ -1,7 +1,11 @@
 version: "3.8"
+
 services:
-  crawlee:
-    image: crawlee
-    build: .
+
+  my-crawler:
+    image: my-crawler
+    build:
+      context: my-crawler
+      dockerfile: Dockerfile
     volumes:
-      - ./data:/usr/src/app/storage
+      - ./my-crawler/storage:/usr/src/app/storage

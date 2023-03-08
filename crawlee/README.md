@@ -5,23 +5,16 @@ crawlee
 scraping and browser automation library.
 
 ```bash
-$ docker-compose build
-Building crawlee
-Successfully built xxxxxxxxxxxx
-Successfully tagged crawlee:latest
+$ docker run --rm -e PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1 -e PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=1 -v $PWD:/tmp -w /tmp apify/actor-node:16 npx crawlee create -t cheerio-js my-crawler
 
-$ docker-compose run --rm crawlee
-INFO  BasicCrawler: Starting the crawl
-INFO  BasicCrawler: Processing ...
-Crawler finished.
+$ docker-compose build my-crawler
 
-$ tree data
+$ docker-compose run --rm my-crawler
+
+$ tree my-crawler/storage/
 ├── datasets
 │   └── default
-│       ├── 000000001.json
-│       ├── 000000002.json
-│       ├── 000000003.json
-│       └── 000000004.json
+│       └── 000000001.json
 ├── key_value_stores
 └── request_queues
 ```
