@@ -5,7 +5,12 @@ crawlee
 scraping and browser automation library.
 
 ```bash
-$ docker run --rm -e PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1 -e PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=1 -v $PWD:/tmp -w /tmp apify/actor-node:16 npx crawlee create -t cheerio-js my-crawler
+$ docker run --rm -it -v $PWD:/tmp apify/actor-node:16 sh
+>>> export PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1
+>>> export PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=1
+>>> npx crawlee create -t cheerio-js my-crawler
+>>> mv my-crawler /tmp
+>>> exit
 
 $ docker-compose build my-crawler
 
