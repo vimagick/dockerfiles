@@ -1,0 +1,14 @@
+{
+    "description": "Crawlee Demo Project",
+    "version": "0.0.1",
+    "license": "UNLICENSED",
+    "type": "module",
+    "main": "main.js",
+    "scripts": {
+        "start": "node main.js"
+    },
+    "dependencies": {
+        "crawlee": "*"
+    },
+    "repository": {}
+}

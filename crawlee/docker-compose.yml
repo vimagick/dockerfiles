@@ -1,0 +1,7 @@
+version: "3.8"
+services:
+  crawlee:
+    image: crawlee
+    build: .
+    volumes:
+      - ./data:/usr/src/app/storage

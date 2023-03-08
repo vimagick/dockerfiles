@@ -303,6 +303,12 @@ A collection of delicious docker recipes.
 
 - [x] adguard/adguardhome
 - [x] ghcr.io/linuxserver/airsonic :musical_note:
+- [x] apify/actor-node
+  - [x] apify/actor-node-puppeteer-chrome
+  - [x] apify/actor-node-playwright
+    - [x] apify/actor-node-playwright-chrome
+    - [x] apify/actor-node-playwright-firefox
+    - [x] apify/actor-node-playwright-webkit
 - [x] archivebox/archivebox
 - [x] docker.bintray.io/jfrog/artifactory-oss
 - [x] jeffail/benthos
