@@ -8,12 +8,14 @@ servers, firewalls and the like.
 ## docker-compose.yml
 
 ```yaml
-rinetd:
-  image: vimagick/rinetd
-  volumes:
-    - ./data:/etc/rinetd
-  net: host
-  restart: always
+version: "3.8"
+services:
+  rinetd:
+    image: vimagick/rinetd
+    volumes:
+      - ./data:/etc/rinetd
+    network_mode: host
+    restart: unless-stopped
 ```
 
 ## up and running

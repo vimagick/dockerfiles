@@ -2,11 +2,11 @@
 # Dockerfile for rinetd
 #
 
-FROM alpine
-MAINTAINER kev <noreply@easypi.pro>
+FROM alpine:3
+MAINTAINER EasyPi Software Foundation
 
-ENV RINETD_VERSION 0.70
-ENV RINETD_URL https://github.com/samhocevar/rinetd/releases/download/v${RINETD_VERSION}/rinetd-${RINETD_VERSION}.tar.gz
+ARG RINETD_VERSION=0.73
+ARG RINETD_URL=https://github.com/samhocevar/rinetd/releases/download/v${RINETD_VERSION}/rinetd-${RINETD_VERSION}.tar.gz
 
 RUN set -xe \
     && apk add --no-cache build-base curl tar \
