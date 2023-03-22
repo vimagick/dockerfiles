@@ -428,6 +428,7 @@ A collection of delicious docker recipes.
 - [x] portainer/portainer :+1:
 - [x] postgres
 - [x] postgrest/postgrest
+- [x] prefecthq/prefect
 - [x] prom/prometheus
 - [x] prosody/prosody
 - [x] redis/redis-stack

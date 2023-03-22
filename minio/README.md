@@ -78,8 +78,13 @@ drwx------   14 u0_a120  u0_a120       4096 Oct  3 12:59 ..
 $ rm -r xxx
 ```
 
+## Server
+
+[read more][6]
+
 [1]: https://minio.io/
 [2]: https://dl.minio.io/client/mc/release/linux-amd64/mc
 [3]: https://dl.minio.io/client/mc/release/linux-arm/mc
 [4]: https://dl.minio.io/client/mc/release/windows-amd64/mc
 [5]: https://docs.min.io/docs/minio-client-complete-guide
+[6]: https://min.io/docs/minio/linux/reference/minio-server/minio-server.html
