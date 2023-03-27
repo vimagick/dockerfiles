@@ -5,7 +5,7 @@
 FROM alpine:3
 MAINTAINER EasyPi Software Foundation
 
-ARG SS_RUST_VERSION=v1.15.2
+ARG SS_RUST_VERSION=v1.15.3
 ARG SS_RUST_FILE=shadowsocks-${SS_RUST_VERSION}.x86_64-unknown-linux-musl.tar.xz
 ARG SS_RUST_URL=https://github.com/shadowsocks/shadowsocks-rust/releases/download/${SS_RUST_VERSION}/${SS_RUST_FILE}
 
