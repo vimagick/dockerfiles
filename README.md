@@ -31,6 +31,7 @@ A collection of delicious docker recipes.
 - [ ] nagios
 - [ ] openswan
 - [ ] postfix
+- [ ] postfixadmin
 - [ ] pritunl
 - [ ] pyinstaller
 - [ ] rtmpdump

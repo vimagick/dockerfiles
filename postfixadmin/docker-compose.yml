@@ -1,0 +1,32 @@
+version: "3.8"
+
+services:
+
+  postfixadmin:
+    image: postfixadmin:3-apache
+    ports:
+      - "8000:80"
+    environment:
+      - POSTFIXADMIN_DB_TYPE=pgsql
+      - POSTFIXADMIN_DB_HOST=postgres
+      - POSTFIXADMIN_DB_USER=postfixadmin
+      - POSTFIXADMIN_DB_NAME=postfixadmin
+      - POSTFIXADMIN_DB_PASSWORD=postfixadmin
+      - POSTFIXADMIN_SMTP_SERVER=postfix
+      - POSTFIXADMIN_SMTP_PORT=25
+      - POSTFIXADMIN_ENCRYPT=md5crypt
+    depends_on:
+      - postgres
+    restart: unless-stopped
+
+  postgres:
+    image: postgres:14-alpine
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=postfixadmin
+      - POSTGRES_PASSWORD=postfixadmin
+      - POSTGRES_DB=postfixadmin
+    restart: unless-stopped
