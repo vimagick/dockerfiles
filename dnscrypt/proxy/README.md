@@ -15,4 +15,12 @@ $ docker-compose up -d
 $ dig @127.0.0.1 www.youtube.com
 ```
 
+## [forwarding_rules][2]
+
+```bash
+$ wget -P data https://github.com/felixonmars/dnsmasq-china-list/raw/master/accelerated-domains.china.conf
+$ cat data/accelerated-domains.china.conf | sed -e 's@^server=/\(.*\)/@\1\t@' | column -t > data/forwarding-rules.txt
+```
+
 [1]: https://github.com/DNSCrypt/dnscrypt-proxy
+[2]: https://github.com/DNSCrypt/dnscrypt-proxy/wiki/Forwarding
