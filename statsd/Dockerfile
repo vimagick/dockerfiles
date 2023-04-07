@@ -5,8 +5,8 @@
 FROM alpine:3
 MAINTAINER EasyPi Software Foundation
 
-ENV STATSD_VERSION=0.9.0
-ENV STATSD_URL=https://github.com/statsd/statsd/archive/refs/tags/v$STATSD_VERSION.tar.gz
+ARG STATSD_VERSION=0.9.0
+ARG STATSD_URL=https://github.com/statsd/statsd/archive/refs/tags/v$STATSD_VERSION.tar.gz
 
 WORKDIR /opt/statsd
 
