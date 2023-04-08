@@ -2,6 +2,9 @@ version: "3.8"
 services:
   dnscrypt-proxy:
     image: vimagick/dnscrypt-proxy
+    build:
+      args:
+        - DNSCRYPT_PROXY_ARCH=x86_64
     ports:
       - "53:53/tcp"
       - "53:53/udp"

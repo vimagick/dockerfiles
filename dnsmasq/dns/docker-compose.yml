@@ -1,0 +1,38 @@
+version: "3.8"
+
+services:
+
+  dnsmasq:
+    image: vimagick/dnsmasq
+    command: >
+      --cache-size=10000
+      --interface=eth0
+      --log-facility=-
+      --log-queries
+      --no-dhcp-interface=eth0
+      --no-hosts
+      --no-resolv
+      --server=192.168.99.53
+    ports:
+      - "53:53/tcp"
+      - "53:53/udp"
+    depends_on:
+      - dnscrypt-proxy
+    restart: unless-stopped
+
+  dnscrypt-proxy:
+    image: vimagick/dnscrypt-proxy
+    volumes:
+      - ./data:/etc/dnscrypt-proxy
+    networks:
+      default:
+        ipv4_address: 192.168.99.53
+    restart: unless-stopped
+
+networks:
+  default:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 192.168.99.0/24
+          gateway: 192.168.99.1

@@ -16,4 +16,4 @@ EXPOSE 53/tcp \
        53/udp \
        67/udp
 
-ENTRYPOINT ["dnsmasq", "--no-daemon", "--user=dnsmasq", "--group=dnsmasq"]
+ENTRYPOINT ["dnsmasq", "--keep-in-foreground", "--user=dnsmasq", "--group=dnsmasq"]
