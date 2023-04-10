@@ -1,0 +1,162 @@
+###################
+#   Input type    #
+###################
+
+[input]
+
+### Standard input
+# type = "stdin"
+
+### File input
+# type = "file"
+# src = "/var/lib/docker/containers/*/*.log"
+
+### Syslog over UDP
+type = "udp"
+listen = "0.0.0.0:514"
+
+### TCP
+# type = "tcp"
+# listen = "0.0.0.0:6514"
+# timeout = 3600
+
+### TCP, using coroutines
+# type = "tcp_co"
+# listen = "0.0.0.0:6514"
+# tcp_threads = 1
+
+### TLS
+# type = "tls"
+# listen = "0.0.0.0:6514"
+# framing = "line"
+# timeout = 3600
+# tls_cert = "flowgger.pem"
+# tls_key = "flowgger.pem"
+# tls_ca_file = "flowgger.pem"
+# tls_compatibility_level = "intermediate"
+# tls_verify_peer = false
+# tls_compression = false
+# tls_ciphers = "EECDH+AES128:EECDH+CHACHA20:RSA+AES128:EECDH+AES256:RSA+AES256:EECDH+3DES:RSA+3DES:!MD5;"
+
+### TLS, using coroutines
+# type = "tls_co"
+# listen = "0.0.0.0:6514"
+# framing = "line"
+# tls_threads = 1
+# tls_cert = "flowgger.pem"
+# tls_key = "flowgger.pem"
+# tls_ca_file = "flowgger.pem"
+# tls_compatibility_level = "intermediate"
+# tls_verify_peer = false
+# tls_compression = false
+# tls_ciphers = "EECDH+AES128:EECDH+CHACHA20:RSA+AES128:EECDH+AES256:RSA+AES256:EECDH+3DES:RSA+3DES:!MD5;"
+
+### Redis client
+# type = "redis"
+# redis_connect = "127.0.0.1"
+# redis_queue_key = "logs"
+# redis_threads = 1
+
+###################
+#  Input format   #
+###################
+
+### LTVS
+# format = "ltsv"
+# queuesize = 1000000
+# [input.ltsv_schema]
+# counter = "u64"
+
+### Syslog
+#format = "rfc3164"
+format = "rfc3164"
+
+####################
+#   Output type    #
+####################
+
+[output]
+
+### Debug output (stdout)
+#type = "stdout"
+
+### File output
+type = "file"
+file_path = "var/output.log"
+# Optional: Enables bufferized output. If rotation is used, must be smaller than file_rotation_size.
+file_buffer_size = 512
+
+# Optional: Enables file rotation once the specified size is reached.
+file_rotation_size = 2048
+
+# Optional: Enables file rotation based on time. Rotation occur every file_rotation_time minutes
+file_rotation_time = 2
+
+# Optional: When time rotation is enabled, the timestamp format is appended to the filenames.
+# Default is set to "[year][month][day]T[hour][minute][second]Z". 
+# Format must conform to https://docs.rs/time/0.3.7/time/format_description/index.html
+file_rotation_timeformat = "[year][month][day]T[hour][minute][second]Z"
+
+# Optional, only used if either file_rotation_size or file_rotation_time is set:
+# Specifies number of rotation files to use. The default value is 50.
+# The last 'file_rotation_maxfiles' logs will be kept, the older logs will be overwritten and lost.
+#file_rotation_maxfiles = 2
+
+### Kafka output
+# type = "kafka"
+# kafka_brokers = [ "172.16.205.129:9092", "172.16.205.130:9092" ]
+# kafka_topic = "test"
+# kafka_threads = 1
+# kafka_coalesce = 1000
+# kafka_timeout = 60000
+# kafka_acks = 0
+# kafka_compression = "none"
+
+### TLS output
+# type = "tls"
+# connect = [ "172.16.205.128:6514", "172.16.205.129:6514" ]
+# timeout = 3600
+# tls_threads = 1
+# tls_cert = "flowgger.pem"
+# tls_key = "flowgger.pem"
+# tls_ca_file = "flowgger.pem"
+# tls_compatibility_level = "intermediate"
+# tls_verify_peer = false
+# tls_compression = false
+# tls_ciphers = "EECDH+AES128:EECDH+CHACHA20:RSA+AES128:EECDH+AES256:RSA+AES256:EECDH+3DES:RSA+3DES:!MD5;"
+# tls_async = false
+# tls_recovery_delay_init = 1
+# tls_recovery_delay_max = 10000
+# tls_recovery_probe_time = 30000
+
+####################
+#   Output format  #
+####################
+
+### JSON (GELF)
+# format = "gelf"
+# framing = "nul"
+# [output.gelf_extra]
+# x-header1 = "x-header1 value"
+# x-header2 = "x-header2 value"
+
+### LTSV
+#format = "ltsv"
+#framing = "line"
+# [output.ltsv_extra]
+# x-header1 = "x-header1 value"
+# x-header2 = "x-header2 value"
+
+### Cap'n Proto
+# format = "capnp"
+# framing = "capnp"
+# [output.capnp_extra]
+# x-header1 = "x-header1 value"
+# x-header2 = "x-header2 value"
+
+### Syslog
+framing = "line"
+# "rfc3164" or "rfc5424" or "passthrough"
+format = "rfc3164"
+# Format of the optional timestamp to be prepended to each event
+syslog_prepend_timestamp="[[[year]-[month]-[day]T[hour]:[minute]:[second].[subsecond digits:6]Z]"

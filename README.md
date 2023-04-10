@@ -106,6 +106,7 @@ A collection of delicious docker recipes.
 - [x] bittorrent-tracker
 - [x] cadvisor
 - [x] casperjs :+1:
+- [x] flowgger
 - [x] freegeoip
 - [x] freeradius
 - [x] frp :cn:

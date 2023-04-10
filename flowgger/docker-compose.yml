@@ -1,0 +1,11 @@
+version: "3.8"
+services:
+  flowgger:
+    image: vimagick/flowgger
+    init: true
+    ports:
+      - "514:514/udp"
+    volumes:
+      - ./data/etc:/opt/flowgger/etc
+      - ./data/var:/opt/flowgger/var
+    restart: unless-stopped
