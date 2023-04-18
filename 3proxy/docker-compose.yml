@@ -1,0 +1,11 @@
+verson: "3.8"
+services:
+  3proxy:
+    image: 3proxy/3proxy
+    ports:
+      - "1080:1080"
+      - "3128:3128"
+    volumes:
+      - ./data/etc:/etc/3proxy
+      - ./data/log:/var/log/3proxy
+    restart: unless-stopped

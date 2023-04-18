@@ -303,6 +303,7 @@ A collection of delicious docker recipes.
 
 ## 3rd-party (sorted by basename)
 
+- [x] 3proxy/3proxy
 - [x] adguard/adguardhome
 - [x] ghcr.io/linuxserver/airsonic :musical_note:
 - [x] apify/actor-node
