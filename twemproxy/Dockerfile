@@ -3,10 +3,11 @@
 #
 
 FROM alpine:3
+MAINTAINER EasyPi Software Foundation
 
-ENV TWEMPROXY_VERSION=0.5.0
-ENV TWEMPROXY_URL=https://github.com/twitter/twemproxy/releases/download/${TWEMPROXY_VERSION}/twemproxy-${TWEMPROXY_VERSION}.tar.gz
-ENV TWEMPROXY_HOME=/opt/twemproxy
+ARG TWEMPROXY_VERSION=0.5.0
+ARG TWEMPROXY_URL=https://github.com/twitter/twemproxy/releases/download/${TWEMPROXY_VERSION}/twemproxy-${TWEMPROXY_VERSION}.tar.gz
+ARG TWEMPROXY_HOME=/opt/twemproxy
 
 WORKDIR ${TWEMPROXY_HOME}
 
