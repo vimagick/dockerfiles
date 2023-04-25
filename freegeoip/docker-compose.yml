@@ -1,6 +1,8 @@
-freegeoip:
-  image: vimagick/freegeoip
-  ports:
-    - "8080:8080"
-    - "8888:8888"
-  restart: always
+version: "3.8"
+services:
+  freegeoip:
+    image: vimagick/freegeoip
+    ports:
+      - "8080:8080"
+      - "8888:8888"
+    restart: unless-stopped

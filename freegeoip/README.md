@@ -1,16 +1,7 @@
 freegeoip
 =========
 
-## docker-compose.yml
-
-```yaml
-freegeoip:
-  image: vimagick/freegeoip
-  ports:
-    - "8080:8080"
-    - "8888:8888"
-  restart: always
-```
+[freegeoip][1] provides a public HTTP API for software developers to search the geolocation of IP addresses.
 
 ## up and running
 
@@ -44,3 +35,5 @@ go_gc_duration_seconds{quantile="0.75"} 0.000112867
 go_gc_duration_seconds{quantile="1"} 0.000260533
 go_gc_duration_seconds_sum 0.001055739
 ```
+
+[1]: https://freegeoip.io/
