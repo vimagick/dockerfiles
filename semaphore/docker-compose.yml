@@ -3,12 +3,15 @@ version: "3.8"
 services:
 
   semaphore:
-    image: ansiblesemaphore/semaphore:v2.8.77
+    image: semaphoreui/semaphore:v2.8.90
     ports:
       - "3000:3000"
     volumes:
+      #- ./data:/var/lib/semaphore/
       - ./data/semaphore:/etc/semaphore
     environment:
+      #SEMAPHORE_DB_DIALECT: bolt
+      #SEMAPHORE_DB_HOST: /var/lib/semaphore/database.boltdb
       SEMAPHORE_DB_DIALECT: postgres
       SEMAPHORE_DB_USER: semaphore
       SEMAPHORE_DB_PASS: semaphore
