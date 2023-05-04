@@ -30,7 +30,7 @@ services:
     restart: unless-stopped
 
   redis:
-    image: redis:alpine
+    image: redis:7-alpine
     command: --save 900 1
     ports:
       - "6379:6379"
