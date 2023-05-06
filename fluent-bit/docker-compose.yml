@@ -1,0 +1,10 @@
+version: "3.8"
+services:
+  fluent-bit:
+    image: fluent/fluent-bit:2.1
+    ports:
+      - "2020:2020"
+    volumes:
+      - ./data/etc:/fluent-bit/etc
+      - ./data/var:/fluent-bit/var
+    restart: unless-stopped
