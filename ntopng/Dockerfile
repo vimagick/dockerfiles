@@ -8,10 +8,10 @@ MAINTAINER EasyPi Software Foundation
 RUN set -xe \
     && apt update \
     && apt install -y curl gnupg libjson-c3 \
-    && curl -sSL http://packages.ntop.org/apt-stable/ntop.key | apt-key add - \
+    && curl -sSL https://packages.ntop.org/apt-stable/ntop.key | apt-key add - \
     && { \
-         echo "deb http://packages.ntop.org/apt/22.04/ x64/"; \
-         echo "deb http://packages.ntop.org/apt/22.04/ all/"; \
+         echo "deb https://packages.ntop.org/apt-stable/22.04/ x64/"; \
+         echo "deb https://packages.ntop.org/apt-stable/22.04/ all/"; \
        } > /etc/apt/sources.list.d/ntop.list \
     && apt update \
     && apt install -y ntopng \
