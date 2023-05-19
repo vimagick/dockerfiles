@@ -3,12 +3,12 @@
 #
 
 FROM alpine:3
-
 MAINTAINER EasyPi Software Foundation
 
 RUN set -xe \
     && apk add --no-cache dnsmasq-dnssec \
-    && echo "conf-dir=/etc/dnsmasq.d,*.conf" >> /etc/dnsmasq.conf
+    && echo "conf-dir=/etc/dnsmasq.d,*.conf" >> /etc/dnsmasq.conf \
+    && dnsmasq --version
 
 VOLUME /etc/dnsmasq.d
 
