@@ -257,6 +257,7 @@ A collection of delicious docker recipes.
 - [x] mysql-proxy
 - [x] ngrok :+1:
 - [x] obfsproxy
+- [x] outline-ss-server
 - [x] polipo
 - [x] privoxy
 - [x] privoxy-arm

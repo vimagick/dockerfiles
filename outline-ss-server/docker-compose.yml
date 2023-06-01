@@ -1,0 +1,11 @@
+version: "3.8"
+services:
+  outline-ss-server:
+    image: vimagick/outline-ss-server
+    ports:
+      - "8388:8388/tcp"
+      - "8388:8388/udp"
+      - "9092:9092/tcp"
+    volumes:
+      - ./data:/app/etc
+    restart: unless-stopped

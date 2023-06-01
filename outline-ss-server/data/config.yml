@@ -1,0 +1,9 @@
+keys:
+- id: foo
+  port: 8388
+  cipher: chacha20-ietf-poly1305
+  secret: Thi8aoqu8Tha
+- id: bar
+  port: 8388
+  cipher: chacha20-ietf-poly1305
+  secret: mAequ6Hied8M
