@@ -267,6 +267,7 @@ A collection of delicious docker recipes.
     - [x] shadowsocks-libev :+1:
     - [x] shadowsocks-arm
     - [x] shadowsocks-libev-arm :+1:
+- [x] sniproxy
 - [x] spiped
 - [x] squid
 - [x] stunnel
