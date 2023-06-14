@@ -475,6 +475,7 @@ A collection of delicious docker recipes.
 - [x] syncthing/syncthing
 - [x] tensorflow
     - [x] serving
+- [x] kitabisa/teler
 - [x] tile38/tile38
 - [x] traccar/traccar
 - [x] traefik

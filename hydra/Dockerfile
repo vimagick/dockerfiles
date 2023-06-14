@@ -5,7 +5,7 @@
 FROM alpine:3
 MAINTAINER EasyPi Software Foundation
 
-ARG HYDRA_VERSION=9.3
+ARG HYDRA_VERSION=9.5
 ARG HYDRA_URL=https://github.com/vanhauser-thc/thc-hydra/archive/v${HYDRA_VERSION}.tar.gz
 
 RUN set -xe \
