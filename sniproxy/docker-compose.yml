@@ -6,5 +6,6 @@ services:
       - "80:80"
       - "443:443"
     volumes:
-      - ./data:/etc/sniproxy
+      - ./data/etc:/etc/sniproxy
+      - ./data/log:/var/log/sniproxy
     restart: unless-stopped
