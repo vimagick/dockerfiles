@@ -5,6 +5,7 @@ After=network.target
 [Service]
 EnvironmentFile=-/etc/default/kcptun
 ExecStart=/usr/bin/kcptun $KCPTUN_OPTS
+LimitNOFILE=65536
 Restart=on-failure
 
 [Install]
