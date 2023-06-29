@@ -12,4 +12,4 @@ VOLUME /data
 EXPOSE 69/udp
 
 ENTRYPOINT ["in.tftpd"]
-CMD ["--verbose", "--foreground", "--secure", "--create", "--user", "root", "/data"]
+CMD ["--verbose", "--foreground", "--ipv4", "--secure", "--create", "--user", "root", "/data"]
