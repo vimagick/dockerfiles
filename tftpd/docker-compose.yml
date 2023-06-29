@@ -1,7 +1,9 @@
-tftpd:
-  image: vimagick/tftpd
-  ports:
-    - "69:69/udp"
-  volumes:
-    - ./data:/tftpboot
-  restart: unless-stopped
+version: "3.8"
+services:
+  tftpd:
+    image: vimagick/tftpd
+    ports:
+      - "69:69/udp"
+    volumes:
+      - ./data:/data
+    restart: unless-stopped

@@ -1,7 +1,0 @@
-tftpd:
-  image: easypi/tftpd-arm
-  ports:
-    - "69:69/udp"
-  volumes:
-    - ./data:/tftpboot
-  restart: unless-stopped

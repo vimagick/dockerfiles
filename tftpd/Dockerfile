@@ -2,12 +2,14 @@
 # Dockerfile for tftpd
 #
 
-FROM alpine
-MAINTAINER kev <noreply@easypi.pro>
+FROM alpine:3
+MAINTAINER EasyPi Software Foundation
 
 RUN apk add --no-cache tftp-hpa
-VOLUME /tftpboot
+
+WORKDIR /data
+VOLUME /data
 EXPOSE 69/udp
 
 ENTRYPOINT ["in.tftpd"]
-CMD ["--verbose", "--foreground", "--secure", "--create", "--user", "root", "/tftpboot"]
+CMD ["--verbose", "--foreground", "--secure", "--create", "--user", "root", "/data"]
