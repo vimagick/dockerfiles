@@ -1,6 +1,8 @@
-haproxy:
-  image: haproxy:alpine
-  volumes:
-    - ./haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg
-  net: host
-  restart: always
+version: "3.8"
+services:
+  haproxy:
+    image: haproxy:alpine
+    volumes:
+      - ./data:/usr/local/etc/haproxy
+    network_mode: host
+    restart: unless-stopped
