@@ -2,8 +2,7 @@ version: "3.8"
 services:
   tftpd:
     image: vimagick/tftpd
-    ports:
-      - "69:69/udp"
     volumes:
       - ./data:/data
+    network_mode: host
     restart: unless-stopped

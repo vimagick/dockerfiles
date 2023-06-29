@@ -8,7 +8,7 @@ tftpd
 ```bash
 $ docker-compose up -d
 $ echo 'hello world' > /tmp/hello.txt
-$ curl -T /tmp/hello.txt tftp://127.0.0.1
+$ curl -T /tmp/hello.txt tftp://127.0.0.1/
 $ curl tftp://127.0.0.1/hello.txt
 ```
 
