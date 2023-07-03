@@ -1,14 +1,12 @@
 version: "3.8"
-
 services:
-
   ggr:
     image: vimagick/ggr
     ports:
       - "4444:4444"
     environment:
       - BROWSER_NAME=chrome
-      - BROWSER_VERSION=90.0
+      - BROWSER_VERSION=114.0
       - BROWSER_REGION=1
       - BROWSER_HOSTS=tasks.chrome
       - BROWSER_PORT=5555

@@ -1,6 +1,6 @@
 <qa:browsers xmlns:qa="urn:config.gridrouter.qatools.ru">
-<browser name="chrome" defaultVersion="90.0">
-    <version number="90.0">
+<browser name="chrome" defaultVersion="114.0">
+    <version number="114.0">
         <region name="1">
         </region>
     </version>

@@ -2,7 +2,7 @@
 # Dockerfile for ggr
 #
 
-FROM aerokube/ggr
+FROM aerokube/ggr:1.7.0
 MAINTAINER EasyPi Software Foundation
 
 RUN set -xe \
