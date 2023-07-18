@@ -42,6 +42,13 @@ $ cd /var/lib/docker/volumes/cowrie_cowrie-var/_data
 $ tail -f log/cowrie/cowrie.json
 ```
 
+```bash
+$ wget -P /usr/local/bin/ https://github.com/cowrie/cowrie/raw/master/bin/asciinema
+$ wget -P /usr/local/bin/ https://github.com/cowrie/cowrie/raw/master/bin/playlog
+$ chmod +x /usr/local/bin/{asciinema,playlog}
+$ playlog -c lib/cowrie/tty/xxxxxx
+```
+
 ## client
 
 ```bash
