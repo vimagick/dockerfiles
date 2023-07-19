@@ -156,7 +156,7 @@ A collection of delicious docker recipes.
 
 ## Media
 
-- [x] aircast-arm :musical_note:
+- [x] aircast-arm64 :musical_note:
 - [x] cmus
 - [x] cmus-arm
 - [x] darkice :musical_note:
