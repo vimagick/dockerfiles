@@ -18,14 +18,16 @@ ShadowVPN
 ## docker-compose.yml
 
 ```
-shadowvpn:
-  image: vimagick/shadowvpn
+services:
+  shadowvpn:
+  image: vimagick/shadowvpn:latest
   ports:
     - "1123:1123/udp"
   volumes:
-    - "./server.conf:/etc/shadowvpn/server.conf"
+    - "/root/shadowvpn/server.conf:/etc/shadowvpn/server.conf"
   privileged: true
   restart: always
+
 ```
 
 ## server
