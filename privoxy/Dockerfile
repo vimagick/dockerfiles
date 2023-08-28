@@ -19,10 +19,10 @@ RUN set -xe \
     && chmod +x /usr/sbin/gosu \
     && apk del curl
 
-RUN sed -i -e '/^listen-address/s/127.0.0.1/0.0.0.0/' \
-           -e '/^accept-intercepted-requests/s/0/1/' \
-           -e '/^enforce-blocks/s/0/1/' \
-           -e '/^#debug/s/#//' /etc/privoxy/config
+RUN sed -e '/^listen-address/s/127.0.0.1/0.0.0.0/' \
+        -e '/^accept-intercepted-requests/s/0/1/' \
+        -e '/^enforce-blocks/s/0/1/' \
+        -e '/^#debug/s/#//' /etc/privoxy/config.new > /etc/privoxy/config
 
 VOLUME /etc/privoxy
 
