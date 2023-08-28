@@ -1,8 +1,11 @@
-privoxy:
-  image: vimagick/privoxy
-  ports:
-    - "8118:8118"
-  volumes:
-    - ./privoxy/user.action:/etc/privoxy/user.action
-    - ./privoxy/user.filter:/etc/privoxy/user.filter
-  restart: always
+version: "3.8"
+services:
+  privoxy:
+    image: vimagick/privoxy
+    ports:
+      - "8118:8118"
+    volumes:
+      - ./data/config:/etc/privoxy/config
+      - ./data/user.action:/etc/privoxy/user.action
+      - ./data/user.filter:/etc/privoxy/user.filter
+    restart: unless-stopped

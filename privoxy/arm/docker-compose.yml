@@ -1,8 +1,0 @@
-privoxy:
-  image: easypi/privoxy-arm
-  ports:
-    - "8118:8118"
-  volumes:
-    - ./privoxy/user.action:/etc/privoxy/user.action
-    - ./privoxy/user.filter:/etc/privoxy/user.filter
-  restart: always

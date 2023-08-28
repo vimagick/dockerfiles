@@ -2,15 +2,22 @@
 # Dockerfile for privoxy
 #
 
-FROM alpine
-MAINTAINER kev <noreply@easypi.pro>
+FROM alpine:3
+MAINTAINER EasyPi Software Foundation
+
+ARG TARGETPLATFORM
+ARG GOSU_VERSION=1.16
 
 RUN set -xe \
-    && apk add -U curl privoxy \
-    && curl -sSL https://github.com/tianon/gosu/releases/download/1.9/gosu-amd64 > /usr/sbin/gosu \
+    && echo ${TARGETPLATFORM} \
+    && GOSU_ARCH=$(echo $TARGETPLATFORM | sed -e 's@linux/@@' \
+                                              -e 's@amd64@amd64@' \
+                                              -e 's@arm64@arm64@' \
+                                              -e 's@arm/v7@armhf@') \
+    && apk add --no-cache curl privoxy \
+    && curl -sSL https://github.com/tianon/gosu/releases/download/${GOSU_VERSION}/gosu-${GOSU_ARCH} > /usr/sbin/gosu \
     && chmod +x /usr/sbin/gosu \
-    && apk del curl \
-    && rm -rf /var/cache/apk/*
+    && apk del curl
 
 RUN sed -i -e '/^listen-address/s/127.0.0.1/0.0.0.0/' \
            -e '/^accept-intercepted-requests/s/0/1/' \
