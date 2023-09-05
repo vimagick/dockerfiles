@@ -6,20 +6,20 @@ FROM alpine:3
 MAINTAINER EasyPi Software Foundation
 
 RUN set -xe \
-    && apk add -U build-base \
-                  curl \
-                  gmp \
-                  gmp-dev \
-                  libstdc++ \
-                  python2 \
-                  python2-dev \
-    && curl https://bootstrap.pypa.io/pip/2.7/get-pip.py | python \
+    && apk add --no-cache build-base \
+                          curl \
+                          gmp \
+                          gmp-dev \
+                          libstdc++ \
+                          python2 \
+                          python2-dev \
+                          python2-pip \
     && pip install --no-cache-dir fteproxy \
     && apk del build-base \
                curl \
                gmp-dev \
                python2-dev \
-    && rm -rf /root/.cache /var/cache/apk/*
+    && rm -rf /root/.cache
 
 ENV MODE=server
 ENV UPSTREAM_FORMAT=manual-http-request
