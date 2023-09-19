@@ -301,6 +301,7 @@ A collection of delicious docker recipes.
     - [x] dnscrypt-server
 - [x] dnsmasq
 - [x] dnsmasq-arm
+- [x] passivedns
 - [x] pdnsd
 
 ## 3rd-party (sorted by basename)

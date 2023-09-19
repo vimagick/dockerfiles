@@ -1,0 +1,17 @@
+version: "3.8"
+services:
+  passivedns:
+    image: vimagick/passivedns
+    command: >
+      -i eth0
+      -l /var/log/passivedns/passivedns.log
+      -L /var/log/passivedns/passivedns-nx.log
+      -p /var/run/passivedns.pid
+      -P 86400
+      -S 256
+      -X 46CDNOPRSTMnx
+    volumes:
+      - ./data:/var/log/passivedns
+    network_mode: host
+    privileged: true
+    restart: unless-stopped
