@@ -42,6 +42,9 @@ filebeat.inputs:
   processors:
     - include_fields:
         fields: ["message", "project"]
+
+output.logstash:
+  hosts: ["logstash:5044"]
 ```
 
 ## logstash.conf
