@@ -91,6 +91,7 @@ A collection of delicious docker recipes.
 - [x] glances
 - [x] graphite
 - [x] influxdb
+- [x] ipfm
 - [x] logstash
 - [x] statsd
 - [x] telegraf

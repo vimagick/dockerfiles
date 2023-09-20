@@ -1,0 +1,10 @@
+version: "3.8"
+services:
+  ipfm:
+    image: vimagick/ipfm
+    volumes:
+      - ./data/etc:/etc/ipfm
+      - ./data/log:/var/log/ipfm
+    network_mode: host
+    privileged: true
+    restart: unless-stopped
