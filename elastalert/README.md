@@ -25,4 +25,4 @@ elastalert_1  | 2019-10-30T14:03:46.444137134Z bad things happen
 > ElastAlert will also load new rules, stop running missing rules, and restart
 > modified rules as the files in this folder change.
 
-[1]: http://elastalert.readthedocs.io/en/latest/
+[1]: https://elastalert2.readthedocs.io/en/latest/
