@@ -2,9 +2,10 @@ version: "3.8"
 
 services:
   elastalert:
-    image: vimagick/elastalert
+    image: jertel/elastalert2
     volumes:
-      - ./data:/opt/elastalert
+      - ./data/config.yaml:/opt/elastalert/config.yaml
+      - ./data/rules:/opt/elastalert/rules
     environment:
       - TZ=Asia/Shanghai
     restart: unless-stopped
