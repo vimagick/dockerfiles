@@ -1,5 +1,5 @@
 #
-# https://github.com/RocketChat/Rocket.Chat/blob/develop/docker-compose.yml
+# https://github.com/RocketChat/Docker.Official.Image/blob/master/compose.yml
 #
 
 version: "3.8"
@@ -7,20 +7,20 @@ version: "3.8"
 services:
 
   rocketchat:
-    image: rocket.chat:3
+    image: rocketchat/rocket.chat:6.4.1
     ports:
       - "3000:3000"
     environment:
       - ROOT_URL=https://chat.easypi.pro
       - MONGO_URL=mongodb://mongo:27017/rocketchat
-      - MONGO_OPLOG_URL=mongodb://mongo:27017/local
+      - MONGO_OPLOG_URL=mongodb://mongo:27017/local?replicaSet=rs0
     depends_on:
       - mongo
     restart: unless-stopped
 
   mongo:
-    image: mongo:4
-    command: mongod --oplogSize 128 --replSet rs0
+    image: mongo:5
+    command: mongod --smallfiles --oplogSize 128 --replSet rs0
     ports:
       - "27017:27017"
     volumes:
