@@ -388,6 +388,7 @@ A collection of delicious docker recipes.
 - [x] martialblog/limesurvey
 - [x] mailhog/mailhog
 - [x] linuxserver/mastodon
+- [x] 42wim/matterbridge :octocat:
 - [x] matrixconduit/matrix-conduit
 - [x] getmeili/meilisearch :mag:
 - [x] mitmproxy/mitmproxy

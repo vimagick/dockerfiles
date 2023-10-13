@@ -1,0 +1,8 @@
+version: '3.8'
+services:
+  matterbridge:
+    image: 42wim/matterbridge:stable
+    #command: -debug
+    volumes:
+    - ./data:/etc/matterbridge
+    restart: unless-stopped
