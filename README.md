@@ -460,7 +460,7 @@ A collection of delicious docker recipes.
       - [x] firefox
       - [x] vnc
     - [x] selenoid-ui
-- [x] ansiblesemaphore/semaphore
+- [x] semaphoreui/semaphore
 - [x] sentry
 - [x] atmoz/sftp
 - [x] quay.io/outline/shadowbox

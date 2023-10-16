@@ -1,6 +1,0 @@
-{
-  "dialect": "bolt",
-  "bolt": {
-    "host": "/var/lib/semaphore/semaphore.bolt"
-  }
-}
