@@ -1,7 +1,7 @@
 version: "3.8"
 services:
   uptime-kuma:
-    image: louislam/uptime-kuma
+    image: louislam/uptime-kuma:1-alpine
     ports:
       - "3001:3001"
     volumes:
