@@ -1,10 +1,12 @@
-pptp:
-  image: vimagick/pptp
-  environment:
-    - SERVER=192.168.31.222
-    - TUNNEL=vps
-    - USERNAME=username
-    - PASSWORD=password
-  net: host
-  privileged: yes
-  restart: unless-stopped
+version: "3.8"
+services:
+  pptp:
+    image: vimagick/pptp
+    environment:
+      - SERVER=192.168.31.222
+      - TUNNEL=vps
+      - USERNAME=username
+      - PASSWORD=password
+    network_mode: host
+    privileged: true
+    restart: unless-stopped

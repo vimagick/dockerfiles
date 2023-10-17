@@ -1,4 +1,7 @@
 #!/bin/sh
+#
+# helper for vimagick/pptp
+#
 
 cat > /etc/ppp/peers/${TUNNEL} <<_EOF_
 pty "pptp ${SERVER} --nolaunchpppd"

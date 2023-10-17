@@ -3,21 +3,6 @@ pptp
 
 Containerized PPTP Client
 
-## docker-compose.yml
-
-```yaml
-pptp:
-  image: vimagick/pptp
-  environment:
-    - SERVER=1.2.3.4
-    - TUNNEL=vps
-    - USERNAME=username
-    - PASSWORD=password
-  net: host
-  privileged: yes
-  restart: unless-stopped
-```
-
 ## up and running
 
 ```
@@ -30,9 +15,7 @@ ip link show
 ip addr show
 ip route show
 
-curl ifconfig.co
-curl ifconfig.ovh
-curl ifconfig.me
+curl ipinfo.io
 ```
 
 ## references

@@ -2,8 +2,8 @@
 # Dockerfile for pptp
 #
 
-FROM debian
-MAINTAINER kev <noreply@easypi.pro>
+FROM debian:bookworm
+MAINTAINER EasyPi Software Foundation
 
 RUN set -xe \
     && apt-get update \
