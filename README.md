@@ -409,6 +409,7 @@ A collection of delicious docker recipes.
 - [x] mongo
 - [x] ccrisan/motioneye
 - [x] neo4j
+- [x] lldap/lldap
 - [x] luzifer/nginx-sso
 - [x] n8nio/n8n
 - [x] illuspas/node-media-server :cn:

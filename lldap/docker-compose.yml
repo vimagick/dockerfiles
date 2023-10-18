@@ -1,0 +1,17 @@
+version: "3.8"
+services:
+  lldap:
+    image: lldap/lldap:stable
+    ports:
+      - "3890:3890"
+      - "17170:17170"
+    volumes:
+      - ./data:/data
+    environment:
+      - UID=1000
+      - GID=1000
+      - TZ=UTC
+      - LLDAP_JWT_SECRET=******
+      - LLDAP_LDAP_USER_PASS=admin
+      - LLDAP_LDAP_BASE_DN=dc=example,dc=com
+    restart: unless-stopped
