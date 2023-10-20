@@ -2,13 +2,13 @@
 # Dockerfile for n2n
 #
 
-FROM debian:buster
+FROM debian:bookworm
 MAINTAINER EasyPi Software Foundation
 
 RUN set -xe \
     && apt update \
     && apt install -y gnupg iptables lsb-release net-tools wget \
-    && wget http://apt.ntop.org/buster/all/apt-ntop.deb \
+    && wget http://apt.ntop.org/bookworm/all/apt-ntop.deb \
     && dpkg -i apt-ntop.deb \
     && apt update \
     && apt install -y n2n \

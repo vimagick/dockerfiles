@@ -2,7 +2,7 @@
 # Dockerfile for n2n-arm
 #
 
-FROM arm32v7/debian:buster
+FROM debian:buster
 MAINTAINER EasyPi Software Foundation
 
 RUN set -xe \
