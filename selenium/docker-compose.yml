@@ -1,5 +1,6 @@
 #
 # https://github.com/SeleniumHQ/docker-selenium/blob/trunk/docker-compose-v3.yml
+# https://github.com/SeleniumHQ/docker-selenium/blob/trunk/README.md#configuring-the-containers
 #
 
 version: "3.8"
@@ -12,6 +13,8 @@ services:
       - "4442:4442"
       - "4443:4443"
       - "4444:4444"
+    environment:
+      - SE_JAVA_OPTS=-Xms256m -Xmx2048m
     restart: unless-stopped
 
   chrome:
@@ -26,6 +29,8 @@ services:
       - SE_NODE_OVERRIDE_MAX_SESSIONS=true
       - SE_NODE_MAX_SESSIONS=4
       - SE_NODE_SESSION_TIMEOUT=180
+      - SE_OPTS=--log-level FINE
+      - SE_JAVA_OPTS=-Xms256m -Xmx2048m
       - START_XVFB=true
       - VNC_NO_PASSWORD=1
       - VNC_VIEW_ONLY=1
