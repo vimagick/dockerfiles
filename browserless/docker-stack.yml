@@ -7,7 +7,7 @@ services:
     ports:
       - "3000:3000"
     environment:
-      - DEBUG=browserless/chrome
+      - DEBUG=browserless:*
       - MAX_CONCURRENT_SESSIONS=10
       - CONNECTION_TIMEOUT=300000
       - MAX_QUEUE_LENGTH=10
