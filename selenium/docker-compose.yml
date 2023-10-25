@@ -38,3 +38,18 @@ services:
     depends_on:
       - hub
     restart: unless-stopped
+
+  video:
+    image: selenium/video:ffmpeg-4.3.1-20231020
+    volumes:
+      - ./data:/videos
+    ports:
+      - "9000:9000"
+    environment:
+      - DISPLAY_CONTAINER_NAME=chrome
+      - SE_VIDEO_FOLDER=/videos
+      - FILE_NAME=video.mp4
+      - VIDEO_READY_PORT=9000
+    depends_on:
+      - chrome
+    restart: unless-stopped
