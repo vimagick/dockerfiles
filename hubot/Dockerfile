@@ -11,6 +11,8 @@ ENV HUBOT_DESCRIPTION=$HUBOT_NAME-$HUBOT_ADAPTER
 ENV HUBOT_LOG_LEVEL=info
 ENV HUBOT_SLACK_TOKEN=
 
+ENV PATH=/home/hubot/node_modules/.bin:$PATH
+
 RUN set -xe \
     && apk add --update bash ca-certificates nodejs npm python3 \
     && npm install -g yo generator-hubot \
