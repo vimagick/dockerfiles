@@ -330,6 +330,7 @@ A collection of delicious docker recipes.
   - [x] cp-kafka-rest
   - [x] ksqldb-cli
   - [x] ksqldb-server
+- [x] couchdb
 - [x] schollz/croc
 - [x] streamsets/datacollector
 - [x] daskdev

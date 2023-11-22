@@ -1,0 +1,12 @@
+version: "3.8"
+services:
+  couchdb:
+    image: couchdb
+    ports:
+      - "5984:5984"
+    volumes:
+      - ./data:/opt/couchdb/data
+    environment:
+      - COUCHDB_USER=admin
+      - COUCHDB_PASSWORD=password
+    restart: unless-stopped
