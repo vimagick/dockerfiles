@@ -23,6 +23,7 @@ $ docker-compose kill -s SIGHUP
 
 no-hosts
 no-resolv
+filter-AAAA
 cache-size=10000
 server=8.8.8.8
 servers-file=/etc/dnsmasq.d/nsfw.txt
