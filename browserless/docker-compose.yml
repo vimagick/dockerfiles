@@ -12,4 +12,5 @@ services:
       - ENABLE_CORS=true
       - ENABLE_DEBUG_VIEWER=true
       - EXIT_ON_HEALTH_FAILURE=true
+      # TOKEN=4e2a9c32-2854-479a-a9f3-ba8899f2fdc1
     restart: unless-stopped
