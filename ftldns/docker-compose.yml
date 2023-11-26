@@ -2,10 +2,13 @@ version: "3.8"
 services:
   image: vimagick/ftldns
   ports:
-    - "53:53"
+    - "53:53/tcp"
+    - "53:53/udp"
   volumes:
-    - ./data:/etc/pihole
+    - ./data/etc:/etc/pihole
+    - ./data/log:/var/log/pihole
   tmpfs:
     - /run/pihole
     - /dev/shm
+  working_dir: /etc/pihole
   restart: unless-stopped
