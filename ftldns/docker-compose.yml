@@ -1,0 +1,11 @@
+version: "3.8"
+services:
+  image: vimagick/ftldns
+  ports:
+    - "53:53"
+  volumes:
+    - ./data:/etc/pihole
+  tmpfs:
+    - /run/pihole
+    - /dev/shm
+  restart: unless-stopped
