@@ -8,7 +8,7 @@ services:
       - "3000:3000"
     volumes:
       #- ./data:/var/lib/semaphore/
-      - ./data/semaphore:/etc/semaphore
+      - ./data:/etc/semaphore
     environment:
       #SEMAPHORE_DB_DIALECT: bolt
       #SEMAPHORE_DB_PATH: /var/lib/semaphore
@@ -22,6 +22,7 @@ services:
       SEMAPHORE_ADMIN_NAME: admin
       SEMAPHORE_ADMIN_PASSWORD: admin
       SEMAPHORE_ADMIN_EMAIL: admin@localhost
+    working_dir: /etc/semaphore
     depends_on:
       - postgres
     restart: unless-stopped
