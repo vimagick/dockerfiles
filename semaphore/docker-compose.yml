@@ -10,6 +10,7 @@ services:
       #- ./data:/var/lib/semaphore/
       - ./data:/etc/semaphore
     environment:
+      ANSIBLE_HOST_KEY_CHECKING: "False"
       #SEMAPHORE_DB_DIALECT: bolt
       #SEMAPHORE_DB_PATH: /var/lib/semaphore
       SEMAPHORE_DB_DIALECT: postgres
