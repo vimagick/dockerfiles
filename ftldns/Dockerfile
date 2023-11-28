@@ -18,7 +18,8 @@ RUN set -xe \
 
 VOLUME /etc/pihole
 
-EXPOSE 53/tcp \
+EXPOSE 4711/tcp \
+       53/tcp \
        53/udp
 
 CMD ["pihole-FTL", "-f"]
