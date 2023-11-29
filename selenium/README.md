@@ -21,6 +21,17 @@ $ selenium-standalone install
 $ selenium-standalone start
 ```
 
+> To kill long-lived sessions:
+
+```bash
+ENDPOINT=127.0.0.1:4444
+MAX_AGE=$((3*60)) # 3 minutes
+
+curl -s "http://${ENDPOINT}/status" |
+  jq -r --arg age ${MAX_AGE} '.value.nodes[].slots[]|select(.session and (.session.start|sub("\\..*Z";"Z")|fromdateiso8601 < now-($age|tonumber))).session.sessionId' |
+    xargs -r -t -I {} curl -w '\n' -X DELETE "http://${ENDPOINT}/session/{}"
+```
+
 ## Client
 
 baidu-search.py
