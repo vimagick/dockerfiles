@@ -8,7 +8,7 @@ MAINTAINER EasyPi Software Foundation
 ARG FREEGEOIP_VERSION=3.4.1
 ARG FREEGEOIP_FILE=freegeoip-${FREEGEOIP_VERSION}-linux-amd64.tar.gz
 ARG FREEGEOIP_URL=https://github.com/fiorix/freegeoip/releases/download/v${FREEGEOIP_VERSION}/${FREEGEOIP_FILE}
-ARG MMDB_URL=https://cdn.jsdelivr.net/npm/geolite2-city@1.0.0/GeoLite2-City.mmdb.gz
+ARG MMDB_URL=https://cdn.jsdelivr.net/npm/geolite2-city@1.0.4/GeoLite2-City.mmdb.gz
 
 WORKDIR /opt/freegeoip
 
