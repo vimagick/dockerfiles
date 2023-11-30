@@ -55,7 +55,10 @@ $ chmod 777 data
 $ docker-compose up -d
 $ docker-compose exec grafana bash
 >>> cat /etc/grafana/grafana.ini
->>> grafana-cli plugins install grafana-worldmap-panel
+>>> grafana cli plugins install grafana-oncall-app
+>>> grafana cli plugins install grafana-worldmap-panel
+>>> grafana cli plugins ls
+>>> ls /var/lib/grafana/plugins
 >>> exit
 $ docker-compose restart
 $ curl http://localhost:3000/
