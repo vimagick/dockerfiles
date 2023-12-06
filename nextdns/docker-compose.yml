@@ -1,0 +1,12 @@
+version: "3.8"
+services:
+  nextdns:
+    image: vimagick/nextdns
+    command: >
+      run
+      -listen :53
+      -log-queries
+    ports:
+      - "5300:53/tcp"
+      - "5300:53/udp"
+    restart: unless-stopped

@@ -303,6 +303,7 @@ A collection of delicious docker recipes.
 - [x] dnsmasq
 - [x] dnsmasq-arm
 - [x] ftldns
+- [x] nextdns
 - [x] passivedns
 - [x] pdnsd
 
