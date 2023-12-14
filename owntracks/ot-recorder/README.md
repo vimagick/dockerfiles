@@ -12,12 +12,11 @@ version: "3.8"
 services:
 
   recorder:
-    image: vimagick/ot-recorder
+    image: owntracks/recorder
     ports:
       - "8083:8083"
-      - "8085:8085"
     volumes:
-      - ./data:/var/spool/owntracks/recorder/store
+      - ./data:/store
     environment:
       - OTR_HOST=iot.eclipse.org
       - OTR_PORT=1883

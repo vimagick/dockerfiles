@@ -364,8 +364,8 @@ A collection of delicious docker recipes.
 - [x] gliderlabs/logspout
 - [x] gliderlabs/registrator
 - [ ] glot
-    - [ ] bash
-    - [ ] python
+  - [ ] bash
+  - [ ] python
 - [x] gogs/gogs :cn:
 - [x] gotify/server
 - [x] grafana/grafana
@@ -378,8 +378,8 @@ A collection of delicious docker recipes.
 - [x] linuxserver/jackett
 - [x] jellyfin/jellyfin
 - [x] jenkins
-    - [x] inbound-agent
-    - [x] jenkins
+  - [x] inbound-agent
+  - [x] jenkins
 - [x] jmxtrans/jmxtrans
 - [x] djmattyg007/jsoneditor
 - [x] wurstmeister/kafka
@@ -419,8 +419,8 @@ A collection of delicious docker recipes.
 - [x] notaitech/nudenet
 - [x] odoo
 - [x] ohmyform
-    - [x] ohmyform/api
-    - [x] ohmyform/ui
+  - [x] ohmyform/api
+  - [x] ohmyform/ui
 - [x] osixia/openldap
 - [x] openresty/openresty
 - [x] opensearchproject/opensearch
@@ -431,6 +431,9 @@ A collection of delicious docker recipes.
 - [x] owncloud
 - [x] jorijn/nostream
 - [x] scsibug/nostr-rs-relay
+- [x] owntracks
+  - [x] frontend
+  - [x] recorder
 - [x] chocobozzz/peertube
 - [x] dpage/pgadmin4
 - [x] viktorstrate/photoview
@@ -453,17 +456,17 @@ A collection of delicious docker recipes.
 - [x] rundeck/rundeck
 - [x] wonderfall/searx
 - [x] selenium
-    - [x] hub
-    - [x] node-chrome
-    - [x] node-firefox
-    - [x] standalone-firefox
+  - [x] hub
+  - [x] node-chrome
+  - [x] node-firefox
+  - [x] standalone-firefox
 - [x] aerokube
-    - [x] selenoid
-      - [x] video-recorder
-      - [x] chrome
-      - [x] firefox
-      - [x] vnc
-    - [x] selenoid-ui
+  - [x] selenoid
+    - [x] video-recorder
+    - [x] chrome
+    - [x] firefox
+    - [x] vnc
+  - [x] selenoid-ui
 - [x] semaphoreui/semaphore
 - [x] sentry
 - [x] atmoz/sftp
