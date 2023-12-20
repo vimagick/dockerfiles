@@ -14,6 +14,7 @@ services:
       - MB_DB_PORT=5432
       - MB_DB_USER=root
       - MB_DB_PASS=root
+      - MAX_SESSION_AGE=20160 # value is in minutes (14 days by default)
       - JAVA_TOOL_OPTIONS=-Xmx6g
       # JAVA_OPTS=-Dcom.sun.management.jmxremote.port=1099
       #           -Dcom.sun.management.jmxremote.rmi.port=1099
