@@ -1,0 +1,14 @@
+version: "3.8"
+services:
+  zigbee2mqtt:
+    image: koenkk/zigbee2mqtt
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./data:/app/data
+      - /run/udev:/run/udev:ro
+    environment:
+      - TZ=Asia/Shanghai
+    devices:
+      - /dev/serial/by-id/usb-Texas_Instruments_XXXXXX:/dev/ttyACM0
+    restart: unless-stopped

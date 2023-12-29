@@ -500,6 +500,7 @@ A collection of delicious docker recipes.
 - [x] yourls
 - [x] ghcr.io/linuxserver/wireguard
 - [x] apache/zeppelin
+- [x] koenkk/zigbee2mqtt
 - [x] zookeeper
 - [x] elkozmon/zoonavigator
 
