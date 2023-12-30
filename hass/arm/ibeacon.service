@@ -11,15 +11,18 @@ Environment="UUID=88 88 88 88 88 88 88 88 88 88 88 88 88 88 88 88"
 Environment="MAJOR=00 00"
 Environment="MINOR=00 00"
 Environment="POWER=C8"
-ExecStart=/bin/hciconfig hci0 up
+Environment="MIN_INTERVAL=A0 00"
+Environment="MAX_INTERVAL=40 06"
+Environment="ADV_MODE=03"
+ExecStart=/bin/hciconfig hci0 reset
 ExecStart=/bin/hciconfig hci0 noscan
 ExecStart=/usr/bin/hcitool -i hci0 cmd 0x08 0x0008 1E 02 01 1A 1A FF 4C 00 02 15 $UUID $MAJOR $MINOR $POWER 00
-ExecStart=/usr/bin/hcitool -i hci0 cmd 0x08 0x0006 A0 00 A0 00 03 00 00 00 00 00 00 00 00 07 00
+ExecStart=/usr/bin/hcitool -i hci0 cmd 0x08 0x0006 $MIN_INTERVAL $MAX_INTERVAL $ADV_MODE 00 00 00 00 00 00 00 00 07 00
 ExecStart=/usr/bin/hcitool -i hci0 cmd 0x08 0x000a 01
 # See: http://stackoverflow.com/questions/21124993/
-# ExecStart=/bin/hciconfig hci0 leadv 3
+# ExecStart=/bin/hciconfig hci0 leadv 3 # IT WILL OVERWRITE ADV RATE
 ExecStop=/bin/hciconfig hci0 noleadv
-#ExecStop=/bin/hciconfig hci0 down
+ExecStop=/bin/hciconfig hci0 reset
 RemainAfterExit=yes
 
 [Install]
