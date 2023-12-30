@@ -494,6 +494,7 @@ A collection of delicious docker recipes.
 - [x] v2ray/official :cn:
 - [x] mpromonet/v4l2rtspserver :camera:
 - [x] centurylink/watchtower
+- [x] aceberg/watchyourlan
 - [x] wekanteam/wekan
 - [x] requarks/wiki
 - [x] wordpress

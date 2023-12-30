@@ -1,0 +1,14 @@
+version: "3.8"
+services:
+  watchyourlan:
+    image: aceberg/watchyourlan
+    volumes:
+      - ./data:/data
+    environment:
+      - DBPATH=/data/db.sqlite
+      - GUIIP=0.0.0.0
+      - GUIPORT=8840
+      - IFACE=wlan0
+      - TZ=Asia/Shanghai
+    network_mode: host
+    restart: unless-stopped
