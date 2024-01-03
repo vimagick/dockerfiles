@@ -1,3 +1,7 @@
+#
+# See: https://www.zigbee2mqtt.io/guide/installation/02_docker.html#docker-compose
+#
+
 version: "3.8"
 services:
   zigbee2mqtt:
@@ -11,4 +15,7 @@ services:
       - TZ=Asia/Shanghai
     devices:
       - /dev/serial/by-id/usb-Texas_Instruments_XXXXXX:/dev/ttyACM0
+    group_add:
+      - dialout
+    user: "1000:1000"
     restart: unless-stopped

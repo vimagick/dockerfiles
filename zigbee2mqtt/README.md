@@ -28,6 +28,19 @@ udevadm info -q property -n /dev/ttyUSB0 --property=ID_MODEL
 
 ```bash
 $ docker compose up -d
+$ vim data/configuration.yaml
+$ docker compose restart
+$ tree
+├── data
+│   ├── configuration.yaml
+│   ├── coordinator_backup.json
+│   ├── database.db
+│   ├── log
+│   │   └── 2024-01-03.16-06-42
+│   │       └── log.txt
+│   ├── secret.yaml
+│   └── state.json
+└── docker-compose.yml
 $ curl 127.0.0.1:8080
 ```
 
