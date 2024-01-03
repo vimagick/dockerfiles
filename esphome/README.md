@@ -38,9 +38,21 @@ INFO Successfully uploaded program.
 INFO Starting log output from /dev/ttyACM0 with baud rate 115200
 ^C
 >>> ping esphome-esp32c3-ibeacon.lan
+^C
 >>> exit
-$ curl http://esphome-esp32c3-ibeacon.lan/
 $ curl -X POST 'http://esphome-esp32c3-ibeacon.lan/light/neopixel_light/turn_on?brightness=255&r=255&g=192&b=203&white_value=0&effect=None'
+$ curl http://esphome-esp32c3-ibeacon.lan/light/neopixel_light
+{
+  "id": "light-neopixel_light",
+  "state": "ON",
+  "color_mode": "rgb",
+  "brightness": 255,
+  "color": {
+    "r": 255,
+    "g": 192,
+    "b": 203
+  }
+}
 ```
 
 [1]: https://esphome.io/
