@@ -1,9 +1,15 @@
 version: "3.8"
 services:
   esphome:
-    image: esphome/esphome
+    image: esphome/esphome:stable
     ports:
       - "6052:6052"
     volumes:
       - ./data:/config
+    environment:
+      - ESPHOME_DASHBOARD_USE_PING=true
+    ### FOR THE FIRST-TIME ONLY ###
+    #devices:                     #
+    #  - /dev/ttyACM0             #
+    ###############################
     restart: unless-stopped

@@ -20,7 +20,7 @@ chmod +x cc2538-bsl.py
 ./cc2538-bsl.py --help
 
 ls /dev/ttyUSB*
-udevadm info -q property -n /dev/ttyUSB0 --property=ID_MODEL
+udevadm info -q property -n /dev/ttyUSB0 --property=ID_SERIAL
 ./cc2538-bsl.py --bootloader-sonoff-usb -p /dev/ttyUSB0 -evw CC1352P2_CC2652P_launchpad_coordinator_20230507.hex
 ```
 

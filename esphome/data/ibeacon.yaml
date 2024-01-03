@@ -1,0 +1,40 @@
+#
+# See:
+# - https://esphome.io/components/esp32.html
+# - https://esphome.io/components/esp32_ble_beacon.html
+# - https://registry.platformio.org/platforms/platformio/espressif32/boards
+#
+
+esphome:
+  name: esphome-esp32c3-ibeacon
+  platform: esp32
+  board: dfrobot_beetle_esp32c3
+
+logger:
+
+api:
+  password: !secret api_password
+
+ota:
+  password: !secret ota_password
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+  domain: .lan
+
+mqtt:
+  broker: broker.hivemq.com
+  port: 1883
+  #username: !secret mqtt_username
+  #password: !secret mqtt_password
+
+esp32_ble_beacon:
+  type: iBeacon
+  uuid: "00000000-0000-0000-0000-000000000000"
+  major: 11111
+  minor: 22222
+  min_interval: 100ms
+  max_interval: 100ms
+  measured_power: -59
+  tx_power: 3
