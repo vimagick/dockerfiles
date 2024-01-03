@@ -1,3 +1,7 @@
+#
+# See: https://esphome.io/guides/getting_started_command_line.html
+#
+
 version: "3.8"
 services:
   esphome:
@@ -6,7 +10,10 @@ services:
       - "6052:6052"
     volumes:
       - ./data:/config
+      - /etc/localtime:/etc/localtime:ro
     environment:
+      - USERNAME=admin
+      - PASSWORD=admin
       - ESPHOME_DASHBOARD_USE_PING=true
     ### FOR THE FIRST-TIME ONLY ###
     #devices:                     #

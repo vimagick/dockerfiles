@@ -17,18 +17,30 @@ $ curl http://127.0.0.1:6052
 $ udevadm info -q property -n /dev/ttyACM0 --property=ID_SERIAL
 $ docker compose exec esphome bash
 >>> cd /config
->>> esphome ibeacon.yaml run
+>>> esphome run ibeacon.yaml
 ====== [SUCCESS] Took 253.61 seconds ======
 INFO Successfully compiled program.
 Found multiple options for uploading, please choose one:
   [1] /dev/ttyACM0 (USB JTAG/serial debug unit)
   [2] Over The Air (esphome-esp32c3-ibeacon.local)
 (number): 1
+Dependency Graph
+|-- AsyncTCP-esphome @ 2.0.1
+|-- WiFi @ 2.0.0
+|-- FS @ 2.0.0
+|-- Update @ 2.0.0
+|-- ESPAsyncWebServer-esphome @ 3.1.0
+|-- DNSServer @ 2.0.0
+|-- ESPmDNS @ 2.0.0
+|-- ArduinoJson @ 6.18.5
+|-- NeoPixelBus @ 2.7.3
 INFO Successfully uploaded program.
 INFO Starting log output from /dev/ttyACM0 with baud rate 115200
 ^C
 >>> ping esphome-esp32c3-ibeacon.lan
 >>> exit
+$ curl http://esphome-esp32c3-ibeacon.lan/
+$ curl -X POST 'http://esphome-esp32c3-ibeacon.lan/light/neopixel_light/turn_on?brightness=255&r=255&g=192&b=203&white_value=0&effect=None'
 ```
 
 [1]: https://esphome.io/

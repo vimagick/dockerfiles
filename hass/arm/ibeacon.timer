@@ -1,0 +1,9 @@
+[Unit]
+Description=Hourly restart ibeacon
+
+[Timer]
+OnCalendar=hourly
+Persistent=true
+
+[Install]
+WantedBy=timers.target
