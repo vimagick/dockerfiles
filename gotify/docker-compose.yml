@@ -9,4 +9,5 @@ services:
     environment:
       - GOTIFY_DEFAULTUSER_NAME=admin
       - GOTIFY_DEFAULTUSER_PASS=secret
+      - TZ=Asia/Shanghai
     restart: unless-stopped

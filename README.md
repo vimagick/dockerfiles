@@ -469,6 +469,7 @@ A collection of delicious docker recipes.
   - [x] selenoid-ui
 - [x] semaphoreui/semaphore
 - [x] sentry
+- [x] screego/server
 - [x] atmoz/sftp
 - [x] quay.io/outline/shadowbox
 - [x] shlinkio/shlink
