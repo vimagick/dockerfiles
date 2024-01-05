@@ -44,5 +44,30 @@ $ tree
 $ curl 127.0.0.1:8080
 ```
 
+## Example Config
+
+```yaml
+permit_join: false
+homeassistant: false
+frontend: true
+mqtt:
+  base_topic: zigbee2mqtt
+  server: mqtts://broker.hivemq.com:8883
+  ca: /etc/ssl/cert.pem
+  #user: '!secret.yaml user'
+  #password: '!secret.yaml password'
+serial:
+  port: /dev/ttyACM0
+availability: true
+```
+
+## MQTT Testing
+
+```bash
+$ mosquitto_sub -h broker.hivemq.com -u username -P password -t 'zigbee2mqtt/+' -R -F '%I\t%t\t%p'
+```
+
+> :warning: PLEASE DO NOT USE <broker.hivemq.com> FOR PRODUCTION!
+
 [1]: https://github.com/Koenkk/zigbee2mqtt
 [2]: https://zigbee.blakadder.com/Sonoff_ZBDongle-P.html
