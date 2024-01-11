@@ -5,6 +5,7 @@
 # - https://esphome.io/components/web_server.html
 # - https://esphome.io/web-api/
 # - https://registry.platformio.org/platforms/platformio/espressif32/boards
+# - https://owntracks.org/booklet/features/beacons/
 #
 
 esphome:
@@ -49,7 +50,7 @@ esp32_ble_beacon:
   major: 11111
   minor: 22222
   min_interval: 100ms
-  max_interval: 100ms
+  max_interval: 5s
   measured_power: -59
   tx_power: 3
 
