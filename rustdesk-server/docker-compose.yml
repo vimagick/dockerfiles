@@ -1,0 +1,24 @@
+version: "3.8"
+
+services:
+  rustdesk-server:
+    image: rustdesk/rustdesk-server-s6:latest
+    ports:
+      - "21115-21119:21115-21119/tcp"
+      - "21116:21116/udp"
+    volumes:
+      - ./data:/data
+    environment:
+      - RELAY=rustdesk.easypi.duckdns.org:21117
+      - ENCRYPTED_ONLY=1
+      - DB_URL=/data/db_v2.sqlite3
+    secrets:
+      - key_pub
+      - key_priv
+    restart: unless-stopped
+
+secrets:
+  key_pub:
+    file: data/id_ed25519.pub
+  key_priv:
+    file: data/id_ed25519

@@ -454,6 +454,7 @@ A collection of delicious docker recipes.
 - [x] rocker/rstudio
 - [x] rocket.chat
 - [x] rundeck/rundeck
+- [x] rustdesk/rustdesk-server-s6
 - [x] wonderfall/searx
 - [x] selenium
   - [x] hub
