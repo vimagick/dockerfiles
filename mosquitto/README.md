@@ -29,7 +29,7 @@ $ docker-compose exec mosquitto sh
 >>> cat pwfile
 username:$6$IuF7JUzS1k/QoF3y$YpiClom7/==
 >>> exit
-$ docker-compose restart
+$ docker-compose kill -s SIGHUP
 $ tails -f data/log/mosquitto.log
 2022-12-08T06:59:00: mosquitto version 1.4.8 (build date 2016-05-16 14:17:19+0000) starting
 2022-12-08T06:59:01: Config loaded from /etc/mosquitto/mosquitto.conf.
