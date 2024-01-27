@@ -58,6 +58,8 @@ mqtt:
   #password: '!secret.yaml password'
 serial:
   port: /dev/ttyACM0
+advanced:
+  last_seen: epoch
 availability: true
 ```
 
