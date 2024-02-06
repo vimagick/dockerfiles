@@ -6,7 +6,7 @@ FROM alpine:3
 MAINTAINER EasyPi Software Foundation
 
 RUN set -xe \
-    && apk add --no-cache nodejs nodejs-npm \
+    && apk add --no-cache nodejs npm \
     && npm install -g json-server \
     && rm -rf /tmp/npm* /var/cache/apk/*
 
