@@ -1,0 +1,13 @@
+- id: test
+  execute-command: /etc/webhook/test.sh
+  pass-file-to-command:
+  - source: entire-payload
+    envname: HOOK_PAYLOAD
+  command-working-directory: /etc/webhook
+  include-command-output-in-response: true
+
+- id: osmand
+  execute-command: '/bin/echo'
+  pass-arguments-to-command:
+  - source: entire-query
+  response-message: "OK\n"
