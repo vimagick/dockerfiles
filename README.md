@@ -312,12 +312,13 @@ A collection of delicious docker recipes.
 - [x] 3proxy/3proxy
 - [x] adguard/adguardhome
 - [x] ghcr.io/linuxserver/airsonic :musical_note:
-- [x] apify/actor-node
-  - [x] apify/actor-node-puppeteer-chrome
-  - [x] apify/actor-node-playwright
-    - [x] apify/actor-node-playwright-chrome
-    - [x] apify/actor-node-playwright-firefox
-    - [x] apify/actor-node-playwright-webkit
+- [x] apify
+  - [x] actor-node
+  - [x] actor-node-playwright
+  - [x] actor-node-playwright-chrome
+  - [x] actor-node-playwright-firefox
+  - [x] actor-node-playwright-webkit
+  - [x] actor-node-puppeteer-chrome
 - [x] archivebox/archivebox
 - [x] docker.bintray.io/jfrog/artifactory-oss
 - [x] jeffail/benthos
@@ -389,39 +390,43 @@ A collection of delicious docker recipes.
 - [x] ipfs/kubo
 - [x] heartexlabs/label-studio
 - [x] martialblog/limesurvey
+- [x] lldap/lldap
 - [x] mailhog/mailhog
 - [x] linuxserver/mastodon
 - [x] 42wim/matterbridge :octocat:
 - [x] matrixconduit/matrix-conduit
 - [x] getmeili/meilisearch :mag:
 - [x] mitmproxy/mitmproxy
-- [x] deluan/navidrome :musical_note:
-- [x] netdata/netdata
-- [x] nextcloud
-- [x] sonatype/nexus3
-- [ ] jwilder/nginx-proxy
-- [x] tiangolo/nginx-rtmp :camera:
-- [x] jazzdd/phpvirtualbox
-- [x] sonatype/nexus3
-- [x] jupyter/notebook
 - [x] mariadb :bucket:
 - [x] matomo
-- [x] memgraph/memgraph-platform :bucket:
+- [x] memgraph :bucket:
+  - [x] lab
+  - [x] memgraph
+  - [x] memgraph-mage
+  - [x] memgraph-platform
 - [x] metabase/metabase
 - [x] metasploitframework/metasploit-framework :skull:
 - [x] minio/minio
 - [x] mongo :bucket:
 - [x] ccrisan/motioneye
+- [x] deluan/navidrome :musical_note:
 - [x] neo4j :bucket:
-- [x] lldap/lldap
+- [x] netdata/netdata
+- [x] sonatype/nexus3
+- [x] nextcloud
+- [ ] jwilder/nginx-proxy
+- [x] tiangolo/nginx-rtmp :camera:
+- [x] jupyter/notebook
 - [x] luzifer/nginx-sso
 - [x] n8nio/n8n
 - [x] illuspas/node-media-server :cn:
+- [x] jorijn/nostream
+- [x] scsibug/nostr-rs-relay
 - [x] notaitech/nudenet
 - [x] odoo
 - [x] ohmyform
-  - [x] ohmyform/api
-  - [x] ohmyform/ui
+  - [x] api
+  - [x] ui
 - [x] osixia/openldap
 - [x] openresty/openresty
 - [x] opensearchproject/opensearch :bucket:
@@ -430,8 +435,6 @@ A collection of delicious docker recipes.
 - [x] outlinewiki/outline
 - [x] gabekangas/owncast
 - [x] owncloud
-- [x] jorijn/nostream
-- [x] scsibug/nostr-rs-relay
 - [x] owntracks
   - [x] frontend
   - [x] recorder
@@ -440,6 +443,7 @@ A collection of delicious docker recipes.
 - [x] viktorstrate/photoview
 - [x] phplist/phplist
 - [x] phpmyadmin
+- [x] jazzdd/phpvirtualbox
 - [x] pihole/pihole
 - [x] mcr.microsoft.com/playwright
 - [x] portainer/portainer :+1:

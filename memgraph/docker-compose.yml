@@ -3,18 +3,29 @@
 #
 
 version: "3.8"
+
 services:
-  memgraph-platform:
-    image: "memgraph/memgraph-platform:2.14.1-memgraph2.14.1-lab2.11.1-mage1.14.1"
-    entrypoint: ["/usr/bin/supervisord"]
+
+  memgraph:
+    image: memgraph/memgraph-mage:1.14.1-memgraph-2.14.1
     ports:
-      - "3000:3000" # Web
       - "7444:7444" # Log
       - "7687:7687" # Bolt
     volumes:
-      - ./data/var:/var/lib/memgraph
+      # ./data/etc:/etc/memgraph
       - ./data/log:/var/log/memgraph
-      - ./data/etc:/etc/memgraph
+      - ./data/var:/var/lib/memgraph
     environment:
-      MEMGRAPH: "--log-level=WARNING --also-log-to-stderr"
+      - MEMGRAPH=--telemetry-enabled=false
+    restart: unless-stopped
+
+  lab:
+    image: memgraph/lab:2.11.1
+    ports:
+      - "3000:3000" # Web
+    environment:
+      - QUICK_CONNECT_MG_HOST=memgraph
+      - QUICK_CONNECT_MG_PORT=7687
+    depends_on:
+      - memgraph
     restart: unless-stopped
