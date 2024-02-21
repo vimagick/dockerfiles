@@ -332,7 +332,7 @@ A collection of delicious docker recipes.
   - [x] cp-kafka-rest
   - [x] ksqldb-cli
   - [x] ksqldb-server
-- [x] couchdb
+- [x] couchdb :bucket:
 - [x] schollz/croc
 - [x] streamsets/datacollector
 - [x] daskdev
@@ -404,14 +404,15 @@ A collection of delicious docker recipes.
 - [x] jazzdd/phpvirtualbox
 - [x] sonatype/nexus3
 - [x] jupyter/notebook
-- [x] mariadb
+- [x] mariadb :bucket:
 - [x] matomo
+- [x] memgraph/memgraph-platform :bucket:
 - [x] metabase/metabase
 - [x] metasploitframework/metasploit-framework :skull:
 - [x] minio/minio
-- [x] mongo
+- [x] mongo :bucket:
 - [x] ccrisan/motioneye
-- [x] neo4j
+- [x] neo4j :bucket:
 - [x] lldap/lldap
 - [x] luzifer/nginx-sso
 - [x] n8nio/n8n
@@ -423,7 +424,7 @@ A collection of delicious docker recipes.
   - [x] ohmyform/ui
 - [x] osixia/openldap
 - [x] openresty/openresty
-- [x] opensearchproject/opensearch
+- [x] opensearchproject/opensearch :bucket:
 - [x] kylemanna/openvpn
 - [x] campbellsoftwaresolutions/osticket
 - [x] outlinewiki/outline
@@ -442,7 +443,7 @@ A collection of delicious docker recipes.
 - [x] pihole/pihole
 - [x] mcr.microsoft.com/playwright
 - [x] portainer/portainer :+1:
-- [x] postgres
+- [x] postgres :bucket:
 - [x] postgrest/postgrest
 - [x] prefecthq/prefect
 - [x] prom/prometheus
@@ -488,7 +489,7 @@ A collection of delicious docker recipes.
 - [x] tensorflow
     - [x] serving
 - [x] kitabisa/teler
-- [x] tile38/tile38
+- [x] tile38/tile38 :bucket:
 - [x] traccar/traccar
 - [x] traefik
 - [x] trinodb/trino

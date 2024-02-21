@@ -1,0 +1,20 @@
+#
+# See: https://memgraph.com/docs/configuration/configuration-settings
+#
+
+version: "3.8"
+services:
+  memgraph-platform:
+    image: "memgraph/memgraph-platform:2.14.1-memgraph2.14.1-lab2.11.1-mage1.14.1"
+    entrypoint: ["/usr/bin/supervisord"]
+    ports:
+      - "3000:3000" # Web
+      - "7444:7444" # Log
+      - "7687:7687" # Bolt
+    volumes:
+      - ./data/var:/var/lib/memgraph
+      - ./data/log:/var/log/memgraph
+      - ./data/etc:/etc/memgraph
+    environment:
+      MEMGRAPH: "--log-level=WARNING --also-log-to-stderr"
+    restart: unless-stopped
