@@ -88,11 +88,23 @@ $ pip install selenium
 $ python screenshot.py
 $ imgcat google.png
 
-$ http http://127.0.0.1:3000/screenshot \
+$ http :3000/screenshot \
        url=https://www.youtube.com \
        options[fullPage]:=true \
        gotoOptions[waitUntil]=networkidle2 > youtube.png
 $ imgcat youtube.png
+
+$ http :3000/scrape url=https://www.youtube.com elements[0][selector]=title debug[network]:=true |
+    jq -r '.debug.network.outbound[].url' |
+      xargs -r tldextract -j |
+        jq -r 'select(.fqdn|length>0).fqdn' |
+          sort -u
+accounts.google.com
+fonts.googleapis.com
+fonts.gstatic.com
+googleads.g.doubleclick.net
+i.ytimg.com
+www.youtube.com
 ```
 
 [1]: https://docs.browserless.io/
