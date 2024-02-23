@@ -2,7 +2,7 @@
 
 HOST=${1:?DOMAIN or IP is empty}
 
-docker exec -i memgraph_memgraph_1 mgconsole -output-format=csv <<- _CQL_ | sed -e 's/"//g' | tail -n +2 | tr '[],[]' ' ' | shuf | gawk -f /dev/fd/3 3<<- "_AWK_" | column -t -i1 -p2 -r3 -H1,2 | sed 's/─/& /'
+docker exec -i memgraph_memgraph_1 mgconsole -output-format=csv <<- _CQL_ | sed -e 's/"//g' | tail -n +2 | tr '[],[]' ' ' | gawk -f /dev/fd/3 3<<- "_AWK_" | column -t -i1 -p2 -r3 -H1,2 | sed 's/─/& /'
 	MATCH p=(n)-[*]->(m)
 	WHERE any(n in nodes(p) where n.name = '$HOST') AND not exists(()-->(n)) AND not exists((m)-->())
 	UNWIND nodes(p) AS nn
