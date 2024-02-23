@@ -1,0 +1,36 @@
+#!/bin/bash
+
+HOST=${1:?DOMAIN or IP is empty}
+
+docker exec -i memgraph_memgraph_1 mgconsole -output-format=csv <<- _CQL_ | sed -e 's/"//g' | tail -n +2 | tr '[],[]' ' ' | shuf | gawk -f /dev/fd/3 3<<- "_AWK_" | column -t -i1 -p2 -r3 -H1,2 | sed 's/─/& /'
+	MATCH p=(n)-[*]->(m)
+	WHERE any(n in nodes(p) where n.name = '$HOST') AND not exists(()-->(n)) AND not exists((m)-->())
+	UNWIND nodes(p) AS nn
+	WITH DISTINCT nn
+	CALL path.expand(nn,[">"],[],1,1) YIELD result
+	RETURN extract(i in nodes(result)|i.name);
+_CQL_
+	BEGIN {
+		split("", cache);
+		split("", roots);
+		idx=0;
+	}
+	{
+		if(!($1 in cache)) {
+			roots[$1] = cache[$1] = ++idx;
+		}
+		if(!($2 in cache)) {
+			cache[$2] = ++idx;
+		}
+		delete roots[$2];
+		print cache[$2], cache[$1], $2;
+	}
+	END {
+		print "0 -1 ."
+		for(root in roots) {
+			print cache[root], 0, root;
+		}
+	}
+_AWK_
+
+# vim: set noai noet:
