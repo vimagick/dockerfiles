@@ -154,6 +154,7 @@ A collection of delicious docker recipes.
 ## Utility
 
 - [x] registry-cli
+- [x] tldextract
 
 ## Media
 
