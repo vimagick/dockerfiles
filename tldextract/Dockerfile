@@ -4,7 +4,8 @@
 
 FROM alpine:3
 
-RUN apk add --no-cache py3-tldextract \
+RUN apk add --no-cache py3-pip \
+ && pip install tldextract \
  && tldextract --update \
  && tldextract --version
 
