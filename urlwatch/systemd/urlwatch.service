@@ -1,0 +1,14 @@
+[Unit]
+Description=lightweight incoming webhook server
+After=network.target
+
+[Service]
+ExecStart=/usr/local/bin/webhook -hooks=hooks.json -hooks=hooks.yaml -hotreload -port=9000 -template -urlprefix=hooks
+ExecReload=/bin/kill -HUP $MAINPID
+WorkingDirectory=/etc/webhook/
+LimitNOFILE=65536
+RestartSec=5
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
