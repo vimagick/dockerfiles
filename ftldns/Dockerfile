@@ -3,13 +3,12 @@
 #
 
 FROM alpine:3
-#FROM debian:12-slim
 MAINTAINER EasyPi Software Foundation
 
 ARG FTL_VERSION=v5.25.1
 ARG FTL_FILE=pihole-FTL-musl-linux-x86_64
-#ARG FTL_FILE=pihole-FTL-aarch64-linux-gnu
-ARG FTL_URL=https://github.com/pi-hole/FTL/releases/download/${FTL_VERSION}/${FTL_FILE}
+ARG FTL_GIT=https://github.com/pi-hole
+ARG FTL_URL=${FTL_GIT}/FTL/releases/download/${FTL_VERSION}/${FTL_FILE}
 
 RUN set -xe \
  && apk add --no-cache curl \
@@ -17,6 +16,14 @@ RUN set -xe \
  && curl -sSL ${FTL_URL} -o /usr/bin/pihole-FTL \
  && chmod +x /usr/bin/pihole-FTL \
  && pihole-FTL --version \
+ && mkdir -p /opt/pihole \
+ && cd /opt/pihole \
+ && curl -sSL -O ${FTL_GIT}/pi-hole/raw/master/advanced/Scripts/list.sh \
+              -O ${FTL_GIT}/pi-hole/raw/master/advanced/Scripts/utils.sh \
+              -O ${FTL_GIT}/pi-hole/raw/master/advanced/Scripts/COL_TABLE \
+ && cd /usr/local/bin \
+ && curl -sSL ${FTL_GIT}/pi-hole/raw/master/pihole -o /usr/local/bin/pihole \
+ && chmod +x /usr/local/bin/pihole /opt/pihole/list.sh \
  && apk del curl
 
 VOLUME /etc/pihole
