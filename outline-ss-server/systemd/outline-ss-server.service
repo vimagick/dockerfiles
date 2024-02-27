@@ -1,0 +1,16 @@
+[Unit]
+Description=outline-ss-server
+After=network.target
+
+[Service]
+User=vpn
+Group=vpn
+WorkingDirectory=/etc/outline-ss-server
+ExecStart=/usr/local/bin/outline-ss-server -config=config.yml -metrics=127.0.0.1:9092 -ip_country_db=ip-country.mmdb -replay_history=10000
+ExecReload=/bin/kill -HUP $MAINPID
+LimitNOFILE=65536
+RestartSec=5
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
