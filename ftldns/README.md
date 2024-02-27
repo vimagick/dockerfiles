@@ -15,7 +15,7 @@ $ docker compose exec ftldns pihole-FTL sql -h gravity.db
 >>> insert into domainlist(type, domain) values (3, '(\.|^)youtube\.com$');
 >>> .quit
 
-$ docker compose exec ftldns kill -RTMIN 1
+$ docker compose kill -s RTMIN ftldns
 
 $ dig @127.0.0.1 -p 53 www.youtube.com
 

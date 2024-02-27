@@ -3,10 +3,12 @@
 #
 
 FROM alpine:3
+#FROM debian:12-slim
 MAINTAINER EasyPi Software Foundation
 
 ARG FTL_VERSION=v5.25.1
 ARG FTL_FILE=pihole-FTL-musl-linux-x86_64
+#ARG FTL_FILE=pihole-FTL-aarch64-linux-gnu
 ARG FTL_URL=https://github.com/pi-hole/FTL/releases/download/${FTL_VERSION}/${FTL_FILE}
 
 RUN set -xe \
