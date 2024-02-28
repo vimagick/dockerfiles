@@ -20,10 +20,11 @@ RUN set -xe \
  && cd /opt/pihole \
  && curl -sSL -O ${FTL_GIT}/pi-hole/raw/master/advanced/Scripts/list.sh \
               -O ${FTL_GIT}/pi-hole/raw/master/advanced/Scripts/utils.sh \
+              -O ${FTL_GIT}/pi-hole/raw/master/advanced/Scripts/chronometer.sh \
               -O ${FTL_GIT}/pi-hole/raw/master/advanced/Scripts/COL_TABLE \
  && cd /usr/local/bin \
  && curl -sSL ${FTL_GIT}/pi-hole/raw/master/pihole -o /usr/local/bin/pihole \
- && chmod +x /usr/local/bin/pihole /opt/pihole/list.sh \
+ && chmod +x /usr/local/bin/pihole /opt/pihole/*.sh \
  && apk del curl
 
 VOLUME /etc/pihole

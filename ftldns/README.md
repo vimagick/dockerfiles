@@ -15,17 +15,24 @@ $ docker compose exec ftldns bash
     .schema domainlist
     insert into domainlist(type, domain) values (3, '(\.|^)youtube\.com$');
     .quit
->>> pihole-FTL regex-test www.youtube.com
-    Checking domain against blacklist...
-    (\.|^)youtube\.com$ matches (regex blacklist, DB ID 1)
-    Time: 0.019 msec
->>> pihole -b --regex '(\.|^)baidu\.com$'
+>>> pihole --regex '(\.|^)baidu\.com$'
+>>> pihole --wild 'qq.com'
 >>> pihole-FTL regex-test www.baidu.com
+>>> pihole --wild -d youtube.com
+>>> pihole --regex -l
+Displaying regex blacklist:
+  1: (\.|^)baidu\.com$ (enabled, last modified Tue, 27 Feb 2024 11:17:59 +0000)
+  2: (\.|^)qq\.com$ (enabled, last modified Tue, 27 Feb 2024 11:22:17 +0000)
+>>> pihole -c
+|¯¯¯(¯)_|¯|_  ___|¯|___        Core: API Offline
+| ¯_/¯|_| ' \/ _ \ / -_)
+|_| |_| |_||_\___/_\___|
+ ——————————————————————————————————————————————————————————
 >>> exit
 
 $ docker compose kill -s RTMIN ftldns
 
-$ dig @127.0.0.1 -p 53 www.youtube.com
+$ dig @127.0.0.1 -p 53 www.baidu.com
 
 $ telnet 127.0.0.1 4711
 >version
