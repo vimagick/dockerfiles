@@ -1,0 +1,9 @@
+version: "3.8"
+services:
+  zeek:
+    image: zeek/zeek:tls
+    command: zeek -C -i eth0
+    volumes:
+      - ./logs:/usr/local/zeek/logs
+    network_mode: host
+    restart: unless-stopped

@@ -228,7 +228,6 @@ A collection of delicious docker recipes.
 
 - [x] aircrack-ng-arm
 - [x] amass
-- [x] bro
 - [x] clamav
 - [x] dirsearch
 - [x] dsniff
@@ -508,6 +507,7 @@ A collection of delicious docker recipes.
 - [x] wordpress
 - [x] yourls
 - [x] ghcr.io/linuxserver/wireguard
+- [x] zeek/zeek :skull:
 - [x] apache/zeppelin
 - [x] koenkk/zigbee2mqtt
 - [x] zookeeper
