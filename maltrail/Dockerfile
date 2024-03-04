@@ -30,7 +30,7 @@ RUN set -xe \
  && chmod +x server.py sensor.py \
  && ./server.py --version \
  && ./sensor.py --version \
- && apt remote -y curl \
+ && apt remove -y curl \
                   build-essential \
                   libpcap-dev \
                   python3-dev \
