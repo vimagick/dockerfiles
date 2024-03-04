@@ -236,6 +236,7 @@ A collection of delicious docker recipes.
 - [x] hydra
 - [x] iptables
 - [x] kismet
+- [x] maltrail
 - [x] routersploit
 - [x] snort :beetle:
 - [x] snort3 :beetle:

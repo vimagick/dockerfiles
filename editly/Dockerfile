@@ -2,11 +2,11 @@
 # Dockerfile for editly
 #
 
-FROM node:lts-bullseye
+FROM node:lts-bookworm
 MAINTAINER EasyPi Software Foundation
 
 ARG EDITLY_VERSION=0.14.2
-ARG FFMPEG_VERSION=6.0
+ARG FFMPEG_VERSION=6.1
 
 RUN set -xe \
  && apt update \
