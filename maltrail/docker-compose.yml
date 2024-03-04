@@ -5,21 +5,19 @@ services:
   maltrail-server:
     image: vimagick/maltrail
     command: ./server.py -c etc/maltrail.conf
-    container_name: maltrail-server
     volumes:
       - ./data/etc:/opt/maltrail/etc
-      - ./data/log:/opt/maltrail/log
-      - ./data/var:/opt/maltrail/var
+      - ./data/server/log:/opt/maltrail/log
     network_mode: host
     restart: unless-stopped
 
   maltrail-sensor:
     image: vimagick/maltrail
     command: ./sensor.py -c etc/maltrail.conf
-    container_name: maltrail-sensor
     volumes:
       - ./data/etc:/opt/maltrail/etc
-      - ./data/log:/opt/maltrail/log
-      - ./data/var:/opt/maltrail/var
+      - ./data/sensor/log:/opt/maltrail/log
     network_mode: host
+    depends_on:
+      - maltrail-server
     restart: unless-stopped
