@@ -12,6 +12,9 @@ ARG DANTE_FILE=dante.tar.gz
 ARG DANTE_TEMP=dante
 ARG DANTE_DEPS="build-essential curl"
 
+ARG GUESS_URL="http://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.guess;hb=HEAD"
+ARG GUESS_FILE=config.guess
+
 RUN set -xe \
     && apt-get update \
     && apt-get install -y $DANTE_DEPS \
@@ -20,6 +23,7 @@ RUN set -xe \
         && curl -sSL $DANTE_URL -o $DANTE_FILE \
         && echo "$DANTE_SHA1 *$DANTE_FILE" | sha1sum -c \
         && tar xzf $DANTE_FILE --strip 1 \
+        && curl -sSL "$GUESS_URL" -o $GUESS_FILE \
         && ./configure \
         && make install \
         && cd .. \
