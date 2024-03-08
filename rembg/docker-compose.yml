@@ -1,0 +1,8 @@
+version: "3.8"
+services:
+  rembg:
+    image: danielgatis/rembg:2
+    command: s --host 0.0.0.0 --port 7000 --log_level info
+    ports:
+      - "7000:7000"
+    restart: unless-stopped
