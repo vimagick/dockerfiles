@@ -1,0 +1,12 @@
+version: "3.8"
+services:
+  tts:
+    image: ghcr.io/coqui-ai/tts-cpu:v0.22.0
+    entrypoint: ["python3"]
+    command: |
+      TTS/server/server.py
+      --model_name tts_models/en/vctk/vits
+      --extra_model_name tts_models/en/ljspeech/tacotron2-DDC_ph
+    ports:
+      - "5002:5002"
+    restart: unless-stopped
