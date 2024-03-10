@@ -177,6 +177,7 @@ A collection of delicious docker recipes.
 - [x] obs-web-arm :joystick:
 - [x] openmeetings :camera:
 - [x] paddle-ocr
+- [x] piper
 - [x] plex :moneybag:
 - [x] red5 :+1: :camera:
 - [x] red5-arm :construction: :camera:
