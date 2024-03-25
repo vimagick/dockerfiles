@@ -14,4 +14,6 @@ $ echo 'Welcome to the world of speech synthesis!' | piper -f /tmp/welcome.wav
 $ play welcome.wav
 ```
 
+List of voices: https://rhasspy.github.io/piper-samples/
+
 [1]: https://github.com/rhasspy/piper
