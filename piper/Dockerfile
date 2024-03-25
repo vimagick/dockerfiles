@@ -33,4 +33,4 @@ RUN set -xe \
  && apt remove -y curl \
  && rm -rf /var/lib/apt/lists/*
 
-ENTRYPOINT ["./piper", "-m", "en_US-lessac-medium.onnx", "-d", "/tmp"]
+ENTRYPOINT ["/opt/piper/piper", "-m", "/opt/piper/en_US-lessac-medium.onnx", "-d", "/tmp"]
