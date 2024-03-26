@@ -5,7 +5,7 @@ piper
 
 ```bash
 # Create an alias
-$ alias piper='docker run -i --rm -u $(id -u):$(id -g) -v $PWD:/tmp vimagick/piper'
+$ alias piper='docker run -i --rm -u $(id -u):$(id -g) -v $PWD:/tmp vimagick/piper -m /opt/piper/models/en_US-amy-medium.onnx'
 
 # Do text-to-speech
 $ echo 'Welcome to the world of speech synthesis!' | piper -f /tmp/welcome.wav

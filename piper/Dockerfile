@@ -12,11 +12,8 @@ ARG PIPER_FILE=piper_${PIPER_OS}_${PIPER_ARCH}.tar.gz
 ARG PIPER_URL=https://github.com/rhasspy/piper/releases/download/${PIPER_VERSION}/${PIPER_FILE}
 
 ARG MODEL_BASE_URL=https://huggingface.co/rhasspy/piper-voices/resolve/v1.0.0/en/en_US
-ARG MODEL_URL_1=${MODEL_BASE_URL}/amy/medium/en_US-amy-medium.onnx
-ARG MODEL_URL_2=${MODEL_BASE_URL}/joe/medium/en_US-joe-medium.onnx
-ARG MODEL_URL_3=${MODEL_BASE_URL}/kristin/medium/en_US-kristin-medium.onnx
-ARG MODEL_URL_4=${MODEL_BASE_URL}/lessac/medium/en_US-lessac-medium.onnx
-ARG MODEL_URL_5=${MODEL_BASE_URL}/lessac/ryan/en_US-ryan-medium.onnx
+ARG MODEL_VOICES=amy,arctic,danny,hfc_female,hfc_male,joe,kathleen,kristin,kusal,l2arctic,lessac,libritts,libritts_r,ljspeech,ryan
+ARG MODEL_QUALITY=medium
 
 WORKDIR /opt/piper
 
@@ -24,13 +21,17 @@ RUN set -xe \
  && apt update -y \
  && apt install -y curl \
  && curl -sSL ${PIPER_URL} | tar xz --strip 1 \
- && curl -sSL -O ${MODEL_URL_1} -O ${MODEL_URL_1}.json \
-              -O ${MODEL_URL_2} -O ${MODEL_URL_2}.json \
-              -O ${MODEL_URL_3} -O ${MODEL_URL_3}.json \
-              -O ${MODEL_URL_4} -O ${MODEL_URL_4}.json \
-              -O ${MODEL_URL_5} -O ${MODEL_URL_5}.json \
+ && mkdir models \
+ && cd models \
+ && echo ${MODEL_VOICES} | tr ',' '\n' | while read voice; \
+    do \
+      model_url=${MODEL_BASE_URL}/${voice}/${MODEL_QUALITY}/en_US-${voice}-${MODEL_QUALITY}.onnx; \
+      curl -sSL -O ${model_url} -O ${model_url}.json; \
+    done \
+ && cd .. \
  && ./piper --version \
  && apt remove -y curl \
  && rm -rf /var/lib/apt/lists/*
 
-ENTRYPOINT ["/opt/piper/piper", "-m", "/opt/piper/en_US-lessac-medium.onnx", "-d", "/tmp"]
+ENTRYPOINT ["/opt/piper/piper"]
+CMD ["-m", "/opt/piper/models/en_US-lessac-medium.onnx", "-d", "/tmp"]
