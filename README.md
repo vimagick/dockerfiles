@@ -429,6 +429,7 @@ A collection of delicious docker recipes.
 - [x] ohmyform
   - [x] api
   - [x] ui
+- [x] onerahmet/openai-whisper-asr-webservice
 - [x] osixia/openldap
 - [x] openresty/openresty
 - [x] opensearchproject/opensearch :bucket:

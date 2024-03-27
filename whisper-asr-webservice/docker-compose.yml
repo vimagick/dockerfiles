@@ -1,0 +1,13 @@
+version: "3.8"
+services:
+  asr:
+    image: onerahmet/openai-whisper-asr-webservice
+    ports:
+      - "9000:9000"
+    volumes:
+      - ./data:/data
+    environment:
+      - ASR_MODEL=medium
+      - ASR_ENGINE=faster_whisper
+      - ASR_MODEL_PATH=/data
+    restart: unless-stopped
