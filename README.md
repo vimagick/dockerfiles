@@ -183,6 +183,7 @@ A collection of delicious docker recipes.
 - [x] red5-arm :construction: :camera:
 - [x] rtmp-client-arm :+1:
 - [x] rtmp-server :camera:
+- [x] scenedetect
 - [x] shairplay-arm
 - [x] shoutcast :musical_note:
 - [x] tesseract
