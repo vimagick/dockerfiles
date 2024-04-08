@@ -11,14 +11,20 @@ personally control and regain ownership over your content.
 version: "3.8"
 services:
   owncast:
-    image: gabekangas/owncast
-    command: /app/owncast -backupdir=/data -database=/data/database.db
+    image: owncast/owncast:0.1.3
+    command: /app/owncast -backupdir=/app/data -database=/app/data/database.db
     ports:
       - "1935:1935"
       - "8080:8080"
     volumes:
-      - ./data:/data
+      - ./data:/app/data
     restart: unless-stopped
+```
+
+```bash
+$ mkdir -p data
+$ chown -R 101:101 data
+$ docker compose up -d
 ```
 
 ## Using with OBS / Streamlabs
