@@ -17,7 +17,9 @@ RUN set -xe \
  && ffprobe -version \
  && rm -rf /var/lib/apt/lists/*
 
-RUN pip install scenedetect[opencv-headless]==$SCENEDETECT_VERSION
+RUN set -xe \
+ && pip install scenedetect[opencv-headless]==$SCENEDETECT_VERSION \
+ && scenedetect version
 
 ENTRYPOINT ["scenedetect"]
 CMD ["--help"]
