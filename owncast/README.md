@@ -23,9 +23,12 @@ services:
 
 ```bash
 $ mkdir -p data
-$ chown -R 101:101 data
+# temporarily disable until we figure out how to move forward
+# chown -R 101:101 data
 $ docker compose up -d
 ```
+
+> https://github.com/owncast/owncast/blob/develop/Earthfile#L129-L131
 
 ## Using with OBS / Streamlabs
 
