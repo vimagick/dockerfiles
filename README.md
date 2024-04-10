@@ -407,6 +407,7 @@ A collection of delicious docker recipes.
   - [x] memgraph
   - [x] memgraph-mage
   - [x] memgraph-platform
+- [x] minlag/mermaid-cli
 - [x] metabase/metabase
 - [x] metasploitframework/metasploit-framework :skull:
 - [x] minio/minio
