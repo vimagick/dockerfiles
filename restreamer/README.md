@@ -7,4 +7,11 @@ live stream to YouTube, Twitch, Facebook, Vimeo, or other streaming solutions
 like Wowza. Receive video data from OBS and publish it with the RTMP and SRT
 server.
 
+## up and running
+
+```bash
+$ docker compose up -d
+$ curl http://127.0.0.1:8080/ui
+```
+
 [1]: https://github.com/datarhei/restreamer

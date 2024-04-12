@@ -5,6 +5,7 @@ services:
     ports:
       - "1935:1935"
       - "8080:8080"
+      - "6000:6000/udp"
     volumes:
       - ./data/config:/core/config
       - ./data/data:/core/data
