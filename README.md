@@ -202,6 +202,7 @@ A collection of delicious docker recipes.
 - [x] django-cms
 - [x] dokuwiki :+1:
 - [x] gogs-arm :cn:
+- [x] gradio
 - [x] hugo
 - [x] hugo-arm
 - [x] jamapi

@@ -1,0 +1,10 @@
+version: "3.8"
+services:
+  gradio:
+    image: vimagick/gradio
+    command: app.py
+    ports:
+      - "7860:7860"
+    volumes:
+      - ./data:/data
+    working_dir: /data
