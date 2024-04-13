@@ -7,7 +7,7 @@ v4l2rtspserver
 
 ```bash
 $ docker-compose up -d
-$ vlc rtsp://127.0.0.1/live
+$ vlc --network-caching=50 --rtsp-tcp rtsp://127.0.0.1/live
 $ ffmpeg -rtsp_transport tcp -i rtsp://127.0.0.1/live -acodec copy -vcodec copy -t 60 cctv.mp4
 $ vlc cctv.mp4
 ```
