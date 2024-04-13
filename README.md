@@ -168,6 +168,7 @@ A collection of delicious docker recipes.
 - [x] ffmpeg
 - [x] ffmpeg-arm
 - [x] ffserver :beetle:
+- [x] alexxit/go2rtc :camera:
 - [x] icecast :musical_note:
 - [x] live555 :camera:
 - [x] minidlna

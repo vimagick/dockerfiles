@@ -1,0 +1,14 @@
+version: "3.8"
+services:
+  go2rtc:
+    image: alexxit/go2rtc
+    ports:
+      - "1984:1984"
+      - "8554:8554"
+      - "8555:8555"
+    volumes:
+      - ./data:/config
+    #devices:
+    #  - /dev/video0
+    #privileged: true
+    restart: unless

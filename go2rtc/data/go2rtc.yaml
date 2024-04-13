@@ -1,0 +1,29 @@
+api:
+  listen: ":1984"
+  #username: "admin"
+  #password: "pass"
+
+rtsp:
+  listen: ":8554"
+  #username: "admin"
+  #password: "pass"
+  #default_query: "video&audio"
+
+webrtc:
+  listen: ":8555"
+
+streams:
+  bunny: "ffmpeg:BigBuckBunny_320x180.mp4"
+  #usbcam: "ffmpeg:device?video=0&video_size=1280x720#video=h264"
+
+#publish:
+  #bunny: "rtmps://xxx.rtmp.youtube.com/live2/xxxx-xxxx-xxxx-xxxx-xxxx"
+
+log:
+  level: info
+  api: trace
+  exec: debug
+  ngrok: info
+  rtsp: warn
+  streams: error
+  webrtc: fatal
