@@ -38,7 +38,7 @@ baidu-search.py
 
 ```python
 from selenium import webdriver
-from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
+from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.proxy import Proxy, ProxyType
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
@@ -50,20 +50,20 @@ proxy = Proxy({
     'sslProxy': '1.2.3.4:8080',
 })
 
-capabilities = DesiredCapabilities.CHROME
-proxy.add_to_capabilities(capabilities)
+options = Options()
+options.set_capability('proxy', proxy.to_capabilities())
 
 driver = webdriver.Remote(
     command_executor='http://127.0.0.1:4444/wd/hub',
-    desired_capabilities=capabilities
+    options=options
 )
 
 driver.get('http://www.baidu.com/')
-driver.find_element_by_id('kw').send_keys('ip')
-driver.find_element_by_id('su').click()
+driver.find_element(By.ID, 'kw').send_keys('ip')
+driver.find_element(By.ID, 'su').click()
 
 WebDriverWait(driver, 10).until(
-    EC.presence_of_element_located((By.CLASS_NAME, 'nums_text'))
+    EC.presence_of_element_located((By.ID, 'content_left'))
 )
 
 driver.save_screenshot('baidu.png')
