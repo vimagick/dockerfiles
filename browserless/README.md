@@ -80,6 +80,10 @@ driver.quit()
 ```bash
 $ docker-compose up -d
 
+$ crontab -l
+0 */4 * * * docker restart browserless-browserless-1
+5 *   * * * docker exec browserless-browserless-1 find /tmp -name '.com.google.Chrome.*' -mmin +60 -exec rm -rf {} \;
+
 $ npm install puppeteer-core
 $ node screenshot.js
 $ imgcat google.png
