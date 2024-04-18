@@ -1,0 +1,10 @@
+version: "3.8"
+services:
+  wireproxy:
+    image: vimagick/wireproxy
+    ports:
+      - "1080:1080"
+      - "3128:3128"
+    volumes:
+      - ./data:/etc/wireproxy
+    restart: unless-stopped

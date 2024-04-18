@@ -280,6 +280,7 @@ A collection of delicious docker recipes.
 - [x] stunnel-arm
 - [x] tinyproxy
 - [x] tor
+- [x] wireproxy
 
 ## VPN
 
