@@ -1,0 +1,14 @@
+version: "3.8"
+services:
+  mediamtx:
+    image: bluenviron/mediamtx:latest-rpi
+    volumes:
+      - /run/udev:/run/udev:ro
+    tmpfs:
+      - /dev/shm:exec
+    environment:
+      - MTX_PATHS_CAM_SOURCE=rpiCamera
+      - MTX_PATHS_CAM_RPICAMERAWIDTH=1920
+      - MTX_PATHS_CAM_RPICAMERAHEIGHT=1080
+    network_mode: host
+    privileged: true

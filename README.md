@@ -405,6 +405,7 @@ A collection of delicious docker recipes.
 - [x] mitmproxy/mitmproxy
 - [x] mariadb :bucket:
 - [x] matomo
+- [x] bluenviron/mediamtx
 - [x] memgraph :bucket:
   - [x] lab
   - [x] memgraph
