@@ -13,7 +13,7 @@ webrtc:
   listen: ":8555"
 
 ffmpeg:
-  loop: "-re -stream_loop -1 -i {input}"
+  loop: "-re -stream_loop -1 -i {input} -listen 1"
 
 streams:
   bunny: "ffmpeg:BigBuckBunny_320x180.mp4#video=h264#audio=aac#input=loop"
