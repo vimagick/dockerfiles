@@ -1,6 +1,8 @@
 selenium
 ========
 
+![](https://www.perfecto.io/sites/default/files/image/2021-10/components.png)
+
 [Selenium][1] is an umbrella project for a range of tools and libraries that enable
 and support the automation of web browsers.
 
@@ -9,6 +11,18 @@ Watch [this][2] video to get started.
 ## Server
 
 ```bash
+$ cat /etc/docker/daemon.json
+  {
+    "default-ulimits": {
+      "nofile": {
+        "Name": "nofile",
+        "Soft": 32768,
+        "Hard": 32768
+      }
+    },
+    "live-restore": true
+  }
+$ systemctl reload docker
 $ docker-compose up -d
 $ curl http://127.0.0.1:4444/
 ```
