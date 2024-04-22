@@ -14,7 +14,7 @@ services:
 
   mitmdump:
     image: mitmproxy/mitmproxy
-    command: mitmdump --mode reverse:https://httpbin.org:443@8443
+    command: mitmdump --mode reverse:https://httpbin.org:443@8443 --flow-detail 4
     ports:
       - "8443:8443"
     volumes:
