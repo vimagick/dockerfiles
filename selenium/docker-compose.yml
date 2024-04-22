@@ -15,6 +15,10 @@ services:
       - "4444:4444"
     environment:
       - SE_JAVA_OPTS=-Xms256m -Xmx2048m
+    ulimits:
+      nofile:
+        soft: 32768
+        hard: 32768
     restart: unless-stopped
 
   chrome:
@@ -29,12 +33,17 @@ services:
       - SE_NODE_OVERRIDE_MAX_SESSIONS=true
       - SE_NODE_MAX_SESSIONS=4
       - SE_NODE_SESSION_TIMEOUT=180
+      - SE_ENABLE_BROWSER_LEFTOVERS_CLEANUP=true
       - SE_OPTS=--log-level FINE
       - SE_JAVA_OPTS=-Xms256m -Xmx2048m
       - START_XVFB=true
       - VNC_NO_PASSWORD=1
       - VNC_VIEW_ONLY=1
     shm_size: 2gb
+    ulimits:
+      nofile:
+        soft: 32768
+        hard: 32768
     depends_on:
       - hub
     restart: unless-stopped
@@ -50,6 +59,10 @@ services:
       - SE_VIDEO_FOLDER=/videos
       - FILE_NAME=video.mp4
       - VIDEO_READY_PORT=9000
+    ulimits:
+      nofile:
+        soft: 32768
+        hard: 32768
     depends_on:
       - chrome
     restart: unless-stopped
