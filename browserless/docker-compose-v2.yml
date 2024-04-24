@@ -1,0 +1,21 @@
+#
+# https://docs.browserless.io/Docker/docker
+#
+
+version: "3.8"
+services:
+  browserless:
+    image: ghcr.io/browserless/chromium:v2.8.0
+    ports:
+      - "3000:3000"
+    environment:
+      - TOKEN=1234567890
+      - CONCURRENT=10
+      - TIMEOUT=30000
+      - QUEUED=10
+      - CORS=true
+      - HEALTH=true
+      - MAX_CPU_PERCENT=80
+      - MAX_MEMORY_PERCENT=80
+      # DEBUG=-*
+    restart: unless-stopped
