@@ -5,6 +5,7 @@ services:
     ports:
       - "1080:1080"
       - "3128:3128"
+      - "127.0.0.1:8080:8080"
     volumes:
       - ./data/etc:/etc/3proxy
       - ./data/log:/var/log/3proxy
