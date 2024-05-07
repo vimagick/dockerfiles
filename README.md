@@ -280,6 +280,7 @@ A collection of delicious docker recipes.
 - [x] stunnel-arm
 - [x] tinyproxy
 - [x] tor
+- [x] v2ray :cn:
 - [x] wireproxy
 
 ## VPN
@@ -510,7 +511,6 @@ A collection of delicious docker recipes.
 - [x] trinodb/trino
 - [x] ghcr.io/coqui-ai/tts-cpu
 - [x] louislam/uptime-kuma
-- [x] v2ray/official :cn:
 - [x] mpromonet/v4l2rtspserver :camera:
 - [x] centurylink/watchtower
 - [x] aceberg/watchyourlan

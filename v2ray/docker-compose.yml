@@ -1,7 +1,9 @@
-v2ray:
-  image: v2ray/official
-  ports:
-    - "8001:8001"
-  volumes:
-    - ./data:/etc/v2ray
-  restart: always
+version: "3.8"
+services:
+  v2ray:
+    image: vimagick/v2ray
+    ports:
+      - "10086:10086"
+    volumes:
+      - ./data:/etc/v2ray
+    restart: unless-stopped

@@ -1,24 +1,39 @@
 {
-  "log" : {
-    "access": "/dev/stdout",
-    "error": "/dev/stderr",
-    "loglevel": "warning"
-  },
-  "inbound": {
-    "port": 8001,
-    "protocol": "vmess",
-    "settings": {
-      "clients": [
-        {
-          "id": "11111111-2222-3333-4444-555555555555",
-          "level": 1,
-          "alterId": 32
-        }
-      ]
+  "inbounds": [
+    {
+      "port": 10086,
+      "protocol": "vmess",
+      "settings": {
+        "clients": [
+          {
+            "id": "23ad6b10-8d1a-40f7-8ad0-e3e35cd38297",
+            "level": 1,
+            "alterId": 64
+          }
+        ]
+      }
     }
-  },
-  "outbound": {
-    "protocol": "freedom",
-    "settings": {}
+  ],
+  "outbounds": [
+    {
+      "protocol": "freedom",
+      "settings": {}
+    },
+    {
+      "protocol": "blackhole",
+      "settings": {},
+      "tag": "blocked"
+    }
+  ],
+  "routing": {
+    "rules": [
+      {
+        "type": "field",
+        "ip": [
+          "geoip:private"
+        ],
+        "outboundTag": "blocked"
+      }
+    ]
   }
 }
