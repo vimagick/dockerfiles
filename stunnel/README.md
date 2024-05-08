@@ -12,38 +12,6 @@ master | 1.2.3.4:4911 | Japan   | openvpn-server, stunnel-server
 bridge | 5.6.7.8:1194 | China   | stunnel-client
 N/A    | 192.168/16   | China   | openvpn-client
 
-### docker-compose.yml
-
-```yaml
-# In Japan
-master:
-  image: vimagick/stunnel
-  ports:
-    - "4911:4911"
-  environment:
-    - CLIENT=no
-    - SERVICE=openvpn
-    - ACCEPT=0.0.0.0:4911
-    - CONNECT=server:1194
-  external_links:
-    - openvpn_server_1:server
-  restart: always
-
-# In China
-bridge:
-  image: vimagick/stunnel
-  ports:
-    - "1194:1194"
-  environment:
-    - CLIENT=yes
-    - SERVICE=openvpn
-    - ACCEPT=0.0.0.0:1194
-    - CONNECT=server:4911
-  extra_hosts:
-    - server:1.2.3.4
-  restart: always
-```
-
 ### Server Setup (Cloud)
 
 ```bash
@@ -90,6 +58,67 @@ remote 127.0.0.1 1194 tcp
 route 1.2.3.4 255.255.255.255 net_gateway
 route 192.168.0.0 255.255.0.0 net_gateway
 ....
+```
+
+-----------------------------------------
+
+### For Gmail Forwarding
+
+```ini
+;debug = info
+;output = /var/log/stunnel.log
+foreground = yes
+setuid = stunnel
+setgid = stunnel
+socket = l:TCP_NODELAY=1
+socket = r:TCP_NODELAY=1
+
+[gmail-pop3]
+client = yes
+accept = 127.0.0.1:110
+connect = pop.gmail.com:995
+
+[gmail-imap]
+client = yes
+accept = 127.0.0.1:143
+connect = imap.gmail.com:993
+
+[gmail-smtp]
+client = yes
+accept = 127.0.0.1:25
+connect = smtp.gmail.com:465
+```
+
+```nginx
+stream {
+    server {
+        listen               995 ssl;
+        ssl_certificate      ssl/easypi.crt;
+        ssl_certificate_key  ssl/easypi.key;
+        ssl_protocols        TLSv1 TLSv1.1 TLSv1.2;
+        ssl_ciphers          HIGH:!aNULL:!MD5;
+        proxy_pass           127.0.0.1:110;
+        proxy_buffer_size    16k;
+    }
+    server {
+        listen               993 ssl;
+        ssl_certificate      ssl/easypi.crt;
+        ssl_certificate_key  ssl/easypi.key;
+        ssl_protocols        TLSv1 TLSv1.1 TLSv1.2;
+        ssl_ciphers          HIGH:!aNULL:!MD5;
+        proxy_pass           127.0.0.1:143;
+        proxy_buffer_size    16k;
+    }
+    server {
+        listen               465 ssl;
+        ssl_certificate      ssl/easypi.crt;
+        ssl_certificate_key  ssl/easypi.key;
+        ssl_protocols        TLSv1 TLSv1.1 TLSv1.2;
+        ssl_ciphers          HIGH:!aNULL:!MD5;
+        proxy_pass           127.0.0.1:25;
+        proxy_buffer_size    16k;
+    }
+}
 ```
 
 [1]: https://www.stunnel.org/index.html

@@ -1,27 +1,34 @@
-# In Japan
-master:
-  image: vimagick/stunnel
-  ports:
-    - "4911:4911"
-  environment:
-    - CLIENT=no
-    - SERVICE=openvpn
-    - ACCEPT=0.0.0.0:4911
-    - CONNECT=server:1194
-  external_links:
-    - openvpn_server_1:server
-  restart: always
+version: "3.8"
 
-# In China
-bridge:
-  image: vimagick/stunnel
-  ports:
-    - "1194:1194"
-  environment:
-    - CLIENT=yes
-    - SERVICE=openvpn
-    - ACCEPT=0.0.0.0:1194
-    - CONNECT=server:4911
-  extra_hosts:
-    - server:1.2.3.4
-  restart: always
+services:
+
+  # In Japan (IP: 1.2.3.4)
+  master:
+    image: vimagick/stunnel
+    ports:
+      - "4911:4911"
+    environment:
+      - CLIENT=no
+      - SERVICE=openvpn
+      - ACCEPT=0.0.0.0:4911
+      - CONNECT=server:1194
+    restart: unless-stopped
+
+  # In China
+  bridge:
+    image: vimagick/stunnel
+    ports:
+      - "1194:1194"
+    environment:
+      - CLIENT=yes
+      - SERVICE=openvpn
+      - ACCEPT=0.0.0.0:1194
+      - CONNECT=server:4911
+    extra_hosts:
+      - server:1.2.3.4
+    restart: unless-stopped
+
+networks:
+  default:
+    name: openvpn_default
+    external: true
