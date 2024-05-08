@@ -437,6 +437,7 @@ A collection of delicious docker recipes.
   - [x] api
   - [x] ui
 - [x] onerahmet/openai-whisper-asr-webservice
+- [x] ghcr.io/thomiceli/opengist
 - [x] osixia/openldap
 - [x] openresty/openresty
 - [x] opensearchproject/opensearch :bucket:

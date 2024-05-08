@@ -1,0 +1,10 @@
+version: "3.8"
+services:
+  opengist:
+    image: ghcr.io/thomiceli/opengist:1.7
+    ports:
+      - "2222:2222"
+      - "6157:6157"
+    volumes:
+      - ./data:/opengist
+    restart: unless-stopped
