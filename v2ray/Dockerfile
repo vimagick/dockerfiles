@@ -25,4 +25,4 @@ RUN set -xe \
 
 EXPOSE 10086
 
-CMD ["v2ray", "run"]
+CMD ["v2ray", "run", "-c", "/etc/v2ray/config.yaml"]

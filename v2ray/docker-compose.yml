@@ -2,8 +2,10 @@ version: "3.8"
 services:
   v2ray:
     image: vimagick/v2ray
+    command: v2ray run -c /etc/v2ray/config.yaml
     ports:
       - "10086:10086"
     volumes:
-      - ./data:/etc/v2ray
+      - ./data/etc:/etc/v2ray
+      - ./data/log:/var/log/v2ray
     restart: unless-stopped
