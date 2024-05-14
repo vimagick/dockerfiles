@@ -1,8 +1,10 @@
-errbot:
-  image: vimagick/errbot
-  volumes:
-    - ./data:/home/errbot
-    - /usr/lib/python3.5/site-packages
-  stop_signal: SIGINT
-  tty: yes
-  restart: always
+version: "3.8"
+services:
+  errbot:
+    image: vimagick/errbot
+    volumes:
+      - ./data:/opt/errbot
+      - /usr/lib/python3.11/site-packages
+    stop_signal: SIGINT
+    tty: true
+    restart: unless-stopped

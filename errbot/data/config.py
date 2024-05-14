@@ -5,7 +5,7 @@ import logging
 # the options in the more complete config-template.py from here:
 # https://raw.githubusercontent.com/errbotio/errbot/master/errbot/config-template.py
 
-BACKEND = 'Slack'
+BACKEND = 'SlackV3'
 
 BOT_IDENTITY = {
     'token': 'xoxb-xxxxxxxxxxxx-xxxxxxxxxxxxxxxxxxxxxxxx'
@@ -13,10 +13,11 @@ BOT_IDENTITY = {
 
 CHATROOM_FN = 'Errbot'
 
-BOT_DATA_DIR = '/home/errbot/data'
-BOT_EXTRA_PLUGIN_DIR = '/home/errbot/plugins'
+BOT_DATA_DIR = '/opt/errbot/data'
+BOT_EXTRA_BACKEND_DIR = '/opt/errbot/backend'
+BOT_EXTRA_PLUGIN_DIR = '/opt/errbot/plugins'
 
-BOT_LOG_FILE = '/home/errbot/errbot.log'
+BOT_LOG_FILE = '/opt/errbot/errbot.log'
 BOT_LOG_LEVEL = logging.DEBUG
 
 BOT_ADMINS = ('@master', )

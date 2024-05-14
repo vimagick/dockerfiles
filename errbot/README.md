@@ -7,18 +7,6 @@ errbot
 and brings your tools into the conversation.
 
 
-## docker-compose.yml
-
-```yaml
-errbot:
-  image: vimagick/errbot
-  volumes:
-    - ./data:/home/errbot
-    - /usr/lib/python3.5/site-packages
-  tty: yes
-  restart: always
-```
-
 ## up and running
 
 ```bash
@@ -28,8 +16,8 @@ $ vim data/config.py
 $ docker-compose up -d
 $ docker-compose exec --user root errbot sh
 >>> apk add -U py3-lxml
->>> chmod 777 /usr/lib/python3.5/site-packages
->>> chmod 777 /usr/lib/python3.5/site-packages/__pycache__
+>>> chmod 777 /usr/lib/python3.11/site-packages
+>>> chmod 777 /usr/lib/python3.11/site-packages/__pycache__
 >>> exit
 ```
 
