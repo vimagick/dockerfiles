@@ -12,17 +12,11 @@ RUN set -xe \
                           libffi-dev \
                           openssl \
                           openssl-dev \
+                          py3-pip \
                           python3 \
                           python3-dev \
-    && pip3 install --no-cache-dir -U pip \
-    && pip3 install --no-cache-dir errbot \
-                                   hypchat \
-                                   irc \
-                                   pyasn1 \
-                                   pyasn1-modules \
-                                   python-telegram-bot \
-                                   slackclient \
-                                   sleekxmpp \
+    && rm -f /usr/lib/python3.11/EXTERNALLY-MANAGED \
+    && pip3 install --no-cache-dir 'errbot[slack,discord,mattermost,IRC,telegram,XMPP]' \
     && adduser -s /bin/sh -h /opt/errbot -D errbot \
     && apk del --purge build-base \
                        libffi-dev \

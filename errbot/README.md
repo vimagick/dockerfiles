@@ -6,28 +6,27 @@ errbot
 [Errbot][1] is a chatbot, a daemon that connects to your favorite chat service
 and brings your tools into the conversation.
 
-
 ## up and running
 
 ```bash
-$ mkdir -m 777 data
+$ mkdir -m 777 -p data
 $ docker-compose run --rm errbot --init
 $ vim data/config.py
 $ docker-compose up -d
 $ docker-compose exec --user root errbot sh
->>> apk add -U py3-lxml
+>>> apk add --no-cache py3-lxml
 >>> chmod 777 /usr/lib/python3.11/site-packages
 >>> chmod 777 /usr/lib/python3.11/site-packages/__pycache__
 >>> exit
 ```
 
-Check the example config.py [here][2].
+Please read sample [config.py][2] and [setup][3].
 
 ## chat-ops
 
 ```
-master [8:50 PM] !tryme
-errbot [8:50 PM] It works!
+master [8:50 PM] !about
+errbot [8:50 PM] This is Errbot version 6.2.0
 
 master [8:51 PM] !help
 errbot [8:51 PM] All commands ...
@@ -86,4 +85,5 @@ errbot [8:56 PM]
 ```
 
 [1]: http://errbot.io
-[2]: http://errbot.io/en/latest/_downloads/config-template.py
+[2]: https://github.com/errbotio/errbot/blob/master/errbot/config-template.py
+[3]: https://errbot.readthedocs.io/en/latest/user_guide/setup.html
