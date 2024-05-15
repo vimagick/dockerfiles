@@ -357,6 +357,7 @@ A collection of delicious docker recipes.
 - [x] elasticdump/elasticsearch-dump :mag:
 - [x] elk
 - [x] andris9/emailengine :moneybag:
+- [x] ghcr.io/ergochat/ergo :octocat:
 - [x] esphome/esphome
 - [x] quay.io/coreos/etcd
 - [x] audreyt/ethercalc

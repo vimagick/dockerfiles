@@ -1,0 +1,10 @@
+version: "3.8"
+services:
+  ergo:
+    image: ghcr.io/ergochat/ergo:stable
+    ports:
+      - "6667:6667"
+      - "6697:6697"
+    volumes:
+      - ./data:/ircd
+    restart: unless-stopped
