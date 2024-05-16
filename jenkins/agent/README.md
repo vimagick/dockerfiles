@@ -1,6 +1,11 @@
 jenkins/inbound-agent
 =====================
 
+[inbound-agent][1] is for Jenkins agents using TCP or WebSockets to establish
+inbound connection to the Jenkins controller. This agent is powered by the
+Jenkins Remoting library, which version is being taken from the base Docker
+Agent image.
+
 ## how to
 
 - Enable TCP port 50000 for inbound agents: http://jenkins:8080/configureSecurity/
@@ -54,3 +59,5 @@ File: ~/.gitconfig
 [http "https://github.com"]
 	proxy = http://x.x.x.x:8123
 ```
+
+[1]: https://hub.docker.com/r/jenkins/inbound-agent

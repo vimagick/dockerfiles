@@ -1,10 +1,12 @@
-jenkins:
-  image: jenkins/jenkins:lts-alpine
-  ports:
-    - "8080:8080"
-    - "50000:50000"
-  volumes:
-    - ./data:/var/jenkins_home
-  environment:
-    - JAVA_OPTS=-Dhudson.footerURL=http://jenkins.easypi.pro
-  restart: always
+version: "3.8"
+services:
+  jenkins:
+    image: jenkins/jenkins:lts-alpine-jdk21
+    ports:
+      - "8080:8080"
+      - "50000:50000"
+    volumes:
+      - ./data:/var/jenkins_home
+    environment:
+      - JAVA_OPTS=-Dhudson.footerURL=http://jenkins.easypi.duckdns.org
+    restart: unless-stopped

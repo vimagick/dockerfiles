@@ -1,17 +1,16 @@
 version: "3.8"
-
 services:
-
-  inbound-agent:
-    image: jenkins/inbound-agent
+  agent:
+    image: jenkins/inbound-agent:alpine-jdk21
     init: true
     container_name: docker-inbound-agent
     volumes:
       - ./data:/home/jenkins
       - ./data/agent:/home/jenkins/agent
     environment:
-      - JENKINS_URL=http://jenkins.easypi.pro:8080
+      - JENKINS_URL=http://jenkins.easypi.duckdns.org:8080
       - JENKINS_SECRET=***************************
       - JENKINS_AGENT_NAME=docker-inbound-agent
       - JENKINS_AGENT_WORKDIR=/home/jenkins/agent
+      - TZ=Etc/UTC
     restart: unless-stopped
