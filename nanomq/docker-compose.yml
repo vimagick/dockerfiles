@@ -1,0 +1,14 @@
+version: "3.8"
+services:
+  nanomq:
+    image: emqx/nanomq:0.21
+    command: --conf /etc/nanomq/nanomq.conf
+    ports:
+      - "1883:1883" # mqtt
+      - "8081:8081" # api
+      - "8083:8083" # ws
+    volumes:
+      - ./data/etc:/etc/nanomq
+      - ./data/log:/var/log/nanomq
+      - ./data/var:/var/lib/nanomq
+    restart: unless-stopped

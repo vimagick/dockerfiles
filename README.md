@@ -419,6 +419,8 @@ A collection of delicious docker recipes.
 - [x] minio/minio
 - [x] mongo :bucket:
 - [x] ccrisan/motioneye
+- [x] n8nio/n8n
+- [x] emqx/nanomq :cn:
 - [x] deluan/navidrome :musical_note:
 - [x] neo4j :bucket:
 - [x] netdata/netdata
@@ -428,7 +430,6 @@ A collection of delicious docker recipes.
 - [x] tiangolo/nginx-rtmp :camera:
 - [x] jupyter/notebook
 - [x] luzifer/nginx-sso
-- [x] n8nio/n8n
 - [x] illuspas/node-media-server :cn:
 - [x] jorijn/nostream
 - [x] scsibug/nostr-rs-relay
