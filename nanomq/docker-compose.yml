@@ -1,7 +1,7 @@
 version: "3.8"
 services:
   nanomq:
-    image: emqx/nanomq:0.21
+    image: emqx/nanomq:0.21-full
     command: --conf /etc/nanomq/nanomq.conf
     ports:
       - "1883:1883" # mqtt
