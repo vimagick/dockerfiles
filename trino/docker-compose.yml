@@ -7,6 +7,6 @@ services:
       - "8080:8080"
     volumes:
       - ./data/etc:/usr/lib/trino/etc
-      - ./data/data:/usr/lib/trino/data
+      - ./data/log:/usr/lib/trino/data/var/log
     working_dir: /usr/lib/trino
     restart: unless-stopped
