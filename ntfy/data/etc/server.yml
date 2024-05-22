@@ -12,7 +12,7 @@ cache-file: "/var/lib/ntfy/cache.db"
 attachment-cache-dir: "/var/lib/ntfy/attachments"
 log-level: "info"
 log-format: "json"
-log-file: "/var/log/ntfy.log"
+log-file: "/var/log/ntfy/ntfy.log"
 
 #smtp-sender-addr: "email-smtp.us-east-2.amazonaws.com:587"
 #smtp-sender-user: "AKIDEADBEEFAFFE12345"

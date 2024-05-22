@@ -1,0 +1,9 @@
+#
+# - https://docs.ntfy.sh/publish/
+# - https://github.com/binwiederhier/ntfy/blob/main/client/client.yml
+#
+
+default-host: "https://ntfy.easypi.duckdns.org"
+default-token:
+default-user:
+default-password:
