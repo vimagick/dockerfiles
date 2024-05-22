@@ -1,0 +1,14 @@
+version: "3.8"
+services:
+  ntfy:
+    image: binwiederhier/ntfy:v2.11.0
+    command: serve
+    ports:
+      - "2586:2586"
+    volumes:
+      - ./data/etc:/etc/ntfy
+      - ./data/log:/var/log/ntfy
+      - ./data/var:/var/lib/ntfy
+    environment:
+      - TZ=Asia/Shanghai
+    restart: unless-stopped

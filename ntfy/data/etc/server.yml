@@ -1,0 +1,20 @@
+#
+# - https://docs.ntfy.sh/config/
+# - https://github.com/binwiederhier/ntfy/blob/main/server/server.yml
+#
+
+base-url: "https://ntfy.easypi.duckdns.org"
+listen-http: "0.0.0.0:2586"
+behind-proxy: true
+auth-default-access: "deny-all"
+auth-file: "/var/lib/ntfy/auth.db"
+cache-file: "/var/lib/ntfy/cache.db"
+attachment-cache-dir: "/var/lib/ntfy/attachments"
+log-level: "info"
+log-format: "json"
+log-file: "/var/log/ntfy.log"
+
+#smtp-sender-addr: "email-smtp.us-east-2.amazonaws.com:587"
+#smtp-sender-user: "AKIDEADBEEFAFFE12345"
+#smtp-sender-pass: "Abd13Kf+sfAk2DzifjafldkThisIsNotARealKeyOMG."
+#smtp-sender-from: "ntfy@ntfy.sh"

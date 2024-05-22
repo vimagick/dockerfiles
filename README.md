@@ -427,13 +427,14 @@ A collection of delicious docker recipes.
 - [x] sonatype/nexus3
 - [x] nextcloud
 - [ ] jwilder/nginx-proxy
+- [x] luzifer/nginx-sso
 - [x] tiangolo/nginx-rtmp :camera:
 - [x] jupyter/notebook
-- [x] luzifer/nginx-sso
 - [x] illuspas/node-media-server :cn:
 - [x] jorijn/nostream
 - [x] scsibug/nostr-rs-relay
 - [x] notaitech/nudenet
+- [x] binwiederhier/ntfy
 - [x] odoo
 - [x] ohmyform
   - [x] api
