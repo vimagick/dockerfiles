@@ -3,7 +3,7 @@ version: "3.8"
 services:
 
   n8n:
-    image: n8nio/n8n
+    image: n8nio/n8n:1.42.1
     ports:
       - "5678:5678"
     volumes:
@@ -15,15 +15,19 @@ services:
       - DB_POSTGRESDB_DATABASE=n8n
       - DB_POSTGRESDB_USER=n8n
       - DB_POSTGRESDB_PASSWORD=n8n
+      - DB_POSTGRESDB_SCHEMA=public
       - N8N_BASIC_AUTH_ACTIVE=true
       - N8N_BASIC_AUTH_USER=username
       - N8N_BASIC_AUTH_PASSWORD=password
+      - WEBHOOK_URL=https://n8n.easypi.duckdns.org/
+      - GENERIC_TIMEZONE=Asia/Shanghai
+      - TZ=Asia/Shanghai
     depends_on:
       - postgres
     restart: unless-stopped
 
   postgres:
-    image: postgres:14-alpine
+    image: postgres:16-alpine
     ports:
       - "5432:5432"
     volumes:

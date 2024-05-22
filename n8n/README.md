@@ -1,8 +1,6 @@
 n8n
 ===
 
-[n8n][1] (pronounced n-eight-n) helps you to interconnect every app with an API in
-the world with each other to share and manipulate its data without a single
-line of code.
+[n8n][1] (pronounced n-eight-n) is a fair-code licensed node-based workflow automation tool.
 
-[1]: https://n8n.io/
+[1]: https://docs.n8n.io/
