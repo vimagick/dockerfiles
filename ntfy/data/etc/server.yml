@@ -3,6 +3,7 @@
 # - https://github.com/binwiederhier/ntfy/blob/main/server/server.yml
 #
 
+upstream-base-url: "https://ntfy.sh"
 base-url: "https://ntfy.easypi.duckdns.org"
 listen-http: "0.0.0.0:2586"
 behind-proxy: true
