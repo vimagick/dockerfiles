@@ -47,6 +47,7 @@ A collection of delicious docker recipes.
 - [x] cmak (~kafka-manager~)
 - [x] datax :cn:
 - [x] kafka-arm
+- [x] kestra/kestra
 - [x] luigi
 - [x] nifi
 - [x] openrefine

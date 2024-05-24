@@ -1,0 +1,55 @@
+version: "3.8"
+
+services:
+
+  kestra:
+    image: kestra/kestra:latest-full
+    command: server standalone --worker-thread=128
+    ports:
+      - "8080:8080"
+      - "8081:8081"
+    volumes:
+      - ./data/kestra/storage:/app/storage
+      - ./data/kestra/tmp:/app/tmp
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      KESTRA_CONFIGURATION: |
+        datasources:
+          postgres:
+            url: "jdbc:postgresql://postgres:5432/kestra"
+            driverClassName: "org.postgresql.Driver"
+            username: "kestra"
+            password: "k3str4"
+        kestra:
+          url: http://localhost:8080/
+          server:
+            basic-auth:
+              enabled: false
+              username: "admin@example.com"
+              password: "admin"
+          repository:
+            type: postgres
+          storage:
+            type: local
+            local:
+              base-path: "/app/storage"
+          queue:
+            type: postgres
+          tasks:
+            tmp-dir:
+              path: "/app/tmp"
+    user: root
+    depends_on:
+      postgres:
+        condition: service_started
+    restart: unless-stopped
+
+  postgres:
+    image: postgres:16-alpine
+    volumes:
+      - ./data/postgres:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=kestra
+      - POSTGRES_USER=kestra
+      - POSTGRES_PASSWORD=k3str4
+    restart: unless-stopped
