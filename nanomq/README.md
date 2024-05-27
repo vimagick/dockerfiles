@@ -9,8 +9,11 @@ Messaging Bus for SDV.
 
 ```bash
 $ mkdir -p data/{etc,log,var}
-$ wget -P data/etc https://github.com/nanomq/nanomq/raw/master/etc/nanomq.conf
-$ vi data/etc/nanomq.conf
+$ cd data/etc
+$ wget https://github.com/nanomq/nanomq/raw/master/etc/nanomq.conf
+$ vi nanomq.conf
+$ ssh-keygen -t rsa -b 4096 -m PEM -N '' -f jwtRS256.key
+$ openssl rsa -in jwtRS256.key -pubout -outform PEM -out jwtRS256.key.pub
 $ docker compose up -d
 $ curl -u admin:public http://192.168.42.156:8081/api/v4/brokers
 ```
