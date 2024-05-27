@@ -1,3 +1,3 @@
 connector.name=gsheets
 credentials-path=/usr/lib/trino/etc/catalog/gsheets.json
-metadata-sheet-id=1EJ-AxiDpZ287XHO9nD0YS9pMgSFzjhUDEIEWGgl_dqE
+metadata-sheet-id=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx

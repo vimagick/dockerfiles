@@ -1,0 +1,16 @@
+{
+  "catalogs": [
+    {
+      "user": "admin",
+      "catalog": "secret",
+      "allow": "all"
+    },
+    {
+      "catalog": "secret",
+      "allow": "none"
+    },
+    {
+      "allow": "all"
+    }
+  ]
+}
