@@ -71,5 +71,16 @@ $ mosquitto_sub -h broker.hivemq.com -u username -P password -t 'zigbee2mqtt/+' 
 
 > :warning: PLEASE DO NOT USE <broker.hivemq.com> FOR PRODUCTION!
 
-[1]: https://github.com/Koenkk/zigbee2mqtt
-[2]: https://zigbee.blakadder.com/Sonoff_ZBDongle-P.html
+## Pro Tip for Tasmota
+
+To bind button to switch [read more][3]
+
+```
+Rule1
+  ON mqtt#connected DO Subscribe btn, zigbee2mqtt/0xaaaaaaaaaaaaaaaa, action ENDON
+  ON Event#btn=single DO Publish zigbee2mqtt/0xbbbbbbbbbbbbbbbb/set {"state":"TOGGLE"} ENDON
+```
+
+[1]: <https://github.com/Koenkk/zigbee2mqtt>
+[2]: <https://zigbee.blakadder.com/Sonoff_ZBDongle-P.html>
+[3]: <https://tasmota.github.io/docs/MQTT/#subscribe>
