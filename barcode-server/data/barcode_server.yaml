@@ -1,0 +1,63 @@
+barcode_server:
+
+  # (optional) the verbosity level of log output
+  log_level: DEBUG
+
+  # (optional) an identifier for this barcode-server instance
+  # if omitted, this will be a UUIDv4
+  id: cash-register-1
+
+  # (optional) server configuration
+  server:
+    # (optional) the IP address to listen on for incoming connections
+    host: "0.0.0.0"
+    # (optional) the Port to listen on
+    port: 9654
+    # (optional) API-Token which has to be provided by connecting clients
+    api_token: "EmUSqjXGfnQwn5wn6CpzJRZgoazMTRbMNgH7CXwkQG7Ph7stex"
+
+  # (optional) Time period to retry delivering failed queued events before giving up and dropping the event
+  drop_event_queue_after: 2h
+  # (optional) Time to wait between retries
+  retry_interval: 2s
+
+  # (optional) HTTP push configuration
+  http:
+    # URL to send events to using a request
+    url: "http://dummy.restapiexample.com/api/v1/create"
+    # The request method to use
+    method: POST
+    # Headers to set on each request
+    headers:
+      - "X-Auth-Token: MY_HEADERS"
+
+  # (optional) MQTT push configuration
+  mqtt:
+    # MQTT server host address
+    host: "mqtt.mydomain.com"
+    # (optional) MQTT server port
+    port: 1883
+    # (optional) Client ID of this barcode-server instance to provide to the MQTT server
+    client_id: "barcode-server"
+    # MQTT topic to push events to
+    topic: "barcode-server/barcode"
+    # Username to use when connecting to the MQTT server
+    user: "myuser"
+    # Password to use when connecting to the MQTT server
+    password: "mypassword"
+    # (optional) QoS value of event messages
+    qos: 2
+    # (optional) Whether to instruct the MQTT server to remember event messages between restarts (of the MQTT server)
+    retain: True
+
+  # A list of regex patterns to match USB device names against
+  devices:
+    - ".*Barcode.*"
+  # A list of absolute file paths to devices
+  device_paths:
+  #- "/dev/input/barcode_scanner"
+
+  # (optional) Statistics configuration
+  stats:
+    # (optional) port to provide statistics on
+    port: 8000

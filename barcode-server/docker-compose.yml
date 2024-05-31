@@ -1,0 +1,16 @@
+version: "3.8"
+services:
+  barcode-server:
+    image: markusressel/barcode-server
+    ports:
+      - "8000:8000"
+      - "9654:9654"
+    volumes:
+      - ./data:/app/config
+    environment:
+      - PUID=0
+      - PGID=0
+    devices:
+      - /dev/input
+    working_dir: /app/config
+    restart: unless-stopped

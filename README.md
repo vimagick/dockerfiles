@@ -329,6 +329,7 @@ A collection of delicious docker recipes.
   - [x] actor-node-puppeteer-chrome
 - [x] archivebox/archivebox
 - [x] docker.bintray.io/jfrog/artifactory-oss
+- [x] markusressel/barcode-server
 - [x] jeffail/benthos
 - [x] tutum/builder
 - [x] calendso/calendso
