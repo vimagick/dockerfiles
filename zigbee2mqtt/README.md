@@ -79,6 +79,11 @@ To bind button to switch [read more][3]
 Rule1
   ON mqtt#connected DO Subscribe btn, zigbee2mqtt/0xaaaaaaaaaaaaaaaa, action ENDON
   ON Event#btn=single DO Publish zigbee2mqtt/0xbbbbbbbbbbbbbbbb/set {"state":"TOGGLE"} ENDON
+
+Rule2
+  ON mqtt#connected DO Subscribe btn2, dorm/zigbee2mqtt/0xcccccccccccccccc, action ENDON
+  ON Event#btn2=single DO Publish dorm/zigbee2mqtt/0xdddddddddddddddd/set {"state":"ON"} ENDON
+  ON Event#btn2=hold DO Publish dorm/zigbee2mqtt/0xdddddddddddddddd/set {"state":"OFF"} ENDON
 ```
 
 [1]: <https://github.com/Koenkk/zigbee2mqtt>
