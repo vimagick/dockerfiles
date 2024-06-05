@@ -31,8 +31,13 @@ By default, the rule engine function is disabled. To enable it, please compile
 with the [-DENABLE_RULE_ENGINE=ON][2] option.
 
 ```bash
-$ echo 'create table test(topic text, payload text)' | sqlite3 -cmd '.mode csv' data/var/test.db
-$ echo 'select * from test' | sqlite3 -cmd '.mode csv' data/var/test.db
+$ sudo apt install sqlite3
+$ echo 'select * from test' | sqlite3 -cmd '.mode box' data/var/test.db
+┌─────┬────┬───────┬─────────────────┬──────────┬──────────┬────────────┬─────────┐
+│ Qos │ Id │ Topic │    Clientid     │ Username │ Password │ Timestamp  │ Payload │
+├─────┼────┼───────┼─────────────────┼──────────┼──────────┼────────────┼─────────┤
+│ 0   │ 0  │ test  │ nanomq-685fba8e │ (null)   │ (null)   │ 1717486273 │ hello   │
+└─────┴────┴───────┴─────────────────┴──────────┴──────────┴────────────┴─────────┘
 ```
 
 [1]: https://github.com/nanomq/nanomq/tree/master
