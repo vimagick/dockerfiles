@@ -5,27 +5,6 @@ browserless
 way. It takes care of all the binaries and managing of Chrome so you don't have
 to.
 
-## docker-compose.yml
-
-```yaml
-version: '3.8'
-services:
-  browserless:
-    image: browserless/chrome:1-chrome-stable
-    ports:
-      - "3000:3000"
-    environment:
-      - DEBUG=browserless/chrome
-      - MAX_CONCURRENT_SESSIONS=100
-      - CONNECTION_TIMEOUT=300000
-      - MAX_QUEUE_LENGTH=100
-      - ENABLE_CORS=true
-      - ENABLE_DEBUG_VIEWER=true
-      - EXIT_ON_HEALTH_FAILURE=true
-      # TOKEN=4e2a9c32-2854-479a-a9f3-ba8899f2fdc1
-    restart: unless-stopped
-```
-
 ## screenshot.js
 
 ```javascript
@@ -111,4 +90,26 @@ i.ytimg.com
 www.youtube.com
 ```
 
+## Waiting for Condition (v2)
+
+[async][2] functions are supported
+
+```bash
+$ cat fn.js
+async () => {
+  await new Promise(resolve => {
+    const interval = setInterval(() => {
+      var e = document.querySelector('#tryit-data');
+      if (e && e.innerText.includes('country')) {
+        resolve();
+        clearInterval(interval);
+      }
+    }, 1000)
+  });
+}
+
+$ http '127.0.0.1:3000/content?token=1234567890&stealth&--proxy-server=http://x.x.x.x:8080' url='https://ipinfo.io' waitForFunction[fn]=@fn.js waitForFunction[timeout]:=10000 > ipinfo.html
+```
+
 [1]: https://docs.browserless.io/
+[2]: https://docs.browserless.io/HTTP-APIs/content#waitforfunction
