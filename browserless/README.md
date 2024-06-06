@@ -111,5 +111,21 @@ async () => {
 $ http '127.0.0.1:3000/content?token=1234567890&stealth&--proxy-server=http://x.x.x.x:8080' url='https://ipinfo.io' waitForFunction[fn]=@fn.js waitForFunction[timeout]:=10000 > ipinfo.html
 ```
 
+## Intercepting HTTP traffic (v2)
+
+```bash
+$ cat function.js
+export default async function ({ page }) {
+  const url = 'https://ipinfo.io/widget/demo/';
+  const promise = page.waitForResponse(res => res.url().includes(url));
+  await page.goto("https://ipinfo.io/");
+  const res = await promise;
+  const txt = await res.text();
+  return JSON.parse(txt);
+}
+
+$ http '127.0.0.1:3000/function?token=1234567890' Content-Type:application/javascript < function.js > ipinfo.json
+```
+
 [1]: https://docs.browserless.io/
 [2]: https://docs.browserless.io/HTTP-APIs/content#waitforfunction
