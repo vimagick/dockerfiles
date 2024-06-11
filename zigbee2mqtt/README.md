@@ -46,6 +46,8 @@ $ curl 127.0.0.1:8080
 
 ## Example Config
 
+File: configuration.yaml
+
 ```yaml
 permit_join: false
 homeassistant: false
@@ -59,8 +61,18 @@ mqtt:
 serial:
   port: /dev/ttyACM0
 advanced:
+  pan_id: GENERATE
+  ext_pan_id: GENERATE
+  network_key: GENERATE
   last_seen: epoch
 availability: true
+```
+
+File: secret.yaml
+
+```yaml
+user: kevin
+password: kevin
 ```
 
 ## MQTT Testing
