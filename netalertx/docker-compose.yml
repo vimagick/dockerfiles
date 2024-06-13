@@ -1,0 +1,12 @@
+version: "3.8"
+services:
+  netalertx:
+    image: jokobsk/netalertx
+    volumes:
+    - ./data/etc:/app/config
+    - ./data/var:/app/db
+    environment:
+    - PORT=20211
+    - TZ=Asia/Shanghai
+    network_mode: host
+    restart: unless-stopped

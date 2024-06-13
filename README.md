@@ -425,6 +425,7 @@ A collection of delicious docker recipes.
 - [x] emqx/nanomq :cn:
 - [x] deluan/navidrome :musical_note:
 - [x] neo4j :bucket:
+- [x] jokobsk/netalertx
 - [x] netdata/netdata
 - [x] sonatype/nexus3
 - [x] nextcloud
