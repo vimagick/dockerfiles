@@ -4,6 +4,7 @@ services:
     image: jokobsk/netalertx
     volumes:
     - ./data/etc:/app/config
+    - ./data/log:/app/front/log
     - ./data/var:/app/db
     environment:
     - PORT=20211
