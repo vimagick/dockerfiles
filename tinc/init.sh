@@ -3,7 +3,7 @@
 # initialize server profile
 #
 
-if [ -f /etc/tinc/${NETNAME}/hosts/server ]
+if [ -f /etc/tinc/${NETNAME}/rsa_key.priv ]
 then
     echo 'Initialized!'
     exit 0
