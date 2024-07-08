@@ -58,6 +58,7 @@ A collection of delicious docker recipes.
 ## IoT
 
 - [x] ~hass~
+- [x] flashmq
 - [x] hbdg
 - [x] node-red :+1:
 - [x] mqtt-io-arm
