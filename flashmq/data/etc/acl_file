@@ -1,0 +1,5 @@
+user admin
+topic readwrite #
+ 
+user guest
+topic read test/#
