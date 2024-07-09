@@ -7,7 +7,7 @@ MAINTAINER EasyPi Software Foundation
 
 RUN set -xe \
  && apt update -y \
- && apt install -y --no-install-recommends apt-utils ca-certificates curl gpg \
+ && apt install -y ca-certificates curl gpg \
  && update-ca-certificates -f \
  && curl -sSL https://www.flashmq.org/wp-content/uploads/2021/10/flashmq-repo.gpg \
     | gpg --dearmor \
