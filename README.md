@@ -311,6 +311,7 @@ A collection of delicious docker recipes.
     - [x] dnscrypt-server
 - [x] dnsmasq
 - [x] dnsmasq-arm
+- [x] dnsmonster
 - [x] ftldns
 - [x] nextdns
 - [x] passivedns

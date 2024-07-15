@@ -1,0 +1,21 @@
+version: "3.8"
+services:
+  dnsmonster:
+    image: vimagick/dnsmonster
+    volumes:
+      - ./data:/data
+    environment:
+      - DNSMONSTER_CONFIG=dnsmonster.ini
+      - DNSMONSTER_SKIPDOMAINSFILE=skipdomains.csv
+      - DNSMONSTER_SKIPDOMAINSREFRESHINTERVAL=1m0s
+      - DNSMONSTER_FILEOUTPUTTYPE=2
+      - DNSMONSTER_FILEOUTPUTFORMAT=json
+      - DNSMONSTER_FILEOUTPUTROTATECOUNT=0
+      - DNSMONSTER_FILEOUTPUTPATH=dnsmonster.jsonl
+    working_dir: /data
+    network_mode: host
+    cap_add:
+      - NET_ADMIN
+      - NET_RAW
+    privileged: true
+    restart: unless-stopped
