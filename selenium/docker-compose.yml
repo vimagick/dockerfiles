@@ -41,7 +41,7 @@ services:
     restart: unless-stopped
 
   video:
-    image: selenium/video:ffmpeg-6.1-20240402
+    image: selenium/video:ffmpeg-6.1.1-20240621
     volumes:
       - ./data:/videos
     ports:
