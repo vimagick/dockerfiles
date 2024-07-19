@@ -486,6 +486,7 @@ A collection of delicious docker recipes.
   - [x] node-chrome
   - [x] node-firefox
   - [x] standalone-firefox
+- [x] ghcr.io/roapi/roapi
 - [x] aerokube
   - [x] selenoid
     - [x] video-recorder

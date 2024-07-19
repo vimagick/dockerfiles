@@ -1,0 +1,11 @@
+version: "3.8"
+services:
+  roapi:
+    image: ghcr.io/roapi/roapi:v0.11.3
+    command: -c roapi.yml
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./data:/etc/roapi
+    working_dir: /etc/roapi
+    restart: unless-stopped

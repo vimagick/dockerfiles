@@ -1,0 +1,15 @@
+addr:
+  http: 0.0.0.0:8080
+  postgres: 0.0.0.0:5432
+
+tables:
+  - name: "spacex_launches"
+    uri: "https://api.spacexdata.com/v4/launches"
+    option:
+      format: "json"
+
+kvstores:
+  - name: "spacex_launch_name"
+    uri: "./spacex_launches.json"
+    key: id
+    value: name
