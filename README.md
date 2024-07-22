@@ -432,6 +432,7 @@ A collection of delicious docker recipes.
 - [x] sonatype/nexus3
 - [x] nextcloud
 - [ ] jwilder/nginx-proxy
+- [x] jc21/nginx-proxy-manager
 - [x] luzifer/nginx-sso
 - [x] tiangolo/nginx-rtmp :camera:
 - [x] jupyter/notebook

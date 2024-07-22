@@ -1,0 +1,15 @@
+version: "3.8"
+services:
+  npm:
+    image: "jc21/nginx-proxy-manager:2"
+    ports:
+      - "80:80"
+      - "443:443"
+      - "81:81"
+    volumes:
+      - ./data/npm:/data
+      - ./data/ssl:/etc/letsencrypt
+    environment:
+      - DB_SQLITE_FILE=/data/database.db
+      - DISABLE_IPV6=true
+    restart: unless-stopped
