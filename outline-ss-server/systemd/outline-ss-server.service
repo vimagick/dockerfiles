@@ -6,7 +6,13 @@ After=network.target
 User=vpn
 Group=vpn
 WorkingDirectory=/etc/outline-ss-server
-ExecStart=/usr/local/bin/outline-ss-server -config=config.yml -metrics=127.0.0.1:9092 -ip_country_db=ip-country.mmdb -replay_history=10000
+# https://download.db-ip.com/free/dbip-asn-lite-2024-07.mmdb.gz
+# https://download.db-ip.com/free/dbip-country-lite-2024-07.mmdb.gz
+ExecStart=/usr/local/bin/outline-ss-server -config=config.yml \
+                                           -ip_asn_db=ip-asn.mmdb \
+                                           -ip_country_db=ip-country.mmdb \
+                                           -metrics=127.0.0.1:9092 \
+                                           -replay_history=10000
 ExecReload=/bin/kill -HUP $MAINPID
 LimitNOFILE=65536
 RestartSec=5
