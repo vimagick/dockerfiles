@@ -6,6 +6,7 @@ v4l2rtspserver
 ## up and running
 
 ```bash
+$ v4l2-ctl -d /dev/video0 --list-formats-ext --info
 $ docker-compose up -d
 $ vlc --network-caching=50 --rtsp-tcp rtsp://127.0.0.1/live
 $ ffmpeg -rtsp_transport tcp -i rtsp://127.0.0.1/live -acodec copy -vcodec copy -t 60 cctv.mp4
