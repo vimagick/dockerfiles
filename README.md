@@ -155,6 +155,7 @@ A collection of delicious docker recipes.
 
 ## Utility
 
+- [x] dbatools
 - [x] registry-cli
 - [x] tldextract
 
