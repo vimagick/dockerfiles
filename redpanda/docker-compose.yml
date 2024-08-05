@@ -24,3 +24,17 @@ services:
     depends_on:
     - redpanda
     restart: unless-stopped
+
+  connect:
+    image: redpandadata/connect:4.32.1
+    command:
+    - run
+    - input.type=http_server
+    - output.type=kafka
+    - output.kafka.addresses=redpanda:9092
+    - output.kafka.topic=test
+    ports:
+    - "4195:4195"
+    depends_on:
+    - redpanda
+    restart: unless-stopped
