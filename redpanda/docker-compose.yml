@@ -1,0 +1,14 @@
+version: "3.8"
+services:
+  redpanda:
+    image: redpandadata/redpanda:v24.2.1
+    ports:
+    - "8081:8081"
+    - "8082:8082"
+    - "9092:9092"
+    - "9644:9644"
+    - "33145:33145"
+    volumes:
+    - ./data/etc:/etc/redpanda
+    - ./data/var:/var/lib/redpanda
+    restart: unless-stopped

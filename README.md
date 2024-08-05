@@ -474,6 +474,7 @@ A collection of delicious docker recipes.
 - [x] prom/prometheus
 - [x] prosody/prosody
 - [x] redis/redis-stack
+- [x] redpandadata/redpanda
 - [x] registry
 - [x] danielgatis/rembg
 - [x] datarhei/restreamer
