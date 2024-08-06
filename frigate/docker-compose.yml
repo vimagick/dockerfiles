@@ -1,0 +1,30 @@
+#
+# See: https://docs.frigate.video/frigate/installation/#docker
+#
+
+version: "3.9"
+services:
+  frigate:
+    image: ghcr.io/blakeblackshear/frigate:stable-standard-arm64
+    ports:
+      - "5000:5000"
+      - "8554:8554"
+      - "8555:8555/tcp"
+      - "8555:8555/udp"
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ./data/etc:/config
+      - ./data/var:/media/frigate
+      - type: tmpfs
+        target: /tmp/cache
+        tmpfs:
+          size: 1000000000
+    devices:
+      - /dev/bus/usb:/dev/bus/usb
+      - /dev/video11:/dev/video11
+      - /dev/dri/renderD128:/dev/dri/renderD128
+    environment:
+      - FRIGATE_RTSP_PASSWORD=password
+    shm_size: "64mb"
+    privileged: true
+    restart: unless-stopped
