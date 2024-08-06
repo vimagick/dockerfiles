@@ -1,17 +1,19 @@
 restreamer
 ==========
 
-[Restreamer][1] is a complete streaming server solution for self-hosting. It has
-a visually appealing user interface and no ongoing license costs. Upload your
-live stream to YouTube, Twitch, Facebook, Vimeo, or other streaming solutions
-like Wowza. Receive video data from OBS and publish it with the RTMP and SRT
-server.
+[Restreamer][1] provides real-time live video streaming on websites and
+social media platforms without additional streaming provider costs for video
+hosting or software licensing costs.
 
-## up and running
+## Up and Running
 
 ```bash
 $ docker compose up -d
 $ curl http://127.0.0.1:8080/ui
 ```
+
+## Enabling the Pi Camera
+
+https://docs.datarhei.com/restreamer/knowledge-base/user-guides/how-do-i-stream-a-raspicam
 
 [1]: https://github.com/datarhei/restreamer
