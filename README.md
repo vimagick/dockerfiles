@@ -502,6 +502,7 @@ A collection of delicious docker recipes.
 - [x] sentry
 - [x] screego/server
 - [x] atmoz/sftp
+- [x] drakkan/sftpgo
 - [x] quay.io/outline/shadowbox
 - [x] shlinkio/shlink
 - [x] snipe/snipe-it

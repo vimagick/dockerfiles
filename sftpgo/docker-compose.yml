@@ -1,0 +1,12 @@
+version: "3.8"
+services:
+  sftpgo:
+    image: drakkan/sftpgo:v2-alpine
+    ports:
+    - "2022:2022"
+    - "8080:8080"
+    volumes:
+    - ./data/etc:/var/lib/sftpgo
+    - ./data/var:/srv/sftpgo
+    restart: unless-stopped
+
