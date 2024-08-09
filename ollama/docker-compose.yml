@@ -1,0 +1,46 @@
+#
+# - https://hub.docker.com/r/ollama/ollama
+# - https://docs.openwebui.com/getting-started/env-configuration
+#
+
+version: "3.8"
+
+services:
+
+  ollama:
+    image: ollama/ollama:0.3.4
+    ports:
+      - "11434:11434"
+    volumes:
+      - ./data/ollama:/root/.ollama
+    tty: true
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    restart: unless-stopped
+
+  open-webui:
+    image: ghcr.io/open-webui/open-webui:cuda
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./data/open-webui:/app/backend/data
+    environment:
+      - OLLAMA_BASE_URL=http://ollama:11434
+      - WEBUI_SECRET_KEY=t0p-s3cr3t
+      - DATABASE_URL=sqlite:///app/backend/data/webui.db
+      - PORT=8080
+    depends_on:
+      - ollama
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    restart: unless-stopped
