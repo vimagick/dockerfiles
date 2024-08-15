@@ -1,0 +1,9 @@
+version: "3.8"
+services:
+  membrane:
+    image: predic8/membrane:5.6
+    ports:
+    - "2000:2000"
+    volumes:
+    - ./data:/opt/membrane/conf
+    restart: unless-stopped

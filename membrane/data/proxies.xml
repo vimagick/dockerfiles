@@ -1,0 +1,10 @@
+<api port="2000">
+    <rateLimiter requestLimit="3" requestLimitDuration="PT30S"/>
+    <response>
+        <javascript>
+            var body = JSON.stringify({foo: 7, bar: 42});
+            Response.ok(body).contentType("application/json").build();
+        </javascript>
+    </response>
+    <return/>
+</api>

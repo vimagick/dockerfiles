@@ -414,6 +414,7 @@ A collection of delicious docker recipes.
 - [x] mariadb :bucket:
 - [x] matomo
 - [x] bluenviron/mediamtx
+- [x] predic8/membrane
 - [x] memgraph :bucket:
   - [x] lab
   - [x] memgraph
