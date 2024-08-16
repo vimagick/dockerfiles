@@ -6,8 +6,8 @@ After=network.target
 User=vpn
 Group=vpn
 WorkingDirectory=/etc/outline-ss-server
-# https://download.db-ip.com/free/dbip-asn-lite-2024-07.mmdb.gz
-# https://download.db-ip.com/free/dbip-country-lite-2024-07.mmdb.gz
+# https://download.db-ip.com/free/dbip-asn-lite-$(date +%Y-%m).mmdb.gz
+# https://download.db-ip.com/free/dbip-country-lite-$(date +%Y-%m).mmdb.gz
 ExecStart=/usr/local/bin/outline-ss-server -config=config.yml \
                                            -ip_asn_db=ip-asn.mmdb \
                                            -ip_country_db=ip-country.mmdb \
