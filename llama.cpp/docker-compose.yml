@@ -1,0 +1,9 @@
+services:
+  llama.cpp:
+    image: ghcr.io/ggerganov/llama.cpp:server
+    command: -m /models/tinyllama-1.1b-chat-v1.0.Q2_K.gguf -c 512 --host 0.0.0.0 --port 8080
+    ports:
+    - "8080:8080"
+    volumes:
+    - ./data:/models
+    restart: unless-stopped

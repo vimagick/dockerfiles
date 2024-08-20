@@ -404,6 +404,7 @@ A collection of delicious docker recipes.
 - [x] ipfs/kubo
 - [x] heartexlabs/label-studio
 - [x] martialblog/limesurvey
+- [x] ghcr.io/ggerganov/llama.cpp
 - [x] lldap/lldap
 - [x] mailhog/mailhog
 - [x] linuxserver/mastodon
