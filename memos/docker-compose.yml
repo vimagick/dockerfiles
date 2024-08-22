@@ -1,0 +1,26 @@
+services:
+
+  memos:
+    image: neosmemo/memos:stable
+    ports:
+      - "5230:5230"
+    volumes:
+      - ./data/memos:/var/opt/memos
+    environment:
+      - MEMOS_DRIVER=postgres
+      - MEMOS_DSN=user=memos password=memos dbname=memos host=postgres sslmode=disable
+    depends_on:
+      - postgres
+    restart: unless-stopped
+
+  postgres:
+    image: postgres:16-alpine
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./data/postgres:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=memos
+      - POSTGRES_PASSWORD=memos
+      - POSTGRES_DB=memos
+    restart: unless-stopped
