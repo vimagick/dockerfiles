@@ -1,5 +1,7 @@
 #
-# See: https://docs.docker.com/registry/deploying/
+# See:
+# - https://distribution.github.io/distribution/about/deploying/
+# - https://docs.docker.com/docker-hub/mirror/
 #
 
 version: "3.8"

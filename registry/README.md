@@ -3,41 +3,6 @@ registry
 
 [Registry][1] is the Docker toolset to pack, ship, store, and deliver content.
 
-## docker-compose.yml
-
-```yaml
-version: "3.8"
-services:
-  registry:
-    image: registry:2
-    ports:
-      - "5000:5000"
-    volumes:
-      - /etc/docker/registry
-      - ./data:/var/lib/registry
-      - ./certs:/certs
-      - ./auth:/auth
-    environment:
-      - REGISTRY_HTTP_TLS_CERTIFICATE=/certs/domain.crt
-      - REGISTRY_HTTP_TLS_KEY=/certs/domain.key
-      - REGISTRY_AUTH=htpasswd
-      - REGISTRY_AUTH_HTPASSWD_REALM=Registry Realm
-      - REGISTRY_AUTH_HTPASSWD_PATH=/auth/htpasswd
-    restart: unless-stopped
-
-  webui:
-    image: joxit/docker-registry-ui:2
-    ports:
-      - "5080:80"
-    environment:
-      - NGINX_PROXY_PASS_URL=http://registry:5000
-      - REGISTRY_TITLE=EasyPi Docker Registry
-      - DELETE_IMAGES=true
-    depends_on:
-      - registry
-    restart: unless-stopped
-```
-
 ## Server Setup
 
 ```bash
@@ -52,6 +17,7 @@ proxy:
   remoteurl: https://registry-1.docker.io
   username: username
   password: password
+  ttl: 168h
 ^D
 >>> exit
 $ docker-compose restart
