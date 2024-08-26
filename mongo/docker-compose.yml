@@ -3,7 +3,7 @@ version: "3.8"
 services:
 
   mongo:
-    image: mongo:5
+    image: mongo:7-jammy
     ports:
       - "27017:27017"
     volumes:
@@ -19,8 +19,9 @@ services:
       - "8081:8081"
     environment:
       ME_CONFIG_MONGODB_URL: mongodb://root:root@mongo:27017
-      ME_CONFIG_BASICAUTH_USERNAME: admin
-      ME_CONFIG_BASICAUTH_PASSWORD: admin
+      ME_CONFIG_MONGODB_ADMINUSERNAME: admin
+      ME_CONFIG_MONGODB_ADMINPASSWORD: admin
+      ME_CONFIG_BASICAUTH: false
     depends_on:
       - mongo
     restart: unless-stopped
