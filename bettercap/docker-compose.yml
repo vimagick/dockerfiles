@@ -3,6 +3,10 @@ services:
     image: bettercap/bettercap
     entrypoint: sleep
     command: infinity
+    volumes:
+    - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
+    environment:
+    - TZ=Asia/Shanghai
     network_mode: host
     privileged: true
     tty: true

@@ -12,7 +12,13 @@ $ docker compose up -d
 
 $ alias bettercap="docker exec -it bettercap-bettercap-1 /app/bettercap"
 
-$ bettercap --help
+$ bettercap -help
+
+$ bettercap -iface wlan0
+>>> net.probe on
+>>> net.show
+>>> net.probe off
+>>> exit
 ```
 
 [1]: https://www.bettercap.org/
