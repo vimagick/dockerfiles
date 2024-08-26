@@ -1,0 +1,9 @@
+services:
+  bettercap:
+    image: bettercap/bettercap
+    entrypoint: sleep
+    command: infinity
+    network_mode: host
+    privileged: true
+    tty: true
+    restart: unless-stopped

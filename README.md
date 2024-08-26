@@ -334,6 +334,7 @@ A collection of delicious docker recipes.
 - [x] docker.bintray.io/jfrog/artifactory-oss
 - [x] markusressel/barcode-server
 - [x] jeffail/benthos
+- [x] bettercap/bettercap
 - [x] tutum/builder
 - [x] calendso/calendso
 - [x] browserless/chrome
