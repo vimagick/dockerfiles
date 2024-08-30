@@ -1,5 +1,5 @@
 #
-# https://opensearch.org/docs/latest/opensearch/install/docker/
+# https://opensearch.org/docs/latest/install-and-configure/install-opensearch/docker/
 #
 
 version: "3.8"
@@ -7,7 +7,7 @@ version: "3.8"
 services:
 
   opensearch-node1:
-    image: opensearchproject/opensearch:2.0.0
+    image: opensearchproject/opensearch:2
     container_name: opensearch-node1
     ports:
       - "9201:9200"
@@ -21,6 +21,7 @@ services:
       - cluster.initial_master_nodes=opensearch-node1,opensearch-node2
       - bootstrap.memory_lock=true
       - OPENSEARCH_JAVA_OPTS=-Xms512m -Xmx512m
+      - OPENSEARCH_INITIAL_ADMIN_PASSWORD=admin
     ulimits:
       memlock:
         soft: -1
@@ -31,7 +32,7 @@ services:
     restart: unless-stopped
 
   opensearch-node2:
-    image: opensearchproject/opensearch:2.0.0
+    image: opensearchproject/opensearch:2
     container_name: opensearch-node2
     ports:
       - "9202:9200"
@@ -45,6 +46,7 @@ services:
       - cluster.initial_master_nodes=opensearch-node1,opensearch-node2
       - bootstrap.memory_lock=true
       - OPENSEARCH_JAVA_OPTS=-Xms512m -Xmx512m
+      - OPENSEARCH_INITIAL_ADMIN_PASSWORD=admin
     ulimits:
       memlock:
         soft: -1
@@ -55,10 +57,13 @@ services:
     restart: unless-stopped
 
   opensearch-dashboards:
-    image: opensearchproject/opensearch-dashboards:2.0.0
+    image: opensearchproject/opensearch-dashboards:2
     container_name: opensearch-dashboards
     ports:
       - "5601:5601"
     environment:
       OPENSEARCH_HOSTS: '["https://opensearch-node1:9200","https://opensearch-node2:9200"]'
+    depends_on:
+      - opensearch-node1
+      - opensearch-node2
     restart: unless-stopped
