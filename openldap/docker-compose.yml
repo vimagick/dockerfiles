@@ -3,42 +3,24 @@ version: "3.8"
 services:
 
   openldap:
-    image: osixia/openldap
-    command: "--loglevel debug"
-    hostname: ldap.easypi.duckdns.org
+    image: bitnami/openldap:2.6
     ports:
-      - "389:389"
-      - "636:636"
+    - "389:389"
+    - "636:636"
     volumes:
-      - ./data/certs:/container/service/slapd/assets/certs
-      - ./data/etc:/etc/ldap/slapd.d
-      - ./data/var:/var/lib/ldap
-      - ./data/run:/container/run
+    - ./data:/bitnami/openldap
     environment:
-      - LDAP_ORGANISATION=EasyPi
-      - LDAP_DOMAIN=ldap.easypi.duckdns.org
-      - LDAP_ADMIN_PASSWORD=admin
-      - LDAP_CONFIG_PASSWORD=config
-      - LDAP_TLS=true
-      - LDAP_TLS_CA_CRT_FILENAME=ca.crt
-      - LDAP_TLS_CRT_FILENAME=ldap.crt
-      - LDAP_TLS_KEY_FILENAME=ldap.key
-      - LDAP_TLS_VERIFY_CLIENT=try
-      - LDAP_TLS_ENFORCE=true
-    restart: unless-stopped
-  
-# phpldapadmin:
-#   image: osixia/phpldapadmin
-#   command: "--loglevel debug"
-#   ports:
-#     - "8080:80"
-#   environment:
-#     # PHPLDAPADMIN_LDAP_HOSTS=#PYTHON2BASH:[{'ldap.easypi.duckdns.org':[{'server':[{'tls':True}]}]}]
-#     - PHPLDAPADMIN_LDAP_HOSTS=ldaps://ldap.easypi.duckdns.org/
-#     - PHPLDAPADMIN_HTTPS=false
-#     - PHPLDAPADMIN_TRUST_PROXY_SSL=true
-#   extra_hosts:
-#     - ldap.easypi.duckdns.org:x.x.x.x
-#   depends_on:
-#     - openldap
-#   restart: unless-stopped
+    - LDAP_PORT_NUMBER=389
+    - LDAP_ROOT=dc=example,dc=org
+    - LDAP_ADMIN_USERNAME=admin
+    - LDAP_ADMIN_PASSWORD=admin
+    - LDAP_USERS=customuser
+    - LDAP_PASSWORDS=custompassword
+    - LDAP_ADMIN_DN=cn=admin,dc=example,dc=org
+    - LDAP_ENABLE_TLS=yes
+    - LDAP_REQUIRE_TLS=yes
+    - LDAP_LDAPS_PORT_NUMBER=636
+    - LDAP_TLS_CERT_FILE=/bitnami/openldap/certs/ldap.crt
+    - LDAP_TLS_KEY_FILE=/bitnami/openldap/certs/ldap.key
+    - LDAP_TLS_CA_FILE=/bitnami/openldap/certs/ca.crt
+  restart: unless-stopped
