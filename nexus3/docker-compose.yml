@@ -3,7 +3,7 @@ version: "3.8"
 services:
 
   nexus3:
-    image: sonatype/nexus3:3.37.0
+    image: sonatype/nexus3:3.71.0
     ports:
       - "8081:8081"
     volumes:
