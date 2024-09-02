@@ -1,13 +1,13 @@
 #
 # References:
 # - https://airflow.apache.org/docs/apache-airflow/stable/howto/docker-compose/index.html
-# - https://airflow.apache.org/docs/apache-airflow/2.9.2/docker-compose.yaml
+# - https://airflow.apache.org/docs/apache-airflow/2.10.0/docker-compose.yaml
 # - https://github.com/apache/airflow/blob/main/Dockerfile
 #
 
 x-airflow-common:
   &airflow-common
-  image: ${AIRFLOW_IMAGE_NAME:-apache/airflow:2.9.2}
+  image: ${AIRFLOW_IMAGE_NAME:-apache/airflow:2.10.0}
   environment:
     &airflow-common-env
     AIRFLOW__CORE__EXECUTOR: CeleryExecutor
