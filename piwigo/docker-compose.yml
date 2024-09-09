@@ -1,0 +1,14 @@
+version: "3.8"
+services:
+  piwigo:
+    image: linuxserver/piwigo:14.5.0
+    ports:
+    - "8080:80"
+    volumes:
+    - ./data/etc:/config
+    - ./data/var:/gallery
+    environment:
+    - PUID=1000
+    - PGID=1000
+    - TZ=Etc/UTC
+    restart: unless-stopped

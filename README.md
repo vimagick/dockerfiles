@@ -322,7 +322,6 @@ A collection of delicious docker recipes.
 
 - [x] 3proxy/3proxy
 - [x] adguard/adguardhome
-- [x] ghcr.io/linuxserver/airsonic :musical_note:
 - [x] apify
   - [x] actor-node
   - [x] actor-node-playwright
@@ -391,7 +390,6 @@ A collection of delicious docker recipes.
 - [x] hivemq/hivemq-ce
 - [x] homeassistant/home-assistant
 - [x] h2non/imaginary
-- [x] linuxserver/jackett
 - [x] jellyfin/jellyfin
 - [x] jenkins
   - [x] inbound-agent
@@ -405,10 +403,15 @@ A collection of delicious docker recipes.
 - [x] ipfs/kubo
 - [x] heartexlabs/label-studio
 - [x] martialblog/limesurvey
+- [x] linuxserver
+  - [x] airsonic :musical_note:
+  - [x] jackett
+  - [x] mastodon
+  - [x] piwigo
+  - [x] wireguard
 - [x] ghcr.io/ggerganov/llama.cpp
 - [x] lldap/lldap
 - [x] mailhog/mailhog
-- [x] linuxserver/mastodon
 - [x] 42wim/matterbridge :octocat:
 - [x] matrixconduit/matrix-conduit
 - [x] getmeili/meilisearch :mag:
@@ -537,7 +540,6 @@ A collection of delicious docker recipes.
 - [x] requarks/wiki
 - [x] wordpress
 - [x] yourls
-- [x] ghcr.io/linuxserver/wireguard
 - [x] zeek/zeek :skull:
 - [x] apache/zeppelin
 - [x] koenkk/zigbee2mqtt
