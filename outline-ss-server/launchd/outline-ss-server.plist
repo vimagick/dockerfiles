@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+  <dict>
+    <key>Label</key>
+    <string>outline-ss-server</string>
+    <key>KeepAlive</key>
+    <true/>
+    <key>ProgramArguments</key>
+    <array>
+      <string>/usr/local/bin/outline-ss-server</string>
+      <string>-config=config.yml</string>
+      <string>-ip_asn_db=ip-asn.mmdb</string>
+      <string>-ip_country_db=ip-country.mmdb</string>
+      <string>-metrics=127.0.0.1:9092</string>
+      <string>-replay_history=10000</string>
+    </array>
+    <key>StandardErrorPath</key>
+    <string>/usr/local/var/log/outline-ss-server.log</string>
+    <key>StandardOutPath</key>
+    <string>/usr/local/var/log/outline-ss-server.log</string>
+    <key>RunAtLoad</key>
+    <true/>
+    <key>LimitLoadToSessionType</key>
+    <array>
+      <string>Aqua</string>
+      <string>Background</string>
+      <string>LoginWindow</string>
+      <string>StandardIO</string>
+      <string>System</string>
+    </array>
+    <key>WorkingDirectory</key>
+    <string>/usr/local/etc/outline-ss-server/</string>
+  </dict>
+</plist>
