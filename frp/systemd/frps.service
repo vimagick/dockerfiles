@@ -3,7 +3,7 @@ Description=frp server
 After=network.target
 
 [Service]
-User=nobody
+DynamicUser=yes
 ExecStart=/usr/local/bin/frps -c /etc/frp/frps.ini
 LimitNOFILE=65536
 RestartSec=5

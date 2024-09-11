@@ -3,7 +3,7 @@ Description=frp client
 After=network.target
 
 [Service]
-User=nobody
+DynamicUser=yes
 ExecStart=/usr/local/bin/frpc -c /etc/frp/frpc.ini
 ExecReload=/usr/local/bin/frpc reload -c /etc/frp/frpc.ini
 LimitNOFILE=65536

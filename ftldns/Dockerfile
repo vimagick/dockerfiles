@@ -5,7 +5,7 @@
 FROM alpine:3
 MAINTAINER EasyPi Software Foundation
 
-ARG FTL_VERSION=v5.25.1
+ARG FTL_VERSION=v5.25.2
 ARG FTL_FILE=pihole-FTL-musl-linux-x86_64
 ARG FTL_GIT=https://github.com/pi-hole
 ARG FTL_URL=${FTL_GIT}/FTL/releases/download/${FTL_VERSION}/${FTL_FILE}
