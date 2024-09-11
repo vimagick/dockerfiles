@@ -2,7 +2,7 @@ version: "3.8"
 services:
   owncast:
     image: owncast/owncast:0.1.3
-    command: /app/owncast -backupdir=/app/data -database=/app/data/database.db
+    command: /app/owncast
     ports:
       - "1935:1935"
       - "8080:8080"

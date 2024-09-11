@@ -12,7 +12,7 @@ version: "3.8"
 services:
   owncast:
     image: owncast/owncast:0.1.3
-    command: /app/owncast -backupdir=/app/data -database=/app/data/database.db
+    command: /app/owncast
     ports:
       - "1935:1935"
       - "8080:8080"
@@ -41,5 +41,22 @@ OBS is a pretty good piece of free software that will get you streaming from you
 - Enter your “Stream Key” that matches the key you put in your config.yaml file.
 - Start the server.
 - Press “Start Streaming” (OBS) or “Go Live” (Streamlabs) on OBS.
+
+## Recommended Mobile Apps
+
+- Android: https://play.google.com/store/apps/details?id=com.streamlabs&hl=en_US
+- iOS: https://apps.apple.com/us/app/streamlabs-live-streaming-app/id1294578643
+
+## 3rd-party Integrations
+
+- https://owncast.online/thirdparty/apis/
+- http://127.0.0.1:8080/admin/access-tokens/
+
+```bash
+$ API_URL=http://127.0.0.1:8080/api/integrations
+$ API_TOKEN=******
+$ curl -X POST -H "Content-Type: application/json" -H "Authorization: Bearer $API_TOKEN" -d '{"body": "I am a system message!"}' $API_URL/chat/system
+{"message":"sent","success":true}
+```
 
 [1]: https://owncast.online/
