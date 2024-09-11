@@ -7,8 +7,9 @@
     <key>ProgramArguments</key>
     <array>
       <string>/usr/local/bin/owncast</string>
-      <string>-backupdir=data</string>
-      <string>-database=data/database.db</string>
+      <string>-rtmpport=1935</string>
+      <string>-webserverport=8080</string>
+      <string>-logdir=/usr/local/var/log/owncast</string>
     </array>
     <key>StandardErrorPath</key>
     <string>/usr/local/var/log/owncast.err.log</string>
