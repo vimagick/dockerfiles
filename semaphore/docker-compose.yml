@@ -3,11 +3,11 @@ version: "3.8"
 services:
 
   semaphore:
-    image: semaphoreui/semaphore:v2.9.37
+    image: semaphoreui/semaphore:v2.10.12
     ports:
       - "3000:3000"
     volumes:
-      #- ./data:/var/lib/semaphore/
+      #- ./data:/var/lib/semaphore
       - ./data:/etc/semaphore
     environment:
       ANSIBLE_HOST_KEY_CHECKING: "False"
