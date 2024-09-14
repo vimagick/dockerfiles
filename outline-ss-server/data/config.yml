@@ -1,9 +1,13 @@
-keys:
-- id: foo
-  port: 8388
-  cipher: chacha20-ietf-poly1305
-  secret: Thi8aoqu8Tha
-- id: bar
-  port: 8388
-  cipher: chacha20-ietf-poly1305
-  secret: mAequ6Hied8M
+services:
+- listeners:
+  - type: tcp
+    address: "[::]:8388"
+  - type: udp
+    address: "[::]:8388"
+  keys:
+  - id: foo
+    cipher: chacha20-ietf-poly1305
+    secret: Thi8aoqu8Tha
+  - id: bar
+    cipher: chacha20-ietf-poly1305
+    secret: mAequ6Hied8M
