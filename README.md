@@ -329,6 +329,7 @@ A collection of delicious docker recipes.
   - [x] actor-node-playwright-firefox
   - [x] actor-node-playwright-webkit
   - [x] actor-node-puppeteer-chrome
+- [x] appsmith/appsmith-ce
 - [x] archivebox/archivebox
 - [x] docker.bintray.io/jfrog/artifactory-oss
 - [x] markusressel/barcode-server
