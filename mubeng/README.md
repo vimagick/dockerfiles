@@ -20,4 +20,7 @@ $ openssl x509 -inform der -outform pem -in mubeng.der -out mubeng.crt
 $ curl --cacert mubeng.crt -x localhost:3128 https://ipinfo.io
 ```
 
+[Install a root CA certificate in the trust store][2]
+
 [1]: https://github.com/kitabisa/mubeng
+[2]: https://ubuntu.com/server/docs/install-a-root-ca-certificate-in-the-trust-store
