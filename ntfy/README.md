@@ -38,7 +38,7 @@ default-password: "******"
 
 ```bash
 $ ntfy sub test
-$ ntfy pub test "This is a message"
+$ ntfy pub -T fire -t WARNING test "Fire in the Hole"
 ```
 
 [1]: https://docs.ntfy.sh/config/
