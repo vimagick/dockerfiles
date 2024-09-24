@@ -433,6 +433,7 @@ A collection of delicious docker recipes.
 - [x] minio/minio
 - [x] mongo :bucket:
 - [x] ccrisan/motioneye
+- [x] ghcr.io/kitabisa/mubeng
 - [x] n8nio/n8n
 - [x] emqx/nanomq :cn:
 - [x] deluan/navidrome :musical_note:

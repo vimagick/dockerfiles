@@ -1,0 +1,10 @@
+version: "3.8"
+services:
+  mubeng:
+    image: ghcr.io/kitabisa/mubeng:v0.18.0
+    command: -a 0.0.0.0:3128 -f /data/proxy.txt
+    ports:
+    - "3128:3128"
+    volumes:
+    - ./data:/data
+    restart: unless-stopped
