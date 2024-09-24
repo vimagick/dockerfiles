@@ -11,7 +11,7 @@ $ docker-compose up -d
 $ curl http://localhost:8080
 
 # client
-$ wget -O gotify https://github.com/gotify/cli/releases/download/v2.2.0/gotify-cli-linux-amd64
+$ wget -O gotify https://github.com/gotify/cli/releases/download/v2.3.2/gotify-cli-linux-amd64
 $ chmod +x gotify
 $ gotify init
 $ gotify push -t "my title" -p 10 "my message"
