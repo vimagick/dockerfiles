@@ -41,4 +41,9 @@ $ ntfy sub test
 $ ntfy pub -T fire -t WARNING test "Fire in the Hole"
 ```
 
+```bash
+$ websocat --basic-auth "kev:******" ws://127.0.0.1:2586/test/ws
+$ curl -u "kev:******" -H 'Tags: fire' -H 'Title: WARNING' -d 'Fire in the Hole' http://127.0.0.1:2586/test
+```
+
 [1]: https://docs.ntfy.sh/config/
