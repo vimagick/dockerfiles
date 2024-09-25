@@ -14,4 +14,10 @@ $ docker-compose up -d
 $ curl http://127.0.0.1:4533
 ```
 
+## GUI Clients
+
+- Desktop: https://github.com/jeffvli/feishin
+- iOS: https://isub.app/
+- Android: ...
+
 [1]: https://github.com/navidrome/navidrome
