@@ -1,0 +1,15 @@
+version: "3.8"
+services:
+  sws:
+    image: joseluisq/static-web-server:2
+    ports:
+    - "8000:8000"
+    volumes:
+    - ./data:/data
+    environment:
+    - SERVER_COMPRESSION=true
+    - SERVER_DIRECTORY_LISTING=true
+    - SERVER_DIRECTORY_LISTING_ORDER=0
+    - SERVER_PORT=8000
+    - SERVER_ROOT=/data
+    restart: unless-stopped
