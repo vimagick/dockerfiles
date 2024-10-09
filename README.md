@@ -370,6 +370,7 @@ A collection of delicious docker recipes.
 - [x] flogo/flogo-docker
 - [x] mher/flower
 - [x] fluent/fluent-bit
+- [x] ghcr.io/formbricks/formbricks
 - [x] friendica
 - [x] ghcr.io/blakeblackshear/frigate
 - [x] ghost
