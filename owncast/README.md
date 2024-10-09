@@ -59,4 +59,10 @@ $ curl -X POST -H "Content-Type: application/json" -H "Authorization: Bearer $AP
 {"message":"sent","success":true}
 ```
 
+## HLS Client
+
+```bash
+$ open -a vlc http://127.0.0.1:8080/hls/stream.m3u8
+```
+
 [1]: https://owncast.online/
