@@ -3,7 +3,7 @@
 version: "3.8"
 services:
   etcd:
-    image: quay.io/coreos/etcd:v3.5.1
+    image: gcr.io/etcd-development/etcd:v3.5.16
     command: >
       etcd --name=node1
            --data-dir=/data

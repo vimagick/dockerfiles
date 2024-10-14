@@ -484,6 +484,7 @@ A collection of delicious docker recipes.
 - [x] prefecthq/prefect
 - [x] prom/prometheus
 - [x] prosody/prosody
+- [x] qaulnet/qauld
 - [x] redis/redis-stack
 - [x] redpandadata/redpanda
 - [x] registry

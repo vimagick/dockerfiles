@@ -8,11 +8,11 @@ of a distributed system.
 $ docker-compose up -d
 $ docker-compose exec etcd bash
 >>> etcdctl version
-etcdctl version: 3.5.1
+etcdctl version: 3.5.16
 API version: 3.5
 >>> etcdctl put foo bar
 OK
->>> etcdctl gut foo
+>>> etcdctl get foo
 foo
 bar
 ```
