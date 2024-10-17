@@ -3,7 +3,7 @@ version: "3.8"
 services:
 
   mongo:
-    image: mongo:7-jammy
+    image: mongo:8-noble
     ports:
       - "27017:27017"
     volumes:
