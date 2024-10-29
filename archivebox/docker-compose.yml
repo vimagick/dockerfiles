@@ -16,29 +16,33 @@ version: "3.8"
 services:
 
   archivebox:
-    image: archivebox/archivebox
-    command: server 0.0.0.0:8000
+    image: archivebox/archivebox:0.7.2
     ports:
       - "8000:8000"
     environment:
-      - USE_COLOR=True
-      - SHOW_PROGRESS=False
+      # ADMIN_USERNAME=admin
+      # ADMIN_PASSWORD=admin
+      - CSRF_TRUSTED_ORIGINS=https://archivebox.example.com
+      - ALLOWED_HOSTS=*
+      - PUBLIC_INDEX=True
+      - PUBLIC_SNAPSHOTS=True
+      - PUBLIC_ADD_VIEW=False
       - SEARCH_BACKEND_ENGINE=sonic
       - SEARCH_BACKEND_HOST_NAME=sonic
-      - SEARCH_BACKEND_PASSWORD=SecretPassword
+      - SEARCH_BACKEND_PASSWORD=sonic
     volumes:
-      - ./data/archivebox:/data
+      - ./data:/data
     depends_on:
       - sonic
     restart: unless-stopped
   
   sonic:
-    image: valeriansaliou/sonic:v1.3.0  
+    image: valeriansaliou/sonic:v1.4.9
     ports:
       - "1491:1491"
     environment:
-      - SEARCH_BACKEND_PASSWORD=SecretPassword
+      - SEARCH_BACKEND_PASSWORD=sonic
     volumes:
-      - ./data/sonic/config.cfg:/etc/sonic.cfg
-      - ./data/archivebox:/var/lib/sonic/store/
+      # ./data/sonic/config.cfg:/etc/sonic.cfg
+      - ./data/sonic:/var/lib/sonic/store/
     restart: unless-stopped
