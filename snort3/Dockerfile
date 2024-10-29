@@ -2,17 +2,15 @@
 # Dockerfile for snort3
 #
 
-FROM ubuntu:22.04
+FROM ubuntu:24.04
 MAINTAINER EasyPi Software Foundation
 
-ARG SNORT_VERSION=3.1.42.0
-ARG LIBDAQ_VERSION=3.0.9
-ARG LIBDNET_VERSION=1.16.1
+ARG SNORT_VERSION=3.5.0.0
+ARG LIBDAQ_VERSION=3.0.17
+ARG LIBDNET_VERSION=1.18.0
 ARG PCRE_VERSION=8.45
-ARG GPERTOOLS_VERSION=2.10
-ARG RAGEL_VERSION=6.10
-ARG HYPERSCAN_VERSION=5.4.0
-ARG FLATBUFFERS_VERSION=22.9.29
+ARG GPERTOOLS_VERSION=2.16
+ARG FLATBUFFERS_VERSION=24.3.25
 
 ARG DEBIAN_FRONTEND=noninteractive
 
@@ -20,7 +18,7 @@ RUN set -xe \
     && apt-get update \
     && apt-get -y install \
         build-essential autoconf check pkg-config libtool tzdata bison cmake flex curl git \
-        libpcap-dev libhwloc-dev libluajit-5.1-dev libssl-dev libpcre3-dev zlib1g-dev liblzma-dev \
+        libhwloc-dev libhyperscan-dev libluajit-5.1-dev libssl-dev libpcap-dev libpcre3-dev zlib1g-dev liblzma-dev \
     && rm -rf /var/lib/apt/lists/*
 
 RUN set -xe \
@@ -68,28 +66,6 @@ RUN set -xe \
     && make install \
     && cd .. \
     && rm -rf gperftools
-
-RUN set -xe \
-    && mkdir -p ragel \
-    && cd ragel \
-    && curl -sSL http://www.colm.net/files/ragel/ragel-$RAGEL_VERSION.tar.gz | tar xz --strip 1 \
-    && ./configure \
-    && make -j7 \
-    && make install \
-    && cd .. \
-    && rm -rf ragel
-
-RUN set -xe \
-    && mkdir -p hyperscan/build \
-    && cd hyperscan \
-    && curl -sSL https://github.com/intel/hyperscan/archive/refs/tags/v$HYPERSCAN_VERSION.tar.gz | tar xz --strip 1 \
-    && curl -sSL https://boostorg.jfrog.io/artifactory/main/release/1.78.0/source/boost_1_78_0.tar.gz | tar xz \
-    && cd build \
-    && cmake -DCMAKE_INSTALL_PREFIX=/usr/local -DBOOST_ROOT=../boost_1_78_0/ .. \
-    && make -j7 \
-    && make install \
-    && cd .. \
-    && rm -rf hyperscan
 
 RUN set -xe \
     && mkdir -p flatbuffers/build \
