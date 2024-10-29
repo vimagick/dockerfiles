@@ -87,6 +87,7 @@ RUN set -xe \
     && make -j7 \
     && make install \
     && curl -sSL https://www.snort.org/downloads/community/snort3-community-rules.tar.gz | tar xz -C /usr/local/etc/snort3/ \
+    && curl -sSL https://www.snort.org/downloads/openappid/33380 | tar xz -C /usr/local/etc/snort3/ \
     && cd ../.. \
     && rm -rf snort3
 
