@@ -3,7 +3,7 @@ version: "3.8"
 services:
 
   redpanda:
-    image: redpandadata/redpanda:v24.2.1
+    image: redpandadata/redpanda:v24.2.7
     ports:
     - "8081:8081"
     - "8082:8082"
@@ -16,7 +16,7 @@ services:
     restart: unless-stopped
 
   console:
-    image: redpandadata/console:v2.7.0
+    image: redpandadata/console:v2.7.2
     ports:
     - "8080:8080"
     volumes:
@@ -26,7 +26,7 @@ services:
     restart: unless-stopped
 
   connect:
-    image: redpandadata/connect:4.32.1
+    image: redpandadata/connect:4.38.0
     command:
     - run
     - input.type=http_server
