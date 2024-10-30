@@ -8,7 +8,7 @@ version: "3.8"
 services:
 
   hub:
-    image: selenium/hub:4.25.0
+    image: selenium/hub:4.25.0-20241024
     ports:
       - "4442:4442"
       - "4443:4443"
@@ -19,7 +19,7 @@ services:
     restart: unless-stopped
 
   chrome:
-    image: selenium/node-chrome:4.25.0
+    image: selenium/node-chrome:4.25.0-20241024
     ports:
       - "5900:5900"
       - "7900:7900"
