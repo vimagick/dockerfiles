@@ -3,7 +3,7 @@ version: "3.8"
 services:
 
   nifi:
-    image: apache/nifi:1.27.0
+    image: apache/nifi:2.0.0
     ports:
       - "8080:8080"
     volumes:
@@ -13,6 +13,8 @@ services:
       - ./data/nifi/flowfile_repository:/opt/nifi/nifi-current/flowfile_repository
       - ./data/nifi/content_repository:/opt/nifi/nifi-current/content_repository
       - ./data/nifi/provenance_repository:/opt/nifi/nifi-current/provenance_repository
+      - ./data/nifi/python_extensions:/opt/nifi/nifi-current/python_extensions
+      - ./data/nifi/nar_extensions:/opt/nifi/nifi-current/nar_extensions
       - ./data/nifi/state:/opt/nifi/nifi-current/state
       - ./data/nifi/logs:/opt/nifi/nifi-current/logs
     environment:
@@ -25,7 +27,7 @@ services:
     restart: unless-stopped
 
   registry:
-    image: apache/nifi-registry:1.27.0
+    image: apache/nifi-registry:2.0.0
     ports:
       - "18080:18080"
     volumes:
