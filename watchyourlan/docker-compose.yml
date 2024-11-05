@@ -1,14 +1,15 @@
 version: "3.8"
 services:
   watchyourlan:
-    image: aceberg/watchyourlan
+    image: aceberg/watchyourlan:2.0.4
     volumes:
-      - ./data:/data
+      - ./data:/data/WatchYourLAN
     environment:
-      - DBPATH=/data/db.sqlite
-      - GUIIP=0.0.0.0
-      - GUIPORT=8840
       - IFACE=wlan0
+      - HOST=0.0.0.0
+      - PORT=8840
       - TZ=Asia/Shanghai
+      - USE_DB=sqlite # postgres
+      # PG_CONNECT=postgres://username:password@postgres:5432/dbname?sslmode=disable
     network_mode: host
     restart: unless-stopped
