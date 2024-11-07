@@ -2,7 +2,7 @@
 # Dockerfile for open-vmdk
 #
 
-FROM debian:12
+FROM debian:12 AS build
 MAINTAINER EasyPi Software Foundation
 
 ARG OPEN_VMDK_VERSION=v0.3.10
@@ -19,3 +19,8 @@ RUN set -xe \
  && cd .. \
  && apt remove -y build-essential curl zlib1g-dev \
  && rm -rf open-vmdk /var/lib/apt/lists/*
+
+FROM debian:12
+
+COPY --from=build /usr/bin/vmdk-convert /usr/local/bin/
+COPY --from=build /usr/bin/ova-compose /usr/local/bin/
