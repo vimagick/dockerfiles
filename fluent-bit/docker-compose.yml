@@ -1,7 +1,7 @@
 version: "3.8"
 services:
   fluent-bit:
-    image: fluent/fluent-bit:2.1
+    image: fluent/fluent-bit:3.2
     ports:
       - "2020:2020"
     volumes:

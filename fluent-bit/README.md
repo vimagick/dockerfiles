@@ -11,6 +11,7 @@ $ mkdir -p data/{etc,var}
 $ wget -P data/etc https://github.com/fluent/fluent-bit/raw/master/conf/fluent-bit.conf \
                    https://github.com/fluent/fluent-bit/raw/master/conf/parsers.conf \
                    https://github.com/fluent/fluent-bit/raw/master/conf/plugins.conf
+$ vim data/etc/fluent-bit.conf
 $ docker-compose up -d
 $ docker-compose logs --tail 10 -f
 ```
