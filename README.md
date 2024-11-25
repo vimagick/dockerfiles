@@ -324,6 +324,7 @@ A collection of delicious docker recipes.
 
 - [x] 3proxy/3proxy
 - [x] adguard/adguardhome
+- [x] ghcr.io/anthropics/anthropic-quickstarts
 - [x] apify
   - [x] actor-node
   - [x] actor-node-playwright

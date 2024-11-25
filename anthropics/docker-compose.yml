@@ -1,0 +1,15 @@
+services:
+  anthropic:
+    image: ghcr.io/anthropics/anthropic-quickstarts:computer-use-demo-latest
+    ports:
+    - "5900:5900"
+    - "6080:6080"
+    - "8080:8080"
+    - "8501:8501"
+    volumes:
+    - ./data:/home/computeruse/.anthropic
+    environment:
+    - ANTHROPIC_API_KEY=sk-xxx-xxx-xxx
+    - WIDTH=1024
+    - HEIGHT=768
+    restart: unless-stopped
