@@ -3,12 +3,10 @@
 # https://github.com/SeleniumHQ/docker-selenium/blob/trunk/README.md#configuring-the-containers
 #
 
-version: "3.8"
-
 services:
 
   hub:
-    image: selenium/hub:4.25.0-20241024
+    image: selenium/hub:4.27.0
     ports:
       - "4442:4442"
       - "4443:4443"
@@ -19,7 +17,7 @@ services:
     restart: unless-stopped
 
   chrome:
-    image: selenium/node-chrome:4.25.0-20241024
+    image: selenium/node-chrome:4.27.0
     ports:
       - "5900:5900"
       - "7900:7900"
@@ -43,7 +41,7 @@ services:
     restart: unless-stopped
 
   video:
-    image: selenium/video:ffmpeg-7.1-20241024
+    image: selenium/video:ffmpeg-7.1-20241127
     volumes:
       - ./data:/videos
     ports:
