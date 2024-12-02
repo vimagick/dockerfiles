@@ -12,9 +12,9 @@ WORKDIR /opt/iventoy
 
 RUN set -xe \
  && apt update -y \
- && apt install -y curl \
+ && apt install -y curl tar \
  && curl -sSL $IVENTOY_URL | tar xz --strip 1 \
- && apt remove -y curl \
+ && apt remove -y curl tar \
  && rm -rf /var/lib/apt/lists/*
 
 ENV IVENTOY_API_ALL=1
