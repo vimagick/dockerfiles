@@ -60,6 +60,7 @@ A collection of delicious docker recipes.
 - [x] ~hass~
 - [x] flashmq
 - [x] hbdg
+- [x] iventoy :cn:
 - [x] node-red :+1:
 - [x] mqtt-io-arm
 - [x] mosquitto :+1:

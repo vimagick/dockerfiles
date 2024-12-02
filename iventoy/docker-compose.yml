@@ -1,0 +1,9 @@
+services:
+  iventoy:
+    image: vimagick/iventoy
+    volumes:
+    - ./data/iso:/opt/iventoy/iso
+    - ./data/log:/opt/iventoy/log
+    network_mode: host
+    privileged: true
+    restart: unless-stopped
