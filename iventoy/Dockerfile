@@ -2,7 +2,7 @@
 # Dockerfile for iventoy
 #
 
-FROM ubuntu:bookworm
+FROM debian:bookworm
 
 ARG IVENTOY_VERSION=1.0.20
 ARG IVENTOY_FILE=iventoy-$IVENTOY_VERSION-linux-free.tar.gz
