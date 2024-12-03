@@ -2,7 +2,7 @@
 # Dockerfile for errbot
 #
 
-FROM alpine:3.19
+FROM alpine:3.20
 MAINTAINER EasyPi Software Foundation
 
 RUN set -xe \
@@ -15,7 +15,7 @@ RUN set -xe \
                           py3-pip \
                           python3 \
                           python3-dev \
-    && rm -f /usr/lib/python3.11/EXTERNALLY-MANAGED \
+    && pip3 config set global.break-system-packages true \
     && pip3 install --no-cache-dir 'errbot[slack,discord,mattermost,IRC,telegram,XMPP]' \
     && adduser -s /bin/sh -h /opt/errbot -D errbot \
     && apk del --purge build-base \
@@ -27,7 +27,7 @@ USER errbot
 WORKDIR /opt/errbot
 
 RUN set -xe \
-    && mkdir -p ~/.local/lib/python3.11/site-packages \
+    && mkdir -p ~/.local/lib/python3.12/site-packages \
     && errbot --init
 
 VOLUME /opt/errbot
