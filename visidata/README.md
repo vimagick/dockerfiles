@@ -8,8 +8,8 @@ VisiData supports tsv, csv, sqlite, json, xlsx (Excel), hdf5, and many other for
 
 ```bash
 # Create an alias
-$ alias vd='docker run --rm -u $(id -u):$(id -g) -v "$PWD:/data" -w /data vimagick/visidata'
-$ alias visidata='docker run --rm -u $(id -u):$(id -g) -v "$PWD:/data" -w /data vimagick/visidata'
+$ alias vd='docker run --rm -it -u $(id -u):$(id -g) -v "$PWD:/data" -w /data vimagick/visidata'
+$ alias visidata='docker run --rm -it -u $(id -u):$(id -g) -v "$PWD:/data" -w /data vimagick/visidata'
 
 # Create a csv file
 $ echo -e 'a,b\n1,2\n3,4' > input.csv
