@@ -161,6 +161,7 @@ A collection of delicious docker recipes.
 - [x] open-vmdk
 - [x] registry-cli
 - [x] tldextract
+- [x] visidata
 
 ## Media
 
