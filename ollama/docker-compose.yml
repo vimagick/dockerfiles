@@ -8,7 +8,7 @@ version: "3.8"
 services:
 
   ollama:
-    image: ollama/ollama:0.3.4
+    image: ollama/ollama:v0.5.1
     ports:
       - "11434:11434"
     volumes:

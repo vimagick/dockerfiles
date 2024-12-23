@@ -5,7 +5,7 @@
 FROM alpine:3
 MAINTAINER EasyPi Software Foundation
 
-ARG FRP_VERSION=0.46.0
+ARG FRP_VERSION=0.61.0
 ARG FRP_ARCH=amd64
 ARG FRP_FILE=frp_${FRP_VERSION}_linux_${FRP_ARCH}.tar.gz
 ARG FRP_URL=https://github.com/fatedier/frp/releases/download/v${FRP_VERSION}/${FRP_FILE}
@@ -19,4 +19,4 @@ RUN set -xe \
 
 EXPOSE 7000/tcp 7000/udp 7500/tcp
 
-CMD ["./bin/frps", "-c", "./etc/frps.ini"]
+CMD ["./bin/frps", "-c", "./etc/frps.toml"]

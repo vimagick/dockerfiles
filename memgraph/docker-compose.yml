@@ -7,7 +7,7 @@ version: "3.8"
 services:
 
   memgraph:
-    image: memgraph/memgraph-mage:1.20.1-memgraph-2.20.1-no-ml
+    image: memgraph/memgraph-mage:1.22.1-memgraph-2.22.1-no-ml
     ports:
       - "7444:7444" # Log
       - "7687:7687" # Bolt
@@ -20,7 +20,7 @@ services:
     restart: unless-stopped
 
   lab:
-    image: memgraph/lab:2.17.0
+    image: memgraph/lab:2.19.1
     ports:
       - "3000:3000" # Web
     environment:
