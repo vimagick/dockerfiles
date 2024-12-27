@@ -393,6 +393,7 @@ A collection of delicious docker recipes.
 - [x] grafana/grafana
 - [x] hasura/graphql-engine
 - [x] haproxy
+- [x] chromedp/headless-shell
 - [x] healthchecks/healthchecks
 - [x] hivemq/hivemq-ce
 - [x] homeassistant/home-assistant

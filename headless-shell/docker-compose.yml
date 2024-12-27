@@ -1,0 +1,7 @@
+services:
+  headless-shell:
+    image: chromedp/headless-shell:stable
+    ports:
+    - "9222:9222"
+    shm_size: 2gb
+    restart: unless-stopped
