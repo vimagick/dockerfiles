@@ -1,0 +1,12 @@
+services:
+  litellm:
+    image: ghcr.io/berriai/litellm:main-stable
+    command: --config /app/config.yaml --detailed_debug
+    ports:
+    - "4000:4000"
+    volumes:
+    - ./data/config.yaml:/app/config.yaml
+    environment:
+    - OPENAI_API_KEY=sk-xxxxxx
+    - ANTHROPIC_API_KEY=sk-xxxxxx
+    restart: unless-stopped

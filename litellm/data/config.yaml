@@ -1,0 +1,20 @@
+#
+# https://docs.litellm.ai/docs/proxy/configs
+#
+
+model_list:
+- model_name: gpt-4o
+  litellm_params:
+    model: openai/gpt-4o
+    apk_key: os.environ/OPENAI_API_KEY
+- model_name: claude-3.5
+  litellm_params:
+    model: anthropic/claude-3-5-sonnet-latest
+    api_key: os.environ/ANTHROPIC_API_KEY
+- model_name: llama3.2
+  litellm_params:
+    model: ollama/llama3.2
+    api_base: http://localhost:11434
+
+general_settings:
+  master_key: sk-xxxxxx

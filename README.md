@@ -416,6 +416,7 @@ A collection of delicious docker recipes.
   - [x] mastodon
   - [x] piwigo
   - [x] wireguard
+- [x] ghcr.io/berriai/litellm
 - [x] ghcr.io/ggerganov/llama.cpp
 - [x] lldap/lldap
 - [x] mailhog/mailhog
