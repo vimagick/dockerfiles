@@ -1,5 +1,6 @@
 #
-# https://docs.litellm.ai/docs/proxy/configs
+# - https://docs.litellm.ai/docs/proxy/configs
+# - https://github.com/BerriAI/litellm/blob/main/proxy_server_config.yaml
 #
 
 model_list:
@@ -17,4 +18,11 @@ model_list:
     api_base: http://localhost:11434
 
 general_settings:
-  master_key: sk-xxxxxx
+  master_key: os.environ/LITELLM_MASTER_KEY
+  # database_url: postgresql://litellm:litellm@postgres:5432/litellm
+  # store_model_in_db: True
+
+environment_variables:
+  OPENAI_API_KEY: sk-xxxxxx
+  ANTHROPIC_API_KEY: sk-xxxxxx
+  LITELLM_MASTER_KEY: sk-xxxxxx
