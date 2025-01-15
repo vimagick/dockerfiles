@@ -1,17 +1,34 @@
 #
 # - https://docs.litellm.ai/docs/proxy/configs
 # - https://github.com/BerriAI/litellm/blob/main/proxy_server_config.yaml
+# - https://www.botgenuity.com/tools/llm-pricing
 #
 
 model_list:
 - model_name: gpt-4o
   litellm_params:
     model: openai/gpt-4o
-    apk_key: os.environ/OPENAI_API_KEY
-- model_name: claude-3.5
+    api_key: os.environ/OPENAI_API_KEY
+    #input_cost_per_token: 2.5e-06  # $2.5/1M
+    #output_cost_per_token: 1.0e-05 # $10/1M
+- model_name: gpt-4o-mini
+  litellm_params:
+    model: openai/gpt-4o-mini
+    api_key: os.environ/OPENAI_API_KEY
+    #input_cost_per_token: 1.5e-07  # $0.15/1M
+    #output_cost_per_token: 6.0e-07 # $0.6/1M
+- model_name: claude-3.5-sonnet
   litellm_params:
     model: anthropic/claude-3-5-sonnet-latest
     api_key: os.environ/ANTHROPIC_API_KEY
+    #input_cost_per_token: 3.0e-06  # $3/1M
+    #output_cost_per_token: 1.5e-05 # $15/1M
+- model_name: claude-3.5-haiku
+  litellm_params:
+    model: anthropic/claude-3-5-haiku-latest
+    api_key: os.environ/ANTHROPIC_API_KEY
+    #input_cost_per_token: 8.0e-07  # $0.8/1M
+    #output_cost_per_token: 4.0e-06 # $4/1M
 - model_name: llama3.2
   litellm_params:
     model: ollama/llama3.2
@@ -19,10 +36,11 @@ model_list:
 
 general_settings:
   master_key: os.environ/LITELLM_MASTER_KEY
-  # database_url: postgresql://litellm:litellm@postgres:5432/litellm
-  # store_model_in_db: True
+  #database_url: postgresql://litellm:litellm@postgres:5432/litellm
+  #store_model_in_db: True
 
-environment_variables:
-  OPENAI_API_KEY: sk-xxxxxx
-  ANTHROPIC_API_KEY: sk-xxxxxx
-  LITELLM_MASTER_KEY: sk-xxxxxx
+#######################################
+# export OPENAI_API_KEY=sk-xxxxxx     #
+# export ANTHROPIC_API_KEY=sk-xxxxxx  #
+# export LITELLM_MASTER_KEY=sk-xxxxxx #
+#######################################
