@@ -53,5 +53,14 @@ $ curl -H "Authorization: Bearer $LITELLM_KEY" 'http://127.0.0.1:4000/user/info?
 }
 ```
 
+## Install litellm manually
+
+```bash
+# https://github.com/BerriAI/litellm/blob/v1.58.2/pyproject.toml
+$ pipx install 'litellm[proxy]==1.58.2'
+$ source ~/.local/pipx/venvs/litellm/bin/activate
+$ pip install prisma==0.11.0
+```
+
 [1]: https://docs.litellm.ai/docs/simple_proxy
 [2]: https://docs.litellm.ai/docs/proxy/virtual_keys
