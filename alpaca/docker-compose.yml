@@ -1,0 +1,7 @@
+services:
+  alpaca:
+    image: vimagick/alpaca
+    command: -C http://url-to-proxy.pac
+    ports:
+    - "3128:3128"
+    restart: unless-stopped

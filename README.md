@@ -257,6 +257,7 @@ A collection of delicious docker recipes.
 
 ## Proxy
 
+- [x] alpaca
 - [x] dante
 - [x] delegated
 - [x] fteproxy :+1:
@@ -530,7 +531,7 @@ A collection of delicious docker recipes.
 - [x] teamatldocker
     - [x] confluence
     - [x] jira
-- [x] joseluisq/static-web-server
+- [x] ghcr.io/static-web-server/static-web-server
 - [x] openstitching/stitch
 - [x] strapi/strapi
 - [x] amancevice/superset
