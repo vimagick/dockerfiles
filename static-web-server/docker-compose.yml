@@ -1,7 +1,7 @@
 version: "3.8"
 services:
   sws:
-    image: joseluisq/static-web-server:2
+    image: ghcr.io/static-web-server/static-web-server:2-alpine
     ports:
     - "8000:8000"
     volumes:
@@ -12,4 +12,7 @@ services:
     - SERVER_DIRECTORY_LISTING_ORDER=0
     - SERVER_PORT=8000
     - SERVER_ROOT=/data
+    - SERVER_LOG_LEVEL=info
+    - SERVER_LOG_REMOTE_ADDRESS=true
+    - SERVER_LOG_FORWARDED_FOR=true
     restart: unless-stopped

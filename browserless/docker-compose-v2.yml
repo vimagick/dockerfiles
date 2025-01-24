@@ -2,10 +2,9 @@
 # https://docs.browserless.io/Docker/docker
 #
 
-version: "3.8"
 services:
   browserless:
-    image: ghcr.io/browserless/chromium:v2.23.0
+    image: ghcr.io/browserless/chromium:v2.24.2
     ports:
       - "3000:3000"
     environment:
