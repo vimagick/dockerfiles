@@ -1,0 +1,3 @@
+--negotiate
+--listen 0.0.0.0:3128
+--pac-file http://url-to-proxy.pac

@@ -1,0 +1,8 @@
+services:
+  proxydetox:
+    image: vimagick/proxydetox
+    ports:
+    - "3128:3128"
+    volumes:
+    - ./data:/root/.config/proxydetox
+    restart: unless-stopped

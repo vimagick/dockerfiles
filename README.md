@@ -275,6 +275,7 @@ A collection of delicious docker recipes.
 - [x] polipo
 - [x] privoxy
 - [x] privoxy-arm
+- [x] proxydetox
 - [x] proxyhub
 - [x] shadowsocks
     - [x] shadowsocks
