@@ -1,13 +1,17 @@
+#
+# https://redis.io/docs/latest/operate/oss_and_stack/install/install-stack/docker/
+#
+
 version: "3.8"
 services:
   redis-stack:
-    image: redis/redis-stack-server:7.4.0-v0
+    image: redis/redis-stack-server:7.4.0-v2
     ports:
       - "6379:6379"
       - "8001:8001"
     volumes:
       - ./data:/data
     environment:
-      REDIS_ARGS: "--save 900 1"
+      REDIS_ARGS: "--requirepass secret --save 900 1 --appendonly yes"
       REDISTIMESERIES_ARGS: "RETENTION_POLICY=20"
     restart: unless-stopped
