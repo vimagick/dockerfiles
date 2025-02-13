@@ -9,9 +9,9 @@ zigbee2mqtt
 
 ```bash
 # download latest zigbee firmware
-wget https://github.com/Koenkk/Z-Stack-firmware/raw/master/coordinator/Z-Stack_3.x.0/bin/CC1352P2_CC2652P_launchpad_coordinator_20230507.zip
-unzip CC1352P2_CC2652P_launchpad_coordinator_20230507.zip
-ls CC1352P2_CC2652P_launchpad_coordinator_20230507.hex
+wget https://github.com/Koenkk/Z-Stack-firmware/releases/download/Z-Stack_3.x.0_coordinator_20240710/CC1352P2_CC2652P_launchpad_coordinator_20240710.zip
+unzip CC1352P2_CC2652P_launchpad_coordinator_20240710.zip
+ls CC1352P2_CC2652P_launchpad_coordinator_20240710.hex
 
 # download firmware flashing tool
 sudo apt install -y python3-serial python3-intelhex
@@ -21,8 +21,10 @@ chmod +x cc2538-bsl.py
 
 ls /dev/ttyUSB*
 udevadm info -q property -n /dev/ttyUSB0 --property=ID_SERIAL
-./cc2538-bsl.py --bootloader-sonoff-usb -p /dev/ttyUSB0 -evw CC1352P2_CC2652P_launchpad_coordinator_20230507.hex
+./cc2538-bsl.py -ewv -p /dev/ttyUSB0 --bootloader-sonoff-usb ./CC1352P2_CC2652P_launchpad_coordinator_20240710.hex
 ```
+
+Read more about [firmware flashing][4].
 
 ## Up and Running
 
@@ -102,3 +104,4 @@ Rule2
 [1]: <https://github.com/Koenkk/zigbee2mqtt>
 [2]: <https://zigbee.blakadder.com/Sonoff_ZBDongle-P.html>
 [3]: <https://tasmota.github.io/docs/MQTT/#subscribe>
+[4]: <https://www.zigbee2mqtt.io/guide/adapters/flashing/flashing_via_cc2538-bsl.html>
