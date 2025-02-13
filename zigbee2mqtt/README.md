@@ -59,6 +59,7 @@ mqtt:
   #user: '!secret.yaml user'
   #password: '!secret.yaml password'
 serial:
+  adapter: zstack
   port: /dev/ttyACM0
 advanced:
   pan_id: GENERATE
