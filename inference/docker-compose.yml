@@ -1,0 +1,15 @@
+services:
+  inference:
+    image: roboflow/roboflow-inference-server-cpu:latest
+    ports:
+    - "9001:9001"
+    volumes:
+    - ./data:/tmp:rw
+    security_opt:
+    - no-new-privileges
+    cap_drop:
+    - ALL
+    cap_add:
+    - NET_BIND_SERVICE
+    read_only: true
+    restart: unless-stopped

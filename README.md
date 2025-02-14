@@ -500,6 +500,7 @@ A collection of delicious docker recipes.
 - [x] danielgatis/rembg
 - [x] datarhei/restreamer
 - [x] restic/rest-server
+- [x] roboflow/roboflow-inference-server-cpu
 - [x] rocker/rstudio
 - [x] rocket.chat
 - [x] rundeck/rundeck
