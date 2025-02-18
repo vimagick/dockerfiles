@@ -1,0 +1,11 @@
+services:
+  facefusion:
+    image: facefusion/facefusion:master-cpu
+    command: ["python", "facefusion.py", "run"]
+    ports:
+    - "7860:7860"
+    volumes:
+    - ./data/assets:/facefusion/.assets
+    - ./data/caches:/facefusion/.caches
+    - ./data/jobs:/facefusion/.jobs
+    restart: unless-stopped
