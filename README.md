@@ -374,6 +374,7 @@ A collection of delicious docker recipes.
 - [x] esphome/esphome
 - [x] quay.io/coreos/etcd
 - [x] audreyt/ethercalc
+- [x] facefusion/facefusion
 - [x] flogo/flogo-docker
 - [x] mher/flower
 - [x] fluent/fluent-bit
