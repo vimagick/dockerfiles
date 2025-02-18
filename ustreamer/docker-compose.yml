@@ -1,0 +1,11 @@
+services:
+  ustreamer:
+    image: pikvm/ustreamer:v6.31
+    ports:
+    - "8080:8080"
+    environment:
+    - EDID=1
+    devices:
+    - /dev/video0
+    privileged: true
+    restart: unless-stopped

@@ -548,6 +548,7 @@ A collection of delicious docker recipes.
 - [x] trinodb/trino
 - [x] ghcr.io/coqui-ai/tts-cpu
 - [x] louislam/uptime-kuma
+- [x] pikvm/ustreamer :camera:
 - [x] mpromonet/v4l2rtspserver :camera:
 - [x] centurylink/watchtower
 - [x] aceberg/watchyourlan
