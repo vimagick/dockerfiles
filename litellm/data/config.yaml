@@ -9,26 +9,26 @@ model_list:
   litellm_params:
     model: openai/gpt-4o
     api_key: os.environ/OPENAI_API_KEY
-    #input_cost_per_token: 2.5e-06  # $2.5/1M
-    #output_cost_per_token: 1.0e-05 # $10/1M
+    input_cost_per_token: 2.5e-6
+    output_cost_per_token: 1.0e-5
 - model_name: gpt-4o-mini
   litellm_params:
     model: openai/gpt-4o-mini
     api_key: os.environ/OPENAI_API_KEY
-    #input_cost_per_token: 1.5e-07  # $0.15/1M
-    #output_cost_per_token: 6.0e-07 # $0.6/1M
+    input_cost_per_token: 1.5e-7
+    output_cost_per_token: 6.0e-7
 - model_name: claude-3.5-sonnet
   litellm_params:
     model: anthropic/claude-3-5-sonnet-latest
     api_key: os.environ/ANTHROPIC_API_KEY
-    #input_cost_per_token: 3.0e-06  # $3/1M
-    #output_cost_per_token: 1.5e-05 # $15/1M
+    input_cost_per_token: 3.0e-6
+    output_cost_per_token: 1.5e-5
 - model_name: claude-3.5-haiku
   litellm_params:
     model: anthropic/claude-3-5-haiku-latest
     api_key: os.environ/ANTHROPIC_API_KEY
-    #input_cost_per_token: 8.0e-07  # $0.8/1M
-    #output_cost_per_token: 4.0e-06 # $4/1M
+    input_cost_per_token: 8.0e-7
+    output_cost_per_token: 4.0e-6
 - model_name: llama3.2
   litellm_params:
     model: ollama/llama3.2
@@ -36,8 +36,20 @@ model_list:
 
 general_settings:
   master_key: os.environ/LITELLM_MASTER_KEY
-  #database_url: postgresql://litellm:litellm@postgres:5432/litellm
-  #store_model_in_db: True
+  database_url: postgresql://litellm:litellm@postgres:5432/litellm
+  store_model_in_db: True
+
+litellm_settings:
+  drop_params: true
+  modify_params: true
+
+# $ psql postgres
+# >>> CREATE USER litellm WITH PASSWORD 'litellm';
+# CREATE ROLE
+# >>> CREATE DATABASE litellm OWNER litellm;
+# CREATE DATABASE
+# >>> \q
+# $ open http://192.168.255.200:4000/ui/
 
 #######################################
 # export OPENAI_API_KEY=sk-xxxxxx     #
