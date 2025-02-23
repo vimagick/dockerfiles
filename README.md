@@ -540,6 +540,7 @@ A collection of delicious docker recipes.
 - [x] amancevice/superset
 - [x] matrixdotorg/synapse
 - [x] syncthing/syncthing
+- [x] linuxserver/syslog-ng
 - [x] tensorflow
     - [x] serving
 - [x] kitabisa/teler

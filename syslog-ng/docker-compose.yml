@@ -1,0 +1,16 @@
+services:
+  syslog-ng:
+    image: linuxserver/syslog-ng:4.8.1
+    ports:
+      - 514:5514/udp  # UDP
+      - 601:6601/tcp  # TCP
+      - 6514:6514/tcp # TLS
+    volumes:
+      - ./data/etc:/config
+      - ./data/log:/var/log
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/UTC
+      - LOG_TO_STDOUT= #optional
+    restart: unless-stopped
