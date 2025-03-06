@@ -38,4 +38,12 @@ Content-Type: application/json
 Date: Mon, 27 Nov 2023 08:27:14 GMT
 ```
 
+## integrations notes
+
+- You don't need matchers for aliased integrations anymore.
+- Only integrations with use project-level alias require matcher.
+
+See this [issue][2]
+
 [1]: https://ansible-semaphore.com/
+[2]: https://github.com/semaphoreui/semaphore/issues/2752
