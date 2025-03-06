@@ -16,18 +16,36 @@ services:
       #SEMAPHORE_DB_DIALECT: bolt
       #SEMAPHORE_DB_PATH: /var/lib/semaphore
       SEMAPHORE_DB_DIALECT: postgres
-      SEMAPHORE_DB_USER: semaphore
-      SEMAPHORE_DB_PASS: semaphore
       SEMAPHORE_DB_HOST: postgres
       SEMAPHORE_DB_PORT: 5432
-      SEMAPHORE_DB: semaphore?sslmode=disable
+      SEMAPHORE_DB_NAME: semaphore
+      SEMAPHORE_DB_USER: semaphore
+      SEMAPHORE_DB_PASS: semaphore
+      SEMAPHORE_DB_OPTIONS: '{"sslmode":"disable"}'
       SEMAPHORE_ADMIN: admin
       SEMAPHORE_ADMIN_NAME: admin
       SEMAPHORE_ADMIN_PASSWORD: admin
       SEMAPHORE_ADMIN_EMAIL: admin@localhost
+      SEMAPHORE_ACCESS_KEY_ENCRYPTION: "********************************************"
+      SEMAPHORE_TOTP_ENABLED: "True"
+      SEMAPHORE_TOTP_ALLOW_RECOVERY: "True"
+      SEMAPHORE_SLACK_ALERT: "True"
+      SEMAPHORE_SLACK_URL: "https://hooks.slack.com/services/T00000000/B00000000/XXXXXXXXXXXXXXXXXXXXXXXX"
+      SEMAPHORE_USE_REMOTE_RUNNER: "True"
+      SEMAPHORE_RUNNER_REGISTRATION_TOKEN: "********************************************"
     working_dir: /etc/semaphore
     depends_on:
       - postgres
+    restart: unless-stopped
+
+  runner:
+    image: semaphoreui/semaphore-runner:v2.12.14
+    volumes:
+      - ./data/var:/var/lib/semaphore
+      - ./data/etc:/etc/semaphore
+      - ./data/tmp:/tmp/semaphore
+    environment:
+      ANSIBLE_HOST_KEY_CHECKING: "False"
     restart: unless-stopped
 
   postgres:
