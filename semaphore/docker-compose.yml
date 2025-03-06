@@ -1,4 +1,6 @@
-version: "3.8"
+#
+# https://semaphoreui.com/install/docker/2_12
+#
 
 services:
 
