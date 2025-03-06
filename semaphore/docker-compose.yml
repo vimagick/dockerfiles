@@ -3,7 +3,7 @@ version: "3.8"
 services:
 
   semaphore:
-    image: semaphoreui/semaphore:v2.10.12
+    image: semaphoreui/semaphore:v2.12.14
     ports:
       - "3000:3000"
     volumes:
@@ -29,7 +29,7 @@ services:
     restart: unless-stopped
 
   postgres:
-    image: postgres:16-alpine
+    image: postgres:17-alpine
     ports:
       - "5432:5432"
     volumes:
