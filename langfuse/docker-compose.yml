@@ -1,0 +1,32 @@
+#
+# https://langfuse.com/self-hosting/docker-compose
+#
+
+service:
+  langfuse:
+    image: langfuse/langfuse:3
+    ports:
+    - "3000:3000"
+    environment:
+    - NODE_ENV=production
+    - DATABASE_URL=postgresql://langfuse:langfuse@postgres:5432/langfuse
+    - NEXTAUTH_SECRET=****** # openssl rand -base64 32
+    - ENCRYPTION_KEY=******  # openssl rand -hex 32
+    - SALT=******            # openssl rand -hex 16
+    - NEXTAUTH_URL=http://localhost:3000
+    - TELEMETRY_ENABLED=false
+    - NEXT_PUBLIC_SIGN_UP_DISABLED=true
+    - LANGFUSE_ENABLE_EXPERIMENTAL_FEATURES=false
+    depends_on:
+    - postgres
+    restart: unless-stopped
+
+  postgres:
+    image: postgres:17-alpine
+    volumes:
+    - ./data:/var/lib/postgresql/data
+    environment:
+    - POSTGRES_USER=langfuse
+    - POSTGRES_PASSWORD=langfuse
+    - POSTGRES_DB=langfuse
+    restart: unless-stopped

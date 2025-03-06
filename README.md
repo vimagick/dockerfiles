@@ -413,6 +413,7 @@ A collection of delicious docker recipes.
 - [x] devopsfaith/krakend
 - [x] ipfs/kubo
 - [x] heartexlabs/label-studio
+- [x] langfuse/langfuse
 - [x] martialblog/limesurvey
 - [x] linuxserver
   - [x] airsonic :musical_note:
