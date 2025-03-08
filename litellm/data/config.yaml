@@ -37,7 +37,7 @@ model_list:
 general_settings:
   master_key: os.environ/LITELLM_MASTER_KEY
   database_url: postgresql://litellm:litellm@postgres:5432/litellm
-  store_model_in_db: True
+  store_model_in_db: true
 
 litellm_settings:
   drop_params: true
@@ -55,4 +55,5 @@ litellm_settings:
 # export OPENAI_API_KEY=sk-xxxxxx     #
 # export ANTHROPIC_API_KEY=sk-xxxxxx  #
 # export LITELLM_MASTER_KEY=sk-xxxxxx #
+# export DASHSCOPE_API_KEY=sk-xxxxxx  #
 #######################################

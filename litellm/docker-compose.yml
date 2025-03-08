@@ -2,7 +2,7 @@ services:
 
   litellm:
     image: ghcr.io/berriai/litellm:main-stable
-    command: --config /app/config.yaml --detailed_debug
+    command: --config /app/config.yaml --telemetry False
     ports:
     - "4000:4000"
     volumes:
@@ -10,8 +10,12 @@ services:
     environment:
     - DATABASE_URL=postgresql://litellm:litellm@postgres:5432/litellm
     - STORE_MODEL_IN_DB=True
+    - UI_USERNAME=litellm
+    - UI_PASSWORD=litellm
     depends_on:
-    - postgres
+      postgres:
+        condition: service_healthy
+        restart: true
     restart: unless-stopped
 
   postgres:
@@ -22,4 +26,10 @@ services:
     - POSTGRES_USER=litellm
     - POSTGRES_PASSWORD=litellm
     - POSTGRES_DB=litellm
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
+      interval: 10s
+      retries: 5
+      start_period: 30s
+      timeout: 10s
     restart: unless-stopped
