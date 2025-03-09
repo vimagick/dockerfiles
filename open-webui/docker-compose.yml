@@ -1,0 +1,15 @@
+services:
+  open-webui:
+    image: ghcr.io/open-webui/open-webui:main
+    volumes:
+      - ./data:/app/backend/data
+    ports:
+      - "3000:8080"
+    environment:
+      - HF_HUB_OFFLINE=1
+      - WEBUI_SECRET_KEY=t0p-s3cr3t
+      - OLLAMA_BASE_URL=http://ollama:11434
+      # OPENAI_API_KEY=sk-xxxxxx
+    extra_hosts:
+      - ollama:x.x.x.x
+    restart: unless-stopped

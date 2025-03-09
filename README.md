@@ -474,6 +474,7 @@ A collection of delicious docker recipes.
 - [x] openresty/openresty
 - [x] opensearchproject/opensearch :bucket:
 - [x] kylemanna/openvpn
+- [x] ghcr.io/open-webui/open-webui
 - [x] campbellsoftwaresolutions/osticket
 - [x] outlinewiki/outline
 - [x] gabekangas/owncast
