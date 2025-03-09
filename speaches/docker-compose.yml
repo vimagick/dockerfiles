@@ -1,0 +1,14 @@
+services:
+  speaches:
+    image: ghcr.io/speaches-ai/speaches:latest-cpu
+    ports:
+    - "8000:8000"
+    volumes:
+    - ./data:/home/ubuntu/.cache/huggingface/hub
+    healthcheck:
+      test: ["CMD", "curl", "--fail", "http://127.0.0.1:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 5s
+    restart: unless-stopped

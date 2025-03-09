@@ -81,7 +81,6 @@ A collection of delicious docker recipes.
 - [x] ludwig
 
 ## Cluster
-
 - [x] ggr
 - [x] ggr-ui
 - [x] jsonwire-grid
@@ -531,6 +530,7 @@ A collection of delicious docker recipes.
 - [x] shlinkio/shlink
 - [x] snipe/snipe-it
 - [x] valeriansaliou/sonic
+- [x] ghcr.io/speaches-ai/speaches
 - [x] scrapinghub/splash
 - [x] deezer/spleeter
 - [x] teamatldocker
