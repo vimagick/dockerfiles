@@ -7,7 +7,6 @@ services:
       - "3000:8080"
     environment:
       - HF_HUB_OFFLINE=1
-      - WEBUI_SECRET_KEY=t0p-s3cr3t
       - OLLAMA_BASE_URL=http://ollama:11434
       # OPENAI_API_KEY=sk-xxxxxx
     extra_hosts:
