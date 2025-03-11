@@ -514,6 +514,7 @@ A collection of delicious docker recipes.
   - [x] node-firefox
   - [x] standalone-firefox
 - [x] ghcr.io/roapi/roapi
+- [x] docker.io/searxng/searxng
 - [x] aerokube
   - [x] selenoid
     - [x] video-recorder
