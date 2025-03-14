@@ -27,6 +27,11 @@ $ docker-compose exec --user root jenkins apk add -U git
 $ curl http://localhost:8080/
 ```
 
+## download jdk and agent.jar
+
+- https://www.oracle.com/java/technologies/downloads/#jdk23-linux
+- http://localhost:8080/jnlpJars/agent.jar
+
 ## fix slow network
 
 ```bash
