@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+  <dict>
+    <key>Label</key>
+    <string>webhook</string>
+    <key>KeepAlive</key>
+    <true/>
+    <key>ProgramArguments</key>
+    <array>
+      <string>/usr/local/bin/webhook</string>
+      <string>-verbose</string>
+      <string>-hooks=hooks.yaml</string>
+    </array>
+    <key>StandardErrorPath</key>
+    <string>/usr/local/var/log/webhook.log</string>
+    <key>StandardOutPath</key>
+    <string>/dev/null</string>
+    <key>RunAtLoad</key>
+    <true/>
+    <key>WorkingDirectory</key>
+    <string>/usr/local/etc/webhook</string>
+    <key>EnvironmentVariables</key>
+    <dict>
+      <key>PATH</key>
+      <string>/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin</string>
+    </dict>
+    <key>UserName</key>
+    <string>kev</string>
+  </dict>
+</plist>
