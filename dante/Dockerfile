@@ -5,9 +5,9 @@
 FROM debian:bookworm
 MAINTAINER EasyPi Software Foundation
 
-ARG DANTE_VER=1.4.3
+ARG DANTE_VER=1.4.4
 ARG DANTE_URL=https://www.inet.no/dante/files/dante-$DANTE_VER.tar.gz
-ARG DANTE_SHA1=1e264ec532774324b5508ba5f2ad226d479b4977
+ARG DANTE_SHA1=d40161031952e749b71c0a718b32ab3dc0c27926
 ARG DANTE_FILE=dante.tar.gz
 ARG DANTE_TEMP=dante
 ARG DANTE_DEPS="build-essential curl"
