@@ -1,6 +1,6 @@
 [Unit]
 Description=nginx sso service
-After=network.target
+After=network-online.target
 
 [Service]
 User=nobody

@@ -1,6 +1,6 @@
 [Unit]
 Description=lightweight incoming webhook server
-After=network.target
+After=network-online.target
 
 [Service]
 ExecStart=/usr/local/bin/webhook -hooks=hooks.json -hooks=hooks.yaml -hotreload -port=9000 -template -urlprefix=hooks

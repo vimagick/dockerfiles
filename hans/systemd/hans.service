@@ -1,7 +1,7 @@
 # /etc/systemd/system/hans.service
 [Unit]
 Description=IP over ICMP
-After=network.target
+After=network-online.target
 
 [Service]
 EnvironmentFile=/etc/default/hans

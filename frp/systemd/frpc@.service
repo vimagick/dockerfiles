@@ -1,6 +1,6 @@
 [Unit]
 Description=Frp Client Service
-After=network.target
+After=network-online.target
 
 [Service]
 DynamicUser=yes
