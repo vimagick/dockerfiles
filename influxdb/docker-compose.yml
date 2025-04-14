@@ -1,8 +1,13 @@
-influxdb:
-  image: influxdb:alpine
-  ports:
-    - "8083:8083"
-    - "8086:8086"
-  volumes:
-    - ./data:/var/lib/influxdb
-  restart: always
+#
+# https://docs.influxdata.com/influxdb/v2/get-started/setup/
+#
+
+services:
+  influxdb:
+    image: influxdb:2-alpine
+    ports:
+      - "8086:8086"
+    volumes:
+      - ./data/etc:/etc/influxdb2
+      - ./data/var:/var/lib/influxdb2
+    restart: unless-stopped
