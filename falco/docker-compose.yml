@@ -1,0 +1,14 @@
+services:
+  falco:
+    image: falcosecurity/falco:0.40.0-debian
+    volumes:
+    - /etc:/host/etc
+    - /proc:/host/proc:ro
+    - /var/run/docker.sock:/host/var/run/docker.sock
+    cap_drop:
+    - ALL
+    cap_add:
+    - SYS_ADMIN
+    - SYS_RESOURCE
+    - SYS_PTRACE
+    restart: unless-stopped
