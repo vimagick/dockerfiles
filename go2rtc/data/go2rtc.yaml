@@ -17,7 +17,7 @@ ffmpeg:
 
 streams:
   bunny: "ffmpeg:BigBuckBunny_320x180.mp4#video=h264#audio=aac#input=loop"
-  #usbcam: "ffmpeg:device?video=0&video_size=1280x720#video=h264"
+  #usbcam: "ffmpeg:device?video=0&video_size=1280x720#video=h264#framerate=30"
 
 #publish:
   #bunny: "rtmp://a.rtmp.youtube.com/live2/xxxx-xxxx-xxxx-xxxx-xxxx"
