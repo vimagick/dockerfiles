@@ -1,7 +1,6 @@
-version: "3.8"
 services:
   go2rtc:
-    image: alexxit/go2rtc
+    image: alexxit/go2rtc:1.9.9
     ports:
       - "1984:1984"
       - "8554:8554"
