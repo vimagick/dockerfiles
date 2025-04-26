@@ -1,7 +1,7 @@
 services:
   v4l2rtspserver:
     image: mpromonet/v4l2rtspserver:v0.3.11
-    command: -v -P554 -G640x480x5 -ulive /dev/video0
+    command: -v -c -P554 -G960x540x15 -ulive /dev/video0
     ports:
       - "554:554"
     devices:
