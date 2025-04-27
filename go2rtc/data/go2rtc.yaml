@@ -12,12 +12,14 @@ rtsp:
 webrtc:
   listen: ":8555"
 
+# https://github.com/BtbN/FFmpeg-Builds/releases
 ffmpeg:
   loop: "-re -stream_loop -1 -i {input} -listen 1"
+  timestamp: "-vf \"drawtext=fontfile=DroidSansMono.ttf: text='%{localtime}': x=w-tw-lh: y=lh: fontsize=24: fontcolor=white: box=1: boxcolor=black@0.5: boxborderw=5\""
 
 streams:
   bunny: "ffmpeg:BigBuckBunny_320x180.mp4#video=h264#audio=aac#input=loop"
-  #usbcam: "ffmpeg:device?video=0&video_size=1280x720#video=h264#framerate=30"
+  #usbcam: "ffmpeg:device?video=0&video_size=1280x720#video=h264#framerate=30#raw=timestamp"
 
 #publish:
   #bunny: "rtmp://a.rtmp.youtube.com/live2/xxxx-xxxx-xxxx-xxxx-xxxx"
