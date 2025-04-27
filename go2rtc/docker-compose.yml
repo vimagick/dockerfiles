@@ -7,7 +7,8 @@ services:
       - "8555:8555"
     volumes:
       - ./data:/config
-    #devices:
-    #  - /dev/video0
-    #privileged: true
+    environment:
+      - TZ=Asia/Shanghai
+    devices:
+      - /dev/video0
     restart: unless
