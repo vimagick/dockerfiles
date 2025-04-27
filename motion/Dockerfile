@@ -1,5 +1,5 @@
 #
-# Dockerfile for motion-arm
+# Dockerfile for motion
 #
 
 FROM debian:bookworm
@@ -7,7 +7,8 @@ MAINTAINER EasyPi Software Foundation
 
 ARG MOTION_VERSION=4.7.0
 ARG MOTION_CODENAME=bookworm
-ARG MOTION_FILE=${MOTION_CODENAME}_motion_${MOTION_VERSION}-1_arm64.deb
+ARG MOTION_ARCH=arm64
+ARG MOTION_FILE=${MOTION_CODENAME}_motion_${MOTION_VERSION}-1_${MOTION_ARCH}.deb
 ARG MOTION_URL=https://github.com/Motion-Project/motion/releases/download/release-${MOTION_VERSION}/${MOTION_FILE}
 
 RUN set -xe \

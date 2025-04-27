@@ -1,6 +1,9 @@
-version: "3.8"
 services:
   motion:
+    build:
+      context: .
+      args:
+        MOTION_ARCH: arm64
     image: easypi/motion-arm64
     ports:
       - "8080:8080"
