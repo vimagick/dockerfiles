@@ -1,13 +1,22 @@
-version: "3.8"
+#
+# See: https://github.com/apache/nifi/blob/main/nifi-docker/dockerhub/Dockerfile
+#
 
 services:
 
+  init-nifi:
+    image: apache/nifi:2.3.0
+    entrypoint: ["bash", "-c"]
+    command: "test -f /data/bootstrap.conf || cp /opt/nifi/nifi-current/conf/* /data"
+    volumes:
+      - init-nifi-conf:/opt/nifi/nifi-current/conf
+      - /opt/nifi/nifi-current/conf:/data
+
   nifi:
-    image: apache/nifi:2.0.0
+    image: apache/nifi:2.3.0
     ports:
       - "8080:8080"
     volumes:
-      # ./data/nifi/conf:/tmp
       - ./data/nifi/conf:/opt/nifi/nifi-current/conf
       - ./data/nifi/database_repository:/opt/nifi/nifi-current/database_repository
       - ./data/nifi/flowfile_repository:/opt/nifi/nifi-current/flowfile_repository
@@ -23,11 +32,13 @@ services:
       - NIFI_JVM_HEAP_MAX=16g
       - SINGLE_USER_CREDENTIALS_USERNAME=admin
       - SINGLE_USER_CREDENTIALS_PASSWORD=admin
+    depends_on:
+      - init-nifi
     hostname: nifi
     restart: unless-stopped
 
   registry:
-    image: apache/nifi-registry:2.0.0
+    image: apache/nifi-registry:2.3.0
     ports:
       - "18080:18080"
     volumes:
@@ -36,3 +47,6 @@ services:
       - ./data/registry/logs:/opt/nifi-registry/nifi-registry-current/logs
     hostname: registry
     restart: unless-stopped
+
+volumes:
+  init-nifi-conf:
