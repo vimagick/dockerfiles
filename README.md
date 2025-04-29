@@ -454,6 +454,8 @@ A collection of delicious docker recipes.
 - [x] netdata/netdata
 - [x] sonatype/nexus3
 - [x] nextcloud
+- [x] apache/nifi
+- [x] apache/nifi-minifi-cpp
 - [ ] jwilder/nginx-proxy
 - [x] jc21/nginx-proxy-manager
 - [x] luzifer/nginx-sso
