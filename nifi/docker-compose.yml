@@ -7,15 +7,15 @@ services:
   init-nifi:
     image: apache/nifi:2.3.0
     entrypoint: ["bash", "-c"]
-    command: "test -f /data/bootstrap.conf || cp /opt/nifi/nifi-current/conf/* /data"
+    command: ["test -f /tmp/bootstrap.conf || cp -v /opt/nifi/nifi-current/conf/* /tmp"]
     volumes:
       - init-nifi-conf:/opt/nifi/nifi-current/conf
-      - /opt/nifi/nifi-current/conf:/data
+      - ./data/nifi/conf:/tmp
 
   nifi:
     image: apache/nifi:2.3.0
     ports:
-      - "8080:8080"
+      - "8443:8443"
     volumes:
       - ./data/nifi/conf:/opt/nifi/nifi-current/conf
       - ./data/nifi/database_repository:/opt/nifi/nifi-current/database_repository
@@ -27,11 +27,12 @@ services:
       - ./data/nifi/state:/opt/nifi/nifi-current/state
       - ./data/nifi/logs:/opt/nifi/nifi-current/logs
     environment:
-      - NIFI_WEB_HTTP_PORT=8080
+      - NIFI_WEB_HTTPS_HOST=nifi
+      - NIFI_WEB_HTTPS_PORT=8443
       - NIFI_JVM_HEAP_INIT=8g
       - NIFI_JVM_HEAP_MAX=16g
       - SINGLE_USER_CREDENTIALS_USERNAME=admin
-      - SINGLE_USER_CREDENTIALS_PASSWORD=admin
+      - SINGLE_USER_CREDENTIALS_PASSWORD=@hello@world@ # at least 12 characters
     depends_on:
       - init-nifi
     hostname: nifi
@@ -45,6 +46,8 @@ services:
       - ./data/registry/database:/opt/nifi-registry/nifi-registry-current/database
       - ./data/registry/flow_storage:/opt/nifi-registry/nifi-registry-current/flow_storage
       - ./data/registry/logs:/opt/nifi-registry/nifi-registry-current/logs
+    environment:
+      - NIFI_REGISTRY_WEB_HTTP_PORT=18080
     hostname: registry
     restart: unless-stopped
 

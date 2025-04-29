@@ -9,32 +9,29 @@ and distribute data.
 ## up and running
 
 ```bash
-$ mkdir -p data/nifi/{conf,database_repository,flowfile_repository,content_repository,provenance_repository,state,logs}
+$ mkdir -p data/nifi/{conf,database_repository,flowfile_repository,content_repository,provenance_repository,state,logs,nar_extensions,python_extensions}
 $ mkdir -p data/registry/{database,flow_storage,logs}
 $ chown -R 1000:1000 data
-
-$ vi docker-compose.yml
-    volumes:
-      - ./data/nifi/conf:/tmp
-      # ./data/nifi/conf:/opt/nifi/nifi-current/conf
-
-$ docker-compose run --rm --entrypoint bash nifi
->>> cp /opt/nifi/nifi-current/conf/* /tmp
->>> exit
-
-$ vi docker-compose.yml
-    volumes:
-      # ./data/nifi/conf:/tmp
-      - ./data/nifi/conf:/opt/nifi/nifi-current/conf
+$ tree data
+├── nifi
+│   ├── conf
+│   ├── content_repository
+│   ├── database_repository
+│   ├── flowfile_repository
+│   ├── logs
+│   ├── nar_extensions
+│   ├── provenance_repository
+│   ├── python_extensions
+│   └── state
+└── registry
+    ├── database
+    ├── flow_storage
+    └── logs
 
 $ docker-compose up -d
-$ curl http://127.0.0.1:8080/nifi/
+$ curl -k --resolve nifi:8443:127.0.0.1 https://nifi:8443/nifi/
+$ open https://nifi:8443/nifi/#/login
 $ curl http://127.0.0.1:18080/nifi-registry/
 ```
-
-Maybe there are better ways to populate a volume:
-
-- named volumes
-- anonymous volumes
 
 [1]: https://nifi.apache.org
