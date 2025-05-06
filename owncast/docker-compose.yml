@@ -1,7 +1,6 @@
-version: "3.8"
 services:
   owncast:
-    image: owncast/owncast:0.2.1
+    image: owncast/owncast:1.2.2
     command: /app/owncast
     ports:
       - "1935:1935"
