@@ -427,6 +427,7 @@ A collection of delicious docker recipes.
 - [x] mailhog/mailhog
 - [x] 42wim/matterbridge :octocat:
 - [x] matrixconduit/matrix-conduit
+- [x] ghcr.io/open-webui/mcpo
 - [x] getmeili/meilisearch :mag:
 - [x] mitmproxy/mitmproxy
 - [x] mariadb :bucket:
