@@ -445,6 +445,7 @@ A collection of delicious docker recipes.
 - [x] metasploitframework/metasploit-framework :skull:
 - [x] minio/minio
 - [x] mongo :bucket:
+- [x] ghcr.io/scottlamb/moonfire-nvr
 - [x] ccrisan/motioneye
 - [x] ghcr.io/kitabisa/mubeng
 - [x] n8nio/n8n

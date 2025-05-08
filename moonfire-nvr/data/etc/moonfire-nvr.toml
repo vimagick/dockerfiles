@@ -1,0 +1,7 @@
+[[binds]]
+ipv4 = "0.0.0.0:8080"
+allowUnauthenticatedPermissions = { viewVideo = true }
+
+[[binds]]
+unix = "/var/lib/moonfire-nvr/sock"
+ownUidIsPrivileged = true

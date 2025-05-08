@@ -1,0 +1,16 @@
+services:
+  moonfire-nvr:
+    image: ghcr.io/scottlamb/moonfire-nvr:v0.7.21
+    command: ["run", "-c", "/etc/moonfire-nvr/moonfire-nvr.toml"]
+    ports:
+    - "8080:8080"
+    volumes:
+    - ./data/etc:/etc/moonfire-nvr
+    - ./data/var:/var/lib/moonfire-nvr
+    - ./data/tmp:/var/tmp
+    - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
+    user: "1000:1000"
+    environment:
+    - TZ=Asia/Shanghai
+    - RUST_BACKTRACE=1
+    restart: unless-stopped
