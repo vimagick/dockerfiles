@@ -53,13 +53,18 @@ $ curl -H "Authorization: Bearer $LITELLM_KEY" 'http://127.0.0.1:4000/user/info?
 }
 ```
 
-## Install litellm manually
+## Install/Upgrade litellm manually
 
 ```bash
-# https://github.com/BerriAI/litellm/blob/v1.58.2/pyproject.toml
-$ pipx install 'litellm[proxy]==1.58.2'
+# https://github.com/BerriAI/litellm/blob/latest/pyproject.toml
+$ pipx install 'litellm[proxy]'
+$ pipx upgrade litellm
+$ pipx runpip litellm install -U prisma
 $ source ~/.local/pipx/venvs/litellm/bin/activate
-$ pip install prisma==0.11.0
+$ pip install -U prisma
+$ export DATABASE_URL=postgresql://litellm:litellm@127.0.0.1:5432/litellm
+$ cd ~/.local/pipx/venvs/litellm/lib/python3.13/site-packages/litellm/proxy
+$ prisma db push
 ```
 
 [1]: https://docs.litellm.ai/docs/simple_proxy
