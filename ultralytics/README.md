@@ -5,7 +5,7 @@ ultralytics
 years of foundational research in computer vision and AI.
 
 ```bash
-$ docker run --rm -it ultralytics/ultralytics:latest-arm64 python
+$ docker run --rm -it --ipc=host ultralytics/ultralytics:latest-arm64 python
 >>> from ultralytics import YOLO
 >>> model = YOLO("yolo11n.pt")
 >>> print(model.names)
@@ -20,7 +20,7 @@ tensor([[400.0137, 478.8882, 792.3618, 499.0482],
 ```
 
 ```bash
-$ docker run --rm -it ultralytics/ultralytics:latest-arm64 bash
+$ docker run --rm -it --ipc=host ultralytics/ultralytics:latest-arm64 bash
 >>> yolo classify predict model=yolo11n-cls.pt source=https://ultralytics.com/images/bus.jpg
 >>> ls /ultralytics/runs/classify
 >>> yolo detect predict model=yolo11n.pt source=https://ultralytics.com/images/bus.jpg
