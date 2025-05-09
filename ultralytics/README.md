@@ -4,6 +4,8 @@ ultralytics
 [Ultralytics][1] creates cutting-edge, state-of-the-art (SOTA) YOLO models built on
 years of foundational research in computer vision and AI.
 
+> Models can be downloaded from [here][2].
+
 ```bash
 $ docker run --rm -it --ipc=host ultralytics/ultralytics:latest-arm64 python
 >>> from ultralytics import YOLO
@@ -30,3 +32,4 @@ $ docker run --rm -it --ipc=host ultralytics/ultralytics:latest-arm64 bash
 ```
 
 [1]: https://github.com/ultralytics/ultralytics
+[2]: https://github.com/ultralytics/assets/releases/latest
