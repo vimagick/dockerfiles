@@ -9,7 +9,7 @@ years of foundational research in computer vision and AI.
 ```bash
 $ docker run --rm -it --ipc=host ultralytics/ultralytics:latest-arm64 python
 >>> from ultralytics import YOLO
->>> model = YOLO("yolo11n.pt")
+>>> model = YOLO("yolo11n.pt", save_txt=True)
 >>> print(model.names)
 {0: 'person', 1: 'bicycle', 2: 'car', 3: 'motorcycle', 4: 'airplane', 5: 'bus', 6: 'train', 7: 'truck', ...}
 >>> results = model("https://ultralytics.com/images/bus.jpg")
@@ -23,9 +23,9 @@ tensor([[400.0137, 478.8882, 792.3618, 499.0482],
 
 ```bash
 $ docker run --rm -it --ipc=host ultralytics/ultralytics:latest-arm64 bash
->>> yolo classify predict model=yolo11n-cls.pt source=https://ultralytics.com/images/bus.jpg
+>>> yolo classify predict model=yolo11n-cls.pt source=https://ultralytics.com/images/bus.jpg save_txt=True
 >>> ls /ultralytics/runs/classify
->>> yolo detect predict model=yolo11n.pt source=https://ultralytics.com/images/bus.jpg
+>>> yolo detect predict model=yolo11n.pt source=https://ultralytics.com/images/bus.jpg save_txt=True
 >>> ls /ultralytics/runs/detect
 >>> yolo solutions count model=yolo11n.pt classes="[2,5,7]" source=https://basicai-asset.s3.amazonaws.com/www/blogs/yolov8-object-counting/street.mp4
 >>> ls /ultralytics/runs/solutions
