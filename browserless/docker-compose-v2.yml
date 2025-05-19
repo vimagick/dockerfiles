@@ -4,7 +4,7 @@
 
 services:
   browserless:
-    image: ghcr.io/browserless/chromium:v2.30.0
+    image: ghcr.io/browserless/chromium:v2.30.1
     ports:
       - "3000:3000"
     environment:
