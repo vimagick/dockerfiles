@@ -49,6 +49,8 @@ RUN buildDeps=" \
              | sort -u \
         )" \
     && apk add --virtual .run-deps $runDeps \
+        readline \
+        libnl3 \
         libseccomp \
         lz4-libs \
         gnutls-utils iptables \
