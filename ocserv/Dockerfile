@@ -5,8 +5,8 @@
 FROM alpine
 MAINTAINER kev <noreply@easypi.pro>
 
-ENV OCSERV_VERSION 0.11.8
-ENV OCSERV_URL ftp://ftp.infradead.org/pub/ocserv/ocserv-$OCSERV_VERSION.tar.xz
+ENV OCSERV_VERSION 1.3.0
+ENV OCSERV_URL https://www.infradead.org/ocserv/download/ocserv-$OCSERV_VERSION.tar.xz
 
 RUN buildDeps=" \
         curl \
@@ -28,8 +28,8 @@ RUN buildDeps=" \
     && apk add --update --virtual .build-deps $buildDeps \
     && curl -SL $OCSERV_URL -o ocserv.tar.xz \
     && curl -SL $OCSERV_URL.sig -o ocserv.tar.xz.sig \
-    && gpg --keyserver pgp.mit.edu --recv-key 7F343FA7 \
-    && gpg --keyserver pgp.mit.edu --recv-key 96865171 \
+    && gpg --keyserver hkps://keyserver.ubuntu.com --recv-key 7F343FA7 \
+    && gpg --keyserver hkps://keyserver.ubuntu.com --recv-key 96865171 \
     && gpg --verify ocserv.tar.xz.sig \
     && mkdir -p /usr/src/ocserv \
     && tar -xf ocserv.tar.xz -C /usr/src/ocserv --strip-components=1 \
@@ -44,11 +44,14 @@ RUN buildDeps=" \
     && rm -rf /usr/src/ocserv \
     && runDeps="$( \
         scanelf --needed --nobanner /usr/local/sbin/ocserv \
-            | awk '{ gsub(/,/, "\nso:", $2); print "so:" $2 }' \
-            | xargs -r apk info --installed \
-            | sort -u \
+             | awk '{ gsub(/,/, "\nso:", $2); print "so:" $2 }' \
+             | xargs -r apk info --installed \
+             | sort -u \
         )" \
-    && apk add --virtual .run-deps $runDeps gnutls-utils iptables \
+    && apk add --virtual .run-deps $runDeps \
+        libseccomp \
+        lz4-libs \
+        gnutls-utils iptables \
     && apk del .build-deps \
     && rm -rf /var/cache/apk/*
 
@@ -81,13 +84,13 @@ COPY docker-entrypoint.sh /entrypoint.sh
 VOLUME /etc/ocserv
 WORKDIR /etc/ocserv
 
-ENV VPN_DOMAIN=vpn.easypi.pro    \
-    VPN_NETWORK=10.20.30.0       \
-    VPN_NETMASK=255.255.255.0    \
-    LAN_NETWORK=192.168.0.0      \
-    LAN_NETMASK=255.255.0.0      \
-    VPN_USERNAME=username        \
-    VPN_PASSWORD=password        \
+ENV VPN_DOMAIN=vpn.easypi.pro     \
+    VPN_NETWORK=10.20.30.0         \
+    VPN_NETMASK=255.255.255.0      \
+    LAN_NETWORK=192.168.0.0        \
+    LAN_NETMASK=255.255.0.0        \
+    VPN_USERNAME=username          \
+    VPN_PASSWORD=password          \
     TERM=xterm
 
 EXPOSE 443/tcp 443/udp
