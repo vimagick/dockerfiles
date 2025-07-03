@@ -236,7 +236,7 @@ A collection of delicious docker recipes.
 
 ## Security
 
-- [x] aircrack-ng-arm
+- [x] aircrack-ng
 - [x] amass
 - [x] clamav
 - [x] dirsearch

@@ -1,0 +1,15 @@
+services:
+  aircrack-ng:
+    image: easypi/aircrack-ng-arm64
+    entrypoint: sleep
+    command: infinity
+    volumes:
+    - ./data:/data
+    - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
+    environment:
+    - TZ=Asia/Shanghai
+    working_dir: /data
+    network_mode: host
+    privileged: true
+    tty: true
+    restart: unless-stopped
