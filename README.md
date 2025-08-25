@@ -195,8 +195,9 @@ A collection of delicious docker recipes.
 - [x] shoutcast :musical_note:
 - [x] tesseract
 - [x] vnc2flv
-- [x] youtube-dl :tv:
-- [x] youtube-worker :beetle:
+- [x] ~youtube-dl~ :tv: :skull:
+- [x] ~youtube-worker~ :beetle: :skull:
+- [x] yt-dlp :tv:
 
 ## Audio
 
