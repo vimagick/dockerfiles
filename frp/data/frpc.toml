@@ -1,0 +1,26 @@
+#
+# See: https://github.com/fatedier/frp/blob/dev/conf/frpc_full_example.toml
+#
+
+serverAddr = "1.2.3.4"
+serverPort = 7000
+
+transport.protocol = "kcp"
+
+auth.method = "token"
+auth.token = "12345678"
+
+webServer.addr = "127.0.0.1"
+webServer.port = 7400
+webServer.user = "admin"
+webServer.password = "admin"
+
+[[proxies]]
+
+name = "ssh"
+type = "tcp"
+localIP = "127.0.0.1"
+localPort = 22
+remotePort = 2222
+transport.useEncryption = true
+transport.useCompression = true

@@ -1,0 +1,24 @@
+#
+# See: https://github.com/fatedier/frp/blob/dev/conf/frps_full_example.toml
+#
+
+bindAddr = "0.0.0.0"
+bindPort = 7000
+kcpBindPort = 7000
+
+transport.maxPoolCount = 10
+
+webServer.addr = "127.0.0.1"
+webServer.port = 7500
+webServer.user = "admin"
+webServer.password = "admin"
+
+auth.method = "token"
+auth.token = "12345678"
+
+enablePrometheus = true
+
+allowPorts = [
+  { single = 2222 },
+  { start = 20000, end = 20100 }
+]
