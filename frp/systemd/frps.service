@@ -4,7 +4,7 @@ After=network-online.target
 
 [Service]
 DynamicUser=yes
-ExecStart=/usr/local/bin/frps -c /etc/frp/frps.ini
+ExecStart=/usr/local/bin/frps -c /etc/frp/frps.toml
 LimitNOFILE=65536
 RestartSec=5
 Restart=always

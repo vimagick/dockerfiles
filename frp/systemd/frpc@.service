@@ -4,8 +4,8 @@ After=network-online.target
 
 [Service]
 DynamicUser=yes
-ExecStart=/usr/local/bin/frpc -c /etc/frp/%i.ini
-ExecReload=/usr/local/bin/frpc reload -c /etc/frp/%i.ini
+ExecStart=/usr/local/bin/frpc -c /etc/frp/%i.toml
+ExecReload=/usr/local/bin/frpc reload -c /etc/frp/%i.toml
 LimitNOFILE=65536
 RestartSec=5
 Restart=always
