@@ -1,0 +1,20 @@
+services:
+  libretranslate:
+    image: libretranslate/libretranslate:v1.7.3
+    ports:
+    - "5000:5000"
+    volumes:
+    - ./data/db:/app/db
+    - ./data/models:/home/libretranslate/.local
+    environment:
+    - LT_API_KEYS=true
+    - LT_API_KEYS_DB_PATH=/app/db/api_keys.db
+    - LT_UPDATE_MODELS=true
+    - LT_LOAD_ONLY=en,zh-Hans
+    healthcheck:
+      test: ['CMD-SHELL', './venv/bin/python scripts/healthcheck.py']
+      interval: 10s
+      timeout: 4s
+      retries: 4
+      start_period: 5s
+    restart: unless-stopped
