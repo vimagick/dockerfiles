@@ -343,6 +343,7 @@ A collection of delicious docker recipes.
 - [x] jeffail/benthos
 - [x] bettercap/bettercap
 - [x] tutum/builder
+- [x] lightpanda/browser
 - [x] calendso/calendso
 - [x] browserless/chrome
 - [x] certbot

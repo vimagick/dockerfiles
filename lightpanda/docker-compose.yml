@@ -1,0 +1,8 @@
+services:
+  lightpanda:
+    image: lightpanda/browser:nightly
+    ports:
+    - "9222:9222"
+    environment:
+    - LIGHTPANDA_DISABLE_TELEMETRY=true
+    restart: unless-stopped
