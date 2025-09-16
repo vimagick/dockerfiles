@@ -1,7 +1,7 @@
 services:
 
   litellm:
-    image: ghcr.io/berriai/litellm:main-stable
+    image: litellm/litellm:v1.77.1-stable
     command: --config /app/config.yaml --telemetry False
     ports:
     - "4000:4000"
