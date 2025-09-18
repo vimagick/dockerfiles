@@ -1,11 +1,11 @@
 #
-# https://semaphoreui.com/install/docker/2_15
+# https://semaphoreui.com/install/docker/2_16
 #
 
 services:
 
   semaphore:
-    image: semaphoreui/semaphore:v2.15.0
+    image: semaphoreui/semaphore:v2.16.31
     ports:
       - "3000:3000"
     volumes:
@@ -39,7 +39,7 @@ services:
     restart: unless-stopped
 
   runner:
-    image: semaphoreui/semaphore-runner:v2.15.0
+    image: semaphoreui/semaphore-runner:v2.16.31
     volumes:
       - ./data/var:/var/lib/semaphore
       - ./data/etc:/etc/semaphore
