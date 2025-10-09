@@ -21,4 +21,6 @@ $ docker-compose exec cmus cmus-remote --passwd secret
 $ alsamixer
 ```
 
+> cmus-remote: password required for tcp/ip connection
+
 [1]: https://cmus.github.io/
