@@ -2,21 +2,16 @@
 # Dockerfile for cmus
 #
 
-FROM alpine
+FROM alpine:3
 MAINTAINER EasyPi Software Foundation
 
 RUN apk add --no-cache cmus
 
-VOLUME /etc/cmus
-WORKDIR /etc/cmus
+VOLUME /root/.config/cmus
 
-ENV CMUS_HOME=/etc/cmus
+ENV CMUS_HOME=/root/.config/cmus
 ENV CMUS_SOCKET=0.0.0.0:3000
-ENV USERNAME=root
-ENV PASSWORD=secret
 
 EXPOSE 3000
 
-CMD set -xe \
-    && echo "set passwd=$PASSWORD" > rc \
-    && cmus
+ENTRYPOINT cmus
