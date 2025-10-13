@@ -8,5 +8,6 @@ services:
       - ./data/var:/root/music
     devices:
       - /dev/snd
-    tty: yes
+    stdin_open: true
+    tty: true
     restart: unless-stopped

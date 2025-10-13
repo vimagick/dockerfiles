@@ -18,7 +18,10 @@ $ docker-compose exec cmus cmus-remote --passwd secret
 >>> set resume=true
 >>> player-play
 >>> ^D
+$ docker-compose attach cmus
+^P^Q to exit
 $ alsamixer
+<ESC> to exit
 ```
 
 > cmus-remote: password required for tcp/ip connection
