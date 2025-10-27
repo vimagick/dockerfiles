@@ -416,6 +416,7 @@ A collection of delicious docker recipes.
 - [x] ipfs/kubo
 - [x] heartexlabs/label-studio
 - [x] langfuse/langfuse
+- [x] ghcr.io/librespeed/speedtest
 - [x] libretranslate/libretranslate
 - [x] martialblog/limesurvey
 - [x] linuxserver

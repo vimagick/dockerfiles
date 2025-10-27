@@ -1,0 +1,16 @@
+services:
+  librespeed:
+    image: ghcr.io/librespeed/speedtest
+    ports:
+    - "8080:8080"
+    volumes:
+    - ./data:/database
+    environment:
+    - MODE=standalone
+    - TITLE=LibreSpeed
+    - TELEMETRY=false
+    - ENABLE_ID_OBFUSCATION=true
+    - OBFUSCATION_SALT=0x1234abcd
+    - PASSWORD=secret
+    - WEBPORT=8080
+    restart: unless-stopped
