@@ -6,7 +6,7 @@
 services:
 
   hub:
-    image: selenium/hub:4.27.0
+    image: selenium/hub:4.38.0
     ports:
       - "4442:4442"
       - "4443:4443"
@@ -17,7 +17,7 @@ services:
     restart: unless-stopped
 
   chrome:
-    image: selenium/node-chrome:4.27.0
+    image: selenium/node-chrome:4.38.0
     ports:
       - "5900:5900"
       - "7900:7900"
@@ -41,7 +41,7 @@ services:
     restart: unless-stopped
 
   video:
-    image: selenium/video:ffmpeg-7.1-20241127
+    image: selenium/video:ffmpeg-8.0-20251101
     volumes:
       - ./data:/videos
     ports:
