@@ -8,10 +8,9 @@ personally control and regain ownership over your content.
 ## Up and Running
 
 ```yaml
-version: "3.8"
 services:
   owncast:
-    image: owncast/owncast:0.1.3
+    image: owncast/owncast:0.2.3
     command: /app/owncast
     ports:
       - "1935:1935"
