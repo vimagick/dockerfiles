@@ -1,7 +1,6 @@
-version: "3.8"
 services:
   watchyourlan:
-    image: aceberg/watchyourlan:2.0.4
+    image: aceberg/watchyourlan:2.1.4
     volumes:
       - ./data:/data/WatchYourLAN
     environment:
