@@ -4,7 +4,7 @@ services:
     volumes:
       - ./data:/data/WatchYourLAN
     environment:
-      - IFACE=wlan0
+      - IFACES=wlan0
       - HOST=0.0.0.0
       - PORT=8840
       - TZ=Asia/Shanghai
