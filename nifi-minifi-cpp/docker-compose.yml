@@ -1,7 +1,7 @@
 services:
 
   init-nifi-mini-cpp:
-    image: apache/nifi-minifi-cpp:0.99.1
+    image: apache/nifi-minifi-cpp:0.99.2
     entrypoint: ["sh", "-c"]
     command: ["test -f /tmp/minifi.properties || cp -v /opt/minifi/minifi-current/conf/* /tmp"]
     volumes:
@@ -9,7 +9,7 @@ services:
       - ./data/conf:/tmp
 
   nifi-minifi-cpp:
-    image: apache/nifi-minifi-cpp:0.99.1
+    image: apache/nifi-minifi-cpp:0.99.2
     ports:
       - "8080:8080"
     volumes:
