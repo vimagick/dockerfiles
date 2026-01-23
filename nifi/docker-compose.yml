@@ -5,7 +5,7 @@
 services:
 
   init-nifi:
-    image: apache/nifi:2.4.0
+    image: apache/nifi:2.7.2
     entrypoint: ["bash", "-c"]
     command: ["test -f /tmp/bootstrap.conf || cp -v /opt/nifi/nifi-current/conf/* /tmp"]
     volumes:
@@ -13,7 +13,7 @@ services:
       - ./data/nifi/conf:/tmp
 
   nifi:
-    image: apache/nifi:2.4.0
+    image: apache/nifi:2.7.2
     ports:
       - "8443:8443"
     volumes:
@@ -39,7 +39,7 @@ services:
     restart: unless-stopped
 
   registry:
-    image: apache/nifi-registry:2.4.0
+    image: apache/nifi-registry:2.7.2
     ports:
       - "18080:18080"
     volumes:
