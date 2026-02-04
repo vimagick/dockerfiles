@@ -1,7 +1,7 @@
 services:
 
   memos:
-    image: neosmemo/memos:0.24
+    image: neosmemo/memos:0.26
     ports:
       - "5230:5230"
     volumes:
@@ -14,7 +14,7 @@ services:
     restart: unless-stopped
 
   postgres:
-    image: postgres:17-alpine
+    image: postgres:18-alpine
     ports:
       - "5432:5432"
     volumes:
