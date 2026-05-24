@@ -14,6 +14,8 @@ $ curl http://localhost:8080
 $ wget -O gotify https://github.com/gotify/cli/releases/download/v2.3.2/gotify-cli-linux-amd64
 $ chmod +x gotify
 $ gotify init
+$ gotify config
+$ export GOTIFY_SKIP_VERIFY_TLS=True
 $ gotify push -t "my title" -p 10 "my message"
 ```
 
