@@ -1,7 +1,7 @@
 services:
 
   memos:
-    image: neosmemo/memos:0.26
+    image: neosmemo/memos:0.28
     ports:
       - "5230:5230"
     volumes:
@@ -9,6 +9,7 @@ services:
     environment:
       - MEMOS_DRIVER=postgres
       - MEMOS_DSN=user=memos password=memos dbname=memos host=postgres sslmode=disable
+      - MEMOS_ALLOW_PRIVATE_WEBHOOKS=true
     depends_on:
       - postgres
     restart: unless-stopped
