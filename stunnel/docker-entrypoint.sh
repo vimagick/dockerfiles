@@ -10,6 +10,8 @@ socket = l:TCP_NODELAY=1
 socket = r:TCP_NODELAY=1
 cert = /etc/stunnel/stunnel.pem
 client = ${CLIENT:-no}
+verifyChain = ${VERIFY_CHAIN:-no}
+CAfile = /etc/ssl/cert.pem
 
 [${SERVICE}]
 accept = ${ACCEPT}
