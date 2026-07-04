@@ -1,33 +1,19 @@
-version: "3.8"
-
 services:
 
   nodebb:
-    image: vimagick/nodebb
-    init: true
+    image: ghcr.io/nodebb/nodebb:4.13.2
     ports:
-      - "4567:4567"
+      - '4567:4567'
     volumes:
-      - nodebb_config:/opt/nodebb/config
-      - nodebb_build:/opt/nodebb/build
-      - nodebb_uploads:/opt/nodebb/public/uploads
-      # /opt/nodebb/node_modules
-    environment:
-      - url=http://localhost:4567/
-      - database=redis
-      - redis__host=redis
-      - redis__database=0
+      - ./data/nodebb:/opt/config
+      - ./data/nodebb/setup.json:/usr/src/app/setup.json
     depends_on:
       - redis
     restart: unless-stopped
 
   redis:
-    image: redis:6-alpine
+    image: redis:8.8-alpine
+    command: ["redis-server", "--save", "60", "1", "--loglevel", "warning"]
     volumes:
-      - ./data:/data
+      - ./data/redis:/data
     restart: unless-stopped
-
-volumes:
-  nodebb_config:
-  nodebb_build:
-  nodebb_uploads:
