@@ -1,9 +1,7 @@
-version: "3.8"
-
 services:
 
   n8n:
-    image: n8nio/n8n:1.42.1
+    image: n8nio/n8n:2.29.10
     ports:
       - "5678:5678"
     volumes:
@@ -20,6 +18,10 @@ services:
       - N8N_BASIC_AUTH_USER=username
       - N8N_BASIC_AUTH_PASSWORD=password
       - WEBHOOK_URL=https://n8n.easypi.duckdns.org/
+      - N8N_HOST=n8n.easypi.duckdns.org
+      - N8N_PROTOCOL=https
+      - N8N_PROXY_HOPS=1
+      - N8N_SECURE_COOKIE=true
       - GENERIC_TIMEZONE=Asia/Shanghai
       - TZ=Asia/Shanghai
     depends_on:
@@ -27,7 +29,7 @@ services:
     restart: unless-stopped
 
   postgres:
-    image: postgres:16-alpine
+    image: postgres:18-alpine
     ports:
       - "5432:5432"
     volumes:
