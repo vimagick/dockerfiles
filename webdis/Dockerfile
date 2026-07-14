@@ -11,7 +11,7 @@ RUN which webdis
 
 FROM alpine:3.24
 MAINTAINER EasyPi Software Foundation
-RUN apk add --no-cache libcrypto1.1 libevent msgpack-c
+RUN apk add --no-cache libcrypto3 libevent msgpack-c
 COPY --from=stage /usr/local/bin/webdis /usr/local/bin/
 EXPOSE 7379
 CMD ["webdis", "/etc/webdis/webdis.json"]
