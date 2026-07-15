@@ -24,6 +24,6 @@
       ]
     }
   ],
-  "verbosity": 99,
+  "verbosity": 4,
   "logfile": "/dev/stdout"
 }
