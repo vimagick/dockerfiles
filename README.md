@@ -608,5 +608,5 @@ complete -F __enter enter
 
 ## Star History
 
-[![Star History Chart](https://api.star-history.com/svg?repos=vimagick/dockerfiles&type=Timeline)](https://star-history.com/#vimagick/dockerfiles&Timeline)
+[![Star History Chart](https://star-history.dera.page/svg?repos=vimagick/dockerfiles&type=Timeline)](https://star-history.dera.page/#vimagick/dockerfiles&Timeline)
 
