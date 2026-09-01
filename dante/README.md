@@ -9,10 +9,9 @@ network connectivity.
 ## docker-compose.yml
 
 ```yaml
-version: "3.8"
 services:
   dante:
-    image: vimagick/dante
+    image: easypi/dante
     ports:
       - "1080:1080"
     volumes:
