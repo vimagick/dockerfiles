@@ -5,8 +5,8 @@ on:
   push:
     branches:
       - master
-    paths-ignore:
-      - README.md
+    paths:
+      - dante/Dockerfile
 
 env:
   PLATFORMS: 'linux/amd64,linux/arm64'
