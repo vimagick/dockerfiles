@@ -20,7 +20,7 @@ WORKDIR /app
 
 RUN set -xe \
  && OUTLINE_SS_SERVER_ARCH=$(echo $TARGETPLATFORM | sed -e 's@linux/amd64@x86_64@' \
-                                                        -e 's@linux/arm64@arm64@' \
+                                                        -e 's@linux/arm64@arm64@') \
  && OUTLINE_SS_SERVER_FILE=outline-ss-server_${OUTLINE_SS_SERVER_VERSION}_linux_${OUTLINE_SS_SERVER_ARCH}.tar.gz \
  && OUTLINE_SS_SERVER_URL=https://github.com/OutlineFoundation/tunnel-server/releases/download/v${OUTLINE_SS_SERVER_VERSION}/${OUTLINE_SS_SERVER_FILE} \
  && apk add --no-cache curl tar \
