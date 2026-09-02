@@ -10,8 +10,9 @@ on:
 
 env:
   PLATFORMS: 'linux/amd64,linux/arm64'
+  CONTEXT: 'outline-ss-server'
   IMAGE_NAME: 'easypi/outline-ss-server'
-  DANTE_VERSION: '1.9.2'
+  VERSION: '1.9.2'
 
 jobs:
   release:
@@ -31,13 +32,13 @@ jobs:
 
       - uses: docker/build-push-action@v5
         with:
-          context: ./outline-ss-server
-          file: ./outline-ss-server/Dockerfile
+          context: ${{ env.CONTEXT }}
+          file: ${{ env.CONTEXT }}/Dockerfile
           platforms: ${{ env.PLATFORMS }}
           build-args: |
-            DANTE_VER=${{ env.DANTE_VERSION }}
+            DANTE_VER=${{ env.VERSION }}
           tags: |
-            ${{ env.IMAGE_NAME }}:${{ env.DANTE_VERSION }}
+            ${{ env.IMAGE_NAME }}:${{ env.VERSION }}
             ${{ env.IMAGE_NAME }}:latest
           push: true
 
