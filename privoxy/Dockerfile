@@ -2,11 +2,12 @@
 # Dockerfile for privoxy
 #
 
-FROM alpine:3
+FROM alpine:3.24
 MAINTAINER EasyPi Software Foundation
 
 ARG TARGETPLATFORM
-ARG GOSU_VERSION=1.16
+ARG PRIVOXY_VERSION
+ARG GOSU_VERSION=1.19
 
 RUN set -xe \
     && echo ${TARGETPLATFORM} \
