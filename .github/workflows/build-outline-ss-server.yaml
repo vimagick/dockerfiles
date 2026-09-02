@@ -12,7 +12,8 @@ env:
   PLATFORMS: 'linux/amd64,linux/arm64'
   CONTEXT: 'outline-ss-server'
   IMAGE_NAME: 'easypi/outline-ss-server'
-  VERSION: '1.9.2'
+  VERSION_ARG: 'OUTLINE_SS_SERVER_VERSION'
+  VERSION_VALUE: '1.9.2'
 
 jobs:
   release:
@@ -36,9 +37,9 @@ jobs:
           file: ${{ env.CONTEXT }}/Dockerfile
           platforms: ${{ env.PLATFORMS }}
           build-args: |
-            DANTE_VER=${{ env.VERSION }}
+            ${{ env.VERSION_ARG }}=${{ env.VERSION_VALUE }}
           tags: |
-            ${{ env.IMAGE_NAME }}:${{ env.VERSION }}
+            ${{ env.IMAGE_NAME }}:${{ env.VERSION_VALUE }}
             ${{ env.IMAGE_NAME }}:latest
           push: true
 
