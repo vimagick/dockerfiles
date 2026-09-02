@@ -3,7 +3,9 @@
 #
 
 FROM alpine:3.24 AS stage
-ENV WEBDIS_VERSION=0.1.25
+
+ARG WEBDIS_VERSION
+
 RUN apk add --no-cache wget make gcc libevent-dev msgpack-c-dev musl-dev openssl-dev bsd-compat-headers jq
 RUN wget https://github.com/nicolasff/webdis/archive/$WEBDIS_VERSION.tar.gz -O webdis.tar.gz
 RUN tar -xvzf webdis.tar.gz && cd webdis-$WEBDIS_VERSION && make && make install
