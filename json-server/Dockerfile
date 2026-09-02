@@ -5,9 +5,11 @@
 FROM alpine:3
 MAINTAINER EasyPi Software Foundation
 
+ARG JSON_SERVER_VERSION=latest
+
 RUN set -xe \
     && apk add --no-cache nodejs npm \
-    && npm install -g json-server \
+    && npm install -g json-server@${JSON_SERVER_VERSION} \
     && rm -rf /tmp/npm* /var/cache/apk/*
 
 WORKDIR /data
