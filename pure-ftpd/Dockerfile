@@ -47,4 +47,4 @@ VOLUME /home/ftpuser /etc/pure-ftpd
 EXPOSE 21
 
 ENTRYPOINT ["pure-ftpd", "-l", "puredb:/etc/pure-ftpd/pureftpd.pdb", "-O", "clf:/var/log/pure-ftpd/pureftpd.log", "-f", "none"]
-CMD ["-A", "-E", "-j"]
+CMD ["-A", "-E", "-H", "-j"]
