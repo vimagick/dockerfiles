@@ -4,5 +4,6 @@ services:
     volumes:
       - ./data/etc:/etc/pure-ftpd
       - ./data/var:/home/ftpuser
+      - ./data/log:/var/log/pure-ftpd
     network_mode: host
     privileged: true

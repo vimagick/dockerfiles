@@ -12,6 +12,7 @@ unique useful features for personal users as well as hosting providers.
 
 ```bash
 $ cd ~/fig/pure-ftpd/
+$ mkdir -p data/{etc,var,log}
 $ docker-compose up -d
 $ docker-compose exec pure-ftpd sh
 >>> pure-pw useradd kev -u ftpuser -d /home/ftpuser/kev -t 1024 -T 1024 -y 1 -m
