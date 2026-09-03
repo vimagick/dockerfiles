@@ -81,22 +81,22 @@ runs:
                 "title_link": "https://github.com/${{ github.repository }}",
                 "fields": [
                   {
-                    "title": "🐳 Image",
-                    "value": "<https://hub.docker.com/r/${{ inputs.image_name }}|${{ inputs.image_name }}>",
+                    "title": "Image",
+                    "value": "🐳 <https://hub.docker.com/r/${{ inputs.image_name }}|${{ inputs.image_name }}>",
                     "short": true
                   },
                   {
-                    "title": "🏷️ Version",
-                    "value": "${{ inputs.version_value }}",
+                    "title": "Version",
+                    "value": "🏷️ ${{ inputs.version_value }}",
                     "short": true
                   },
                   {
-                    "title": "🐧 Platforms",
-                    "value": "${{ inputs.platforms }}",
+                    "title": "Platforms",
+                    "value": "🐧 ${{ inputs.platforms }}",
                     "short": true
                   },
                   {
-                    "title": "📊 Status",
+                    "title": "Status",
                     "value": "${{ steps.docker-build-push.outcome == 'success' && '🟢 Success' || '🔴 Failed' }}",
                     "short": true
                   }
