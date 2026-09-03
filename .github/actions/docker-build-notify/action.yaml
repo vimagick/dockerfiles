@@ -51,6 +51,7 @@ runs:
         password: ${{ env.DOCKER_PASSWORD }}
 
     - name: Build and Push Docker Image
+      id: docker-build-push
       uses: docker/build-push-action@v7
       with:
         context: ${{ inputs.context }}
@@ -74,7 +75,7 @@ runs:
             "channel": "${{ inputs.slack_channel }}",
             "attachments": [
               {
-                "color": "${{ job.status == 'success' && 'good' || 'danger' }}",
+                "color": "${{ steps.docker-build-push.outcome == 'success' && 'good' || 'danger' }}",
                 "title": "${{ github.repository }}",
                 "title_link": "https://github.com/${{ github.repository }}",
                 "fields": [
@@ -95,7 +96,7 @@ runs:
                   },
                   {
                     "title": "📊 Status",
-                    "value": "${{ job.status == 'success' && '🟢 Success' || '🔴 Failed' }}",
+                    "value": "${{ steps.docker-build-push.outcome == 'success' && '🟢 Success' || '🔴 Failed' }}",
                     "short": true
                   }
                 ],
