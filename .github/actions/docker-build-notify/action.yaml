@@ -2,9 +2,13 @@ name: 'Docker Build and Notify'
 description: 'Build multi-platform Docker images and send Slack notifications'
 
 inputs:
+  image_name:
+    description: 'Docker image name (including registry)'
+    required: true
   context:
     description: 'Build context directory'
-    required: true
+    required: false
+    default: '.'
   dockerfile:
     description: 'Dockerfile path (relative to context)'
     required: false
@@ -13,9 +17,6 @@ inputs:
     description: 'Target platforms (comma-separated)'
     required: false
     default: 'linux/amd64,linux/arm64'
-  image_name:
-    description: 'Docker image name (including registry)'
-    required: true
   version_arg:
     description: 'Build-arg name for version'
     required: false
