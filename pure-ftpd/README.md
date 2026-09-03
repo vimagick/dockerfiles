@@ -8,11 +8,19 @@ FTP server. It doesn't provide useless bells and whistles, but focuses on
 efficiency and ease of use. It provides simple answers to common needs, plus
 unique useful features for personal users as well as hosting providers. 
 
-## server
+## Server
 
 ```bash
 $ cd ~/fig/pure-ftpd/
-$ mkdir -p data/{etc,var,log}
+$ mkdir -p data/{etc,ssl,var,log}
+$ cd data/ssl/
+$ openssl req -x509 -nodes -days 365 -newkey rsa:2048 -sha256 \
+    -subj "/CN=localhost" \
+    -keyout pure-ftpd.pem \
+    -out pure-ftpd.pem \
+    -outform PEM
+$ cd ../../
+
 $ docker-compose up -d
 $ docker-compose exec pure-ftpd sh
 >>> pure-pw useradd kev -u ftpuser -d /home/ftpuser/kev -t 1024 -T 1024 -y 1 -m
@@ -24,12 +32,17 @@ $ docker-compose exec pure-ftpd sh
 >>> pure-pw userdel kev -m
 >>> pure-ftpwho -n
 >>> exit
+
 $ tree -F
 ├── docker-compose.yml
 └── data/
     ├── var/
     │   └── kev/
     │       └── file.txt
+    ├── log/
+    │   └── pureftpd.log
+    ├── ssl/
+    │   └── pure-ftpd.pem
     └── etc/
         ├── pureftpd.passwd
         └── pureftpd.pdb
@@ -66,6 +79,26 @@ To fix this issue:
 
 - You need to add two options: `-p 20000:20099 -P x.x.x.x` and expose these ports to host
 - Alternatively, you can use `network_mode: host`
+
+## Enforce TLS (-Y3, --tls=3)
+
+- With "--tls=0", support for TLS is disabled. This is the default.
+- With "--tls=1", clients can connect either the traditional way or through an TLS layer.
+  This is probably the setting you need if you want to enable TLS without having too many angry customers.
+- With "--tls=2", cleartext sessions are refused and only TLS compatible clients are accepted.
+- With "--tls=3", cleartext sessions are refused and only TLS compatible clients are accepted.
+  Clear data connections are also refused, so private data connections are enforced. This is an extreme setting.
+
+```yaml
+services:
+  pure-ftpd:
+    image: easypi/pure-ftpd
+    command: ["-A", "-E", "-H", "-j", "-Y3"]
+```
+
+```bash
+$ curl -k --ssl-reqd -u kev:****** ftp://remote-server/file.txt
+```
 
 [1]: https://www.pureftpd.org/project/pure-ftpd
 [2]: https://linux.die.net/man/8/pure-ftpd

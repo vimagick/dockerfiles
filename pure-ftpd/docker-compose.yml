@@ -3,6 +3,7 @@ services:
     image: easypi/pure-ftpd
     volumes:
       - ./data/etc:/etc/pure-ftpd
+      - ./data/ssl:/etc/ssl/private
       - ./data/var:/home/ftpuser
       - ./data/log:/var/log/pure-ftpd
     network_mode: host
