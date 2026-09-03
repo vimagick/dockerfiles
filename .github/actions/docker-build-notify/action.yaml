@@ -37,6 +37,8 @@ runs:
   using: "composite"
   steps:
     - uses: actions/checkout@v5
+      with:
+        fetch-depth: 1
 
     - uses: docker/setup-qemu-action@v4
 
