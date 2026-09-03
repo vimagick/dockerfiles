@@ -26,7 +26,7 @@ RUN set -xe \
               -O ${SCRIPT_URL}/version.sh \
               -O ${SCRIPT_URL}/COL_TABLE \
  && cd /usr/local/bin \
- && curl -sSL ${FTL_GIT}/pi-hole/raw/master/pihole -o /usr/local/bin/pihole \
+ && curl -sSL https://github.com/pi-hole/pi-hole/raw/master/pihole -o /usr/local/bin/pihole \
  && chmod +x /usr/local/bin/pihole /opt/pihole/*.sh \
  && apk del curl
 
