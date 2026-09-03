@@ -2,18 +2,22 @@
 # Dockerfile for pure-ftpd
 #
 
-FROM debian:buster
-MAINTAINER kev <noreply@easypi.pro>
+FROM alpine:3.24
+
+LABEL maintainer="EasyPi Software Foundation"
+
+ENV PURE_PASSWDFILE=/etc/pure-ftpd/pureftpd.passwd
+ENV PURE_DBFILE=/etc/pure-ftpd/pureftpd.pdb
 
 RUN set -xe \
-    && apt-get update \
-    && apt-get install -y pure-ftpd \
-    && rm -rf /var/lib/apt/lists/* \
-    && groupadd ftpgroup \
-    && useradd -g ftpgroup -m ftpuser
+ && apk add --no-cache pure-ftpd \
+ && mkdir -p /etc/pure-ftpd \
+ && mv /etc/pure-ftpd.conf /etc/pure-ftpd \
+ && adduser -D -u 1000 -h /home/ftpuser -s /sbin/nologin ftpuser
 
-EXPOSE 21
 VOLUME /home/ftpuser /etc/pure-ftpd
 
+EXPOSE 21
+
 ENTRYPOINT ["pure-ftpd"]
-CMD ["/etc/pure-ftpd/pure-ftpd.conf"]
+CMD ["-l", "puredb:/etc/pure-ftpd/pureftpd.pdb", "-A", "-E", "-j"]

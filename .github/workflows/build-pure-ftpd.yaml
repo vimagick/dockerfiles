@@ -1,0 +1,27 @@
+name: Build Pure-FTPd
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - master
+    paths:
+      - pure-ftpd/Dockerfile
+
+env:
+  DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+  DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+  SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - name: Docker Build and Notify
+        uses: ./.github/actions/docker-build-notify
+        with:
+          context: 'pure-ftpd'
+          image_name: 'easypi/pure-ftpd'
+          version_arg: 'PURE_FTPD_VERSION'
+          version_value: '1.0.54'

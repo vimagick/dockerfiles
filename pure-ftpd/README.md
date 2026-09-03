@@ -8,28 +8,12 @@ FTP server. It doesn't provide useless bells and whistles, but focuses on
 efficiency and ease of use. It provides simple answers to common needs, plus
 unique useful features for personal users as well as hosting providers. 
 
-
-## docker-compose.yml
-
-```yaml
-pure-ftpd:
-  image: vimagick/pure-ftpd
-  net: host
-  volumes:
-    - ./data/ftpuser:/home/ftpuser
-    - ./data/pure-ftpd:/etc/pure-ftpd
-  privileged: true
-  restart: always
-```
-
-> Please config firewall according to `PassivePortRange`.
-
 ## server
 
 ```bash
 $ cd ~/fig/pure-ftpd/
 $ docker-compose up -d
-$ docker-compose exec pure-ftpd bash
+$ docker-compose exec pure-ftpd sh
 >>> pure-pw useradd kev -u ftpuser -d /home/ftpuser/kev -t 1024 -T 1024 -y 1 -m
 >>> pure-pw list
 >>> pure-pw show kev
@@ -38,17 +22,17 @@ $ docker-compose exec pure-ftpd bash
 >>> pure-ftpwho -n
 >>> exit
 $ tree -F
-.
 ├── docker-compose.yml
 └── data/
-    ├── ftpuser/
+    ├── var/
     │   └── kev/
     │       └── file.txt
-    └── pure-ftpd/
-        ├── pure-ftpd.conf
+    └── etc/
         ├── pureftpd.passwd
         └── pureftpd.pdb
 ```
+
+> Please config firewall according to [PassivePortRange][2] (-p first:last -P address).
 
 ## client
 
@@ -67,3 +51,4 @@ ftp> bye
 ```
 
 [1]: https://www.pureftpd.org/project/pure-ftpd
+[2]: https://linux.die.net/man/8/pure-ftpd

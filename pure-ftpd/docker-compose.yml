@@ -1,8 +1,9 @@
-pure-ftpd:
-  image: vimagick/pure-ftpd
-  net: host
-  volumes:
-    - ./data/ftpuser:/home/ftpuser
-    - ./data/pure-ftpd:/etc/pure-ftpd
-  privileged: true
-  restart: always
+services:
+  pure-ftpd:
+    image: easypi/pure-ftpd
+    ports:
+      - "21:21"
+    volumes:
+      - ./data/etc:/etc/pure-ftpd
+      - ./data/var:/home/ftpuser
+    privileged: true
