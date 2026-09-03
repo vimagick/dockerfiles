@@ -1,0 +1,94 @@
+name: 'Docker Build and Notify'
+description: 'Build multi-platform Docker images and send Slack notifications'
+
+inputs:
+  context:
+    description: 'Build context directory'
+    required: true
+  dockerfile:
+    description: 'Dockerfile path (relative to context)'
+    required: false
+    default: 'Dockerfile'
+  platforms:
+    description: 'Target platforms (comma-separated)'
+    required: false
+    default: 'linux/amd64,linux/arm64'
+  image_name:
+    description: 'Docker image name (including registry)'
+    required: true
+  version_arg:
+    description: 'Build-arg name for version'
+    required: false
+    default: 'VERSION'
+  version_value:
+    description: 'Version value to build'
+    required: false
+    default: 'latest'
+  push:
+    description: 'Push to registry (true/false)'
+    required: false
+    default: 'true'
+  slack_channel:
+    description: 'Slack channel to notify'
+    required: false
+    default: 'github'
+
+runs:
+  using: "composite"
+  steps:
+    - uses: actions/checkout@v5
+
+    - uses: docker/setup-qemu-action@v4
+
+    - uses: docker/setup-buildx-action@v4
+
+    - name: Login to Docker Registry
+      uses: docker/login-action@v4
+      with:
+        username: ${{ env.DOCKER_USERNAME }}
+        password: ${{ env.DOCKER_PASSWORD }}
+
+    - name: Build and Push Docker Image
+      uses: docker/build-push-action@v7
+      with:
+        context: ${{ inputs.context }}
+        file: ${{ inputs.context }}/${{ inputs.dockerfile }}
+        platforms: ${{ inputs.platforms }}
+        build-args: |
+          ${{ inputs.version_arg }}=${{ inputs.version_value }}
+        tags: |
+          ${{ inputs.image_name }}:${{ inputs.version_value }}
+          ${{ inputs.image_name }}:latest
+        push: ${{ inputs.push == 'true' }}
+
+    - name: Send Slack Notification
+      if: ${{ always() }}
+      uses: slackapi/slack-github-action@v4.0.0
+      with:
+        method: chat.postMessage
+        token: ${{ env.SLACK_BOT_TOKEN }}
+        payload: |
+          {
+            "channel": "${{ inputs.slack_channel }}",
+            "attachments": [
+              {
+                "color": "${{ job.status == 'success' && 'good' || 'danger' }}",
+                "title": "${{ github.repository }}",
+                "title_link": "https://github.com/${{ github.repository }}",
+                "fields": [
+                  {
+                    "title": "Image",
+                    "value": "<https://hub.docker.com/r/${{ inputs.image_name }}|${{ inputs.image_name }}:${{ inputs.version_value }}>",
+                    "short": true
+                  },
+                  {
+                    "title": "Status",
+                    "value": "${{ job.status }}",
+                    "short": true
+                  }
+                ],
+                "footer": "Github Actions",
+                "footer_icon": "https://github.githubassets.com/favicon.ico"
+              }
+            ]
+          }
