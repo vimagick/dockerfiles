@@ -61,6 +61,22 @@ runs:
           ${{ inputs.image_name }}:latest
         push: ${{ inputs.push == 'true' }}
 
+    - name: Calculate Build Duration
+      id: calc_build_duration
+      shell: bash
+      run: |
+        START_SEC=$(date -d "${{ github.run_started_at }}" +%s)
+        NOW_SEC=$(date +%s)
+        DURATION=$((NOW_SEC - START_SEC))
+        MIN=$((DURATION / 60))
+        SEC=$((DURATION % 60))
+        if ((MIN > 0)); then
+          TIME="${MIN}m ${SEC}s"
+        else
+          TIME="${SEC}s"
+        fi
+        echo "time=$TIME" >> $GITHUB_OUTPUT
+
     - name: Send Slack Notification
       if: ${{ always() }}
       uses: slackapi/slack-github-action@v4.0.0
@@ -77,12 +93,22 @@ runs:
                 "title_link": "https://github.com/${{ github.repository }}",
                 "fields": [
                   {
-                    "title": "Image",
-                    "value": "<https://hub.docker.com/r/${{ inputs.image_name }}|${{ inputs.image_name }}:${{ inputs.version_value }}>",
+                    "title": "🐳 Image",
+                    "value": "<https://hub.docker.com/r/${{ inputs.image_name }}|${{ inputs.image_name }}>",
                     "short": true
                   },
                   {
-                    "title": "Status",
+                    "title": "🏷️ Tag",
+                    "value": "${{ inputs.version_value }}",
+                    "short": true
+                  },
+                  {
+                    "title": "⏱️ Duration",
+                    "value": "${{ steps.calc_build_duration.outputs.time }}",
+                    "short": true
+                  },
+                  {
+                    "title": "📊 Status",
                     "value": "${{ job.status }}",
                     "short": true
                   }
