@@ -15,6 +15,8 @@ $ cd ~/fig/pure-ftpd/
 $ docker-compose up -d
 $ docker-compose exec pure-ftpd sh
 >>> pure-pw useradd kev -u ftpuser -d /home/ftpuser/kev -t 1024 -T 1024 -y 1 -m
+# Password: ******
+# Enter it again: ******
 >>> pure-pw list
 >>> pure-pw show kev
 >>> pure-pw passwd kev -m
@@ -32,9 +34,9 @@ $ tree -F
         └── pureftpd.pdb
 ```
 
-> Please config firewall according to [PassivePortRange][2] (-p first:last -P address).
+## Client (Active Mode)
 
-## client
+> It only works in LAN environment
 
 ```bash
 $ ftp remote-server
@@ -49,6 +51,20 @@ ftp> del file.txt
 ftp> ls
 ftp> bye
 ```
+
+## Client (Passive Mode)
+
+> Please config firewall according to [PassivePortRange][2] (-p first:last -P address).
+
+```bash
+$ curl -u kev:****** -T file.txt ftp://remote-server/
+curl: (7) Failed to connect to remote-server:21 via remote-server:20015 after 5801 ms: Could not connect to server
+```
+
+To fix this issue:
+
+- You need to add two options: `-p 20000:20099 -P x.x.x.x` and expose these ports to host
+- Alternatively, you can use `network_mode: host`
 
 [1]: https://www.pureftpd.org/project/pure-ftpd
 [2]: https://linux.die.net/man/8/pure-ftpd
