@@ -16,6 +16,7 @@ jobs:
       DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
       SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
     steps:
+      - uses: actions/checkout@v7
       - name: Docker Build and Notify
         uses: ./.github/actions/docker-build-notify
         with:
