@@ -89,6 +89,8 @@ To fix this issue:
 - With "--tls=3", cleartext sessions are refused and only TLS compatible clients are accepted.
   Clear data connections are also refused, so private data connections are enforced. This is an extreme setting.
 
+Update docker-compose.yml
+
 ```yaml
 services:
   pure-ftpd:
@@ -98,6 +100,38 @@ services:
 
 ```bash
 $ curl -k --ssl-reqd -u kev:****** ftp://remote-server/file.txt
+```
+
+## Specified GID without Chroot (-a21, --trustedgid=21)
+
+Update docker-compose.yml
+
+```yaml
+services:
+  pure-ftpd:
+    image: easypi/pure-ftpd
+    command: ["-A", "-E", "-H", "-j", "-Y3", "-a21"]
+```
+
+```bash
+$ docker-compose exec pure-ftpd sh
+>>> cat /etc/groups
+>>> getent group 21
+>>> pure-pw useradd admin -u ftpuser -g 21 -D /home/ftpuser/admin -m
+# Password: ******
+# Enter it again: ******
+>>> exit
+
+$ cat ~/.lftprc
+set ssl:ca-file ~/fig/pure-ftpd/data/ssl/pure-ftpd.pem
+
+$ lftp -u admin,***** localhost
+>>> ls
+>>> pwd
+ftp://admin:******@localhost/%2Fhome/ftpuser/admin
+>>> debug 3
+>>> cat -b ../kev/file.txt
+>>> bye
 ```
 
 [1]: https://www.pureftpd.org/project/pure-ftpd
