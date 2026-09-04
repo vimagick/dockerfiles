@@ -6,10 +6,9 @@ or firewall to the internet. Now, it supports tcp, udp, http and https protocol
 when requests can be forwarded by domains to backward web services.
 
 ```yaml
-version: "3.8"
 services:
   frps:
-    image: vimagick/frp
+    image: easypi/frp
     volumes:
       - ./data:/opt/frp/etc
     healthcheck:
@@ -20,7 +19,7 @@ services:
     restart: unless-stopped
 ```
 
-Sample config file: [frps.ini][2]
+Sample config file: [frps.toml][2]
 
 [1]: https://github.com/fatedier/frp
-[2]: https://github.com/fatedier/frp/blob/master/conf/frps_full.ini
+[2]: https://github.com/fatedier/frp/blob/master/conf/frps_full_example.toml

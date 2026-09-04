@@ -24,10 +24,9 @@ networks.
 file: docker-compose.yml
 
 ```yaml
-version: "3.8"
 services:
   privoxy:
-    image: vimagick/privoxy
+    image: easypi/privoxy
     ports:
       - "8118:8118"
     volumes:

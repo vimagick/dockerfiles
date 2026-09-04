@@ -8,6 +8,21 @@ FTP server. It doesn't provide useless bells and whistles, but focuses on
 efficiency and ease of use. It provides simple answers to common needs, plus
 unique useful features for personal users as well as hosting providers. 
 
+## docker-compose.yml
+
+```yaml
+services:
+  pure-ftpd:
+    image: easypi/pure-ftpd
+    volumes:
+      - ./data/etc:/etc/pure-ftpd
+      - ./data/ssl:/etc/ssl/private
+      - ./data/var:/home/ftpuser
+      - ./data/log:/var/log/pure-ftpd
+    network_mode: host
+    privileged: true
+```
+
 ## Server
 
 ```bash

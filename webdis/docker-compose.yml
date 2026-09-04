@@ -1,7 +1,7 @@
 services:
 
   webdis:
-    image: vimagick/webdis
+    image: easypi/webdis
     ports:
       - "7379:7379"
     volumes:

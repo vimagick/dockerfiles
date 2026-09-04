@@ -8,10 +8,9 @@ Get a full fake REST API with zero coding in less than 30 seconds (seriously) wi
 ## docker-compose.yml
 
 ```yaml
-version: "3.8"
 services:
   json-server:
-    image: vimagick/json-server
+    image: easypi/json-server
     command: -h 0.0.0.0 -p 3000 -s ./public db.json
     init: true
     ports:

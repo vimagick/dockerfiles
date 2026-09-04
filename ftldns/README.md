@@ -3,6 +3,26 @@ FTLDNS
 
 [FTLDNS][1] (pihole-FTL) provides an interactive API and also generates statistics for Pi-hole®'s Web interface.
 
+## docker-compose.yml
+
+```yaml
+services:
+  ftldns:
+    image: easypi/ftldns
+    ports:
+      - "4711:4711"
+      - "53:53/tcp"
+      - "53:53/udp"
+    volumes:
+      - ./data/etc:/etc/pihole
+      - ./data/log:/var/log/pihole
+    tmpfs:
+      - /run/pihole
+      - /dev/shm
+    working_dir: /etc/pihole
+    restart: unless-stopped
+```
+
 ## Up and Running
 
 ```bash

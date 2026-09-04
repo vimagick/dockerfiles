@@ -7,7 +7,7 @@ services:
   keys:
   - id: foo
     cipher: chacha20-ietf-poly1305
-    secret: Thi8aoqu8Tha
+    secret: Huxe3miere3a
   - id: bar
     cipher: chacha20-ietf-poly1305
-    secret: mAequ6Hied8M
+    secret: Ahghaexoh3ae

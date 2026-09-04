@@ -11,6 +11,21 @@ The [Outline Shadowsocks service][1] allows for:
 - Live updates via config change + SIGHUP
 - Replay defense (add `--replay_history 10000`).
 
+## docker-compose.yml
+
+```yaml
+services:
+  outline-ss-server:
+    image: easypi/outline-ss-server
+    ports:
+      - "8388:8388/tcp"
+      - "8388:8388/udp"
+      - "9092:9092/tcp"
+    volumes:
+      - ./data:/app/etc
+    restart: unless-stopped
+```
+
 ## up and running
 
 ```bash

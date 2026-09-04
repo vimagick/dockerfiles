@@ -5,6 +5,21 @@ tile38
 spatial index, and realtime geofence. It supports a variety of object types
 including lat/lon points, bounding boxes, XYZ tiles, Geohashes, and GeoJSON.
 
+## docker-compose.yml
+
+```yaml
+services:
+  tile38:
+    image: easypi/tile38
+    ports:
+      - "9851:9851"
+    volumes:
+      - ./data:/data
+    restart: unless-stopped
+```
+
+## up and running
+
 ```bash
 $ docker-compose up -d
 $ docker-compose exec tile38 tile38-cli

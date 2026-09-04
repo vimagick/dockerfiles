@@ -1,7 +1,6 @@
-version: "3.8"
 services:
   frps:
-    image: vimagick/frp
+    image: easypi/frp
     volumes:
       - ./data:/opt/frp/etc
     healthcheck:
