@@ -1,0 +1,27 @@
+name: Build Tile38
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - master
+    paths:
+      - tile38/Dockerfile
+
+env:
+  DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+  DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+  SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - name: Docker Build and Notify
+        uses: ./.github/actions/docker-build-notify
+        with:
+          context: 'tile38'
+          image_name: 'easypi/tile38'
+          version_arg: 'TILE38_VERSION'
+          version_value: '1.38.0'
