@@ -29,6 +29,10 @@ inputs:
     description: 'Push to registry (true/false)'
     required: false
     default: 'true'
+  readme:
+    description: 'README.md path (relative to context)'
+    required: false
+    default: 'README.md'
   slack_channel:
     description: 'Slack channel to notify'
     required: false
@@ -64,6 +68,14 @@ runs:
           ${{ inputs.image_name }}:${{ inputs.version_value }}
           ${{ inputs.image_name }}:latest
         push: ${{ inputs.push == 'true' }}
+
+    - name: Docker Hub Description
+      uses: peter-evans/dockerhub-description@v5
+      with:
+        username: ${{ env.DOCKER_USERNAME }}
+        password: ${{ env.DOCKER_PASSWORD }}
+        repository: ${{ inputs.image_name }}
+        readme-filepath: ${{ inputs.context }}/${{ inputs.readme }}
 
     - name: Send Slack Notification
       if: ${{ always() }}
