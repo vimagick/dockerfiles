@@ -10,6 +10,7 @@ RUN set -xe \
     && sed -i -e '/^Allow /s/^/#/' \
               -e '/^ConnectPort /s/^/#/' \
               -e '/^#DisableViaHeader /s/^#//' \
+              -e 's/^Timeout.*/Timeout 10/' \
               /etc/tinyproxy/tinyproxy.conf
 
 VOLUME /etc/tinyproxy
