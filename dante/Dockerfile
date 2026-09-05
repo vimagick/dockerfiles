@@ -12,7 +12,7 @@ ARG DANTE_FILE=dante.tar.gz
 ARG DANTE_TEMP=dante
 ARG DANTE_DEPS="build-essential curl"
 
-ARG GUESS_URL="http://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.guess;hb=HEAD"
+ARG GUESS_URL="https://github.com/gcc-mirror/gcc/raw/refs/heads/master/config.guess"
 ARG GUESS_FILE=config.guess
 
 RUN set -xe \
