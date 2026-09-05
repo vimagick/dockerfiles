@@ -18,38 +18,53 @@ services:
       - "2222:2222"
       - "2223:2223"
     volumes:
-      - cowrie-etc:/cowrie/cowrie-git/etc
-      - cowrie-var:/cowrie/cowrie-git/var
+      - ./data/etc:/cowrie/cowrie-git/etc
+      - ./data/var:/cowrie/cowrie-git/var
     cap_drop:
       - ALL
     read_only: true
     security_opt:
       - no-new-privileges:true
     restart: unless-stopped
-
-volumes:
-  cowrie-etc:
-  cowrie-var:
 ```
 
 ## server
 
 ```bash
-$ docker-compose up -d
-$ docker volume ls
-$ docker volume inspect cowrie_cowrie-var
-$ cd /var/lib/docker/volumes/cowrie_cowrie-etc/_data
-$ cp cowrie.cfg.dist cowrie.cfg
-$ cp userdb.example userdb.txt
-$ cd /var/lib/docker/volumes/cowrie_cowrie-var/_data
-$ tail -f log/cowrie/cowrie.json
+$ mkdir -p data/{etc,var/{lib/cowrie/{downloads,snapshots,tty},log/cowrie,run}}
+$ wget -O data/etc/cowrie.cfg https://github.com/cowrie/cowrie/raw/refs/heads/main/src/cowrie/data/etc/cowrie.cfg.dist
+$ wget -O data/etc/userdb.txt https://github.com/cowrie/cowrie/raw/refs/heads/main/src/cowrie/data/etc/userdb.example
+$ sudo chown -R 999:999 data
+
+$ tree -F
+├── data/
+│   ├── etc/
+│   │   ├── cowrie.cfg
+│   │   └── userdb.txt
+│   └── var/
+│       ├── lib/
+│       │   └── cowrie/
+│       │       ├── downloads/
+│       │       ├── snapshots/
+│       │       └── tty/
+│       ├── log/
+│       │   └── cowrie/
+│       └── run/
+└── docker-compose.yml
+
+$ docker compose up -d
+$ tail -f data/var/log/cowrie/cowrie.json
 ```
 
+Install some tools to inspect tty sessions
+
 ```bash
-$ wget -P ~/.local/bin/ https://github.com/cowrie/cowrie/raw/refs/heads/main/src/cowrie/scripts/asciinema.py
-$ wget -P ~/.local/bin/ https://github.com/cowrie/cowrie/raw/refs/heads/main/src/cowrie/scripts/playlog.py
+$ mkdir -p ~/.local/bin
+$ wget -P ~/.local/bin https://github.com/cowrie/cowrie/raw/refs/heads/main/src/cowrie/scripts/asciinema.py
+$ wget -P ~/.local/bin https://github.com/cowrie/cowrie/raw/refs/heads/main/src/cowrie/scripts/playlog.py
 $ chmod +x ~/.local/bin/{asciinema,playlog}.py
-$ playlog -c lib/cowrie/tty/xxxxxx
+$ export PATH=~/.local/bin:$PATH
+$ playlog.py -cf data/var/lib/cowrie/tty/xxxxxx
 ```
 
 ## client
@@ -59,7 +74,7 @@ $ ssh -p 2222 root@server
 $ telnet server 2223
 ```
 
-> You can login as `root` with any password except `root` or `123456`.
+> You can login as `root` with any password except `root` or `123456`. (See: userdb.txt)
 
 [1]: https://github.com/micheloosterhof/cowrie
 [2]: http://github.com/desaster/kippo/
