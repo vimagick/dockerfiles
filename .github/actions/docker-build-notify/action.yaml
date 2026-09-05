@@ -25,6 +25,10 @@ inputs:
     description: 'Version value to build'
     required: false
     default: 'latest'
+  other_build_args:
+    description: 'Other build args (key=value)'
+    required: false
+    default: ''
   push:
     description: 'Push to registry (true/false)'
     required: false
@@ -71,6 +75,7 @@ runs:
         platforms: ${{ inputs.platforms }}
         build-args: |
           ${{ inputs.version_arg }}=${{ inputs.version_value }}
+          ${{ inputs.other_build_args }}
         tags: |
           ${{ inputs.image_name }}:${{ inputs.version_value }}
           ${{ inputs.image_name }}:latest
