@@ -1,0 +1,28 @@
+name: Build PassiveDNS
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - master
+    paths:
+      - passivedns/Dockerfile
+
+env:
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+  DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+  SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - name: Docker Build and Notify
+        uses: ./.github/actions/docker-build-notify
+        with:
+          context: 'passivedns'
+          image_name: 'easypi/passivedns'
+          version_arg: 'PASSIVEDNS_VERSION'
+          version_value: 'latest'

@@ -7,10 +7,9 @@ Security Monitoring (NSM) and general digital forensics.
 ## docker-compose.yml
 
 ```yaml
-version: "3.8"
 services:
   passivedns:
-    image: vimagick/passivedns
+    image: easypi/passivedns
     command: >
       -i eth0
       -l /var/log/passivedns/passivedns.log

@@ -2,7 +2,7 @@
 # Dockerfile for passivedns
 #
 
-FROM debian:12
+FROM debian:13
 MAINTAINER EasyPi Software Foundation
 
 RUN set -xe \
