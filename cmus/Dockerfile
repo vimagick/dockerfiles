@@ -2,7 +2,7 @@
 # Dockerfile for cmus
 #
 
-FROM alpine:3
+FROM alpine:3.24
 MAINTAINER EasyPi Software Foundation
 
 RUN apk add --no-cache cmus
@@ -14,4 +14,4 @@ ENV CMUS_SOCKET=0.0.0.0:3000
 
 EXPOSE 3000
 
-ENTRYPOINT cmus
+ENTRYPOINT ["cmus"]
