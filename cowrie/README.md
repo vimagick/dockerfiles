@@ -11,17 +11,20 @@ Cowrie is directly based on [Kippo][2] by Upi Tamminen (desaster).
 ## docker-compose.yml
 
 ```yaml
-version: "3.8"
-
 services:
   cowrie:
-    image: cowrie/cowrie
+    image: cowrie/cowrie:3.0
     ports:
       - "2222:2222"
       - "2223:2223"
     volumes:
       - cowrie-etc:/cowrie/cowrie-git/etc
       - cowrie-var:/cowrie/cowrie-git/var
+    cap_drop:
+      - ALL
+    read_only: true
+    security_opt:
+      - no-new-privileges:true
     restart: unless-stopped
 
 volumes:
@@ -43,9 +46,9 @@ $ tail -f log/cowrie/cowrie.json
 ```
 
 ```bash
-$ wget -P /usr/local/bin/ https://github.com/cowrie/cowrie/raw/master/bin/asciinema
-$ wget -P /usr/local/bin/ https://github.com/cowrie/cowrie/raw/master/bin/playlog
-$ chmod +x /usr/local/bin/{asciinema,playlog}
+$ wget -P ~/.local/bin/ https://github.com/cowrie/cowrie/raw/refs/heads/main/src/cowrie/scripts/asciinema.py
+$ wget -P ~/.local/bin/ https://github.com/cowrie/cowrie/raw/refs/heads/main/src/cowrie/scripts/playlog.py
+$ chmod +x ~/.local/bin/{asciinema,playlog}.py
 $ playlog -c lib/cowrie/tty/xxxxxx
 ```
 

@@ -1,14 +1,17 @@
-version: "3.8"
-
 services:
   cowrie:
-    image: cowrie/cowrie
+    image: cowrie/cowrie:3.0
     ports:
       - "2222:2222"
       - "2223:2223"
     volumes:
       - cowrie-etc:/cowrie/cowrie-git/etc
       - cowrie-var:/cowrie/cowrie-git/var
+    cap_drop:
+      - ALL
+    read_only: true
+    security_opt:
+      - no-new-privileges:true
     restart: unless-stopped
 
 volumes:
