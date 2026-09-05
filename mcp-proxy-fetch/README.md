@@ -21,7 +21,23 @@ services:
     restart: unless-stopped
 ```
 
-You can use the [inspector][2] tool to test the target server.
+## 
+
+You can use the [mcp-inspector][2] to test the target mcp server.
+
+```yaml
+services:
+  mcp-inspector:
+    image: ghcr.io/modelcontextprotocol/inspector
+    ports:
+      - "6274:6274"
+      - "6275:6275"
+    volumes:
+      - ./data:/home/node/.mcp-inspector
+    environment:
+      - DANGEROUSLY_OMIT_AUTH=true
+    restart: unless-stopped
+```
 
 [1]: https://github.com/modelcontextprotocol/servers/tree/main/src/fetch
-[2]: https://modelcontextprotocol.io/docs/tools/inspector
+[2]: https://github.com/modelcontextprotocol/inspector/blob/main/docs/docker.md
