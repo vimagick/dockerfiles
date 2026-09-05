@@ -1,0 +1,44 @@
+#
+# See: https://docs.asciinema.org/manual/server/self-hosting/configuration/
+#
+
+services:
+
+  asciinema-server:
+    image: ghcr.io/asciinema/asciinema-server:20260626
+    ports:
+      - "4000:4000"
+    volumes:
+      - ./data/asciinema:/var/lib/asciinema
+    environment:
+      - DATABASE_URL=postgresql://asciinema:asciinema@postgres/asciinema
+      - SECRET_KEY_BASE=SYBj0cZGpCy98Qec0baKTkBSoJ7UCjc6dudhNKzJlsQ7w3GqilyjukbZ5dl38Rs5
+      - URL_HOST=asciinema.easypi.duckdns.org
+      - URL_SCHEME=https
+      - ADMIN_PANEL_ON_MAIN_ENDPOINT=1
+      - SIGN_UP_DISABLED=false
+      # - SMTP_HOST=smtp.gmail.com
+      # - SMTP_USERNAME=username@gmail.com
+      # - SMTP_PASSWORD=your-app-password
+    depends_on:
+      postgres:
+        condition: service_healthy
+    restart: unless-stopped
+
+  postgres:
+    image: postgres:18-alpine
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./data/postgres:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=asciinema
+      - POSTGRES_PASSWORD=asciinema
+      - POSTGRES_DB=asciinema
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U postgres']
+      interval: 5s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    restart: unless-stopped
