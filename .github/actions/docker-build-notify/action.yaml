@@ -60,7 +60,7 @@ runs:
       with:
         registry: ghcr.io
         username: ${{ github.actor }}
-        password: ${{ secrets.GITHUB_TOKEN }}
+        password: ${{ env.GITHUB_TOKEN }}
 
     - name: Build and Push Docker Image
       id: docker-build-push
