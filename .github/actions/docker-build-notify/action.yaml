@@ -55,6 +55,13 @@ runs:
         username: ${{ env.DOCKER_USERNAME }}
         password: ${{ env.DOCKER_PASSWORD }}
 
+    - name: Login to Github Container Registry
+      uses: docker/login-action@v4
+      with:
+        registry: ghcr.io
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+
     - name: Build and Push Docker Image
       id: docker-build-push
       uses: docker/build-push-action@v7
@@ -67,6 +74,8 @@ runs:
         tags: |
           ${{ inputs.image_name }}:${{ inputs.version_value }}
           ${{ inputs.image_name }}:latest
+          ghcr.io/${{ inputs.image_name }}:${{ inputs.version_value }}
+          ghcr.io/${{ inputs.image_name }}:latest
         push: ${{ inputs.push == 'true' }}
 
     - name: Docker Hub Description
