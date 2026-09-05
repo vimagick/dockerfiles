@@ -56,7 +56,7 @@ $ docker compose up -d
 $ tail -f data/var/log/cowrie/cowrie.json
 ```
 
-Install some tools to inspect tty sessions
+Install some tools to inspect TTY session
 
 ```bash
 $ mkdir -p ~/.local/bin
@@ -64,7 +64,14 @@ $ wget -P ~/.local/bin https://github.com/cowrie/cowrie/raw/refs/heads/main/src/
 $ wget -P ~/.local/bin https://github.com/cowrie/cowrie/raw/refs/heads/main/src/cowrie/scripts/playlog.py
 $ chmod +x ~/.local/bin/{asciinema,playlog}.py
 $ export PATH=~/.local/bin:$PATH
-$ playlog.py -cf data/var/lib/cowrie/tty/xxxxxx
+$ playlog.py -c data/var/lib/cowrie/tty/xxxxxx
+```
+
+Install [agg][3] to generate GIF from TTY session
+
+```bash
+$ asciinema.py -co session.json data/var/lib/cowrie/tty/xxxxxx
+$ agg --theme=solarized-light session.json session.gif
 ```
 
 ## client
@@ -78,3 +85,4 @@ $ telnet server 2223
 
 [1]: https://github.com/micheloosterhof/cowrie
 [2]: http://github.com/desaster/kippo/
+[3]: https://github.com/asciinema/agg/releases/latest
