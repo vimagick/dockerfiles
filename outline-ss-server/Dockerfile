@@ -3,7 +3,8 @@
 #
 
 FROM alpine:3.24
-MAINTAINER EasyPi Software Foundation
+LABEL maintainer="EasyPi Software Foundation"
+LABEL org.opencontainers.image.source="https://github.com/vimagick/dockerfiles/tree/master/outline-ss-server"
 
 ARG TARGETPLATFORM
 ARG OUTLINE_SS_SERVER_VERSION
