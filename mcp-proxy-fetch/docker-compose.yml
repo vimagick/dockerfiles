@@ -1,0 +1,7 @@
+services:
+  fetch:
+    image: easypi/mcp-proxy-fetch
+    command: "--host=0.0.0.0 --port=5757 -- mcp-server-fetch --ignore-robots-txt --user-agent=Mozilla/5.0 --proxy-url=http://192.168.1.1:8081"
+    ports:
+      - "5757:5757"
+    restart: unless-stopped
