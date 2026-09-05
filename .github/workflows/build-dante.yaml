@@ -9,7 +9,7 @@ on:
       - dante/Dockerfile
 
 env:
-  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  GITHUB_TOKEN: ${{ secrets.GHCR_PAT }}
   DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
   DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
   SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
