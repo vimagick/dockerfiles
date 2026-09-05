@@ -70,6 +70,9 @@ runs:
       id: docker-build-push
       uses: docker/build-push-action@v7
       with:
+        labels: |
+          maintainer="EasyPi Software Foundation"
+          org.opencontainers.image.source="${{ github.server_url }}/${{ github.repository }}"
         context: ${{ inputs.context }}
         file: ${{ inputs.context }}/${{ inputs.dockerfile }}
         platforms: ${{ inputs.platforms }}
