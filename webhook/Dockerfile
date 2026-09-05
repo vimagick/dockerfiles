@@ -2,16 +2,16 @@
 # Dockerfile for webhook
 #
 
-FROM alpine:3
+FROM alpine:3.24
 MAINTAINER EasyPi Software Foundation
 
-ARG WEBHOOK_VERSION=2.8.2
-ARG WEBHOOK_OS=linux
-ARG WEBHOOK_ARCH=amd64
-ARG WEBHOOK_FILE=webhook-$WEBHOOK_OS-$WEBHOOK_ARCH.tar.gz
-ARG WEBHOOK_URL=https://github.com/adnanh/webhook/releases/download/$WEBHOOK_VERSION/$WEBHOOK_FILE
+ARG TARGETPLATFORM
+ARG WEBHOOK_VERSION
 
 RUN set -xe \
+ && WEBHOOK_ARCH=$(echo $TARGETPLATFORM | sed -e 's@linux/@@') \
+ && WEBHOOK_FILE=webhook-linux-${WEBHOOK_ARCH}.tar.gz \
+ && WEBHOOK_URL=https://github.com/adnanh/webhook/releases/download/${WEBHOOK_VERSION}/${WEBHOOK_FILE} \
  && apk add --no-cache \
             bash \
             bind-tools \
@@ -30,6 +30,7 @@ RUN set -xe \
             tar \
             wget \
             xsv \
+            yq \
  && curl -sSL $WEBHOOK_URL | tar xz -C /usr/local/bin ${WEBHOOK_FILE%.tar.gz}/webhook --strip 1 \
  && webhook -version
 
