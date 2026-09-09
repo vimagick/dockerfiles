@@ -7,6 +7,7 @@ on:
       - master
     paths:
       - json-server/Dockerfile
+      - .github/workflows/build-json-server.yaml
 
 env:
   GITHUB_TOKEN: ${{ secrets.GHCR_PAT }}

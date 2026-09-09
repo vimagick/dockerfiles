@@ -7,6 +7,7 @@ on:
       - master
     paths:
       - cmus/Dockerfile
+      - .github/workflows/build-cmus.yaml
 
 env:
   GITHUB_TOKEN: ${{ secrets.GHCR_PAT }}

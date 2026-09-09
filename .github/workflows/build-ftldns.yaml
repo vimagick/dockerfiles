@@ -7,6 +7,7 @@ on:
       - master
     paths:
       - ftldns/Dockerfile
+      - .github/workflows/build-ftldns.yaml
 
 env:
   GITHUB_TOKEN: ${{ secrets.GHCR_PAT }}

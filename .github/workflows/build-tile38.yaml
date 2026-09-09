@@ -7,6 +7,7 @@ on:
       - master
     paths:
       - tile38/Dockerfile
+      - .github/workflows/build-tile38.yaml
 
 env:
   GITHUB_TOKEN: ${{ secrets.GHCR_PAT }}

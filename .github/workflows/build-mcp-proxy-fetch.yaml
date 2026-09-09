@@ -7,6 +7,7 @@ on:
       - master
     paths:
       - mcp-proxy-fetch/Dockerfile
+      - .github/workflows/build-mcp-proxy-fetch.yaml
 
 env:
   GITHUB_TOKEN: ${{ secrets.GHCR_PAT }}

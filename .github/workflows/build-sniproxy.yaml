@@ -7,6 +7,7 @@ on:
       - master
     paths:
       - sniproxy/Dockerfile
+      - .github/workflows/build-sniproxy.yaml
 
 env:
   GITHUB_TOKEN: ${{ secrets.GHCR_PAT }}

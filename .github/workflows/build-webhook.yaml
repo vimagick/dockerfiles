@@ -7,6 +7,7 @@ on:
       - master
     paths:
       - webhook/Dockerfile
+      - .github/workflows/build-webhook.yaml
 
 env:
   GITHUB_TOKEN: ${{ secrets.GHCR_PAT }}

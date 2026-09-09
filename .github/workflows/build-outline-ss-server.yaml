@@ -7,6 +7,7 @@ on:
       - master
     paths:
       - outline-ss-server/Dockerfile
+      - .github/workflows/build-outline-ss-server.yaml
 
 env:
   GITHUB_TOKEN: ${{ secrets.GHCR_PAT }}
