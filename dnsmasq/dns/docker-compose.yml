@@ -1,9 +1,7 @@
-version: "3.8"
-
 services:
 
   dnsmasq:
-    image: vimagick/dnsmasq
+    image: easypi/dnsmasq
     command: >
       --cache-size=10000
       --interface=eth0
@@ -21,7 +19,7 @@ services:
     restart: unless-stopped
 
   dnscrypt-proxy:
-    image: vimagick/dnscrypt-proxy
+    image: easypi/dnscrypt-proxy
     volumes:
       - ./data:/etc/dnscrypt-proxy
     networks:

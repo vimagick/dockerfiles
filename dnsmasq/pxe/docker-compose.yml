@@ -1,16 +1,18 @@
-pxe:
-  image: vimagick/dnsmasq
-  net: host
-  volumes:
-    - ./dnsmasq.conf:/etc/dnsmasq.d/dnsmasq.conf
-    - ./tftpboot:/tftpboot
-  restart: always
+services:
 
-web:
-  image: nginx:alpine
-  ports:
-    - "80:80"
-  volumes:
-    - ./nginx.conf:/etc/nginx/nginx.conf
-    - ./html:/var/lib/nginx/html
-  restsart: always
+  pxe:
+    image: easypi/dnsmasq
+    net: host
+    volumes:
+      - ./dnsmasq.conf:/etc/dnsmasq.d/dnsmasq.conf
+      - ./tftpboot:/tftpboot
+    restart: unless-stopped
+
+  web:
+    image: nginx:alpine
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+      - ./html:/var/lib/nginx/html
+    restsart: unless-stopped

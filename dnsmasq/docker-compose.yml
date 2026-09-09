@@ -1,7 +1,6 @@
-version: "3.8"
 services:
   dnsmasq:
-    image: vimagick/dnsmasq
+    image: easypi/dnsmasq
     ports:
       - "53:53/tcp"
       - "53:53/udp"
