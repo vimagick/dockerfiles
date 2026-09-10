@@ -1,7 +1,11 @@
-nginx:
-  image: nginx:alpine
-  volumes:
-    - ./data/conf.d:/etc/nginx/conf.d
-    - ./data/ssl:/etc/nginx/ssl
-  net: host
-  restart: unless-stopped
+services:
+  coming-soon:
+    image: nginx:1.31-alpine
+    ports:
+      - "6109:80"
+    volumes:
+      - ./data/etc:/etc/nginx/conf.d:ro
+      - ./data/ssl:/etc/nginx/ssl:ro
+      - ./data/www:/var/www/html:ro
+      - ./data/log:/var/log/nginx
+    restart: unless-stopped

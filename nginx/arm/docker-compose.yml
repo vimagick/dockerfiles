@@ -1,7 +1,0 @@
-nginx:
-  image: arm32v7/nginx:alpine
-  volumes:
-    - ./data/conf.d:/etc/nginx/conf.d
-    - ./data/ssl:/etc/nginx/ssl
-  net: host
-  restart: unless-stopped

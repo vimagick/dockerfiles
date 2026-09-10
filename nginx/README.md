@@ -17,8 +17,8 @@ nginx:
   ports:
     - "80:80"
   volumes:
-    - ./data/conf.d:/etc/nginx/conf.d
-    - ./data/html:/usr/share/nginx/html
+    - ./data/etc:/etc/nginx/conf.d
+    - ./data/www:/usr/share/nginx/html
   restart: unless-stopped
 ```
 
@@ -30,7 +30,7 @@ File: docker-compose.yml
 nginx:
   image: nginx:alpine
   volumes:
-    - ./data/conf.d:/etc/nginx/conf.d
+    - ./data/etc:/etc/nginx/conf.d
     - ./data/ssl:/etc/nginx/ssl
     - ./data/htpasswd:/etc/nginx/htpasswd
   net: host
