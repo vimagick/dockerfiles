@@ -7,14 +7,13 @@ by the Xiph.org Foundation.
 ## docker-compose.yml
 
 ```yaml
-version: "3.8"
 services:
   icecast:
-    image: vimagick/icecast
+    image: easypi/icecast
     ports:
       - "8000:8000"
     volumes:
-      # ./data/etc:/etc/icecast:ro
+      - ./data/etc:/etc/icecast:ro
       - ./data/log:/var/log/icecast:rw
     restart: unless-stopped
 ```
