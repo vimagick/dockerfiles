@@ -2,10 +2,13 @@
 # See: https://github.com/apache/nifi/blob/main/nifi-docker/dockerhub/Dockerfile
 #
 
+x-nifi-image: &nifi-image apache/nifi:2.11.0
+x-nifi-registry-image: &nifi-registry-image apache/nifi-registry:2.11.0
+
 services:
 
   init-nifi:
-    image: apache/nifi:2.10.0
+    image: *nifi-image
     entrypoint: ["bash", "-c"]
     command: ["test -f /tmp/bootstrap.conf || cp -v /opt/nifi/nifi-current/conf/* /tmp"]
     volumes:
@@ -13,7 +16,7 @@ services:
       - ./data/nifi/conf:/tmp
 
   nifi:
-    image: apache/nifi:2.10.0
+    image: *nifi-image
     ports:
       - "8443:8443"
     volumes:
@@ -34,12 +37,13 @@ services:
       - SINGLE_USER_CREDENTIALS_USERNAME=admin
       - SINGLE_USER_CREDENTIALS_PASSWORD=@hello@world@ # at least 12 characters
     depends_on:
-      - init-nifi
+      init-nifi:
+        condition: service_completed_successfully
     hostname: nifi
     restart: unless-stopped
 
   registry:
-    image: apache/nifi-registry:2.10.0
+    image: *nifi-registry-image
     ports:
       - "18080:18080"
     volumes:
