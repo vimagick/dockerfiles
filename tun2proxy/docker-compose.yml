@@ -1,0 +1,12 @@
+services:
+  tun2proxy:
+    image: ghcr.io/tun2proxy/tun2proxy-alpine:v0.8.3
+    container_name: tun2proxy
+    command: --proxy socks5://192.168.1.1:1080 --dns virtual
+    volumes:
+      - /dev/net/tun:/dev/net/tun
+    sysctls:
+      - net.ipv6.conf.default.disable_ipv6=0
+    cap_add:
+      - NET_ADMIN
+    restart: unless-stopped

@@ -562,6 +562,7 @@ A collection of delicious docker recipes.
 - [x] traefik
 - [x] trinodb/trino
 - [x] ghcr.io/coqui-ai/tts-cpu
+- [x] ghcr.io/tun2proxy/tun2proxy-alpine
 - [x] ultralytics/ultralytics
 - [x] louislam/uptime-kuma
 - [x] pikvm/ustreamer :camera:
