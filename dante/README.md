@@ -25,7 +25,7 @@ services:
 
 ```
 debug: 0
-logoutput: stderr
+logoutput: stderr /var/log/dante/sockd.log
 internal: 0.0.0.0 port = 1080
 external: eth0
 socksmethod: username none
@@ -38,6 +38,26 @@ client pass {
     log: error
 }
 
+socks block {
+    from: 0.0.0.0/0 to: 127.0.0.0/8
+    log: error
+}
+
+socks block {
+    from: 0.0.0.0/0 to: 10.0.0.0/8
+    log: error
+}
+
+socks block {
+    from: 0.0.0.0/0 to: 172.16.0.0/12
+    log: error
+}
+
+socks block {
+    from: 0.0.0.0/0 to: 192.168.0.0/16
+    log: error
+}
+
 socks pass {
     from: 0.0.0.0/0 to: 0.0.0.0/0
     #socksmethod: username
@@ -45,14 +65,20 @@ socks pass {
 }
 ```
 
+> [!Caution]
+> Block unauthorized LAN access is a good practice!
+
 ## up and running
 
 ```bash
+$ mkdir -p data/{etc,log}
+$ vim data/etc/sockd.conf
+
 $ docker-compose up -d
 
 # To enable username authentication, please uncomment `socksmethod: username`.
-$ docker exec -it dante_dante_1 bash
->>> useradd username
+$ docker compose exec dante bash
+>>> useradd -s /usr/sbin/nologin -M username
 >>> echo username:password | chpasswd
 >>> exit
 

@@ -4,7 +4,8 @@ services:
     ports:
       - "1080:1080"
     volumes:
-      - ./data:/etc/dante
+      - ./data/etc:/etc/dante
+      - ./data/log:/var/log/dante
     tmpfs:
       - /run
     restart: unless-stopped
