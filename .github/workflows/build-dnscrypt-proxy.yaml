@@ -1,0 +1,29 @@
+name: Build dnscrypt-proxy
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - master
+    paths:
+      - dnscrypt/proxy/Dockerfile
+      - .github/workflows/build-dnscrypt-proxy.yaml
+
+env:
+  GITHUB_TOKEN: ${{ secrets.GHCR_PAT }}
+  DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+  DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+  SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - name: Docker Build and Notify
+        uses: ./.github/actions/docker-build-notify
+        with:
+          context: 'dnscrypt/proxy'
+          image_name: 'easypi/dnscrypt-proxy'
+          version_arg: 'DNSCRYPT_PROXY_VERSION'
+          version_value: '2.1.8'

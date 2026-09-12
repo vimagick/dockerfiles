@@ -2,17 +2,19 @@
 # Dockerfile for dnscrypt-proxy
 #
 
-FROM alpine:3
+FROM alpine:3.24
 MAINTAINER EasyPi Software Foundation
 
-ARG DNSCRYPT_PROXY_VERSION=2.1.8
-ARG DNSCRYPT_PROXY_ARCH=x86_64
-ARG DNSCRYPT_PROXY_FILE=dnscrypt-proxy-linux_${DNSCRYPT_PROXY_ARCH}-${DNSCRYPT_PROXY_VERSION}.tar.gz
-ARG DNSCRYPT_PROXY_URL=https://github.com/DNSCrypt/dnscrypt-proxy/releases/download/${DNSCRYPT_PROXY_VERSION}/${DNSCRYPT_PROXY_FILE}
+ARG TARGETPLATFORM
+ARG DNSCRYPT_PROXY_VERSION
 
 WORKDIR /etc/dnscrypt-proxy
 
 RUN set -xe \
+ && DNSCRYPT_PROXY_ARCH=$(echo $TARGETPLATFORM | sed -e 's@linux/amd64@x86_64@' \
+                                                     -e 's@linux/arm64@arm64@') \
+ && DNSCRYPT_PROXY_FILE=dnscrypt-proxy-linux_${DNSCRYPT_PROXY_ARCH}-${DNSCRYPT_PROXY_VERSION}.tar.gz \
+ && DNSCRYPT_PROXY_URL=https://github.com/DNSCrypt/dnscrypt-proxy/releases/download/${DNSCRYPT_PROXY_VERSION}/${DNSCRYPT_PROXY_FILE} \
  && apk add --no-cache curl tar \
  && curl -sSL ${DNSCRYPT_PROXY_URL} | tar xz --strip 1 \
  && mv dnscrypt-proxy /usr/local/bin/ \
