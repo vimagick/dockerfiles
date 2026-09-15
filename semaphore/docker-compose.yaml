@@ -1,0 +1,24 @@
+#
+# https://semaphoreui.com/install/docker/2_19/
+# https://github.com/semaphoreui/semaphore-docs/blob/main/docs/admin-guide/installation/docker.md
+#
+
+services:
+    semaphore:
+        image: semaphoreui/semaphore:v2.19.14
+        ports:
+            - "3000:3000"
+        volumes:
+            - ./data/etc:/etc/semaphore
+            - ./data/var:/var/lib/semaphore
+            - ./data/tmp:/tmp/semaphore
+        environment:
+            SEMAPHORE_DB_DIALECT: sqlite
+            SEMAPHORE_DB: /etc/semaphore/semaphore.db
+            SEMAPHORE_ADMIN: admin
+            SEMAPHORE_ADMIN_PASSWORD: admin
+            SEMAPHORE_ADMIN_NAME: admin
+            SEMAPHORE_ADMIN_EMAIL: admin@localhost
+            SEMAPHORE_SECRETS_PATH: /etc/semaphore/secrets
+            ANSIBLE_HOST_KEY_CHECKING: "False"
+        restart: unless-stopped
