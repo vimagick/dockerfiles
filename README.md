@@ -3,13 +3,13 @@ dockerfiles
 
 A collection of delicious docker recipes.
 
-[![](https://travis-ci.org/vimagick/dockerfiles.svg)](https://travis-ci.org/vimagick/dockerfiles)
+[![Docker Auto Builds](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fapi.github.com%2Frepos%2Fvimagick%2Fdockerfiles%2Fcontents%2F.github%2Fworkflows&query=%24.length&style=for-the-badge&logo=docker&label=Docker%20Auto%20Builds)
+](https://hub.docker.com/u/easypi)
 
 - :octocat: <https://github.com/vimagick/dockerfiles>
 - :beetle: <https://github.com/vimagick/dockerfiles/issues>
 - :book: <https://github.com/vimagick/dockerfiles/wiki>
-- :whale: <https://hub.docker.com/u/vimagick/> (x86)
-- :whale: <https://hub.docker.com/u/easypi/> (arm)
+- :whale: <https://hub.docker.com/u/easypi/> (arm64+arm64)
 
 ## Affiliates
 
