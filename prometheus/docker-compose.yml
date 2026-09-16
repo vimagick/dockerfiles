@@ -3,7 +3,7 @@ version: "3.8"
 services:
 
   prometheus:
-    image: prom/prometheus:v2.47.2
+    image: prom/prometheus:v3.14.0
     command:
       - "--config.file=/etc/prometheus/prometheus.yml"
       - "--storage.tsdb.path=/var/lib/prometheus"
@@ -20,7 +20,7 @@ services:
     restart: unless-stopped
 
   alertmanager:
-    image: prom/alertmanager:v0.26.0
+    image: prom/alertmanager:v0.34.0
     command:
       - "--config.file=/etc/alertmanager/alertmanager.yml"
       - "--storage.path=/var/lib/alertmanager"
