@@ -1,5 +1,5 @@
 #
-# Dockerfile for vnstat
+# Dockerfile for vnstat (deprecated)
 #
 
 FROM debian:jessie

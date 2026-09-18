@@ -1,6 +1,27 @@
-vnstat:
-  image: vimagick/vnstat
-  volumes:
-    - ./data:/var/lib/vnstat
-  net: host
-  restart: always
+#
+# - https://humdi.net/vnstat/man/vnstat.conf.html
+# - https://github.com/vergoh/vnstat-docker/blob/master/start.sh
+#
+
+services:
+  vnstat:
+    image: vergoh/vnstat:2.13
+    volumes:
+      - ./data:/var/lib/vnstat
+    environment:
+      - TZ=UTC
+      - HTTP_PORT=8685
+      - HTTP_BIND=127.0.0.1
+      - HTTP_LOG=/dev/stdout
+      - LARGE_FONTS=1
+      - CACHE_TIME=1
+      - DARK_MODE=0
+      - PAGE_REFRESH=0
+      - INDEX_IMAGES_PER_ROW=1
+      - INDEX_IMAGE_OUTPUT=hs
+      - VNSTAT_RateUnit=1
+      - VNSTAT_InterfaceOrder=0
+      - VNSTAT_QueryMode=0
+      - EXCLUDE_PATTERN=^(docker|br-|veth)
+    network_mode: "host"
+    restart: unless-stopped
