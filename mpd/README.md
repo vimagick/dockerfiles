@@ -5,17 +5,14 @@ Music Player Daemon
 for playing music. Through plugins and libraries it can play a variety of sound
 files while being controlled by its network protocol.
 
-:+1: [easypi/mpd-arm][2] works on Raspberry Pi very well.
+:+1: [easypi/mpd][2] works on Raspberry Pi very well.
 
 ## docker-compose.yml
 
 ```yaml
-version: "3.8"
-
 services:
-
   mpd:
-    image: vimagick/mpd
+    image: easypi/mpd
     ports:
       - "6600:6600"
       - "8800:8800"
@@ -94,4 +91,4 @@ Streaming port: 8800
 - <https://www.musicpd.org/doc/user/input_plugins.html>
 
 [1]: https://www.musicpd.org/
-[2]: https://hub.docker.com/r/easypi/mpd-arm/
+[2]: https://hub.docker.com/r/easypi/mpd/
