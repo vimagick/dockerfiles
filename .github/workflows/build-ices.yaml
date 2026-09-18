@@ -1,4 +1,4 @@
-name: Build ices
+name: Build IceS
 
 on:
   workflow_dispatch:

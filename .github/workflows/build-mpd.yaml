@@ -1,4 +1,4 @@
-name: Build mpd
+name: Build MPD
 
 on:
   workflow_dispatch:

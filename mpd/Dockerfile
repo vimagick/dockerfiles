@@ -8,7 +8,6 @@ MAINTAINER EasyPi Software Foundation
 RUN set -xe \
     && apk add --no-cache mpd mpc ncmpc ncmpcpp libcap \
     && setcap -r /usr/bin/mpd || true \
-    && mpd --version \
     && apk del libcap
 
 VOLUME /var/lib/mpd
