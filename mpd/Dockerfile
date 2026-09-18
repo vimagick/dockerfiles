@@ -6,8 +6,10 @@ FROM alpine:3.24
 MAINTAINER EasyPi Software Foundation
 
 RUN set -xe \
-    && apk add --no-cache mpd mpc ncmpc ncmpcpp \
-    && setcap -r /usr/bin/mpd
+    && apk add --no-cache mpd mpc ncmpc ncmpcpp libcap \
+    && setcap -r /usr/bin/mpd \
+    && mpd --version \
+    && apk del libcap
 
 VOLUME /var/lib/mpd
 
