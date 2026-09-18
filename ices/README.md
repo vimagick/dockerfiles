@@ -19,12 +19,10 @@ docker-compose.yml
 ------------------
 
 ```yaml
-version: "3.8"
-
 services:
 
   ices:
-    image: vimagick/ices
+    image: easypi/ices
     volumes:
       - ./data:/etc/ices
     devices:
@@ -34,7 +32,7 @@ services:
     restart: unless-stopped
   
   icecast:
-    image: vimagick/icecast
+    image: easypi/icecast
     ports:
       - "8000:8000"
     restart: unless-stopped
