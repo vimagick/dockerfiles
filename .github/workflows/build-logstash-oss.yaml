@@ -27,3 +27,5 @@ jobs:
           image_name: 'easypi/logstash-oss'
           version_arg: 'LOGSTASH_OSS_VERSION'
           version_value: '9.5.4'
+          other_build_args: |
+            LOGSTASH_OUTPUT_OPENSEARCH_VERSION=2.1.1

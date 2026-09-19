@@ -6,6 +6,7 @@
 #
 
 ARG LOGSTASH_OSS_VERSION
+ARG LOGSTASH_OUTPUT_OPENSEARCH_VERSION
 FROM docker.elastic.co/logstash/logstash-oss:${LOGSTASH_OSS_VERSION}
 USER logstash
-RUN /usr/share/logstash/bin/logstash-plugin install logstash-output-opensearch
+RUN /usr/share/logstash/bin/logstash-plugin install --version ${LOGSTASH_OUTPUT_OPENSEARCH_VERSION} logstash-output-opensearch
