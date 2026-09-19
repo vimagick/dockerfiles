@@ -1,21 +1,13 @@
-version: "3.8"
 services:
   dnsmonster:
-    image: vimagick/dnsmonster
+    image: ghcr.io/mosajjal/dnsmonster:v1.2.5
     volumes:
-      - ./data:/data
+      - ./data/etc:/etc/dnsmonster
+      - ./data/var:/var/log/dnsmonster
     environment:
-      - DNSMONSTER_CONFIG=dnsmonster.ini
-      - DNSMONSTER_SKIPDOMAINSFILE=skipdomains.csv
-      - DNSMONSTER_SKIPDOMAINSREFRESHINTERVAL=1m0s
-      - DNSMONSTER_FILEOUTPUTTYPE=2
-      - DNSMONSTER_FILEOUTPUTFORMAT=json
-      - DNSMONSTER_FILEOUTPUTROTATECOUNT=0
-      - DNSMONSTER_FILEOUTPUTPATH=dnsmonster.jsonl
-    working_dir: /data
-    network_mode: host
+      - PUID=1000
+      - PGID=1000
     cap_add:
       - NET_ADMIN
-      - NET_RAW
-    privileged: true
+    network_mode: host
     restart: unless-stopped

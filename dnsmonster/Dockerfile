@@ -1,5 +1,5 @@
 #
-# Dockerfile for dnsmonster
+# Dockerfile for dnsmonster (deprecated)
 #
 
 FROM alpine:3
