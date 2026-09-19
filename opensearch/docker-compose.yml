@@ -1,13 +1,12 @@
 #
-# https://opensearch.org/docs/latest/install-and-configure/install-opensearch/docker/
+# - https://opensearch.org/docs/latest/install-and-configure/install-opensearch/docker/
+# - https://www.docker.elastic.co/r/logstash/logstash-oss
 #
-
-version: "3.8"
 
 services:
 
   opensearch-node1:
-    image: opensearchproject/opensearch:2
+    image: opensearchproject/opensearch:3.8
     container_name: opensearch-node1
     ports:
       - "9201:9200"
@@ -15,14 +14,14 @@ services:
     volumes:
       - ./data/node1:/usr/share/opensearch/data
     environment:
-      - cluster.name=opensearch-cluster
-      - node.name=opensearch-node1
-      - discovery.seed_hosts=opensearch-node1,opensearch-node2
-      - cluster.initial_master_nodes=opensearch-node1,opensearch-node2
-      - bootstrap.memory_lock=true
-      - DISABLE_SECURITY_PLUGIN=true
-      - OPENSEARCH_JAVA_OPTS=-Xms512m -Xmx512m
-      - OPENSEARCH_INITIAL_ADMIN_PASSWORD=admin
+      cluster.name: opensearch-cluster
+      node.name: opensearch-node1
+      discovery.seed_hosts: "opensearch-node1,opensearch-node2"
+      cluster.initial_master_nodes: "opensearch-node1,opensearch-node2"
+      bootstrap.memory_lock: "true"
+      DISABLE_SECURITY_PLUGIN: "true"
+      DISABLE_INSTALL_DEMO_CONFIG: "true"
+      OPENSEARCH_JAVA_OPTS: "-Xms512m -Xmx512m"
     ulimits:
       memlock:
         soft: -1
@@ -33,7 +32,7 @@ services:
     restart: unless-stopped
 
   opensearch-node2:
-    image: opensearchproject/opensearch:2
+    image: opensearchproject/opensearch:3.8
     container_name: opensearch-node2
     ports:
       - "9202:9200"
@@ -41,14 +40,14 @@ services:
     volumes:
       - ./data/node2:/usr/share/opensearch/data
     environment:
-      - cluster.name=opensearch-cluster
-      - node.name=opensearch-node2
-      - discovery.seed_hosts=opensearch-node1,opensearch-node2
-      - cluster.initial_master_nodes=opensearch-node1,opensearch-node2
-      - bootstrap.memory_lock=true
-      - DISABLE_SECURITY_PLUGIN=true
-      - OPENSEARCH_JAVA_OPTS=-Xms512m -Xmx512m
-      - OPENSEARCH_INITIAL_ADMIN_PASSWORD=admin
+      cluster.name: opensearch-cluster
+      node.name: opensearch-node2
+      discovery.seed_hosts: "opensearch-node1,opensearch-node2"
+      cluster.initial_master_nodes: "opensearch-node1,opensearch-node2"
+      bootstrap.memory_lock: "true"
+      DISABLE_SECURITY_PLUGIN: "true"
+      DISABLE_INSTALL_DEMO_CONFIG: "true"
+      OPENSEARCH_JAVA_OPTS: "-Xms512m -Xmx512m"
     ulimits:
       memlock:
         soft: -1
@@ -59,12 +58,29 @@ services:
     restart: unless-stopped
 
   opensearch-dashboards:
-    image: opensearchproject/opensearch-dashboards:2
+    image: opensearchproject/opensearch-dashboards:3.8
     container_name: opensearch-dashboards
     ports:
       - "5601:5601"
     environment:
       OPENSEARCH_HOSTS: '["http://opensearch-node1:9200","http://opensearch-node2:9200"]'
+      DISABLE_SECURITY_DASHBOARDS_PLUGIN: "true"
+    depends_on:
+      - opensearch-node1
+      - opensearch-node2
+    restart: unless-stopped
+
+  logstash:
+    image: docker.elastic.co/logstash/logstash-oss:9.5.4
+    container_name: logstash
+    ports:
+      - "5044:5044"
+      - "9600:9600"
+    volumes:
+      - ./data/logstash/pipeline:/usr/share/logstash/pipeline:ro
+      - ./data/logstash/config/logstash.yml:/usr/share/logstash/config/logstash.yml:ro
+    environment:
+      LS_JAVA_OPTS: "-Xms256m -Xmx256m"
     depends_on:
       - opensearch-node1
       - opensearch-node2

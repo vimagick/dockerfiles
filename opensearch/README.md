@@ -8,9 +8,9 @@ analyze data.
 ```bash
 $ docker compose up -d
 
-$ curl -u admin:admin http://localhost:9200
+$ curl http://localhost:9200
 
-$ curl -u admin:admin http://localhost:9200/_cat/plugins?v
+$ curl http://localhost:9200/_cat/plugins?v
 ```
 
 [1]: https://opensearch.org/
