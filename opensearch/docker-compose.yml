@@ -71,14 +71,14 @@ services:
     restart: unless-stopped
 
   logstash:
-    image: docker.elastic.co/logstash/logstash-oss:9.5.4
+    image: easypi/logstash-oss:9.5.4
     container_name: logstash
     ports:
       - "5044:5044"
       - "9600:9600"
     volumes:
+      - ./data/logstash/config/pipelines.yml:/usr/share/logstash/config/pipelines.yml:ro
       - ./data/logstash/pipeline:/usr/share/logstash/pipeline:ro
-      - ./data/logstash/config/logstash.yml:/usr/share/logstash/config/logstash.yml:ro
     environment:
       LS_JAVA_OPTS: "-Xms256m -Xmx256m"
     depends_on:
