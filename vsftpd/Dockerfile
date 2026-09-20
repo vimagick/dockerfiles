@@ -15,6 +15,7 @@ RUN set -xe \
         && cd pam_pwdfile \
         && curl -sSL https://github.com/tiwe-de/libpam-pwdfile/archive/v1.0.tar.gz | tar xz --strip 1 \
         && make install \
+        && ln -sf /lib/security/pam_pwdfile.so /usr/lib/security/pam_pwdfile.so \
         && cd .. \
         && rm -rf pam_pwdfile \
     && apk del build-base \
@@ -23,7 +24,7 @@ RUN set -xe \
                tar \
     && passwd -l root \
     && adduser -D virtual \
-    && mkdir -m 755 -p /var/lib/ftp \
+    && mkdir -m 755 -p /var/lib/ftp /var/log/vsftpd \
     && rm -rf /var/cache/apk/*
 
 EXPOSE 21

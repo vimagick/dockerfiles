@@ -89,9 +89,14 @@ $ mkdir -p data/{etc,var/{ftp,home}}
 $ openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout data/etc/vsftpd.pem -out data/etc/vsftpd.pem
 $ echo "tom:$(openssl passwd -1 secret)" >> data/etc/passwd
 $ echo "ftp's home" > ./data/var/ftp/README
+
+$ docker compose run --rm vsftpd sh
+>>> chown -R root:root /var/lib/ftp /etc/vsftpd /home
+>>> chmod 600 /etc/vsftpd/passwd
+>>> exit
+
 $ docker compose up -d
 $ docker compose exec vsftpd sh
->>> chown root:root /var/lib/ftp /home
 >>>
 >>> adduser kev
 Changing password for kev
@@ -99,10 +104,17 @@ New password: ******
 Retype password: ******
 >>> echo "kev's home" > ~kev/README
 >>>
+>>> id virtual
+uid=1000(virtual) gid=1000(virtual) groups=1000(virtual)
 >>> mkdir -p ~virtual/tom
 >>> echo "tom's home" > ~virtual/tom/README
->>> chown -R virutal:virtual ~virtual
->>>
+>>> chown -R virtual:virtual ~virtual
+>>> tree /home
+├── kev
+│   └── README
+└── virtual
+    └── tom
+        └── README
 >>> exit
 ```
 
@@ -117,7 +129,7 @@ You can login as `kev`(local user), `tom`(virtual user) or `ftp`(anonymous user)
 $ ftp my-ftp-server
 Connected to my-ftp-server.
 220 Welcome to VSFTPD service.
-Name (my-ftp-server:kev): ftp
+Name (my-ftp-server:(none)): ftp    # <= ftp is anonymous user
 230 Login successful.
 Remote system type is UNIX.
 Using binary mode to transfer files.
@@ -138,6 +150,19 @@ Permission denied.
 
 ftp> bye
 ```
+
+```bash
+$ lftp 
+lftp> set ftp:ssl-allow off
+lftp> open my-ftp-server
+lftp> user ftp
+Password:  <= no password here, just press enter
+lftp> ls
+lftp> bye
+```
+
+> [!Note]
+> Anonymous sessions may not use encryption
 
 Only local user or virtual user can upload file.
 
