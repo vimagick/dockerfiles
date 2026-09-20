@@ -1,8 +1,15 @@
-vsftpd:
-  image: vimagick/vsftpd
-  net: host
-  volumes:
-    - ./vsftpd:/etc/vsftpd
-    - ./ftp:/var/lib/ftp
-  privileged: true
-  restart: always
+services:
+  vsftpd:
+    image: easypi/vsftpd
+    # ports:
+    #   - "20:20"
+    #   - "21:21"
+    #   - "30000-30010:30000-30010"
+    volumes:
+      - ./data/etc:/etc/vsftpd
+      - ./data/etc/pam.d/vsftpd:/etc/pam.d/vsftpd
+      - ./data/var/ftp:/var/lib/ftp
+      - ./data/var/home:/home
+    network_mode: host
+    privileged: true
+    restart: unless-stopped

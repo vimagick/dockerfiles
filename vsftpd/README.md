@@ -9,17 +9,20 @@ It is secure and extremely fast. It is stable. Don't take my word for it, though
 ```
 ~/fig/vsftpd/
 ├── docker-compose.yml
-├── ftp/
-│   └── README
-├── pam.d/
-│   └── vsftpd          => For Virutal User
-└── vsftpd/
-    ├── passwd          => For Virtual User
-    ├── vsftpd.conf
-    └── vsftpd.pem      => For SSL
+└── data/
+    ├── var/
+    │   ├── home            => For Local/Virtual Users
+    │   └── ftp             => For Anonymous Users
+    └── etc/
+        ├── pam.d/
+        │   └── vsftpd      => For Virutal Users
+        ├── passwd          => For Virtual Users
+        ├── vsftpd.conf
+        └── vsftpd.pem      => For SSL
 ```
 
-## vsftpd/vsftpd.conf
+<details>
+<summary>./data/etc/vsftpd.conf</summary>
 
 ```bash
 # DEFAULT SETTINGS
@@ -33,7 +36,7 @@ listen=YES
 local_enable=YES
 no_anon_password=YES
 pasv_addr_resolve=YES
-pasv_address=my-ftp-server # <== PLEASE CHANGE THIS
+pasv_address=ftp.easypi.duckdns.org    # <== PLEASE CHANGE THIS
 pasv_enable=YES
 pasv_max_port=30010
 pasv_min_port=30000
@@ -43,70 +46,60 @@ write_enable=YES
 xferlog_enable=YES
 
 # VIRTUAL USER SETTINGS
-#guest_enable=YES
-#guest_username=virtual
-#local_root=/home/virtual/$USER
-#pam_service_name=vsftpd
-#user_sub_token=$USER
-#virtual_use_local_privs=YES
+guest_enable=YES
+guest_username=virtual
+local_root=/home/virtual/$USER
+pam_service_name=vsftpd
+user_sub_token=$USER
+virtual_use_local_privs=YES
 
 # SSL SETTINGS
-#force_local_data_ssl=YES
-#force_local_logins_ssl=YES
-#rsa_cert_file=/etc/vsftpd/vsftpd.pem
-#rsa_private_key_file=/etc/vsftpd/vsftpd.pem
-#ssl_enable=YES
+force_local_data_ssl=YES
+force_local_logins_ssl=YES
+rsa_cert_file=/etc/vsftpd/vsftpd.pem
+rsa_private_key_file=/etc/vsftpd/vsftpd.pem
+ssl_enable=YES
 ```
 
-> Please set `pasv_address` to your ftp server.
+> [!Note]
+> Please set `pasv_address` to the domain name of your ftp server.
 
-## pam.d/vsftpd
+</details>
+
+<details>
+<summary>./data/etc/pam.d/vsftpd</summary>
 
 ```
 auth required pam_pwdfile.so pwdfile=/etc/vsftpd/passwd
 account required pam_permit.so
 ```
+</details>
 
 ## docker-compose.yml
 
-```yaml
-vsftpd:
-  image: vimagick/vsftpd
-  net: host
-# ports:
-#   - "20:20"
-#   - "21:21"
-#   - "30000-30010:30000-30010"
-  volumes:
-    - ./vsftpd:/etc/vsftpd
-    - ./ftp:/var/lib/ftp
-#   - ./pam.d/vsftpd:/etc/pam.d/vsftpd
-#   - ./virtual:/home/virtual
-  privileged: true
-  restart: always
-```
-
-> You can use `ports` instead of `net: host`.
+> [!Tip]
+> You can use `ports` instead of `network_mode: host`.
 > Make sure these ports are allowed by firewall.
 
 ## Server
 
 ```bash
 $ cd ~/fig/vsftpd/
-$ openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout vsftpd/vsftpd.pem -out vsftpd/vsftpd.pem
-$ echo "tom:$(openssl passwd -1 uzia9Tu6)" >> vsftpd/passwd
-$ echo "ftp's home" > ./ftp/README
-$ docker-compose up -d
-$ docker exec -it vsftpd_vsftpd_1 sh
+$ mkdir -p data/{etc,var/{ftp,home}}
+$ openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout data/etc/vsftpd.pem -out data/etc/vsftpd.pem
+$ echo "tom:$(openssl passwd -1 secret)" >> data/etc/passwd
+$ echo "ftp's home" > ./data/var/ftp/README
+$ docker compose up -d
+$ docker compose exec vsftpd sh
+>>> chown root:root /var/lib/ftp /home
 >>>
 >>> adduser kev
 Changing password for kev
 New password: ******
 Retype password: ******
-Password for kev changed by root
 >>> echo "kev's home" > ~kev/README
 >>>
->>> mkdir ~virtual/tom
+>>> mkdir -p ~virtual/tom
 >>> echo "tom's home" > ~virtual/tom/README
 >>> chown -R virutal:virtual ~virtual
 >>>
