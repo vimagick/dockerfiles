@@ -1,2 +1,7 @@
-auth required pam_pwdfile.so pwdfile=/etc/vsftpd/passwd
-account required pam_permit.so
+# ONLY VIRTUAL USERS ARE ALLOWED
+#auth required pam_pwdfile.so pwdfile=/etc/vsftpd/passwd  crypt=crypt
+#account required pam_permit.so
+
+auth    sufficient  pam_pwdfile.so pwdfile=/etc/vsftpd/passwd crypt=crypt
+auth    required    pam_unix.so
+account required    pam_permit.so

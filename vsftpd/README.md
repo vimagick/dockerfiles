@@ -162,9 +162,9 @@ lftp> bye
 ```
 
 > [!Note]
-> Anonymous sessions may not use encryption
+> Anonymous sessions may not use encryption (allow_anon_ssl=NO)
 
-Only local user or virtual user can upload file.
+Only local user or virtual user can upload/delete file.
 
 ```bash
 $ lftp
@@ -176,6 +176,9 @@ lftp root@my-ftp-server:~> ls
 -rw-------    1 0        0             337 Jan 31 16:26 README.md
 lftp root@my-ftp-server:~> bye
 ```
+
+> [!Caution]
+> System user got an error: Fatal error: gnutls_record_recv: An unexpected TLS packet was received.
 
 [1]: https://security.appspot.com/vsftpd.html
 [2]: http://vsftpd.beasts.org/vsftpd_conf.html
