@@ -1,28 +1,61 @@
-version: '3.8'
+x-yourls-image: &yourls-image yourls:1.10-fpm-alpine
 
 services:
 
+  init:
+    image: *yourls-image
+    volumes:
+      - ./data/yourls:/data
+    entrypoint: /bin/sh
+    command:
+      - -c
+      - |
+        if [ -z "$(ls -A /data 2>/dev/null)" ]; then
+          echo 'Initializing /data from image...'
+          cp -a /var/www/html/. /data/
+          chown -R 1000:1000 /data || true
+        else
+          echo '/data is not empty, skipping initialization.'
+        fi
+
   yourls:
-    image: yourls:1.9
+    image: *yourls-image
+    environment:
+      YOURLS_DB_HOST: mysql
+      YOURLS_DB_USER: yourls
+      YOURLS_DB_PASS: yourls
+      YOURLS_DB_NAME: yourls
+      YOURLS_SITE: https://yourls.easypi.duckdns.org
+      YOURLS_USER: admin
+      YOURLS_PASS: admin
+    volumes:
+      - ./data/yourls:/var/www/html
+    depends_on:
+      init:
+        condition: service_completed_successfully
+      mysql:
+        condition: service_started
+    restart: unless-stopped
+
+  nginx:
+    image: nginx:1.31-alpine
     ports:
       - "8080:80"
-    environment:
-      - YOURLS_DB_HOST=mysql
-      - YOURLS_DB_USER=root
-      - YOURLS_DB_PASS=root
-      - YOURLS_DB_NAME=yourls
-      - YOURLS_USER=admin
-      - YOURLS_PASS=admin
-      - YOURLS_SITE=https://yourls.easypi.pro
+    volumes:
+      - ./data/yourls:/var/www/html:ro
+      - ./data/nginx:/etc/nginx/conf.d:ro
     depends_on:
-      - mysql
+      yourls:
+        condition: service_started
     restart: unless-stopped
 
   mysql:
-    image: mysql:5.7
-    volumes:
-      - ./data:/var/lib/mysql
+    image: mysql:9.7
     environment:
-      - MYSQL_ROOT_PASSWORD=root
-      - MYSQL_DATABASE=yourls
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: yourls
+      MYSQL_USER: yourls
+      MYSQL_PASSWORD: yourls
+    volumes:
+      - ./data/mysql:/var/lib/mysql
     restart: unless-stopped
