@@ -97,29 +97,34 @@ $ docker compose run --rm vsftpd sh
 
 $ docker compose up -d
 $ docker compose exec vsftpd sh
->>>
->>> adduser kev
+
+>>> # local user is only for auth, it will also chroot to ~virtual/$USER
+>>> adduser -h ~virtual/kev kev
 Changing password for kev
 New password: ******
 Retype password: ******
 >>> echo "kev's home" > ~kev/README
->>>
+
 >>> id virtual
 uid=1000(virtual) gid=1000(virtual) groups=1000(virtual)
 >>> mkdir -p ~virtual/tom
 >>> echo "tom's home" > ~virtual/tom/README
+
+>>> # do it for local&virtual users
 >>> chown -R virtual:virtual ~virtual
 >>> tree /home
-├── kev
-│   └── README
 └── virtual
+    ├── kev
+    │   └── README
     └── tom
         └── README
 >>> exit
 ```
 
+> [!Note]
 > I added a local user called `kev`, a virtual user called `tom` here.  
 > You can edit [/etc/vsftpd/vsftpd.conf][2] to enable more [functions][3].
+
 
 ## Client
 
@@ -151,6 +156,14 @@ Permission denied.
 ftp> bye
 ```
 
+> [!Caution]
+> Local user `kev` can login, but cannot do anything else:  
+> Fatal error: gnutls_record_recv: An unexpected TLS packet was received.
+>> `sudo strace -f -s 200 -e trace=read,write -p $(pidof vsftpd)`  
+>> It shows that local user is acting like virtual, it cannot chroot to `/home/virtual/kev` :cry:  
+>> You need to move `/home/kev` to `/home/virtual/kev` (`chown virtual:virtual`)  
+>> To make life easier, just use virtual users only!
+
 ```bash
 $ lftp 
 lftp> set ftp:ssl-allow off
@@ -176,9 +189,6 @@ lftp root@my-ftp-server:~> ls
 -rw-------    1 0        0             337 Jan 31 16:26 README.md
 lftp root@my-ftp-server:~> bye
 ```
-
-> [!Caution]
-> System user got an error: Fatal error: gnutls_record_recv: An unexpected TLS packet was received.
 
 [1]: https://security.appspot.com/vsftpd.html
 [2]: http://vsftpd.beasts.org/vsftpd_conf.html
