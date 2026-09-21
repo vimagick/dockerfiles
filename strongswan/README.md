@@ -31,6 +31,13 @@ services:
     restart: unless-stopped
 ```
 
+| Variable           | Role                                     | Maps to                |
+| ------------------ | ---------------------------------------- | ---------------------- |
+| `VPN_DOMAIN`       | Server's public hostname / identity      | `leftid`               |
+| `VPN_NETWORK`      | Virtual IP pool for clients              | `rightsourceip`        |
+| `LAN_NETWORK`      | Real LAN reachable via tunnel            | `rightsubnets`         |
+| `VPN_P12_PASSWORD` | Password for the client `.p12` bundle    | (client import only)   |
+
 ### up and running
 
 ```bash
