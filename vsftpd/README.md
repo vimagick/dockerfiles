@@ -11,7 +11,8 @@ It is secure and extremely fast. It is stable. Don't take my word for it, though
 ├── docker-compose.yml
 └── data/
     ├── var/
-    │   ├── home            => For Local/Virtual Users
+    │   ├── home
+    │   │   └── virtual     => For Local/Virtual Users (chown -R virtual:virtual ~virtual)
     │   └── ftp             => For Anonymous Users
     └── etc/
         ├── pam.d/
