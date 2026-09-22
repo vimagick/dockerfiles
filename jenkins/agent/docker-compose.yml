@@ -1,4 +1,9 @@
-version: "3.8"
+#
+# https://github.com/jenkinsci/docker-agents/blob/master/alpine/Dockerfile
+# https://hub.docker.com/r/jenkins/inbound-agent/dockerfile
+# https://github.com/jenkinsci/docker-agents/blob/master/README_inbound-agent.md
+#
+
 services:
   agent:
     image: jenkins/inbound-agent:alpine-jdk21
@@ -8,9 +13,10 @@ services:
       - ./data:/home/jenkins
       - ./data/agent:/home/jenkins/agent
     environment:
-      - JENKINS_URL=http://jenkins.easypi.duckdns.org:8080
-      - JENKINS_SECRET=***************************
-      - JENKINS_AGENT_NAME=docker-inbound-agent
-      - JENKINS_AGENT_WORKDIR=/home/jenkins/agent
-      - TZ=Etc/UTC
+      JENKINS_URL: http://jenkins.easypi.duckdns.org:8080
+      JENKINS_SECRET: "***************************"
+      JENKINS_AGENT_NAME: docker-inbound-agent
+      JENKINS_AGENT_WORKDIR: /home/jenkins/agent
+      JENKINS_JAVA_OPTS: "-Xms512m -Xmx1024m"
+      TZ: Etc/UTC
     restart: unless-stopped

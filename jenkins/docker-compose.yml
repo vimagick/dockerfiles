@@ -1,4 +1,7 @@
-version: "3.8"
+#
+# https://github.com/jenkinsci/docker/blob/master/alpine/hotspot/Dockerfile
+#
+
 services:
   jenkins:
     image: jenkins/jenkins:lts-alpine-jdk21
@@ -8,5 +11,5 @@ services:
     volumes:
       - ./data:/var/jenkins_home
     environment:
-      - JAVA_OPTS=-Dhudson.footerURL=http://jenkins.easypi.duckdns.org
+      JENKINS_JAVA_OPTS: "-Xms1g -Xmx2g -Duser.timezone=UTC -Dhudson.footerURL=http://jenkins.easypi.duckdns.org:8080"
     restart: unless-stopped
