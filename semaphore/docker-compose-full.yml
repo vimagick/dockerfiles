@@ -1,20 +1,20 @@
 #
-# https://semaphoreui.com/install/docker/2_16
+# https://semaphoreui.com/install/docker/2_19/
+# https://github.com/docker-library/postgres/blob/master/18/alpine3.24/Dockerfile
 #
 
 services:
 
   semaphore:
-    image: semaphoreui/semaphore:v2.16.31
+    image: semaphoreui/semaphore:v2.19.14
     ports:
       - "3000:3000"
     volumes:
-      #- ./data:/var/lib/semaphore
-      - ./data:/etc/semaphore
+      - ./data/semaphore/etc:/etc/semaphore
+      - ./data/semaphore/var:/var/lib/semaphore
+      - ./data/semaphore/tmp:/tmp/semaphore
     environment:
       ANSIBLE_HOST_KEY_CHECKING: "False"
-      #SEMAPHORE_DB_DIALECT: bolt
-      #SEMAPHORE_DB_PATH: /var/lib/semaphore
       SEMAPHORE_DB_DIALECT: postgres
       SEMAPHORE_DB_HOST: postgres
       SEMAPHORE_DB_PORT: 5432
@@ -39,21 +39,25 @@ services:
     restart: unless-stopped
 
   runner:
-    image: semaphoreui/semaphore-runner:v2.16.31
+    image: semaphoreui/semaphore-runner:v2.19.14
     volumes:
-      - ./data/var:/var/lib/semaphore
-      - ./data/etc:/etc/semaphore
-      - ./data/tmp:/tmp/semaphore
+      - ./data/runner/etc:/etc/semaphore
+      - ./data/runner/var:/var/lib/semaphore
+      - ./data/runner/tmp:/tmp/semaphore
     environment:
       ANSIBLE_HOST_KEY_CHECKING: "False"
+      SEMAPHORE_WEB_ROOT: "https://semaphore.example.com"
+      SEMAPHORE_RUNNER_REGISTRATION_TOKEN: "********************************************"
+      SEMAPHORE_RUNNER_PRIVATE_KEY_FILE: /var/lib/semaphore/runner.key
+      SEMAPHORE_RUNNER_CHECK_INTERVAL_SECONDS: 5
     restart: unless-stopped
 
   postgres:
-    image: postgres:17-alpine
+    image: postgres:18-alpine
     ports:
       - "5432:5432"
     volumes:
-      - ./data/postgres:/var/lib/postgresql/data
+      - ./data/postgres:/var/lib/postgresql
     environment:
       POSTGRES_USER: semaphore
       POSTGRES_PASSWORD: semaphore

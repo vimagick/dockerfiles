@@ -14,7 +14,8 @@ services:
             - ./data/tmp:/tmp/semaphore
         environment:
             SEMAPHORE_DB_DIALECT: sqlite
-            SEMAPHORE_DB: /etc/semaphore/semaphore.db
+            SEMAPHORE_DB_PATH: /var/lib/semaphore/
+            # SEMAPHORE_DB: /var/lib/semaphore/semaphore.db # IT DOES NOT WORK
             SEMAPHORE_ADMIN: admin
             SEMAPHORE_ADMIN_PASSWORD: admin
             SEMAPHORE_ADMIN_NAME: admin

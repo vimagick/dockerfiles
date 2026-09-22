@@ -3,6 +3,11 @@
 # https://docs.semui.co/administration-guide/api
 #
 
+echo "This script is outdated and will be removed in the future."
+echo "Please use the semaphore webui to generate a token instead."
+
+exit 1
+
 set -euo pipefail
 
 API_ENDPOINT=http://192.168.1.100:3000
