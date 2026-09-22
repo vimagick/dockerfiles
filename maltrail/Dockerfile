@@ -1,5 +1,5 @@
 #
-# Dockerfile for maltrail
+# Dockerfile for maltrail (deprecated, use ghcr.io/stamparm/maltrail instead)
 #
 
 FROM debian:12

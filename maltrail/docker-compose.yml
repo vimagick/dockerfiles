@@ -1,23 +1,33 @@
-version: "3.8"
+#
+# https://github.com/stamparm/maltrail/blob/master/docker/docker-compose.yml
+#
 
 services:
 
-  maltrail-server:
-    image: vimagick/maltrail
-    command: ./server.py -c etc/maltrail.conf
+  server:
+    image: ghcr.io/stamparm/maltrail:3.4
+    ports:
+      - "8338:8338/tcp"
+      - "8337:8337/udp"
     volumes:
-      - ./data/etc:/opt/maltrail/etc
-      - ./data/server/log:/opt/maltrail/log
-    network_mode: host
+      - /etc/localtime:/etc/localtime:ro
+      - ./data/etc:/opt/maltrail/etc:ro
+      - ./data/log:/var/log/maltrail
+      - ./data/var:/var/lib/maltrail
     restart: unless-stopped
 
-  maltrail-sensor:
-    image: vimagick/maltrail
-    command: ./sensor.py -c etc/maltrail.conf
+  sensor:
+    image: ghcr.io/stamparm/maltrail:3.4
+    command: ["maltrail-sensor"]
     volumes:
-      - ./data/etc:/opt/maltrail/etc
-      - ./data/sensor/log:/opt/maltrail/log
+      - /etc/localtime:/etc/localtime:ro
+      - ./data/etc:/opt/maltrail/etc:ro
+      - ./data/log:/var/log/maltrail
+      - ./data/var:/var/lib/maltrail
     network_mode: host
+    cap_add:
+      - NET_RAW
+      - NET_ADMIN
     depends_on:
-      - maltrail-server
+      - server
     restart: unless-stopped
