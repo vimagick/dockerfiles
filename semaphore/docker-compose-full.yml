@@ -33,6 +33,9 @@ services:
       SEMAPHORE_SLACK_URL: "https://hooks.slack.com/services/T00000000/B00000000/XXXXXXXXXXXXXXXXXXXXXXXX"
       SEMAPHORE_USE_REMOTE_RUNNER: "True"
       SEMAPHORE_RUNNER_REGISTRATION_TOKEN: "********************************************"
+      SEMAPHORE_METRICS_ENABLED: "True"
+      SEMAPHORE_METRICS_USERNAME: prometheus
+      SEMAPHORE_METRICS_PASSWORD: changeme
     working_dir: /etc/semaphore
     depends_on:
       - postgres
@@ -50,6 +53,8 @@ services:
       SEMAPHORE_RUNNER_REGISTRATION_TOKEN: "********************************************"
       SEMAPHORE_RUNNER_PRIVATE_KEY_FILE: /var/lib/semaphore/runner.key
       SEMAPHORE_RUNNER_CHECK_INTERVAL_SECONDS: 5
+    depends_on:
+      - semaphore
     restart: unless-stopped
 
   postgres:

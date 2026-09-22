@@ -21,5 +21,6 @@ services:
             SEMAPHORE_ADMIN_NAME: admin
             SEMAPHORE_ADMIN_EMAIL: admin@localhost
             SEMAPHORE_SECRETS_PATH: /etc/semaphore/secrets
+            SEMAPHORE_MAX_TASKS_PER_TEMPLATE: 100
             ANSIBLE_HOST_KEY_CHECKING: "False"
         restart: unless-stopped
