@@ -41,16 +41,27 @@ $ mkdir -p data/{etc/conf.d,var,log}
 $ vim data/etc/squid.conf
 $ chmod -R 777 data
 
-$ docker-compose run --rm --entrypoint sh squid
+# setup cache dirs
+$ docker compose run --rm --entrypoint sh squid
 >>> id squid
 uid=31(squid) gid=31(squid) groups=31(squid),31(squid),101(winbind)
->>> squid -k parse
 >>> squid -z
 >>> exit
 
-$ docker-compose up -d
+$ docker compose up -d
 
+# verify config
+$ docker compose exec squid squid -k parse
+
+# reload config (method one)
+$ docker compose exec squid squid -k reconfigure
+# reload config (method two)
+$ docker compose kill -s HUP squid
+
+# cache files
 $ find data/var/ -type f
+
+# log files
 $ tail -f data/log/*.log
 ```
 
