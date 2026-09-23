@@ -1,7 +1,6 @@
-version: "3.8"
 services:
   tftpd:
-    image: vimagick/tftpd
+    image: easypi/tftpd
     volumes:
       - ./data:/data
     network_mode: host
