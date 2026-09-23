@@ -1,4 +1,4 @@
-name: Build microsocks
+name: Build MicroSocks
 
 on:
   workflow_dispatch:
@@ -25,5 +25,5 @@ jobs:
         with:
           context: 'microsocks'
           image_name: 'easypi/microsocks'
-          other_build_args: |
-            MICROSOCKS_VERSION=1.0.5
+          version_arg: 'MICROSOCKS_VERSION'
+          version_value: '1.0.5'
