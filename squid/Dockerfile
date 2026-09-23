@@ -14,5 +14,5 @@ EXPOSE 3128/tcp 3130/udp
 # -Y	        Only return UDP_HIT or UDP_MISS_NOFETCH during fast reload.
 # -C	        Do not catch fatal signals.
 # -d1	        Set debug level to 1. Minimal logging (level 1 = critical messages only).
-
-ENTRYPOINT ["/usr/sbin/squid", "--foreground", "-YCd1"]
+ENTRYPOINT ["/usr/sbin/squid"]
+CMD ["--foreground", "-YCd1"]

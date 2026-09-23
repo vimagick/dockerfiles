@@ -29,8 +29,9 @@ services:
 
 > [!Tip]
 > - You can mount custom config file as `/etc/squid/squid.conf`
+> - Do not mount entire `./data/etc`, since many files are required in `/etc/squid/`
+> - You need to at least create an empty `./data/etc/conf.d/dummy.conf`
 > - You need to run `squid -z` when `cache_dir ufs` is enabled
-> - Do not mount entire `./data/etc`, since many files in `/etc/squid/`
 
 ## Up and Running
 
@@ -41,13 +42,16 @@ $ mkdir -p data/{etc/conf.d,var,log}
 $ vim data/etc/squid.conf
 $ chmod -R 777 data
 
-# setup cache dirs
 $ docker compose run --rm --entrypoint sh squid
 >>> id squid
 uid=31(squid) gid=31(squid) groups=31(squid),31(squid),101(winbind)
->>> squid -z
+>>> squid -k parse
 >>> exit
 
+# init cache dir tree
+$ docker compose run --rm squid -z
+
+# start container
 $ docker compose up -d
 
 # verify config
@@ -65,8 +69,9 @@ $ find data/var/ -type f
 $ tail -f data/log/*.log
 ```
 
-> [!Note]
-> Files and directories should be accessable by `uid=31,gid=31`
+> [!Important]
+> - Files and directories should be accessable by `uid=31,gid=31`
+> - You need to restart container after editing `./data/etc/squid.conf` (see https://github.com/moby/moby/issues/15793)
 
 ### Client
 
