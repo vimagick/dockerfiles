@@ -6,7 +6,7 @@ FROM alpine:3.24
 
 MAINTAINER EasyPi Software Foundation
 
-RUN apk add --no-cache squid
+RUN apk add --no-cache squid && squid --version
 
 EXPOSE 3128/tcp 3130/udp
 
