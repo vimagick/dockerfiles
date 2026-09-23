@@ -1,7 +1,6 @@
-version: "3.8"
 services:
   squid:
-    image: vimagick/squid
+    image: easypi/squid
     ports:
       - "3128:3128/tcp"
       - "3130:3130/udp"

@@ -2,7 +2,7 @@
 # Dockerfile for squid
 #
 
-FROM alpine:3
+FROM alpine:3.24
 
 MAINTAINER EasyPi Software Foundation
 
