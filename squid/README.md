@@ -69,6 +69,12 @@ $ find data/var/ -type f
 $ tail -f data/log/*.log
 ```
 
+> [!Note]
+> Pre-defined ACL (Do not re-define them)
+> - acl all src 0.0.0.0/0
+> - acl localhost src 127.0.0.1/32
+> - acl to_localhost dst 127.0.0.0/8
+
 > [!Important]
 > - Files and directories should be accessable by `uid=31,gid=31`
 > - You need to restart container after editing `./data/etc/squid.conf` (see https://github.com/moby/moby/issues/15793)
