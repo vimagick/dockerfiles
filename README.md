@@ -19,6 +19,10 @@ A collection of delicious docker recipes.
 
 [![](https://www.vultr.com/media/banner_1.png)](https://www.vultr.com/?ref=6821947)
 
+
+<details>
+<summary>TL;DR: Image List</summary>
+
 ## Todo
 
 - [ ] caddy
@@ -582,6 +586,8 @@ A collection of delicious docker recipes.
 - [x] koenkk/zigbee2mqtt
 - [x] zookeeper
 - [x] elkozmon/zoonavigator
+
+</details>
 
 ## auto-completion
 
