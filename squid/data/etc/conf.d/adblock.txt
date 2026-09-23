@@ -1,0 +1,10 @@
+.doubleclick.net
+.googlesyndication.com
+.adservice.google.com
+.googleadservices.com
+.ads.yahoo.com
+.adnxs.com
+.criteo.com
+.taboola.com
+.outbrain.com
+.scorecardresearch.com
