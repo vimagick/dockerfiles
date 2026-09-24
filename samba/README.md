@@ -50,7 +50,7 @@ admin users = root
 
 ```bash
 $ cd ~/fig/samba
-$ mkdir -m 777 -p data/{etc,log,mnt,var}
+$ mkdir -m 777 -p data/{etc,log,mnt,var/private}
 $ touch data/mnt/README.txt
 $ docker compose up -d
 $ docker compose exec samba sh
@@ -60,6 +60,9 @@ New SMB password:******
 Retype new SMB password:******
 >>> exit
 ```
+
+> [!Tip]
+> Use your own mounting point for sharing (e.g., /mnt/usb)
 
 ## client
 
