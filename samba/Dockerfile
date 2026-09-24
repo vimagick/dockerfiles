@@ -2,12 +2,12 @@
 # Dockerfile for samba
 #
 
-FROM alpine
-MAINTAINER kev <noreply@easypi.pro>
+FROM alpine:3.24
+MAINTAINER EasyPi Software Foundation
 
 RUN apk add --no-cache samba-common-tools samba-server
 
-COPY ./data/smb.conf /etc/samba/
+COPY ./data/etc/smb.conf /etc/samba/
 
 VOLUME /etc/samba \
        /var/lib/samba

@@ -1,8 +1,11 @@
-samba:
-  image: vimagick/samba
-  volumes:
-    - ./data/smb.conf:/etc/samba/smb.conf
-    - ./share:/share
-  net: host
-  tty: yes
-  restart: always
+services:
+  samba:
+    image: easypi/samba
+    volumes:
+      - ./data/etc:/etc/samba
+      - ./data/var:/var/lib/samba
+      - ./data/mnt:/share
+    network_mode: host
+    stdin_open: true
+    tty: true
+    restart: unless-stopped
