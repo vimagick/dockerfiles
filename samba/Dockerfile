@@ -5,7 +5,8 @@
 FROM alpine:3.24
 MAINTAINER EasyPi Software Foundation
 
-RUN apk add --no-cache samba-common-tools samba-server
+RUN apk add --no-cache samba-common-tools samba-server \
+ && addgroup -S -g 999 sambashare
 
 VOLUME /etc/samba \
        /var/lib/samba

@@ -58,9 +58,21 @@ $ docker compose exec samba sh
 >>> smbpasswd -a root
 New SMB password:******
 Retype new SMB password:******
+Added user root.
+
+>>> adduser -S -D -H -s /sbin/nologin kev
+>>> smbpasswd -a kev
+New SMB password:******
+Retype new SMB password:******
+Added user kev.
+>>> smbpasswd -x kev
+Deleted user kev.
+
 >>> smbstatus
 >>> smbcontrol smbd close-share "*"
 >>> smbcontrol smbd kill-client-ip x.x.x.x
+>>> ls -ld /share
+drwxrwxrwx 3 1000 1000 /share
 >>> exit
 ```
 
@@ -82,6 +94,14 @@ $ mount_smbfs //guest@easypi/share /Volumes/share
 $ umount /Volumes/share
 ```
 
-> `root` user can read and write, `guest` user read-only.
+> `root` user can read and write, `guest` has the same perm as nobody
+
+## client (windows)
+
+[Enable insecure guest logons](https://learn.microsoft.com/en-us/windows-server/storage/file-server/enable-insecure-guest-logons-smb2-and-smb3?tabs=group-policy#enable-insecure-guest-logons)
+
+- Select Start, type `gpedit.msc`, and select Edit group policy.
+- In the left pane under Local Computer Policy, navigate to `Computer Configuration\Administrative Templates\Network\Lanman Workstation`.
+- Open `Enable insecure guest logons`, select Enabled, then select OK.
 
 [1]: https://www.samba.org/
