@@ -58,13 +58,16 @@ $ docker compose exec samba sh
 >>> smbpasswd -a root
 New SMB password:******
 Retype new SMB password:******
+>>> smbstatus
+>>> smbcontrol smbd close-share "*"
+>>> smbcontrol smbd kill-client-ip x.x.x.x
 >>> exit
 ```
 
 > [!Tip]
 > Use your own mounting point for sharing (e.g., /mnt/usb)
 
-## client
+## client (linux)
 
 ```bash
 $ smbutil view -NG smb://easypi
