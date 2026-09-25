@@ -1,7 +1,6 @@
-version: "3.8"
 services:
   mosquitto:
-    image: vimagick/mosquitto
+    image: easypi/mosquitto
     ports:
       - "1883:1883"
     volumes:
