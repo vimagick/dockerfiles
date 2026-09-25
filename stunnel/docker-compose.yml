@@ -1,10 +1,8 @@
-version: "3.8"
-
 services:
 
-  # In Japan (IP: 1.2.3.4)
+  # VPS (e.g. 1.2.3.4)
   master:
-    image: vimagick/stunnel
+    image: easypi/stunnel
     ports:
       - "4911:4911"
     environment:
@@ -14,9 +12,9 @@ services:
       - CONNECT=server:1194
     restart: unless-stopped
 
-  # In China
+  # LAN
   bridge:
-    image: vimagick/stunnel
+    image: easypi/stunnel
     ports:
       - "1194:1194"
     environment:
