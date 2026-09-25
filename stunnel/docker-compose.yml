@@ -1,6 +1,6 @@
 services:
 
-  # VPS (e.g. 1.2.3.4)
+  # For VPS (e.g. 1.2.3.4)
   master:
     image: easypi/stunnel
     ports:
@@ -12,7 +12,7 @@ services:
       - CONNECT=server:1194
     restart: unless-stopped
 
-  # LAN
+  # For LAN
   bridge:
     image: easypi/stunnel
     ports:
@@ -26,6 +26,7 @@ services:
       - server:1.2.3.4
     restart: unless-stopped
 
+# For VPS
 networks:
   default:
     name: openvpn_default

@@ -36,6 +36,9 @@ master | 1.2.3.4:4911 | Japan   | stunnel-server
 bridge | 5.6.7.8:1194 | China   | stunnel-client
 LAN    | 192.168/16   | China   | openvpn-client
 
+> [!Tip]
+> Run bridge in the same LAN as client for best performance.
+
 ### Server Setup (Cloud)
 
 ```bash
@@ -63,8 +66,6 @@ accept = 127.0.0.1:1194
 connect = 1.2.3.4:4911
 ```
 
-> Pro Tip: Running stunnel locally is faster.
-
 ### OpenVPN Setup (Partial)
 
 ```ini
@@ -88,7 +89,13 @@ route 192.168.0.0 255.255.0.0 net_gateway
 
 ### For Gmail Forwarding
 
+<details>
+<summary>File: gmail.conf</summary>
+
 ```ini
+;
+; Sample stunnel configuration file: https://www.stunnel.org/config_unix.html
+;
 ;debug = info
 ;output = /var/log/stunnel.log
 foreground = yes
@@ -112,6 +119,10 @@ client = yes
 accept = 127.0.0.1:25
 connect = smtp.gmail.com:465
 ```
+</details>
+
+<details>
+<summary>File: nginx.conf</summary>
 
 ```nginx
 stream {
@@ -144,5 +155,9 @@ stream {
     }
 }
 ```
+</summary>
+
+> [!Important]
+> You need to adjust the listening address for docker deployment
 
 [1]: https://www.stunnel.org/index.html

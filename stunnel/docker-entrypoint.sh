@@ -10,6 +10,7 @@ socket = l:TCP_NODELAY=1
 socket = r:TCP_NODELAY=1
 cert = /etc/stunnel/stunnel.pem
 client = ${CLIENT:-no}
+include = /etc/stunnel/conf.d
 
 [${SERVICE}]
 accept = ${ACCEPT}
