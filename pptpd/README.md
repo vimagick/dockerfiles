@@ -98,7 +98,42 @@ PPP adapter pptp:
    DNS Servers . . . . . . . . . . . : 8.8.8.8
                                        8.8.4.4
    NetBIOS over Tcpip. . . . . . . . : Disabled
+
+C:\> netsh interface ipv4 show interfaces
+
+Idx     Met         MTU          State                Name
+---  ----------  ----------  ------------  ---------------------------
+ 62          25        1400  connected     pptp
+  1        4300  4294967295  connected     Loopback Pseudo-Interface 1
+ 17        4250        1500  connected     Ethernet
+
+C:\> route print -4
+
+C:\> netsh interface ipv4 show interfaces
+
+C:\> netsh interface ipv4 show dnsservers
+
+C:\> netsh interface ipv4 set dnsservers name="pptp" source=static address=8.8.8.8 register=primary
+
+PS C:\> nslookup google.com
+Server:  OpenWrt.lan
+Address:  192.168.100.1
+
+Non-authoritative answer:
+Name:    google.com
+Address:  142.250.71.174
+
+PS C:\> Get-DnsClientServerAddress -AddressFamily IPv4
+InterfaceAlias               Interface Address ServerAddresses
+                             Index     Family
+--------------               --------- ------- ---------------
+Ethernet                            17 IPv4    {192.168.100.1}
+pptp                                62 IPv4    {8.8.8.8}
+Loopback Pseudo-Interface 1          1 IPv4    {}
 ```
+
+> [!Caution]
+> Why does nslookup still use DNS from Ethernet? [read this](https://serverfault.com/questions/1013645/local-internet-gateway-and-vpn-connection-which-dns-takes-precedence)
 
 > [!Tip]
 > To stop routing all traffice through VPN (Default Gateway: 0.0.0.0 -> empty)  

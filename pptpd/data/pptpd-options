@@ -13,3 +13,5 @@ novjccomp
 nologfd
 ms-dns 8.8.8.8
 ms-dns 8.8.4.4
+mtu 1300
+mru 1300
