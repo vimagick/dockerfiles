@@ -155,7 +155,7 @@ stream {
     }
 }
 ```
-</summary>
+</details>
 
 > [!Important]
 > You need to adjust the listening address for docker deployment
