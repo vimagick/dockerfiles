@@ -2,7 +2,7 @@
 # Dockerfile for pptpd
 #
 
-FROM alpine:3.16
+FROM alpine:3.17
 MAINTAINER EasyPi Software Foundation
 
 RUN apk add --no-cache iptables ppp pptpd \
