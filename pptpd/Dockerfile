@@ -5,7 +5,10 @@
 FROM alpine:3.16
 MAINTAINER EasyPi Software Foundation
 
-RUN apk add --no-cache iptables ppp pptpd
+RUN apk add --no-cache iptables ppp pptpd \
+ && ln -sf /sbin/xtables-nft-multi /sbin/iptables \
+ && ln -sf /sbin/xtables-nft-multi /sbin/iptables-save \
+ && ln -sf /sbin/xtables-nft-multi /sbin/iptables-restore
 
 EXPOSE 1723
 
