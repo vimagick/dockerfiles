@@ -18,58 +18,6 @@ The Point-to-Point Tunneling Protocol is a method for implementing virtual priva
     └── chap-secrets
 ```
 
-file: docker-compose.yml
-
-```yaml
-pptpd:
-  image: vimagick/pptpd
-  volumes:
-    - ./data/pptpd.conf:/etc/pptpd.conf
-    - ./data/pptpd-options:/etc/ppp/pptpd-options
-    - ./data/chap-secrets:/etc/ppp/chap-secrets
-  privileged: true
-  restart: always
-```
-
-file: pptpd.conf
-
-```
-option /etc/ppp/pptpd-options
-pidfile /var/run/pptpd.pid
-localip 192.168.127.1
-remoteip 192.168.127.100-199
-```
-
-file: pptpd-options
-
-```
-name pptpd
-refuse-pap
-refuse-chap
-refuse-mschap
-require-mschap-v2
-require-mppe-128
-proxyarp
-nodefaultroute
-lock
-nobsdcomp
-novj
-novjccomp
-nologfd
-ms-dns 8.8.8.8
-ms-dns 8.8.4.4
-```
-
-file: chap-secrets
-
-```
-# Secrets for authentication using CHAP
-# client    server  secret          IP addresses
-username    *       password        *
-```
-
-> Please use strong password in `chap-secrets` file to protect your server.
-
 ## Server Setup
 
 ```bash

@@ -1,10 +1,13 @@
-pptpd:
-  image: vimagick/pptpd
-  ports:
-    - "1723:1723"
-  volumes:
-    - ./data/pptpd.conf:/etc/pptpd.conf
-    - ./data/pptpd-options:/etc/ppp/pptpd-options
-    - ./data/chap-secrets:/etc/ppp/chap-secrets
-  privileged: true
-  restart: always
+services:
+  pptpd:
+    image: easypi/pptpd
+    volumes:
+      - ./data:/etc/ppp
+    tmpfs:
+      - /run
+    devices:
+      - /dev/ppp
+    cap_add:
+      - NET_ADMIN
+    network_mode: "host"
+    restart: unless-stopped

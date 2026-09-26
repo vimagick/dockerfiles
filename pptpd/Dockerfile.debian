@@ -2,16 +2,12 @@
 # Dockerfile for pptpd
 #
 
-FROM debian:jessie
-MAINTAINER kev<noreply@easypi.pro>
+FROM debian:13
+MAINTAINER EasyPi Software Foundation
 
 RUN apt-get update \
     && apt-get install -y iptables pptpd \
     && rm -rf /var/lib/apt/lists/*
-
-COPY ./data/pptpd.conf    /etc/
-COPY ./data/chap-secrets  /etc/ppp/
-COPY ./data/pptpd-options /etc/ppp/
 
 EXPOSE 1723
 
