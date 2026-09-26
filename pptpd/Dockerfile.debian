@@ -6,10 +6,9 @@ FROM debian:13
 MAINTAINER EasyPi Software Foundation
 
 RUN apt-get update \
-    && apt-get install -y iptables pptpd \
+    && apt-get install -y pptpd \
     && rm -rf /var/lib/apt/lists/*
 
 EXPOSE 1723
 
-CMD iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE \
-    && pptpd --fg
+CMD pptpd --fg

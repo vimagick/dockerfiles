@@ -78,6 +78,31 @@ You need to config firewall:
 - Add required module names to `/etc/modules`
 - Set `DEFAULT_FORWARD_POLICY=ACCEPT` (optional)
 - Set `net.ipv4.ip_forward=1` in `/etc/sysctl.conf`
+- Install `iptables-persistent` (Do not save current rules) to persist iptables rules
+
+<details>
+<summary>/etc/iptables/rules.v4</summary>
+
+```
+*filter
+:INPUT ACCEPT [0:0]
+:FORWARD ACCEPT [0:0]
+:OUTPUT ACCEPT [0:0]
+:DOCKER-USER - [0:0]
+-A FORWARD -i ppp+ -o eth0 -j ACCEPT
+-A FORWARD -i eth0 -o ppp+ -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
+-A DOCKER-USER -j RETURN
+COMMIT
+
+*nat
+:PREROUTING ACCEPT [0:0]
+:INPUT ACCEPT [0:0]
+:OUTPUT ACCEPT [0:0]
+:POSTROUTING ACCEPT [0:0]
+-A POSTROUTING -o eth0 -j MASQUERADE
+COMMIT
+```
+</details>
 
 ## Client Setup
 
