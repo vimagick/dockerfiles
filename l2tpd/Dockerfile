@@ -16,8 +16,10 @@ RUN set -xe \
 
 EXPOSE 500/udp 1701/udp 4500/udp
 
-CMD ipsec pluto --optionsfrom /etc/ipsec/ipsec.conf --secretsfile /etc/ipsec/ipsec.secrets \
+CMD ipsec pluto --config /etc/ipsec/ipsec.conf --secretsfile /etc/ipsec/ipsec.secrets \
  && sleep 5 \
- && ipsec auto --add vpnpsk \
+ && ipsec status | grep -q vpnpsk \
  && sleep 5 \
+ && mkdir -p /var/run/xl2tpd \
+ && touch /var/run/xl2tpd/l2tp-control \
  && xl2tpd -D -c /etc/xl2tpd/xl2tpd.conf
