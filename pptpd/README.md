@@ -7,6 +7,10 @@ The Point-to-Point Tunneling Protocol is a method for implementing virtual priva
 
 `PPTP` uses a control channel over TCP and a GRE tunnel operating to encapsulate PPP packets.
 
+> [!Caution]
+> PPTP (Point-to-Point Tunneling Protocol) is largely obsolete and actively discouraged for modern use,
+> though it persists in very limited legacy or isolated environments.
+
 ## Directory Tree
 
 ```
