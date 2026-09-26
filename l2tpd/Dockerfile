@@ -16,6 +16,8 @@ RUN set -xe \
 
 EXPOSE 500/udp 1701/udp 4500/udp
 
-CMD iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE \
- && ipsec pluto --config /etc/ipsec/ipsec.conf --secretsfile /etc/ipsec/ipsec.secrets \
+CMD ipsec pluto --optionsfrom /etc/ipsec/ipsec.conf --secretsfile /etc/ipsec/ipsec.secrets \
+ && sleep 5 \
+ && ipsec auto --add vpnpsk \
+ && sleep 5 \
  && xl2tpd -D -c /etc/xl2tpd/xl2tpd.conf
