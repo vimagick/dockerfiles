@@ -108,30 +108,27 @@ Idx     Met         MTU          State                Name
  17        4250        1500  connected     Ethernet
 
 C:\> route print -4
+C:\> route print -6
 
 C:\> netsh interface ipv4 show interfaces
+C:\> netsh interface ipv6 show interfaces
 
 C:\> netsh interface ipv4 show dnsservers
-
-C:\> netsh interface ipv4 set dnsservers name="pptp" source=static address=8.8.8.8 register=primary
+C:\> netsh interface ipv6 show dnsservers
 
 PS C:\> nslookup google.com
 Server:  OpenWrt.lan
 Address:  192.168.100.1
 
 PS C:\> Get-DnsClientServerAddress -AddressFamily IPv4
-InterfaceAlias               Interface Address ServerAddresses
-                             Index     Family
---------------               --------- ------- ---------------
-Ethernet                            17 IPv4    {192.168.100.1}
-pptp                                62 IPv4    {8.8.8.8}
-Loopback Pseudo-Interface 1          1 IPv4    {}
+PS C:\> Get-DnsClientServerAddress -AddressFamily IPv6
 
 PS C:\> Get-NetIPInterface | Sort-Object InterfaceMetric
 ifIndex InterfaceAlias                  AddressFamily NlMtu(Bytes) InterfaceMetric Dhcp     ConnectionState PolicyStore
 ------- --------------                  ------------- ------------ --------------- ----     --------------- -----------
 62      pptp                            IPv4                  1300              25 Disabled Connected       ActiveStore
 17      Ethernet                        IPv6                  1500              25 Enabled  Connected       ActiveStore
+17      Ethernet                        IPv4                  1500            4250 Enabled  Connected       ActiveStore
 1       Loopback Pseudo-Interface 1     IPv4            4294967295            4300 Disabled Connected       ActiveStore
 
 PS C:\> Set-NetIPInterface -InterfaceAlias "pptp" -AddressFamily IPv4 -InterfaceMetric 1
