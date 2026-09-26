@@ -119,10 +119,6 @@ PS C:\> nslookup google.com
 Server:  OpenWrt.lan
 Address:  192.168.100.1
 
-Non-authoritative answer:
-Name:    google.com
-Address:  142.250.71.174
-
 PS C:\> Get-DnsClientServerAddress -AddressFamily IPv4
 InterfaceAlias               Interface Address ServerAddresses
                              Index     Family
@@ -130,15 +126,30 @@ InterfaceAlias               Interface Address ServerAddresses
 Ethernet                            17 IPv4    {192.168.100.1}
 pptp                                62 IPv4    {8.8.8.8}
 Loopback Pseudo-Interface 1          1 IPv4    {}
+
+PS C:\> Get-NetIPInterface | Sort-Object InterfaceMetric
+ifIndex InterfaceAlias                  AddressFamily NlMtu(Bytes) InterfaceMetric Dhcp     ConnectionState PolicyStore
+------- --------------                  ------------- ------------ --------------- ----     --------------- -----------
+62      pptp                            IPv4                  1300              25 Disabled Connected       ActiveStore
+17      Ethernet                        IPv6                  1500              25 Enabled  Connected       ActiveStore
+1       Loopback Pseudo-Interface 1     IPv4            4294967295            4300 Disabled Connected       ActiveStore
+
+PS C:\> Set-NetIPInterface -InterfaceAlias "pptp" -AddressFamily IPv4 -InterfaceMetric 1
+
+PS C:\> nslookup google.com
+Server:  dns.google
+Address:  8.8.8.8
 ```
 
 > [!Caution]
-> Why does nslookup still use DNS from Ethernet? [read this](https://serverfault.com/questions/1013645/local-internet-gateway-and-vpn-connection-which-dns-takes-precedence)
+> Why does nslookup still use DNS from Ethernet?  
+> You need to lower the InterfaceMetric of pptp!
 
 > [!Tip]
 > To stop routing all traffice through VPN (Default Gateway: 0.0.0.0 -> empty)  
 > Win+R run `ncpa.cpl` -> PPTP connection properties -> Networking -> IPv4 properties -> Advanced...
 > - [ ] `Use default gateway on remote network`
+> - [ ] `Interface metric` => `1` (lower than 25)
 
 ## References
 
