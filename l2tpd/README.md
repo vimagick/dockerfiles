@@ -17,6 +17,19 @@ $ tree
 │       └── xl2tpd.conf
 └── docker-compose.yml
 $ docker compose up -d
+$ docker compose exec l2tpd sh
+>>> chown root:root /etc/ppp/chap-secrets
+>>> chmod 600 /etc/ppp/chap-secrets
+>>> exit
+```
+
+## Client
+
+```bash
+C:\> reg add "HKLM\SYSTEM\CurrentControlSet\Services\PolicyAgent" /v "AssumeUDPEncapsulationContextOnSendRule" /t REG_DWORD /d 2 /f
+C:\> reg query "HKLM\SYSTEM\CurrentControlSet\Services\PolicyAgent" /v AssumeUDPEncapsulationContextOnSendRule
+C:\> reg add "HKLM\SYSTEM\CurrentControlSet\Services\RasMan\Parameters" /v ProhibitIpSec /t REG_DWORD /d 0 /f
+C:\> reg query "HKLM\SYSTEM\CurrentControlSet\Services\RasMan\Parameters" /v ProhibitIpSec
 ```
 
 [1]: https://github.com/xelerance/xl2tpd

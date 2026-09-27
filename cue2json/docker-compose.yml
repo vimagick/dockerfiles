@@ -1,0 +1,7 @@
+services:
+  cue2json:
+    build: .
+    image: easypi/cue2json
+    ports:
+      - "5000:5000"
+    restart: unless-stopped
