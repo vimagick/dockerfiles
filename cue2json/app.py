@@ -22,6 +22,13 @@ def decode_cue(raw: bytes) -> str:
         return raw.decode("utf-8", errors="replace")
 
 
+def format_msf(t) -> str | None:
+    if t is None:
+        return None
+    m, s, f = t
+    return f"{m:02d}:{s:02d}:{f:02d}"
+
+
 def cue_to_dict(cue_text: str) -> dict:
     cd = pylibcue.parse_str(cue_text)
 
@@ -29,18 +36,25 @@ def cue_to_dict(cue_text: str) -> dict:
         "title": cd.cdtext.title,
         "performer": cd.cdtext.performer,
         "date": cd.rem.date,
-        "file": cd.file,
         "tracks": [],
     }
 
     for tr in cd:
-        result["tracks"].append({
+        track = {
             "number": tr.track_number,
             "title": tr.cdtext.title,
             "performer": tr.cdtext.performer,
-            "index01": tr.index01,
-            "index00": tr.index00,
-        })
+            "filename": tr.filename,
+            "start": format_msf(tr.start),
+            "length": format_msf(tr.length),
+        }
+
+        for idx in (0, 1):
+            val = tr.get_index(idx)
+            if val is not None:
+                track[f"index{idx:02d}"] = format_msf(val)
+
+        result["tracks"].append(track)
 
     return result
 
@@ -94,6 +108,13 @@ def is_cue_input(content_type: str) -> bool:
     return ct.startswith("text/") or "cue" in ct
 
 
+def get_declared_charset(content_type: str) -> str | None:
+    ct = (content_type or "").lower()
+    if "charset=" in ct:
+        return ct.split("charset=")[-1].split(";")[0].strip().strip('"')
+    return None
+
+
 def wants_yaml() -> bool:
     fmt = request.args.get("fmt", "").lower()
     if fmt in ("yaml", "yml"):
@@ -110,7 +131,6 @@ def index():
         "  CUE -> JSON/YAML (Content-Type: text/plain):\n"
         "    curl -X POST http://<host>:5000/ -H 'Content-Type: text/plain' --data-binary @album.cue\n"
         "    curl -X POST 'http://<host>:5000/?fmt=yaml' -H 'Content-Type: text/plain' --data-binary @album.cue\n"
-        "    curl -X POST 'http://<host>:5000/?fmt=yml'  -H 'Content-Type: text/plain' --data-binary @album.cue\n"
         "    curl -X POST 'http://<host>:5000/?enc=gbk'  -H 'Content-Type: text/plain' --data-binary @album.cue\n"
         "\n"
         "  JSON/YAML -> CUE (Content-Type: application/json or application/yaml):\n"
@@ -127,7 +147,8 @@ def handle():
         return jsonify({"error": "Empty request body"}), 400
 
     if is_cue_input(request.content_type):
-        forced = request.args.get("enc")
+        declared = get_declared_charset(request.content_type)
+        forced = request.args.get("enc") or declared
         if forced:
             cue_text = raw.decode(forced, errors="replace")
         else:
