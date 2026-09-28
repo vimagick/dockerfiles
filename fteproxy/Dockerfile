@@ -2,45 +2,22 @@
 # Dockerfile for fteproxy
 #
 
-FROM alpine:3
-MAINTAINER EasyPi Software Foundation
+FROM python:3.14-alpine AS builder
 
-RUN set -xe \
-    && apk add --no-cache build-base \
-                          curl \
-                          gmp \
-                          gmp-dev \
-                          libstdc++ \
-                          python2 \
-                          python2-dev \
-                          python2-pip \
-    && pip install --no-cache-dir fteproxy \
-    && apk del build-base \
-               curl \
-               gmp-dev \
-               python2-dev \
-    && rm -rf /root/.cache
+ARG FTEPROXY_VERSION
 
-ENV MODE=server
-ENV UPSTREAM_FORMAT=manual-http-request
-ENV DOWNSTREAM_FORMAT=manual-http-response
-ENV CLIENT_IP=127.0.0.1
-ENV CLIENT_PORT=8079
-ENV SERVER_IP=127.0.0.1
-ENV SERVER_PORT=8080
-ENV PROXY_IP=127.0.0.1
-ENV PROXY_PORT=8081
-ENV RELEASE=20131224
-ENV KEY=FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00000000000000000000000000000000
+RUN apk add --no-cache build-base libffi-dev openssl-dev \
+ && python -m venv /opt/venv
+ENV PATH="/opt/venv/bin:$PATH"
+RUN pip install --no-cache-dir fteproxy==${FTEPROXY_VERSION} \
+ && python -m fteproxy --version
 
-CMD fteproxy --mode $MODE \
-             --upstream-format $UPSTREAM_FORMAT \
-             --downstream-format $DOWNSTREAM_FORMAT \
-             --client_ip $CLIENT_IP \
-             --client_port $CLIENT_PORT \
-             --server_ip $SERVER_IP \
-             --server_port $SERVER_PORT \
-             --proxy_ip $PROXY_IP \
-             --proxy_port $PROXY_PORT \
-             --release $RELEASE \
-             --key $KEY
+FROM python:3.14-alpine
+
+COPY --from=builder /opt/venv /opt/venv
+
+ENV PATH="/opt/venv/bin:$PATH"
+RUN python -m fteproxy --version
+
+ENTRYPOINT ["python", "-m", "fteproxy"]
+CMD ["--help"]

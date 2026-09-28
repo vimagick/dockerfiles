@@ -1,31 +1,19 @@
-version: "3.8"
-
 services:
 
   server:
-    image: vimagick/fteproxy
+    image: easypi/fteproxy
+    build: .
+    command: ["--mode", "server", "--server_ip", "0.0.0.0", "--server_port", "4911", "--proxy_ip", "openvpn", "--proxy_port", "1194"]
     ports:
       - "4911:4911"
-    environment:
-      - MODE=server
-      - SERVER_IP=0.0.0.0
-      - SERVER_PORT=4911
-      - PROXY_IP=openvpn
-      - PROXY_PORT=1194
-      - KEY=66754b8113ea7a218b7613f73f7e13b1e91790216f659b5f78b903b34c654741
     extra_hosts:
       - openvpn:1.2.3.4
     restart: unless-stopped
 
   client:
-    image: vimagick/fteproxy
+    image: easypi/fteproxy
+    build: .
+    command: ["--mode", "client", "--client_ip", "0.0.0.0", "--client_port", "1194", "--server_ip", "server", "--server_port", "4911"]
     ports:
       - "1194:1194"
-    environment:
-      - MODE=client
-      - SERVER_IP=openvpn.easypi.pro
-      - SERVER_PORT=4911
-      - CLIENT_IP=0.0.0.0
-      - CLIENT_PORT=1194
-      - KEY=66754b8113ea7a218b7613f73f7e13b1e91790216f659b5f78b903b34c654741
     restart: unless-stopped
