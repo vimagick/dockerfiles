@@ -1,19 +1,36 @@
+# Please deploy server and client on different hosts,
+# and make sure the client can access the server host.
+# You need to replace x.x.x.x and y.y.y.y with the actual IP addresses
+# of the openvpn server and fteproxy server respectively.
+
 services:
 
   server:
     image: easypi/fteproxy
-    build: .
-    command: ["--mode", "server", "--server_ip", "0.0.0.0", "--server_port", "4911", "--proxy_ip", "openvpn", "--proxy_port", "1194"]
+    command: >
+      --mode=server
+      --server_ip=0.0.0.0
+      --server_port=4911
+      --proxy_ip=openvpn
+      --proxy_port=1194
+      --key=CC109DFABCF33BD38C4E287C1A3C3F414E4A652F06C71345BF3289355CC492CC
     ports:
       - "4911:4911"
     extra_hosts:
-      - openvpn:1.2.3.4
+      - openvpn:x.x.x.x
     restart: unless-stopped
 
   client:
     image: easypi/fteproxy
-    build: .
-    command: ["--mode", "client", "--client_ip", "0.0.0.0", "--client_port", "1194", "--server_ip", "server", "--server_port", "4911"]
+    command: >
+      --mode=client
+      --client_ip=0.0.0.0
+      --client_port=1194
+      --server_ip=server
+      --server_port=4911
+      --key=CC109DFABCF33BD38C4E287C1A3C3F414E4A652F06C71345BF3289355CC492CC
     ports:
       - "1194:1194"
+    extra_hosts:
+      - server:y.y.y.y
     restart: unless-stopped

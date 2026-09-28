@@ -27,9 +27,13 @@ It works very well with openvpn (TCP mode).
 ## Up and Running
 
 > [!Important]
-> You need to split the docker-compose.yml into two:
+> You need to split the docker-compose.yml into two files:
 > - server: to mask a tcp service
 > - client: to unmask the service
+
+> [!Tip]
+> To generate a random 64-hex-character (32-byte) key:  
+>> `xxd -u -p -c32 /dev/urandom | head -n1`
 
 ```bash
 $ docker compose up -d
