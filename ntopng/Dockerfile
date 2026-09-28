@@ -1,5 +1,5 @@
 #
-# Dockerfile for ntopng
+# Dockerfile for ntopng (deprecated, use the official ntopng image instead)
 #
 
 FROM ubuntu:22.04

@@ -1,20 +1,30 @@
-version: "3.8"
+#
+# https://github.com/docker-library/repo-info/blob/master/repos/redis/local/8-alpine.md
+#
 
 services:
 
-  ntopng:
-    image: vimagick/ntopng
-    command: --community -d /var/lib/ntopng -i eth0 -r 127.0.0.1:6379@0 -w 127.0.0.1:3000
-    volumes:
-      - ./data/ntopng:/var/lib/ntopng
+  netflow2ng:
+    image: synfinatic/netflow2ng:v0.2.2
+    command: ["-a", "0.0.0.0:2055", "--reuse", "-m", "0.0.0.0:9091", "-z", "tcp://*:5556", "-w2"]
     network_mode: host
     restart: unless-stopped
 
   redis:
-    image: redis:7-alpine
-    command: --save 900 1
-    ports:
-      - "127.0.0.1:6379:6379"
+    image: "redis:8-alpine"
+    command: ["redis-server", "--save", "86400", "1"]
     volumes:
       - ./data/redis:/data
+    restart: unless-stopped
+
+  ntopng:
+    image: "ntop/ntopng:latest"
+    command: ["--community", "--redis", "redis@0", "--interface", "tcp://host.docker.internal:5556", "--disable-login", "--local-networks", "172.16.0.0/12", "--insecure"]
+    volumes:
+      - ./data/ntopng:/var/lib/ntopng
+    depends_on:
+      - netflow2ng
+      - redis
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     restart: unless-stopped
