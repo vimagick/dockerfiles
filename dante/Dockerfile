@@ -37,4 +37,7 @@ ENV WORKERS=10
 
 EXPOSE 1080
 
-CMD sockd -f $CFGFILE -p $PIDFILE -N $WORKERS
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
+ENTRYPOINT ["/entrypoint.sh"]
