@@ -6,6 +6,10 @@ SOCKS server and a SOCKS client, implementing RFC 1928 and related standards.
 It is a flexible product that can be used to provide convenient and secure
 network connectivity. 
 
+> [!Note]
+> Dante 1.5.0 status has reverted from "completed and in testing" to "correction of problems discovered by new AI tools".  
+> Planned release date: Q1 2027
+
 ## docker-compose.yml
 
 ```yaml

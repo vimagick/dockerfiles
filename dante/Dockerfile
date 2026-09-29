@@ -2,7 +2,7 @@
 # Dockerfile for dante
 #
 
-FROM debian:bookworm
+FROM debian:12
 MAINTAINER EasyPi Software Foundation
 
 ARG DANTE_VER=1.4.4
