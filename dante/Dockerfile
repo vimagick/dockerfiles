@@ -31,8 +31,6 @@ RUN set -xe \
     && apt-get purge -y --auto-remove $DANTE_DEPS \
     && rm -rf /var/lib/apt/lists/*
 
-COPY data/sockd.conf /etc/dante/sockd.conf
-
 ENV CFGFILE=/etc/dante/sockd.conf
 ENV PIDFILE=/run/sockd.pid
 ENV WORKERS=10
