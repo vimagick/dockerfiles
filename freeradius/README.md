@@ -5,33 +5,15 @@ FreeRADIUS
 library, and an Apache module. In most cases, the word FreeRADIUS refers to the
 RADIUS server.
 
-## docker-compose.yml
-
-```yaml
-freeradius:
-  image: vimagick/freeradius
-  ports:
-    - "1812:1812/udp"
-    - "1813:1813/udp"
-  links:
-    - mysql
-  restart: always
-
-mysql:
-  image: mysql
-  volumes:
-    - ./mysql:/docker-entrypoint-initdb.d
-  environment:
-    - MYSQL_ROOT_PASSWORD=root
-  restart: always
-```
-
 ## Server Setup
 
+Manage NAS (Network Access Server) via sqlite3.
+
 ```bash
-$ docker-compose up -d mysql
-$ docker-compose exec mysql mysql -uroot -proot radius
->>> show tables;
+$ docker-compose up -d
+$ docker-compose exec freeradius sqlite3 /etc/raddb/freeradius.db
+>>> .mode box
+>>> .tables
 +------------------+
 | Tables_in_radius |
 +------------------+
@@ -44,36 +26,20 @@ $ docker-compose exec mysql mysql -uroot -proot radius
 | radreply         |
 | radusergroup     |
 +------------------+
-8 rows in set (0.00 sec)
-
->>> SHOW GRANTS FOR radius;
-+----------------------------------------------------------------+
-| Grants for radius@%                                            |
-+----------------------------------------------------------------+
-| GRANT USAGE ON *.* TO 'radius'@'%'                             |
-| GRANT SELECT ON `radius`.* TO 'radius'@'%'                     |
-| GRANT ALL PRIVILEGES ON `radius`.`radacct` TO 'radius'@'%'     |
-| GRANT ALL PRIVILEGES ON `radius`.`radpostauth` TO 'radius'@'%' |
-+----------------------------------------------------------------+
-5 rows in set (0.00 sec)
 
 >>> INSERT INTO radcheck VALUES
     (NULL, 'user', 'MD5-Password', ':=', MD5('pass')),
-    (NULL, 'user', 'Expiration', ':=', 'Jul 31 2016 00:00:00');
-Query OK, 2 row affected (0.04 sec)
-Records: 2  Duplicates: 0  Warnings: 0
+    (NULL, 'user', 'Expiration', ':=', '1 Jan 2030');
 
 >>> SELECT * FROM radcheck;
 +----+----------+--------------+----+----------------------------------+
 | id | username | attribute    | op | value                            |
 +----+----------+--------------+----+----------------------------------+
 |  1 | user     | MD5-Password | := | 1a1dc91c907325c69271ddf0c944bc72 |
-|  2 | user     | Expiration   | := | Jul 31 2016 00:00:00             |
+|  2 | user     | Expiration   | := | 1 Jan 2030                       |
 +----+----------+--------------+----+----------------------------------+
-2 rows in set (0.00 sec)
 
 >>> INSERT INTO nas VALUES(NULL, '0.0.0.0/0', 'testing', NULL, NULL, 'testing321', NULL, NULL, NULL);
-Query OK, 1 row affected (0.02 sec)
 
 >>> SELECT * FROM nas;
 +----+-----------+-----------+------+-------+------------+--------+-----------+-------------+
@@ -81,7 +47,6 @@ Query OK, 1 row affected (0.02 sec)
 +----+-----------+-----------+------+-------+------------+--------+-----------+-------------+
 |  1 | 0.0.0.0/0 | testing   | NULL |  NULL | testing321 | NULL   | NULL      | NULL        |
 +----+-----------+-----------+------+-------+------------+--------+-----------+-------------+
-1 row in set (0.00 sec)
 
 >>> SELECT * FROM radpostauth;
 +----+----------+------+---------------+---------------------+
@@ -92,38 +57,55 @@ Query OK, 1 row affected (0.02 sec)
 |  3 | user     | xxxx | Access-Reject | 2016-07-28 06:30:22 |
 +----+----------+------+---------------+---------------------+
 
->>> EXIT
-Bye
+>>> .exit
 
-$ docker-compose up -d freeradius
-$ docker-compose exec freeradius sh
->>> vi /etc/raddb/clients.conf
+$ docker compose exec freeradius sh
+>>> vim /etc/raddb/clients.conf
 >>> radtest user pass localhost 0 testing123
 >>> cd /etc/raddb/certs
->>> make client.p12
+>>> grep default_days *.cnf
+>>> apk add --no-cache openssl make
+
+### initial oneshot setup (dangerous)
+>>> make destroycerts
+>>> ./bootstrap
+
+### allow duplicated subject (optional)
+>>> sed -i '/unique_subject/s/yes/no/' index.txt.attr
+
+### for eap module:
+###   check_crl = yes
+###   ca_file = ${cadir}/ca_crl.pem
+>>> openssl crl -in ca.crl -inform der -out crl.pem -outform pem
+>>> cat ca.pem crl.pem > ca_crl.pem
+
+### generate client certs (edit: email+name)
+>>> vim client.cnf
+input_password          = whatever
+output_password         = whatever
+emailAddress            = kev@example.org
+commonName              = kev@example.org
+>>> make client.pem
+>>> cat index.txt
+>>> openssl pkcs12 -in client.p12 -info -noout -passin pass:whatever
 >>> exit
-$ docker cp freeradius_freeradius_1:/etc/raddb/certs/ca.pem /tmp
-$ docker cp freeradius_freeradius_1:/etc/raddb/certs/client.p12 /tmp
-$ docker-compose restart freeradius
+
+$ docker compose cp freeradius:/etc/raddb/certs/ca.pem .
+$ docker compose cp freeradius:/etc/raddb/certs/ca_crl.pem .
+$ docker compose cp freeradius:/etc/raddb/certs/kev@*.p12 .
+$ docker compose restart freeradius
 ```
 
-> The `ca.pem` and `client.p12` (password: whatever) is for `EAP-TLS`.
+> [!Note]
+> The `ca.pem` and `client.p12` (password: `whatever`) is for `EAP-TLS`.  
+> Module `/etc/raddb/mods-enabled/eap` is enabled by default.
 
-```
-# /etc/raddb/clients.conf
-
-#client testing {
-#        ipaddr = 0.0.0.0/0
-#        secret = testing321
-#}
-```
-
-> Manage NAS (Network Access Server) via MySQL.
-
+> [!Important]
+> You need to backup `/etc/raddb/certs` regularly and keep it secret.
 
 ## OpenWrt Setup
 
-```
+```yaml
 Network > Wireless > Wireless Security:
     Encryption: WPA2-EAP
     AuthServer: 192.168.31.138
@@ -134,7 +116,7 @@ Network > Wireless > Wireless Security:
 
 ## Android Setup
 
-```
+```yaml
 # Import CA and P12(CRT+KEY)
 Settings > Additional settings > Privacy > Install from SD card
 

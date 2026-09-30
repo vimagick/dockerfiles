@@ -1,16 +1,12 @@
-freeradius:
-  image: vimagick/freeradius
-  ports:
-    - "1812:1812/udp"
-    - "1813:1813/udp"
-  links:
-    - mysql
-  restart: always
-
-mysql:
-  image: mysql
-  volumes:
-    - ./mysql:/docker-entrypoint-initdb.d
-  environment:
-    - MYSQL_ROOT_PASSWORD=root
-  restart: always
+services:
+  freeradius:
+    image: vimagick/freeradius
+    ports:
+      - "1812:1812/udp"
+      - "1813:1813/udp"
+    volumes:
+      - ./data/etc/sql:/etc/raddb/mods-enabled/sql:ro
+      - ./data/etc/clients.conf:/etc/raddb/clients.conf:ro
+      - ./data/log:/var/log/freeradius
+      - /etc/raddb/certs
+    restart: unless-stopped

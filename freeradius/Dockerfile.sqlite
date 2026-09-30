@@ -1,5 +1,5 @@
 #
-# Dockerfile for freeradius
+# Dockerfile for freeradius (deprecated)
 #
 
 FROM alpine
