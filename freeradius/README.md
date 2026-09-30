@@ -106,11 +106,17 @@ $ docker compose restart freeradius
 ## OpenWrt Setup
 
 ```yaml
-Network > Wireless > Wireless Security:
+# opkg list-installed | grep wpad
+# opkg remove wpad-basic-mbedtls
+# opkg update
+# opkg install wpad-openssl
+# reboot
+Network > Wireless > Edit > Wireless Security:
     Encryption: WPA2-EAP
-    AuthServer: 192.168.31.138
+    Cipher: Force CCMP-256 (AES)
+    AuthServer: x.x.x.x
     AuthSecret: testing321
-    AcctServer: 192.168.31.138
+    AcctServer: x.x.x.x
     AcctSecret: testing321
 ```
 
@@ -136,4 +142,13 @@ $ radtest user pass 192.168.31.138 0 testing321
 $ radtest user xxxx 192.168.31.138 0 testing321
 ```
 
+[Other clients][2]
+
+## Let's Encrypt
+
+> [!Note]
+> If you use `server.pem` signed by Let's Encrypt, `ca_file` is not required for PEAP.
+> Clients can use system certificates.
+
 [1]: http://freeradius.org/
+[2]: https://help.ironwifi.com/client-configuration
