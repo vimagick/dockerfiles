@@ -28,7 +28,7 @@ RUN set -xe \
     && curl -sSL https://github.com/snort3/libdaq/archive/v$LIBDAQ_VERSION.tar.gz | tar xz --strip 1 \
     && ./bootstrap \
     && ./configure \
-    && make -j7 \
+    && make -j$(nproc) \
     && make install \
     && cd .. \
     && rm -rf libdaq \
@@ -37,7 +37,7 @@ RUN set -xe \
     && cd libdnet \
     && curl -sSL https://github.com/ofalk/libdnet/archive/libdnet-$LIBDNET_VERSION.tar.gz | tar xz --strip 1 \
     && ./configure \
-    && make -j7 \
+    && make -j$(nproc) \
     && make install \
     && cd .. \
     && rm -rf libdnet \
@@ -46,7 +46,7 @@ RUN set -xe \
     && cd gperftools \
     && curl -sSL https://github.com/gperftools/gperftools/releases/download/gperftools-$GPERTOOLS_VERSION/gperftools-$GPERTOOLS_VERSION.tar.gz | tar xz --strip 1 \
     && ./configure \
-    && make -j7 \
+    && make -j$(nproc) \
     && make install \
     && cd .. \
     && rm -rf gperftools \
@@ -56,7 +56,7 @@ RUN set -xe \
     && curl -sSL https://github.com/google/flatbuffers/archive/refs/tags/v$FLATBUFFERS_VERSION.tar.gz | tar xz --strip 1 \
     && cd build \
     && cmake .. \
-    && make -j7 \
+    && make -j$(nproc) \
     && make install \
     && cd .. \
     && rm -rf flatbuffers \
@@ -66,7 +66,7 @@ RUN set -xe \
     && curl -sSL https://github.com/snort3/snort3/archive/$SNORT_VERSION.tar.gz | tar -xz --strip 1 \
     && ./configure_cmake.sh --prefix=/usr/local --enable-tcmalloc \
     && cd build \
-    && make -j7 \
+    && make -j$(nproc) \
     && make install \
     && curl -sSL https://www.snort.org/downloads/community/snort3-community-rules.tar.gz | tar xz -C /usr/local/etc/snort/ \
     && curl -sSL https://www.snort.org/downloads/openappid/33380 | tar xz -C /usr/local/etc/snort/ \
