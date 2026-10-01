@@ -8,18 +8,19 @@ DNS protocols such as DNSCrypt v2, DNS-over-HTTPS, Anonymized DNSCrypt and ODoH
 ## up and running
 
 ```bash
-$ mkdir -p data
-$ wget -O data/dnscrypt-proxy.toml https://github.com/DNSCrypt/dnscrypt-proxy/raw/master/dnscrypt-proxy/example-dnscrypt-proxy.toml
-$ vim data/dnscrypt-proxy.toml
-$ docker-compose up -d
+$ mkdir -p data/{etc,log}
+$ wget -O data/etc/dnscrypt-proxy.toml https://github.com/DNSCrypt/dnscrypt-proxy/raw/master/dnscrypt-proxy/example-dnscrypt-proxy.toml
+$ vim data/etc/dnscrypt-proxy.toml
+$ docker compose up -d
 $ dig @127.0.0.1 www.youtube.com
 ```
 
 ## [forwarding_rules][2]
 
 ```bash
-$ wget -P data https://github.com/felixonmars/dnsmasq-china-list/raw/master/accelerated-domains.china.conf
-$ cat data/accelerated-domains.china.conf | sed -e 's@^server=/\(.*\)/@\1\t@' | column -t > data/forwarding-rules.txt
+$ cd data/etc
+$ wget https://github.com/felixonmars/dnsmasq-china-list/raw/master/accelerated-domains.china.conf
+$ cat accelerated-domains.china.conf | sed -e 's@^server=/\(.*\)/@\1\t@' | column -t > forwarding-rules.txt
 ```
 
 [1]: https://github.com/DNSCrypt/dnscrypt-proxy

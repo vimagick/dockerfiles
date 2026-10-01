@@ -170,7 +170,7 @@ keepalive = 30
 ## This file is different from other log files, and will not be
 ## automatically rotated by the application.
 
-# log_file = 'dnscrypt-proxy.log'
+log_file = '/var/log/dnscrypt-proxy/dnscrypt-proxy.log'
 
 
 ## When using a log file, only keep logs from the most recent launch.
@@ -542,7 +542,7 @@ blocked_names_file = 'blocked-names.txt'
 
 ## Optional path to a file logging blocked queries
 
-# log_file = 'blocked-names.log'
+log_file = '/var/log/dnscrypt-proxy/blocked-names.log'
 
 
 ## Optional log format: tsv or ltsv (default: tsv)
@@ -570,7 +570,7 @@ blocked_ips_file = 'blocked-ips.txt'
 
 ## Optional path to a file logging blocked queries
 
-# log_file = 'blocked-ips.log'
+log_file = '/var/log/dnscrypt-proxy/blocked-ips.log'
 
 
 ## Optional log format: tsv or ltsv (default: tsv)
@@ -598,7 +598,7 @@ allowed_names_file = 'allowed-names.txt'
 
 ## Optional path to a file logging allowed queries
 
-# log_file = 'allowed-names.log'
+log_file = '/var/log/dnscrypt-proxy/allowed-names.log'
 
 
 ## Optional log format: tsv or ltsv (default: tsv)
@@ -626,7 +626,7 @@ allowed_ips_file = 'allowed-ips.txt'
 
 ## Optional path to a file logging allowed queries
 
-# log_file = 'allowed-ips.log'
+log_file = '/var/log/dnscrypt-proxy/allowed-ips.log'
 
 ## Optional log format: tsv or ltsv (default: tsv)
 
