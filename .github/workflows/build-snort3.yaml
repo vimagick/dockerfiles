@@ -1,0 +1,29 @@
+name: Build snort3
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - master
+    paths:
+      - snort3/Dockerfile
+      - .github/workflows/build-snort3.yaml
+
+env:
+  GITHUB_TOKEN: ${{ secrets.GHCR_PAT }}
+  DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+  DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+  SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - name: Docker Build and Notify
+        uses: ./.github/actions/docker-build-notify
+        with:
+          context: 'snort3'
+          image_name: 'easypi/snort3'
+          version_arg: 'SNORT_VERSION'
+          version_value: '3.12.2.0'

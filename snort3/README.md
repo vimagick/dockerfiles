@@ -5,7 +5,7 @@ snort3 (not ready)
 from unwanted traffic, malicious software and spam and phishing documents.
 
 ```bash
-$ docker run --rm  vimagick/snort3 --list-modules
+$ docker run --rm  easypi/snort3 --list-modules
 ```
 
 [1]: https://www.snort.org/snort3
