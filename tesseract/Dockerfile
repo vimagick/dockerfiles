@@ -8,6 +8,7 @@ MAINTAINER EasyPi Software Foundation
 RUN set -xe \
     && apk add --no-cache \
         tesseract-ocr \
+        tesseract-ocr-data-eng \
         tesseract-ocr-data-chi_sim \
         tesseract-ocr-data-chi_tra \
         tesseract-ocr-data-jpn \
