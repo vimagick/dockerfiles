@@ -1,0 +1,14 @@
+services:
+  snort3:
+    image: easypi/snort3
+    command: ["-c", "snort.lua", "-l", "/var/log/snort", "-i", "eth0"]
+    volumes:
+      - ./data/etc/snort.lua:/usr/local/etc/snort/snort.lua:ro
+      - ./data/etc/rules:/usr/local/etc/snort/rules:ro
+      - ./data/log:/var/log/snort
+    cap_add:
+      - NET_ADMIN
+      - NET_RAW
+    network_mode: host
+    working_dir: /usr/local/etc/snort
+    restart: unless-stopped

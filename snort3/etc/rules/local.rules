@@ -1,0 +1,13 @@
+alert icmp any any -> any any (
+    msg:"ICMP Echo Request";
+    itype:8;
+    sid:1000000;
+    rev:1;
+)
+
+alert icmp any any -> any any (
+    msg:"ICMP Echo Reply";
+    itype:0;
+    sid:1000001;
+    rev:1;
+)

@@ -44,7 +44,7 @@ RUN set -xe \
     && echo "=========gperftools==========" \
     && mkdir -p gperftools \
     && cd gperftools \
-    && curl -sSL wget https://github.com/gperftools/gperftools/releases/download/gperftools-$GPERTOOLS_VERSION/gperftools-$GPERTOOLS_VERSION.tar.gz | tar xz --strip 1 \
+    && curl -sSL https://github.com/gperftools/gperftools/releases/download/gperftools-$GPERTOOLS_VERSION/gperftools-$GPERTOOLS_VERSION.tar.gz | tar xz --strip 1 \
     && ./configure \
     && make -j7 \
     && make install \
