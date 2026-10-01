@@ -26,4 +26,4 @@ jobs:
           context: 'ftldns'
           image_name: 'easypi/ftldns'
           version_arg: 'FTL_VERSION'
-          version_value: 'v6.7'
+          version_value: 'v6.7.1'
