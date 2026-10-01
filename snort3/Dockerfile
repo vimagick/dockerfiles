@@ -18,7 +18,7 @@ RUN set -xe \
     && apt-get update \
     && apt-get -y install \
         build-essential autoconf check pkg-config libtool tzdata bison cmake flex curl git \
-        libhwloc-dev libhyperscan-dev libluajit-5.1-dev libssl-dev libpcap-dev libpcre3-dev zlib1g-dev liblzma-dev \
+        libhwloc-dev libhyperscan-dev libluajit-5.1-dev libssl-dev libpcap-dev libpcre2-dev zlib1g-dev liblzma-dev \
     && rm -rf /var/lib/apt/lists/*
 
 RUN set -xe \
