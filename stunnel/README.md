@@ -98,25 +98,20 @@ route 192.168.0.0 255.255.0.0 net_gateway
 ;
 ;debug = info
 ;output = /var/log/stunnel.log
-foreground = yes
-setuid = stunnel
-setgid = stunnel
-socket = l:TCP_NODELAY=1
-socket = r:TCP_NODELAY=1
 
 [gmail-pop3]
 client = yes
-accept = 127.0.0.1:110
+accept = 0.0.0.0:110
 connect = pop.gmail.com:995
 
 [gmail-imap]
 client = yes
-accept = 127.0.0.1:143
+accept = 0.0.0.0:143
 connect = imap.gmail.com:993
 
 [gmail-smtp]
 client = yes
-accept = 127.0.0.1:25
+accept = 0.0.0.0:25
 connect = smtp.gmail.com:465
 ```
 </details>
@@ -158,6 +153,6 @@ stream {
 </details>
 
 > [!Important]
-> You need to adjust the listening address for docker deployment
+> You need to expose the ports for docker deployment
 
 [1]: https://www.stunnel.org/index.html
