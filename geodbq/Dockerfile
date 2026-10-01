@@ -5,7 +5,7 @@
 FROM golang:1.27-alpine AS builder
 RUN apk add --no-cache git
 WORKDIR /build
-RUN CGO_ENABLED=0 GOBIN=/build go install github.com/wanwire/geodbq@latest
+RUN CGO_ENABLED=0 GOBIN=/build go install -ldflags="-s -w" github.com/wanwire/geodbq@latest
 
 FROM alpine:3.24
 WORKDIR /data
