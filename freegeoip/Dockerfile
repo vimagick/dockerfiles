@@ -2,13 +2,13 @@
 # Dockerfile for freegeoip
 #
 
-FROM alpine:3
+FROM alpine:3.24
 MAINTAINER EasyPi Software Foundation
 
-ARG FREEGEOIP_VERSION=3.4.1
+ARG FREEGEOIP_VERSION
 ARG FREEGEOIP_FILE=freegeoip-${FREEGEOIP_VERSION}-linux-amd64.tar.gz
 ARG FREEGEOIP_URL=https://github.com/fiorix/freegeoip/releases/download/v${FREEGEOIP_VERSION}/${FREEGEOIP_FILE}
-ARG MMDB_URL=https://cdn.jsdelivr.net/npm/geolite2-city@1.0.4/GeoLite2-City.mmdb.gz
+ARG MMDB_URL=https://github.com/wp-statistics/GeoLite2-City/raw/refs/heads/master/GeoLite2-City.mmdb.gz
 
 WORKDIR /opt/freegeoip
 
