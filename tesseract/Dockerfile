@@ -1,5 +1,5 @@
 #
-# Dockerfile for tesseract CJK
+# Dockerfile for tesseract (CJK)
 #
 
 FROM alpine:3.24

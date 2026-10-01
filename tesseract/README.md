@@ -1,20 +1,14 @@
 tesseract
 =========
 
-![](https://badge.imagelayers.io/vimagick/tesseract:latest.svg)
-
 [Tesseract][1] is an Open Source OCR engine, available under the Apache 2.0
 license. It can be used directly, or (for programmers) using an API. It
 supports a wide variety of languages.
 
-Tesseract doesn't have a built-in GUI, but there are several available from the
-3rdParty page.
-
-Quick Start
------------
+## Quick Start
 
 ```bash
-$ alias tesseract='docker run --rm -u $(id -u):$(id -g) -v `pwd`:/data -w /data vimagick/tesseract'
+$ alias tesseract='docker run --rm -u $(id -u):$(id -g) -v `pwd`:/data -w /data easypi/tesseract'
 
 $ tesseract input.png output -l eng --psm 3
 $ cat output.txt
