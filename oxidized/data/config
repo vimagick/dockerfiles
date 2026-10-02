@@ -1,0 +1,53 @@
+interval: 3600
+threads: 10
+timeout: 30
+retries: 3
+username: admin
+password: admin
+
+groups:
+  home:
+    username: admin
+    password: admin
+
+source:
+  default: csv
+  csv:
+    file: "/home/oxidized/.config/oxidized/router.db"
+    delimiter: !ruby/regexp /:/
+    map:
+      group: 0
+      name: 1
+      ip: 2
+      model: 3
+      username: 4
+      password: 5
+
+output:
+  default: git
+  git:
+    single_repo: true
+    user: "username"
+    email: "username@gmail.com"
+    repo: "/home/oxidized/.config/oxidized/output/oxidized-configs.git"
+
+extensions:
+  oxidized-web:
+    load: true
+    listen: 0.0.0.0
+    port: 8888
+
+hooks:
+  push_to_remote:
+    type: githubrepo
+    events: [post_store]
+    remote_repo: "https://username@bitbucket.org/username/oxidized-configs.git"
+    username: "username"
+    password: "******"
+
+  slack_notification:
+    type: slackdiff
+    events: [post_store]
+    token: "xoxb-******"
+    channel: "CXXXXXX"
+    diff: true

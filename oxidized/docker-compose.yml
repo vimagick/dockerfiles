@@ -1,0 +1,17 @@
+services:
+  oxidized:
+    image: oxidized/oxidized:0.37.0
+    ports:
+      - "8888:8888"
+    volumes:
+      - ./data:/home/oxidized/.config/oxidized
+    environment:
+      # reload router.db every 1 hours
+      - CONFIG_RELOAD_INTERVAL=3600
+    healthcheck:
+      test: ["CMD", "curl", "-sSf", "http://localhost:8888/nodes.json"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
+    restart: unless-stopped
