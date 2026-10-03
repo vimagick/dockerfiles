@@ -2,16 +2,16 @@
 # Dockerfile for motion
 #
 
-FROM debian:bookworm
+FROM debian:13
 MAINTAINER EasyPi Software Foundation
 
-ARG MOTION_VERSION=4.7.0
-ARG MOTION_CODENAME=bookworm
-ARG MOTION_ARCH=arm64
-ARG MOTION_FILE=${MOTION_CODENAME}_motion_${MOTION_VERSION}-1_${MOTION_ARCH}.deb
-ARG MOTION_URL=https://github.com/Motion-Project/motion/releases/download/release-${MOTION_VERSION}/${MOTION_FILE}
+ARG TARGETPLATFORM
+ARG MOTION_VERSION
 
 RUN set -xe \
+    && MOTION_ARCH=$(echo $TARGETPLATFORM | sed -e 's@linux@@') \
+    && MOTION_FILE=trixie_motion_${MOTION_VERSION}-1_${MOTION_ARCH}.deb \
+    && MOTION_URL=https://github.com/Motion-Project/motion/releases/download/release-${MOTION_VERSION}/${MOTION_FILE} \
     && apt-get update \
     && apt-get install -y curl mosquitto-clients openssh-client \
     && curl -sSL ${MOTION_URL} -o ${MOTION_FILE} \
