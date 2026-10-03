@@ -9,7 +9,7 @@ ARG TARGETPLATFORM
 ARG MOTION_VERSION
 
 RUN set -xe \
-    && MOTION_ARCH=$(echo $TARGETPLATFORM | sed -e 's@linux@@') \
+    && MOTION_ARCH=$(echo $TARGETPLATFORM | sed -e 's@linux/@@') \
     && MOTION_FILE=trixie_motion_${MOTION_VERSION}-1_${MOTION_ARCH}.deb \
     && MOTION_URL=https://github.com/Motion-Project/motion/releases/download/release-${MOTION_VERSION}/${MOTION_FILE} \
     && apt-get update \
