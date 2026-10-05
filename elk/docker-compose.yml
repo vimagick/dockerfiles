@@ -1,20 +1,22 @@
-version: "3.8"
-
 services:
 
   elasticsearch:
-    image: docker.elastic.co/elasticsearch/elasticsearch:7.8.1
+    image: docker.elastic.co/elasticsearch/elasticsearch:9.5.4
     ports:
       - "9200:9200"
     volumes:
-      - ./data:/usr/share/elasticsearch/data
+      - ./data/elasticsearch:/usr/share/elasticsearch/data
     environment:
-      - node.name=es1
-      - cluster.name=docker-cluster
-      - cluster.initial_master_nodes=es1
-      - bootstrap.memory_lock=true
-      - script.painless.regex.enabled=true
       - ES_JAVA_OPTS=-Xms8g -Xmx8g
+      - bootstrap.memory_lock=true
+      - cluster.initial_master_nodes=es1
+      - cluster.name=docker-cluster
+      - network.host=0.0.0.0
+      - node.name=es1
+      - script.painless.regex.enabled=true
+      - xpack.monitoring.enabled=false
+      - xpack.security.enabled=false
+      - xpack.security.enrollment.enabled=false
     ulimits:
       memlock:
         soft: -1
@@ -22,7 +24,8 @@ services:
     restart: unless-stopped
 
   logstash:
-    image: docker.elastic.co/logstash/logstash:7.8.1
+    image: docker.elastic.co/logstash/logstash:9.5.4
+    user: "logstash"
     ports:
       - "5044:5044"
       - "9600:9600"
@@ -31,31 +34,42 @@ services:
       - ./data/pipelines.yml:/usr/share/logstash/config/pipelines.yml
       - ./data/pipelines:/usr/share/logstash/pipelines
     environment:
-      - node.name=ls1
-      - xpack.monitoring.enabled=true
-      - xpack.monitoring.elasticsearch_hosts=[http://elasticsearch:9200]
       - LS_JAVA_OPTS=-Xms4g -Xmx4g
+      - node.name=ls1
+      - xpack.monitoring.enabled=false
     depends_on:
       - elasticsearch
     restart: unless-stopped
 
   kibana:
-    image: docker.elastic.co/kibana/kibana:7.8.1
+    image: docker.elastic.co/kibana/kibana:9.5.4
     ports:
       - "5601:5601"
     environment:
-      - SERVER_NAME=kibana
       - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
+      - SERVER_NAME=kibana
+      - TELEMETRY_ALLOWCHANGINGOPTINSTATUS=false
+      - TELEMETRY_OPTIN=false
+      - xpack.fleet.enabled=false
+      - xpack.monitoring.enabled=false
+      - xpack.security.enrollment.enabled=false
     depends_on:
       - elasticsearch
     restart: unless-stopped
 
   apm-server:
-    image: docker.elastic.co/apm/apm-server:7.8.1
+    image: docker.elastic.co/apm/apm-server:9.5.4
+    command: >
+      apm-server -e
+        -E apm-server.host=0.0.0.0:8200
+        -E apm-server.auth.secret_token=your-secret-token-here
+        -E apm-server.rum.enabled=true
+        -E monitoring.enabled=false
+        -E output.elasticsearch.hosts=["http://elasticsearch:9200"]
+        -E setup.kibana.host=kibana:5601
     ports:
       - "8200:8200"
-    volumes:
-      - ./data/apm-server.yml:/usr/share/apm-server/apm-server.yml
     depends_on:
       - elasticsearch
+      - kibana
     restart: unless-stopped
