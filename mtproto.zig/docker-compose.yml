@@ -1,0 +1,9 @@
+services:
+  mtproto.zig:
+    image: ghcr.io/sleep3r/mtproto.zig
+    ports:
+      - "8443:8443"
+      - "9400:9400"
+    volumes:
+      - ./data:/etc/mtproto-proxy:ro
+    restart: unless-stopped

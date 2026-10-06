@@ -460,6 +460,7 @@ A collection of delicious docker recipes.
 - [x] mongo :bucket:
 - [x] ghcr.io/scottlamb/moonfire-nvr
 - [x] ccrisan/motioneye
+- [x] ghcr.io/sleep3r/mtproto.zig
 - [x] ghcr.io/kitabisa/mubeng
 - [x] n8nio/n8n
 - [x] emqx/nanomq :cn:
