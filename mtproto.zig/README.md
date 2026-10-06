@@ -50,19 +50,19 @@ $ wget -O data/config.toml https://github.com/sleep3r/mtproto.zig/blob/main/conf
 $ vim data/config.toml
 $ docker compose up -d
 $ curl http://127.0.0.1:9400/metrics
-$ docker compose logs
+$ docker compose kill -s HUP
 $ mtbuddy links --config data/config.toml
 ```
 
 How to encode Fake-TLS in Hex:
 If your raw secret is `c5d1717f50bdab002e1ba52d9ed8f2fe` and you want to use the domain `dl.google.com`:
+
 1. Convert the domain name string directly to hex:  
      dl.google.com → 646c2e676f6f676c652e636f6d (`echo -n "dl.google.com" | xxd -p`)
 2. String them all together:  
      ee + c5d1717f50bdab002e1ba52d9ed8f2fe + 646c2e676f6f676c652e636f6d
 3. Example Link:  
      tg://proxy?server=1.2.3.4&port=443&secret=eec5d1717f50bdab002e1ba52d9ed8f2e646c2e676f6f676c652e636f6d
-
 
 > [!Tip]
 > Download [mtbuddy][2]
