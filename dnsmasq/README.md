@@ -21,6 +21,7 @@ $ docker-compose kill -s SIGHUP
 ```ini
 # settings.conf
 
+except-interface=nonexisting
 no-hosts
 no-resolv
 filter-AAAA
