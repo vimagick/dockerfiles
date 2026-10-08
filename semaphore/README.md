@@ -5,10 +5,37 @@ Ansible [Semaphore][1] is beautiful web interface for running Ansible playbooks.
 
 ## Up and Running
 
+```
+semaphore
+├── data
+│   ├── etc
+│   │   ├── config.json
+│   │   └── secrets
+│   │       └── id_ed25519.json
+│   └── var
+│       ├── database.sqlite
+│       └── projects
+│           └── openwrt
+│               ├── files
+│               │   └── opkg.conf
+│               ├── playbook.yml
+│               ├── requirements.yml
+│               └── templates
+│                   └── customfeeds.conf.j2
+└── docker-compose.yml
+```
+
+> [!Note]
+> Before you can create `Task Templates`, you need to set up:
+> - Key Store
+> - Inventory
+> - Repositories
+
 ```bash
-$ mkdir -m 777 data/{etc/secrets,var,tmp}
+$ mkdir -m 777 data/{etc/secrets,var}
 $ docker compose up -d
 $ http :3000/api/ping
+pong
 ```
 
 > [!Note]
