@@ -24,8 +24,8 @@ local tap = Listener.new(nil, "http.request or tls.handshake.type==1")
 local header_printed = false
 local function print_header()
     if header_printed then return end
-    print(string.format("%-16s %-6s %-6s %-25s %-6s %-30s",
-        "SRC_IP", "TYPE", "METHOD", "HOST", "PORT", "URI"))
+    print(string.format("%-19s %-16s %-6s %-6s %-25s %-6s %-30s",
+        "TIMESTAMP", "SRC_IP", "TYPE", "METHOD", "HOST", "PORT", "URI"))
     print(string.rep("-", 110))
     header_printed = true
 end
@@ -77,8 +77,10 @@ function tap.packet(pinfo, tvb)
         end
     end
 
-    print(string.format("%-16s %-6s %-6s %-25s %-6s %-30s",
-        src, rtype, method, host, port, uri))
+    local ts = pinfo.abs_ts and os.date("%Y-%m-%dT%H:%M:%S", math.floor(pinfo.abs_ts)) or ""
+
+    print(string.format("%-19s %-16s %-6s %-6s %-25s %-6s %-30s",
+        ts, src, rtype, method, host, port, uri))
 end
 
 -- Cleanup (optional)
