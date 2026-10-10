@@ -24,8 +24,8 @@ local tap = Listener.new(nil, "http.request or tls.handshake.type==1")
 local header_printed = false
 local function print_header()
     if header_printed then return end
-    print(string.format("%-16s %-6s %-6s %-25s %-30s %s",
-        "SRC_IP", "TYPE", "METHOD", "HOST", "URI", "SNI"))
+    print(string.format("%-16s %-6s %-6s %-25s %-6s %-30s",
+        "SRC_IP", "TYPE", "METHOD", "HOST", "PORT", "URI"))
     print(string.rep("-", 110))
     header_printed = true
 end
@@ -43,22 +43,42 @@ function tap.packet(pinfo, tvb)
     -- Determine record type
     local rtype = ""
     if uri ~= "" then
-        rtype = "http"
+        rtype = "HTTP"
     elseif sni ~= "" then
-        rtype = "https"
+        rtype = "HTTPS"
     else
         return  -- skip records that match neither
+    end
+
+    -- Determine port (destination port of the TCP/UDP flow)
+    local port = ""
+    if pinfo.dst_port then
+        port = tostring(pinfo.dst_port)
     end
 
     print_header()
 
     -- For HTTPS, host is empty but SNI is populated
-    if rtype == "https" then
+    if rtype == "HTTPS" then
         host = sni
     end
 
-    print(string.format("%-16s %-6s %-6s %-25s %-30s %s",
-        src, rtype, method, host, uri, sni))
+    if host ~= "" then
+        local ipv6_host, ipv6_port = host:match("^%[([^%]]+)%]:(%d+)$")
+        if ipv6_host then
+            if port == "" then port = ipv6_port end
+            host = ipv6_host
+        else
+            local name, p = host:match("^([^:]+):(%d+)$")
+            if name then
+                if port == "" then port = p end
+                host = name
+            end
+        end
+    end
+
+    print(string.format("%-16s %-6s %-6s %-25s %-6s %-30s",
+        src, rtype, method, host, port, uri))
 end
 
 -- Cleanup (optional)

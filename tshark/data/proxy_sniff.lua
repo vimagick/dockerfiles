@@ -1,0 +1,2 @@
+-- proxy_sniff.lua
+-- Pretty-print http/socks proxy request records with source IP and type label.
