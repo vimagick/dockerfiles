@@ -45,7 +45,7 @@ A collection of delicious docker recipes.
 - [ ] rtmpdump
 - [ ] sensu
 - [ ] ssf
-- [ ] tshark
+- [x] tshark
 - [ ] youtube-upload
 
 ## Big Data
