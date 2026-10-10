@@ -12,10 +12,11 @@ $ tshark -i eth0 -Y "tls.handshake.type == 1" -T fields -e ip.src -e tls.handsha
 # Combined HTTP + HTTPS sniffer
 $ tshark -i eth0 -Y "http.request or tls.handshake.type==1" -T fields -e ip.src -e http.request.method -e http.host -e http.request.uri -e tls.handshake.extensions_server_name
 # Pretty-print via lua script
-$ tshark -i eth0 -Y "http.request or tls.handshake.type==1" -X lua_script:http_sniff.lua -q
+$ tshark -i eth0 -f "tcp port 80 or tcp port 443"  -X lua_script:http_sniff.lua -q
 ```
 
 > [!Tip]
-> Create a `http_sniff.lua` in current directory to pretty-print
+> - Create a `http_sniff.lua` in current directory to pretty-print
+> - Use `-f "tcp portrange 1024-9999"` to sniffer more ports
 
 [1]: https://www.wireshark.org/docs/man-pages/tshark.html
