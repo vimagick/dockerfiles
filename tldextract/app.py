@@ -13,11 +13,7 @@ PROPS = (
     "ipv4",
     "ipv6",
     "registered_domain",
-    "reverse_domain_name",
-    "top_domain_under_public_suffix",
-    "top_domain_under_registry_suffix",
 )
-
 
 class Handler(BaseHTTPRequestHandler):
     def do_GET(self):
@@ -31,14 +27,19 @@ class Handler(BaseHTTPRequestHandler):
             return self._json({"error": "not found"}, 404)
 
         values = q.get("input", [])
-        if len(values) != 1:
-            return self._json({"error": "`input` must be given exactly once"}, 400)
+        if len(values) < 1:
+            return self._json({"error": "`input` must be given at least once"}, 400)
 
         include_private = q.get("include_private", ["false"])[0].lower() == "true"
 
-        e = EXTRACTOR(values[0], include_psl_private_domains=include_private)
-        result = {**dataclasses.asdict(e), **{p: getattr(e, p) for p in PROPS}}
-        return self._json(result)
+        def extract(value):
+            e = EXTRACTOR(value, include_psl_private_domains=include_private)
+            return {**dataclasses.asdict(e), **{p: getattr(e, p) for p in PROPS}}
+
+        if len(values) == 1:
+            return self._json(extract(values[0]))
+        else:
+            return self._json([extract(v) for v in values])
 
     def do_POST(self):
         u = urlparse(self.path)
