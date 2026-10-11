@@ -1,0 +1,10 @@
+services:
+  proxy-http-cache:
+    image: easypi/proxy-http-cache
+    ports:
+      - "8000:8000"
+    environment:
+      - HOST=0.0.0.0
+      - PORT=8000
+      - REDIS_URL=redis://redis:6379/0
+    restart: unless-stopped
