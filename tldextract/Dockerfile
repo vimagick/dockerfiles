@@ -2,12 +2,15 @@
 # Dockerfile for tldextract
 #
 
-FROM alpine:3
+FROM python:3.14-alpine
+MAINTAINER EasyPi Software Foundation
 
-RUN apk add --no-cache py3-pip \
- && pip install tldextract \
- && tldextract --update \
- && tldextract --version
+WORKDIR /app
 
-ENTRYPOINT ["/usr/bin/tldextract"]
-CMD ["--help"]
+COPY app.py .
+
+RUN pip install --no-cache-dir tldextract
+
+EXPOSE 8000
+
+CMD ["python", "app.py"]
