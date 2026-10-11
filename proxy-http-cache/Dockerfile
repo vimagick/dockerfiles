@@ -7,11 +7,10 @@ MAINTAINER EasyPi Software Foundation
 
 WORKDIR /app
 
-RUN apk add curl tar build-base libffi-dev openssl-dev \
+RUN apk add --virtual .build-deps curl tar build-base libffi-dev openssl-dev \
     && curl -sSfL https://github.com/yigitkonur/proxy-http-cache/archive/refs/heads/main.tar.gz | tar xz --strip 1 \
     && pip install --no-cache-dir -r requirements.txt \
-    && apk del curl tar build-base libffi-dev openssl-dev \
-    && apk autoremove
+    && apk del .build-deps
 
 EXPOSE 8000
 
