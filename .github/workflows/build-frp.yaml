@@ -26,4 +26,4 @@ jobs:
           context: 'frp'
           image_name: 'easypi/frp'
           version_arg: 'FRP_VERSION'
-          version_value: '0.71.0'
+          version_value: '0.71.1'
