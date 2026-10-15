@@ -15,7 +15,7 @@ ENV REDIS_URL=redis://redis:6379
 ENV PATH=/home/hubot/node_modules/.bin:$PATH
 
 RUN set -xe \
-    && apk add --update bash ca-certificates nodejs npm python3 \
+    && apk add --update bash ca-certificates git nodejs npm python3 \
     && npm install -g yo generator-hubot \
     && adduser -s /bin/bash -D hubot
 
@@ -26,8 +26,7 @@ RUN set -xe \
     && yo hubot --name $HUBOT_NAME \
                 --description $HUBOT_DESCRIPTION \
                 --adapter $HUBOT_ADAPTER \
-                --defaults \
-                --skip-git \
+                --defaults
     && npm install --save hubot-$HUBOT_ADAPTER \
                           hubot-redis-brain \
                           htmlparser \
