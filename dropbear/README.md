@@ -2,8 +2,8 @@ dropbear
 ========
 
 > [!Caution]
-> A SSH server with empty password.  
-> Any one can login without password!
+> An SSH server with empty password.  
+> Anyone can login without password!
 
 ## Server
 
