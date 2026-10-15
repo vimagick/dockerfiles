@@ -1,0 +1,6 @@
+services:
+  dropbear:
+    image: easypi/dropbear
+    ports:
+      - "2222:22"
+    restart: unless-stopped
