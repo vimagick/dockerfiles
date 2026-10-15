@@ -2,15 +2,16 @@
 # Dockerfile for hubot
 #
 
-FROM alpine:3.18
+FROM alpine:3.24
 MAINTAINER EasyPi Software Foundation
 
-ENV HUBOT_NAME=Hubot
-ENV HUBOT_ADAPTER=slack
-ENV HUBOT_DESCRIPTION=$HUBOT_NAME-$HUBOT_ADAPTER
+ARG HUBOT_NAME=Hubot
+ARG HUBOT_ADAPTER=slack
+ARG HUBOT_DESCRIPTION=$HUBOT_NAME-$HUBOT_ADAPTER
+
 ENV HUBOT_LOG_LEVEL=info
 ENV HUBOT_SLACK_TOKEN=
-
+ENV REDIS_URL=redis://redis:6379
 ENV PATH=/home/hubot/node_modules/.bin:$PATH
 
 RUN set -xe \
@@ -27,6 +28,7 @@ RUN set -xe \
                 --adapter $HUBOT_ADAPTER \
                 --defaults \
     && npm install --save hubot-$HUBOT_ADAPTER \
+                          hubot-redis-brain \
                           htmlparser \
                           moment \
                           querystring \
@@ -34,11 +36,11 @@ RUN set -xe \
                           underscore \
                           underscore.string \
                           url \
-    && sed -i -r 's/^\s+#//' scripts/example.coffee
+    && npm cache clean --force
 
-VOLUME /home/hobot \
+VOLUME /home/hubot \
        /usr/local/bin \
-       /usr/lib/python3.11/site-packages
+       /usr/lib/python3.14/site-packages
 
 EXPOSE 8080
 
