@@ -27,6 +27,7 @@ RUN set -xe \
                 --description $HUBOT_DESCRIPTION \
                 --adapter $HUBOT_ADAPTER \
                 --defaults \
+                --skip-git \
     && npm install --save hubot-$HUBOT_ADAPTER \
                           hubot-redis-brain \
                           htmlparser \
