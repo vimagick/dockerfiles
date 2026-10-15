@@ -26,7 +26,7 @@ RUN set -xe \
     && yo hubot --name $HUBOT_NAME \
                 --description $HUBOT_DESCRIPTION \
                 --adapter $HUBOT_ADAPTER \
-                --defaults
+                --defaults \
     && npm install --save hubot-$HUBOT_ADAPTER \
                           hubot-redis-brain \
                           htmlparser \
