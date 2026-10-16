@@ -6,7 +6,7 @@ on:
     branches:
       - master
     paths:
-      - opensearch/Dockerfile
+      - logstash-oss/Dockerfile
       - .github/workflows/build-logstash-oss.yaml
 
 env:
@@ -23,9 +23,9 @@ jobs:
       - name: Docker Build and Notify
         uses: ./.github/actions/docker-build-notify
         with:
-          context: 'opensearch'
+          context: 'logstash-oss'
           image_name: 'easypi/logstash-oss'
           version_arg: 'LOGSTASH_OSS_VERSION'
-          version_value: '9.5.4'
+          version_value: '9.5.5'
           other_build_args: |
             LOGSTASH_OUTPUT_OPENSEARCH_VERSION=2.1.1

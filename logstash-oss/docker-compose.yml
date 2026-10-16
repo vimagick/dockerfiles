@@ -1,0 +1,16 @@
+services:
+  logstash:
+    image: easypi/logstash-oss:9.5.5
+    container_name: logstash
+    ports:
+      - "5044:5044"
+      - "9600:9600"
+    volumes:
+      - ./data/logstash/config/pipelines.yml:/usr/share/logstash/config/pipelines.yml:ro
+      - ./data/logstash/pipeline:/usr/share/logstash/pipeline:ro
+    environment:
+      LS_JAVA_OPTS: "-Xms256m -Xmx256m"
+    depends_on:
+      - opensearch-node1
+      - opensearch-node2
+    restart: unless-stopped

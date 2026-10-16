@@ -71,7 +71,7 @@ services:
     restart: unless-stopped
 
   logstash:
-    image: easypi/logstash-oss:9.5.4
+    image: easypi/logstash-oss:9.5.5
     container_name: logstash
     ports:
       - "5044:5044"
