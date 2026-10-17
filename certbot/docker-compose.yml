@@ -1,9 +1,25 @@
-certbot:
-  image: quay.io/letsencrypt/letsencrypt
-  command: certonly --standalone
-  ports:
-    - "80:80"
-    - "443:443"
-  volumes:
-    - /etc/letsencrypt:/etc/letsencrypt
-    - /var/lib/letsencrypt:/var/lib/letsencrypt
+services:
+
+  certbot:
+    image: infinityofspace/certbot_dns_duckdns
+    command: >
+      certonly
+      --non-interactive
+      --agree-tos
+      --email=username@gmail.com
+      --preferred-challenges=dns
+      --authenticator=dns-duckdns
+      --dns-duckdns-token=xxxxxx
+      --dns-duckdns-propagation-seconds=120
+      --domain="easypi.duckdns.org"
+      --domain="*.easypi.duckdns.org"
+    volumes:
+      - ./data/etc:/etc/letsencrypt
+      - ./data/log:/var/log/letsencrypt
+
+  renew:
+    image: infinityofspace/certbot_dns_duckdns
+    command: renew
+    volumes:
+      - ./data/etc:/etc/letsencrypt
+      - ./data/log:/var/log/letsencrypt
