@@ -1,5 +1,5 @@
-sniproxy
-========
+sniproxy (clang)
+================
 
 [sniproxy][1] - Proxies incoming HTTP and TLS connections based on the hostname
 contained in the initial request of the TCP session.

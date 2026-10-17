@@ -1,0 +1,8 @@
+services:
+  sniproxy:
+    image: ghcr.io/mosajjal/sniproxy
+    command: ["--config", "/etc/sniproxy/config.yaml"]
+    volumes:
+      - ./data:/etc/sniproxy
+    network_mode: "host"
+    restart: unless-stopped

@@ -1,0 +1,139 @@
+# you can use environment variables to override the settings provided int he default config or the config file as well
+# to do that use the `SNIPROXY_` prefix, followed by the full tree of the parameter you need to update, separated by two underscores (__)
+# for example, if you want the dns server to be bounded to 0.0.0.0:5555 rather than the default 0.0.0.0:53, you run the sniproxy (or the container)
+# with the following environment variable
+# SNIPROXY_GENERAL__BIND_DNS_OVER_UDP=0.0.0.0:5555
+# note that there are 2 underscores between general and BIND_DNS_OVER_UDP
+general:
+  # Upsteam DNS URI. examples: Upstream DNS URI. examples: udp://1.1.1.1:53, tcp://1.1.1.1:53, tcp-tls://1.1.1.1:853, https://dns.google/dns-query
+  # NOTE: if you're using SOCKS, avoid using UDP for upstream DNS
+  upstream_dns: udp://8.8.8.8:53
+  # enable send DNS through socks5
+  upstream_dns_over_socks5: false
+  # Use a SOCKS proxy for upstream HTTP/HTTPS traffic. Example: socks5://admin:
+  upstream_socks5:
+  # DNS Port to listen on. Should remain 53 in most cases. MUST NOT be empty
+  bind_dns_over_udp: "0.0.0.0:53"
+  # enable DNS over TCP. empty disables it. example: "127.0.0.1:53"
+  bind_dns_over_tcp:
+  # enable DNS over TLS. empty disables it. example: "127.0.0.1:853"
+  bind_dns_over_tls:
+  # enable DNS over QUIC. empty disables it. example: "127.0.0.1:8853"
+  bind_dns_over_quic:
+  # Path to the certificate for DoH, DoT and DoQ. eg: /tmp/mycert.pem
+  tls_cert:
+  # Path to the certificate key for DoH, DoT and DoQ. eg: /tmp/mycert.key
+  # leave both tls_cert and tls_key empty to generate a self-signed pair at startup
+  tls_key:
+  # HTTP Port to listen on. Should remain 80 in most cases. use :80 to listen on both IPv4 and IPv6
+  bind_http: "0.0.0.0:80"
+  # bind additional ports for HTTP. a list of portsor ranges separated by commas. example: "8080,8081-8083". follows the same listen address as bind_http
+  bind_http_additional:
+  # HTTPS Port to listen on. Should remain 443 in most cases
+  bind_https: "0.0.0.0:443"
+  # bind additional ports for HTTPS. a list of portsor ranges separated by commas. example: "8443,8444-8446". follows the same listen address as bind_https
+  bind_https_additional:
+  # Enable prometheus endpoint on IP:PORT. example: 127.0.0.1:8080. Always exposes /metrics and only supports HTTP
+  bind_prometheus:
+  # Enable the pprof debug endpoint on IP:PORT. example: 127.0.0.1:6060. empty disables it.
+  # exposes the standard /debug/pprof/ handlers, plus the goroutine leak profile at
+  # /debug/pprof/goroutineleak (add ?debug=1 for readable stacks). anyone who can reach this port can
+  # read stack traces and trigger expensive profiles, so bind it to loopback.
+  bind_pprof:
+  # Periodically run goroutine leak detection and publish the count as the goroutines.leaked
+  # gauge (sniproxy_<public_ipv4>_goroutines_leaked in prometheus), logging a warning when it is
+  # above zero.
+  # empty or 0s disables it. example: 15m
+  # every check forces a full GC, so keep this coarse. use bind_pprof to get the stacks.
+  #
+  # NOTE: the leak profile only exists if sniproxy was built with
+  # GOEXPERIMENT=goroutineleakprofile (the release binaries and container image are).
+  # without it sniproxy warns at startup and the leak options do nothing.
+  goroutine_leak_interval: 0s
+  # Interface used for outbound TLS connections. uses OS prefered one if empty
+  interface:
+  # Preferred ip version for outgoing connections. choises: ipv4 (or 4), ipv6 (or 6), ipv4only, ipv6only, any. empty (or 0) means any.
+  # numeric values are kept for backward compatibility
+  preferred_version:
+  # Public IPv4 of the server, reply address of DNS A queries
+  public_ipv4:
+  # Public IPv6 of the server, reply address of DNS AAAA queries
+  public_ipv6:
+  # allow connections from sniproxy to RFC1918 addresses. default is false.
+  allow_conn_to_local: false
+  # log level for the application. choices: debug, info, warn, error
+  # by default, the logs are colored so they are not suited for logging to a file.
+  # in order to disable colors, set NO_COLOR=true in the environment variables
+  log_level: info
+
+acl:
+  # geoip filtering
+  #
+  # the logic is as follows:
+  # 1. if mmdb is not loaded or not available, it's fail-open (allow by default)
+  # 2. if the IP can't be resolved to a country, it's rejected
+  # 3. if the country is in the blocked list, it's rejected
+  # 4. if the country is in the allowed list, it's allowed
+  # note that the reject list is checked first and takes priority over the allow list
+  # if the IP's country doesn't match any of the above, it's allowed if the blocked list is not empty
+  # for example, if the blockedlist is [US] and the allowedlist is empty, a connection from
+  # CA will be allowed. but if blockedlist is empty and allowedlist is [US], a connection from
+  # CA will be rejected.
+  geoip:
+    enabled: false
+    # priority of the geoip filter. lower priority means it's checked first, meaning it can be ovveriden by other ACLs with higehr priority number.
+    priority: 10
+    # strictly blocked countries
+    blocked:
+    # allowed countries
+    allowed:
+    # Path to the MMDB file. eg: /tmp/Country.mmdb, https://raw.githubusercontent.com/Loyalsoldier/geoip/release/Country.mmdb
+    path:
+    # Interval to re-fetch the MMDB file
+    refresh_interval: 24h0m0s
+  # domain filtering
+  domain:
+    enabled: false # false means ALL domains will be allowed to go through the proxy
+    # priority of the domain filter. lower priority means it's checked first. if multiple filters have the same priority, they're checked in random order
+    priority: 20
+    # Path to the domain list. eg: /tmp/domainlist.csv. Look at the example file for the format.
+    path:
+    # Interval to re-fetch the domain list
+    refresh_interval: 1h0m0s
+  # IP/CIDR filtering
+  # the list applies to ALL services (dns, https, http) based on the source IP of the connection.
+  # two gotchas:
+  # 1. CIDRs are matched per address family. 0.0.0.0/0,reject does NOT reject IPv6 clients;
+  #    add ::/0,reject as well if you want a dual-stack catch-all.
+  # 2. when running in docker with the default bridge network, TCP connections can appear to
+  #    come from the docker gateway (e.g. 172.17.0.1) instead of the real client IP, which
+  #    makes source-based filtering useless. run the container with --network host (or an
+  #    equivalent setup that preserves source IPs) when using this ACL.
+  cidr:
+    enabled: false
+    # priority of the cidr filter. lower priority means it's checked first. if multiple filters have the same priority, they're checked in random order
+    priority: 30
+    # Path to the CIDR list. eg: /tmp/cidr.csv. Look at the example file for the format.
+    path:
+    # Interval to re-fetch the domain list
+    refresh_interval: 1h0m0s
+  # FQDN override. This ACL is used to override the destination IP to not be the one resolved by the upstream DNS or the proxy itself, rather a custom IP and port
+  # if the destination is HTTP, it uses tls_cert and tls_key certificate to terminate the original connection.
+  override:
+    enabled: false
+    # priority of the override filter. lower priority means it's checked first. if multiple filters have the same priority, they're checked in random order
+    priority: 40
+    # override rules. unlike others, this one does not require a path to a file. it's a map of FQDNs wildcards to IPs and ports. only HTTPS is supported
+    # currently, these rules are checked with a simple for loop and string matching,
+    # so it's not suited for a large number of rules. if you have a big list of rules
+    # use a reverse proxy in front of sniproxy rather than using sniproxy as a reverse proxy
+    rules:
+      "one.one.one.one": "1.1.1.1:443"
+      "google.com": "8.8.8.8:443"
+    # enable listening on DoH on a specific SNI. example: "myawesomedoh.example.com". empty disables it. If you need DoH to be enabled and don't want
+    # any other overrides, enable this ACL with empty rules. DoH SNI will add a default rule and start.
+    doh_sni: "myawesomedoh.example.com"
+    # Path to the certificate for handling tls decryption. eg: /tmp/mycert.pem
+    tls_cert:
+    # Path to the certificate key handling tls decryption. eg: /tmp/mycert.key
+    tls_key:

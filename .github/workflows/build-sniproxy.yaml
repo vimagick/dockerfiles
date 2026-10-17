@@ -6,7 +6,7 @@ on:
     branches:
       - master
     paths:
-      - sniproxy/Dockerfile
+      - sniproxy/clang/Dockerfile
       - .github/workflows/build-sniproxy.yaml
 
 env:
@@ -23,5 +23,5 @@ jobs:
       - name: Docker Build and Notify
         uses: ./.github/actions/docker-build-notify
         with:
-          context: 'sniproxy'
+          context: 'sniproxy/clang'
           image_name: 'easypi/sniproxy'
