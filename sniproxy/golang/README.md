@@ -32,3 +32,6 @@ acl:
     path: /etc/sniproxy/Country.mmdb
     refresh_interval: 24h0m0s
 ```
+
+> [!Note]
+> Another geoip data source: https://github.com/P3TERX/GeoLite.mmdb/tree/download
