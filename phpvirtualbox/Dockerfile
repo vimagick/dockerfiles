@@ -6,7 +6,7 @@ FROM alpine:3.24
 MAINTAINER EasyPi Software Foundation
 
 ARG PHPVBOX_VERSION
-ARG PHPVBOX_URL=https://github.com/phpvirtualbox/phpvirtualbox/archive/${PHPVBOX_VERSION}.tar.gz
+ARG PHPVBOX_URL=https://github.com/phpvirtualbox/phpvirtualbox/archive/refs/tags/${PHPVBOX_VERSION}.tar.gz
 
 WORKDIR /var/www
 
