@@ -5,36 +5,33 @@ This is a fork of [jazzdd86/phpvirtualbox](https://hub.docker.com/r/jazzdd/phpvi
 
 [phpVirtualBox][1] is a web-based front-end to VirtualBox written in PHP.
 
-### docker-compose.yml
+### up and running
 
-```yaml
-phpvirtualbox:
-  image: vimagick/phpvirtualbox
-  ports:
-    - "8888:80"
-  environment:
-    - ID_PORT_18083_TCP=remote-server:18083
-    - ID_NAME=Vbox
-    - ID_USER=username
-    - ID_PW=password
-    - CONF_browserRestrictFolders=/data,
-  restart: always
+```bash
+$ mkdir -p data
+$ wget -O data/config.php https://github.com/phpvirtualbox/phpvirtualbox/raw/refs/heads/develop/config.php-example
+$ vim data/config.php
+$ docker compose up -d
 ```
 
-> - Make sure you can login `remote-server` with `username:password`.
-> - ISO images can be placed at `/data` directory on `remote-server`.
-> - During the OS installation, you can connect to it with RDP viewer.
+Important settings:
+
+- `$username / $password`: Username / Password for system user that runs VirtualBox 
+- `$location = 'http://vboxwebsrv:18083/'`: SOAP URL of vboxwebsrv
+- `$vrdeaddress = '0.0.0.0'`: Set the default VRDE address
+- `$browserRestrictFolders = array('/data')`: Restrict locations / folders
 
 ### vboxweb.service
 
-```
+```ini
 # /etc/systemd/system/vboxweb.service
+
 [Unit]
 Description=VirtualBox Web Service
 After=network.target
 
 [Service]
-ExecStart=/usr/bin/vboxwebsrv -H 0.0.0.0 -p 18083
+ExecStart=/usr/bin/vboxwebsrv -H 0.0.0.0 -p 18083 -F /var/log/vboxwebsrv.log
 Restart=on-failure
 
 [Install]
@@ -48,18 +45,18 @@ WantedBy=multi-user.target
 echo "deb http://download.virtualbox.org/virtualbox/debian $(lsb_release -cs) contrib" > /etc/apt/sources.list.d/virtualbox.list
 wget -O- http://download.virtualbox.org/virtualbox/debian/oracle_vbox_2016.asc | apt-key add -
 apt-get update
-apt-get install -y virtualbox-5.1 dkms
+apt-get install -y virtualbox-7.2 dkms
 systemctl status vboxdrv
 
 # install extpack
-wget http://download.virtualbox.org/virtualbox/5.1.0/Oracle_VM_VirtualBox_Extension_Pack-5.1.0-108711.vbox-extpack
-VBoxManage extpack install Oracle_VM_VirtualBox_Extension_Pack-5.1.0-108711.vbox-extpack
+wget https://download.virtualbox.org/virtualbox/7.2.20/Oracle_VirtualBox_Extension_Pack-7.2.20.vbox-extpack
+VBoxManage extpack install Oracle_VirtualBox_Extension_Pack-7.2.20.vbox-extpack
 VBoxManage list extpacks
 
 # install vagrant
-wget https://releases.hashicorp.com/vagrant/1.8.5/vagrant_1.8.5_x86_64.deb
-dpkg -i vagrant_1.8.5_x86_64.deb
-vagrant version
+wget -O - https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(grep -oP '(?<=UBUNTU_CODENAME=).*' /etc/os-release || lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
+sudo apt update && sudo apt install vagrant
 
 # start vm
 vagrant box add debian/jessie64
@@ -76,4 +73,8 @@ systemctl start vboxweb
 systemctl enable vboxweb
 ```
 
+> [!Tip]
+> Click [here][2] to get a list of vagrant images
+
 [1]: http://sourceforge.net/projects/phpvirtualbox/
+[2]: https://portal.cloud.hashicorp.com/vagrant/discover

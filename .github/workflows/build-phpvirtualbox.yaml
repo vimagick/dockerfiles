@@ -1,0 +1,32 @@
+name: Build phpVirtualBox
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - master
+    paths:
+      - phpvirtualbox/Dockerfile
+      - .github/workflows/build-phpvirtualbox.yaml
+
+env:
+  GITHUB_TOKEN: ${{ secrets.GHCR_PAT }}
+  DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+  DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+  SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - uses: actions/checkout@v7
+      - name: Docker Build and Notify
+        uses: ./.github/actions/docker-build-notify
+        with:
+          context: 'phpvirtualbox'
+          image_name: 'easypi/phpvirtualbox'
+          version_arg: 'PHPVIRTUALBOX_VERSION'
+          version_value: '7.2-3'
