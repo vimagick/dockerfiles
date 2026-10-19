@@ -28,5 +28,5 @@ jobs:
         with:
           context: 'phpvirtualbox'
           image_name: 'easypi/phpvirtualbox'
-          version_arg: 'PHPVIRTUALBOX_VERSION'
+          version_arg: 'PHPVBOX_VERSION'
           version_value: '7.2-3'
