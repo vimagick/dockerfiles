@@ -13,7 +13,6 @@ WORKDIR /var/www
 RUN set -xe \
     && apk add --no-cache bash nginx php85-fpm php85-cli php85-common php85-json php85-soap php85-simplexml php85-session \
     && apk add --no-cache --virtual build-dependencies curl tar \
-    && touch /etc/php85/fpm.d/empty.conf \
     && curl -sSL ${PHPVBOX_URL} | tar xz --strip 1 \
     && apk del build-dependencies \
     && chown nobody:nobody -R /var/www
