@@ -5,7 +5,7 @@ Description=VirtualBox Web Service
 After=network.target
 
 [Service]
-ExecStart=/usr/bin/vboxwebsrv -H 0.0.0.0 -p 18083
+ExecStart=/usr/bin/vboxwebsrv -H 0.0.0.0 -p 18083 -F /var/log/vboxwebsrv.log
 Restart=on-failure
 
 [Install]

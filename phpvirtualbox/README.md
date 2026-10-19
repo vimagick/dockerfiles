@@ -20,6 +20,7 @@ Important settings:
 - `$location = 'http://vboxwebsrv:18083/'`: SOAP URL of vboxwebsrv
 - `$vrdeaddress = '0.0.0.0'`: Set the default VRDE address
 - `$browserRestrictFolders = array('/data')`: Restrict locations / folders
+- `$noAuth = false`: WebUI users are stored as global extradata (`VBoxManage getextradata global enumerate`)
 
 ### vboxweb.service
 
