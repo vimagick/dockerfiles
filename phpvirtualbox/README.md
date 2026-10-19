@@ -5,7 +5,7 @@ This is a fork of [jazzdd86/phpvirtualbox](https://hub.docker.com/r/jazzdd/phpvi
 
 [phpVirtualBox][1] is a web-based front-end to VirtualBox written in PHP.
 
-### up and running
+## up and running
 
 ```bash
 $ mkdir -p data
@@ -21,8 +21,26 @@ Important settings:
 - `$vrdeaddress = '0.0.0.0'`: Set the default VRDE address
 - `$browserRestrictFolders = array('/data')`: Restrict locations / folders
 - `$noAuth = false`: WebUI users are stored as global extradata (`VBoxManage getextradata global enumerate`)
+  - Key: phpvb/users/admin/admin
+  - Value: 1
+  - Key: phpvb/users/admin/pass
+  - Value: (sha512sum)
 
-### vboxweb.service
+## windows host setup
+
+```pwsh
+C:\> echo %PATH%
+...;C:\Program Files\Oracle\VirtualBox\;...
+
+C:\> vboxwebsrv -H 0.0.0.0 >nul
+Oracle VirtualBox web service Version 7.2.20
+Copyright (C) 2007-2026 Oracle and/or its affiliates
+```
+
+## linux server setup
+
+<details>
+<summary>vboxweb.service</summary>
 
 ```ini
 # /etc/systemd/system/vboxweb.service
@@ -38,8 +56,7 @@ Restart=on-failure
 [Install]
 WantedBy=multi-user.target
 ```
-
-### server setup
+</details>
 
 ```bash
 # install virtualbox
