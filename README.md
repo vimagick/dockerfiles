@@ -463,6 +463,7 @@ A collection of delicious docker recipes.
 - [x] ghcr.io/sleep3r/mtproto.zig
 - [x] ghcr.io/kitabisa/mubeng
 - [x] n8nio/n8n
+- [x] manios/nagios
 - [x] emqx/nanomq :cn:
 - [x] deluan/navidrome :musical_note:
 - [x] neo4j :bucket:

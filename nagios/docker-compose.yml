@@ -1,0 +1,14 @@
+services:
+  nagios:
+    image: manios/nagios:4.5.14
+    ports:
+    - "9080:80"
+    volumes:
+    - ./data/ssmtp:/etc/ssmtp
+    - ./data/plugins:/opt/Custom-Nagios-Plugins
+    - ./data/log:/var/log/apache2
+    environment:
+      NAGIOSADMIN_USER: "nagiosadmin"
+      NAGIOSADMIN_PASS: "nagios"
+      TZ: "UTC"
+    restart: unless-stopped
