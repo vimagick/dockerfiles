@@ -1,4 +1,9 @@
-version: "3.8"
+# See:
+# - https://docs.linuxserver.io/images/docker-wireguard/
+# - https://www.linuxserver.io/blog/advanced-wireguard-hub
+# - https://www.wireguard.com/netns/
+# - https://wiresock.net/documentation/wireguard/config.html
+
 services:
   wireguard:
     image: linuxserver/wireguard
@@ -9,13 +14,14 @@ services:
     environment:
       - PUID=1000
       - PGID=1000
-      - TZ=UTC
+      - TZ=Etc/UTC
       - SERVERURL=easypi.duckdns.org
       - SERVERPORT=51820
-      - PEERS=3
+      - PEERS=kev,tom,zoe
       - PEERDNS=auto
       - INTERNAL_SUBNET=10.13.13.0
       - ALLOWEDIPS=0.0.0.0/0
+      - PERSISTENTKEEPALIVE_PEERS=all
       - LOG_CONFS=true
     volumes:
       - ./data:/config

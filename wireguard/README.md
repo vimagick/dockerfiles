@@ -10,20 +10,22 @@ considerably more performant than OpenVPN.
 ## Up and Running
 
 ```bash
-$ echo 'deb http://deb.debian.org/debian buster-backports main contrib non-free' > /etc/apt/sources.list.d/buster-backports.list
-$ apt update
-$ apt install wireguard
+$ sudo add-apt-repository ppa:wireguard/wireguard
+$ sudo apt install wireguard
 $ docker-compose up -d
 $ docker-compose logs -f wireguard
 $ tree -d
 └── data
     ├── coredns
-    ├── peer1
-    ├── peer2
-    ├── peer3
+    ├── peer_kev
+    ├── peer_tom
+    ├── peer_zoe
     ├── server
     └── templates
 ```
+
+> [!Note]
+> During container start, it will first check if the wireguard module is already [installed][2] and loaded.
 
 ## GUI Clients
 
@@ -33,3 +35,4 @@ $ tree -d
 - Windows: https://download.wireguard.com/windows-client/
 
 [1]: https://www.wireguard.com/
+[2]: https://help.clouding.io/hc/en-us/articles/360013528839-How-to-install-WireGuard-VPN-on-Ubuntu
