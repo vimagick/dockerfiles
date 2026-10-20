@@ -568,6 +568,7 @@ A collection of delicious docker recipes.
     - [x] serving
 - [x] kitabisa/teler
 - [x] tile38/tile38 :bucket:
+- [x] ghcr.io/sjoerd305/tlswatch
 - [x] traccar/traccar
 - [x] traefik
 - [x] trinodb/trino

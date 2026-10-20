@@ -1,0 +1,12 @@
+services:
+  tlswatch:
+    image: ghcr.io/sjoerd305/tlswatch:latest
+    ports:
+      - "127.0.0.1:8080:8080"
+    volumes:
+      - ./data:/data
+    environment:
+      TLSWATCH_BASE_URL: https://tlswatch.easypi.duckdns.org
+      TLSWATCH_BEHIND_PROXY: "true"
+      TZ: "Asia/Shanghai"
+    restart: unless-stopped
