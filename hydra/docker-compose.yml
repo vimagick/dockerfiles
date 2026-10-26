@@ -1,7 +1,6 @@
-version: "3.8"
 services:
   hydra:
-    image: vimagick/hydra
+    image: easypi/hydra
     entrypoint: sleep
     command: infinity
     volumes:

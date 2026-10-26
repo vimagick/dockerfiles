@@ -2,10 +2,10 @@
 # Dockerfile for hydra
 #
 
-FROM alpine:3
+FROM alpine:3.24
 MAINTAINER EasyPi Software Foundation
 
-ARG HYDRA_VERSION=9.6
+ARG HYDRA_VERSION
 ARG HYDRA_URL=https://github.com/vanhauser-thc/thc-hydra/archive/v${HYDRA_VERSION}.tar.gz
 
 RUN set -xe \

@@ -1,7 +1,7 @@
 hydra
 =====
 
-A very fast network logon cracker which support many different services.
+[hydra][1] is a very fast network logon cracker which support many different services.
 
 - [x] openssl
 - [x] idn
@@ -19,21 +19,6 @@ A very fast network logon cracker which support many different services.
 - [ ] GUI req's
 - [x] Android specialities
 - [x] secure compile option support in gcc
-
-## docker-compose.yml
-
-```yaml
-version: "3.8"
-services:
-  hydra:
-    image: vimagick/hydra
-    entrypoint: sleep
-    command: infinity
-    volumes:
-      - ./data:/data
-    working_dir: /data
-    restart: unless-stopped
-```
 
 # up and running
 
@@ -56,3 +41,5 @@ $ docker-compose exec hydra bash
 >>> cat hacked.txt
     [2812][http-get] host: www.target.com   login: admin   password: admin
 ```
+
+[1]: https://github.com/vanhauser-thc/thc-hydra
