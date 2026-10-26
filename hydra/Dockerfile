@@ -6,7 +6,7 @@ FROM alpine:3.24
 MAINTAINER EasyPi Software Foundation
 
 ARG HYDRA_VERSION
-ARG HYDRA_URL=https://github.com/vanhauser-thc/thc-hydra/archive/v${HYDRA_VERSION}.tar.gz
+ARG HYDRA_URL=https://github.com/vanhauser-thc/thc-hydra/archive/${HYDRA_VERSION}.tar.gz
 
 RUN set -xe \
     && apk add --no-cache apr-dev \
