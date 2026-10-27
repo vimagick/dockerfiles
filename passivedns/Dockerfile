@@ -5,6 +5,9 @@
 FROM debian:13
 MAINTAINER EasyPi Software Foundation
 
+ARG PASSIVEDNS_VERSION
+ARG PASSIVEDNS_URL=https://github.com/gamelinux/passivedns/archive/refs/tags/${PASSIVEDNS_VERSION}.tar.gz
+
 RUN set -xe \
  && apt update -y \
  && apt install -y autoconf \
@@ -21,7 +24,7 @@ RUN set -xe \
                    libssl3 \
  && mkdir -p /opt/passivedns \
  && cd /opt/passivedns \
- && curl -sSL https://github.com/gamelinux/passivedns/archive/refs/heads/master.tar.gz | tar xz --strip 1 \
+ && curl -sSL $PASSIVEDNS_URL | tar xz --strip 1 \
  && autoreconf --install && ./configure --prefix=/usr && make install \
  && cp etc/default/passivedns-debian /etc/default/passivedns \
  && cp etc/init.d/passivedns-debian /etc/init.d/passivedns \

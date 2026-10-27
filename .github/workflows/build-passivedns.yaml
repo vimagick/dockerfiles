@@ -29,4 +29,4 @@ jobs:
           context: 'passivedns'
           image_name: 'easypi/passivedns'
           version_arg: 'PASSIVEDNS_VERSION'
-          version_value: 'latest'
+          version_value: 'v2.0.1'
