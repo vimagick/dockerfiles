@@ -14,10 +14,8 @@ services:
       -i eth0
       -l /var/log/passivedns/passivedns.log
       -L /var/log/passivedns/passivedns-nx.log
-      -p /var/run/passivedns.pid
-      -P 86400
-      -S 256
       -X 46CDNOPRSTMnx
+      --format text
     volumes:
       - ./data:/var/log/passivedns
     network_mode: host
@@ -48,7 +46,7 @@ output.logstash:
 
 ## logstash.conf
 
-```
+```ruby
 input {
   beats {
     port => 5044

@@ -6,6 +6,7 @@ services:
       -l /var/log/passivedns/passivedns.log
       -L /var/log/passivedns/passivedns-nx.log
       -X 46CDNOPRSTMnx
+      --format text
     volumes:
       - ./data:/var/log/passivedns
     network_mode: host
