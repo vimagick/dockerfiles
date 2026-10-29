@@ -4,19 +4,44 @@ log:
   loglevel: warning
 
 inbounds:
-  - port: 10086
+  # https://deepwiki.com/v2ray/v2ray-core/3.1-vmess-protocol
+  - port: 6443
     protocol: vmess
     settings:
       clients:
         - id: f97fdba2-603d-4f80-bc77-451662913e1a
-          level: 1
-          alterId: 64
-# - port: 8838
-#   protocol: shadowsocks
-#   settings:
-#     method: chacha20-ietf-poly1305
-#     password: fagh6yieSh6T
-#     network: tcp,udp
+          level: 0
+          alterId: 4
+          email: alice@example.com
+  # https://deepwiki.com/v2ray/v2ray-core/3.2-vless-protocol
+  - port: 8443
+    protocol: vless
+    settings:
+      clients:
+        - id: 87b77f82-d36b-11f1-a345-a785a0b51903
+          flow: xtls-rprx-direct
+          level: 0
+          email: alice@example.com
+      decryption: none
+    streamSettings:
+      network: tcp
+      security: xtls
+      xtlsSettings:
+        alpn:
+          - http/1.1
+          - h2
+      certificates:
+        - certificateFile: /etc/letsencrypt/live/example.com/fullchain.pem
+          keyFile: /etc/letsencrypt/live/example.com/privkey.pem
+  # https://www.v2ray.com/chapter_02/protocols/shadowsocks.html
+  - port: 8388
+    protocol: shadowsocks
+    settings:
+      method: chacha20-ietf-poly1305
+      password: au9WaeShohph
+      network: tcp,udp
+      level: 0
+      email: alice@example.com
 
 outbounds:
   - protocol: freedom

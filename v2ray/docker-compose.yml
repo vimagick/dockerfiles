@@ -1,7 +1,6 @@
-version: "3.8"
 services:
   v2ray:
-    image: vimagick/v2ray
+    image: easypi/v2ray
     command: v2ray run -c /etc/v2ray/config.yaml
     ports:
       - "10086:10086"
