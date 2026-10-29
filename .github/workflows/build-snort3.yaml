@@ -26,4 +26,4 @@ jobs:
           context: 'snort3'
           image_name: 'easypi/snort3'
           version_arg: 'SNORT_VERSION'
-          version_value: '3.12.2.0'
+          version_value: '3.12.4.0'
