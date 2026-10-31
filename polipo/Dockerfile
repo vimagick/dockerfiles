@@ -2,8 +2,8 @@
 # Dockerfile for polipo
 #
 
-FROM alpine
-MAINTAINER kev <noreply@easypi.pro>
+FROM alpine:3.24
+MAINTAINER EasyPi Software Foundation
 
 RUN set -xe \
     && apk add --no-cache build-base openssl \
