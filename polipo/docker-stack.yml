@@ -1,9 +1,7 @@
-version: "3.8"
-
 services:
 
   polipo:
-    image: vimagick/polipo
+    image: easypi/polipo
     networks:
       - host_network
     deploy:

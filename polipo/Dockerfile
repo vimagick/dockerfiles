@@ -3,6 +3,7 @@
 #
 
 FROM alpine:3.24
+
 MAINTAINER EasyPi Software Foundation
 
 RUN set -xe \

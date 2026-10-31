@@ -9,10 +9,9 @@ group.
 ## docker-compose.yml
 
 ```yaml
-version: "3.8"
 services:
   polipo:
-    image: vimagick/polipo
+    image: easypi/polipo
     command:
       authCredentials=username:password
       socksParentProxy=1.2.3.4:9050
