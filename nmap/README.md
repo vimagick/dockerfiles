@@ -21,20 +21,18 @@ password
 abcdef
 abc123
 
-# DONE: https://nmap.org/nsedoc/scripts/ssh-brute.html
+# https://nmap.org/nsedoc/scripts/ssh-brute.html
 $ nmap --script ssh-brute --script-args "userdb=usernames.lst,passdb=passwords.lst,ssh-brute.timeout=4s,brute.firstonly=true" -p 22 192.168.1.1
 
-# TODO:
+# https://nmap.org/nsedoc/scripts/http-form-brute.html
 $ cat /usr/share/nmap/scripts/http-form-brute.nse
 ...
 local known_apps = {
   openwrt = {
-    match = {
-      class = "cbi-map",
-    },
+    match = {},
     uservar = "luci_username",
     passvar = "luci_password",
-    onsuccess = "sysauth_http=",
+    onsuccess = "sysauth_http",
   },
 ...
   if not (response and response.body and (response.status == 200 or response.status == 403)) then
@@ -42,8 +40,22 @@ local known_apps = {
   end
 ...
 
-# TODO: https://nmap.org/nsedoc/scripts/http-form-brute.html
-$ nmap --script http-form-brute --script-args "http-form-brute.method=POST,http-form-brute.path=/cgi-bin/luci/,http-form-brute.uservar=luci_username,http-form-brute.passvar=luci_password,userdb=usernames.lst,passdb=passwords.lst,http-form-brute.onfailure=Forbidden,http-form-brute.sessioncookies=false,brute.firstonly=true" -p 80 192.168.1.1 -d
+# Long version (without known_apps patch)
+$ nmap --script http-form-brute --script-args "http.useragent=Mozilla/5.0,http-form-brute.method=POST,http-form-brute.path=/cgi-bin/luci/,http-form-brute.uservar=luci_username,http-form-brute.passvar=luci_password,userdb=usernames.lst,passdb=passwords.lst,http-form-brute.onsuccess=sysauth_http,brute.firstonly=true" -p 80 192.168.1.1 -d
+PORT   STATE SERVICE REASON
+80/tcp open  http    syn-ack ttl 64
+| http-form-brute:
+|   Accounts:
+|     root:123456 - Valid credentials
+|_  Statistics: Performed 5 guesses in 1 seconds, average tps: 5.0
+
+# Short version (with known_apps patch)
+$ nmap --script http-form-brute --script-args "http.useragent=Mozilla/5.0,http-form-brute.path=/cgi-bin/luci/,userdb=usernames.lst,passdb=passwords.lst,brute.firstonly=true" -p 80 192.168.1.1 -d
 ```
+
+> [!Tip]
+> - Use `--script /path/to/script.nse` to run your own modified script
+> - Use `--script +script` to run against non-standard http port (e.g., :3389, :5901)
+> - Debug lua script: `stdnse.debug1("%s", json.generate(form))`
 
 [1]: https://nmap.org/
