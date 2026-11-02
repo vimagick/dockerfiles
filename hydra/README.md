@@ -24,18 +24,25 @@ hydra
 
 ```bash
 $ docker-compose up -d
+$ docker-compose ps
+$ cd data
 
-$ docker-compose exec hydra bash
+# Press Ctrl-C && pkill hydra to exit
+$ alias hydra='docker exec hydra-hydra-1 hydra'
 
 # https://github.com/danielmiessler/SecLists
->>> cat passwords.lst
-    123456
-    admin
-    secret
-    ...
+>>> head passwords.lst
+123456
+admin
+secret
+123abc
+abc123
 
-# Manual
+# Docs
 >>> hydra -U http-post-form
+
+# General
+>>> hydra -vVf -t 5 -l admin -P passwords.lst "http-post-form://127.0.0.1:1880/hackme:username=^USER^&password=^PASS^:F=不正确"
 
 # OpenWrt
 >>> hydra -vVf -t 1 -l root -P passwords.lst -o results.txt "http-post-form://192.168.1.1:80/cgi-bin/luci/:luci_username=^USER^&luci_password=^PASS^:F=Forbidden"
