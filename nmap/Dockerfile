@@ -5,7 +5,9 @@
 FROM alpine:3.24
 MAINTAINER EasyPi Software Foundation
 
-RUN apk add --no-cache grc nmap nmap-ncat nmap-scripts
+RUN set -xe \
+ && echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories \
+ && apk add --no-cache nmap nmap-ncat nmap-scripts rgrc
 
-ENTRYPOINT ["nmap"]
+ENTRYPOINT ["rgrc", "nmap"]
 CMD ["--help"]

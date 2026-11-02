@@ -6,7 +6,7 @@ nmap
 ## Tutorial
 
 ```bash
-$ alias nmap='docker run --rm -v $PWD:/data -w /data --network host easypi/nmap'
+$ alias nmap='docker run -t --rm -v $PWD:/data -w /data --network host easypi/nmap'
 
 $ nmap -sT -Pn -p 22,80,443,8080 192.168.1.1
 
