@@ -10,6 +10,14 @@ $ alias nmap='docker run --rm -v $PWD:/data -w /data --network host easypi/nmap'
 
 $ nmap -sT -Pn -p 22,80,443,8080 192.168.1.1
 
+$ cat hostnames.lst
+usa
+china
+russia
+
+# https://nmap.org/nsedoc/scripts/dns-brute.html
+$ nmap --script dns-brute --script-args dns-brute.domain=duckdns.org,dns-brute.hostlist=hostnames.lst,newtargets -p 80,443 --open
+
 $ cat usernames.lst
 root
 admin
