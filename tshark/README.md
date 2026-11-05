@@ -4,11 +4,13 @@ tshark
 [TShark][1] is a terminal-based network protocol analyzer used to capture and inspect packet data from a live network or a saved file.
 
 ```bash
-$ alias tshark='docker run --rm -it --net=host --cap-add=NET_RAW --cap-add=NET_ADMIN -v $PWD:/data -w /data easypi/tshark'
+$ alias tshark='docker run --rm -t --net=host --cap-add=NET_RAW --cap-add=NET_ADMIN -v $PWD:/data -w /data easypi/tshark'
+# Capture DNS query
+$ tshark -i eth0 -f "src port 53" -Y "dns.flags.response == 1 && (dns.a || dns.cname)" -T fields -e ip.src -e dns.qry.name -e dns.cname -e dns.a
 # Extract HTTP URLs live
 $ tshark -i eth0 -Y "http.request" -T fields -e ip.src -e http.request.method -e http.host -e http.request.uri
 # Extract HTTPS domains (TLS SNI)
-$ tshark -i eth0 -Y "tls.handshake.type == 1" -T fields -e ip.src -e tls.handshake.extensions_server_name
+$ tshark -i eth0 -Y "tls.handshake.type == 1 && tcp.dstport == 443" -T fields -e ip.src -e ip.dst -e tls.handshake.extensions_server_name
 # Combined HTTP + HTTPS sniffer
 $ tshark -i eth0 -Y "http.request or tls.handshake.type==1" -T fields -e ip.src -e http.request.method -e http.host -e http.request.uri -e tls.handshake.extensions_server_name
 # Pretty-print via lua script
