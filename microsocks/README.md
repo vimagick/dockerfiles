@@ -4,6 +4,7 @@ microsocks
 [MicroSocks][1] - multithreaded, small, efficient SOCKS5 server.
 
 ```bash
+$ sysctl -w net.ipv6.bindv6only=0
 $ docker-compose up -d
 $ curl -x socks5h://127.0.0.1:1080 ifconfig.co
 ```

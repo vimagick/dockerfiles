@@ -1,7 +1,8 @@
-version: "3.8"
 services:
   microsocks:
-    image: vimagick/microsocks
+    image: easypi/microsocks
     ports:
       - "1080:1080"
+    sysctls:
+      - net.ipv6.bindv6only=0
     restart: unless-stopped

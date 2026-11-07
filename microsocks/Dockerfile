@@ -22,4 +22,4 @@ RUN set -xe \
 
 EXPOSE 1080
 ENTRYPOINT ["microsocks"]
-CMD ["-i", "0.0.0.0", "-p", "1080"]
+CMD ["-i", "::", "-p", "1080"]
