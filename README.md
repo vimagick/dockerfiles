@@ -411,6 +411,7 @@ A collection of delicious docker recipes.
 - [x] healthchecks/healthchecks
 - [x] hivemq/hivemq-ce
 - [x] homeassistant/home-assistant
+- [x] tobyxdd/hysteria
 - [x] h2non/imaginary
 - [x] jellyfin/jellyfin
 - [x] jenkins

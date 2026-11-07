@@ -1,0 +1,31 @@
+# https://v2.hysteria.network/docs/advanced/Full-Client-Config/
+
+server: example.com:443
+
+auth: user1:pass1
+
+tls:
+  sni: example.com
+  insecure: true
+
+obfs:
+  type: salamander
+  salamander:
+    password: secret
+
+fastOpen: true
+
+socks5:
+  listen: 127.0.0.1:1080
+
+http:
+  listen: 127.0.0.1:3128
+
+tcpForwarding:
+  - listen: 127.0.0.1:2222
+    remote: github.com:22
+
+udpForwarding:
+  - listen: 127.0.0.1:5300
+    remote: 8.8.8.8:53
+    timeout: 20s

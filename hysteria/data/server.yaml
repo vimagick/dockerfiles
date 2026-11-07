@@ -1,0 +1,48 @@
+# https://v2.hysteria.network/docs/advanced/Full-Server-Config/
+
+listen: :443
+
+tls: 
+  cert: ssl/server.crt
+  key: ssl/server.key
+  sniGuard: disable
+
+obfs:
+  type: salamander
+  salamander:
+    password: secret
+
+bandwidth:
+  up: 1 gbps
+  down: 1 gbps
+  disableLossCompensation: false
+
+speedTest: true
+
+disableUDP: false
+udpIdleTimeout: 60s
+
+auth:
+  type: userpass
+  userpass: 
+    user1: pass1
+    user2: pass2
+    user3: pass3
+
+resolver:
+  type: udp
+  udp:
+    addr: 8.8.4.4:53
+    timeout: 4s
+
+outbounds:
+  - name: internet
+    type: direct
+    direct:
+      mode: 4
+      bindDevice: eth0
+      fastOpen: true
+
+trafficStats:
+  listen: :9999
+  secret: secret

@@ -1,0 +1,22 @@
+services:
+
+  server:
+    image: tobyxdd/hysteria
+    command: ["server", "-c", "server.yaml"]
+    ports:
+      - "443:443/udp"
+      - "9999:9999/tcp"
+    volumes:
+      - ./data:/etc/hysteria
+    working_dir: /etc/hysteria
+    restart: unless-stopped
+
+  client:
+    image: tobyxdd/hysteria
+    command: ["client", "-c", "client.yaml"]
+    ports:
+      - "1080:1080/tcp"
+    volumes:
+      - ./data:/etc/hysteria
+    working_dir: /etc/hysteria
+    restart: unless-stopped
