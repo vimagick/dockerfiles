@@ -561,6 +561,7 @@ A collection of delicious docker recipes.
 - [x] openstitching/stitch
 - [x] strapi/strapi
 - [x] amancevice/superset
+- [x] jasonish/suricata
 - [x] matrixdotorg/synapse
 - [x] syncthing/syncthing
 - [x] linuxserver/syslog-ng

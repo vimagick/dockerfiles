@@ -1,0 +1,16 @@
+services:
+  suricata:
+    image: jasonish/suricata:8.0.8
+    volumes:
+      - ./data/etc:/etc/suricata
+      - ./data/log:/var/log/suricata
+      - ./data/var:/var/lib/suricata
+    environment:
+      - TZ=Asia/Shanghai
+      - SURICATA_OPTIONS=-i eth0
+    cap_add:
+      - NET_ADMIN
+      - NET_RAW
+      - SYS_NICE
+    network_mode: host
+    restart: unless-stopped
