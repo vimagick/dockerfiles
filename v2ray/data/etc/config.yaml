@@ -55,16 +55,30 @@ outbounds:
     protocol: blackhole
     settings: {}
 
-  - tag: proxy
+  - tag: proxy-us
     protocol: socks
     settings:
       servers:
-        - address: upstream-proxy
+        - address: upstream-proxy-us
+          port: 1080
+
+  - tag: proxy-jp
+    protocol: socks
+    settings:
+      servers:
+        - address: upstream-proxy-jp
           port: 1080
 
 # https://www.v2ray.com/chapter_02/03_routing.html
 routing:
   domainStrategy: AsIs
+
+  balancers:
+    - tag: balancer
+      selector: ["proxy-"]
+      strategy:
+        type: random
+
   rules:
     - type: field
       ip:
@@ -77,6 +91,7 @@ routing:
         - geosite:instagram
         - geosite:facebook
         - geosite:twitter
+        - geosite:reddit
       outboundTag: blocked
 
     - type: field
@@ -90,4 +105,4 @@ routing:
       outboundTag: direct
 
     - type: field
-      outboundTag: proxy
+      balancerTag: balancer
