@@ -17,8 +17,8 @@ A collection of delicious docker recipes.
 
 ## Affiliates
 
-[![](https://www.vultr.com/media/banner_1.png)](https://www.vultr.com/?ref=6821947)
-
+- [![](https://bot-hosting.net/assets/img/bothosting.png)](https://bot-hosting.net/?aff=easypi)
+- [![](https://www.vultr.com/media/logo_ondark.svg)](https://www.vultr.com/?ref=6821947)
 
 <details>
 <summary>TL;DR: Image List</summary>
