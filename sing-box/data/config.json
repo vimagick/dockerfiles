@@ -1,0 +1,41 @@
+{
+  "log": {
+    "level": "info"
+  },
+  "dns": {
+    "servers": [
+      {
+        "type": "tls",
+        "tag": "google",
+        "server": "8.8.8.8"
+      }
+    ]
+  },
+  "inbounds": [
+    {
+      "type": "shadowsocks",
+      "listen": "::",
+      "listen_port": 8388,
+      "network": "tcp",
+      "method": "2022-blake3-aes-128-gcm",
+      "password": "Gn1JUS14bLUHgv1cWDDp4A==",
+      "multiplex": {
+        "enabled": true,
+        "padding": true
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "rules": [
+      {
+        "port": 53,
+        "action": "hijack-dns"
+      }
+    ]
+  }
+}

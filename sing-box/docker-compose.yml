@@ -1,0 +1,9 @@
+services:
+  sing-box:
+    image: ghcr.io/sagernet/sing-box
+    command: -D /var/lib/sing-box -C /etc/sing-box run
+    ports:
+      - "8388:8388"
+    volumes:
+      - ./data:/etc/sing-box
+    restart: unless-stopped

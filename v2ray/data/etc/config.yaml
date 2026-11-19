@@ -45,6 +45,14 @@ inbounds:
       level: 0
       email: alice@example.com
 
+# https://www.v2ray.com/chapter_02/04_dns.html
+dns:
+  hosts:
+    supervisor.me: 127.0.0.1
+  servers:
+    - address: 1.1.1.1
+    - address: localhost
+
 # https://www.v2ray.com/chapter_02/02_protocols.html
 outbounds:
   - tag: direct
@@ -53,6 +61,10 @@ outbounds:
 
   - tag: blocked
     protocol: blackhole
+    settings: {}
+
+  - tag: dns-out
+    protocol: dns
     settings: {}
 
   - tag: proxy-us
@@ -81,6 +93,10 @@ routing:
 
   rules:
     - type: field
+      port: 53
+      outboundTag: dns-out
+
+    - type: field
       ip:
         - geoip:private
       outboundTag: blocked
@@ -105,4 +121,5 @@ routing:
       outboundTag: direct
 
     - type: field
+      network: tcp,udp
       balancerTag: balancer

@@ -550,6 +550,7 @@ A collection of delicious docker recipes.
 - [x] drakkan/sftpgo
 - [x] quay.io/outline/shadowbox
 - [x] shlinkio/shlink
+- [x] ghcr.io/sagernet/sing-box
 - [x] snipe/snipe-it
 - [x] valeriansaliou/sonic
 - [x] ghcr.io/speaches-ai/speaches
