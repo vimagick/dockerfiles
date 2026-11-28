@@ -17,8 +17,9 @@ A collection of delicious docker recipes.
 
 ## Affiliates
 
+- [![](https://external-content.duckduckgo.com/ip3/www.racknerd.com.ico)](https://my.racknerd.com/aff.php?aff=22572)
+- [![](https://external-content.duckduckgo.com/ip3/discover.vultr.com.ico)](https://www.vultr.com/?ref=6821947)
 - [![](https://bot-hosting.net/assets/img/bothosting.png)](https://bot-hosting.net/?aff=easypi)
-- [![](https://www.vultr.com/media/logo_ondark.svg)](https://www.vultr.com/?ref=6821947)
 
 <details>
 <summary>TL;DR: Image List</summary>
